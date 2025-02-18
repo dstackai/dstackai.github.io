@@ -948,6 +948,19 @@ Support our project with a ⭐ on
 </li>
         
           <li class="md-nav__item">
+  <a href="#cloud-blocks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Blocks
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#idle-duration" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1066,6 +1079,19 @@ Support our project with a ⭐ on
         
       </ul>
     </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ssh-blocks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Blocks
+        </span>
+      
+    </span>
+  </a>
   
 </li>
         
@@ -3713,6 +3739,19 @@ Support our project with a ⭐ on
 </li>
         
           <li class="md-nav__item">
+  <a href="#cloud-blocks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Blocks
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#idle-duration" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3831,6 +3870,19 @@ Support our project with a ⭐ on
         
       </ul>
     </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ssh-blocks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Blocks
+        </span>
+      
+    </span>
+  </a>
   
 </li>
         
@@ -4058,6 +4110,24 @@ and their quantity. Examples: <code>nvidia</code> (one NVIDIA GPU), <code>A100</
 </code></pre></div>
 <p>Currently, only 8 TPU cores can be specified, supporting single TPU device workloads. Multi-TPU support is coming soon.</p>
 </details>
+<h4 id="cloud-blocks">Blocks<a class="headerlink" href="#cloud-blocks" title="Permanent link">&para;</a></h4>
+<p>For cloud fleets, <code>blocks</code> function the same way as in SSH fleets. 
+See the <a href="#ssh-blocks"><code>Blocks</code></a> section under SSH fleets for details on the blocks concept.</p>
+<div editor-title=".dstack.yml">
+
+<div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">fleet</span>
+
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my-fleet</span>
+
+<span class="nt">resources</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NVIDIA:80GB:8</span>
+
+<span class="c1"># Split into 4 blocks, each with 2 GPUs</span>
+<span class="nt">blocks</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4</span>
+</code></pre></div>
+
+</div>
+
 <h4 id="idle-duration">Idle duration<a class="headerlink" href="#idle-duration" title="Permanent link">&para;</a></h4>
 <p>By default, fleet instances stay <code>idle</code> for 3 days and can be reused within that time.
 If the fleet is not reused within this period, it is automatically terminated.</p>
@@ -4192,6 +4262,38 @@ This is required if you'd like to use the fleet for <a href="../tasks/#distribut
 <p>By default, <code>dstack</code> automatically detects the network shared by the hosts. 
 However, it's possible to configure it explicitly via 
 the <a href="../../reference/dstack.yml/fleet/#network"><code>network</code></a> property.</p>
+<h4 id="ssh-blocks">Blocks<a class="headerlink" href="#ssh-blocks" title="Permanent link">&para;</a></h4>
+<p>By default, a single job occupies the entire instance, so if the instance has 8 GPUs, the job will use all of them.</p>
+<p>To make it more efficient, you can set the blocks property to specify how many blocks you’d like the instance to be
+divided into, allowing multiple jobs to use these blocks concurrently.</p>
+<div editor-title=".dstack.yml">
+
+    <div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">fleet</span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my-fleet</span>
+
+<span class="nt">ssh_config</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">user</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu</span>
+<span class="w">  </span><span class="nt">identity_file</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">~/.ssh/id_rsa</span>
+<span class="w">  </span><span class="nt">hosts</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">hostname</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.255.177.51</span>
+<span class="w">      </span><span class="nt">blocks</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">hostaname</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.255.177.52</span>
+<span class="w">      </span><span class="c1"># As many as possible, according to numbers of GPUs and CPUs</span>
+<span class="w">      </span><span class="nt">blocks</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">auto</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">hostaname</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.255.177.53</span>
+<span class="w">      </span><span class="c1"># Do not sclice. This is the default value, may be omitted</span>
+<span class="w">      </span><span class="nt">blocks</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+</code></pre></div>
+
+</div>
+
+<p>For instance, with 8 GPUs, 128 CPUs, and 2TB of memory, setting blocks to 8 would assign 1 GPU, 16 CPUs, and 256 GB of
+memory to each block. These blocks can be used concurrently, and a single job can occupy multiple blocks if needed.</p>
+<blockquote>
+<p>GPUs and CPUs must be divisible by the number of blocks. All resources (GPU, CPU, memory) are split proportionally,
+except disk storage, which is shared.</p>
+</blockquote>
+<p>You can also set <code>blocks</code> to <code>auto</code>, which automatically sets the number of blocks to match the number of GPUs.</p>
 <h4 id="environment-variables">Environment variables<a class="headerlink" href="#environment-variables" title="Permanent link">&para;</a></h4>
 <p>If needed, you can specify environment variables that will be used by <code>dstack-shim</code> and passed to containers.</p>
 <p>For example, these variables can be used to configure a proxy:</p>
