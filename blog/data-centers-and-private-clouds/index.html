@@ -3462,7 +3462,7 @@ provide stronger security and privacy controls.  </p>
 long been a strength of Kubernetes, which enables concurrent workload execution across provisioned nodes to minimize
 resource waste.</p>
 <h3 id="gpu-blocks">GPU blocks<a class="headerlink" href="#gpu-blocks" title="Permanent link">&para;</a></h3>
-<p>The newest version of <code>dstack</code> introduces a feature called GPU blocks, bringing this level of efficiency to <code>dstack</code>. It
+<p>The newest version of <code>dstack</code> introduces a feature called <a href="../../docs/concepts/fleets/#ssh-blocks">GPU blocks</a>, bringing this level of efficiency to <code>dstack</code>. It
 enables optimal hardware utilization by allowing concurrent workloads to run on the same hosts, using slices of the
 available resources on each host.</p>
 <blockquote>
@@ -3524,7 +3524,7 @@ cost-efficiency of GPU utilization by concurrent runs.</p>
 <p>Private clouds typically provide access to GPU clusters via SSH through a login node. In these setups, only the login
 node is internet-accessible, while cluster nodes can only be reached via SSH from the login node. This prevents creating
 an SSH fleet by directly listing the cluster nodes' hostnames.</p>
-<p>The latest <code>dstack</code> release introduces the <code>proxy_jump</code> property in SSH fleet configurations, enabling creating fleets 
+<p>The latest <code>dstack</code> release introduces the <a href="../../docs/concepts/fleets/#proxy-jump"><code>proxy_jump</code></a> property in SSH fleet configurations, enabling creating fleets 
 through a login node.</p>
 <blockquote>
 <p>For example, imagine you’ve reserved a 1-Click Cluster from
