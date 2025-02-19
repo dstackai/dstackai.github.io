@@ -2795,6 +2795,17 @@ Support our project with a ⭐ on
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#auto-shutdown-for-inactive-dev-environmentsno-idle-gpus" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Auto-shutdown for inactive dev environments—no idle GPUs
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#orchestrating-gpus-in-data-centers-and-private-clouds" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2887,17 +2898,6 @@ Support our project with a ⭐ on
     <span class="md-ellipsis">
       
         Benchmarking Llama 3.1 405B on 8x AMD MI300X GPUs
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#using-tpus-for-fine-tuning-and-deploying-llms" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Using TPUs for fine-tuning and deploying LLMs
       
     </span>
   </a>
@@ -3222,6 +3222,37 @@ Support our project with a ⭐ on
   
   
     <li class="md-nav__item">
+      <a href="category/dev-environments/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    
+  
+    <span class="md-typeset">
+      Dev environments
+    </span>
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
       <a href="category/fleets/" class="md-nav__link">
         
   
@@ -3467,6 +3498,17 @@ Support our project with a ⭐ on
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#auto-shutdown-for-inactive-dev-environmentsno-idle-gpus" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Auto-shutdown for inactive dev environments—no idle GPUs
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#orchestrating-gpus-in-data-centers-and-private-clouds" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3565,17 +3607,6 @@ Support our project with a ⭐ on
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#using-tpus-for-fine-tuning-and-deploying-llms" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Using TPUs for fine-tuning and deploying LLMs
-      
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -3596,6 +3627,53 @@ Support our project with a ⭐ on
 
 <h1 id="blog">Blog<a class="headerlink" href="#blog" title="Permanent link">&para;</a></h1>
       </header>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2025-02-19 00:00:00+00:00">February 19, 2025</time></li>
+        
+          <li class="md-meta__item">
+            in
+            
+              <a href="category/dev-environments/" class="md-meta__link">Dev environments</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              2 min read
+            
+          </li>
+        
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="auto-shutdown-for-inactive-dev-environmentsno-idle-gpus"><a class="toclink" href="inactive-dev-environments-auto-shutdown/">Auto-shutdown for inactive dev environments—no idle GPUs</a></h2>
+<p>Whether you’re using cloud or on-prem compute, you may want to test your code before launching a
+training task or deploying a service. <code>dstack</code>’s <a href="../docs/concepts/dev-environments/">dev environments</a>
+make this easy by setting up a remote machine, cloning your repository, and configuring your IDE —all within 
+a container that has GPU access.</p>
+<p>One issue with dev environments is forgetting to stop them or closing your laptop, leaving the GPU idle and costly. With
+our latest update, <code>dstack</code> now detects inactive environments and automatically shuts them down, saving you money.</p>
+<p><img src="https://github.com/dstackai/static-assets/blob/main/static-assets/images/inactive-dev-environments-auto-shutdown.png?raw=true" width="630"/></p>
+
+    
+      <nav class="md-post__action">
+        <a href="inactive-dev-environments-auto-shutdown/">
+          Continue reading
+        </a>
+      </nav>
+    
+    
+  </div>
+</article>
       
         <article class="md-post md-post--excerpt">
   <header class="md-post__header">
@@ -4051,52 +4129,6 @@ bare metal compute for AMD GPUs, kindly provided the hardware for the benchmark.
     
       <nav class="md-post__action">
         <a href="amd-mi300x-inference-benchmark/">
-          Continue reading
-        </a>
-      </nav>
-    
-    
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2024-09-10 00:00:00+00:00">September 10, 2024</time></li>
-        
-          <li class="md-meta__item">
-            in
-            
-              <a href="category/tpu/" class="md-meta__link">TPU</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              4 min read
-            
-          </li>
-        
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="using-tpus-for-fine-tuning-and-deploying-llms"><a class="toclink" href="tpu-on-gcp/">Using TPUs for fine-tuning and deploying LLMs</a></h2>
-<p>If you’re using or planning to use TPUs with Google Cloud, you can now do so via <code>dstack</code>. Just specify the TPU version and the number of cores 
-(separated by a dash), in the <code>gpu</code> property under <code>resources</code>. </p>
-<p>Read below to find out how to use TPUs with <code>dstack</code> for fine-tuning and deploying
-LLMs, leveraging open-source tools like Hugging Face’s 
-<a href="https://github.com/huggingface/optimum-tpu" target="_blank">Optimum TPU <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> 
-and <a href="https://docs.vllm.ai/en/latest/getting_started/tpu-installation.html" target="_blank">vLLM <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>.</p>
-
-    
-      <nav class="md-post__action">
-        <a href="tpu-on-gcp/">
           Continue reading
         </a>
       </nav>
