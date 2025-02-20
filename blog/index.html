@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../assets/images/dstack-fav-32.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.4+insiders-4.53.15">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.5+insiders-4.53.15">
     
     
       
@@ -2795,6 +2795,17 @@ Support our project with a ⭐ on
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#efficient-distributed-training-with-aws-efa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Efficient distributed training with AWS EFA
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#auto-shutdown-for-inactive-dev-environmentsno-idle-gpus" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2887,17 +2898,6 @@ Support our project with a ⭐ on
     <span class="md-ellipsis">
       
         Monitoring GPU usage and other container metrics
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#benchmarking-llama-31-405b-on-8x-amd-mi300x-gpus" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Benchmarking Llama 3.1 405B on 8x AMD MI300X GPUs
       
     </span>
   </a>
@@ -3498,6 +3498,17 @@ Support our project with a ⭐ on
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#efficient-distributed-training-with-aws-efa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Efficient distributed training with AWS EFA
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#auto-shutdown-for-inactive-dev-environmentsno-idle-gpus" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3596,17 +3607,6 @@ Support our project with a ⭐ on
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#benchmarking-llama-31-405b-on-8x-amd-mi300x-gpus" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Benchmarking Llama 3.1 405B on 8x AMD MI300X GPUs
-      
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -3627,6 +3627,51 @@ Support our project with a ⭐ on
 
 <h1 id="blog">Blog<a class="headerlink" href="#blog" title="Permanent link">&para;</a></h1>
       </header>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2025-02-20 00:00:00+00:00">February 20, 2025</time></li>
+        
+          <li class="md-meta__item">
+            in
+            
+              <a href="category/fleets/" class="md-meta__link">Fleets</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              3 min read
+            
+          </li>
+        
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="efficient-distributed-training-with-aws-efa"><a class="toclink" href="distributed-training-with-aws-efa/">Efficient distributed training with AWS EFA</a></h2>
+<p><a href="https://aws.amazon.com/hpc/efa/" target="_blank">Amazon Elastic Fabric Adapter (EFA) <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> is a high-performance network interface designed for AWS EC2 instances, enabling
+ultra-low latency and high-throughput communication between nodes. This makes it an ideal solution for scaling
+distributed training workloads across multiple GPUs and instances.</p>
+<p>With the latest release of <code>dstack</code>, you can now leverage AWS EFA to supercharge your distributed training tasks.</p>
+<p><img src="https://github.com/dstackai/static-assets/blob/main/static-assets/images/distributed-training-with-aws-efa-v2.png?raw=true" width="630"/></p>
+
+    
+      <nav class="md-post__action">
+        <a href="distributed-training-with-aws-efa/">
+          Continue reading
+        </a>
+      </nav>
+    
+    
+  </div>
+</article>
       
         <article class="md-post md-post--excerpt">
   <header class="md-post__header">
@@ -4083,52 +4128,6 @@ for monitoring container metrics, including GPU usage for <code>NVIDIA</code>, <
     
       <nav class="md-post__action">
         <a href="monitoring-gpu-usage/">
-          Continue reading
-        </a>
-      </nav>
-    
-    
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2024-10-09 00:00:00+00:00">October 9, 2024</time></li>
-        
-          <li class="md-meta__item">
-            in
-            
-              <a href="category/amd/" class="md-meta__link">AMD</a>, 
-              <a href="category/benchmarks/" class="md-meta__link">Benchmarks</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              6 min read
-            
-          </li>
-        
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="benchmarking-llama-31-405b-on-8x-amd-mi300x-gpus"><a class="toclink" href="amd-mi300x-inference-benchmark/">Benchmarking Llama 3.1 405B on 8x AMD MI300X GPUs</a></h2>
-<p>At <code>dstack</code>, we've been adding support for AMD GPUs with <a href="../docs/concepts/fleets/#ssh">SSH fleets</a>, 
-so we saw this as a great chance to test our integration by benchmarking AMD GPUs. Our friends at 
-<a href="https://hotaisle.xyz/" target="_blank">Hot Aisle <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>, who build top-tier 
-bare metal compute for AMD GPUs, kindly provided the hardware for the benchmark.</p>
-<p><img src="https://github.com/dstackai/static-assets/blob/main/static-assets/images/dstack-hotaisle-amd-mi300x-prompt-v5.png?raw=true" width="750" /></p>
-
-    
-      <nav class="md-post__action">
-        <a href="amd-mi300x-inference-benchmark/">
           Continue reading
         </a>
       </nav>
