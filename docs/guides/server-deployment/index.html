@@ -1144,6 +1144,19 @@ Support our project with a ⭐ on
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#gcp-logging" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          GCP Logging
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -3601,6 +3614,19 @@ Support our project with a ⭐ on
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#gcp-logging" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          GCP Logging
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -3819,7 +3845,8 @@ pgloader<span class="w"> </span>sqlite_to_psql.load
 </details>
 <h2 id="logs-storage">Logs storage<a class="headerlink" href="#logs-storage" title="Permanent link">&para;</a></h2>
 <p>By default, <code>dstack</code> stores workload logs locally in <code>~/.dstack/server/projects/&lt;project_name&gt;/logs</code>.
-For multi-replica server deployments, it's required to store logs externally, e.g. in AWS CloudWatch.</p>
+For multi-replica server deployments, it's required to store logs externally.
+<code>dstack</code> supports storing logs using AWS CloudWatch or GCP Logging.</p>
 <h3 id="aws-cloudwatch">AWS CloudWatch<a class="headerlink" href="#aws-cloudwatch" title="Permanent link">&para;</a></h3>
 <p>To store logs in AWS CloudWatch, set the <code>DSTACK_SERVER_CLOUDWATCH_LOG_GROUP</code> and
 the <code>DSTACK_SERVER_CLOUDWATCH_LOG_REGION</code> environment variables. </p>
@@ -3846,6 +3873,30 @@ the <code>DSTACK_SERVER_CLOUDWATCH_LOG_REGION</code> environment variables. </p>
 <span class="w">  </span><span class="p">]</span>
 <span class="p">}</span>
 </code></pre></div>
+</details>
+<h3 id="gcp-logging">GCP Logging<a class="headerlink" href="#gcp-logging" title="Permanent link">&para;</a></h3>
+<p>To store logs using GCP Logging, set the <code>DSTACK_SERVER_GCP_LOGGING_PROJECT</code> environment variable.</p>
+<details class="info">
+<summary>Required permissions</summary>
+<p>Ensure you've configured Application Default Credentials with the following permissions:</p>
+<div class="highlight"><pre><span></span><code>logging.logEntries.create
+logging.logEntries.list
+</code></pre></div>
+</details>
+<details class="info">
+<summary>Logs management</summary>
+<p><code>dstack</code> writes all the logs to the <code>projects/[PROJECT]/logs/dstack-run-logs</code> log name.
+If you want to set up a custom retention policy for <code>dstack</code> logs, create a new bucket and configure a sink:</p>
+<div class="termy">
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>gcloud<span class="w"> </span>logging<span class="w"> </span>buckets<span class="w"> </span>create<span class="w"> </span>dstack-bucket<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--location<span class="o">=</span>global<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--description<span class="o">=</span><span class="s2">&quot;Bucket for storing dstack run logs&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--retention-days<span class="o">=</span><span class="m">10</span>
+$<span class="w"> </span>gcloud<span class="w"> </span>logging<span class="w"> </span>sinks<span class="w"> </span>create<span class="w"> </span>dstack-sink<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>logging.googleapis.com/projects/<span class="o">[</span>PROJECT<span class="o">]</span>/locations/global/buckets/dstack-bucket<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--log-filter<span class="o">=</span><span class="s1">&#39;logName = &quot;projects/[PROJECT]/logs/dstack-run-logs&quot;&#39;</span>
+</code></pre></div>
+</div>
 </details>
 <h2 id="encryption">Encryption<a class="headerlink" href="#encryption" title="Permanent link">&para;</a></h2>
 <p>By default, <code>dstack</code> stores data in plaintext. To enforce encryption, you 

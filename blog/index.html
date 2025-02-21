@@ -2795,6 +2795,17 @@ Support our project with a ⭐ on
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#supporting-intel-gaudi-accelerators" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Supporting Intel Gaudi accelerators
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#efficient-distributed-training-with-aws-efa" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2887,17 +2898,6 @@ Support our project with a ⭐ on
     <span class="md-ellipsis">
       
         Using Docker and Docker Compose inside GPU-enabled containers
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#monitoring-gpu-usage-and-other-container-metrics" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Monitoring GPU usage and other container metrics
       
     </span>
   </a>
@@ -3498,6 +3498,17 @@ Support our project with a ⭐ on
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#supporting-intel-gaudi-accelerators" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Supporting Intel Gaudi accelerators
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#efficient-distributed-training-with-aws-efa" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3596,17 +3607,6 @@ Support our project with a ⭐ on
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#monitoring-gpu-usage-and-other-container-metrics" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Monitoring GPU usage and other container metrics
-      
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -3627,6 +3627,52 @@ Support our project with a ⭐ on
 
 <h1 id="blog">Blog<a class="headerlink" href="#blog" title="Permanent link">&para;</a></h1>
       </header>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2025-02-21 00:00:00+00:00">February 21, 2025</time></li>
+        
+          <li class="md-meta__item">
+            in
+            
+              <a href="category/fleets/" class="md-meta__link">Fleets</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              3 min read
+            
+          </li>
+        
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="supporting-intel-gaudi-accelerators"><a class="toclink" href="intel-gaudi/">Supporting Intel Gaudi accelerators</a></h2>
+<p>At <code>dstack</code>, our goal is to make AI container orchestration simpler and fully vendor-agnostic. That’s why we support not
+just leading cloud providers and on-prem environments but also a wide range of accelerators.</p>
+<p>With our latest release, we’re adding support
+for <a href="https://www.intel.com/content/www/us/en/products/details/processors/ai-accelerators/gaudi.html" target="_blank">Intel Gaudi <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> and
+launching a new partnership with Intel.</p>
+<p><img src="https://github.com/dstackai/static-assets/blob/main/static-assets/images/dstack-intel-gaudi-and-intel-tiber-cloud-v2.png?raw=true" width="630"/></p>
+
+    
+      <nav class="md-post__action">
+        <a href="intel-gaudi/">
+          Continue reading
+        </a>
+      </nav>
+    
+    
+  </div>
+</article>
       
         <article class="md-post md-post--excerpt">
   <header class="md-post__header">
@@ -4081,53 +4127,6 @@ in our latest release, we've added this option.</p>
     
       <nav class="md-post__action">
         <a href="docker-inside-containers/">
-          Continue reading
-        </a>
-      </nav>
-    
-    
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2024-10-22 00:00:00+00:00">October 22, 2024</time></li>
-        
-          <li class="md-meta__item">
-            in
-            
-              <a href="category/amd/" class="md-meta__link">AMD</a>, 
-              <a href="category/nvidia/" class="md-meta__link">NVIDIA</a>, 
-              <a href="category/monitoring/" class="md-meta__link">Monitoring</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              2 min read
-            
-          </li>
-        
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="monitoring-gpu-usage-and-other-container-metrics"><a class="toclink" href="monitoring-gpu-usage/">Monitoring GPU usage and other container metrics</a></h2>
-<h3 id="how-it-works" style="display:none"><a class="toclink" href="monitoring-gpu-usage/#how-it-works">How it works</a></h3>
-<p>While it's possible to use third-party monitoring tools with <code>dstack</code>, it is often more convenient to debug your run and
-track metrics out of the box. That's why, with the latest release, <code>dstack</code> introduced <a href="../docs/reference/cli/dstack/stats/"><code>dstack stats</code></a>, a new CLI (and API)
-for monitoring container metrics, including GPU usage for <code>NVIDIA</code>, <code>AMD</code>, and other accelerators.</p>
-<p><img src="https://github.com/dstackai/static-assets/blob/main/static-assets/images/dstack-stats-v2.png?raw=true" width="725"/></p>
-
-    
-      <nav class="md-post__action">
-        <a href="monitoring-gpu-usage/">
           Continue reading
         </a>
       </nav>
