@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../../../assets/images/dstack-fav-32.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.5+insiders-4.53.15">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.7+insiders-4.53.15">
     
     
       
@@ -1514,6 +1514,28 @@ Support our project with a ⭐ on
     <span class="md-ellipsis">
       
         lambda
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#runpod" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        runpod
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vastai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        vastai
       
     </span>
   </a>
@@ -3706,6 +3728,28 @@ Support our project with a ⭐ on
 </li>
         
           <li class="md-nav__item">
+  <a href="#runpod" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        runpod
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vastai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        vastai
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#tensordock" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3888,6 +3932,7 @@ to configure <a href="../../../concepts/backends/">backends</a> and other <a hre
 <h6 class="reference-item" id="vpc_ids"><code>vpc_ids</code> - (Optional) The mapping from AWS regions to VPC IDs. If <code>default_vpcs: true</code>, omitted regions will use default VPCs.<a class="headerlink" href="#vpc_ids" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="default_vpcs"><code>default_vpcs</code> - (Optional) A flag to enable/disable using default VPCs in regions not configured by <code>vpc_ids</code>. Set to <code>false</code> if default VPCs should never be used. Defaults to <code>true</code>.<a class="headerlink" href="#default_vpcs" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="public_ips"><code>public_ips</code> - (Optional) A flag to enable/disable public IP assigning on instances. <code>public_ips: false</code> requires at least one private subnet with outbound internet connectivity provided by a NAT Gateway or a Transit Gateway. Defaults to <code>true</code>.<a class="headerlink" href="#public_ips" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="iam_instance_profile"><code>iam_instance_profile</code> - (Optional) The name of the IAM instance profile to associate with EC2 instances. You can also specify the IAM role name for roles created via the AWS console. AWS automatically creates an instance profile and gives it the same name as the role.<a class="headerlink" href="#iam_instance_profile" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="tags"><code>tags</code> - (Optional) The tags that will be assigned to resources created by <code>dstack</code>.<a class="headerlink" href="#tags" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="_os_images"><a href="#aws-os_images"><code>os_images</code></a> - (Optional) The mapping of instance categories (CPU, NVIDIA GPU) to AMI configurations.<a class="headerlink" href="#_os_images" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="_creds"><a href="#aws-creds"><code>creds</code></a> -  The credentials.<a class="headerlink" href="#_creds" title="Permanent link">&para;</a></h6>
@@ -3946,7 +3991,7 @@ to configure <a href="../../../concepts/backends/">backends</a> and other <a hre
 <h6 class="reference-item" id="vpc_project_id"><code>vpc_project_id</code> - (Optional) The shared VPC hosted project ID. Required for shared VPC only.<a class="headerlink" href="#vpc_project_id" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="public_ips"><code>public_ips</code> - (Optional) A flag to enable/disable public IP assigning on instances. Defaults to <code>true</code>.<a class="headerlink" href="#public_ips" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="nat_check"><code>nat_check</code> - (Optional) A flag to enable/disable a check that Cloud NAT is configured for the VPC. This should be set to <code>false</code> when <code>public_ips: false</code> and outbound internet connectivity is provided by a mechanism other than Cloud NAT such as a third-party NAT appliance. Defaults to <code>true</code>.<a class="headerlink" href="#nat_check" title="Permanent link">&para;</a></h6>
-<h6 class="reference-item" id="vm_service_account"><code>vm_service_account</code> - (Optional) The service account associated with provisioned VMs.<a class="headerlink" href="#vm_service_account" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="vm_service_account"><code>vm_service_account</code> - (Optional) The service account to associate with provisioned VMs.<a class="headerlink" href="#vm_service_account" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="tags"><code>tags</code> - (Optional) The tags (labels) that will be assigned to resources created by <code>dstack</code>.<a class="headerlink" href="#tags" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="_creds"><a href="#gcp-creds"><code>creds</code></a> -  The credentials.<a class="headerlink" href="#_creds" title="Permanent link">&para;</a></h6>
 <h6 id="gcp-creds"><code>projects[n].backends[type=gcp].creds</code><a class="headerlink" href="#gcp-creds" title="Permanent link">&para;</a></h6>
@@ -3975,12 +4020,13 @@ to configure <a href="../../../concepts/backends/">backends</a> and other <a hre
 <h6 id="lambda-creds"><code>projects[n].backends[type=lambda].creds</code><a class="headerlink" href="#lambda-creds" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="type"><code>type</code> -  The type of credentials. Must be <code>api_key</code>.<a class="headerlink" href="#type" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="api_key"><code>api_key</code> -  The API key.<a class="headerlink" href="#api_key" title="Permanent link">&para;</a></h6>
-<h6 id="runpod"><code>projects[n].backends[type=runpod]</code><a class="headerlink" href="#runpod" title="Permanent link">&para;</a></h6>
+<h5 id="runpod"><code>projects[n].backends[type=runpod]</code><a class="headerlink" href="#runpod" title="Permanent link">&para;</a></h5>
 <h6 class="reference-item" id="regions"><code>regions</code> - (Optional) The list of RunPod regions. Omit to use all regions.<a class="headerlink" href="#regions" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="community_cloud"><code>community_cloud</code> - (Optional) Whether Community Cloud offers can be suggested in addition to Secure Cloud. Defaults to <code>true</code>.<a class="headerlink" href="#community_cloud" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="_creds"><a href="#runpod-creds"><code>creds</code></a> -  The credentials.<a class="headerlink" href="#_creds" title="Permanent link">&para;</a></h6>
 <h6 id="runpod-creds"><code>projects[n].backends[type=runpod].creds</code><a class="headerlink" href="#runpod-creds" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="api_key"><code>api_key</code> -  The API key.<a class="headerlink" href="#api_key" title="Permanent link">&para;</a></h6>
-<h6 id="vastai"><code>projects[n].backends[type=vastai]</code><a class="headerlink" href="#vastai" title="Permanent link">&para;</a></h6>
+<h5 id="vastai"><code>projects[n].backends[type=vastai]</code><a class="headerlink" href="#vastai" title="Permanent link">&para;</a></h5>
 <h6 class="reference-item" id="type"><code>type</code> -  The type of backend. Must be <code>vastai</code>.<a class="headerlink" href="#type" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="regions"><code>regions</code> - (Optional) The list of VastAI regions. Omit to use all regions.<a class="headerlink" href="#regions" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="_creds"><a href="#vastai-creds"><code>creds</code></a> -  The credentials.<a class="headerlink" href="#_creds" title="Permanent link">&para;</a></h6>
@@ -4282,7 +4328,7 @@ to configure <a href="../../../concepts/backends/">backends</a> and other <a hre
 <script src="/assets/javascripts/termynal.js" data-termynal-container="#termynal"></script>
 <script async src="https://tally.so/widgets/embed.js"></script>
 
-      <script src="../../../../assets/javascripts/bundle.5a789024.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.f807c082.min.js"></script>
       
         <script src="../../../../assets/javascripts/extra.js"></script>
       

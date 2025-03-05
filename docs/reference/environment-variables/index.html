@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../../assets/images/dstack-fav-32.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.5+insiders-4.53.15">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.7+insiders-4.53.15">
     
     
       
@@ -3588,6 +3588,7 @@ via <code>dstack server</code> or deployed using Docker.</p>
 <li><code id="DSTACK_SERVER_CLOUDWATCH_LOG_REGION">DSTACK_SERVER_CLOUDWATCH_LOG_REGION</code> – The CloudWatch Logs region. Defaults to <code>None</code>.</li>
 <li><code id="DSTACK_DEFAULT_SERVICE_CLIENT_MAX_BODY_SIZE">DSTACK_DEFAULT_SERVICE_CLIENT_MAX_BODY_SIZE</code> – Request body size limit for services running with a gateway, in bytes. Defaults to 64 MiB.</li>
 <li><code id="DSTACK_FORBID_SERVICES_WITHOUT_GATEWAY">DSTACK_FORBID_SERVICES_WITHOUT_GATEWAY</code> – Forbids registering new services without a gateway if set to any value.</li>
+<li><code id="DSTACK_ENABLE_PROMETHEUS_METRICS">DSTACK_ENABLE_PROMETHEUS_METRICS</code> — Enables Prometheus metrics collection and export.</li>
 </ul>
 <details class="info">
 <summary>Internal environment variables</summary>
@@ -3595,6 +3596,8 @@ via <code>dstack server</code> or deployed using Docker.</p>
 <ul>
 <li><code>DSTACK_SERVER_ROOT_LOG_LEVEL</code> – Sets root logger log level. Defaults to <code>ERROR</code>.</li>
 <li><code>DSTACK_SERVER_UVICORN_LOG_LEVEL</code> – Sets uvicorn logger log level. Defaults to <code>ERROR</code>.</li>
+<li><code>DSTACK_SERVER_MAX_OFFERS_TRIED</code> - Sets how many instance offers to try when starting a job.
+   Setting a high value can degrade server performance.</li>
 <li><code>DSTACK_RUNNER_VERSION</code> – Sets exact runner version for debug. Defaults to <code>latest</code>. Ignored if <code>DSTACK_RUNNER_DOWNLOAD_URL</code> is set.</li>
 <li><code>DSTACK_RUNNER_DOWNLOAD_URL</code> – Overrides <code>dstack-runner</code> binary download URL.</li>
 <li><code>DSTACK_SHIM_DOWNLOAD_URL</code> – Overrides <code>dstack-shim</code> binary download URL.</li>
@@ -3829,7 +3832,7 @@ via <code>dstack server</code> or deployed using Docker.</p>
 <script src="/assets/javascripts/termynal.js" data-termynal-container="#termynal"></script>
 <script async src="https://tally.so/widgets/embed.js"></script>
 
-      <script src="../../../assets/javascripts/bundle.5a789024.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.f807c082.min.js"></script>
       
         <script src="../../../assets/javascripts/extra.js"></script>
       

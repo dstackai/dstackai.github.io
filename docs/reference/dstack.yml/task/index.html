@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../../../assets/images/dstack-fav-32.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.5+insiders-4.53.15">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.7+insiders-4.53.15">
     
     
       
@@ -1316,6 +1316,17 @@ Support our project with a ⭐ on
     <span class="md-ellipsis">
       
         retry
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#utilization_policy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        utilization_policy
       
     </span>
   </a>
@@ -3512,6 +3523,17 @@ Support our project with a ⭐ on
 </li>
         
           <li class="md-nav__item">
+  <a href="#utilization_policy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        utilization_policy
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#resources" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3625,11 +3647,15 @@ Support our project with a ⭐ on
 <h6 class="reference-item" id="max_price"><code>max_price</code> - (Optional) The maximum instance price per hour, in dollars.<a class="headerlink" href="#max_price" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="creation_policy"><code>creation_policy</code> - (Optional) The policy for using instances from the pool. Defaults to <code>reuse-or-create</code>.<a class="headerlink" href="#creation_policy" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="idle_duration"><code>idle_duration</code> - (Optional) Time to wait before terminating idle instances. Defaults to <code>5m</code> for runs and <code>3d</code> for fleets. Use <code>off</code> for unlimited duration.<a class="headerlink" href="#idle_duration" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="_utilization_policy"><a href="#utilization_policy"><code>utilization_policy</code></a> - (Optional) Run termination policy based on utilization.<a class="headerlink" href="#_utilization_policy" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="termination_policy"><code>termination_policy</code> - (Optional) Deprecated in favor of <code>idle_duration</code>.<a class="headerlink" href="#termination_policy" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="termination_idle_time"><code>termination_idle_time</code> - (Optional) Deprecated in favor of <code>idle_duration</code>.<a class="headerlink" href="#termination_idle_time" title="Permanent link">&para;</a></h6>
 <h3 id="retry"><code>retry</code><a class="headerlink" href="#retry" title="Permanent link">&para;</a></h3>
 <h6 class="reference-item" id="on_events"><code>on_events</code> -  The list of events that should be handled with retry. Supported events are <code>no-capacity</code>, <code>interruption</code>, and <code>error</code>.<a class="headerlink" href="#on_events" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="duration"><code>duration</code> - (Optional) The maximum period of retrying the run, e.g., <code>4h</code> or <code>1d</code>.<a class="headerlink" href="#duration" title="Permanent link">&para;</a></h6>
+<h3 id="utilization_policy"><code>utilization_policy</code><a class="headerlink" href="#utilization_policy" title="Permanent link">&para;</a></h3>
+<h6 class="reference-item" id="min_gpu_utilization"><code>min_gpu_utilization</code> -  Minimum required GPU utilization, percent. If any GPU has utilization below specified value during the whole time window, the run is terminated.<a class="headerlink" href="#min_gpu_utilization" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="time_window"><code>time_window</code> -  The time window of metric samples taking into account to measure utilization (e.g., <code>30m</code>, <code>1h</code>). Minimum is <code>5m</code>.<a class="headerlink" href="#time_window" title="Permanent link">&para;</a></h6>
 <h3 id="resources"><code>resources</code><a class="headerlink" href="#resources" title="Permanent link">&para;</a></h3>
 <h6 class="reference-item" id="cpu"><code>cpu</code> - (Optional) The number of CPU cores. Defaults to <code>2..</code>.<a class="headerlink" href="#cpu" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="memory"><code>memory</code> - (Optional) The RAM size (e.g., <code>8GB</code>). Defaults to <code>8GB..</code>.<a class="headerlink" href="#memory" title="Permanent link">&para;</a></h6>
@@ -3881,7 +3907,7 @@ Support our project with a ⭐ on
 <script src="/assets/javascripts/termynal.js" data-termynal-container="#termynal"></script>
 <script async src="https://tally.so/widgets/embed.js"></script>
 
-      <script src="../../../../assets/javascripts/bundle.5a789024.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.f807c082.min.js"></script>
       
         <script src="../../../../assets/javascripts/extra.js"></script>
       

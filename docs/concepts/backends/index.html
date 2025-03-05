@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../../assets/images/dstack-fav-32.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.5+insiders-4.53.15">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.7+insiders-4.53.15">
     
     
       
@@ -3969,11 +3969,38 @@ configure the backend.</p>
                 &quot;acm:ListCertificates&quot;
             ],
             &quot;Resource&quot;: &quot;*&quot;
+        },
+        {
+            &quot;Effect&quot;: &quot;Allow&quot;,
+            &quot;Action&quot;: [
+                &quot;iam:GetInstanceProfile&quot;,
+                &quot;iam:GetRole&quot;,
+                &quot;iam:PassRole&quot;
+            ],
+            &quot;Resource&quot;: &quot;*&quot;
         }
     ]
 }
 </code></pre></div>
 <p>The <code>elasticloadbalancing:*</code> and <code>acm:*</code> permissions are only needed for provisioning gateways with ACM (AWS Certificate Manager) certificates.</p>
+<p>The <code>iam:*</code> permissions are only needed if you specify <code>iam_instance_profile</code> to assign to EC2 instances.</p>
+<p>You can also limit permissions to specific resources in your account:</p>
+<div class="highlight"><pre><span></span><code>{
+    &quot;Version&quot;: &quot;2012-10-17&quot;,
+    &quot;Statement&quot;: [
+        ...
+        {
+            &quot;Effect&quot;: &quot;Allow&quot;,
+            &quot;Action&quot;: [
+                &quot;iam:GetInstanceProfile&quot;,
+                &quot;iam:GetRole&quot;,
+                &quot;iam:PassRole&quot;
+            ],
+            &quot;Resource&quot;: &quot;arn:aws:iam::account-id:role/EC2-roles-for-XYZ-*&quot;
+        }
+    ]
+}
+</code></pre></div>
 </details>
 <details class="info">
 <summary>VPC</summary>
@@ -4371,6 +4398,34 @@ the button to create a Read &amp; Write key.</p>
 
 </div>
 
+<details class="info">
+<summary>Community Cloud</summary>
+<p>By default, <code>dstack</code> considers instance offers from both the Secure Cloud and the
+<a href="https://docs.runpod.io/references/faq/#secure-cloud-vs-community-cloud">Community Cloud <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>.</p>
+<p>You can tell them apart by their regions.
+Secure Cloud regions contain datacenter IDs such as <code>CA-MTL-3</code>.
+Community Cloud regions contain country codes such as <code>CA</code>.</p>
+<div class="termy">
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>dstack<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>.dstack.yml<span class="w"> </span>-b<span class="w"> </span>runpod
+
+<span class="w"> </span><span class="c1">#  BACKEND  REGION    INSTANCE               SPOT  PRICE</span>
+<span class="w"> </span><span class="m">1</span><span class="w">  </span>runpod<span class="w">   </span>CA<span class="w">        </span>NVIDIA<span class="w"> </span>A100<span class="w"> </span>80GB<span class="w"> </span>PCIe<span class="w">  </span>yes<span class="w">   </span><span class="nv">$0</span>.6
+<span class="w"> </span><span class="m">2</span><span class="w">  </span>runpod<span class="w">   </span>CA-MTL-3<span class="w">  </span>NVIDIA<span class="w"> </span>A100<span class="w"> </span>80GB<span class="w"> </span>PCIe<span class="w">  </span>yes<span class="w">   </span><span class="nv">$0</span>.82
+</code></pre></div>
+</div>
+<p>If you don't want to use the Community Cloud, set <code>community_cloud: false</code> in the backend settings.</p>
+<div editor-title="~/.dstack/server/config.yml">
+<div class="highlight"><pre><span></span><code><span class="nt">projects</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">main</span>
+<span class="w">    </span><span class="nt">backends</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">runpod</span>
+<span class="w">        </span><span class="nt">creds</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">api_key</span>
+<span class="w">          </span><span class="nt">api_key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">US9XTPDIV8AR42MMINY8TCKRB8S4E7LNRQ6CAUQ9</span>
+<span class="w">        </span><span class="nt">community_cloud</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+</code></pre></div>
+</div>
+</details>
 <h3 id="vultr">Vultr<a class="headerlink" href="#vultr" title="Permanent link">&para;</a></h3>
 <p>Log into your <a href="https://www.vultr.com/">Vultr <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> account, click <code>Account</code> in the sidebar, select <code>API</code>, find the <code>Personal Access Token</code> panel and click the <code>Enable API</code> button. In the <code>Access Control</code> panel, allow API requests from all addresses or from the subnet where your <code>dstack</code> server is deployed.</p>
 <p>Then, go ahead and configure the backend:</p>
@@ -4805,7 +4860,7 @@ backends are pre-configured to use compute from <code>dstack</code>'s marketplac
 <script src="/assets/javascripts/termynal.js" data-termynal-container="#termynal"></script>
 <script async src="https://tally.so/widgets/embed.js"></script>
 
-      <script src="../../../assets/javascripts/bundle.5a789024.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.f807c082.min.js"></script>
       
         <script src="../../../assets/javascripts/extra.js"></script>
       

@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../../assets/images/dstack-fav-32.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.5+insiders-4.53.15">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.7+insiders-4.53.15">
     
     
       
@@ -3781,7 +3781,7 @@ The filename must end with <code>.dstack.yml</code> (e.g. <code>.dstack.yml</cod
 
 <span class="nt">python</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;3.11&quot;</span>
 <span class="c1"># Uncomment to use a custom Docker image</span>
-<span class="c1">#image: dstackai/base:py3.13-0.6-cuda-12.1</span>
+<span class="c1">#image: dstackai/base:py3.13-0.7-cuda-12.1</span>
 <span class="nt">ide</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vscode</span>
 
 <span class="c1"># Uncomment to leverage spot instances</span>
@@ -3858,6 +3858,7 @@ to automatically stop the dev environment after a configured period of inactivit
 <div editor-title=".dstack.yml">
 
 <div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dev-environment</span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vscode</span>
 <span class="nt">ide</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vscode</span>
 
 <span class="c1"># Stop if inactive for 2 hours</span>
@@ -3884,6 +3885,19 @@ it has been inactive in <code>dstack ps --verbose</code>.</p>
 
 <p>If you reattach to the dev environment using <a href="../../reference/cli/dstack/attach/"><code>dstack attach</code></a>,
 the inactivity timer will be reset within a few seconds.</p>
+<details class="info">
+<summary>In-place update</summary>
+<p>As long as the configuration defines the <code>name</code> property, the value of <code>inactivity_duration</code>
+can be changed for a running dev environment without a restart.
+Just change the value in the configuration and run <code>dstack apply</code> again.</p>
+<div class="termy">
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>dstack<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>.dstack.yml
+
+Detected<span class="w"> </span>configuration<span class="w"> </span>changes<span class="w"> </span>that<span class="w"> </span>can<span class="w"> </span>be<span class="w"> </span>updated<span class="w"> </span><span class="k">in</span>-place:<span class="w"> </span><span class="o">[</span><span class="s1">&#39;inactivity_duration&#39;</span><span class="o">]</span>
+Update<span class="w"> </span>the<span class="w"> </span>run?<span class="w"> </span><span class="o">[</span>y/n<span class="o">]</span>:
+</code></pre></div>
+</div>
+</details>
 <blockquote>
 <p><code>inactivity_duration</code> is not to be confused with <a href="#idle-duration"><code>idle_duration</code></a>.
 The latter determines how soon the underlying cloud instance will be terminated
@@ -4320,7 +4334,7 @@ Pass <code>--diagnose</code> or <code>-d</code> to view diagnostic logs, which c
 <script src="/assets/javascripts/termynal.js" data-termynal-container="#termynal"></script>
 <script async src="https://tally.so/widgets/embed.js"></script>
 
-      <script src="../../../assets/javascripts/bundle.5a789024.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.f807c082.min.js"></script>
       
         <script src="../../../assets/javascripts/extra.js"></script>
       

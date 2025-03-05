@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../../assets/images/dstack-fav-32.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.5+insiders-4.53.15">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.7+insiders-4.53.15">
     
     
       
@@ -1159,6 +1159,19 @@ Support our project with a ⭐ on
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Metrics
+        </span>
+      
+    </span>
+  </a>
   
 </li>
       
@@ -3633,6 +3646,19 @@ Support our project with a ⭐ on
 </li>
       
         <li class="md-nav__item">
+  <a href="#metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Metrics
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#encryption" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3764,7 +3790,7 @@ The<span class="w"> </span>server<span class="w"> </span>is<span class="w"> </sp
 <summary>AWS CloudFormation</summary>
 <p>If you'd like to deploy the server to a private AWS VPC, you can use 
 our CloudFormation <a href="https://console.aws.amazon.com/cloudformation/home#/stacks/quickcreate?templateURL=https://get-dstack.s3.eu-west-1.amazonaws.com/cloudformation/template.yaml" target="_blank">template <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>.</p>
-<p>First, ensure, you've set up a private VPC with public and private subnets.</p>
+<p>First, ensure you've set up a private VPC with public and private subnets.</p>
 <p><img alt="" src="https://github.com/dstackai/static-assets/blob/main/static-assets/images/dstack-aws-private-vpc-example-v2.png?raw=true" /></p>
 <p>Create a stack using the template, and specify the VPC and private subnets.
 Once, the stack is created, go to <code>Outputs</code> for the server URL and admin token.</p>
@@ -3898,6 +3924,17 @@ $<span class="w"> </span>gcloud<span class="w"> </span>logging<span class="w"> <
 </code></pre></div>
 </div>
 </details>
+<h2 id="metrics">Metrics<a class="headerlink" href="#metrics" title="Permanent link">&para;</a></h2>
+<p>If enabled, <code>dstack</code> collects and exports Prometheus metrics from running jobs. Metrics for jobs from all projects are available
+at the <code>/metrics</code> path, and metrics for jobs from a specific project are available at the <code>/metrics/project/&lt;project-name&gt;</code> path.</p>
+<p>By default, metrics are disabled. To enable, set the <code>DSTACK_ENABLE_PROMETHEUS_METRICS</code> variable.</p>
+<p>Each sample includes a set of <code>dstack_*</code> labels, e.g., <code>dstack_project_name="main"</code>, <code>dstack_run_name="vllm-llama32"</code>.</p>
+<p>Currently, <code>dstack</code> collects the following metrics:</p>
+<ul>
+<li>A fixed subset of NVIDIA GPU metrics from <a href="https://docs.nvidia.com/datacenter/dcgm/latest/gpu-telemetry/dcgm-exporter.html" target="_blank">DCGM Exporter <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> on supported cloud backends — AWS, Azure, GCP, OCI — and SSH fleets.
+On supported cloud backends the required packages are already installed.
+If you use SSH fleets, install <code>datacenter-gpu-manager-4-core</code> and <code>datacenter-gpu-manager-exporter</code>.</li>
+</ul>
 <h2 id="encryption">Encryption<a class="headerlink" href="#encryption" title="Permanent link">&para;</a></h2>
 <p>By default, <code>dstack</code> stores data in plaintext. To enforce encryption, you 
 specify one or more encryption keys.</p>
@@ -4213,7 +4250,7 @@ If you hit these limits, consider using Postgres with multiple server replicas.<
 <script src="/assets/javascripts/termynal.js" data-termynal-container="#termynal"></script>
 <script async src="https://tally.so/widgets/embed.js"></script>
 
-      <script src="../../../assets/javascripts/bundle.5a789024.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.f807c082.min.js"></script>
       
         <script src="../../../assets/javascripts/extra.js"></script>
       
