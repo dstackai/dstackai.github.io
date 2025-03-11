@@ -1608,6 +1608,17 @@ Support our project with a ⭐ on
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#nebius" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        nebius
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2945,6 +2956,33 @@ Support our project with a ⭐ on
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../examples/misc/nccl-tests/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    
+  
+    NCCL Tests
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -3815,6 +3853,17 @@ Support our project with a ⭐ on
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#nebius" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        nebius
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -4008,9 +4057,7 @@ to configure <a href="../../../concepts/backends/">backends</a> and other <a hre
 </code></pre></div>
 </details>
 </div>
-<div class="tabbed-block">
-<h6 class="reference-item" id="type"><code>type</code> -  The type of credentials. Must be <code>default</code>.<a class="headerlink" href="#type" title="Permanent link">&para;</a></h6>
-</div>
+<div class="tabbed-block"></div>
 </div>
 </div>
 <h5 id="lambda"><code>projects[n].backends[type=lambda]</code><a class="headerlink" href="#lambda" title="Permanent link">&para;</a></h5>
@@ -4043,9 +4090,9 @@ to configure <a href="../../../concepts/backends/">backends</a> and other <a hre
 <h6 class="reference-item" id="api_token"><code>api_token</code> -  The API token.<a class="headerlink" href="#api_token" title="Permanent link">&para;</a></h6>
 <h5 id="oci"><code>projects[n].backends[type=oci]</code><a class="headerlink" href="#oci" title="Permanent link">&para;</a></h5>
 <h6 class="reference-item" id="type"><code>type</code> -  The type of backend. Must be <code>oci</code>.<a class="headerlink" href="#type" title="Permanent link">&para;</a></h6>
-<h6 class="reference-item" id="_creds"><a href="#oci-creds"><code>creds</code></a> -  The credentials.<a class="headerlink" href="#_creds" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="regions"><code>regions</code> - (Optional) The list of OCI regions. Omit to use all regions.<a class="headerlink" href="#regions" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="compartment_id"><code>compartment_id</code> - (Optional) Compartment where <code>dstack</code> will create all resources. Omit to instruct <code>dstack</code> to create a new compartment.<a class="headerlink" href="#compartment_id" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="_creds"><a href="#oci-creds"><code>creds</code></a> -  The credentials.<a class="headerlink" href="#_creds" title="Permanent link">&para;</a></h6>
 <h6 id="oci-creds"><code>projects[n].backends[type=oci].creds</code><a class="headerlink" href="#oci-creds" title="Permanent link">&para;</a></h6>
 <div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="client_1" name="__tabbed_4" type="radio" /><input id="default_3" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="client_1">Client</label><label for="default_3">Default</label></div>
 <div class="tabbed-content">
@@ -4084,10 +4131,10 @@ to configure <a href="../../../concepts/backends/">backends</a> and other <a hre
 <h6 class="reference-item" id="client_secret"><code>client_secret</code> -  The client secret.<a class="headerlink" href="#client_secret" title="Permanent link">&para;</a></h6>
 <h5 id="kubernetes"><code>projects[n].backends[type=kubernetes]</code><a class="headerlink" href="#kubernetes" title="Permanent link">&para;</a></h5>
 <h6 class="reference-item" id="type"><code>type</code> -  The type of backend. Must be <code>kubernetes</code>.<a class="headerlink" href="#type" title="Permanent link">&para;</a></h6>
-<h6 class="reference-item" id="_kubeconfig"><a href="#kubernetes-kubeconfig"><code>kubeconfig</code></a> -  The kubeconfig configuration.<a class="headerlink" href="#_kubeconfig" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="_networking"><a href="#kubernetes-networking"><code>networking</code></a> - (Optional) The networking configuration.<a class="headerlink" href="#_networking" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="_kubeconfig"><a href="#kubernetes-kubeconfig"><code>kubeconfig</code></a> -  The kubeconfig configuration.<a class="headerlink" href="#_kubeconfig" title="Permanent link">&para;</a></h6>
 <h6 id="kubernetes-kubeconfig"><code>projects[n].backends[type=kubernetes].kubeconfig</code><a class="headerlink" href="#kubernetes-kubeconfig" title="Permanent link">&para;</a></h6>
-<h6 class="reference-item" id="filename"># <code>filename</code> -  The path to the kubeconfig file.<a class="headerlink" href="#filename" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="filename"><code>filename</code> -  The path to the kubeconfig file.<a class="headerlink" href="#filename" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="data"><code>data</code> - (Optional) The contents of the kubeconfig file. When configuring via <code>server/config.yml</code>, it's automatically filled from <code>filename</code>. When configuring via UI, it has to be specified explicitly.<a class="headerlink" href="#data" title="Permanent link">&para;</a></h6>
 <details class="info">
 <summary>Specifying <code>data</code></summary>
@@ -4096,7 +4143,7 @@ to configure <a href="../../../concepts/backends/">backends</a> and other <a hre
 </code></pre></div>
 </details>
 <h6 id="kubernetes-networking"><code>projects[n].backends[type=kubernetes].networking</code><a class="headerlink" href="#kubernetes-networking" title="Permanent link">&para;</a></h6>
-<h6 class="reference-item" id="ssh_host"># <code>ssh_host</code> - (Optional) The external IP address of any node.<a class="headerlink" href="#ssh_host" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="ssh_host"><code>ssh_host</code> - (Optional) The external IP address of any node.<a class="headerlink" href="#ssh_host" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="ssh_port"><code>ssh_port</code> - (Optional) Any port accessible outside of the cluster.<a class="headerlink" href="#ssh_port" title="Permanent link">&para;</a></h6>
 <h5 id="vultr"><code>projects[n].backends[type=vultr]</code><a class="headerlink" href="#vultr" title="Permanent link">&para;</a></h5>
 <h6 class="reference-item" id="type"><code>type</code> -  The type of backend. Must be <code>vultr</code>.<a class="headerlink" href="#type" title="Permanent link">&para;</a></h6>
@@ -4105,6 +4152,11 @@ to configure <a href="../../../concepts/backends/">backends</a> and other <a hre
 <h6 id="vultr-creds"><code>projects[n].backends[type=vultr].creds</code><a class="headerlink" href="#vultr-creds" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="type"><code>type</code> -  The type of credentials. Must be <code>api_key</code>.<a class="headerlink" href="#type" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="api_key"><code>api_key</code> -  The API key.<a class="headerlink" href="#api_key" title="Permanent link">&para;</a></h6>
+<h5 id="nebius"><code>projects[n].backends[type=nebius]</code><a class="headerlink" href="#nebius" title="Permanent link">&para;</a></h5>
+<h6 id="nebius-creds"><code>projects[n].backends[type=nebius].creds</code><a class="headerlink" href="#nebius-creds" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="type"><code>type</code> -  The type of credentials. Must be <code>service_account</code>.<a class="headerlink" href="#type" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="filename"><code>filename</code> -  The path to the service account file.<a class="headerlink" href="#filename" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="data"><code>data</code> -  The contents of the service account file.<a class="headerlink" href="#data" title="Permanent link">&para;</a></h6>
 <h3 id="encryption"><code>encryption</code><a class="headerlink" href="#encryption" title="Permanent link">&para;</a></h3>
 <h6 class="reference-item" id="keys"><code>keys</code> -  The encryption keys.<a class="headerlink" href="#keys" title="Permanent link">&para;</a></h6>
 <h4 id="encryption-keys"><code>encryption.keys</code><a class="headerlink" href="#encryption-keys" title="Permanent link">&para;</a></h4>
@@ -4301,7 +4353,7 @@ to configure <a href="../../../concepts/backends/">backends</a> and other <a hre
                     <a href="https://discord.gg/u8SmfwPpMd" target="_blank" class="tx-footer__section-link external">Discord</a>
                     <a href="https://github.com/dstackai/dstack/" target="_blank" class="tx-footer__section-link external">GitHub</a>
                     <a href="https://github.com/dstackai/dstack/blob/master/CONTRIBUTING.md" target="_blank" class="tx-footer__section-link external">Contributing</a>
-                    <a href="/developers#ambassador-program" class="tx-footer__section-link">Ambassador program</a>
+                    <!--<a href="/developers#ambassador-program" class="tx-footer__section-link">Ambassador program</a>-->
                 </div>
 
                 <div class="tx-footer__section">

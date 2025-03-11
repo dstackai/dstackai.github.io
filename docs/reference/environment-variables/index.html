@@ -2732,6 +2732,33 @@ Support our project with a ⭐ on
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/misc/nccl-tests/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    
+  
+    NCCL Tests
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -3581,14 +3608,16 @@ via <code>dstack server</code> or deployed using Docker.</p>
 </li>
 <li><code id="DSTACK_SERVER_HOST">DSTACK_SERVER_HOST</code> – Has the same effect as <code>--host</code>. Defaults to <code>127.0.0.1</code>.</li>
 <li><code id="DSTACK_SERVER_PORT">DSTACK_SERVER_PORT</code> – Has the same effect as <code>--port</code>. Defaults to <code>3000</code>.</li>
+<li><code id="DSTACK_SERVER_URL">DSTACK_SERVER_URL</code> – The URL that the server is running on, e.g. <code>https://my-server.dstack.ai</code> Defaults to <code>http://{DSTACK_SERVER_HOST}:{DSTACK_SERVER_PORT}</code>.</li>
 <li><code id="DSTACK_SERVER_ADMIN_TOKEN">DSTACK_SERVER_ADMIN_TOKEN</code> – Has the same effect as <code>--token</code>. Defaults to <code>None</code>.</li>
 <li><code id="DSTACK_SERVER_DIR">DSTACK_SERVER_DIR</code> – Sets path to store data and server configs. Defaults to <code>~/.dstack/server</code>.</li>
 <li><code id="DSTACK_DATABASE_URL">DSTACK_DATABASE_URL</code> – The database URL to use instead of default SQLite. Currently <code>dstack</code> supports Postgres. Example: <code>postgresql+asyncpg://myuser:mypassword@localhost:5432/mydatabase</code>. Defaults to <code>None</code>.</li>
-<li><code id="DSTACK_SERVER_CLOUDWATCH_LOG_GROUP">DSTACK_SERVER_CLOUDWATCH_LOG_GROUP</code> – The CloudWatch Logs group for workloads logs. If not set, the default file-based log storage is used.</li>
+<li><code id="DSTACK_SERVER_CLOUDWATCH_LOG_GROUP">DSTACK_SERVER_CLOUDWATCH_LOG_GROUP</code> – The CloudWatch Logs group for storing workloads logs. If not set, the default file-based log storage is used.</li>
 <li><code id="DSTACK_SERVER_CLOUDWATCH_LOG_REGION">DSTACK_SERVER_CLOUDWATCH_LOG_REGION</code> – The CloudWatch Logs region. Defaults to <code>None</code>.</li>
+<li><code id="DSTACK_SERVER_GCP_LOGGING_PROJECT">DSTACK_SERVER_GCP_LOGGING_PROJECT</code> – The GCP Logging project for storing workloads logs. If not set, the default file-based log storage is used.</li>
+<li><code id="DSTACK_ENABLE_PROMETHEUS_METRICS">DSTACK_ENABLE_PROMETHEUS_METRICS</code> — Enables Prometheus metrics collection and export.</li>
 <li><code id="DSTACK_DEFAULT_SERVICE_CLIENT_MAX_BODY_SIZE">DSTACK_DEFAULT_SERVICE_CLIENT_MAX_BODY_SIZE</code> – Request body size limit for services running with a gateway, in bytes. Defaults to 64 MiB.</li>
 <li><code id="DSTACK_FORBID_SERVICES_WITHOUT_GATEWAY">DSTACK_FORBID_SERVICES_WITHOUT_GATEWAY</code> – Forbids registering new services without a gateway if set to any value.</li>
-<li><code id="DSTACK_ENABLE_PROMETHEUS_METRICS">DSTACK_ENABLE_PROMETHEUS_METRICS</code> — Enables Prometheus metrics collection and export.</li>
 </ul>
 <details class="info">
 <summary>Internal environment variables</summary>
@@ -3805,7 +3834,7 @@ via <code>dstack server</code> or deployed using Docker.</p>
                     <a href="https://discord.gg/u8SmfwPpMd" target="_blank" class="tx-footer__section-link external">Discord</a>
                     <a href="https://github.com/dstackai/dstack/" target="_blank" class="tx-footer__section-link external">GitHub</a>
                     <a href="https://github.com/dstackai/dstack/blob/master/CONTRIBUTING.md" target="_blank" class="tx-footer__section-link external">Contributing</a>
-                    <a href="/developers#ambassador-program" class="tx-footer__section-link">Ambassador program</a>
+                    <!--<a href="/developers#ambassador-program" class="tx-footer__section-link">Ambassador program</a>-->
                 </div>
 
                 <div class="tx-footer__section">

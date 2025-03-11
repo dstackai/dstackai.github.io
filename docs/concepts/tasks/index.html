@@ -2868,6 +2868,33 @@ Support our project with a ⭐ on
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/misc/nccl-tests/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    
+  
+    NCCL Tests
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -3888,7 +3915,7 @@ However, you can run it on a cluster of nodes by specifying <code>nodes</code>.<
 </div>
 
 <p>Nodes can communicate using their private IP addresses.
-Use <code>DSTACK_MASTER_NODE_IP</code>, <code>$DSTACK_NODE_RANK</code>, and other
+Use <code>DSTACK_MASTER_NODE_IP</code>, <code>DSTACK_NODES_IPS</code>, <code>DSTACK_NODE_RANK</code>, and other
 <a href="#system-environment-variables">System environment variables</a>
 to discover IP addresses and other details.</p>
 <details class="info">
@@ -3907,6 +3934,12 @@ to add these commands to tell NCCL to use the private interface:</p>
 <span class="w">    </span><span class="no">fi</span>
 <span class="w">  </span><span class="c1"># ... The rest of the commands</span>
 </code></pre></div>
+</details>
+<details class="info">
+<summary>SSH</summary>
+<p>You can log in to any node from any node via SSH on port 10022 using the <code>~/.ssh/dstack_job</code> private key.
+For convenience, <code>~/.ssh/config</code> is preconfigured with these options, so a simple <code>ssh &lt;node_ip&gt;</code> is enough.
+For a list of nodes IPs check the <code>DSTACK_NODES_IPS</code> environment variable.</p>
 </details>
 <div class="admonition info">
 <p class="admonition-title">Fleets</p>
@@ -4398,7 +4431,7 @@ Pass <code>--diagnose</code> or <code>-d</code> to view diagnostic logs, which c
                     <a href="https://discord.gg/u8SmfwPpMd" target="_blank" class="tx-footer__section-link external">Discord</a>
                     <a href="https://github.com/dstackai/dstack/" target="_blank" class="tx-footer__section-link external">GitHub</a>
                     <a href="https://github.com/dstackai/dstack/blob/master/CONTRIBUTING.md" target="_blank" class="tx-footer__section-link external">Contributing</a>
-                    <a href="/developers#ambassador-program" class="tx-footer__section-link">Ambassador program</a>
+                    <!--<a href="/developers#ambassador-program" class="tx-footer__section-link">Ambassador program</a>-->
                 </div>
 
                 <div class="tx-footer__section">
