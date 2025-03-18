@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../../../../assets/images/dstack-fav-32.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.7+insiders-4.53.15">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.9+insiders-4.53.16">
     
     
       
@@ -33,7 +33,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../../../assets/stylesheets/main.f15084e1.min.css">
+      <link rel="stylesheet" href="../../../../../assets/stylesheets/main.ade31302.min.css">
       
         
         <link rel="stylesheet" href="../../../../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -44,7 +44,7 @@
   
   
   
-  <style>:root{--md-annotation-icon:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22 12a10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2a10 10 0 0 1 10 10M6 13h8l-3.5 3.5 1.42 1.42L17.84 12l-5.92-5.92L10.5 7.5 14 11H6z"/></svg>');}</style>
+  <style>:root{--md-annotation-icon:url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20d%3D%22M22%2012a10%2010%200%200%201-10%2010A10%2010%200%200%201%202%2012%2010%2010%200%200%201%2012%202a10%2010%200%200%201%2010%2010M6%2013h8l-3.5%203.5%201.42%201.42L17.84%2012l-5.92-5.92L10.5%207.5%2014%2011H6z%22/%3E%3C/svg%3E');}</style>
 
 
     
@@ -3471,23 +3471,18 @@ Support our project with a ⭐ on
 <div class="termy">
 
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>dstack<span class="w"> </span>logs<span class="w"> </span>--help
-Usage:<span class="w"> </span>dstack<span class="w"> </span>logs<span class="w"> </span><span class="o">[</span>-h<span class="o">]</span><span class="w"> </span><span class="o">[</span>--project<span class="w"> </span>NAME<span class="o">]</span><span class="w"> </span><span class="o">[</span>-d<span class="o">]</span><span class="w"> </span><span class="o">[</span>-a<span class="o">]</span>
-<span class="w">                   </span><span class="o">[</span>--ssh-identity<span class="w"> </span>SSH_PRIVATE_KEY<span class="o">]</span><span class="w"> </span><span class="o">[</span>--replica<span class="w"> </span>REPLICA<span class="o">]</span>
-<span class="w">                   </span><span class="o">[</span>--job<span class="w"> </span>JOB<span class="o">]</span>
+Usage:<span class="w"> </span>dstack<span class="w"> </span>logs<span class="w"> </span><span class="o">[</span>-h<span class="o">]</span><span class="w"> </span><span class="o">[</span>--project<span class="w"> </span>NAME<span class="o">]</span><span class="w"> </span><span class="o">[</span>-d<span class="o">]</span><span class="w"> </span><span class="o">[</span>--replica<span class="w"> </span>REPLICA<span class="o">]</span><span class="w"> </span><span class="o">[</span>--job<span class="w"> </span>JOB<span class="o">]</span>
 <span class="w">                   </span>run_name
 
 Positional<span class="w"> </span>Arguments:
 <span class="w">  </span>run_name
 
 Options:
-<span class="w">  </span>-h,<span class="w"> </span>--help<span class="w">            </span>Show<span class="w"> </span>this<span class="w"> </span><span class="nb">help</span><span class="w"> </span>message<span class="w"> </span>and<span class="w"> </span><span class="nb">exit</span>
-<span class="w">  </span>--project<span class="w"> </span>NAME<span class="w">        </span>The<span class="w"> </span>name<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>project.<span class="w"> </span>Defaults<span class="w"> </span>to<span class="w"> </span><span class="nv">$DSTACK_PROJECT</span>
-<span class="w">  </span>-d,<span class="w"> </span>--diagnose<span class="w">        </span>Show<span class="w"> </span>run<span class="w"> </span>diagnostic<span class="w"> </span>logs
-<span class="w">  </span>-a,<span class="w"> </span>--attach<span class="w">          </span>Set<span class="w"> </span>up<span class="w"> </span>an<span class="w"> </span>SSH<span class="w"> </span>tunnel<span class="w"> </span>and<span class="w"> </span>print<span class="w"> </span>logs<span class="w"> </span>as<span class="w"> </span>they<span class="w"> </span>follow
-<span class="w">  </span>--ssh-identity<span class="w"> </span>SSH_PRIVATE_KEY
-<span class="w">                        </span>The<span class="w"> </span>private<span class="w"> </span>SSH<span class="w"> </span>key<span class="w"> </span>path<span class="w"> </span><span class="k">for</span><span class="w"> </span>SSH<span class="w"> </span>tunneling
-<span class="w">  </span>--replica<span class="w"> </span>REPLICA<span class="w">     </span>The<span class="w"> </span>replica<span class="w"> </span>number.<span class="w"> </span>Defaults<span class="w"> </span>to<span class="w"> </span><span class="m">0</span>.
-<span class="w">  </span>--job<span class="w"> </span>JOB<span class="w">             </span>The<span class="w"> </span>job<span class="w"> </span>number<span class="w"> </span>inside<span class="w"> </span>the<span class="w"> </span>replica.<span class="w"> </span>Defaults<span class="w"> </span>to<span class="w"> </span><span class="m">0</span>.
+<span class="w">  </span>-h,<span class="w"> </span>--help<span class="w">         </span>Show<span class="w"> </span>this<span class="w"> </span><span class="nb">help</span><span class="w"> </span>message<span class="w"> </span>and<span class="w"> </span><span class="nb">exit</span>
+<span class="w">  </span>--project<span class="w"> </span>NAME<span class="w">     </span>The<span class="w"> </span>name<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>project.<span class="w"> </span>Defaults<span class="w"> </span>to<span class="w"> </span><span class="nv">$DSTACK_PROJECT</span>
+<span class="w">  </span>-d,<span class="w"> </span>--diagnose<span class="w">     </span>Show<span class="w"> </span>run<span class="w"> </span>diagnostic<span class="w"> </span>logs
+<span class="w">  </span>--replica<span class="w"> </span>REPLICA<span class="w">  </span>The<span class="w"> </span>replica<span class="w"> </span>number.<span class="w"> </span>Defaults<span class="w"> </span>to<span class="w"> </span><span class="m">0</span>.
+<span class="w">  </span>--job<span class="w"> </span>JOB<span class="w">          </span>The<span class="w"> </span>job<span class="w"> </span>number<span class="w"> </span>inside<span class="w"> </span>the<span class="w"> </span>replica.<span class="w"> </span>Defaults<span class="w"> </span>to<span class="w"> </span><span class="m">0</span>.
 </code></pre></div>
 
 </div>

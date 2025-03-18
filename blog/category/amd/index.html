@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../../assets/images/dstack-fav-32.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.7+insiders-4.53.15">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.9+insiders-4.53.16">
     
     
       
@@ -33,7 +33,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.f15084e1.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ade31302.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -44,7 +44,7 @@
   
   
   
-  <style>:root{--md-annotation-icon:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22 12a10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2a10 10 0 0 1 10 10M6 13h8l-3.5 3.5 1.42 1.42L17.84 12l-5.92-5.92L10.5 7.5 14 11H6z"/></svg>');}</style>
+  <style>:root{--md-annotation-icon:url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20d%3D%22M22%2012a10%2010%200%200%201-10%2010A10%2010%200%200%201%202%2012%2010%2010%200%200%201%2012%202a10%2010%200%200%201%2010%2010M6%2013h8l-3.5%203.5%201.42%201.42L17.84%2012l-5.92-5.92L10.5%207.5%2014%2011H6z%22/%3E%3C/svg%3E');}</style>
 
 
     
@@ -3031,6 +3031,17 @@ Support our project with a ⭐ on
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#deepseek-r1-inference-performance-mi300x-vs-h200" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DeepSeek R1 inference performance: MI300X vs. H200
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#using-ssh-fleets-with-tensorwaves-private-amd-cloud" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3494,6 +3505,17 @@ Support our project with a ⭐ on
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#deepseek-r1-inference-performance-mi300x-vs-h200" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DeepSeek R1 inference performance: MI300X vs. H200
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#using-ssh-fleets-with-tensorwaves-private-amd-cloud" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3584,6 +3606,59 @@ Support our project with a ⭐ on
       <header class="md-typeset">
         <h1 id="amd">AMD<a class="headerlink" href="#amd" title="Permanent link">&para;</a></h1>
       </header>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2025-03-18 00:00:00+00:00">March 18, 2025</time></li>
+        
+          <li class="md-meta__item">
+            in
+            
+              <a href="../benchmarks/" class="md-meta__link">Benchmarks</a>, 
+              <a href="./" class="md-meta__link">AMD</a>, 
+              <a href="../nvidia/" class="md-meta__link">NVIDIA</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              6 min read
+            
+          </li>
+        
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="deepseek-r1-inference-performance-mi300x-vs-h200"><a class="toclink" href="../../h200-mi300x-deepskeek-benchmark/">DeepSeek R1 inference performance: MI300X vs. H200</a></h2>
+<p>DeepSeek-R1, with its innovative architecture combining Multi-head Latent Attention (MLA) and DeepSeekMoE, presents
+unique challenges for inference workloads. As a reasoning-focused model, it generates intermediate chain-of-thought
+outputs, placing significant demands on memory capacity and bandwidth.</p>
+<p>In this benchmark, we evaluate the performance of three inference backends—SGLang, vLLM, and TensorRT-LLM—on two hardware
+configurations: 8x NVIDIA H200 and 8x AMD MI300X. Our goal is to compare throughput, latency, and overall efficiency to
+determine the optimal backend and hardware pairing for DeepSeek-R1's demanding requirements.</p>
+<p><img src="https://github.com/dstackai/static-assets/blob/main/static-assets/images/h200-mi300x-deepskeek-benchmark-v2.png?raw=true" width="630"/></p>
+<p>This benchmark was made possible through the generous support of our partners at
+<a href="https://www.vultr.com/" target="_blank">Vultr <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> and 
+<a href="https://lambdalabs.com/" target="_blank">Lambda <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>,
+who provided access to the necessary hardware.</p>
+
+    
+      <nav class="md-post__action">
+        <a href="../../h200-mi300x-deepskeek-benchmark/">
+          Continue reading
+        </a>
+      </nav>
+    
+    
+  </div>
+</article>
       
         <article class="md-post md-post--excerpt">
   <header class="md-post__header">
