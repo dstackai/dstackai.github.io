@@ -1028,6 +1028,33 @@ Support our project with a ⭐ on
   
   
     <li class="md-nav__item">
+      <a href="../../../docs/guides/metrics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    
+  
+    Metrics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../../docs/guides/troubleshooting/" class="md-nav__link">
         
   
@@ -2713,25 +2740,25 @@ Support our project with a ⭐ on
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#configuration" class="md-nav__link">
+  <a href="#running-as-a-task" class="md-nav__link">
     <span class="md-ellipsis">
       
         <span class="md-typeset">
-          Configuration
+          Running as a task
         </span>
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Configuration">
+    <nav class="md-nav" aria-label="Running as a task">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#running-a-configuration" class="md-nav__link">
+  <a href="#apply-a-configuration" class="md-nav__link">
     <span class="md-ellipsis">
       
         <span class="md-typeset">
-          Running a configuration
+          Apply a configuration
         </span>
       
     </span>
@@ -3454,25 +3481,25 @@ Support our project with a ⭐ on
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#configuration" class="md-nav__link">
+  <a href="#running-as-a-task" class="md-nav__link">
     <span class="md-ellipsis">
       
         <span class="md-typeset">
-          Configuration
+          Running as a task
         </span>
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Configuration">
+    <nav class="md-nav" aria-label="Running as a task">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#running-a-configuration" class="md-nav__link">
+  <a href="#apply-a-configuration" class="md-nav__link">
     <span class="md-ellipsis">
       
         <span class="md-typeset">
-          Running a configuration
+          Apply a configuration
         </span>
       
     </span>
@@ -3504,23 +3531,18 @@ Support our project with a ⭐ on
 
 <h1 id="nccl-tests">NCCL Tests<a class="headerlink" href="#nccl-tests" title="Permanent link">&para;</a></h1>
 <p>This example shows how to run distributed <a href="https://github.com/NVIDIA/nccl-tests" target="_blank">NCCL Tests <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> with MPI using <code>dstack</code>.</p>
-<details class="info">
-<summary>AWS EFA</summary>
-<p>The used image is optimized for AWS <a href="https://aws.amazon.com/hpc/efa/" target="_blank">EFA <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> but works with regular TCP/IP network adapters as well.</p>
-</details>
-<h2 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h2>
-<p>This configuration runs AllReduce test on 2 nodes with 4 GPUs each (8 processes total), but you can adjust both <code>nodes</code> and <code>resources.gpu</code> without modifying the script.</p>
+<h2 id="running-as-a-task">Running as a task<a class="headerlink" href="#running-as-a-task" title="Permanent link">&para;</a></h2>
+<p>Here's an example of a task that runs AllReduce test on 2 nodes, each with 4 GPUs (8 processes in total).</p>
 <div editor-title="examples/misc/nccl-tests/.dstack.yml">
 
 <div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">task</span>
 <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nccl-tests</span>
 
-<span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">un1def/aws-efa-test</span>
 <span class="nt">nodes</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
 
+<span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dstackai/efa</span>
 <span class="nt">env</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NCCL_DEBUG=INFO</span>
-
 <span class="nt">commands</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
 <span class="w">    </span><span class="no"># We use FIFO for inter-node communication</span>
@@ -3539,7 +3561,7 @@ Support our project with a ⭐ on
 <span class="w">      </span><span class="no">done</span>
 <span class="w">      </span><span class="no"># Run NCCL Tests</span>
 <span class="w">      </span><span class="no">${MPIRUN} \</span>
-<span class="w">        </span><span class="no">-n $((DSTACK_NODES_NUM * DSTACK_GPUS_PER_NODE)) -N ${DSTACK_GPUS_PER_NODE} \</span>
+<span class="w">        </span><span class="no">-n ${DSTACK_GPUS_NUM} -N ${DSTACK_GPUS_PER_NODE} \</span>
 <span class="w">        </span><span class="no">--mca btl_tcp_if_exclude lo,docker0 \</span>
 <span class="w">        </span><span class="no">--bind-to none \</span>
 <span class="w">        </span><span class="no">./all_reduce_perf -b 8 -e 8G -f 2 -g 1</span>
@@ -3558,7 +3580,17 @@ Support our project with a ⭐ on
 
 </div>
 
-<h3 id="running-a-configuration">Running a configuration<a class="headerlink" href="#running-a-configuration" title="Permanent link">&para;</a></h3>
+<p>The script orchestrates distributed execution across multiple nodes using MPI. The master node (identified by
+<code>DSTACK_NODE_RANK=0</code>) generates a hostfile listing all node IPs and continuously checks until all worker nodes are
+accessible via MPI. Once confirmed, it executes the <code>all_reduce_perf</code> benchmark across all available GPUs.</p>
+<p>Worker nodes use a FIFO pipe to block execution until they receive a termination signal from the master
+node. This ensures worker nodes remain active during the test and only exit once the master node completes the
+benchmark.</p>
+<blockquote>
+<p>The <code>dstackai/efa</code> image is optimized for <a href="https://aws.amazon.com/hpc/efa/" target="_blank">AWS EFA <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>
+but also works with regular TCP/IP network adapters as well as InfiniBand.</p>
+</blockquote>
+<h3 id="apply-a-configuration">Apply a configuration<a class="headerlink" href="#apply-a-configuration" title="Permanent link">&para;</a></h3>
 <p>To run a configuration, use the <a href="https://dstack.ai/docs/reference/cli/dstack/apply/"><code>dstack apply</code></a> command.</p>
 <div class="termy">
 
