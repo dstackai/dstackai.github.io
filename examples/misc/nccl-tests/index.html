@@ -3549,7 +3549,11 @@ Support our project with a ⭐ on
 <span class="w">    </span><span class="no">FIFO=/tmp/dstack_job</span>
 <span class="w">    </span><span class="no">if [ ${DSTACK_NODE_RANK} -eq 0 ]; then</span>
 <span class="w">      </span><span class="no">cd /root/nccl-tests/build</span>
-<span class="w">      </span><span class="no">echo &quot;${DSTACK_NODES_IPS}&quot; &gt; hostfile</span>
+<span class="w">      </span><span class="no"># Generate hostfile for mpirun</span>
+<span class="w">      </span><span class="no">: &gt; hostfile</span>
+<span class="w">      </span><span class="no">for ip in ${DSTACK_NODES_IPS}; do</span>
+<span class="w">        </span><span class="no">echo &quot;${ip} slots=${DSTACK_GPUS_PER_NODE}&quot; &gt;&gt; hostfile</span>
+<span class="w">      </span><span class="no">done</span>
 <span class="w">      </span><span class="no">MPIRUN=&#39;mpirun --allow-run-as-root --hostfile hostfile&#39;</span>
 <span class="w">      </span><span class="no"># Wait for other nodes</span>
 <span class="w">      </span><span class="no">while true; do</span>
@@ -3562,6 +3566,8 @@ Support our project with a ⭐ on
 <span class="w">      </span><span class="no"># Run NCCL Tests</span>
 <span class="w">      </span><span class="no">${MPIRUN} \</span>
 <span class="w">        </span><span class="no">-n ${DSTACK_GPUS_NUM} -N ${DSTACK_GPUS_PER_NODE} \</span>
+<span class="w">        </span><span class="no">--mca pml ^cm \</span>
+<span class="w">        </span><span class="no">--mca btl tcp,self \</span>
 <span class="w">        </span><span class="no">--mca btl_tcp_if_exclude lo,docker0 \</span>
 <span class="w">        </span><span class="no">--bind-to none \</span>
 <span class="w">        </span><span class="no">./all_reduce_perf -b 8 -e 8G -f 2 -g 1</span>

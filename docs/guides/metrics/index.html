@@ -1156,6 +1156,19 @@ Support our project with a ⭐ on
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#run-jobs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Run jobs
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -3558,6 +3571,19 @@ Support our project with a ⭐ on
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#run-jobs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Run jobs
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -3590,16 +3616,16 @@ Support our project with a ⭐ on
 
 <h1 id="metrics">Metrics<a class="headerlink" href="#metrics" title="Permanent link">&para;</a></h1>
 <h2 id="prometheus">Prometheus<a class="headerlink" href="#prometheus" title="Permanent link">&para;</a></h2>
-<p>When enabled, <code>dstack</code> is able to collect various metrics from fleets and runs and export them 
-to Prometheus.  </p>
+<p>When enabled, <code>dstack</code> is able to collect various metrics from fleets and runs and export them
+to Prometheus.</p>
 <h3 id="setup">Setup<a class="headerlink" href="#setup" title="Permanent link">&para;</a></h3>
-<p>To enable collecting and exporting metrics to Prometheus, 
-set the <code>DSTACK_ENABLE_PROMETHEUS_METRICS</code> environment variable, and point Prometheus to collect metrics 
+<p>To enable collecting and exporting metrics to Prometheus,
+set the <code>DSTACK_ENABLE_PROMETHEUS_METRICS</code> environment variable, and point Prometheus to collect metrics
 from the <code>&lt;dstack server URL&gt;/metrics</code> endpoint.</p>
 <details class="info">
 <summary>NVIDIA DCGM</summary>
 <p>NVIDIA DCGM metrics are automatically collected for AWS, Azure, GCP, and OCI backends, as well as for SSH fleets.</p>
-<p>To ensure NVIDIA DCGM metrics are collected from SSH fleets, ensure the <code>datacenter-gpu-manager-4-core</code>, 
+<p>To ensure NVIDIA DCGM metrics are collected from SSH fleets, ensure the <code>datacenter-gpu-manager-4-core</code>,
 <code>datacenter-gpu-manager-4-proprietary</code>, and <code>datacenter-gpu-manager-exporter</code> packages are installed on the hosts.</p>
 </details>
 <h3 id="fleets">Fleets<a class="headerlink" href="#fleets" title="Permanent link">&para;</a></h3>
@@ -3704,9 +3730,79 @@ time, price, GPU name, and more.</p>
 </div>
 </div>
 <h3 id="runs">Runs<a class="headerlink" href="#runs" title="Permanent link">&para;</a></h3>
-<p>Run metrics include metrics for each job within a run.
-This includes information such as job runtime, price, GPU name, DCGM metrics, and more.</p>
+<p>Run metrics include run counters for each user in each project.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="metrics_2" name="__tabbed_2" type="radio" /><input id="labels_1" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="metrics_2">Metrics</label><label for="labels_1">Labels</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Examples</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>dstack_run_count_total</code></td>
+<td><em>counter</em></td>
+<td>Total runs count</td>
+<td><code>537</code></td>
+</tr>
+<tr>
+<td><code>dstack_run_count_terminated_total</code></td>
+<td><em>counter</em></td>
+<td>Terminated runs count</td>
+<td><code>118</code></td>
+</tr>
+<tr>
+<td><code>dstack_run_count_failed_total</code></td>
+<td><em>counter</em></td>
+<td>Failed runs count</td>
+<td><code>27</code></td>
+</tr>
+<tr>
+<td><code>dstack_run_count_done_total</code></td>
+<td><em>counter</em></td>
+<td>Done runs count</td>
+<td><code>218</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="tabbed-block">
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th style="text-align: left;">Description</th>
+<th>Examples</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>dstack_project_name</code></td>
+<td><em>string</em></td>
+<td style="text-align: left;">Project name</td>
+<td><code>main</code></td>
+</tr>
+<tr>
+<td><code>dstack_user_name</code></td>
+<td><em>string</em></td>
+<td style="text-align: left;">User name</td>
+<td><code>alice</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<h3 id="run-jobs">Run jobs<a class="headerlink" href="#run-jobs" title="Permanent link">&para;</a></h3>
+<p>Run job metrics include metrics for each job within a run.
+This includes information such as job runtime, price, GPU name, DCGM metrics, and more.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="metrics_3" name="__tabbed_3" type="radio" /><input id="labels_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="metrics_3">Metrics</label><label for="labels_2">Labels</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <table>
@@ -3738,297 +3834,327 @@ This includes information such as job runtime, price, GPU name, DCGM metrics, an
 <td><code>2.0</code>, <code>0.0</code></td>
 </tr>
 <tr>
+<td><code>dstack_job_cpu_count</code></td>
+<td><em>gauge</em></td>
+<td>Job CPU count</td>
+<td><code>32.0</code></td>
+</tr>
+<tr>
+<td><code>dstack_job_cpu_time_seconds_total</code></td>
+<td><em>counter</em></td>
+<td>Total CPU time consumed by the job, seconds</td>
+<td><code>11.727975</code></td>
+</tr>
+<tr>
+<td><code>dstack_job_memory_total_bytes</code></td>
+<td><em>gauge</em></td>
+<td>Total memory allocated for the job, bytes</td>
+<td><code>4009754624.0</code></td>
+</tr>
+<tr>
+<td><code>dstack_job_memory_usage_bytes</code></td>
+<td><em>gauge</em></td>
+<td>Memory used by the job (including cache), bytes</td>
+<td><code>339017728.0</code></td>
+</tr>
+<tr>
+<td><code>dstack_job_memory_working_set_bytes</code></td>
+<td><em>gauge</em></td>
+<td>Memory used by the job (not including cache), bytes</td>
+<td><code>147251200.0</code></td>
+</tr>
+<tr>
 <td><code>DCGM_FI_DEV_GPU_UTIL</code></td>
-<td>gauge</td>
-<td>GPU utilization (in %).</td>
+<td><em>gauge</em></td>
+<td>GPU utilization (in %)</td>
 <td></td>
 </tr>
 <tr>
 <td><code>DCGM_FI_DEV_MEM_COPY_UTIL</code></td>
-<td>gauge</td>
-<td>Memory utilization (in %).</td>
+<td><em>gauge</em></td>
+<td>Memory utilization (in %)</td>
 <td></td>
 </tr>
 <tr>
 <td><code>DCGM_FI_DEV_ENC_UTIL</code></td>
-<td>gauge</td>
-<td>Encoder utilization (in %).</td>
+<td><em>gauge</em></td>
+<td>Encoder utilization (in %)</td>
 <td></td>
 </tr>
 <tr>
 <td><code>DCGM_FI_DEV_DEC_UTIL</code></td>
-<td>gauge</td>
-<td>Decoder utilization (in %).</td>
+<td><em>gauge</em></td>
+<td>Decoder utilization (in %)</td>
 <td></td>
 </tr>
 <tr>
 <td><code>DCGM_FI_DEV_FB_FREE</code></td>
-<td>gauge</td>
-<td>Framebuffer memory free (in MiB).</td>
+<td><em>gauge</em></td>
+<td>Framebuffer memory free (in MiB)</td>
 <td></td>
 </tr>
 <tr>
 <td><code>DCGM_FI_DEV_FB_USED</code></td>
-<td>gauge</td>
-<td>Framebuffer memory used (in MiB).</td>
+<td><em>gauge</em></td>
+<td>Framebuffer memory used (in MiB)</td>
 <td></td>
 </tr>
 <tr>
 <td><code>DCGM_FI_PROF_GR_ENGINE_ACTIVE</code></td>
-<td>gauge</td>
-<td>The ratio of cycles during which a graphics engine or compute engine remains active.</td>
+<td><em>gauge</em></td>
+<td>The ratio of cycles during which a graphics engine or compute engine remains active</td>
 <td></td>
 </tr>
 <tr>
 <td><code>DCGM_FI_PROF_SM_ACTIVE</code></td>
-<td>gauge</td>
-<td>The ratio of cycles an SM has at least 1 warp assigned.</td>
+<td><em>gauge</em></td>
+<td>The ratio of cycles an SM has at least 1 warp assigned</td>
 <td></td>
 </tr>
 <tr>
 <td><code>DCGM_FI_PROF_SM_OCCUPANCY</code></td>
-<td>gauge</td>
-<td>The ratio of number of warps resident on an SM.</td>
+<td><em>gauge</em></td>
+<td>The ratio of number of warps resident on an SM</td>
 <td></td>
 </tr>
 <tr>
 <td><code>DCGM_FI_PROF_PIPE_TENSOR_ACTIVE</code></td>
-<td>gauge</td>
-<td>Ratio of cycles the tensor (HMMA) pipe is active.</td>
+<td><em>gauge</em></td>
+<td>Ratio of cycles the tensor (HMMA) pipe is active</td>
 <td></td>
 </tr>
 <tr>
 <td><code>DCGM_FI_PROF_PIPE_FP64_ACTIVE</code></td>
-<td>gauge</td>
-<td>Ratio of cycles the fp64 pipes are active.</td>
+<td><em>gauge</em></td>
+<td>Ratio of cycles the fp64 pipes are active</td>
 <td></td>
 </tr>
 <tr>
 <td><code>DCGM_FI_PROF_PIPE_FP32_ACTIVE</code></td>
-<td>gauge</td>
-<td>Ratio of cycles the fp32 pipes are active.</td>
+<td><em>gauge</em></td>
+<td>Ratio of cycles the fp32 pipes are active</td>
 <td></td>
 </tr>
 <tr>
 <td><code>DCGM_FI_PROF_PIPE_FP16_ACTIVE</code></td>
-<td>gauge</td>
-<td>Ratio of cycles the fp16 pipes are active.</td>
+<td><em>gauge</em></td>
+<td>Ratio of cycles the fp16 pipes are active</td>
 <td></td>
 </tr>
 <tr>
 <td><code>DCGM_FI_PROF_PIPE_INT_ACTIVE</code></td>
-<td>gauge</td>
-<td>Ratio of cycles the integer pipe is active.</td>
+<td><em>gauge</em></td>
+<td>Ratio of cycles the integer pipe is active</td>
 <td></td>
 </tr>
 <tr>
 <td><code>DCGM_FI_PROF_DRAM_ACTIVE</code></td>
-<td>gauge</td>
-<td>Ratio of cycles the device memory interface is active sending or receiving data.</td>
+<td><em>gauge</em></td>
+<td>Ratio of cycles the device memory interface is active sending or receiving data</td>
 <td></td>
 </tr>
 <tr>
 <td><code>DCGM_FI_PROF_PCIE_TX_BYTES</code></td>
-<td>counter</td>
-<td>The number of bytes of active PCIe tx (transmit) data including both header and payload.</td>
+<td><em>counter</em></td>
+<td>The number of bytes of active PCIe tx (transmit) data including both header and payload</td>
 <td></td>
 </tr>
 <tr>
 <td><code>DCGM_FI_PROF_PCIE_RX_BYTES</code></td>
-<td>counter</td>
-<td>The number of bytes of active PCIe rx (read) data including both header and payload.</td>
+<td><em>counter</em></td>
+<td>The number of bytes of active PCIe rx (read) data including both header and payload</td>
 <td></td>
 </tr>
 <tr>
 <td><code>DCGM_FI_DEV_SM_CLOCK</code></td>
-<td>gauge</td>
-<td>SM clock frequency (in MHz).</td>
+<td><em>gauge</em></td>
+<td>SM clock frequency (in MHz)</td>
 <td></td>
 </tr>
 <tr>
 <td><code>DCGM_FI_DEV_MEM_CLOCK</code></td>
-<td>gauge</td>
-<td>Memory clock frequency (in MHz).</td>
+<td><em>gauge</em></td>
+<td>Memory clock frequency (in MHz)</td>
 <td></td>
 </tr>
 <tr>
 <td><code>DCGM_FI_DEV_MEMORY_TEMP</code></td>
-<td>gauge</td>
-<td>Memory temperature (in C).</td>
+<td><em>gauge</em></td>
+<td>Memory temperature (in C)</td>
 <td></td>
 </tr>
 <tr>
 <td><code>DCGM_FI_DEV_GPU_TEMP</code></td>
-<td>gauge</td>
-<td>GPU temperature (in C).</td>
+<td><em>gauge</em></td>
+<td>GPU temperature (in C)</td>
 <td></td>
 </tr>
 <tr>
 <td><code>DCGM_FI_DEV_POWER_USAGE</code></td>
-<td>gauge</td>
-<td>Power draw (in W).</td>
+<td><em>gauge</em></td>
+<td>Power draw (in W)</td>
 <td></td>
 </tr>
 <tr>
 <td><code>DCGM_FI_DEV_TOTAL_ENERGY_CONSUMPTION</code></td>
-<td>counter</td>
-<td>Total energy consumption since boot (in mJ).</td>
+<td><em>counter</em></td>
+<td>Total energy consumption since boot (in mJ)</td>
 <td></td>
 </tr>
 <tr>
 <td><code>DCGM_FI_DEV_PCIE_REPLAY_COUNTER</code></td>
-<td>counter</td>
-<td>Total number of PCIe retries.</td>
+<td><em>counter</em></td>
+<td>Total number of PCIe retries</td>
 <td></td>
 </tr>
 <tr>
 <td><code>DCGM_FI_DEV_XID_ERRORS</code></td>
-<td>gauge</td>
-<td>Value of the last XID error encountered.</td>
+<td><em>gauge</em></td>
+<td>Value of the last XID error encountered</td>
 <td></td>
 </tr>
 <tr>
 <td><code>DCGM_FI_DEV_POWER_VIOLATION</code></td>
-<td>counter</td>
-<td>Throttling duration due to power constraints (in us).</td>
+<td><em>counter</em></td>
+<td>Throttling duration due to power constraints (in us)</td>
 <td></td>
 </tr>
 <tr>
 <td><code>DCGM_FI_DEV_THERMAL_VIOLATION</code></td>
-<td>counter</td>
-<td>Throttling duration due to thermal constraints (in us).</td>
+<td><em>counter</em></td>
+<td>Throttling duration due to thermal constraints (in us)</td>
 <td></td>
 </tr>
 <tr>
 <td><code>DCGM_FI_DEV_SYNC_BOOST_VIOLATION</code></td>
-<td>counter</td>
-<td>Throttling duration due to sync-boost constraints (in us).</td>
+<td><em>counter</em></td>
+<td>Throttling duration due to sync-boost constraints (in us)</td>
 <td></td>
 </tr>
 <tr>
 <td><code>DCGM_FI_DEV_BOARD_LIMIT_VIOLATION</code></td>
-<td>counter</td>
-<td>Throttling duration due to board limit constraints (in us).</td>
+<td><em>counter</em></td>
+<td>Throttling duration due to board limit constraints (in us)</td>
 <td></td>
 </tr>
 <tr>
 <td><code>DCGM_FI_DEV_LOW_UTIL_VIOLATION</code></td>
-<td>counter</td>
-<td>Throttling duration due to low utilization (in us).</td>
+<td><em>counter</em></td>
+<td>Throttling duration due to low utilization (in us)</td>
 <td></td>
 </tr>
 <tr>
 <td><code>DCGM_FI_DEV_RELIABILITY_VIOLATION</code></td>
-<td>counter</td>
-<td>Throttling duration due to reliability constraints (in us).</td>
+<td><em>counter</em></td>
+<td>Throttling duration due to reliability constraints (in us)</td>
 <td></td>
 </tr>
 <tr>
 <td><code>DCGM_FI_DEV_ECC_SBE_VOL_TOTAL</code></td>
-<td>counter</td>
-<td>Total number of single-bit volatile ECC errors.</td>
+<td><em>counter</em></td>
+<td>Total number of single-bit volatile ECC errors</td>
 <td></td>
 </tr>
 <tr>
 <td><code>DCGM_FI_DEV_ECC_DBE_VOL_TOTAL</code></td>
-<td>counter</td>
-<td>Total number of double-bit volatile ECC errors.</td>
+<td><em>counter</em></td>
+<td>Total number of double-bit volatile ECC errors</td>
 <td></td>
 </tr>
 <tr>
 <td><code>DCGM_FI_DEV_ECC_SBE_AGG_TOTAL</code></td>
-<td>counter</td>
-<td>Total number of single-bit persistent ECC errors.</td>
+<td><em>counter</em></td>
+<td>Total number of single-bit persistent ECC errors</td>
 <td></td>
 </tr>
 <tr>
 <td><code>DCGM_FI_DEV_ECC_DBE_AGG_TOTAL</code></td>
-<td>counter</td>
-<td>Total number of double-bit persistent ECC errors.</td>
+<td><em>counter</em></td>
+<td>Total number of double-bit persistent ECC errors</td>
 <td></td>
 </tr>
 <tr>
 <td><code>DCGM_FI_DEV_RETIRED_SBE</code></td>
-<td>counter</td>
-<td>Total number of retired pages due to single-bit errors.</td>
+<td><em>counter</em></td>
+<td>Total number of retired pages due to single-bit errors</td>
 <td></td>
 </tr>
 <tr>
 <td><code>DCGM_FI_DEV_RETIRED_DBE</code></td>
-<td>counter</td>
-<td>Total number of retired pages due to double-bit errors.</td>
+<td><em>counter</em></td>
+<td>Total number of retired pages due to double-bit errors</td>
 <td></td>
 </tr>
 <tr>
 <td><code>DCGM_FI_DEV_RETIRED_PENDING</code></td>
-<td>counter</td>
-<td>Total number of pages pending retirement.</td>
+<td><em>counter</em></td>
+<td>Total number of pages pending retirement</td>
 <td></td>
 </tr>
 <tr>
 <td><code>DCGM_FI_DEV_UNCORRECTABLE_REMAPPED_ROWS</code></td>
-<td>counter</td>
+<td><em>counter</em></td>
 <td>Number of remapped rows for uncorrectable errors</td>
 <td></td>
 </tr>
 <tr>
 <td><code>DCGM_FI_DEV_CORRECTABLE_REMAPPED_ROWS</code></td>
-<td>counter</td>
+<td><em>counter</em></td>
 <td>Number of remapped rows for correctable errors</td>
 <td></td>
 </tr>
 <tr>
 <td><code>DCGM_FI_DEV_ROW_REMAP_FAILURE</code></td>
-<td>gauge</td>
+<td><em>gauge</em></td>
 <td>Whether remapping of rows has failed</td>
 <td></td>
 </tr>
 <tr>
 <td><code>DCGM_FI_DEV_NVLINK_CRC_FLIT_ERROR_COUNT_TOTAL</code></td>
-<td>counter</td>
-<td>Total number of NVLink flow-control CRC errors.</td>
+<td><em>counter</em></td>
+<td>Total number of NVLink flow-control CRC errors</td>
 <td></td>
 </tr>
 <tr>
 <td><code>DCGM_FI_DEV_NVLINK_CRC_DATA_ERROR_COUNT_TOTAL</code></td>
-<td>counter</td>
-<td>Total number of NVLink data CRC errors.</td>
+<td><em>counter</em></td>
+<td>Total number of NVLink data CRC errors</td>
 <td></td>
 </tr>
 <tr>
 <td><code>DCGM_FI_DEV_NVLINK_REPLAY_ERROR_COUNT_TOTAL</code></td>
-<td>counter</td>
-<td>Total number of NVLink retries.</td>
+<td><em>counter</em></td>
+<td>Total number of NVLink retries</td>
 <td></td>
 </tr>
 <tr>
 <td><code>DCGM_FI_DEV_NVLINK_RECOVERY_ERROR_COUNT_TOTAL</code></td>
-<td>counter</td>
-<td>Total number of NVLink recovery errors.</td>
+<td><em>counter</em></td>
+<td>Total number of NVLink recovery errors</td>
 <td></td>
 </tr>
 <tr>
 <td><code>DCGM_FI_DEV_NVLINK_BANDWIDTH_TOTAL</code></td>
-<td>counter</td>
-<td>Total number of NVLink bandwidth counters for all lanes.</td>
+<td><em>counter</em></td>
+<td>Total number of NVLink bandwidth counters for all lanes</td>
 <td></td>
 </tr>
 <tr>
 <td><code>DCGM_FI_DEV_NVLINK_BANDWIDTH_L0</code></td>
-<td>counter</td>
-<td>The number of bytes of active NVLink rx or tx data including both header and payload.</td>
+<td><em>counter</em></td>
+<td>The number of bytes of active NVLink rx or tx data including both header and payload</td>
 <td></td>
 </tr>
 <tr>
 <td><code>DCGM_FI_PROF_NVLINK_RX_BYTES</code></td>
-<td>counter</td>
-<td>The number of bytes of active PCIe rx (read) data including both header and payload.</td>
+<td><em>counter</em></td>
+<td>The number of bytes of active PCIe rx (read) data including both header and payload</td>
 <td></td>
 </tr>
 <tr>
 <td><code>DCGM_FI_PROF_NVLINK_TX_BYTES</code></td>
-<td>counter</td>
-<td>The number of bytes of active NvLink tx (transmit) data including both header and payload.</td>
+<td><em>counter</em></td>
+<td>The number of bytes of active NvLink tx (transmit) data including both header and payload</td>
 <td></td>
 </tr>
 </tbody>
