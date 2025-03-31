@@ -6,37 +6,37 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="dstack is an open-source AI container orchestration engine working with any cloud or data center.">
+        <meta name="description" content="dstack introduces a new feature that automatically detects and shuts down inactive dev environments, helping you avoid wasted GPU costs.">
       
       
         <meta name="author" content="dstack GmbH">
       
       
-        <link rel="canonical" href="https://dstack.ai/blog/category/fleets/">
+        <link rel="canonical" href="https://dstack.ai/blog/inactivity-duration/">
       
       
-        <link rel="prev" href="../dev-environments/">
+        <link rel="prev" href="../gpu-blocks-and-proxy-jump/">
       
       
-        <link rel="next" href="../monitoring/">
+        <link rel="next" href="../efa/">
       
       
         
       
       
-      <link rel="icon" href="../../../assets/images/dstack-fav-32.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.9+insiders-4.53.16">
+      <link rel="icon" href="../../assets/images/dstack-fav-32.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.10+insiders-4.53.16">
     
     
       
-        <title>Fleets - dstack</title>
+        <title>Auto-shutdown for inactive dev environments—no idle GPUs - dstack</title>
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.ade31302.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ade31302.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -61,17 +61,17 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/_mkdocstrings.css">
+      <link rel="stylesheet" href="../../assets/_mkdocstrings.css">
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/extra.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/extra.css">
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/termynal.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/termynal.css">
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/landing.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/landing.css">
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/pricing.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/pricing.css">
     
-    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
   
@@ -89,17 +89,19 @@
     
   
 <meta property="og:type" content="website" />
-<meta property="og:title" content="Fleets - dstack" />
-<meta property="og:description" content="dstack is an open-source AI container orchestration engine working with any cloud or data center." />
-<meta property="og:image" content="https://dstack.ai/assets/images/social/blog/category/fleets.png" />
+<meta property="og:title" content="Auto-shutdown for inactive dev environments—no idle GPUs - dstack" />
+<meta property="og:description" content="dstack introduces a new feature that automatically detects and shuts down inactive dev environments, helping you avoid wasted GPU costs." />
+<meta property="og:image" content="
+  https://github.com/dstackai/static-assets/blob/main/static-assets/images/inactive-dev-environments-auto-shutdown.png?raw=true" />
 <meta property="og:image:type" content="image/png" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
-<meta property="og:url" content="https://dstack.ai/blog/category/fleets/" />
+<meta property="og:url" content="https://dstack.ai/blog/inactivity-duration/" />
 <meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter.title" content="Fleets - dstack" />
-<meta property="twitter:description" content="dstack is an open-source AI container orchestration engine working with any cloud or data center." />
-<meta property="twitter:image" content="https://dstack.ai/assets/images/social/blog/category/fleets.png" />
+<meta property="twitter.title" content="Auto-shutdown for inactive dev environments—no idle GPUs - dstack" />
+<meta property="twitter:description" content="dstack introduces a new feature that automatically detects and shuts down inactive dev environments, helping you avoid wasted GPU costs." />
+<meta property="twitter:image" content="
+  https://github.com/dstackai/static-assets/blob/main/static-assets/images/inactive-dev-environments-auto-shutdown.png?raw=true" />
 </head>
   
   
@@ -119,7 +121,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#fleets" class="md-skip">
+        <a href="#auto-shutdown-for-inactive-dev-environmentsno-idle-gpus" class="md-skip">
           Skip to content
         </a>
       
@@ -156,7 +158,7 @@ Support our project with a ⭐ on
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href="/" title="dstack" class="md-header__button md-logo" aria-label="dstack" data-md-component="logo">
       
-  <img src="../../../assets/images/dstack-logo-notext.svg" alt="logo">
+  <img src="../../assets/images/dstack-logo-notext.svg" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -173,7 +175,7 @@ Support our project with a ⭐ on
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Fleets
+              Auto-shutdown for inactive dev environments—no idle GPUs
             
           </span>
         </div>
@@ -272,9 +274,11 @@ Support our project with a ⭐ on
   
   
   
+  
     <li class="md-tabs__item">
-      <a href="../../.." class="md-tabs__link">
+      <a href="../.." class="md-tabs__link">
         
+  
   
     
   
@@ -289,17 +293,20 @@ Support our project with a ⭐ on
   
   
   
+  
     
     
       
   
   
   
+  
     
     
       <li class="md-tabs__item">
-        <a href="../../../docs/" class="md-tabs__link">
+        <a href="../../docs/" class="md-tabs__link">
           
+  
   
   Docs
 
@@ -316,11 +323,13 @@ Support our project with a ⭐ on
   
   
   
+  
     
     
       <li class="md-tabs__item">
-        <a href="../../../examples/" class="md-tabs__link">
+        <a href="../../examples/" class="md-tabs__link">
           
+  
   
   Examples
 
@@ -334,9 +343,11 @@ Support our project with a ⭐ on
   
   
   
+  
     <li class="md-tabs__item">
-      <a href="../../../partners/" class="md-tabs__link">
+      <a href="../../partners/" class="md-tabs__link">
         
+  
   
     
   
@@ -350,14 +361,16 @@ Support our project with a ⭐ on
         
   
   
+  
     
   
   
     
     
       <li class="md-tabs__item md-tabs__item--active">
-        <a href="../../" class="md-tabs__link">
+        <a href="../" class="md-tabs__link">
           
+  
   
   Blog
 
@@ -371,9 +384,11 @@ Support our project with a ⭐ on
   
   
   
+  
     <li class="md-tabs__item">
       <a href="https://discord.gg/u8SmfwPpMd" target="_blank" class="md-tabs__link">
         
+  
   
     
   
@@ -395,7 +410,9 @@ Support our project with a ⭐ on
           
     
       
-      <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+        
+      
+      <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" hidden>
         <div class="md-sidebar__scrollwrap">
           <div class="md-sidebar__inner">
             
@@ -408,7 +425,7 @@ Support our project with a ⭐ on
   <label class="md-nav__title" for="__drawer">
     <a href="/" title="dstack" class="md-nav__button md-logo" aria-label="dstack" data-md-component="logo">
       
-  <img src="../../../assets/images/dstack-logo-notext.svg" alt="logo">
+  <img src="../../assets/images/dstack-logo-notext.svg" alt="logo">
 
     </a>
     dstack
@@ -435,8 +452,9 @@ Support our project with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../.." class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         
+  
   
   <span class="md-ellipsis">
     
@@ -463,6 +481,7 @@ Support our project with a ⭐ on
     
     
     
+    
       
       
         
@@ -478,6 +497,7 @@ Support our project with a ⭐ on
           
           <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
             
+  
   
   <span class="md-ellipsis">
     
@@ -513,6 +533,7 @@ Support our project with a ⭐ on
     
     
     
+    
       
       
         
@@ -528,6 +549,7 @@ Support our project with a ⭐ on
           
           <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
             
+  
   
   <span class="md-ellipsis">
     
@@ -561,8 +583,9 @@ Support our project with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../../docs/" class="md-nav__link">
+      <a href="../../docs/" class="md-nav__link">
         
+  
   
   <span class="md-ellipsis">
     
@@ -588,8 +611,9 @@ Support our project with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../../docs/installation/" class="md-nav__link">
+      <a href="../../docs/installation/" class="md-nav__link">
         
+  
   
   <span class="md-ellipsis">
     
@@ -615,8 +639,9 @@ Support our project with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../../docs/quickstart/" class="md-nav__link">
+      <a href="../../docs/quickstart/" class="md-nav__link">
         
+  
   
   <span class="md-ellipsis">
     
@@ -652,6 +677,7 @@ Support our project with a ⭐ on
     
     
     
+    
       
       
         
@@ -667,6 +693,7 @@ Support our project with a ⭐ on
           
           <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
             
+  
   
   <span class="md-ellipsis">
     
@@ -700,8 +727,9 @@ Support our project with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../../docs/concepts/backends/" class="md-nav__link">
+      <a href="../../docs/concepts/backends/" class="md-nav__link">
         
+  
   
   <span class="md-ellipsis">
     
@@ -727,8 +755,9 @@ Support our project with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../../docs/concepts/dev-environments/" class="md-nav__link">
+      <a href="../../docs/concepts/dev-environments/" class="md-nav__link">
         
+  
   
   <span class="md-ellipsis">
     
@@ -754,8 +783,9 @@ Support our project with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../../docs/concepts/tasks/" class="md-nav__link">
+      <a href="../../docs/concepts/tasks/" class="md-nav__link">
         
+  
   
   <span class="md-ellipsis">
     
@@ -781,8 +811,9 @@ Support our project with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../../docs/concepts/services/" class="md-nav__link">
+      <a href="../../docs/concepts/services/" class="md-nav__link">
         
+  
   
   <span class="md-ellipsis">
     
@@ -808,8 +839,9 @@ Support our project with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../../docs/concepts/fleets/" class="md-nav__link">
+      <a href="../../docs/concepts/fleets/" class="md-nav__link">
         
+  
   
   <span class="md-ellipsis">
     
@@ -835,8 +867,9 @@ Support our project with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../../docs/concepts/volumes/" class="md-nav__link">
+      <a href="../../docs/concepts/volumes/" class="md-nav__link">
         
+  
   
   <span class="md-ellipsis">
     
@@ -862,40 +895,14 @@ Support our project with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../../docs/concepts/gateways/" class="md-nav__link">
+      <a href="../../docs/concepts/gateways/" class="md-nav__link">
         
+  
   
   <span class="md-ellipsis">
     
   
     Gateways
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../docs/concepts/repos/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    
-  
-    Repos
   
 
     
@@ -926,6 +933,7 @@ Support our project with a ⭐ on
     
     
     
+    
       
       
         
@@ -941,6 +949,7 @@ Support our project with a ⭐ on
           
           <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
             
+  
   
   <span class="md-ellipsis">
     
@@ -974,8 +983,9 @@ Support our project with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../../docs/guides/protips/" class="md-nav__link">
+      <a href="../../docs/guides/protips/" class="md-nav__link">
         
+  
   
   <span class="md-ellipsis">
     
@@ -1001,8 +1011,37 @@ Support our project with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../../docs/guides/server-deployment/" class="md-nav__link">
+      <a href="../../docs/guides/repos/" class="md-nav__link">
         
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Repos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../docs/guides/server-deployment/" class="md-nav__link">
+        
+  
   
   <span class="md-ellipsis">
     
@@ -1028,13 +1067,14 @@ Support our project with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../../docs/guides/metrics/" class="md-nav__link">
+      <a href="../../docs/guides/monitoring/" class="md-nav__link">
         
+  
   
   <span class="md-ellipsis">
     
   
-    Metrics
+    Monitoring
   
 
     
@@ -1055,8 +1095,9 @@ Support our project with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../../docs/guides/troubleshooting/" class="md-nav__link">
+      <a href="../../docs/guides/troubleshooting/" class="md-nav__link">
         
+  
   
   <span class="md-ellipsis">
     
@@ -1082,8 +1123,9 @@ Support our project with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../../docs/guides/administration/" class="md-nav__link">
+      <a href="../../docs/guides/administration/" class="md-nav__link">
         
+  
   
   <span class="md-ellipsis">
     
@@ -1119,6 +1161,7 @@ Support our project with a ⭐ on
     
     
     
+    
       
       
         
@@ -1134,6 +1177,7 @@ Support our project with a ⭐ on
           
           <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
             
+  
   
   <span class="md-ellipsis">
     
@@ -1169,6 +1213,7 @@ Support our project with a ⭐ on
     
     
     
+    
       
       
         
@@ -1184,6 +1229,7 @@ Support our project with a ⭐ on
           
           <label class="md-nav__link" for="__nav_2_4_1" id="__nav_2_4_1_label" tabindex="0">
             
+  
   
   <span class="md-ellipsis">
     
@@ -1217,8 +1263,9 @@ Support our project with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../../docs/reference/dstack.yml/dev-environment/" class="md-nav__link">
+      <a href="../../docs/reference/dstack.yml/dev-environment/" class="md-nav__link">
         
+  
   
   <span class="md-ellipsis">
     
@@ -1244,8 +1291,9 @@ Support our project with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../../docs/reference/dstack.yml/task/" class="md-nav__link">
+      <a href="../../docs/reference/dstack.yml/task/" class="md-nav__link">
         
+  
   
   <span class="md-ellipsis">
     
@@ -1271,8 +1319,9 @@ Support our project with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../../docs/reference/dstack.yml/service/" class="md-nav__link">
+      <a href="../../docs/reference/dstack.yml/service/" class="md-nav__link">
         
+  
   
   <span class="md-ellipsis">
     
@@ -1298,8 +1347,9 @@ Support our project with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../../docs/reference/dstack.yml/fleet/" class="md-nav__link">
+      <a href="../../docs/reference/dstack.yml/fleet/" class="md-nav__link">
         
+  
   
   <span class="md-ellipsis">
     
@@ -1325,8 +1375,9 @@ Support our project with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../../docs/reference/dstack.yml/gateway/" class="md-nav__link">
+      <a href="../../docs/reference/dstack.yml/gateway/" class="md-nav__link">
         
+  
   
   <span class="md-ellipsis">
     
@@ -1352,8 +1403,9 @@ Support our project with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../../docs/reference/dstack.yml/volume/" class="md-nav__link">
+      <a href="../../docs/reference/dstack.yml/volume/" class="md-nav__link">
         
+  
   
   <span class="md-ellipsis">
     
@@ -1387,8 +1439,9 @@ Support our project with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../../docs/reference/server/config.yml/" class="md-nav__link">
+      <a href="../../docs/reference/server/config.yml/" class="md-nav__link">
         
+  
   
   <span class="md-ellipsis">
     
@@ -1416,6 +1469,7 @@ Support our project with a ⭐ on
     
     
     
+    
       
       
         
@@ -1431,6 +1485,7 @@ Support our project with a ⭐ on
           
           <label class="md-nav__link" for="__nav_2_4_3" id="__nav_2_4_3_label" tabindex="0">
             
+  
   
   <span class="md-ellipsis">
     
@@ -1464,8 +1519,9 @@ Support our project with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../../docs/reference/cli/dstack/server/" class="md-nav__link">
+      <a href="../../docs/reference/cli/dstack/server/" class="md-nav__link">
         
+  
   
   <span class="md-ellipsis">
     
@@ -1491,8 +1547,9 @@ Support our project with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../../docs/reference/cli/dstack/init/" class="md-nav__link">
+      <a href="../../docs/reference/cli/dstack/init/" class="md-nav__link">
         
+  
   
   <span class="md-ellipsis">
     
@@ -1518,8 +1575,9 @@ Support our project with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../../docs/reference/cli/dstack/apply/" class="md-nav__link">
+      <a href="../../docs/reference/cli/dstack/apply/" class="md-nav__link">
         
+  
   
   <span class="md-ellipsis">
     
@@ -1545,8 +1603,9 @@ Support our project with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../../docs/reference/cli/dstack/delete/" class="md-nav__link">
+      <a href="../../docs/reference/cli/dstack/delete/" class="md-nav__link">
         
+  
   
   <span class="md-ellipsis">
     
@@ -1572,8 +1631,9 @@ Support our project with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../../docs/reference/cli/dstack/ps/" class="md-nav__link">
+      <a href="../../docs/reference/cli/dstack/ps/" class="md-nav__link">
         
+  
   
   <span class="md-ellipsis">
     
@@ -1599,8 +1659,9 @@ Support our project with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../../docs/reference/cli/dstack/stop/" class="md-nav__link">
+      <a href="../../docs/reference/cli/dstack/stop/" class="md-nav__link">
         
+  
   
   <span class="md-ellipsis">
     
@@ -1626,8 +1687,9 @@ Support our project with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../../docs/reference/cli/dstack/attach/" class="md-nav__link">
+      <a href="../../docs/reference/cli/dstack/attach/" class="md-nav__link">
         
+  
   
   <span class="md-ellipsis">
     
@@ -1653,8 +1715,9 @@ Support our project with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../../docs/reference/cli/dstack/logs/" class="md-nav__link">
+      <a href="../../docs/reference/cli/dstack/logs/" class="md-nav__link">
         
+  
   
   <span class="md-ellipsis">
     
@@ -1680,8 +1743,9 @@ Support our project with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../../docs/reference/cli/dstack/stats/" class="md-nav__link">
+      <a href="../../docs/reference/cli/dstack/stats/" class="md-nav__link">
         
+  
   
   <span class="md-ellipsis">
     
@@ -1707,8 +1771,9 @@ Support our project with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../../docs/reference/cli/dstack/config/" class="md-nav__link">
+      <a href="../../docs/reference/cli/dstack/config/" class="md-nav__link">
         
+  
   
   <span class="md-ellipsis">
     
@@ -1734,8 +1799,9 @@ Support our project with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../../docs/reference/cli/dstack/fleet/" class="md-nav__link">
+      <a href="../../docs/reference/cli/dstack/fleet/" class="md-nav__link">
         
+  
   
   <span class="md-ellipsis">
     
@@ -1761,8 +1827,9 @@ Support our project with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../../docs/reference/cli/dstack/volume/" class="md-nav__link">
+      <a href="../../docs/reference/cli/dstack/volume/" class="md-nav__link">
         
+  
   
   <span class="md-ellipsis">
     
@@ -1788,8 +1855,9 @@ Support our project with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../../docs/reference/cli/dstack/gateway/" class="md-nav__link">
+      <a href="../../docs/reference/cli/dstack/gateway/" class="md-nav__link">
         
+  
   
   <span class="md-ellipsis">
     
@@ -1825,6 +1893,7 @@ Support our project with a ⭐ on
     
     
     
+    
       
       
         
@@ -1840,6 +1909,7 @@ Support our project with a ⭐ on
           
           <label class="md-nav__link" for="__nav_2_4_4" id="__nav_2_4_4_label" tabindex="0">
             
+  
   
   <span class="md-ellipsis">
     
@@ -1873,8 +1943,9 @@ Support our project with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../../docs/reference/api/python/" class="md-nav__link">
+      <a href="../../docs/reference/api/python/" class="md-nav__link">
         
+  
   
   <span class="md-ellipsis">
     
@@ -1900,8 +1971,9 @@ Support our project with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../../docs/reference/api/rest/" class="md-nav__link">
+      <a href="../../docs/reference/api/rest/" class="md-nav__link">
         
+  
   
   <span class="md-ellipsis">
     
@@ -1935,8 +2007,9 @@ Support our project with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../../docs/reference/environment-variables/" class="md-nav__link">
+      <a href="../../docs/reference/environment-variables/" class="md-nav__link">
         
+  
   
   <span class="md-ellipsis">
     
@@ -1979,6 +2052,7 @@ Support our project with a ⭐ on
     
     
     
+    
       
       
         
@@ -1994,6 +2068,7 @@ Support our project with a ⭐ on
           
           <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
             
+  
   
   <span class="md-ellipsis">
     
@@ -2027,8 +2102,9 @@ Support our project with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../../examples/" class="md-nav__link">
+      <a href="../../examples/" class="md-nav__link">
         
+  
   
   <span class="md-ellipsis">
     
@@ -2056,6 +2132,7 @@ Support our project with a ⭐ on
     
     
     
+    
       
       
         
@@ -2071,6 +2148,7 @@ Support our project with a ⭐ on
           
           <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
             
+  
   
   <span class="md-ellipsis">
     
@@ -2104,8 +2182,9 @@ Support our project with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../../examples/deployment/vllm/" class="md-nav__link">
+      <a href="../../examples/deployment/vllm/" class="md-nav__link">
         
+  
   
   <span class="md-ellipsis">
     
@@ -2131,8 +2210,9 @@ Support our project with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../../examples/deployment/tgi/" class="md-nav__link">
+      <a href="../../examples/deployment/tgi/" class="md-nav__link">
         
+  
   
   <span class="md-ellipsis">
     
@@ -2158,8 +2238,9 @@ Support our project with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../../examples/deployment/nim/" class="md-nav__link">
+      <a href="../../examples/deployment/nim/" class="md-nav__link">
         
+  
   
   <span class="md-ellipsis">
     
@@ -2195,6 +2276,7 @@ Support our project with a ⭐ on
     
     
     
+    
       
       
         
@@ -2210,6 +2292,7 @@ Support our project with a ⭐ on
           
           <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
             
+  
   
   <span class="md-ellipsis">
     
@@ -2243,8 +2326,9 @@ Support our project with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../../examples/fine-tuning/axolotl/" class="md-nav__link">
+      <a href="../../examples/fine-tuning/axolotl/" class="md-nav__link">
         
+  
   
   <span class="md-ellipsis">
     
@@ -2270,8 +2354,9 @@ Support our project with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../../examples/fine-tuning/trl/" class="md-nav__link">
+      <a href="../../examples/fine-tuning/trl/" class="md-nav__link">
         
+  
   
   <span class="md-ellipsis">
     
@@ -2307,6 +2392,7 @@ Support our project with a ⭐ on
     
     
     
+    
       
       
         
@@ -2322,6 +2408,7 @@ Support our project with a ⭐ on
           
           <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
             
+  
   
   <span class="md-ellipsis">
     
@@ -2355,8 +2442,9 @@ Support our project with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../../examples/accelerators/amd/" class="md-nav__link">
+      <a href="../../examples/accelerators/amd/" class="md-nav__link">
         
+  
   
   <span class="md-ellipsis">
     
@@ -2382,8 +2470,9 @@ Support our project with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../../examples/accelerators/intel/" class="md-nav__link">
+      <a href="../../examples/accelerators/intel/" class="md-nav__link">
         
+  
   
   <span class="md-ellipsis">
     
@@ -2409,8 +2498,9 @@ Support our project with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../../examples/accelerators/tpu/" class="md-nav__link">
+      <a href="../../examples/accelerators/tpu/" class="md-nav__link">
         
+  
   
   <span class="md-ellipsis">
     
@@ -2446,6 +2536,7 @@ Support our project with a ⭐ on
     
     
     
+    
       
       
         
@@ -2461,6 +2552,7 @@ Support our project with a ⭐ on
           
           <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
             
+  
   
   <span class="md-ellipsis">
     
@@ -2494,8 +2586,9 @@ Support our project with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../../examples/llms/deepseek/" class="md-nav__link">
+      <a href="../../examples/llms/deepseek/" class="md-nav__link">
         
+  
   
   <span class="md-ellipsis">
     
@@ -2521,8 +2614,9 @@ Support our project with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../../examples/llms/llama31/" class="md-nav__link">
+      <a href="../../examples/llms/llama31/" class="md-nav__link">
         
+  
   
   <span class="md-ellipsis">
     
@@ -2548,8 +2642,9 @@ Support our project with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../../examples/llms/llama32/" class="md-nav__link">
+      <a href="../../examples/llms/llama32/" class="md-nav__link">
         
+  
   
   <span class="md-ellipsis">
     
@@ -2585,6 +2680,7 @@ Support our project with a ⭐ on
     
     
     
+    
       
       
         
@@ -2600,6 +2696,7 @@ Support our project with a ⭐ on
           
           <label class="md-nav__link" for="__nav_3_6" id="__nav_3_6_label" tabindex="0">
             
+  
   
   <span class="md-ellipsis">
     
@@ -2633,8 +2730,9 @@ Support our project with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../../examples/misc/docker-compose/" class="md-nav__link">
+      <a href="../../examples/misc/docker-compose/" class="md-nav__link">
         
+  
   
   <span class="md-ellipsis">
     
@@ -2660,8 +2758,9 @@ Support our project with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../../examples/misc/nccl-tests/" class="md-nav__link">
+      <a href="../../examples/misc/nccl-tests/" class="md-nav__link">
         
+  
   
   <span class="md-ellipsis">
     
@@ -2702,8 +2801,9 @@ Support our project with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../../partners/" class="md-nav__link">
+      <a href="../../partners/" class="md-nav__link">
         
+  
   
   <span class="md-ellipsis">
     
@@ -2732,6 +2832,7 @@ Support our project with a ⭐ on
     
     
     
+    
       
         
         
@@ -2750,6 +2851,7 @@ Support our project with a ⭐ on
           
           <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
             
+  
   
   <span class="md-ellipsis">
     
@@ -2780,13 +2882,16 @@ Support our project with a ⭐ on
                 
   
   
+    
+  
   
     
   
   
-    <li class="md-nav__item">
-      <a href="../../" class="md-nav__link">
+    <li class="md-nav__item md-nav__item--active">
+      <a href="../" class="md-nav__link">
         
+  
   
   <span class="md-ellipsis">
     
@@ -2816,6 +2921,7 @@ Support our project with a ⭐ on
     
     
     
+    
       
       
         
@@ -2834,6 +2940,7 @@ Support our project with a ⭐ on
           
           <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="">
             
+  
   
   <span class="md-ellipsis">
     
@@ -2869,8 +2976,9 @@ Support our project with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../archive/2025/" class="md-nav__link">
+      <a href="../archive/2025/" class="md-nav__link">
         
+  
   
   <span class="md-ellipsis">
     
@@ -2900,8 +3008,9 @@ Support our project with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../archive/2024/" class="md-nav__link">
+      <a href="../archive/2024/" class="md-nav__link">
         
+  
   
   <span class="md-ellipsis">
     
@@ -2934,10 +3043,9 @@ Support our project with a ⭐ on
                 
   
   
+  
+  
     
-  
-  
-  
     
     
     
@@ -2950,15 +3058,16 @@ Support our project with a ⭐ on
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3" >
         
           
           <label class="md-nav__link" for="__nav_5_3" id="__nav_5_3_label" tabindex="">
             
+  
   
   <span class="md-ellipsis">
     
@@ -2974,7 +3083,7 @@ Support our project with a ⭐ on
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_5_3">
             <span class="md-nav__icon md-icon"></span>
             
@@ -2994,8 +3103,9 @@ Support our project with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../amd/" class="md-nav__link">
+      <a href="../category/amd/" class="md-nav__link">
         
+  
   
   <span class="md-ellipsis">
     
@@ -3025,8 +3135,9 @@ Support our project with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../benchmarks/" class="md-nav__link">
+      <a href="../category/benchmarks/" class="md-nav__link">
         
+  
   
   <span class="md-ellipsis">
     
@@ -3056,14 +3167,15 @@ Support our project with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../community/" class="md-nav__link">
+      <a href="../category/cloud-fleets/" class="md-nav__link">
         
+  
   
   <span class="md-ellipsis">
     
   
     <span class="md-typeset">
-      Community
+      Cloud fleets
     </span>
   
 
@@ -3087,39 +3199,9 @@ Support our project with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../data-centers/" class="md-nav__link">
+      <a href="../category/dev-environments/" class="md-nav__link">
         
   
-  <span class="md-ellipsis">
-    
-  
-    <span class="md-typeset">
-      Data centers
-    </span>
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    
-  
-  
-    <li class="md-nav__item">
-      <a href="../dev-environments/" class="md-nav__link">
-        
   
   <span class="md-ellipsis">
     
@@ -3144,49 +3226,20 @@ Support our project with a ⭐ on
                 
   
   
-    
-  
   
     
-      
-    
   
   
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
+    <li class="md-nav__item">
+      <a href="../category/intel-gaudi/" class="md-nav__link">
         
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
+  
   
   <span class="md-ellipsis">
     
   
     <span class="md-typeset">
-      Fleets
-    </span>
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
-        
-  
-  <span class="md-ellipsis">
-    
-  
-    <span class="md-typeset">
-      Fleets
+      Intel Gaudi
     </span>
   
 
@@ -3196,81 +3249,6 @@ Support our project with a ⭐ on
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#using-ssh-fleets-with-tensorwaves-private-amd-cloud" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Using SSH fleets with TensorWave's private AMD cloud
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#supporting-intel-gaudi-ai-accelerators" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Supporting Intel Gaudi AI accelerators
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#efficient-distributed-training-with-aws-efa" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Efficient distributed training with AWS EFA
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#orchestrating-gpus-in-data-centers-and-private-clouds" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Orchestrating GPUs in data centers and private clouds
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#beyond-kubernetes-2024-recap-and-whats-ahead-for-ai-infra" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Beyond Kubernetes: 2024 recap and what's ahead for AI infra
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -3285,8 +3263,9 @@ Support our project with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../monitoring/" class="md-nav__link">
+      <a href="../category/monitoring/" class="md-nav__link">
         
+  
   
   <span class="md-ellipsis">
     
@@ -3316,8 +3295,9 @@ Support our project with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../nvidia/" class="md-nav__link">
+      <a href="../category/nvidia/" class="md-nav__link">
         
+  
   
   <span class="md-ellipsis">
     
@@ -3347,14 +3327,15 @@ Support our project with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../private-clouds/" class="md-nav__link">
+      <a href="../category/ssh-fleets/" class="md-nav__link">
         
+  
   
   <span class="md-ellipsis">
     
   
     <span class="md-typeset">
-      Private clouds
+      SSH fleets
     </span>
   
 
@@ -3378,8 +3359,9 @@ Support our project with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../tpu/" class="md-nav__link">
+      <a href="../category/tpu/" class="md-nav__link">
         
+  
   
   <span class="md-ellipsis">
     
@@ -3409,8 +3391,9 @@ Support our project with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../volumes/" class="md-nav__link">
+      <a href="../category/volumes/" class="md-nav__link">
         
+  
   
   <span class="md-ellipsis">
     
@@ -3456,6 +3439,7 @@ Support our project with a ⭐ on
       <a href="https://discord.gg/u8SmfwPpMd" target="_blank" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     
   
@@ -3480,6 +3464,8 @@ Support our project with a ⭐ on
     
     
       
+        
+      
       <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
         <div class="md-sidebar__scrollwrap">
           <div class="md-sidebar__inner">
@@ -3492,69 +3478,6 @@ Support our project with a ⭐ on
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#using-ssh-fleets-with-tensorwaves-private-amd-cloud" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Using SSH fleets with TensorWave's private AMD cloud
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#supporting-intel-gaudi-ai-accelerators" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Supporting Intel Gaudi AI accelerators
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#efficient-distributed-training-with-aws-efa" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Efficient distributed training with AWS EFA
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#orchestrating-gpus-in-data-centers-and-private-clouds" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Orchestrating GPUs in data centers and private clouds
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#beyond-kubernetes-2024-recap-and-whats-ahead-for-ai-infra" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Beyond Kubernetes: 2024 recap and what's ahead for AI infra
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
           </div>
         </div>
@@ -3562,260 +3485,165 @@ Support our project with a ⭐ on
     
 
           
-  <div class="md-content" data-md-component="content">
-    <div class="md-content__inner">
-      <header class="md-typeset">
-        <h1 id="fleets">Fleets<a class="headerlink" href="#fleets" title="Permanent link">&para;</a></h1>
-      </header>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2025-03-11 00:00:00+00:00">March 11, 2025</time></li>
-        
-          <li class="md-meta__item">
-            in
+  <div class="md-content md-content--post" data-md-component="content">
+    <div class="md-sidebar md-sidebar--post" data-md-component="sidebar" data-md-type="navigation">
+      <div class="md-sidebar__scrollwrap">
+        <div class="md-sidebar__inner md-post">
+          <nav class="md-nav md-nav--primary">
+            <div class="md-post__back">
+              <div class="md-nav__title md-nav__container">
+                <a href="../" class="md-nav__link">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+                  <span class="md-ellipsis">
+                    Back to index
+                  </span>
+                </a>
+              </div>
+            </div>
             
-              <a href="./" class="md-meta__link">Fleets</a>, 
-              <a href="../amd/" class="md-meta__link">AMD</a>, 
-              <a href="../private-clouds/" class="md-meta__link">Private clouds</a></li>
-        
-        
+            <ul class="md-post__meta md-nav__list">
+              <li class="md-nav__item md-nav__item--section">
+                <div class="md-post__title">
+                  <span class="md-ellipsis">
+                    Metadata
+                  </span>
+                </div>
+                <nav class="md-nav">
+                  <ul class="md-nav__list">
+                    <li class="md-nav__item">
+                      <div class="md-nav__link">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 19H5V8h14m-3-7v2H8V1H6v2H5c-1.11 0-2 .89-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-1V1m-1 11h-5v5h5z"/></svg>
+                        <time datetime="2025-02-19 00:00:00+00:00" class="md-ellipsis">February 19, 2025</time>
+                      </div>
+                    </li>
+                    
+                    
+                      <li class="md-nav__item">
+                        <div class="md-nav__link">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 3v15h3V3zm3 2 4 13 3-1-4-13zM5 5v13h3V5zM3 19v2h18v-2z"/></svg>
+                          <span class="md-ellipsis">
+                            in
+                            
+                              <a href="../category/dev-environments/">Dev environments</a></span>
+                        </div>
+                      </li>
+                    
+                    
+                      
+                      <li class="md-nav__item">
+                        <div class="md-nav__link">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20a8 8 0 0 0 8-8 8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8m0-18a10 10 0 0 1 10 10 10 10 0 0 1-10 10C6.47 22 2 17.5 2 12A10 10 0 0 1 12 2m.5 5v5.25l4.5 2.67-.75 1.23L11 13V7z"/></svg>
+                          <span class="md-ellipsis">
+                            
+                              2 min read
+                            
+                          </span>
+                        </div>
+                      </li>
+                    
+                  </ul>
+                </nav>
+              </li>
+            </ul>
+            
+          </nav>
           
-          <li class="md-meta__item">
-            
-              3 min read
-            
-          </li>
-        
-        
-      </ul>
-      
+        </div>
+      </div>
     </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="using-ssh-fleets-with-tensorwaves-private-amd-cloud"><a class="toclink" href="../../amd-on-tensorwave/">Using SSH fleets with TensorWave's private AMD cloud</a></h2>
-<p>Since last month, when we introduced support for private clouds and data centers, it has become easier to use <code>dstack</code>
-to orchestrate AI containers with any AI cloud vendor, whether they provide on-demand compute or reserved clusters.</p>
-<p>In this tutorial, we’ll walk you through how <code>dstack</code> can be used with
-<a href="https://tensorwave.com/" target="_blank">TensorWave <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> using 
-<a href="../../../docs/concepts/fleets/#ssh">SSH fleets</a>.</p>
-<p><img src="https://github.com/dstackai/static-assets/blob/main/static-assets/images/dstack-tensorwave-v2.png?raw=true" width="630"/></p>
-
-    
-      <nav class="md-post__action">
-        <a href="../../amd-on-tensorwave/">
-          Continue reading
-        </a>
-      </nav>
-    
-    
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2025-02-21 00:00:00+00:00">February 21, 2025</time></li>
-        
-          <li class="md-meta__item">
-            in
-            
-              <a href="./" class="md-meta__link">Fleets</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              3 min read
-            
-          </li>
-        
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="supporting-intel-gaudi-ai-accelerators"><a class="toclink" href="../../intel-gaudi/">Supporting Intel Gaudi AI accelerators</a></h2>
-<p>At <code>dstack</code>, our goal is to make AI container orchestration simpler and fully vendor-agnostic. That’s why we support not
-just leading cloud providers and on-prem environments but also a wide range of accelerators.</p>
-<p>With our latest release, we’re adding support
-for Intel Gaudi AI Accelerator and launching a new partnership with Intel.</p>
-<p><img src="https://github.com/dstackai/static-assets/blob/main/static-assets/images/dstack-intel-gaudi-and-intel-tiber-cloud-v2.png?raw=true" width="630"/></p>
-
-    
-      <nav class="md-post__action">
-        <a href="../../intel-gaudi/">
-          Continue reading
-        </a>
-      </nav>
-    
-    
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2025-02-20 00:00:00+00:00">February 20, 2025</time></li>
-        
-          <li class="md-meta__item">
-            in
-            
-              <a href="./" class="md-meta__link">Fleets</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              3 min read
-            
-          </li>
-        
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="efficient-distributed-training-with-aws-efa"><a class="toclink" href="../../distributed-training-with-aws-efa/">Efficient distributed training with AWS EFA</a></h2>
-<p><a href="https://aws.amazon.com/hpc/efa/" target="_blank">Amazon Elastic Fabric Adapter (EFA) <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> is a high-performance network interface designed for AWS EC2 instances, enabling
-ultra-low latency and high-throughput communication between nodes. This makes it an ideal solution for scaling
-distributed training workloads across multiple GPUs and instances.</p>
-<p>With the latest release of <code>dstack</code>, you can now leverage AWS EFA to supercharge your distributed training tasks.</p>
-<p><img src="https://github.com/dstackai/static-assets/blob/main/static-assets/images/distributed-training-with-aws-efa-v2.png?raw=true" width="630"/></p>
-
-    
-      <nav class="md-post__action">
-        <a href="../../distributed-training-with-aws-efa/">
-          Continue reading
-        </a>
-      </nav>
-    
-    
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2025-02-18 00:00:00+00:00">February 18, 2025</time></li>
-        
-          <li class="md-meta__item">
-            in
-            
-              <a href="./" class="md-meta__link">Fleets</a>, 
-              <a href="../data-centers/" class="md-meta__link">Data centers</a>, 
-              <a href="../private-clouds/" class="md-meta__link">Private clouds</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              4 min read
-            
-          </li>
-        
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="orchestrating-gpus-in-data-centers-and-private-clouds"><a class="toclink" href="../../data-centers-and-private-clouds/">Orchestrating GPUs in data centers and private clouds</a></h2>
-<p>Recent breakthroughs in open-source AI have made AI infrastructure accessible beyond public clouds, driving demand for
-running AI workloads in on-premises data centers and private clouds. 
-This shift offers organizations both high-performant clusters and flexibility and control.</p>
-<p>However, Kubernetes, while a popular choice for traditional deployments, is often too complex and low-level to address
-the needs of AI teams.</p>
-<p>Originally, <code>dstack</code> was focused on public clouds. With the new release, <code>dstack</code>
-extends support to data centers and private clouds, offering a simpler, AI-native solution that replaces Kubernetes and
-Slurm.</p>
-<p><img src="https://github.com/dstackai/static-assets/blob/main/static-assets/images/data-centers-and-private-clouds.png?raw=true" width="630"/></p>
-
-    
-      <nav class="md-post__action">
-        <a href="../../data-centers-and-private-clouds/">
-          Continue reading
-        </a>
-      </nav>
-    
-    
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2024-12-10 00:00:00+00:00">December 10, 2024</time></li>
-        
-          <li class="md-meta__item">
-            in
-            
-              <a href="../amd/" class="md-meta__link">AMD</a>, 
-              <a href="../nvidia/" class="md-meta__link">NVIDIA</a>, 
-              <a href="../volumes/" class="md-meta__link">Volumes</a>, 
-              <a href="./" class="md-meta__link">Fleets</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              3 min read
-            
-          </li>
-        
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="beyond-kubernetes-2024-recap-and-whats-ahead-for-ai-infra"><a class="toclink" href="../../beyond-kubernetes-2024-recap-and-whats-ahead/">Beyond Kubernetes: 2024 recap and what's ahead for AI infra</a></h2>
-<p>At <code>dstack</code>, we aim to simplify AI model development, training, and deployment of AI models by offering an
-alternative to the complex Kubernetes ecosystem. Our goal is to enable seamless AI infrastructure management across any
-cloud or hardware vendor. </p>
-<p>As 2024 comes to a close, we reflect on the milestones we've achieved and look ahead to the next steps.</p>
-
-    
-      <nav class="md-post__action">
-        <a href="../../beyond-kubernetes-2024-recap-and-whats-ahead/">
-          Continue reading
-        </a>
-      </nav>
-    
-    
-  </div>
-</article>
-      
+    <article class="md-content__inner md-typeset">
       
         
-          
-
-
-
-<nav class="md-pagination">
   
-</nav>
-        
+
+
+
+  
+    <a href="https://github.com/dstackai/dstack/edit/master/docs/blog/posts/inactivity-duration.md" title="Edit this page" class="md-content__button md-icon">
       
-    </div>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="auto-shutdown-for-inactive-dev-environmentsno-idle-gpus">Auto-shutdown for inactive dev environments—no idle GPUs<a class="headerlink" href="#auto-shutdown-for-inactive-dev-environmentsno-idle-gpus" title="Permanent link">&para;</a></h1>
+<p>Whether you’re using cloud or on-prem compute, you may want to test your code before launching a
+training task or deploying a service. <code>dstack</code>’s <a href="../../docs/concepts/dev-environments/">dev environments</a>
+make this easy by setting up a remote machine, cloning your repository, and configuring your IDE —all within 
+a container that has GPU access.</p>
+<p>One issue with dev environments is forgetting to stop them or closing your laptop, leaving the GPU idle and costly. With
+our latest update, <code>dstack</code> now detects inactive environments and automatically shuts them down, saving you money.</p>
+<p><img src="https://github.com/dstackai/static-assets/blob/main/static-assets/images/inactive-dev-environments-auto-shutdown.png?raw=true" width="630"/></p>
+<!-- more -->
+
+<p>When defining a dev environment, you can now enable automatic shutdown by setting the
+<code>inactivity_duration</code> property to specify how long <code>dstack</code> should wait before 
+automatically terminating an inactive environment.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dev-environment</span>
+<span class="c1"># The name is optional, if not specified, generated randomly</span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vscode</span>
+
+<span class="nt">python</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;3.11&quot;</span>
+
+<span class="nt">ide</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vscode</span>
+
+<span class="c1"># Shut-down if inactive for 2 hours</span>
+<span class="nt">inactivity_duration</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2h</span>
+
+<span class="nt">resources</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+</code></pre></div>
+<p>A dev environment is considered inactive when you close your desktop VS Code, exit any <code>ssh &lt;run name&gt;</code> sessions, or
+interrup the <code>dstack apply</code> or <code>dstack attach</code> command. </p>
+<p>If you go offline without manually stopping anything, <code>dstack</code> will
+automatically detect inactivity and shut down the environment within approximately three minutes.</p>
+<p>If you’ve configured <code>inactivity_duration</code>, you can check how long a dev environment environment has been inactive using:</p>
+<div class="termy">
+
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>dstack<span class="w"> </span>ps<span class="w"> </span>--verbose
+<span class="w"> </span>NAME<span class="w">    </span>BACKEND<span class="w">  </span>RESOURCES<span class="w">       </span>PRICE<span class="w">    </span>STATUS<span class="w">                 </span>SUBMITTED
+<span class="w"> </span>vscode<span class="w">  </span>cudo<span class="w">     </span>2xCPU,<span class="w"> </span>8GB,<span class="w">     </span><span class="nv">$0</span>.0286<span class="w">  </span>running<span class="w">                </span><span class="m">8</span><span class="w"> </span>mins<span class="w"> </span>ago
+<span class="w">                  </span><span class="m">100</span>.0GB<span class="w"> </span><span class="o">(</span>disk<span class="o">)</span><span class="w">           </span><span class="o">(</span>inactive<span class="w"> </span><span class="k">for</span><span class="w"> </span>2m<span class="w"> </span>34s<span class="o">)</span>
+</code></pre></div>
+
+</div>
+
+<p>Reattaching to the environment with <a href="../../docs/reference/cli/dstack/attach/"><code>dstack attach</code></a>
+resets the inactivity timer within seconds.</p>
+<p>Overall, the new feature makes using dev environments both safer and more cost-effective.
+This not only helps reduce unnecessary GPU costs, but also ensures more efficient reuse of 
+fleets by teams.</p>
+<div class="admonition info">
+<p class="admonition-title">What's next?</p>
+<ol>
+<li>Check <a href="../../docs/concepts/dev-environments/">dev environments</a>, 
+   <a href="../../docs/concepts/tasks/">tasks</a>, <a href="../../docs/concepts/services/">services</a>,
+   and <a href="../../docs/concepts/fleets/">fleets</a></li>
+<li>Join <a href="https://discord.gg/u8SmfwPpMd" target="_blank">Discord <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a></li>
+</ol>
+</div>
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+  
+
+
+
+      
+    </article>
   </div>
 
           
@@ -3965,17 +3793,20 @@ cloud or hardware vendor. </p>
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../../..", "features": ["content.tooltips", "content.code.copy", "content.action.edit", "navigation.tabs", "navigation.sections", "navigation.top", "announce.dismiss", "navigation.tracking", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.c7c1ca2c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.tooltips", "content.code.copy", "content.action.edit", "navigation.tabs", "navigation.sections", "navigation.top", "announce.dismiss", "navigation.tracking", "navigation.footer"], "search": "../../assets/javascripts/workers/search.c7c1ca2c.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
 <script src="/assets/javascripts/termynal.js" data-termynal-container="#termynal"></script>
 <script async src="https://tally.so/widgets/embed.js"></script>
 
-      <script src="../../../assets/javascripts/bundle.f807c082.min.js"></script>
+      <script src="../../assets/javascripts/bundle.f807c082.min.js"></script>
       
-        <script src="../../../assets/javascripts/extra.js"></script>
+        <script src="../../assets/javascripts/extra.js"></script>
       
-        <script src="../../../assets/javascripts/pricing.js"></script>
+        <script src="../../assets/javascripts/pricing.js"></script>
       
     
 <script src="https://widget.kapa.ai/kapa-widget.bundle.js"
