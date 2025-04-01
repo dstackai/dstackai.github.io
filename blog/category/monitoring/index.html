@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../../assets/images/dstack-fav-32.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.10+insiders-4.53.16">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.11+insiders-4.53.16">
     
     
       
@@ -3325,6 +3325,17 @@ Support our project with a ⭐ on
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#exporting-gpu-cost-and-other-metrics-to-prometheus" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exporting GPU, cost, and other metrics to Prometheus
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#monitoring-basic-gpu-metrics-via-dstack-stats" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3541,6 +3552,17 @@ Support our project with a ⭐ on
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#exporting-gpu-cost-and-other-metrics-to-prometheus" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exporting GPU, cost, and other metrics to Prometheus
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#monitoring-basic-gpu-metrics-via-dstack-stats" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3565,6 +3587,55 @@ Support our project with a ⭐ on
       <header class="md-typeset">
         <h1 id="monitoring">Monitoring<a class="headerlink" href="#monitoring" title="Permanent link">&para;</a></h1>
       </header>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2025-04-01 00:00:00+00:00">April 1, 2025</time></li>
+        
+          <li class="md-meta__item">
+            in
+            
+              <a href="./" class="md-meta__link">Monitoring</a>, 
+              <a href="../nvidia/" class="md-meta__link">NVIDIA</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              2 min read
+            
+          </li>
+        
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="exporting-gpu-cost-and-other-metrics-to-prometheus"><a class="toclink" href="../../prometheus/">Exporting GPU, cost, and other metrics to Prometheus</a></h2>
+<h3 id="why-prometheus" style="display:none"><a class="toclink" href="../../prometheus/#why-prometheus">Why Prometheus</a></h3>
+<p>Effective AI infrastructure management requires full visibility into compute performance and costs. AI researchers need
+detailed insights into container- and GPU-level performance, while managers rely on cost metrics to track resource usage
+across projects.</p>
+<p>While <code>dstack</code> provides key metrics through its UI and <a href="../../dstack-stats/"><code>dstack stats</code></a> CLI, teams often need more granular data and prefer
+using their own monitoring tools. To support this, we’ve introduced a new endpoint that allows real-time exporting all collected
+metrics—covering fleets and runs—directly to Prometheus.</p>
+<p><img src="https://github.com/dstackai/static-assets/blob/main/static-assets/images/dstack-prometheus-v3.png?raw=true" width="630"/></p>
+
+    
+      <nav class="md-post__action">
+        <a href="../../prometheus/">
+          Continue reading
+        </a>
+      </nav>
+    
+    
+  </div>
+</article>
       
         <article class="md-post md-post--excerpt">
   <header class="md-post__header">
