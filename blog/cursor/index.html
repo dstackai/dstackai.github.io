@@ -15,10 +15,8 @@
         <link rel="canonical" href="https://dstack.ai/blog/cursor/">
       
       
-        <link rel="prev" href="../h200-mi300x-deepskeek-benchmark/">
+        <link rel="prev" href="../prometheus/">
       
-      
-        <link rel="next" href="../prometheus/">
       
       
         
@@ -29,7 +27,7 @@
     
     
       
-        <title>Accessing dev environments with Cursor - dstack</title>
+        <title>Supporting MPI and NCCL/RCCL tests - dstack</title>
       
     
     
@@ -89,19 +87,19 @@
     
   
 <meta property="og:type" content="website" />
-<meta property="og:title" content="Accessing dev environments with Cursor - dstack" />
+<meta property="og:title" content="Supporting MPI and NCCL/RCCL tests - dstack" />
 <meta property="og:description" content="TBA" />
 <meta property="og:image" content="
-  https://github.com/dstackai/static-assets/blob/main/static-assets/images/dstack-cursor-v2.png?raw=true" />
+  https://github.com/dstackai/static-assets/blob/main/static-assets/images/dstack-mpi-v2.png?raw=true" />
 <meta property="og:image:type" content="image/png" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
 <meta property="og:url" content="https://dstack.ai/blog/cursor/" />
 <meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter.title" content="Accessing dev environments with Cursor - dstack" />
+<meta property="twitter.title" content="Supporting MPI and NCCL/RCCL tests - dstack" />
 <meta property="twitter:description" content="TBA" />
 <meta property="twitter:image" content="
-  https://github.com/dstackai/static-assets/blob/main/static-assets/images/dstack-cursor-v2.png?raw=true" />
+  https://github.com/dstackai/static-assets/blob/main/static-assets/images/dstack-mpi-v2.png?raw=true" />
 </head>
   
   
@@ -121,7 +119,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#accessing-dev-environments-with-cursor" class="md-skip">
+        <a href="#supporting-mpi-and-ncclrccl-tests" class="md-skip">
           Skip to content
         </a>
       
@@ -175,7 +173,7 @@ Support our project with a ⭐ on
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Accessing dev environments with Cursor
+              Supporting MPI and NCCL/RCCL tests
             
           </span>
         </div>
@@ -1743,14 +1741,14 @@ Support our project with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../docs/reference/cli/dstack/stats/" class="md-nav__link">
+      <a href="../../docs/reference/cli/dstack/metrics/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    dstack stats
+    dstack metrics
   
 
     
@@ -2246,6 +2244,34 @@ Support our project with a ⭐ on
     
   
     NIM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/deployment/sglang/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SGLang
   
 
     
@@ -3513,7 +3539,7 @@ Support our project with a ⭐ on
                     <li class="md-nav__item">
                       <div class="md-nav__link">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 19H5V8h14m-3-7v2H8V1H6v2H5c-1.11 0-2 .89-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-1V1m-1 11h-5v5h5z"/></svg>
-                        <time datetime="2025-03-31 00:00:00+00:00" class="md-ellipsis">March 31, 2025</time>
+                        <time datetime="2025-04-02 00:00:00+00:00" class="md-ellipsis">April 2, 2025</time>
                       </div>
                     </li>
                     
@@ -3524,7 +3550,8 @@ Support our project with a ⭐ on
                           <span class="md-ellipsis">
                             in
                             
-                              <a href="../category/dev-environments/">Dev environments</a></span>
+                              <a href="../category/ssh-fleets/">SSH fleets</a>, 
+                              <a href="../category/cloud-fleets/">Cloud fleets</a></span>
                         </div>
                       </li>
                     
@@ -3559,7 +3586,7 @@ Support our project with a ⭐ on
 
 
   
-    <a href="https://github.com/dstackai/dstack/edit/master/docs/blog/posts/cursor.md" title="Edit this page" class="md-content__button md-icon">
+    <a href="https://github.com/dstackai/dstack/edit/master/docs/blog/posts/mpi.md" title="Edit this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
     </a>
@@ -3567,72 +3594,91 @@ Support our project with a ⭐ on
   
 
 
-<h1 id="accessing-dev-environments-with-cursor">Accessing dev environments with Cursor<a class="headerlink" href="#accessing-dev-environments-with-cursor" title="Permanent link">&para;</a></h1>
-<p>Dev environments enable seamless provisioning of remote instances with the necessary GPU resources,
-automatic repository fetching, and streamlined access via SSH or a preferred desktop IDE.</p>
-<p>Previously, support was limited to VS Code. However, as developers rely on a variety of desktop IDEs,
-we’ve expanded compatibility. With this update, dev environments now offer effortless access for users of 
-<a href="https://www.cursor.com/" target="_blank">Cursor <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>.</p>
-<p><img src="https://github.com/dstackai/static-assets/blob/main/static-assets/images/dstack-cursor-v2.png?raw=true" width="630"/></p>
+<h1 id="supporting-mpi-and-ncclrccl-tests">Supporting MPI and NCCL/RCCL tests<a class="headerlink" href="#supporting-mpi-and-ncclrccl-tests" title="Permanent link">&para;</a></h1>
+<p>As AI models grow in complexity, efficient orchestration tools become increasingly important. 
+<a href="../../docs/concepts/fleets/">Fleets</a> introduced by <code>dstack</code> last year streamline 
+<a href="../../docs/concepts/tasks/">task execution</a> on both cloud and 
+on-prem clusters, whether it's pre-training, fine-tuning, or batch processing.</p>
+<p>The strength of <code>dstack</code> lies in its flexibility. Users can leverage distributed framework like
+<code>torchrun</code>, <code>accelerate</code>, or others. <code>dstack</code> handles node provisioning, job execution, and automatically propagates
+system environment variables—such as <code>DSTACK_NODE_RANK</code>, <code>DSTACK_MASTER_NODE_IP</code>,
+<code>DSTACK_GPUS_PER_NODE</code> and <a href="../../docs/concepts/tasks/#system-environment-variables">others</a>—to containers.</p>
+<p><img src="https://github.com/dstackai/static-assets/blob/main/static-assets/images/dstack-mpi-v2.png?raw=true" width="630"/></p>
+<p>One use case <code>dstack</code> hasn’t supported until now is MPI, as it requires a scheduled environment or
+direct SSH connections between containers. Since <code>mpirun</code> is essential for running NCCL/RCCL tests—crucial for large-scale
+cluster usage—we’ve added support for it.</p>
 <!-- more -->
 
-<p>To access a dev environment via Cursor, set the <code>ide</code> property in your configuration to <code>cursor</code>.</p>
-<div editor-title=".dstack.yml"> 
+<p>Below is an example of a task that runs AllReduce test on 2 nodes, each with 4 GPUs (8 processes in total).</p>
+<div editor-title="examples/misc/nccl-tests/.dstack.yml">
 
-<div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dev-environment</span>
-<span class="c1"># The name is optional, if not specified, generated randomly</span>
-<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vscode</span>
+<div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">task</span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nccl-tests</span>
 
-<span class="nt">python</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;3.11&quot;</span>
-<span class="c1"># Uncomment to use a custom Docker image</span>
-<span class="c1">#image: dstackai/base:py3.13-0.7-cuda-12.1</span>
+<span class="nt">nodes</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
 
-<span class="nt">ide</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cursor</span>
-
-<span class="c1"># Use either spot or on-demand instances</span>
-<span class="c1">#spot_policy: auto</span>
+<span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dstackai/efa</span>
+<span class="nt">env</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NCCL_DEBUG=INFO</span>
+<span class="nt">commands</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">    </span><span class="no"># We use FIFO for inter-node communication</span>
+<span class="w">    </span><span class="no">FIFO=/tmp/dstack_job</span>
+<span class="w">    </span><span class="no">if [ ${DSTACK_NODE_RANK} -eq 0 ]; then</span>
+<span class="w">      </span><span class="no">cd /root/nccl-tests/build</span>
+<span class="w">      </span><span class="no"># Generate hostfile for mpirun</span>
+<span class="w">      </span><span class="no">: &gt; hostfile</span>
+<span class="w">      </span><span class="no">for ip in ${DSTACK_NODES_IPS}; do</span>
+<span class="w">        </span><span class="no">echo &quot;${ip} slots=${DSTACK_GPUS_PER_NODE}&quot; &gt;&gt; hostfile</span>
+<span class="w">      </span><span class="no">done</span>
+<span class="w">      </span><span class="no">MPIRUN=&#39;mpirun --allow-run-as-root --hostfile hostfile&#39;</span>
+<span class="w">      </span><span class="no"># Wait for other nodes</span>
+<span class="w">      </span><span class="no">while true; do</span>
+<span class="w">        </span><span class="no">if ${MPIRUN} -n ${DSTACK_NODES_NUM} -N 1 true &gt;/dev/null 2&gt;&amp;1; then</span>
+<span class="w">          </span><span class="no">break</span>
+<span class="w">        </span><span class="no">fi</span>
+<span class="w">        </span><span class="no">echo &#39;Waiting for nodes...&#39;</span>
+<span class="w">        </span><span class="no">sleep 5</span>
+<span class="w">      </span><span class="no">done</span>
+<span class="w">      </span><span class="no"># Run NCCL tests</span>
+<span class="w">      </span><span class="no">${MPIRUN} \</span>
+<span class="w">        </span><span class="no">-n ${DSTACK_GPUS_NUM} -N ${DSTACK_GPUS_PER_NODE} \</span>
+<span class="w">        </span><span class="no">--mca pml ^cm \</span>
+<span class="w">        </span><span class="no">--mca btl tcp,self \</span>
+<span class="w">        </span><span class="no">--mca btl_tcp_if_exclude lo,docker0 \</span>
+<span class="w">        </span><span class="no">--bind-to none \</span>
+<span class="w">        </span><span class="no">./all_reduce_perf -b 8 -e 8G -f 2 -g 1</span>
+<span class="w">      </span><span class="no"># Notify nodes the job is done</span>
+<span class="w">      </span><span class="no">${MPIRUN} -n ${DSTACK_NODES_NUM} -N 1 sh -c &quot;echo done &gt; ${FIFO}&quot;</span>
+<span class="w">    </span><span class="no">else</span>
+<span class="w">      </span><span class="no">mkfifo ${FIFO}</span>
+<span class="w">      </span><span class="no"># Wait for a message from the first node</span>
+<span class="w">      </span><span class="no">cat ${FIFO}</span>
+<span class="w">    </span><span class="no">fi</span>
 
 <span class="nt">resources</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">24GB</span>
+<span class="w">  </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nvidia:4:16GB</span>
+<span class="w">  </span><span class="nt">shm_size</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">16GB</span>
 </code></pre></div>
 
 </div>
 
-<p>Once you’ve configured the environment, invoke the <a href="../../docs/reference/cli/dstack/apply/"><code>dstack apply</code></a> command.
-When the dev environment is ready, dstack will provide a URL that you can click to open the environment in your desktop
-Cursor IDE.</p>
-<div class="termy">
-
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>dstack<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>examples/.dstack.yml
-
-<span class="w"> </span><span class="c1">#  BACKEND  REGION    RESOURCES                SPOT  PRICE</span>
-<span class="w"> </span><span class="m">1</span><span class="w">  </span>runpod<span class="w">   </span>CA-MTL-1<span class="w">  </span>9xCPU,<span class="w"> </span>48GB,<span class="w"> </span>A5000:24GB<span class="w">  </span>yes<span class="w">   </span><span class="nv">$0</span>.11
-<span class="w"> </span><span class="m">2</span><span class="w">  </span>runpod<span class="w">   </span>EU-SE-1<span class="w">   </span>9xCPU,<span class="w"> </span>43GB,<span class="w"> </span>A5000:24GB<span class="w">  </span>yes<span class="w">   </span><span class="nv">$0</span>.11
-<span class="w"> </span><span class="m">3</span><span class="w">  </span>gcp<span class="w">      </span>us-west4<span class="w">  </span>4xCPU,<span class="w"> </span>16GB,<span class="w"> </span>L4:24GB<span class="w">     </span>yes<span class="w">   </span><span class="nv">$0</span>.21
-
-Submit<span class="w"> </span>the<span class="w"> </span>run<span class="w"> </span>vscode?<span class="w"> </span><span class="o">[</span>y/n<span class="o">]</span>:<span class="w"> </span>y
-
-Launching<span class="w"> </span><span class="sb">`</span>vscode<span class="sb">`</span>...
----&gt;<span class="w"> </span><span class="m">100</span>%
-
-To<span class="w"> </span>open<span class="w"> </span><span class="k">in</span><span class="w"> </span>Cursor,<span class="w"> </span>use<span class="w"> </span>this<span class="w"> </span>link:
-<span class="w">  </span>cursor://vscode-remote/ssh-remote+vscode/workflow
-</code></pre></div>
-
-</div>
-
-<p>Clicking the provided URL will prompt your desktop Cursor IDE to automatically connect to the remote machine via the SSH
-tunnel created by the <code>dstack apply</code> command, allowing you to securely work with your dev environment.</p>
-<p><img src="https://github.com/dstackai/static-assets/blob/main/static-assets/images/dstack-cursor-ide.png?raw=true" width="800"/></p>
-<p>Using Cursor over VS Code offers multiple benefits, particularly when it comes to integrated AI coding assistance and
-enhanced developer experience.</p>
+<p>The first worker node (<code>DSTACK_NODE_RANK=0</code>) generates a <code>hostfile</code> listing all node IPs and waits until all nodes are
+reachable via MPI. Once confirmed, it launches the <code>/root/nccl-tests/build/all_reduce_perf</code> benchmark across all available GPUs in the cluster.</p>
+<p>The other worker nodes remain blocked until they receive a termination signal from the master node via a FIFO pipe.</p>
+<p>With this, now you can use such a task to run both NCCL or RCCL tests on both cloud and SSH fleets, 
+as well as use MPI for other tasks.</p>
+<blockquote>
+<p>The <code>dstackai/efa</code> image used in the example comes with MPI and NCCL tests pre-installed. While it is optimized for
+<a href="https://aws.amazon.com/hpc/efa/" target="_blank">AWS EFA <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>, it can also
+be used with regular TCP/IP network adapters and InfiniBand. 
+See the <a href="https://github.com/dstackai/dstack/blob/master/docker/efa">source code <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> for the image.</p>
+</blockquote>
 <div class="admonition info">
 <p class="admonition-title">What's next?</p>
 <ol>
-<li><a href="https://www.cursor.com/" target="_blank">Download <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> and install Cursor</li>
-<li>Learn more about <a href="../../docs/concepts/dev-environments/">dev environments</a>, 
-   <a href="../../docs/concepts/tasks/">tasks</a>, <a href="../../docs/concepts/services/">services</a>,
-   and <a href="../../docs/concepts/fleets/">fleets</a></li>
+<li>Learn more about <a href="../../docs/concepts/dev-environments/">dev environments</a>, <a href="../../docs/concepts/tasks/">tasks</a>, <a href="../../docs/concepts/services/">services</a>, and <a href="../../docs/concepts/fleets/">fleets</a></li>
+<li>Check the <a href="../../examples/misc/nccl-tests/">NCCL tests</a> example</li>
 <li>Join <a href="https://discord.gg/u8SmfwPpMd" target="_blank">Discord <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a></li>
 </ol>
 </div>

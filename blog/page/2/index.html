@@ -1739,14 +1739,14 @@ Support our project with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../../docs/reference/cli/dstack/stats/" class="md-nav__link">
+      <a href="../../../docs/reference/cli/dstack/metrics/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    dstack stats
+    dstack metrics
   
 
     
@@ -2242,6 +2242,34 @@ Support our project with a ⭐ on
     
   
     NIM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/deployment/sglang/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SGLang
   
 
     
@@ -2947,6 +2975,17 @@ Support our project with a ⭐ on
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#beyond-kubernetes-2024-recap-and-whats-ahead-for-ai-infra" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Beyond Kubernetes: 2024 recap and what's ahead for AI infra
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#exploring-inference-memory-saturation-effect-h100-vs-mi300x" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3039,17 +3078,6 @@ Support our project with a ⭐ on
     <span class="md-ellipsis">
       
         dstack Sky now supports your own cloud accounts
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#introducing-dstack-sky" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Introducing dstack Sky
       
     </span>
   </a>
@@ -3636,6 +3664,17 @@ Support our project with a ⭐ on
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#beyond-kubernetes-2024-recap-and-whats-ahead-for-ai-infra" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Beyond Kubernetes: 2024 recap and what's ahead for AI infra
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#exploring-inference-memory-saturation-effect-h100-vs-mi300x" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3734,17 +3773,6 @@ Support our project with a ⭐ on
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#introducing-dstack-sky" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Introducing dstack Sky
-      
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -3759,6 +3787,54 @@ Support our project with a ⭐ on
       <header class="md-typeset">
         <h1 id="blog">Blog<a class="headerlink" href="#blog" title="Permanent link">&para;</a></h1>
       </header>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2024-12-10 00:00:00+00:00">December 10, 2024</time></li>
+        
+          <li class="md-meta__item">
+            in
+            
+              <a href="../../category/amd/" class="md-meta__link">AMD</a>, 
+              <a href="../../category/nvidia/" class="md-meta__link">NVIDIA</a>, 
+              <a href="../../category/volumes/" class="md-meta__link">Volumes</a>, 
+              <a href="../../category/cloud-fleets/" class="md-meta__link">Cloud fleets</a>, 
+              <a href="../../category/ssh-fleets/" class="md-meta__link">SSH fleets</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              3 min read
+            
+          </li>
+        
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="beyond-kubernetes-2024-recap-and-whats-ahead-for-ai-infra"><a class="toclink" href="../../beyond-kubernetes-2024-recap-and-whats-ahead/">Beyond Kubernetes: 2024 recap and what's ahead for AI infra</a></h2>
+<p>At <code>dstack</code>, we aim to simplify AI model development, training, and deployment of AI models by offering an
+alternative to the complex Kubernetes ecosystem. Our goal is to enable seamless AI infrastructure management across any
+cloud or hardware vendor. </p>
+<p>As 2024 comes to a close, we reflect on the milestones we've achieved and look ahead to the next steps.</p>
+
+    
+      <nav class="md-post__action">
+        <a href="../../beyond-kubernetes-2024-recap-and-whats-ahead/">
+          Continue reading
+        </a>
+      </nav>
+    
+    
+  </div>
+</article>
       
         <article class="md-post md-post--excerpt">
   <header class="md-post__header">
@@ -3969,7 +4045,7 @@ in our latest release, we've added this option.</p>
     <h2 id="monitoring-basic-gpu-metrics-via-dstack-stats"><a class="toclink" href="../../dstack-stats/">Monitoring basic GPU metrics via dstack stats</a></h2>
 <h3 id="how-it-works" style="display:none"><a class="toclink" href="../../dstack-stats/#how-it-works">How it works</a></h3>
 <p>While it's possible to use third-party monitoring tools with <code>dstack</code>, it is often more convenient to debug your run and
-track metrics out of the box. That's why, with the latest release, <code>dstack</code> introduced <a href="../../../docs/reference/cli/dstack/stats/"><code>dstack stats</code></a>, a new CLI (and API)
+track metrics out of the box. That's why, with the latest release, <code>dstack</code> introduced <a href="../../../docs/reference/cli/dstack/metrics/"><code>dstack stats</code></a>, a new CLI (and API)
 for monitoring container metrics, including GPU usage for <code>NVIDIA</code>, <code>AMD</code>, and other accelerators.</p>
 <p><img src="https://github.com/dstackai/static-assets/blob/main/static-assets/images/dstack-stats-v2.png?raw=true" width="725"/></p>
 
@@ -4205,44 +4281,6 @@ With today's release, both options are now supported.</p>
   </div>
 </article>
       
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2024-03-11 00:00:00+00:00">March 11, 2024</time></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              3 min read
-            
-          </li>
-        
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="introducing-dstack-sky"><a class="toclink" href="../../dstack-sky/">Introducing dstack Sky</a></h2>
-<p>Today we're previewing <code>dstack Sky</code>, a service built on top of 
-<code>dstack</code> that enables you to get GPUs at competitive rates from a wide pool of providers.</p>
-<p><img alt="dstack-sky-banner.png" src="../../images/dstack-sky-banner-4.png" width="650" /></p>
-
-    
-      <nav class="md-post__action">
-        <a href="../../dstack-sky/">
-          Continue reading
-        </a>
-      </nav>
-    
-    
-  </div>
-</article>
-      
       
         
           
@@ -4250,7 +4288,7 @@ With today's release, both options are now supported.</p>
 
 
 <nav class="md-pagination">
-  <a class="md-pagination__link" href="../../">1</a> <span class="md-pagination__current">2</span>
+  <a class="md-pagination__link" href="../../">1</a> <span class="md-pagination__current">2</span> <a class="md-pagination__link" href="../3/">3</a>
 </nav>
         
       

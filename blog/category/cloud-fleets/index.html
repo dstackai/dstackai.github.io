@@ -1739,14 +1739,14 @@ Support our project with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../../docs/reference/cli/dstack/stats/" class="md-nav__link">
+      <a href="../../../docs/reference/cli/dstack/metrics/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    dstack stats
+    dstack metrics
   
 
     
@@ -2242,6 +2242,34 @@ Support our project with a ⭐ on
     
   
     NIM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/deployment/sglang/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SGLang
   
 
     
@@ -3229,6 +3257,17 @@ Support our project with a ⭐ on
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#supporting-mpi-and-ncclrccl-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Supporting MPI and NCCL/RCCL tests
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#efficient-distributed-training-with-aws-efa" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3552,6 +3591,17 @@ Support our project with a ⭐ on
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#supporting-mpi-and-ncclrccl-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Supporting MPI and NCCL/RCCL tests
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#efficient-distributed-training-with-aws-efa" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3587,6 +3637,59 @@ Support our project with a ⭐ on
       <header class="md-typeset">
         <h1 id="cloud-fleets">Cloud fleets<a class="headerlink" href="#cloud-fleets" title="Permanent link">&para;</a></h1>
       </header>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2025-04-02 00:00:00+00:00">April 2, 2025</time></li>
+        
+          <li class="md-meta__item">
+            in
+            
+              <a href="../ssh-fleets/" class="md-meta__link">SSH fleets</a>, 
+              <a href="./" class="md-meta__link">Cloud fleets</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              2 min read
+            
+          </li>
+        
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="supporting-mpi-and-ncclrccl-tests"><a class="toclink" href="../../cursor/">Supporting MPI and NCCL/RCCL tests</a></h2>
+<p>As AI models grow in complexity, efficient orchestration tools become increasingly important. 
+<a href="../../../docs/concepts/fleets/">Fleets</a> introduced by <code>dstack</code> last year streamline 
+<a href="../../../docs/concepts/tasks/">task execution</a> on both cloud and 
+on-prem clusters, whether it's pre-training, fine-tuning, or batch processing.</p>
+<p>The strength of <code>dstack</code> lies in its flexibility. Users can leverage distributed framework like
+<code>torchrun</code>, <code>accelerate</code>, or others. <code>dstack</code> handles node provisioning, job execution, and automatically propagates
+system environment variables—such as <code>DSTACK_NODE_RANK</code>, <code>DSTACK_MASTER_NODE_IP</code>,
+<code>DSTACK_GPUS_PER_NODE</code> and <a href="../../../docs/concepts/tasks/#system-environment-variables">others</a>—to containers.</p>
+<p><img src="https://github.com/dstackai/static-assets/blob/main/static-assets/images/dstack-mpi-v2.png?raw=true" width="630"/></p>
+<p>One use case <code>dstack</code> hasn’t supported until now is MPI, as it requires a scheduled environment or
+direct SSH connections between containers. Since <code>mpirun</code> is essential for running NCCL/RCCL tests—crucial for large-scale
+cluster usage—we’ve added support for it.</p>
+
+    
+      <nav class="md-post__action">
+        <a href="../../cursor/">
+          Continue reading
+        </a>
+      </nav>
+    
+    
+  </div>
+</article>
       
         <article class="md-post md-post--excerpt">
   <header class="md-post__header">

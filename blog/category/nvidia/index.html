@@ -1739,14 +1739,14 @@ Support our project with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../../docs/reference/cli/dstack/stats/" class="md-nav__link">
+      <a href="../../../docs/reference/cli/dstack/metrics/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    dstack stats
+    dstack metrics
   
 
     
@@ -2242,6 +2242,34 @@ Support our project with a ⭐ on
     
   
     NIM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/deployment/sglang/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SGLang
   
 
     
@@ -3709,7 +3737,7 @@ Support our project with a ⭐ on
 <p>Effective AI infrastructure management requires full visibility into compute performance and costs. AI researchers need
 detailed insights into container- and GPU-level performance, while managers rely on cost metrics to track resource usage
 across projects.</p>
-<p>While <code>dstack</code> provides key metrics through its UI and <a href="../../dstack-stats/"><code>dstack stats</code></a> CLI, teams often need more granular data and prefer
+<p>While <code>dstack</code> provides key metrics through its UI and <a href="../../dstack-stats/"><code>dstack metrics</code></a> CLI, teams often need more granular data and prefer
 using their own monitoring tools. To support this, we’ve introduced a new endpoint that allows real-time exporting all collected
 metrics—covering fleets and runs—directly to Prometheus.</p>
 <p><img src="https://github.com/dstackai/static-assets/blob/main/static-assets/images/dstack-prometheus-v3.png?raw=true" width="630"/></p>
@@ -3961,7 +3989,7 @@ who provided high-end hardware.</p>
     <h2 id="monitoring-basic-gpu-metrics-via-dstack-stats"><a class="toclink" href="../../dstack-stats/">Monitoring basic GPU metrics via dstack stats</a></h2>
 <h3 id="how-it-works" style="display:none"><a class="toclink" href="../../dstack-stats/#how-it-works">How it works</a></h3>
 <p>While it's possible to use third-party monitoring tools with <code>dstack</code>, it is often more convenient to debug your run and
-track metrics out of the box. That's why, with the latest release, <code>dstack</code> introduced <a href="../../../docs/reference/cli/dstack/stats/"><code>dstack stats</code></a>, a new CLI (and API)
+track metrics out of the box. That's why, with the latest release, <code>dstack</code> introduced <a href="../../../docs/reference/cli/dstack/metrics/"><code>dstack stats</code></a>, a new CLI (and API)
 for monitoring container metrics, including GPU usage for <code>NVIDIA</code>, <code>AMD</code>, and other accelerators.</p>
 <p><img src="https://github.com/dstackai/static-assets/blob/main/static-assets/images/dstack-stats-v2.png?raw=true" width="725"/></p>
 

@@ -18,6 +18,8 @@
         <link rel="prev" href="../cursor/">
       
       
+        <link rel="next" href="../cursor/">
+      
       
         
       
@@ -1741,14 +1743,14 @@ Support our project with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../docs/reference/cli/dstack/stats/" class="md-nav__link">
+      <a href="../../docs/reference/cli/dstack/metrics/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    dstack stats
+    dstack metrics
   
 
     
@@ -2244,6 +2246,34 @@ Support our project with a ⭐ on
     
   
     NIM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/deployment/sglang/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SGLang
   
 
     
@@ -3605,7 +3635,7 @@ Support our project with a ⭐ on
 <p>Effective AI infrastructure management requires full visibility into compute performance and costs. AI researchers need
 detailed insights into container- and GPU-level performance, while managers rely on cost metrics to track resource usage
 across projects.</p>
-<p>While <code>dstack</code> provides key metrics through its UI and <a href="../dstack-stats/"><code>dstack stats</code></a> CLI, teams often need more granular data and prefer
+<p>While <code>dstack</code> provides key metrics through its UI and <a href="../dstack-stats/"><code>dstack metrics</code></a> CLI, teams often need more granular data and prefer
 using their own monitoring tools. To support this, we’ve introduced a new endpoint that allows real-time exporting all collected
 metrics—covering fleets and runs—directly to Prometheus.</p>
 <p><img src="https://github.com/dstackai/static-assets/blob/main/static-assets/images/dstack-prometheus-v3.png?raw=true" width="630"/></p>
@@ -3645,7 +3675,7 @@ drill down into specific projects or users.</p>
 <p>For a full list of available metrics and labels, check out the <a href="../../docs/guides/monitoring/">Monitoring</a> guide.</p>
 <details class="info">
 <summary>NVIDIA</summary>
-<p>NVIDIA DCGM metrics are automatically collected for <code>aws</code>, <code>azure</code>, <code>gcp</code>, and <code>oci</code> backends, 
+<p>NVIDIA DCGM metrics are automatically collected for <code>aws</code>, <code>azure</code>, <code>gcp</code>, and <code>oci</code> backends,
 as well as for <a href="../../docs/concepts/fleets/#ssh">SSH fleets</a>.</p>
 <p>To ensure NVIDIA DCGM metrics are collected from SSH fleets, ensure the <code>datacenter-gpu-manager-4-core</code>,
 <code>datacenter-gpu-manager-4-proprietary</code>, and <code>datacenter-gpu-manager-exporter</code> packages are installed on the hosts.</p>
@@ -3653,13 +3683,13 @@ as well as for <a href="../../docs/concepts/fleets/#ssh">SSH fleets</a>.</p>
 <details class="info">
 <summary>AMD</summary>
 <p>AMD device metrics are not yet collected for any backends. This support will be available soon. For now, AMD metrics are
-only accessible through the UI and the <a href="../dstack-stats/"><code>dstack stats</code></a> CLI.</p>
+only accessible through the UI and the <a href="../dstack-stats/"><code>dstack metrics</code></a> CLI.</p>
 </details>
 <div class="admonition info">
 <p class="admonition-title">What's next?</p>
 <ol>
 <li>See the <a href="../../docs/guides/monitoring/">Monitoring</a> guide</li>
-<li>Check <a href="../../docs/concepts/dev-environments/">dev environments</a>, 
+<li>Check <a href="../../docs/concepts/dev-environments/">dev environments</a>,
    <a href="../../docs/concepts/tasks/">tasks</a>, <a href="../../docs/concepts/services/">services</a>,
    and <a href="../../docs/concepts/fleets/">fleets</a></li>
 <li>Join <a href="https://discord.gg/u8SmfwPpMd" target="_blank">Discord <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a></li>
