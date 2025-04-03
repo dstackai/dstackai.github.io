@@ -1598,6 +1598,17 @@ Support our project with a ⭐ on
 </li>
         
           <li class="md-nav__item">
+  <a href="#nebius" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        nebius
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#runpod" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3896,6 +3907,17 @@ Support our project with a ⭐ on
 </li>
         
           <li class="md-nav__item">
+  <a href="#nebius" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        nebius
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#runpod" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -4186,6 +4208,16 @@ to configure <a href="../../../concepts/backends/">backends</a> and other <a hre
 <h6 id="lambda-creds"><code>projects[n].backends[type=lambda].creds</code><a class="headerlink" href="#lambda-creds" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="type"><code>type</code> -  The type of credentials. Must be <code>api_key</code>.<a class="headerlink" href="#type" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="api_key"><code>api_key</code> -  The API key.<a class="headerlink" href="#api_key" title="Permanent link">&para;</a></h6>
+<h5 id="nebius"><code>projects[n].backends[type=nebius]</code><a class="headerlink" href="#nebius" title="Permanent link">&para;</a></h5>
+<h6 class="reference-item" id="type"><code>type</code> -  The type of backend. Must be <code>nebius</code>.<a class="headerlink" href="#type" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="regions"><code>regions</code> - (Optional) The list of Nebius regions. Omit to use all regions.<a class="headerlink" href="#regions" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="creds"><code>creds</code> -  The credentials.<a class="headerlink" href="#creds" title="Permanent link">&para;</a></h6>
+<h6 id="nebius-creds"><code>projects[n].backends[type=nebius].creds</code><a class="headerlink" href="#nebius-creds" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="type"><code>type</code> -  The type of credentials. Must be <code>service_account</code>.<a class="headerlink" href="#type" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="service_account_id"><code>service_account_id</code> -  Service account ID.<a class="headerlink" href="#service_account_id" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="public_key_id"><code>public_key_id</code> -  ID of the service account public key.<a class="headerlink" href="#public_key_id" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="private_key_file"><code>private_key_file</code> - (Optional) Path to the service account private key.<a class="headerlink" href="#private_key_file" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="private_key_content"><code>private_key_content</code> - (Optional) Content of the service account private key. When configuring via <code>server/config.yml</code>, it's automatically filled from <code>private_key_file</code>. When configuring via UI, it has to be specified explicitly..<a class="headerlink" href="#private_key_content" title="Permanent link">&para;</a></h6>
 <h5 id="runpod"><code>projects[n].backends[type=runpod]</code><a class="headerlink" href="#runpod" title="Permanent link">&para;</a></h5>
 <h6 class="reference-item" id="regions"><code>regions</code> - (Optional) The list of RunPod regions. Omit to use all regions.<a class="headerlink" href="#regions" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="community_cloud"><code>community_cloud</code> - (Optional) Whether Community Cloud offers can be suggested in addition to Secure Cloud. Defaults to <code>true</code>.<a class="headerlink" href="#community_cloud" title="Permanent link">&para;</a></h6>

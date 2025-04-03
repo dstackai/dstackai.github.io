@@ -864,6 +864,19 @@ Support our project with a ⭐ on
 </li>
         
           <li class="md-nav__item">
+  <a href="#nebius" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Nebius
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#runpod" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3848,6 +3861,19 @@ Support our project with a ⭐ on
 </li>
         
           <li class="md-nav__item">
+  <a href="#nebius" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Nebius
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#runpod" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -4549,6 +4575,48 @@ button to create a new API key.</p>
 
 </div>
 
+<h3 id="nebius">Nebius<a class="headerlink" href="#nebius" title="Permanent link">&para;</a></h3>
+<p>Log into your <a href="https://console.eu.nebius.com/">Nebius AI Cloud <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> account, navigate to Access, and select Service Accounts. Create a service account, add it to the editors group, and upload its authorized key.</p>
+<p>Then configure the backend:</p>
+<div editor-title="~/.dstack/server/config.yml">
+
+<div class="highlight"><pre><span></span><code><span class="nt">projects</span><span class="p">:</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">main</span>
+<span class="w">  </span><span class="nt">backends</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nebius</span>
+<span class="w">    </span><span class="nt">creds</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service_account</span>
+<span class="w">      </span><span class="nt">service_account_id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">serviceaccount-e00dhnv9ftgb3cqmej</span>
+<span class="w">      </span><span class="nt">public_key_id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">publickey-e00ngaex668htswqy4</span>
+<span class="w">      </span><span class="nt">private_key_file</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">~/path/to/key.pem</span>
+</code></pre></div>
+
+</div>
+
+<details class="info">
+<summary>Configuring in the UI</summary>
+<p>If you are configuring the backend in the <code>dstack</code> UI, specify the contents of the private key file in <code>private_key_content</code>.</p>
+<div editor-title="~/.dstack/server/config.yml">
+<div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nebius</span>
+<span class="nt">creds</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service_account</span>
+<span class="w">  </span><span class="nt">service_account_id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">serviceaccount-e00dhnv9ftgb3cqmej</span>
+<span class="w">  </span><span class="nt">public_key_id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">publickey-e00ngaex668htswqy4</span>
+<span class="w">  </span><span class="nt">private_key_content</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">    </span><span class="no">-----BEGIN PRIVATE KEY-----</span>
+<span class="w">    </span><span class="no">MIIJQQIBADANBgkqhkiG9w0BAQEFAASCCSswggknAgEAAoICAQChwQ5OOhy60N7m</span>
+<span class="w">    </span><span class="no">cPx/9M0oRUyJdRRv2nCALbdU/wSDOo8o5N7sP63zCaxXPeKwLNEzneMd/U0gWSv2</span>
+<span class="w">    </span><span class="no">[...]</span>
+<span class="w">    </span><span class="no">8y1qYDPKQ8LR+DPCUmyhM2I8t6673Vz3GrtEjkLhgQo/KqOVb3yiBFVfkA5Jov5s</span>
+<span class="w">    </span><span class="no">kO7y4T0ynsI8b6wlhCukQTLpIYJ5</span>
+<span class="w">    </span><span class="no">-----END PRIVATE KEY-----</span>
+</code></pre></div>
+</div>
+</details>
+<div class="admonition info">
+<p class="admonition-title">Python version</p>
+<p>Nebius is only supported if <code>dstack server</code> is running on Python 3.10 or higher.</p>
+</div>
 <h3 id="runpod">RunPod<a class="headerlink" href="#runpod" title="Permanent link">&para;</a></h3>
 <p>Log into your <a href="https://www.runpod.io/console/">RunPod <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> console, click Settings in the sidebar, expand the <code>API Keys</code> section, and click
 the button to create a Read &amp; Write key.</p>
