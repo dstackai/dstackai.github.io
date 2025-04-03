@@ -61,15 +61,15 @@
          <lastmod>2025-04-03</lastmod>
     </url>
     <url>
+         <loc>https://dstack.ai/blog/dstack-metrics/</loc>
+         <lastmod>2025-04-03</lastmod>
+    </url>
+    <url>
          <loc>https://dstack.ai/blog/dstack-sky-own-cloud-accounts/</loc>
          <lastmod>2025-04-03</lastmod>
     </url>
     <url>
          <loc>https://dstack.ai/blog/dstack-sky/</loc>
-         <lastmod>2025-04-03</lastmod>
-    </url>
-    <url>
-         <loc>https://dstack.ai/blog/dstack-stats/</loc>
          <lastmod>2025-04-03</lastmod>
     </url>
     <url>
@@ -98,6 +98,10 @@
     </url>
     <url>
          <loc>https://dstack.ai/blog/intel-gaudi/</loc>
+         <lastmod>2025-04-03</lastmod>
+    </url>
+    <url>
+         <loc>https://dstack.ai/blog/metrics-ui/</loc>
          <lastmod>2025-04-03</lastmod>
     </url>
     <url>
@@ -357,6 +361,18 @@
          <lastmod>2025-04-03</lastmod>
     </url>
     <url>
+         <loc>https://dstack.ai/blog/category/monitoring/</loc>
+         <lastmod>2025-04-03</lastmod>
+    </url>
+    <url>
+         <loc>https://dstack.ai/blog/category/amd/</loc>
+         <lastmod>2025-04-03</lastmod>
+    </url>
+    <url>
+         <loc>https://dstack.ai/blog/category/nvidia/</loc>
+         <lastmod>2025-04-03</lastmod>
+    </url>
+    <url>
          <loc>https://dstack.ai/blog/category/ssh-fleets/</loc>
          <lastmod>2025-04-03</lastmod>
     </url>
@@ -365,23 +381,11 @@
          <lastmod>2025-04-03</lastmod>
     </url>
     <url>
-         <loc>https://dstack.ai/blog/category/monitoring/</loc>
-         <lastmod>2025-04-03</lastmod>
-    </url>
-    <url>
-         <loc>https://dstack.ai/blog/category/nvidia/</loc>
-         <lastmod>2025-04-03</lastmod>
-    </url>
-    <url>
          <loc>https://dstack.ai/blog/category/dev-environments/</loc>
          <lastmod>2025-04-03</lastmod>
     </url>
     <url>
          <loc>https://dstack.ai/blog/category/benchmarks/</loc>
-         <lastmod>2025-04-03</lastmod>
-    </url>
-    <url>
-         <loc>https://dstack.ai/blog/category/amd/</loc>
          <lastmod>2025-04-03</lastmod>
     </url>
     <url>
@@ -402,6 +406,10 @@
     </url>
     <url>
          <loc>https://dstack.ai/blog/page/3/</loc>
+         <lastmod>2025-04-03</lastmod>
+    </url>
+    <url>
+         <loc>https://dstack.ai/blog/archive/2025/page/2/</loc>
          <lastmod>2025-04-03</lastmod>
     </url>
     <url>

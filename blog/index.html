@@ -2977,6 +2977,17 @@ Support our project with a ⭐ on
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#built-in-ui-for-monitoring-basic-gpu-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Built-in UI for monitoring basic GPU metrics
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#supporting-mpi-and-ncclrccl-tests" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3069,17 +3080,6 @@ Support our project with a ⭐ on
     <span class="md-ellipsis">
       
         Introducing GPU blocks and proxy jump for SSH fleets
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#supporting-nvidia-and-amd-accelerators-on-vultr" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Supporting NVIDIA and AMD accelerators on Vultr
       
     </span>
   </a>
@@ -3666,6 +3666,17 @@ Support our project with a ⭐ on
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#built-in-ui-for-monitoring-basic-gpu-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Built-in UI for monitoring basic GPU metrics
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#supporting-mpi-and-ncclrccl-tests" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3764,17 +3775,6 @@ Support our project with a ⭐ on
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#supporting-nvidia-and-amd-accelerators-on-vultr" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Supporting NVIDIA and AMD accelerators on Vultr
-      
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -3795,6 +3795,55 @@ Support our project with a ⭐ on
 
 <h1 id="blog">Blog<a class="headerlink" href="#blog" title="Permanent link">&para;</a></h1>
       </header>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2025-04-03 00:00:00+00:00">April 3, 2025</time></li>
+        
+          <li class="md-meta__item">
+            in
+            
+              <a href="category/monitoring/" class="md-meta__link">Monitoring</a>, 
+              <a href="category/amd/" class="md-meta__link">AMD</a>, 
+              <a href="category/nvidia/" class="md-meta__link">NVIDIA</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              2 min read
+            
+          </li>
+        
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="built-in-ui-for-monitoring-basic-gpu-metrics"><a class="toclink" href="metrics-ui/">Built-in UI for monitoring basic GPU metrics</a></h2>
+<p>AI workloads generate vast amounts of metrics, making it essential to have efficient monitoring tools. While our recent
+update introduced the ability to export available metrics to Prometheus for maximum flexibility, there are times when
+users need to quickly access essential metrics without the need to switch to an external tool.</p>
+<p><img src="https://github.com/dstackai/static-assets/blob/main/static-assets/images/dstack-metrics-ui-v2-min.png?raw=true" width="630"/></p>
+<p>Previously, we introduced a <a href="dstack-metrics/">CLI command</a> that allows users to view basic GPU metrics for both NVIDIA
+and AMD hardware. Now, with this latest update, we’re excited to announce the addition of a built-in dashboard within
+the <code>dstack</code> control plane.</p>
+
+    
+      <nav class="md-post__action">
+        <a href="metrics-ui/">
+          Continue reading
+        </a>
+      </nav>
+    
+    
+  </div>
+</article>
       
         <article class="md-post md-post--excerpt">
   <header class="md-post__header">
@@ -3882,7 +3931,7 @@ cluster usage—we’ve added support for it.</p>
 <p>Effective AI infrastructure management requires full visibility into compute performance and costs. AI researchers need
 detailed insights into container- and GPU-level performance, while managers rely on cost metrics to track resource usage
 across projects.</p>
-<p>While <code>dstack</code> provides key metrics through its UI and <a href="dstack-stats/"><code>dstack metrics</code></a> CLI, teams often need more granular data and prefer
+<p>While <code>dstack</code> provides key metrics through its UI and <a href="dstack-metrics/"><code>dstack metrics</code></a> CLI, teams often need more granular data and prefer
 using their own monitoring tools. To support this, we’ve introduced a new endpoint that allows real-time exporting all collected
 metrics—covering fleets and runs—directly to Prometheus.</p>
 <p><img src="https://github.com/dstackai/static-assets/blob/main/static-assets/images/dstack-prometheus-v3.png?raw=true" width="630"/></p>
@@ -4223,56 +4272,6 @@ Slurm.</p>
     
       <nav class="md-post__action">
         <a href="gpu-blocks-and-proxy-jump/">
-          Continue reading
-        </a>
-      </nav>
-    
-    
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2025-02-17 00:00:00+00:00">February 17, 2025</time></li>
-        
-          <li class="md-meta__item">
-            in
-            
-              <a href="category/nvidia/" class="md-meta__link">NVIDIA</a>, 
-              <a href="category/amd/" class="md-meta__link">AMD</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              2 min read
-            
-          </li>
-        
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="supporting-nvidia-and-amd-accelerators-on-vultr"><a class="toclink" href="nvidia-and-amd-on-vultr.md/">Supporting NVIDIA and AMD accelerators on Vultr</a></h2>
-<p>As demand for AI infrastructure grows, the need for efficient, vendor-neutral orchestration tools is becoming
-increasingly important.
-At <code>dstack</code>, we’re committed to redefining AI container orchestration by prioritizing an AI-native, open-source-first
-approach.
-Today, we’re excited to share a new integration and partnership
-with <a href="https://www.vultr.com/" target="_blank">Vultr <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>.</p>
-<p><img src="https://github.com/dstackai/static-assets/blob/main/static-assets/images/dstack-vultr.png?raw=true" width="630"/></p>
-<p>This new integration enables Vultr customers to train and deploy models on both AMD
-and NVIDIA GPUs with greater flexibility and efficiency–using <code>dstack</code>. </p>
-
-    
-      <nav class="md-post__action">
-        <a href="nvidia-and-amd-on-vultr.md/">
           Continue reading
         </a>
       </nav>

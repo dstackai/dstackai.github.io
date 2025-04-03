@@ -3353,6 +3353,17 @@ Support our project with a ⭐ on
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#built-in-ui-for-monitoring-basic-gpu-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Built-in UI for monitoring basic GPU metrics
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#exporting-gpu-cost-and-other-metrics-to-prometheus" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3364,10 +3375,10 @@ Support our project with a ⭐ on
 </li>
       
         <li class="md-nav__item">
-  <a href="#monitoring-basic-gpu-metrics-via-dstack-stats" class="md-nav__link">
+  <a href="#monitoring-basic-gpu-metrics-via-cli" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Monitoring basic GPU metrics via dstack stats
+        Monitoring basic GPU metrics via CLI
       
     </span>
   </a>
@@ -3580,6 +3591,17 @@ Support our project with a ⭐ on
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#built-in-ui-for-monitoring-basic-gpu-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Built-in UI for monitoring basic GPU metrics
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#exporting-gpu-cost-and-other-metrics-to-prometheus" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3591,10 +3613,10 @@ Support our project with a ⭐ on
 </li>
       
         <li class="md-nav__item">
-  <a href="#monitoring-basic-gpu-metrics-via-dstack-stats" class="md-nav__link">
+  <a href="#monitoring-basic-gpu-metrics-via-cli" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Monitoring basic GPU metrics via dstack stats
+        Monitoring basic GPU metrics via CLI
       
     </span>
   </a>
@@ -3615,6 +3637,55 @@ Support our project with a ⭐ on
       <header class="md-typeset">
         <h1 id="monitoring">Monitoring<a class="headerlink" href="#monitoring" title="Permanent link">&para;</a></h1>
       </header>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2025-04-03 00:00:00+00:00">April 3, 2025</time></li>
+        
+          <li class="md-meta__item">
+            in
+            
+              <a href="./" class="md-meta__link">Monitoring</a>, 
+              <a href="../amd/" class="md-meta__link">AMD</a>, 
+              <a href="../nvidia/" class="md-meta__link">NVIDIA</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              2 min read
+            
+          </li>
+        
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="built-in-ui-for-monitoring-basic-gpu-metrics"><a class="toclink" href="../../metrics-ui/">Built-in UI for monitoring basic GPU metrics</a></h2>
+<p>AI workloads generate vast amounts of metrics, making it essential to have efficient monitoring tools. While our recent
+update introduced the ability to export available metrics to Prometheus for maximum flexibility, there are times when
+users need to quickly access essential metrics without the need to switch to an external tool.</p>
+<p><img src="https://github.com/dstackai/static-assets/blob/main/static-assets/images/dstack-metrics-ui-v2-min.png?raw=true" width="630"/></p>
+<p>Previously, we introduced a <a href="../../dstack-metrics/">CLI command</a> that allows users to view basic GPU metrics for both NVIDIA
+and AMD hardware. Now, with this latest update, we’re excited to announce the addition of a built-in dashboard within
+the <code>dstack</code> control plane.</p>
+
+    
+      <nav class="md-post__action">
+        <a href="../../metrics-ui/">
+          Continue reading
+        </a>
+      </nav>
+    
+    
+  </div>
+</article>
       
         <article class="md-post md-post--excerpt">
   <header class="md-post__header">
@@ -3649,7 +3720,7 @@ Support our project with a ⭐ on
 <p>Effective AI infrastructure management requires full visibility into compute performance and costs. AI researchers need
 detailed insights into container- and GPU-level performance, while managers rely on cost metrics to track resource usage
 across projects.</p>
-<p>While <code>dstack</code> provides key metrics through its UI and <a href="../../dstack-stats/"><code>dstack metrics</code></a> CLI, teams often need more granular data and prefer
+<p>While <code>dstack</code> provides key metrics through its UI and <a href="../../dstack-metrics/"><code>dstack metrics</code></a> CLI, teams often need more granular data and prefer
 using their own monitoring tools. To support this, we’ve introduced a new endpoint that allows real-time exporting all collected
 metrics—covering fleets and runs—directly to Prometheus.</p>
 <p><img src="https://github.com/dstackai/static-assets/blob/main/static-assets/images/dstack-prometheus-v3.png?raw=true" width="630"/></p>
@@ -3694,8 +3765,8 @@ metrics—covering fleets and runs—directly to Prometheus.</p>
     </div>
   </header>
   <div class="md-post__content md-typeset">
-    <h2 id="monitoring-basic-gpu-metrics-via-dstack-stats"><a class="toclink" href="../../dstack-stats/">Monitoring basic GPU metrics via dstack stats</a></h2>
-<h3 id="how-it-works" style="display:none"><a class="toclink" href="../../dstack-stats/#how-it-works">How it works</a></h3>
+    <h2 id="monitoring-basic-gpu-metrics-via-cli"><a class="toclink" href="../../dstack-metrics/">Monitoring basic GPU metrics via CLI</a></h2>
+<h3 id="how-it-works" style="display:none"><a class="toclink" href="../../dstack-metrics/#how-it-works">How it works</a></h3>
 <p>While it's possible to use third-party monitoring tools with <code>dstack</code>, it is often more convenient to debug your run and
 track metrics out of the box. That's why, with the latest release, <code>dstack</code> introduced <a href="../../../docs/reference/cli/dstack/metrics/"><code>dstack stats</code></a>, a new CLI (and API)
 for monitoring container metrics, including GPU usage for <code>NVIDIA</code>, <code>AMD</code>, and other accelerators.</p>
@@ -3703,7 +3774,7 @@ for monitoring container metrics, including GPU usage for <code>NVIDIA</code>, <
 
     
       <nav class="md-post__action">
-        <a href="../../dstack-stats/">
+        <a href="../../dstack-metrics/">
           Continue reading
         </a>
       </nav>
