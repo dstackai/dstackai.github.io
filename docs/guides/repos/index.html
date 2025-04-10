@@ -1214,6 +1214,19 @@ Support our project with a ⭐ on
 </li>
       
         <li class="md-nav__item">
+  <a href="#store-the-repo-on-a-volume" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Store the repo on a volume
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#whats-next" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3013,6 +3026,34 @@ Support our project with a ⭐ on
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/misc/a3mega-clusters/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    A3 Mega
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -3833,6 +3874,19 @@ Support our project with a ⭐ on
 </li>
       
         <li class="md-nav__item">
+  <a href="#store-the-repo-on-a-volume" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Store the repo on a volume
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#whats-next" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3928,6 +3982,11 @@ If you use a private Git repo, you can pass Git credentials to <code>dstack appl
 
 </div>
 
+<h2 id="store-the-repo-on-a-volume">Store the repo on a volume<a class="headerlink" href="#store-the-repo-on-a-volume" title="Permanent link">&para;</a></h2>
+<p>You can use <a href="../../concepts/volumes/">Volumes</a> to persist repo changes without pushing them to the Git remote.
+Attach a volume to the repo directory (<code>/workflow</code>) or any of its subdirectories.
+<code>dstack</code> will clone the repo to the volume on the first run.
+On subsequent runs, <code>dstack</code> will use the repo contents from the volume instead of cloning the repo.</p>
 <h2 id="whats-next">What's next?<a class="headerlink" href="#whats-next" title="Permanent link">&para;</a></h2>
 <ol>
 <li>Read about <a href="../../concepts/dev-environments/">dev environments</a>, <a href="../../concepts/tasks/">tasks</a>, <a href="../../concepts/services/">services</a></li>

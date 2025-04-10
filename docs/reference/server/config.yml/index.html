@@ -3134,6 +3134,34 @@ Support our project with a ⭐ on
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../examples/misc/a3mega-clusters/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    A3 Mega
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -4177,7 +4205,8 @@ to configure <a href="../../../concepts/backends/">backends</a> and other <a hre
 <h6 class="reference-item" id="type"><code>type</code> -  The type of backend. Must be <code>gcp</code>.<a class="headerlink" href="#type" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="project_id"><code>project_id</code> -  The project ID.<a class="headerlink" href="#project_id" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="regions"><code>regions</code> - (Optional) The list of GCP regions. Omit to use all regions.<a class="headerlink" href="#regions" title="Permanent link">&para;</a></h6>
-<h6 class="reference-item" id="vpc_name"><code>vpc_name</code> - (Optional) The name of a custom VPC.<a class="headerlink" href="#vpc_name" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="vpc_name"><code>vpc_name</code> - (Optional) The name of a custom VPC. If not specified, the default VPC is used.<a class="headerlink" href="#vpc_name" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="extra_vpcs"><code>extra_vpcs</code> - (Optional) The names of additional VPCs used for GPUDirect. Specify eight VPCs to maximize bandwidth. Each VPC must have a subnet and a firewall rule allowing internal traffic across all subnets.<a class="headerlink" href="#extra_vpcs" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="vpc_project_id"><code>vpc_project_id</code> - (Optional) The shared VPC hosted project ID. Required for shared VPC only.<a class="headerlink" href="#vpc_project_id" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="public_ips"><code>public_ips</code> - (Optional) A flag to enable/disable public IP assigning on instances. Defaults to <code>true</code>.<a class="headerlink" href="#public_ips" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="nat_check"><code>nat_check</code> - (Optional) A flag to enable/disable a check that Cloud NAT is configured for the VPC. This should be set to <code>false</code> when <code>public_ips: false</code> and outbound internet connectivity is provided by a mechanism other than Cloud NAT such as a third-party NAT appliance. Defaults to <code>true</code>.<a class="headerlink" href="#nat_check" title="Permanent link">&para;</a></h6>
