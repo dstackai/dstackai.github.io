@@ -5,19 +5,11 @@
          <lastmod>2025-04-10</lastmod>
     </url>
     <url>
-         <loc>https://dstack.ai/community/</loc>
-         <lastmod>2025-04-10</lastmod>
-    </url>
-    <url>
          <loc>https://dstack.ai/examples/</loc>
          <lastmod>2025-04-10</lastmod>
     </url>
     <url>
          <loc>https://dstack.ai/partners/</loc>
-         <lastmod>2025-04-10</lastmod>
-    </url>
-    <url>
-         <loc>https://dstack.ai/pricing/</loc>
          <lastmod>2025-04-10</lastmod>
     </url>
     <url>
@@ -153,6 +145,18 @@
          <lastmod>2025-04-10</lastmod>
     </url>
     <url>
+         <loc>https://dstack.ai/docs/concepts/metrics/</loc>
+         <lastmod>2025-04-10</lastmod>
+    </url>
+    <url>
+         <loc>https://dstack.ai/docs/concepts/projects/</loc>
+         <lastmod>2025-04-10</lastmod>
+    </url>
+    <url>
+         <loc>https://dstack.ai/docs/concepts/repos/</loc>
+         <lastmod>2025-04-10</lastmod>
+    </url>
+    <url>
          <loc>https://dstack.ai/docs/concepts/services/</loc>
          <lastmod>2025-04-10</lastmod>
     </url>
@@ -165,23 +169,11 @@
          <lastmod>2025-04-10</lastmod>
     </url>
     <url>
-         <loc>https://dstack.ai/docs/guides/administration/</loc>
-         <lastmod>2025-04-10</lastmod>
-    </url>
-    <url>
          <loc>https://dstack.ai/docs/guides/dstack-sky/</loc>
          <lastmod>2025-04-10</lastmod>
     </url>
     <url>
-         <loc>https://dstack.ai/docs/guides/monitoring/</loc>
-         <lastmod>2025-04-10</lastmod>
-    </url>
-    <url>
          <loc>https://dstack.ai/docs/guides/protips/</loc>
-         <lastmod>2025-04-10</lastmod>
-    </url>
-    <url>
-         <loc>https://dstack.ai/docs/guides/repos/</loc>
          <lastmod>2025-04-10</lastmod>
     </url>
     <url>
