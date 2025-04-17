@@ -914,6 +914,19 @@ Support our project with a ⭐ on
 </li>
         
           <li class="md-nav__item">
+  <a href="#rate-limits" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Rate Limits
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#resources" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2649,6 +2662,34 @@ Support our project with a ⭐ on
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/deployment/trtllm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TensorRT-LLM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -3796,6 +3837,19 @@ Support our project with a ⭐ on
 </li>
         
           <li class="md-nav__item">
+  <a href="#rate-limits" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Rate Limits
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#resources" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -4089,7 +4143,7 @@ or via <code>dstack</code> UI.</p>
 <p>Running services for development purposes doesn’t require setting up a <a href="../gateways/">gateway</a>.</p>
 <p>However, you'll need a gateway in the following cases:</p>
 <ul>
-<li>To use auto-scaling</li>
+<li>To use auto-scaling or rate limits</li>
 <li>To enable HTTPS for the endpoint and map it to your domain</li>
 <li>If your service requires WebSockets</li>
 <li>If your service cannot work with a <a href="#path-prefix">path prefix</a></li>
@@ -4142,8 +4196,7 @@ You can configure the number of replicas as well as the auto-scaling rules.</p>
 case <code>dstack</code> adjusts the number of replicas (scales up or down) automatically based on the load. </p>
 <p>Setting the minimum number of replicas to <code>0</code> allows the service to scale down to zero when there are no requests.</p>
 <blockquote>
-<p>The <code>scaling</code> property currently requires creating a <a href="../gateways/">gateway</a>.
-This requirement is expected to be removed soon.</p>
+<p>The <code>scaling</code> property requires creating a <a href="../gateways/">gateway</a>.</p>
 </blockquote>
 <h3 id="model">Model<a class="headerlink" href="#model" title="Permanent link">&para;</a></h3>
 <p>If the service is running a chat model with an OpenAI-compatible interface,
@@ -4209,6 +4262,52 @@ to work out of the box. If your app doesn't expect the prefix to be stripped,
 set <a href="../../reference/dstack.yml/service/#strip_prefix"><code>strip_prefix</code></a> to <code>false</code>.</p>
 <p>If your app cannot be configured to work with a path prefix, you can host it
 on a dedicated domain name by setting up a <a href="../gateways/">gateway</a>.</p>
+<h3 id="rate-limits">Rate Limits<a class="headerlink" href="#rate-limits" title="Permanent link">&para;</a></h3>
+<p>If you have a <a href="../gateways/">gateway</a>, you can configure rate limits for your service
+using the <a href="../../reference/dstack.yml/service/#rate_limits"><code>rate_limits</code></a> property.</p>
+<div editor-title="service.dstack.yml"> 
+
+<div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service</span>
+<span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my-app:latest</span>
+<span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">80</span>
+
+<span class="nt">rate_limits</span><span class="p">:</span>
+<span class="c1"># For /api/auth/* - 1 request per second, no bursts</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">prefix</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/api/auth/</span>
+<span class="w">  </span><span class="nt">rps</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="c1"># For other URLs - 4 requests per second + bursts of up to 9 requests</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">rps</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4</span>
+<span class="w">  </span><span class="nt">burst</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">9</span>
+</code></pre></div>
+
+</div>
+
+<p>The limit is specified in requests per second, but requests are tracked with millisecond
+granularity. For example, <code>rps: 4</code> means at most 1 request every 250 milliseconds.
+For most applications, it is recommended to set the <code>burst</code> property, which allows
+temporary bursts, but keeps the average request rate at the limit specified in <code>rps</code>.</p>
+<p>Rate limits are applied to the entire service regardless of the number of replicas.
+They are applied to each client separately, as determined by the client's IP address.
+If a client violates a limit, it receives an error with status code <code>429</code>.</p>
+<details class="info">
+<summary>Partitioning key</summary>
+<p>Instead of partitioning requests by client IP address,
+you can choose to partition by the value of a header.</p>
+<p><div editor-title="service.dstack.yml"> </p>
+<div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service</span>
+<span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my-app:latest</span>
+<span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">80</span>
+
+<span class="nt">rate_limits</span><span class="p">:</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">rps</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4</span>
+<span class="w">  </span><span class="nt">burst</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">9</span>
+<span class="w">  </span><span class="c1"># Apply to each user, as determined by the `Authorization` header</span>
+<span class="w">  </span><span class="nt">key</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">header</span>
+<span class="w">    </span><span class="nt">header</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Authorization</span>
+</code></pre></div>
+</div>
+</details>
 <h3 id="resources">Resources<a class="headerlink" href="#resources" title="Permanent link">&para;</a></h3>
 <p>If you specify memory size, you can either specify an explicit size (e.g. <code>24GB</code>) or a 
 range (e.g. <code>24GB..</code>, or <code>24GB..80GB</code>, or <code>..80GB</code>).</p>

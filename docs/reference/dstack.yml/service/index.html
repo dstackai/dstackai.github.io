@@ -1415,6 +1415,53 @@ Support our project with a ⭐ on
 </li>
         
           <li class="md-nav__item">
+  <a href="#rate_limits" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        rate_limits
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="rate_limits">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rate_limitsn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          <code>rate_limits[n]</code>
+        </span>
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="rate_limits[n]">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rate_limitsnkey" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        key
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#retry" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2574,6 +2621,34 @@ Support our project with a ⭐ on
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../examples/deployment/trtllm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TensorRT-LLM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -3678,6 +3753,53 @@ Support our project with a ⭐ on
 </li>
         
           <li class="md-nav__item">
+  <a href="#rate_limits" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        rate_limits
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="rate_limits">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rate_limitsn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          <code>rate_limits[n]</code>
+        </span>
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="rate_limits[n]">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rate_limitsnkey" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        key
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#retry" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3874,6 +3996,7 @@ Support our project with a ⭐ on
 <h6 class="reference-item" id="auth"><code>auth</code> - (Optional) Enable the authorization. Defaults to <code>True</code>.<a class="headerlink" href="#auth" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="replicas"><code>replicas</code> - (Optional) The number of replicas. Can be a number (e.g. <code>2</code>) or a range (<code>0..4</code> or <code>1..8</code>). If it's a range, the <code>scaling</code> property is required. Defaults to <code>1</code>.<a class="headerlink" href="#replicas" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="_scaling"><a href="#scaling"><code>scaling</code></a> - (Optional) The auto-scaling rules. Required if <code>replicas</code> is set to a range.<a class="headerlink" href="#_scaling" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="_rate_limits"><a href="#rate_limits"><code>rate_limits</code></a> - (Optional) Rate limiting rules.<a class="headerlink" href="#_rate_limits" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="name"><code>name</code> - (Optional) The run name. If not specified, a random name is generated.<a class="headerlink" href="#name" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="image"><code>image</code> - (Optional) The name of the Docker image to run.<a class="headerlink" href="#image" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="user"><code>user</code> - (Optional) The user inside the container, <code>user_name_or_id[:group_name_or_id]</code> (e.g., <code>ubuntu</code>, <code>1000:1000</code>). Defaults to the default <code>image</code> user.<a class="headerlink" href="#user" title="Permanent link">&para;</a></h6>
@@ -3886,7 +4009,7 @@ Support our project with a ⭐ on
 <h6 class="reference-item" id="single_branch"><code>single_branch</code> - (Optional) Whether to clone and track only the current branch or all remote branches. Relevant only when using remote Git repos. Defaults to <code>false</code> for dev environments and to <code>true</code> for tasks and services.<a class="headerlink" href="#single_branch" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="_env"><a href="#env"><code>env</code></a> - (Optional) The mapping or the list of environment variables.<a class="headerlink" href="#_env" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="_resources"><a href="#resources"><code>resources</code></a> - (Optional) The resources requirements to run the configuration.<a class="headerlink" href="#_resources" title="Permanent link">&para;</a></h6>
-<h6 class="reference-item" id="_volumes"><a href="#volumes"><code>volumes</code></a> - (Optional) The volumes mount points.<a class="headerlink" href="#_volumes" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="volumes"><code>volumes</code> - (Optional) The volumes mount points.<a class="headerlink" href="#volumes" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="commands"><code>commands</code> - (Optional) The bash commands to run.<a class="headerlink" href="#commands" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="backends"><code>backends</code> - (Optional) The backends to consider for provisioning (e.g., <code>[aws, gcp]</code>).<a class="headerlink" href="#backends" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="regions"><code>regions</code> - (Optional) The regions to consider for provisioning (e.g., <code>[eu-west-1, us-west4, westeurope]</code>).<a class="headerlink" href="#regions" title="Permanent link">&para;</a></h6>
@@ -3961,6 +4084,26 @@ from the model's repository. If it is not present there, manual configuration is
 <h6 class="reference-item" id="target"><code>target</code> -  The target value of the metric. The number of replicas is calculated based on this number and automatically adjusts (scales up or down) as this metric changes.<a class="headerlink" href="#target" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="scale_up_delay"><code>scale_up_delay</code> - (Optional) The delay in seconds before scaling up. Defaults to <code>300</code>.<a class="headerlink" href="#scale_up_delay" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="scale_down_delay"><code>scale_down_delay</code> - (Optional) The delay in seconds before scaling down. Defaults to <code>600</code>.<a class="headerlink" href="#scale_down_delay" title="Permanent link">&para;</a></h6>
+<h3 id="rate_limits"><code>rate_limits</code><a class="headerlink" href="#rate_limits" title="Permanent link">&para;</a></h3>
+<h4 id="rate_limitsn"><code>rate_limits[n]</code><a class="headerlink" href="#rate_limitsn" title="Permanent link">&para;</a></h4>
+<h6 class="reference-item" id="prefix"><code>prefix</code> - (Optional) URL path prefix to which this limit is applied. If an incoming request matches several prefixes, the longest prefix is applied. Defaults to <code>/</code>.<a class="headerlink" href="#prefix" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="_key"><a href="#key"><code>key</code></a> - (Optional) The partitioning key. Each incoming request belongs to a partition and rate limits are applied per partition. Defaults to partitioning by client IP address.<a class="headerlink" href="#_key" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="rps"><code>rps</code> -  Max allowed number of requests per second. Requests are tracked at millisecond granularity. For example, <code>rps: 10</code> means at most 1 request per 100ms.<a class="headerlink" href="#rps" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="burst"><code>burst</code> - (Optional) Max number of requests that can be passed to the service ahead of the rate limit.<a class="headerlink" href="#burst" title="Permanent link">&para;</a></h6>
+<h5 id="rate_limitsnkey"><code>rate_limits[n].key</code><a class="headerlink" href="#rate_limitsnkey" title="Permanent link">&para;</a></h5>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="ip-address" name="__tabbed_2" type="radio" /><input id="header_1" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="ip-address">IP address</label><label for="header_1">Header</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Partition requests by client IP address.</p>
+<h6 class="reference-item" id="type"><code>type</code> -  Partitioning type. Must be <code>ip_address</code>.<a class="headerlink" href="#type" title="Permanent link">&para;</a></h6>
+</div>
+<div class="tabbed-block">
+<p>Partition requests by the value of a header.</p>
+<h6 class="reference-item" id="type"><code>type</code> -  Partitioning type. Must be <code>header</code>.<a class="headerlink" href="#type" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="header"><code>header</code> -  Name of the header to use for partitioning.<a class="headerlink" href="#header" title="Permanent link">&para;</a></h6>
+</div>
+</div>
+</div>
 <h3 id="retry"><code>retry</code><a class="headerlink" href="#retry" title="Permanent link">&para;</a></h3>
 <h6 class="reference-item" id="on_events"><code>on_events</code> - (Optional) The list of events that should be handled with retry. Supported events are <code>no-capacity</code>, <code>interruption</code>, and <code>error</code>. Omit to retry on all events.<a class="headerlink" href="#on_events" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="duration"><code>duration</code> - (Optional) The maximum period of retrying the run, e.g., <code>4h</code> or <code>1d</code>.<a class="headerlink" href="#duration" title="Permanent link">&para;</a></h6>
@@ -3986,7 +4129,7 @@ from the model's repository. If it is not present there, manual configuration is
 <h6 class="reference-item" id="username"><code>username</code> -  The username.<a class="headerlink" href="#username" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="password"><code>password</code> -  The password or access token.<a class="headerlink" href="#password" title="Permanent link">&para;</a></h6>
 <h3 id="_volumes"><code>volumes[n]</code><a class="headerlink" href="#_volumes" title="Permanent link">&para;</a></h3>
-<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="network-volumes" name="__tabbed_2" type="radio" /><input id="instance-volumes" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="network-volumes">Network volumes</label><label for="instance-volumes">Instance volumes</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="network-volumes" name="__tabbed_3" type="radio" /><input id="instance-volumes" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="network-volumes">Network volumes</label><label for="instance-volumes">Instance volumes</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <h6 class="reference-item" id="name"><code>name</code> -  The network volume name or the list of network volume names to mount. If a list is specified, one of the volumes in the list will be mounted. Specify volumes from different backends/regions to increase availability..<a class="headerlink" href="#name" title="Permanent link">&para;</a></h6>

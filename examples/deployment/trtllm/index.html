@@ -6,19 +6,19 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="This example shows how to deploy DeepSeek-R1-Distill-Llama-8B to any cloud or on-premises environment using NVIDIA NIM and dstack.">
+        <meta name="description" content="This example shows how to deploy Deepseek models to any cloud or on-premises environment using NVIDIA TensorRT-LLM and dstack.">
       
       
         <meta name="author" content="dstack GmbH">
       
       
-        <link rel="canonical" href="https://dstack.ai/examples/deployment/nim/">
+        <link rel="canonical" href="https://dstack.ai/examples/deployment/trtllm/">
       
       
-        <link rel="prev" href="../tgi/">
+        <link rel="prev" href="../nim/">
       
       
-        <link rel="next" href="../trtllm/">
+        <link rel="next" href="../../llms/deepseek/">
       
       
         
@@ -29,7 +29,7 @@
     
     
       
-        <title>NVIDIA NIM - dstack</title>
+        <title>TensorRT-LLM - dstack</title>
       
     
     
@@ -89,17 +89,17 @@
     
   
 <meta property="og:type" content="website" />
-<meta property="og:title" content="NVIDIA NIM - dstack" />
-<meta property="og:description" content="This example shows how to deploy DeepSeek-R1-Distill-Llama-8B to any cloud or on-premises environment using NVIDIA NIM and dstack." />
-<meta property="og:image" content="https://dstack.ai/assets/images/social/examples/deployment/nim/index.png" />
+<meta property="og:title" content="TensorRT-LLM - dstack" />
+<meta property="og:description" content="This example shows how to deploy Deepseek models to any cloud or on-premises environment using NVIDIA TensorRT-LLM and dstack." />
+<meta property="og:image" content="https://dstack.ai/assets/images/social/examples/deployment/trtllm/index.png" />
 <meta property="og:image:type" content="image/png" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
-<meta property="og:url" content="https://dstack.ai/examples/deployment/nim/" />
+<meta property="og:url" content="https://dstack.ai/examples/deployment/trtllm/" />
 <meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter.title" content="NVIDIA NIM - dstack" />
-<meta property="twitter:description" content="This example shows how to deploy DeepSeek-R1-Distill-Llama-8B to any cloud or on-premises environment using NVIDIA NIM and dstack." />
-<meta property="twitter:image" content="https://dstack.ai/assets/images/social/examples/deployment/nim/index.png" />
+<meta property="twitter.title" content="TensorRT-LLM - dstack" />
+<meta property="twitter:description" content="This example shows how to deploy Deepseek models to any cloud or on-premises environment using NVIDIA TensorRT-LLM and dstack." />
+<meta property="twitter:image" content="https://dstack.ai/assets/images/social/examples/deployment/trtllm/index.png" />
 </head>
   
   
@@ -119,7 +119,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#nvidia-nim" class="md-skip">
+        <a href="#tensorrt-llm" class="md-skip">
           Skip to content
         </a>
       
@@ -173,7 +173,7 @@ Support our project with a ⭐ on
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              NVIDIA NIM
+              TensorRT-LLM
             
           </span>
         </div>
@@ -2369,6 +2369,34 @@ Support our project with a ⭐ on
                 
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../nim/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NIM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
   
   
@@ -2388,7 +2416,7 @@ Support our project with a ⭐ on
   <span class="md-ellipsis">
     
   
-    NIM
+    TensorRT-LLM
   
 
     
@@ -2406,7 +2434,7 @@ Support our project with a ⭐ on
   <span class="md-ellipsis">
     
   
-    NIM
+    TensorRT-LLM
   
 
     
@@ -2446,11 +2474,38 @@ Support our project with a ⭐ on
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#running-a-configuration" class="md-nav__link">
+  <a href="#deepseek-r1" class="md-nav__link">
     <span class="md-ellipsis">
       
         <span class="md-typeset">
-          Running a configuration
+          DeepSeek R1
+        </span>
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="DeepSeek R1">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#build-a-docker-image" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Build a Docker image
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deploy-the-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Deploy the model
         </span>
       
     </span>
@@ -2460,6 +2515,82 @@ Support our project with a ⭐ on
         
       </ul>
     </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deepseek-r1-distill-llama-8b" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          DeepSeek R1 Distill Llama 8B
+        </span>
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="DeepSeek R1 Distill Llama 8B">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#convert-and-upload-checkpoints" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Convert and upload checkpoints
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#build-and-upload-the-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Build and upload the model
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deploy-the-model_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Deploy the model
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#access-the-endpoint" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Access the endpoint
+        </span>
+      
+    </span>
+  </a>
   
 </li>
       
@@ -2493,34 +2624,6 @@ Support our project with a ⭐ on
   
 </nav>
       
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../trtllm/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    TensorRT-LLM
-  
-
-    
-  </span>
-  
-  
-
-      </a>
     </li>
   
 
@@ -3617,11 +3720,38 @@ Support our project with a ⭐ on
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#running-a-configuration" class="md-nav__link">
+  <a href="#deepseek-r1" class="md-nav__link">
     <span class="md-ellipsis">
       
         <span class="md-typeset">
-          Running a configuration
+          DeepSeek R1
+        </span>
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="DeepSeek R1">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#build-a-docker-image" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Build a Docker image
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deploy-the-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Deploy the model
         </span>
       
     </span>
@@ -3631,6 +3761,82 @@ Support our project with a ⭐ on
         
       </ul>
     </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deepseek-r1-distill-llama-8b" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          DeepSeek R1 Distill Llama 8B
+        </span>
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="DeepSeek R1 Distill Llama 8B">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#convert-and-upload-checkpoints" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Convert and upload checkpoints
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#build-and-upload-the-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Build and upload the model
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deploy-the-model_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Deploy the model
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#access-the-endpoint" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Access the endpoint
+        </span>
+      
+    </span>
+  </a>
   
 </li>
       
@@ -3727,8 +3933,9 @@ Support our project with a ⭐ on
 
 
 
-<h1 id="nvidia-nim">NVIDIA NIM<a class="headerlink" href="#nvidia-nim" title="Permanent link">&para;</a></h1>
-<p>This example shows how to deploy DeepSeek-R1-Distill-Llama-8B using <a href="https://docs.nvidia.com/nim/large-language-models/latest/getting-started.html" target="_blank">NVIDIA NIM <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> and <code>dstack</code>.</p>
+<h1 id="tensorrt-llm">TensorRT-LLM<a class="headerlink" href="#tensorrt-llm" title="Permanent link">&para;</a></h1>
+<p>This example shows how to deploy both DeepSeek R1 and its distilled version
+using <a href="https://github.com/NVIDIA/TensorRT-LLM" target="_blank">TensorRT-LLM <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> and <code>dstack</code>.</p>
 <details class="info">
 <summary>Prerequisites</summary>
 <p>Once <code>dstack</code> is <a href="https://dstack.ai/docs/installation">installed</a>, go ahead clone the repo, and run <code>dstack init</code>.</p>
@@ -3740,58 +3947,277 @@ $<span class="w"> </span>dstack<span class="w"> </span>init
 </div>
 </details>
 <h2 id="deployment">Deployment<a class="headerlink" href="#deployment" title="Permanent link">&para;</a></h2>
-<p>Here's an example of a service that deploys DeepSeek-R1-Distill-Llama-8B using NIM.</p>
-<div editor-title="examples/deployment/nim/.dstack.yml">
+<h3 id="deepseek-r1">DeepSeek R1<a class="headerlink" href="#deepseek-r1" title="Permanent link">&para;</a></h3>
+<p>We normally use Triton with the TensorRT-LLM backend to serve models. While this works for the distilled Llama-based
+version, DeepSeek R1 isn’t yet compatible. So, for DeepSeek R1, we’ll use <code>trtllm-serve</code> with the PyTorch backend instead.</p>
+<p>To use <code>trtllm-serve</code>, we first need to build the TensorRT-LLM Docker image from the <code>main</code> branch.</p>
+<h4 id="build-a-docker-image">Build a Docker image<a class="headerlink" href="#build-a-docker-image" title="Permanent link">&para;</a></h4>
+<p>Here’s the task config that builds the image and pushes it using the provided Docker credentials.</p>
+<div editor-title="examples/deployment/trtllm/build-image.dstack.yml">
 
-<div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service</span>
-<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">serve-distill-deepseek</span>
+<div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">task</span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build-image</span>
 
-<span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nvcr.io/nim/deepseek-ai/deepseek-r1-distill-llama-8b</span>
+<span class="nt">privileged</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dstackai/dind</span>
 <span class="nt">env</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NGC_API_KEY</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NIM_MAX_MODEL_LEN=4096</span>
-<span class="nt">registry_auth</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">username</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$oauthtoken</span>
-<span class="w">  </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ env.NGC_API_KEY }}</span>
-<span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8000</span>
-<span class="c1"># Register the model</span>
-<span class="nt">model</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">deepseek-ai/deepseek-r1-distill-llama-8b</span>
-
-<span class="c1"># Uncomment to leverage spot instances</span>
-<span class="c1">#spot_policy: auto</span>
-
-<span class="c1"># Cache downloaded models</span>
-<span class="nt">volumes</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">instance_path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/root/.cache/nim</span>
-<span class="w">    </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/opt/nim/.cache</span>
-<span class="w">    </span><span class="nt">optional</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DOCKER_USERNAME</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DOCKER_PASSWORD</span>
+<span class="nt">commands</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">start-dockerd</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apt update &amp;&amp; apt-get install -y build-essential make git git-lfs</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">git lfs install</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">git clone https://github.com/NVIDIA/TensorRT-LLM.git</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cd TensorRT-LLM</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">git submodule update --init --recursive</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">git lfs pull</span>
+<span class="w">  </span><span class="c1"># Limit compilation to Hopper for a smaller image</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">make -C docker release_build CUDA_ARCHS=&quot;90-real&quot;</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker tag tensorrt_llm/release:latest $DOCKER_USERNAME/tensorrt_llm:latest</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo &quot;$DOCKER_PASSWORD&quot; | docker login -u &quot;$DOCKER_USERNAME&quot; --password-stdin</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker push &quot;$DOCKER_USERNAME/tensorrt_llm:latest&quot;</span>
 
 <span class="nt">resources</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">A100:40GB</span>
-<span class="w">  </span><span class="c1"># Uncomment if using multiple GPUs</span>
-<span class="w">  </span><span class="c1">#shm_size: 16GB</span>
+<span class="w">  </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8</span>
+<span class="w">  </span><span class="nt">disk</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">500GB..</span>
 </code></pre></div>
 </div>
 
-<h3 id="running-a-configuration">Running a configuration<a class="headerlink" href="#running-a-configuration" title="Permanent link">&para;</a></h3>
-<p>To run a configuration, use the <a href="https://dstack.ai/docs/reference/cli/dstack/apply.md"><code>dstack apply</code></a> command. </p>
+<p>To run it, pass the task configuration to <code>dstack apply</code>.</p>
 <div class="termy">
 
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nv">NGC_API_KEY</span><span class="o">=</span>...
-$<span class="w"> </span>dstack<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>examples/deployment/nim/.dstack.yml
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>dstack<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>examples/deployment/trtllm/build-image.dstack.yml
 
-<span class="w"> </span><span class="c1">#  BACKEND  REGION    RESOURCES                  SPOT  PRICE       </span>
-<span class="w"> </span><span class="m">1</span><span class="w">  </span>vultr<span class="w">    </span>ewr<span class="w">       </span>6xCPU,<span class="w"> </span>60GB,<span class="w"> </span>1xA100<span class="w"> </span><span class="o">(</span>40GB<span class="o">)</span><span class="w"> </span>no<span class="w">    </span><span class="nv">$1</span>.199<span class="w">   </span>
-<span class="w"> </span><span class="m">2</span><span class="w">  </span>vultr<span class="w">    </span>ewr<span class="w">       </span>6xCPU,<span class="w"> </span>60GB,<span class="w"> </span>1xA100<span class="w"> </span><span class="o">(</span>40GB<span class="o">)</span><span class="w"> </span>no<span class="w">    </span><span class="nv">$1</span>.199<span class="w">  </span>
-<span class="w"> </span><span class="m">3</span><span class="w">  </span>vultr<span class="w">    </span>nrt<span class="w">       </span>6xCPU,<span class="w"> </span>60GB,<span class="w"> </span>1xA100<span class="w"> </span><span class="o">(</span>40GB<span class="o">)</span><span class="w"> </span>no<span class="w">    </span><span class="nv">$1</span>.199<span class="w"> </span>
+<span class="w"> </span><span class="c1">#  BACKEND  REGION             RESOURCES               SPOT  PRICE       </span>
+<span class="w"> </span><span class="m">1</span><span class="w">  </span>cudo<span class="w">     </span>ca-montreal-2<span class="w">      </span>8xCPU,<span class="w"> </span>25GB,<span class="w"> </span><span class="o">(</span><span class="m">500</span>.0GB<span class="o">)</span><span class="w">  </span>yes<span class="w">   </span><span class="nv">$0</span>.1073<span class="w">   </span>
 
-Submit<span class="w"> </span>the<span class="w"> </span>run<span class="w"> </span>serve-distill-deepseek?<span class="w"> </span><span class="o">[</span>y/n<span class="o">]</span>:<span class="w"> </span>y
+Submit<span class="w"> </span>the<span class="w"> </span>run<span class="w"> </span>build-image?<span class="w"> </span><span class="o">[</span>y/n<span class="o">]</span>:<span class="w"> </span>y
 
 Provisioning...
 ---&gt;<span class="w"> </span><span class="m">100</span>%
 </code></pre></div>
 </div>
 
+<h4 id="deploy-the-model">Deploy the model<a class="headerlink" href="#deploy-the-model" title="Permanent link">&para;</a></h4>
+<p>Below is the service configuration that deploys DeepSeek R1 using the built TensorRT-LLM image.</p>
+<div editor-title="examples/deployment/trtllm/serve-r1.dstack.yml">
+
+    <div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service</span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">serve-r1</span>
+
+<span class="c1"># Specify the image built with `examples/deployment/trtllm/build-image.dstack.yml`</span>
+<span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dstackai/tensorrt_llm:9b931c0f6305aefa3660e6fb84a76a42c0eef167</span><span class="w"> </span>
+<span class="nt">env</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MAX_BATCH_SIZE=256</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MAX_NUM_TOKENS=16384</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MAX_SEQ_LENGTH=16384</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EXPERT_PARALLEL=4</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PIPELINE_PARALLEL=1</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HF_HUB_ENABLE_HF_TRANSFER=1</span>
+<span class="nt">commands</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip install -U &quot;huggingface_hub[cli]&quot;</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip install hf_transfer</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">huggingface-cli download deepseek-ai/DeepSeek-R1 --local-dir DeepSeek-R1</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">trtllm-serve</span>
+<span class="w">          </span><span class="l l-Scalar l-Scalar-Plain">--backend pytorch</span>
+<span class="w">          </span><span class="l l-Scalar l-Scalar-Plain">--max_batch_size $MAX_BATCH_SIZE</span>
+<span class="w">          </span><span class="l l-Scalar l-Scalar-Plain">--max_num_tokens $MAX_NUM_TOKENS</span>
+<span class="w">          </span><span class="l l-Scalar l-Scalar-Plain">--max_seq_len $MAX_SEQ_LENGTH</span>
+<span class="w">          </span><span class="l l-Scalar l-Scalar-Plain">--tp_size $DSTACK_GPUS_NUM</span>
+<span class="w">          </span><span class="l l-Scalar l-Scalar-Plain">--ep_size $EXPERT_PARALLEL</span>
+<span class="w">          </span><span class="l l-Scalar l-Scalar-Plain">--pp_size $PIPELINE_PARALLEL</span>
+<span class="w">          </span><span class="l l-Scalar l-Scalar-Plain">DeepSeek-R1</span>
+<span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8000</span>
+<span class="nt">model</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">deepseek-ai/DeepSeek-R1</span>
+
+<span class="nt">resources</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8:H200</span>
+<span class="w">  </span><span class="nt">shm_size</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">32GB</span>
+<span class="w">  </span><span class="nt">disk</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2000GB..</span>
+</code></pre></div>
+    </div>
+
+<p>To run it, pass the configuration to <code>dstack apply</code>. </p>
+<div class="termy">
+
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>dstack<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>examples/deployment/trtllm/serve-r1.dstack.yml
+
+<span class="w"> </span><span class="c1">#  BACKEND  REGION             RESOURCES                        SPOT  PRICE       </span>
+<span class="w"> </span><span class="m">1</span><span class="w">  </span>vastai<span class="w">   </span>is-iceland<span class="w">         </span>192xCPU,<span class="w"> </span>2063GB,<span class="w"> </span>8xH200<span class="w"> </span><span class="o">(</span>141GB<span class="o">)</span><span class="w">  </span>yes<span class="w">   </span><span class="nv">$25</span>.62<span class="w">   </span>
+
+Submit<span class="w"> </span>the<span class="w"> </span>run<span class="w"> </span>serve-r1?<span class="w"> </span><span class="o">[</span>y/n<span class="o">]</span>:<span class="w"> </span>y
+
+Provisioning...
+---&gt;<span class="w"> </span><span class="m">100</span>%
+</code></pre></div>
+</div>
+
+<h3 id="deepseek-r1-distill-llama-8b">DeepSeek R1 Distill Llama 8B<a class="headerlink" href="#deepseek-r1-distill-llama-8b" title="Permanent link">&para;</a></h3>
+<p>To deploy DeepSeek R1 Distill Llama 8B, follow the steps below.</p>
+<h4 id="convert-and-upload-checkpoints">Convert and upload checkpoints<a class="headerlink" href="#convert-and-upload-checkpoints" title="Permanent link">&para;</a></h4>
+<p>Here’s the task config that converts a Hugging Face model to a TensorRT-LLM checkpoint format 
+and uploads it to S3 using the provided AWS credentials.</p>
+<div editor-title="examples/deployment/trtllm/convert-model.dstack.yml">
+
+    <div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">task</span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">convert-model</span>
+
+<span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nvcr.io/nvidia/tritonserver:25.01-trtllm-python-py3</span>
+<span class="nt">env</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HF_TOKEN</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MODEL_REPO=https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Llama-8B</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">S3_BUCKET_NAME</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AWS_ACCESS_KEY_ID</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AWS_SECRET_ACCESS_KEY</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AWS_DEFAULT_REGION</span>
+<span class="nt">commands</span><span class="p">:</span>
+<span class="w">  </span><span class="c1"># nvcr.io/nvidia/tritonserver:25.01-trtllm-python-py3 container uses TensorRT-LLM version 0.17.0,</span>
+<span class="w">  </span><span class="c1"># therefore we are using branch v0.17.0 </span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">git clone --branch v0.17.0 --depth 1 https://github.com/triton-inference-server/tensorrtllm_backend.git</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">git clone --branch v0.17.0 --single-branch https://github.com/NVIDIA/TensorRT-LLM.git</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">git clone https://github.com/triton-inference-server/server.git</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cd TensorRT-LLM/examples/llama</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apt-get -y install git git-lfs</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">git lfs install</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">git config --global credential.helper store</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">huggingface-cli login --token $HF_TOKEN --add-to-git-credential</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">git clone $MODEL_REPO</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python3 convert_checkpoint.py --model_dir DeepSeek-R1-Distill-Llama-8B  --output_dir tllm_checkpoint_${DSTACK_GPUS_NUM}gpu_bf16 --dtype bfloat16 --tp_size $DSTACK_GPUS_NUM</span>
+<span class="w">  </span><span class="c1"># Download the AWS CLI</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">curl &quot;https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip&quot; -o &quot;awscliv2.zip&quot;</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">unzip awscliv2.zip</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./aws/install</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">aws s3 sync tllm_checkpoint_${DSTACK_GPUS_NUM}gpu_bf16 s3://${S3_BUCKET_NAME}/tllm_checkpoint_${DSTACK_GPUS_NUM}gpu_bf16 --acl public-read</span>
+
+<span class="nt">resources</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">A100:40GB</span>
+</code></pre></div>
+    </div>
+
+<p>To run it, pass the configuration to <code>dstack apply</code>. </p>
+<div class="termy">
+
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>dstack<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>examples/deployment/trtllm/convert-model.dstack.yml
+
+<span class="w"> </span><span class="c1">#  BACKEND  REGION       RESOURCES                    SPOT  PRICE       </span>
+<span class="w"> </span><span class="m">1</span><span class="w">  </span>vastai<span class="w">   </span>us-iowa<span class="w">      </span>12xCPU,<span class="w"> </span>85GB,<span class="w"> </span>1xA100<span class="w"> </span><span class="o">(</span>40GB<span class="o">)</span><span class="w">  </span>yes<span class="w">   </span><span class="nv">$0</span>.66904<span class="w">  </span>
+
+Submit<span class="w"> </span>the<span class="w"> </span>run<span class="w"> </span>convert-model?<span class="w"> </span><span class="o">[</span>y/n<span class="o">]</span>:<span class="w"> </span>y
+
+Provisioning...
+---&gt;<span class="w"> </span><span class="m">100</span>%
+</code></pre></div>
+</div>
+
+<h4 id="build-and-upload-the-model">Build and upload the model<a class="headerlink" href="#build-and-upload-the-model" title="Permanent link">&para;</a></h4>
+<p>Here’s the task config that builds a TensorRT-LLM model and uploads it to S3 with the provided AWS credentials.</p>
+<div editor-title="build-model.dstack.yml">
+
+    <div class="highlight"><pre><span></span><code><span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">task</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build-model</span>
+
+<span class="w">  </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nvcr.io/nvidia/tritonserver:25.01-trtllm-python-py3</span>
+<span class="w">  </span><span class="nt">env</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MODEL=deepseek-ai/DeepSeek-R1-Distill-Llama-8B</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">S3_BUCKET_NAME</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AWS_ACCESS_KEY_ID</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AWS_SECRET_ACCESS_KEY</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AWS_DEFAULT_REGION</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MAX_SEQ_LEN=8192</span><span class="w"> </span><span class="c1"># Sum of Max Input Length &amp; Max Output Length</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MAX_INPUT_LEN=4096</span><span class="w"> </span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MAX_BATCH_SIZE=256</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TRITON_MAX_BATCH_SIZE=1</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">INSTANCE_COUNT=1</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MAX_QUEUE_DELAY_MS=0</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MAX_QUEUE_SIZE=0</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DECOUPLED_MODE=true</span><span class="w"> </span><span class="c1"># Set true for streaming</span>
+<span class="w">  </span><span class="nt">commands</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">huggingface-cli download $MODEL --exclude &#39;*.safetensors&#39; --local-dir tokenizer_dir</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">curl &quot;https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip&quot; -o &quot;awscliv2.zip&quot;</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">unzip awscliv2.zip</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./aws/install</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">aws s3 sync s3://${S3_BUCKET_NAME}/tllm_checkpoint_${DSTACK_GPUS_NUM}gpu_bf16 ./tllm_checkpoint_${DSTACK_GPUS_NUM}gpu_bf16</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">trtllm-build --checkpoint_dir tllm_checkpoint_${DSTACK_GPUS_NUM}gpu_bf16 --gemm_plugin bfloat16 --output_dir tllm_engine_${DSTACK_GPUS_NUM}gpu_bf16  --max_seq_len $MAX_SEQ_LEN --max_input_len $MAX_INPUT_LEN --max_batch_size $MAX_BATCH_SIZE --gpt_attention_plugin bfloat16 --use_paged_context_fmha enable</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">git clone --branch v0.17.0 --single-branch https://github.com/NVIDIA/TensorRT-LLM.git</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python3 TensorRT-LLM/examples/run.py --engine_dir tllm_engine_${DSTACK_GPUS_NUM}gpu_bf16 --max_output_len 40 --tokenizer_dir tokenizer_dir  --input_text &quot;What is Deep Learning?&quot;</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">git clone --branch v0.17.0 --depth 1 https://github.com/triton-inference-server/tensorrtllm_backend.git</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mkdir triton_model_repo</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cp -r tensorrtllm_backend/all_models/inflight_batcher_llm/* triton_model_repo/</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python3 tensorrtllm_backend/tools/fill_template.py -i triton_model_repo/ensemble/config.pbtxt triton_max_batch_size:${TRITON_MAX_BATCH_SIZE},logits_datatype:TYPE_BF16</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python3 tensorrtllm_backend/tools/fill_template.py -i triton_model_repo/preprocessing/config.pbtxt tokenizer_dir:tokenizer_dir,triton_max_batch_size:${TRITON_MAX_BATCH_SIZE},preprocessing_instance_count:${INSTANCE_COUNT}</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python3 tensorrtllm_backend/tools/fill_template.py -i triton_model_repo/tensorrt_llm/config.pbtxt triton_backend:tensorrtllm,triton_max_batch_size:${TRITON_MAX_BATCH_SIZE},decoupled_mode:${DECOUPLED_MODE},engine_dir:tllm_engine_${DSTACK_GPUS_NUM}gpu_bf16,max_queue_delay_microseconds:${MAX_QUEUE_DELAY_MS},batching_strategy:inflight_fused_batching,max_queue_size:${MAX_QUEUE_SIZE},encoder_input_features_data_type:TYPE_BF16,logits_datatype:TYPE_BF16</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python3 tensorrtllm_backend/tools/fill_template.py -i triton_model_repo/postprocessing/config.pbtxt tokenizer_dir:tokenizer_dir,triton_max_batch_size:${TRITON_MAX_BATCH_SIZE},postprocessing_instance_count:${INSTANCE_COUNT},max_queue_size:${MAX_QUEUE_SIZE}</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python3 tensorrtllm_backend/tools/fill_template.py -i triton_model_repo/tensorrt_llm_bls/config.pbtxt triton_max_batch_size:${TRITON_MAX_BATCH_SIZE},decoupled_mode:${DECOUPLED_MODE},bls_instance_count:${INSTANCE_COUNT},logits_datatype:TYPE_BF16</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">aws s3 sync triton_model_repo s3://${S3_BUCKET_NAME}/triton_model_repo --acl public-read</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">aws s3 sync tllm_engine_${DSTACK_GPUS_NUM}gpu_bf16 s3://${S3_BUCKET_NAME}/tllm_engine_${DSTACK_GPUS_NUM}gpu_bf16 --acl public-read</span>
+
+<span class="w">  </span><span class="nt">resources</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">A100:40GB</span>
+</code></pre></div>
+    </div>
+
+<p>To run it, pass the configuration to <code>dstack apply</code>. </p>
+<div class="termy">
+
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>dstack<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>examples/deployment/trtllm/build-model.dstack.yml
+
+<span class="w"> </span><span class="c1">#  BACKEND  REGION       RESOURCES                    SPOT  PRICE       </span>
+<span class="w"> </span><span class="m">1</span><span class="w">  </span>vastai<span class="w">   </span>us-iowa<span class="w">      </span>12xCPU,<span class="w"> </span>85GB,<span class="w"> </span>1xA100<span class="w"> </span><span class="o">(</span>40GB<span class="o">)</span><span class="w">  </span>yes<span class="w">   </span><span class="nv">$0</span>.66904<span class="w">  </span>
+
+Submit<span class="w"> </span>the<span class="w"> </span>run<span class="w"> </span>build-model?<span class="w"> </span><span class="o">[</span>y/n<span class="o">]</span>:<span class="w"> </span>y
+
+Provisioning...
+---&gt;<span class="w"> </span><span class="m">100</span>%
+</code></pre></div>
+</div>
+
+<h4 id="deploy-the-model_1">Deploy the model<a class="headerlink" href="#deploy-the-model_1" title="Permanent link">&para;</a></h4>
+<p>Below is the service configuration that deploys DeepSeek R1 Distill Llama 8B.</p>
+<div editor-title="serve-distill.dstack.yml">
+
+<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">serve-distill</span>
+
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nvcr.io/nvidia/tritonserver:25.01-trtllm-python-py3</span>
+<span class="w">    </span><span class="nt">env</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MODEL=deepseek-ai/DeepSeek-R1-Distill-Llama-8B</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">S3_BUCKET_NAME</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AWS_ACCESS_KEY_ID</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AWS_SECRET_ACCESS_KEY</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AWS_DEFAULT_REGION</span>
+
+<span class="w">    </span><span class="nt">commands</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">huggingface-cli download $MODEL --exclude &#39;*.safetensors&#39; --local-dir tokenizer_dir</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">curl &quot;https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip&quot; -o &quot;awscliv2.zip&quot;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">unzip awscliv2.zip</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./aws/install</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">aws s3 sync s3://${S3_BUCKET_NAME}/tllm_engine_1gpu_bf16 ./tllm_engine_1gpu_bf16</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">git clone https://github.com/triton-inference-server/server.git</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python3 server/python/openai/openai_frontend/main.py --model-repository s3://${S3_BUCKET_NAME}/triton_model_repo  --tokenizer tokenizer_dir --openai-port 8000</span><span class="w">  </span>
+<span class="w">    </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8000</span>
+<span class="w">    </span><span class="nt">model</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ensemble</span>
+
+<span class="w">    </span><span class="nt">resources</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">A100:40GB</span>
+</code></pre></div>
+</div>
+
+<p>To run it, pass the configuration to <code>dstack apply</code>. </p>
+<div class="termy">
+
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>dstack<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>examples/deployment/trtllm/serve-distill.dstack.yml
+
+<span class="w"> </span><span class="c1">#  BACKEND  REGION       RESOURCES                    SPOT  PRICE       </span>
+<span class="w"> </span><span class="m">1</span><span class="w">  </span>vastai<span class="w">   </span>us-iowa<span class="w">      </span>12xCPU,<span class="w"> </span>85GB,<span class="w"> </span>1xA100<span class="w"> </span><span class="o">(</span>40GB<span class="o">)</span><span class="w">  </span>yes<span class="w">   </span><span class="nv">$0</span>.66904<span class="w">  </span>
+
+Submit<span class="w"> </span>the<span class="w"> </span>run<span class="w"> </span>serve-distill?<span class="w"> </span><span class="o">[</span>y/n<span class="o">]</span>:<span class="w"> </span>y
+
+Provisioning...
+---&gt;<span class="w"> </span><span class="m">100</span>%
+</code></pre></div>
+</div>
+
+<h2 id="access-the-endpoint">Access the endpoint<a class="headerlink" href="#access-the-endpoint" title="Permanent link">&para;</a></h2>
 <p>If no gateway is created, the model will be available via the OpenAI-compatible endpoint 
 at <code>&lt;dstack server URL&gt;/proxy/models/&lt;project name&gt;/</code>.</p>
 <div class="termy">
@@ -3801,7 +4227,7 @@ at <code>&lt;dstack server URL&gt;/proxy/models/&lt;project name&gt;/</code>.</p
 <span class="w">    </span>-H<span class="w"> </span><span class="s1">&#39;Authorization: Bearer &amp;lt;dstack token&amp;gt;&#39;</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-H<span class="w"> </span><span class="s1">&#39;Content-Type: application/json&#39;</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-d<span class="w"> </span><span class="s1">&#39;{</span>
-<span class="s1">      &quot;model&quot;: &quot;meta/llama3-8b-instruct&quot;,</span>
+<span class="s1">      &quot;model&quot;: &quot;deepseek-ai/DeepSeek-R1&quot;,</span>
 <span class="s1">      &quot;messages&quot;: [</span>
 <span class="s1">        {</span>
 <span class="s1">          &quot;role&quot;: &quot;system&quot;,</span>
@@ -3812,6 +4238,7 @@ at <code>&lt;dstack server URL&gt;/proxy/models/&lt;project name&gt;/</code>.</p
 <span class="s1">          &quot;content&quot;: &quot;What is Deep Learning?&quot;</span>
 <span class="s1">        }</span>
 <span class="s1">      ],</span>
+<span class="s1">      &quot;stream&quot;: true,</span>
 <span class="s1">      &quot;max_tokens&quot;: 128</span>
 <span class="s1">    }&#39;</span>
 </code></pre></div>
@@ -3822,11 +4249,12 @@ at <code>&lt;dstack server URL&gt;/proxy/models/&lt;project name&gt;/</code>.</p
 is available at <code>https://gateway.&lt;gateway domain&gt;/</code>.</p>
 <h2 id="source-code">Source code<a class="headerlink" href="#source-code" title="Permanent link">&para;</a></h2>
 <p>The source-code of this example can be found in 
-<a href="https://github.com/dstackai/dstack/blob/master/examples/deployment/nim" target="_blank"><code>examples/deployment/nim</code> <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>.</p>
+<a href="https://github.com/dstackai/dstack/blob/master/examples/deployment/trtllm" target="_blank"><code>examples/deployment/trtllm</code> <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>.</p>
 <h2 id="whats-next">What's next?<a class="headerlink" href="#whats-next" title="Permanent link">&para;</a></h2>
 <ol>
 <li>Check <a href="https://dstack.ai/docs/services">services</a></li>
-<li>Browse the <a href="https://build.nvidia.com/deepseek-ai">DeepSeek AI NIM</a></li>
+<li>Browse <a href="https://github.com/NVIDIA/TensorRT-LLM/tree/main/examples/deepseek_v3" target="_blank">Tensorrt-LLM DeepSeek-R1 with PyTorch Backend <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> and <a href="https://github.com/triton-inference-server/tensorrtllm_backend?tab=readme-ov-file#prepare-the-model-repository" target="_blank">Prepare the Model Repository <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a></li>
+<li>See also <a href="https://nvidia.github.io/TensorRT-LLM/commands/trtllm-serve.html#trtllm-serve" target="_blank"><code>trtllm-serve</code> <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a></li>
 </ol>
 
 
@@ -3851,7 +4279,7 @@ is available at <code>https://gateway.&lt;gateway domain&gt;/</code>.</p>
           <nav class="md-footer__inner md-grid" aria-label="Footer" >
             
               
-              <a href="../tgi/" class="md-footer__link md-footer__link--prev" aria-label="Previous: TGI">
+              <a href="../nim/" class="md-footer__link md-footer__link--prev" aria-label="Previous: NIM">
                 <div class="md-footer__button md-icon">
                   
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -3861,20 +4289,20 @@ is available at <code>https://gateway.&lt;gateway domain&gt;/</code>.</p>
                     Previous
                   </span>
                   <div class="md-ellipsis">
-                    TGI
+                    NIM
                   </div>
                 </div>
               </a>
             
             
               
-              <a href="../trtllm/" class="md-footer__link md-footer__link--next" aria-label="Next: TensorRT-LLM">
+              <a href="../../llms/deepseek/" class="md-footer__link md-footer__link--next" aria-label="Next: Deepseek">
                 <div class="md-footer__title">
                   <span class="md-footer__direction">
                     Next
                   </span>
                   <div class="md-ellipsis">
-                    TensorRT-LLM
+                    Deepseek
                   </div>
                 </div>
                 <div class="md-footer__button md-icon">
