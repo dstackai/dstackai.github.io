@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../../assets/images/dstack-fav-32.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.11+insiders-4.53.16">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.12+insiders-4.53.16">
     
     
       
@@ -33,7 +33,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.ade31302.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ff49f96f.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -3889,6 +3889,7 @@ and the <a href="https://huggingface.co/datasets/tatsu-lab/alpaca" target="_blan
 dataset.</p>
 <div editor-title="examples/fine-tuning/axolotl/amd/.dstack.yml">
 <p><div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">task</span>
+<span class="c1"># The name is optional, if not specified, generated randomly</span>
 <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">axolotl-amd-llama31-train</span>
 
 <span class="c1"># Using RunPod&#39;s ROCm Docker image</span>
@@ -3896,6 +3897,10 @@ dataset.</p>
 <span class="c1"># Required environment variables</span>
 <span class="nt">env</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HF_TOKEN</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">WANDB_API_KEY</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">WANDB_PROJECT</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">WANDB_NAME=axolotl-amd-llama31-train</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HUB_MODEL_ID</span>
 <span class="c1"># Commands of the task</span>
 <span class="nt">commands</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">export PATH=/opt/conda/envs/py_3.10/bin:$PATH</span>
@@ -3905,6 +3910,9 @@ dataset.</p>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cd axolotl</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">git checkout d4f6c65</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip install -e .</span>
+<span class="w">  </span><span class="c1"># Latest pynvml is not compatible with axolotl commit d4f6c65, so we need to fall back to version 11.5.3</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip uninstall pynvml -y</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip install pynvml==11.5.3</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cd ..</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">wget https://dstack-binaries.s3.amazonaws.com/flash_attn-2.0.4-cp310-cp310-linux_x86_64.whl</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip install flash_attn-2.0.4-cp310-cp310-linux_x86_64.whl</span>
@@ -3918,17 +3926,17 @@ dataset.</p>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">make</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip install .</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cd ..</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">accelerate launch -m axolotl.cli.train axolotl/examples/llama-3/fft-8b.yaml</span>
-
-<span class="c1"># Uncomment to leverage spot instances</span>
-<span class="c1">#spot_policy: auto</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">accelerate launch -m axolotl.cli.train -- axolotl/examples/llama-3/fft-8b.yaml</span><span class="w"> </span>
+<span class="w">          </span><span class="l l-Scalar l-Scalar-Plain">--wandb-project &quot;$WANDB_PROJECT&quot;</span><span class="w"> </span>
+<span class="w">          </span><span class="l l-Scalar l-Scalar-Plain">--wandb-name &quot;$WANDB_NAME&quot;</span><span class="w"> </span>
+<span class="w">          </span><span class="l l-Scalar l-Scalar-Plain">--hub-model-id &quot;$HUB_MODEL_ID&quot;</span>
 
 <span class="nt">resources</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MI300X</span>
 <span class="w">  </span><span class="nt">disk</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">150GB</span>
 </code></pre></div>
 </div></p>
-<p>Note, to support ROCm, we need to checkout to commit <code>d4f6c65</code>. You can find the installation instruction in <a href="https://github.com/ROCm/rocm-blogs/blob/release/blogs/artificial-intelligence/axolotl/src/Dockerfile.rocm" target="_blank">rocm-blogs <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>.</p>
+<p>Note, to support ROCm, we need to checkout to commit <code>d4f6c65</code>. This commit eliminates the need to manually modify the Axolotl source code to make xformers compatible with ROCm, as described in the <a href="https://docs.axolotl.ai/docs/amd_hpc.html#apply-xformers-workaround">xformers workaround <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>. This installation approach is also followed for building Axolotl ROCm docker image. <a href="https://github.com/ROCm/rocm-blogs/blob/release/blogs/artificial-intelligence/axolotl/src/Dockerfile.rocm" target="_blank">(See Dockerfile) <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>.</p>
 <blockquote>
 <p>To speed up installation of <code>flash-attention</code> and <code>xformers</code>, we use pre-built binaries uploaded to S3. 
 You can find the tasks that build and upload the binaries
@@ -3943,6 +3951,10 @@ cloud resources and run the configuration.</p>
 <div class="termy">
 
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nv">HF_TOKEN</span><span class="o">=</span>...
+$<span class="w"> </span><span class="nv">WANDB_API_KEY</span><span class="o">=</span>...
+$<span class="w"> </span><span class="nv">WANDB_PROJECT</span><span class="o">=</span>...
+$<span class="w"> </span><span class="nv">WANDB_NAME</span><span class="o">=</span>axolotl-amd-llama31-train
+$<span class="w"> </span><span class="nv">HUB_MODEL_ID</span><span class="o">=</span>...
 $<span class="w"> </span>dstack<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>examples/deployment/vllm/amd/.dstack.yml
 </code></pre></div>
 

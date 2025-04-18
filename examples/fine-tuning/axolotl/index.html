@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../../assets/images/dstack-fav-32.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.11+insiders-4.53.16">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.12+insiders-4.53.16">
     
     
       
@@ -33,7 +33,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.ade31302.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ff49f96f.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -3743,7 +3743,7 @@ Support our project with a ⭐ on
 
 <h1 id="axolotl">Axolotl<a class="headerlink" href="#axolotl" title="Permanent link">&para;</a></h1>
 <p>This example shows how use <a href="https://github.com/OpenAccess-AI-Collective/axolotl" target="_blank">Axolotl <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> 
-with <code>dstack</code> to fine-tune Llama3 8B using FSDP and QLoRA.</p>
+with <code>dstack</code> to fine-tune 4-bit Quantized <a href="https://huggingface.co/axolotl-quants/Llama-4-Scout-17B-16E-Linearized-bnb-nf4-bf16" target="_blank">Llama-4-Scout-17B-16E <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> using FSDP and QLoRA.</p>
 <details class="info">
 <summary>Prerequisites</summary>
 <p>Once <code>dstack</code> is <a href="https://dstack.ai/docs/installation">installed</a>, go ahead clone the repo, and run <code>dstack init</code>.</p>
@@ -3755,41 +3755,40 @@ $<span class="w"> </span>dstack<span class="w"> </span>init
 </div>
 </details>
 <h2 id="training-configuration-recipe">Training configuration recipe<a class="headerlink" href="#training-configuration-recipe" title="Permanent link">&para;</a></h2>
-<p>Axolotl reads the model, LoRA, and dataset arguments, as well as trainer configuration from a YAML file. This file can
-be found at <a href="https://github.com/dstackai/dstack/blob/master/examples/fine-tuning/axolotl/config.yaml" target="_blank"><code>examples/fine-tuning/axolotl/config.yaml</code> <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>.
-You can modify it as needed.</p>
-<blockquote>
-<p>Before you proceed with training, make sure to update the <code>hub_model_id</code> in <a href="https://github.com/dstackai/dstack/blob/master/examples/fine-tuning/alignment-handbook/config.yaml" target="_blank"><code>examples/fine-tuning/axolotl/config.yaml</code> <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>
-with your HuggingFace username.</p>
-</blockquote>
+<p>Axolotl reads the model, QLoRA, and dataset arguments, as well as trainer configuration from a <a href="https://github.com/axolotl-ai-cloud/axolotl/blob/main/examples/llama-4/scout-qlora-fsdp1.yaml" target="_blank"><code>scout-qlora-fsdp1.yaml</code> <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> file. The configuration uses 4-bit axolotl quantized version of <code>meta-llama/Llama-4-Scout-17B-16E</code>, requiring only ~43GB VRAM/GPU with 4K context length.</p>
 <h2 id="single-node-training">Single-node training<a class="headerlink" href="#single-node-training" title="Permanent link">&para;</a></h2>
 <p>The easiest way to run a training script with <code>dstack</code> is by creating a task configuration file.
-This file can be found at <a href="https://github.com/dstackai/dstack/blob/master/examples/fine-tuning/axolotl/train.dstack.yml" target="_blank"><code>examples/fine-tuning/axolotl/train.dstack.yml</code> <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>.</p>
+This file can be found at <a href="https://github.com/dstackai/dstack/blob/master/examples/fine-tuning/axolotl/.dstack.yaml" target="_blank"><code>examples/fine-tuning/axolotl/.dstack.yml</code> <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>.</p>
 <div editor-title="examples/fine-tuning/axolotl/.dstack.yml">
 
 <div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">task</span>
-<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">axolotl-train</span>
+<span class="c1"># The name is optional, if not specified, generated randomly</span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">axolotl-nvidia-llama-scout-train</span>
 
 <span class="c1"># Using the official Axolotl&#39;s Docker image</span>
-<span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">winglian/axolotl-cloud:main-20240429-py3.11-cu121-2.2.1</span>
+<span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">axolotlai/axolotl:main-latest</span>
 
 <span class="c1"># Required environment variables</span>
 <span class="nt">env</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HF_TOKEN</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">WANDB_API_KEY</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">WANDB_PROJECT</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">WANDB_NAME=axolotl-nvidia-llama-scout-train</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HUB_MODEL_ID</span>
 <span class="c1"># Commands of the task</span>
 <span class="nt">commands</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">accelerate launch -m axolotl.cli.train examples/fine-tuning/axolotl/config.yaml</span>
-
-<span class="c1"># Uncomment to leverage spot instances</span>
-<span class="c1">#spot_policy: auto</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">wget https://raw.githubusercontent.com/axolotl-ai-cloud/axolotl/main/examples/llama-4/scout-qlora-fsdp1.yaml</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">axolotl train scout-qlora-fsdp1.yaml</span><span class="w"> </span>
+<span class="w">            </span><span class="l l-Scalar l-Scalar-Plain">--wandb-project $WANDB_PROJECT</span><span class="w"> </span>
+<span class="w">            </span><span class="l l-Scalar l-Scalar-Plain">--wandb-name $WANDB_NAME</span><span class="w"> </span>
+<span class="w">            </span><span class="l l-Scalar l-Scalar-Plain">--hub-model-id $HUB_MODEL_ID</span>
 
 <span class="nt">resources</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">gpu</span><span class="p">:</span>
-<span class="w">    </span><span class="c1"># 24GB or more vRAM</span>
-<span class="w">    </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">24GB..</span>
-<span class="w">    </span><span class="c1"># Two or more GPU</span>
-<span class="w">    </span><span class="nt">count</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2..</span>
+<span class="w">  </span><span class="c1"># Two GPU (required by FSDP)</span>
+<span class="w">  </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">H100:2</span>
+<span class="w">  </span><span class="c1"># Shared memory size for inter-process communication</span>
+<span class="w">  </span><span class="nt">shm_size</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">24GB</span>
+<span class="w">  </span><span class="nt">disk</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">500GB..</span>
 </code></pre></div>
 
 </div>
@@ -3806,6 +3805,9 @@ cloud resources and run the configuration.</p>
 
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nv">HF_TOKEN</span><span class="o">=</span>...
 $<span class="w"> </span><span class="nv">WANDB_API_KEY</span><span class="o">=</span>...
+$<span class="w"> </span><span class="nv">WANDB_PROJECT</span><span class="o">=</span>...
+$<span class="w"> </span><span class="nv">WANDB_NAME</span><span class="o">=</span>axolotl-nvidia-llama-scout-train
+$<span class="w"> </span><span class="nv">HUB_MODEL_ID</span><span class="o">=</span>...
 $<span class="w"> </span>dstack<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>examples/fine-tuning/axolotl/.dstack.yml
 </code></pre></div>
 
