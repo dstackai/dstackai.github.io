@@ -2650,6 +2650,51 @@ Support our project with a ⭐ on
 </li>
       
         <li class="md-nav__item">
+  <a href="#fine-tuning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Fine-tuning
+        </span>
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Fine-tuning">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#memory-requirements_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Memory requirements
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-a-configuration_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Running a configuration
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#source-code" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3713,6 +3758,51 @@ Support our project with a ⭐ on
 </li>
       
         <li class="md-nav__item">
+  <a href="#fine-tuning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Fine-tuning
+        </span>
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Fine-tuning">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#memory-requirements_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Memory requirements
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-a-configuration_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Running a configuration
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#source-code" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -4014,14 +4104,125 @@ at <code>&lt;dstack server URL&gt;/proxy/services/&lt;project name&gt;/&lt;run n
 
 <p>When a <a href="https://dstack.ai/docs/concepts/gateways.md">gateway</a> is configured, the service endpoint 
 is available at <code>https://&lt;run name&gt;.&lt;gateway domain&gt;/</code>.</p>
+<h2 id="fine-tuning">Fine-tuning<a class="headerlink" href="#fine-tuning" title="Permanent link">&para;</a></h2>
+<p>Here's and example of FSDP and QLoRA fine-tuning of 4-bit Quantized <a href="https://huggingface.co/axolotl-quants/Llama-4-Scout-17B-16E-Linearized-bnb-nf4-bf16">Llama-4-Scout-17B-16E <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> on 2xH100 NVIDIA GPUs using <a href="https://github.com/OpenAccess-AI-Collective/axolotl" target="_blank">Axolotl <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a></p>
+<div editor-title="examples/fine-tuning/axolotl/.dstack.yml">
+
+<div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">task</span>
+<span class="c1"># The name is optional, if not specified, generated randomly</span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">axolotl-nvidia-llama-scout-train</span>
+
+<span class="c1"># Using the official Axolotl&#39;s Docker image</span>
+<span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">axolotlai/axolotl:main-latest</span>
+
+<span class="c1"># Required environment variables</span>
+<span class="nt">env</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HF_TOKEN</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">WANDB_API_KEY</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">WANDB_PROJECT</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">WANDB_NAME=axolotl-nvidia-llama-scout-train</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HUB_MODEL_ID</span>
+<span class="c1"># Commands of the task</span>
+<span class="nt">commands</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">wget https://raw.githubusercontent.com/axolotl-ai-cloud/axolotl/main/examples/llama-4/scout-qlora-fsdp1.yaml</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">axolotl train scout-qlora-fsdp1.yaml</span><span class="w"> </span>
+<span class="w">            </span><span class="l l-Scalar l-Scalar-Plain">--wandb-project $WANDB_PROJECT</span><span class="w"> </span>
+<span class="w">            </span><span class="l l-Scalar l-Scalar-Plain">--wandb-name $WANDB_NAME</span><span class="w"> </span>
+<span class="w">            </span><span class="l l-Scalar l-Scalar-Plain">--hub-model-id $HUB_MODEL_ID</span>
+
+<span class="nt">resources</span><span class="p">:</span>
+<span class="w">  </span><span class="c1"># Two GPU (required by FSDP)</span>
+<span class="w">  </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">H100:2</span>
+<span class="w">  </span><span class="c1"># Shared memory size for inter-process communication</span>
+<span class="w">  </span><span class="nt">shm_size</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">24GB</span>
+<span class="w">  </span><span class="nt">disk</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">500GB..</span>
+</code></pre></div>
+</div>
+
+<p>The task uses Axolotl's Docker image, where Axolotl is already pre-installed.</p>
+<h3 id="memory-requirements_1">Memory requirements<a class="headerlink" href="#memory-requirements_1" title="Permanent link">&para;</a></h3>
+<p>Below are the approximate memory requirements for loading the model. 
+This excludes memory for the model context and CUDA kernel reservations.</p>
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th>Size</th>
+<th>Full fine-tuning</th>
+<th>LoRA</th>
+<th>QLoRA</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Behemoth</code></td>
+<td><strong>2T</strong></td>
+<td>32TB</td>
+<td>4.3TB</td>
+<td>1.3TB</td>
+</tr>
+<tr>
+<td><code>Maverick</code></td>
+<td><strong>400B</strong></td>
+<td>6.5TB</td>
+<td>864GB</td>
+<td>264GB</td>
+</tr>
+<tr>
+<td><code>Scout</code></td>
+<td><strong>109B</strong></td>
+<td>1.75TB</td>
+<td>236GB</td>
+<td>72GB</td>
+</tr>
+</tbody>
+</table>
+<p>The memory estimates assume FP16 precision for model weights, with low-rank adaptation (LoRA/QLoRA) layers comprising 1% of the total model parameters.</p>
+<table>
+<thead>
+<tr>
+<th>Fine-tuning type</th>
+<th>Calculation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Full fine-tuning</td>
+<td>2T × 16 bytes = 32TB</td>
+</tr>
+<tr>
+<td>LoRA</td>
+<td>2T × 2 bytes + 1% of 2T × 16 bytes = 4.3TB</td>
+</tr>
+<tr>
+<td>QLoRA(4-bit)</td>
+<td>2T × 0.5 bytes + 1% of 2T × 16 bytes = 1.3TB</td>
+</tr>
+</tbody>
+</table>
+<h2 id="running-a-configuration_1">Running a configuration<a class="headerlink" href="#running-a-configuration_1" title="Permanent link">&para;</a></h2>
+<p>Once the configuration is ready, run <code>dstack apply -f &lt;configuration file&gt;</code>, and <code>dstack</code> will automatically provision the
+cloud resources and run the configuration.</p>
+<div class="termy">
+
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nv">HF_TOKEN</span><span class="o">=</span>...
+$<span class="w"> </span><span class="nv">WANDB_API_KEY</span><span class="o">=</span>...
+$<span class="w"> </span><span class="nv">WANDB_PROJECT</span><span class="o">=</span>...
+$<span class="w"> </span><span class="nv">WANDB_NAME</span><span class="o">=</span>axolotl-nvidia-llama-scout-train
+$<span class="w"> </span><span class="nv">HUB_MODEL_ID</span><span class="o">=</span>...
+$<span class="w"> </span>dstack<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>examples/fine-tuning/axolotl/.dstack.yml
+</code></pre></div>
+
+</div>
+
 <h2 id="source-code">Source code<a class="headerlink" href="#source-code" title="Permanent link">&para;</a></h2>
-<p>The source-code of this example can be found in 
-<a href="https://github.com/dstackai/dstack/blob/master/examples/llms/llama"><code>examples/llms/llama</code> <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>.</p>
+<p>The source-code for deployment examples can be found in 
+<a href="https://github.com/dstackai/dstack/blob/master/examples/llms/llama"><code>examples/llms/llama</code> <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> and the source-code for the finetuning example can be found in <a href="https://github.com/dstackai/dstack/blob/master/examples/fine-tuning/axolotl" target="_blank"><code>examples/fine-tuning/axolotl</code> <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>.</p>
 <h2 id="whats-next">What's next?<a class="headerlink" href="#whats-next" title="Permanent link">&para;</a></h2>
 <ol>
 <li>Check <a href="https://dstack.ai/docs/dev-environments">dev environments</a>, <a href="https://dstack.ai/docs/tasks">tasks</a>, 
    <a href="https://dstack.ai/docs/services">services</a>, and <a href="https://dstack.ai/docs/protips">protips</a>.</li>
-<li>Browse <a href="https://github.com/sgl-project/sglang/blob/main/docs/references/llama4.md">Llama 4 with SGLang <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>, <a href="https://blog.vllm.ai/2025/04/05/llama4.html">Llama 4 with vLLM <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> and <a href="https://rocm.blogs.amd.com/artificial-intelligence/llama4-day-0-support/README.html">Llama 4 with AMD <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>.</li>
+<li>Browse <a href="https://github.com/sgl-project/sglang/blob/main/docs/references/llama4.md">Llama 4 with SGLang <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>, <a href="https://blog.vllm.ai/2025/04/05/llama4.html">Llama 4 with vLLM <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>, <a href="https://rocm.blogs.amd.com/artificial-intelligence/llama4-day-0-support/README.html">Llama 4 with AMD <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> and <a href="https://github.com/OpenAccess-AI-Collective/axolotl" target="_blank">Axolotl <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>.</li>
 </ol>
 
 
