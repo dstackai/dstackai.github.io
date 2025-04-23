@@ -1808,6 +1808,34 @@ Support our project with a ⭐ on
   
   
     <li class="md-nav__item">
+      <a href="../../docs/reference/cli/dstack/offer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    dstack offer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../docs/reference/cli/dstack/volume/" class="md-nav__link">
         
   
@@ -3591,7 +3619,7 @@ Support our project with a ⭐ on
     <span class="md-ellipsis">
       
         <span class="md-typeset">
-          vRAM consumption
+          VRAM consumption
         </span>
       
     </span>
@@ -3912,8 +3940,8 @@ or maintain Time to First Token (TTFT). </p>
 performance improved notably when the number of requests was below 900.</p>
 </blockquote>
 <p><img src="https://raw.githubusercontent.com/dstackai/benchmarks/refs/heads/main/amd/inference/charts_rps/mean_ttft_tgi_vllm.png" width="725" style="padding: 0 40px 0 50px"/></p>
-<h3 id="vram-consumption">vRAM consumption<a class="headerlink" href="#vram-consumption" title="Permanent link">&para;</a></h3>
-<p>When considering vRAM consumption right after loading model weights, TGI allocates approximately 28% less vRAM compared
+<h3 id="vram-consumption">VRAM consumption<a class="headerlink" href="#vram-consumption" title="Permanent link">&para;</a></h3>
+<p>When considering VRAM consumption right after loading model weights, TGI allocates approximately 28% less VRAM compared
 to vLLM.</p>
 <p><img src="https://raw.githubusercontent.com/dstackai/benchmarks/refs/heads/main/amd/inference/gpu_vram_tgi_vllm.png" width="750" /></p>
 <p>This difference may be related to how vLLM <a href="https://docs.vllm.ai/en/latest/models/performance.html" target="_blank">pre-allocates GPU cache <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>.</p>
@@ -3931,7 +3959,7 @@ to vLLM.</p>
 <li>With vLLM, we used the default backend configuration. With better tuning, we might have achieved improved performance.</li>
 </ul>
 </div>
-<p>In general, the 8x AMD MI300X is a good fit for larger models and allows us to make the most of its vRAM, especially for
+<p>In general, the 8x AMD MI300X is a good fit for larger models and allows us to make the most of its VRAM, especially for
 larger batches.</p>
 <p>If you’d like to support us in doing more benchmarks, please let us know.</p>
 <h2 id="whats-next">What's next?<a class="headerlink" href="#whats-next" title="Permanent link">&para;</a></h2>

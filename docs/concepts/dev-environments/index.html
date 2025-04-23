@@ -2047,6 +2047,34 @@ Support our project with a ⭐ on
   
   
     <li class="md-nav__item">
+      <a href="../../reference/cli/dstack/offer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    dstack offer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../reference/cli/dstack/volume/" class="md-nav__link">
         
   
@@ -4158,6 +4186,10 @@ and their quantity. Examples: <code>nvidia</code> (one NVIDIA GPU), <code>A100</
 <p>If you are using parallel communicating processes (e.g., dataloaders in PyTorch), you may need to configure 
 <code>shm_size</code>, e.g. set it to <code>16GB</code>.</p>
 </details>
+<blockquote>
+<p>If you’re unsure which offers (hardware configurations) are available from the configured backends, use the
+<a href="../../reference/cli/dstack/offer/#list-gpu-offers"><code>dstack offer</code></a> command to list them.</p>
+</blockquote>
 <h3 id="python-version">Python version<a class="headerlink" href="#python-version" title="Permanent link">&para;</a></h3>
 <p>If you don't specify <code>image</code>, <code>dstack</code> uses its base Docker image pre-configured with 
 <code>python</code>, <code>pip</code>, <code>conda</code> (Miniforge), and essential CUDA drivers. 

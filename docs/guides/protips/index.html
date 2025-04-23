@@ -1245,11 +1245,11 @@ Support our project with a ⭐ on
 </li>
       
         <li class="md-nav__item">
-  <a href="#gpu" class="md-nav__link">
+  <a href="#gpu-specification" class="md-nav__link">
     <span class="md-ellipsis">
       
         <span class="md-typeset">
-          GPU
+          GPU specification
         </span>
       
     </span>
@@ -1258,11 +1258,24 @@ Support our project with a ⭐ on
 </li>
       
         <li class="md-nav__item">
-  <a href="#monitoring-metrics" class="md-nav__link">
+  <a href="#offers" class="md-nav__link">
     <span class="md-ellipsis">
       
         <span class="md-typeset">
-          Monitoring metrics
+          Offers
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Metrics
         </span>
       
     </span>
@@ -2014,6 +2027,34 @@ Support our project with a ⭐ on
     
   
     dstack fleet
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/cli/dstack/offer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    dstack offer
   
 
     
@@ -3829,11 +3870,11 @@ Support our project with a ⭐ on
 </li>
       
         <li class="md-nav__item">
-  <a href="#gpu" class="md-nav__link">
+  <a href="#gpu-specification" class="md-nav__link">
     <span class="md-ellipsis">
       
         <span class="md-typeset">
-          GPU
+          GPU specification
         </span>
       
     </span>
@@ -3842,11 +3883,24 @@ Support our project with a ⭐ on
 </li>
       
         <li class="md-nav__item">
-  <a href="#monitoring-metrics" class="md-nav__link">
+  <a href="#offers" class="md-nav__link">
     <span class="md-ellipsis">
       
         <span class="md-typeset">
-          Monitoring metrics
+          Offers
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Metrics
         </span>
       
     </span>
@@ -4167,10 +4221,19 @@ This means it streams the logs as they come in and, in the case of a task, forwa
 <blockquote>
 <p>If you detached the CLI, you can always re-attach to a run via <a href="../../reference/cli/dstack/attach/"><code>dstack attach</code></a>.</p>
 </blockquote>
-<h2 id="gpu">GPU<a class="headerlink" href="#gpu" title="Permanent link">&para;</a></h2>
+<h2 id="gpu-specification">GPU specification<a class="headerlink" href="#gpu-specification" title="Permanent link">&para;</a></h2>
 <p><code>dstack</code> natively supports NVIDIA GPU, AMD GPU, and Google Cloud TPU accelerator chips.</p>
-<p>The <code>gpu</code> property within <a href="../../reference/dstack.yml/dev-environment/#resources"><code>resources</code></a> (or the <code>--gpu</code> option with <code>dstack apply</code>)
+<p>The <code>gpu</code> property within <a href="../../reference/dstack.yml/dev-environment/#resources"><code>resources</code></a> (or the <code>--gpu</code> option with <a href="../../reference/cli/dstack/apply/"><code>dstack apply</code></a> or
+<a href="../../reference/cli/dstack/offer/"><code>dstack offer</code></a>)
 allows specifying not only memory size but also GPU vendor, names, their memory, and quantity.</p>
+<p>The general format is: <code>&lt;vendor&gt;:&lt;comma-sparated names&gt;:&lt;memory range&gt;:&lt;quantity range&gt;</code>.</p>
+<p>Each component is optional. </p>
+<p>Ranges can be:</p>
+<ul>
+<li><strong>Closed</strong> (e.g. <code>24GB..80GB</code> or <code>1..8</code>)</li>
+<li><strong>Open</strong> (e.g. <code>24GB..</code> or <code>1..</code>)</li>
+<li><strong>Single values</strong> (e.g. <code>1</code> or <code>24GB</code>).</li>
+</ul>
 <p>Examples:</p>
 <ul>
 <li><code>1</code> (any GPU)</li>
@@ -4200,7 +4263,33 @@ allows specifying not only memory size but also GPU vendor, names, their memory,
 <p>Currently, you can't specify other than 8 TPU cores. This means only single host workloads are supported.
 Support for multiple hosts is coming soon.</p>
 </details>
-<h2 id="monitoring-metrics">Monitoring metrics<a class="headerlink" href="#monitoring-metrics" title="Permanent link">&para;</a></h2>
+<h2 id="offers">Offers<a class="headerlink" href="#offers" title="Permanent link">&para;</a></h2>
+<p>If you're not sure which offers (hardware configurations) are available with the configured backends, use the
+<a href="../../reference/cli/dstack/offer/#list-gpu-offers"><code>dstack offer</code></a> command.</p>
+<div class="termy">
+
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>dstack<span class="w"> </span>offer<span class="w"> </span>--gpu<span class="w"> </span>H100:1..<span class="w"> </span>--max-offers<span class="w"> </span><span class="m">10</span>
+Getting<span class="w"> </span>offers...
+---&gt;<span class="w"> </span><span class="m">100</span>%
+
+<span class="w"> </span><span class="c1">#   BACKEND     REGION     INSTANCE TYPE          RESOURCES                                     SPOT  PRICE   </span>
+<span class="w"> </span><span class="m">1</span><span class="w">   </span>datacrunch<span class="w">  </span>FIN-01<span class="w">     </span>1H100.80S.30V<span class="w">          </span>30xCPU,<span class="w"> </span>120GB,<span class="w"> </span>1xH100<span class="w"> </span><span class="o">(</span>80GB<span class="o">)</span>,<span class="w"> </span><span class="m">100</span>.0GB<span class="w"> </span><span class="o">(</span>disk<span class="o">)</span><span class="w">  </span>no<span class="w">    </span><span class="nv">$2</span>.19<span class="w">   </span>
+<span class="w"> </span><span class="m">2</span><span class="w">   </span>datacrunch<span class="w">  </span>FIN-02<span class="w">     </span>1H100.80S.30V<span class="w">          </span>30xCPU,<span class="w"> </span>120GB,<span class="w"> </span>1xH100<span class="w"> </span><span class="o">(</span>80GB<span class="o">)</span>,<span class="w"> </span><span class="m">100</span>.0GB<span class="w"> </span><span class="o">(</span>disk<span class="o">)</span><span class="w">  </span>no<span class="w">    </span><span class="nv">$2</span>.19<span class="w">   </span>
+<span class="w"> </span><span class="m">3</span><span class="w">   </span>datacrunch<span class="w">  </span>FIN-02<span class="w">     </span>1H100.80S.32V<span class="w">          </span>32xCPU,<span class="w"> </span>185GB,<span class="w"> </span>1xH100<span class="w"> </span><span class="o">(</span>80GB<span class="o">)</span>,<span class="w"> </span><span class="m">100</span>.0GB<span class="w"> </span><span class="o">(</span>disk<span class="o">)</span><span class="w">  </span>no<span class="w">    </span><span class="nv">$2</span>.19<span class="w">   </span>
+<span class="w"> </span><span class="m">4</span><span class="w">   </span>datacrunch<span class="w">  </span>ICE-01<span class="w">     </span>1H100.80S.32V<span class="w">          </span>32xCPU,<span class="w"> </span>185GB,<span class="w"> </span>1xH100<span class="w"> </span><span class="o">(</span>80GB<span class="o">)</span>,<span class="w"> </span><span class="m">100</span>.0GB<span class="w"> </span><span class="o">(</span>disk<span class="o">)</span><span class="w">  </span>no<span class="w">    </span><span class="nv">$2</span>.19<span class="w">   </span>
+<span class="w"> </span><span class="m">5</span><span class="w">   </span>runpod<span class="w">      </span>US-KS-2<span class="w">    </span>NVIDIA<span class="w"> </span>H100<span class="w"> </span>PCIe<span class="w">       </span>16xCPU,<span class="w"> </span>251GB,<span class="w"> </span>1xH100<span class="w"> </span><span class="o">(</span>80GB<span class="o">)</span>,<span class="w"> </span><span class="m">100</span>.0GB<span class="w"> </span><span class="o">(</span>disk<span class="o">)</span><span class="w">  </span>no<span class="w">    </span><span class="nv">$2</span>.39<span class="w">   </span>
+<span class="w"> </span><span class="m">6</span><span class="w">   </span>runpod<span class="w">      </span>CA<span class="w">         </span>NVIDIA<span class="w"> </span>H100<span class="w"> </span>80GB<span class="w"> </span>HBM3<span class="w">  </span>24xCPU,<span class="w"> </span>251GB,<span class="w"> </span>1xH100<span class="w"> </span><span class="o">(</span>80GB<span class="o">)</span>,<span class="w"> </span><span class="m">100</span>.0GB<span class="w"> </span><span class="o">(</span>disk<span class="o">)</span><span class="w">  </span>no<span class="w">    </span><span class="nv">$2</span>.69<span class="w">   </span>
+<span class="w"> </span><span class="m">7</span><span class="w">   </span>nebius<span class="w">      </span>eu-north1<span class="w">  </span>gpu-h100-sxm<span class="w">           </span>16xCPU,<span class="w"> </span>200GB,<span class="w"> </span>1xH100<span class="w"> </span><span class="o">(</span>80GB<span class="o">)</span>,<span class="w"> </span><span class="m">100</span>.0GB<span class="w"> </span><span class="o">(</span>disk<span class="o">)</span><span class="w">  </span>no<span class="w">    </span><span class="nv">$2</span>.95<span class="w">   </span>
+<span class="w"> </span><span class="m">8</span><span class="w">   </span>runpod<span class="w">      </span>AP-JP-1<span class="w">    </span>NVIDIA<span class="w"> </span>H100<span class="w"> </span>80GB<span class="w"> </span>HBM3<span class="w">  </span>20xCPU,<span class="w"> </span>251GB,<span class="w"> </span>1xH100<span class="w"> </span><span class="o">(</span>80GB<span class="o">)</span>,<span class="w"> </span><span class="m">100</span>.0GB<span class="w"> </span><span class="o">(</span>disk<span class="o">)</span><span class="w">  </span>no<span class="w">    </span><span class="nv">$2</span>.99<span class="w">   </span>
+<span class="w"> </span><span class="m">9</span><span class="w">   </span>runpod<span class="w">      </span>CA-MTL-1<span class="w">   </span>NVIDIA<span class="w"> </span>H100<span class="w"> </span>80GB<span class="w"> </span>HBM3<span class="w">  </span>28xCPU,<span class="w"> </span>251GB,<span class="w"> </span>1xH100<span class="w"> </span><span class="o">(</span>80GB<span class="o">)</span>,<span class="w"> </span><span class="m">100</span>.0GB<span class="w"> </span><span class="o">(</span>disk<span class="o">)</span><span class="w">  </span>no<span class="w">    </span><span class="nv">$2</span>.99<span class="w">   </span>
+<span class="w"> </span><span class="m">10</span><span class="w">  </span>runpod<span class="w">      </span>CA-MTL-2<span class="w">   </span>NVIDIA<span class="w"> </span>H100<span class="w"> </span>80GB<span class="w"> </span>HBM3<span class="w">  </span>26xCPU,<span class="w"> </span>125GB,<span class="w"> </span>1xH100<span class="w"> </span><span class="o">(</span>80GB<span class="o">)</span>,<span class="w"> </span><span class="m">100</span>.0GB<span class="w"> </span><span class="o">(</span>disk<span class="o">)</span><span class="w">  </span>no<span class="w">    </span><span class="nv">$2</span>.99<span class="w">   </span>
+<span class="w">     </span>...<span class="w">                                                                                                                </span>
+<span class="w"> </span>Shown<span class="w"> </span><span class="m">10</span><span class="w"> </span>of<span class="w"> </span><span class="m">99</span><span class="w"> </span>offers,<span class="w"> </span><span class="nv">$127</span>.816<span class="w"> </span>max
+</code></pre></div>
+
+</div>
+
+<h2 id="metrics">Metrics<a class="headerlink" href="#metrics" title="Permanent link">&para;</a></h2>
 <p>While <code>dstack</code> allows the use of any third-party monitoring tools (e.g., Weights and Biases), you can also
 monitor container metrics such as CPU, memory, and GPU usage using the <a href="../../../blog/dstack-metrics/">built-in
 <code>dstack metrics</code> CLI command</a> or the corresponding API.</p>
