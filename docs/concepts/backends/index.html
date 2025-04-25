@@ -4613,6 +4613,9 @@ gcloud<span class="w"> </span>services<span class="w"> </span><span class="nb">e
 <span class="w">      </span><span class="nt">vpc_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my-custom-vpc</span>
 </code></pre></div>
 </div>
+<p>If you specify a non-default VPC, ensure it has a firewall rule
+allowing all traffic within the VPC. This is needed for multi-node tasks to work.
+The default VPC already permits traffic within the VPC.</p>
 </div>
 <div class="tabbed-block">
 <div editor-title="~/.dstack/server/config.yml">
