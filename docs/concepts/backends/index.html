@@ -4713,6 +4713,22 @@ button to create a new API key.</p>
 </code></pre></div>
 </div>
 </details>
+<details class="info">
+<summary>Projects</summary>
+<p>If you have multiple projects per region, specify which ones to use, at most one per region.</p>
+<div editor-title="~/.dstack/server/config.yml">
+<div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nebius</span>
+<span class="nt">projects</span><span class="p">:</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">project-e00jt6t095t1ahrg4re30</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">project-e01iahuh3cklave4ao1nv</span>
+<span class="nt">creds</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service_account</span>
+<span class="w">  </span><span class="nt">service_account_id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">serviceaccount-e00dhnv9ftgb3cqmej</span>
+<span class="w">  </span><span class="nt">public_key_id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">publickey-e00ngaex668htswqy4</span>
+<span class="w">  </span><span class="nt">private_key_file</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">~/path/to/key.pem</span>
+</code></pre></div>
+</div>
+</details>
 <div class="admonition info">
 <p class="admonition-title">Python version</p>
 <p>Nebius is only supported if <code>dstack server</code> is running on Python 3.10 or higher.</p>

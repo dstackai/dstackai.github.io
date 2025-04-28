@@ -4313,7 +4313,8 @@ to configure <a href="../../../concepts/backends/">backends</a> and other <a hre
 <h6 class="reference-item" id="api_key"><code>api_key</code> -  The API key.<a class="headerlink" href="#api_key" title="Permanent link">&para;</a></h6>
 <h5 id="nebius"><code>projects[n].backends[type=nebius]</code><a class="headerlink" href="#nebius" title="Permanent link">&para;</a></h5>
 <h6 class="reference-item" id="type"><code>type</code> -  The type of backend. Must be <code>nebius</code>.<a class="headerlink" href="#type" title="Permanent link">&para;</a></h6>
-<h6 class="reference-item" id="regions"><code>regions</code> - (Optional) The list of Nebius regions. Omit to use all regions.<a class="headerlink" href="#regions" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="projects"><code>projects</code> - (Optional) The list of allowed Nebius project IDs. Omit to use the default project in each region. The project is considered default if it is the only project in the region or if its name starts with <code>default-project</code>.<a class="headerlink" href="#projects" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="regions"><code>regions</code> - (Optional) The list of allowed Nebius regions. Omit to allow all regions.<a class="headerlink" href="#regions" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="creds"><code>creds</code> -  The credentials.<a class="headerlink" href="#creds" title="Permanent link">&para;</a></h6>
 <h6 id="nebius-creds"><code>projects[n].backends[type=nebius].creds</code><a class="headerlink" href="#nebius-creds" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="type"><code>type</code> -  The type of credentials. Must be <code>service_account</code>.<a class="headerlink" href="#type" title="Permanent link">&para;</a></h6>
