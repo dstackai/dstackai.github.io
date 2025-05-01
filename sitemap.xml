@@ -149,14 +149,6 @@
          <lastmod>2025-05-01</lastmod>
     </url>
     <url>
-         <loc>https://dstack.ai/docs/concepts/metrics/</loc>
-         <lastmod>2025-05-01</lastmod>
-    </url>
-    <url>
-         <loc>https://dstack.ai/docs/concepts/plugins/</loc>
-         <lastmod>2025-05-01</lastmod>
-    </url>
-    <url>
          <loc>https://dstack.ai/docs/concepts/projects/</loc>
          <lastmod>2025-05-01</lastmod>
     </url>
@@ -178,6 +170,14 @@
     </url>
     <url>
          <loc>https://dstack.ai/docs/guides/dstack-sky/</loc>
+         <lastmod>2025-05-01</lastmod>
+    </url>
+    <url>
+         <loc>https://dstack.ai/docs/guides/monitoring/</loc>
+         <lastmod>2025-05-01</lastmod>
+    </url>
+    <url>
+         <loc>https://dstack.ai/docs/guides/plugins/</loc>
          <lastmod>2025-05-01</lastmod>
     </url>
     <url>
