@@ -2918,6 +2918,34 @@ Support our project with a ⭐ on
   
   
     <li class="md-nav__item">
+      <a href="../../../examples/accelerators/tpu/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TPU
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../../examples/accelerators/intel/" class="md-nav__link">
         
   
@@ -2946,14 +2974,14 @@ Support our project with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../../examples/accelerators/tpu/" class="md-nav__link">
+      <a href="../../../examples/accelerators/tenstorrent/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    TPU
+    Tenstorrent
   
 
     
@@ -4442,7 +4470,7 @@ incl. <a href="../../reference/dstack.yml/task/#backends"><code>backends</code><
 among <a href="../../reference/dstack.yml/task/">others</a>.</p>
 </div>
 <h3 id="retry-policy">Retry policy<a class="headerlink" href="#retry-policy" title="Permanent link">&para;</a></h3>
-<p>By default, if <code>dstack</code> can't find capacity, the task exits with an error, or the instance is interrupted, 
+<p>By default, if <code>dstack</code> can't find capacity, or the task exits with an error, or the instance is interrupted, 
 the run will fail.</p>
 <p>If you'd like <code>dstack</code> to automatically retry, configure the 
 <a href="../../reference/dstack.yml/task/#retry">retry</a> property accordingly:</p>
@@ -4468,6 +4496,8 @@ the run will fail.</p>
 
 </div>
 
+<p>If one job of a multi-node task fails with retry enabled,
+<code>dstack</code> will stop all the jobs and resubmit the run.</p>
 <h3 id="creation-policy">Creation policy<a class="headerlink" href="#creation-policy" title="Permanent link">&para;</a></h3>
 <p>By default, when you run <code>dstack apply</code> with a dev environment, task, or service,
 if no <code>idle</code> instances from the available fleets meet the requirements, <code>dstack</code> creates a new fleet 

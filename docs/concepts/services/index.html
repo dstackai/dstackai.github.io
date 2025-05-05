@@ -2957,6 +2957,34 @@ Support our project with a ⭐ on
   
   
     <li class="md-nav__item">
+      <a href="../../../examples/accelerators/tpu/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TPU
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../../examples/accelerators/intel/" class="md-nav__link">
         
   
@@ -2985,14 +3013,14 @@ Support our project with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../../examples/accelerators/tpu/" class="md-nav__link">
+      <a href="../../../examples/accelerators/tenstorrent/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    TPU
+    Tenstorrent
   
 
     
@@ -4619,10 +4647,26 @@ incl. <a href="../../reference/dstack.yml/service/#backends"><code>backends</cod
 among <a href="../../reference/dstack.yml/service/">others</a>.</p>
 </div>
 <h3 id="retry-policy">Retry policy<a class="headerlink" href="#retry-policy" title="Permanent link">&para;</a></h3>
-<p>By default, if <code>dstack</code> can't find capacity, the task exits with an error, or the instance is interrupted, 
-the run will fail.</p>
+<p>By default, if <code>dstack</code> can't find capacity, or the service exits with an error, or the instance is interrupted, the run will fail.</p>
 <p>If you'd like <code>dstack</code> to automatically retry, configure the 
 <a href="../../reference/dstack.yml/service/#retry">retry</a> property accordingly:</p>
+<div editor-title="service.dstack.yml">
+
+<div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service</span>
+<span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my-app:latest</span>
+<span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">80</span>
+
+<span class="nt">retry</span><span class="p">:</span>
+<span class="w">  </span><span class="c1"># Retry on specific events</span>
+<span class="w">  </span><span class="nt">on_events</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">no-capacity</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">error</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">interruption</span><span class="p p-Indicator">]</span>
+<span class="w">  </span><span class="c1"># Retry for up to 1 hour</span>
+<span class="w">  </span><span class="nt">duration</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1h</span>
+</code></pre></div>
+
+</div>
+
+<p>If one replica of a multi-replica service fails with retry enabled,
+<code>dstack</code> will resubmit only the failed replica while keeping active replicas running.</p>
 <h3 id="creation-policy">Creation policy<a class="headerlink" href="#creation-policy" title="Permanent link">&para;</a></h3>
 <p>By default, when you run <code>dstack apply</code> with a dev environment, task, or service,
 if no <code>idle</code> instances from the available fleets meet the requirements, <code>dstack</code> creates a new fleet 
