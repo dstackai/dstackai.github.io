@@ -92,7 +92,7 @@
 <meta property="og:title" content="Exploring inference memory saturation effect: H100 vs MI300x - dstack" />
 <meta property="og:description" content="This benchmark explores how GPU memory saturation affects LLM inference performance and cost, comparing NVIDIA H100 and AMD MI300x." />
 <meta property="og:image" content="
-  https://github.com/dstackai/static-assets/blob/main/static-assets/images/h100-mi300x-inference-benchmark-v2.png?raw=true" />
+  https://dstack.ai/static-assets/static-assets/images/h100-mi300x-inference-benchmark-v2.png" />
 <meta property="og:image:type" content="image/png" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
@@ -101,7 +101,7 @@
 <meta property="twitter.title" content="Exploring inference memory saturation effect: H100 vs MI300x - dstack" />
 <meta property="twitter:description" content="This benchmark explores how GPU memory saturation affects LLM inference performance and cost, comparing NVIDIA H100 and AMD MI300x." />
 <meta property="twitter:image" content="
-  https://github.com/dstackai/static-assets/blob/main/static-assets/images/h100-mi300x-inference-benchmark-v2.png?raw=true" />
+  https://dstack.ai/static-assets/static-assets/images/h100-mi300x-inference-benchmark-v2.png" />
 </head>
   
   
@@ -3970,7 +3970,7 @@ saturation’s impact on inference using NVIDIA's H100 and AMD's MI300x with Lla
 Additionally, we compare deployment strategies: running two Llama 3.1 405B FP8 replicas on 4xMI300x versus a single
 replica on 4xMI300x and 8xMI300x</p>
 <p>Finally, we extrapolate performance projections for upcoming GPUs like NVIDIA H200, B200, and AMD MI325x, MI350x.</p>
-<p><img src="https://github.com/dstackai/static-assets/blob/main/static-assets/images/h100-mi300x-inference-benchmark-v2.png?raw=true" width="630"/></p>
+<p><img src="https://dstack.ai/static-assets/static-assets/images/h100-mi300x-inference-benchmark-v2.png" width="630"/></p>
 <p>This benchmark is made possible through the generous support of our friends at
 <a href="https://hotaisle.xyz/" target="_blank">Hot Aisle <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> and 
 <a href="https://lambdalabs.com/" target="_blank">Lambda <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>,
@@ -4027,17 +4027,17 @@ who provided high-end hardware.</p>
 </table>
 <h2 id="observations">Observations<a class="headerlink" href="#observations" title="Permanent link">&para;</a></h2>
 <h3 id="cost-per-token">Cost per token<a class="headerlink" href="#cost-per-token" title="Permanent link">&para;</a></h3>
-<p><img src="https://github.com/dstackai/static-assets/blob/main/static-assets/images/h100-mi300x-inference-benchmark-cpt.png?raw=true" width="750"></p>
+<p><img src="https://dstack.ai/static-assets/static-assets/images/h100-mi300x-inference-benchmark-cpt.png" width="750"></p>
 <p>As prompt and batch sizes grow, the NVIDIA H100 reaches memory limits, causing a sharp drop in cost-effectiveness. In
 contrast, the 1 FP8 8xMI300x configuration is the most cost-efficient for large prompts.</p>
 <p>For large prompts, two parallel replicas running on 4xMI300x lose their cost advantage compared to a single replica on
 8xMI300x. The latter offers 51% more memory for the KV cache, improving throughput and reducing cost per token.</p>
-<p><img src="https://github.com/dstackai/static-assets/blob/main/static-assets/images/h100-mi300x-inference-benchmark-online-requests.png?raw=true" width="750"></p>
+<p><img src="https://dstack.ai/static-assets/static-assets/images/h100-mi300x-inference-benchmark-online-requests.png" width="750"></p>
 <p>While 4xMI300x is a cost-effective alternative to 8xH100 for smaller load profiles, it underperforms in online serving.
 8xH100 SXM5 processes 74% more requests per second and reduces TTFT by at least 50% at all QPS levels.</p>
-<p><img src="https://github.com/dstackai/static-assets/blob/main/static-assets/images/h100-mi300x-inference-benchmark-online-ttft.png?raw=true" width="750"></p>
+<p><img src="https://dstack.ai/static-assets/static-assets/images/h100-mi300x-inference-benchmark-online-ttft.png" width="750"></p>
 <h3 id="throughput">Throughput<a class="headerlink" href="#throughput" title="Permanent link">&para;</a></h3>
-<p><img src="https://github.com/dstackai/static-assets/blob/main/static-assets/images/h100-mi300x-inference-benchmark-throughput.png?raw=true" width="750"></p>
+<p><img src="https://dstack.ai/static-assets/static-assets/images/h100-mi300x-inference-benchmark-throughput.png" width="750"></p>
 <p>With large prompts and batch sizes, two replicas on 4xMI300x GPUs hit memory saturation when total tokens (prompt
 length x batch size) exceed the available memory for the KV cache. This forces the inference engine to compute KV
 tensors on-the-fly or offload them to CPU memory, degrading throughput.</p>
@@ -4076,22 +4076,22 @@ setup, an 8xH200 would process around 2,186 tokens per second (3.4 × 643), thou
 </tbody>
 </table>
 <h4 id="replicas-on-4xmi300x">Replicas on 4xMi300x<a class="headerlink" href="#replicas-on-4xmi300x" title="Permanent link">&para;</a></h4>
-<p><img src="https://github.com/dstackai/static-assets/blob/main/static-assets/images/h100-mi300x-inference-benchmark-throughput-2048.png?raw=true" width="750"></p>
+<p><img src="https://dstack.ai/static-assets/static-assets/images/h100-mi300x-inference-benchmark-throughput-2048.png" width="750"></p>
 <p>Running two replicas on 4xMI300x delivers better throughput for small to medium prompts than a single replica on
 8xMI300x. </p>
-<p><img src="https://github.com/dstackai/static-assets/blob/main/static-assets/images/h100-mi300x-inference-benchmark-throughput-32784.png?raw=true" width="750"></p>
+<p><img src="https://dstack.ai/static-assets/static-assets/images/h100-mi300x-inference-benchmark-throughput-32784.png" width="750"></p>
 <p>This boost comes from distributing the Llama 3.1 405B model across four GPUs, enabling parallel execution. For
 small prompts, a single replica underutilizes the GPUs. Running two replicas doubles the batch size, improving GPU
 utilization and efficiency.</p>
 <h3 id="time-to-first-token">Time To First Token<a class="headerlink" href="#time-to-first-token" title="Permanent link">&para;</a></h3>
-<p><img src="https://github.com/dstackai/static-assets/blob/main/static-assets/images/h100-mi300x-inference-benchmark-ttft-qps-1000.png?raw=true" width="750"></p>
+<p><img src="https://dstack.ai/static-assets/static-assets/images/h100-mi300x-inference-benchmark-ttft-qps-1000.png" width="750"></p>
 <p>The 4xMI300x setup provides 768 GB of memory (4 GPUs × 192 GB each), compared to 640 GB with 8xH100 (8 GPUs × 80 GB
 each). However, at 1000 QPS, TTFT for 4xMI300x is over twice as long as for 8xH100</p>
 <p>This difference occurs during the prefill stage, where KV tensors for input prompts are computed. Since tensors are
 processed in parallel, the 8xH100 configuration distributes the load more effectively, reducing computation time.</p>
 <p>Despite offering more memory, 4xMI300x lacks the parallelism of 8xH100, leading to longer TTFT.</p>
 <h3 id="time-to-serve-1-request">Time to Serve 1 Request<a class="headerlink" href="#time-to-serve-1-request" title="Permanent link">&para;</a></h3>
-<p><img src="https://github.com/dstackai/static-assets/blob/main/static-assets/images/h100-mi300x-inference-benchmark-time-1-request.png?raw=true" width="750"></p>
+<p><img src="https://dstack.ai/static-assets/static-assets/images/h100-mi300x-inference-benchmark-time-1-request.png" width="750"></p>
 <p>Processing a single large prompt request with 8xMI300x takes around 11.25 seconds. This latency is mainly due to
 computational demands during the prefill phase, where KV tensors are computed.</p>
 <p>Optimizations like <a href="https://docs.vllm.ai/en/latest/automatic_prefix_caching/apc.html" target="_blank">automatic prefix caching <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>

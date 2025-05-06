@@ -92,7 +92,7 @@
 <meta property="og:title" content="Supporting MPI and NCCL/RCCL tests - dstack" />
 <meta property="og:description" content="TBA" />
 <meta property="og:image" content="
-  https://github.com/dstackai/static-assets/blob/main/static-assets/images/dstack-mpi-v2.png?raw=true" />
+  https://dstack.ai/static-assets/static-assets/images/dstack-mpi-v2.png" />
 <meta property="og:image:type" content="image/png" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
@@ -101,7 +101,7 @@
 <meta property="twitter.title" content="Supporting MPI and NCCL/RCCL tests - dstack" />
 <meta property="twitter:description" content="TBA" />
 <meta property="twitter:image" content="
-  https://github.com/dstackai/static-assets/blob/main/static-assets/images/dstack-mpi-v2.png?raw=true" />
+  https://dstack.ai/static-assets/static-assets/images/dstack-mpi-v2.png" />
 </head>
   
   
@@ -3699,7 +3699,7 @@ on-prem clusters, whether it's pre-training, fine-tuning, or batch processing.</
 <code>torchrun</code>, <code>accelerate</code>, or others. <code>dstack</code> handles node provisioning, job execution, and automatically propagates
 system environment variables—such as <code>DSTACK_NODE_RANK</code>, <code>DSTACK_MASTER_NODE_IP</code>,
 <code>DSTACK_GPUS_PER_NODE</code> and <a href="../../docs/concepts/tasks/#system-environment-variables">others</a>—to containers.</p>
-<p><img src="https://github.com/dstackai/static-assets/blob/main/static-assets/images/dstack-mpi-v2.png?raw=true" width="630"/></p>
+<p><img src="https://dstack.ai/static-assets/static-assets/images/dstack-mpi-v2.png" width="630"/></p>
 <p>One use case <code>dstack</code> hasn’t supported until now is MPI, as it requires a scheduled environment or
 direct SSH connections between containers. Since <code>mpirun</code> is essential for running NCCL/RCCL tests—crucial for large-scale
 cluster usage—we’ve added support for it.</p>

@@ -3897,7 +3897,7 @@ Support our project with a ⭐ on
 <p>AI workloads generate vast amounts of metrics, making it essential to have efficient monitoring tools. While our recent
 update introduced the ability to export available metrics to Prometheus for maximum flexibility, there are times when
 users need to quickly access essential metrics without the need to switch to an external tool.</p>
-<p><img src="https://github.com/dstackai/static-assets/blob/main/static-assets/images/dstack-metrics-ui-v3-min.png?raw=true" width="630"/></p>
+<p><img src="https://dstack.ai/static-assets/static-assets/images/dstack-metrics-ui-v3-min.png" width="630"/></p>
 <p>Previously, we introduced a <a href="../../dstack-metrics/">CLI command</a> that allows users to view essential GPU metrics for both NVIDIA
 and AMD hardware. Now, with this latest update, we’re excited to announce the addition of a built-in dashboard within
 the <code>dstack</code> control plane.</p>
@@ -3950,7 +3950,7 @@ outputs, placing significant demands on memory capacity and bandwidth.</p>
 <p>In this benchmark, we evaluate the performance of three inference backends—SGLang, vLLM, and TensorRT-LLM—on two hardware
 configurations: 8x NVIDIA H200 and 8x AMD MI300X. Our goal is to compare throughput, latency, and overall efficiency to
 determine the optimal backend and hardware pairing for DeepSeek-R1's demanding requirements.</p>
-<p><img src="https://github.com/dstackai/static-assets/blob/main/static-assets/images/h200-mi300x-deepskeek-benchmark-v2.png?raw=true" width="630"/></p>
+<p><img src="https://dstack.ai/static-assets/static-assets/images/h200-mi300x-deepskeek-benchmark-v2.png" width="630"/></p>
 <p>This benchmark was made possible through the generous support of our partners at
 <a href="https://www.vultr.com/" target="_blank">Vultr <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> and 
 <a href="https://lambdalabs.com/" target="_blank">Lambda <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>,
@@ -4002,7 +4002,7 @@ to orchestrate AI containers with any AI cloud vendor, whether they provide on-d
 <p>In this tutorial, we’ll walk you through how <code>dstack</code> can be used with
 <a href="https://tensorwave.com/" target="_blank">TensorWave <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> using 
 <a href="../../../docs/concepts/fleets/#ssh">SSH fleets</a>.</p>
-<p><img src="https://github.com/dstackai/static-assets/blob/main/static-assets/images/dstack-tensorwave-v2.png?raw=true" width="630"/></p>
+<p><img src="https://dstack.ai/static-assets/static-assets/images/dstack-tensorwave-v2.png" width="630"/></p>
 
     
       <nav class="md-post__action">
@@ -4052,7 +4052,7 @@ At <code>dstack</code>, we’re committed to redefining AI container orchestrati
 approach.
 Today, we’re excited to share a new integration and partnership
 with <a href="https://www.vultr.com/" target="_blank">Vultr <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>.</p>
-<p><img src="https://github.com/dstackai/static-assets/blob/main/static-assets/images/dstack-vultr.png?raw=true" width="630"/></p>
+<p><img src="https://dstack.ai/static-assets/static-assets/images/dstack-vultr.png" width="630"/></p>
 <p>This new integration enables Vultr customers to train and deploy models on both AMD
 and NVIDIA GPUs with greater flexibility and efficiency–using <code>dstack</code>. </p>
 
@@ -4153,7 +4153,7 @@ saturation’s impact on inference using NVIDIA's H100 and AMD's MI300x with Lla
 Additionally, we compare deployment strategies: running two Llama 3.1 405B FP8 replicas on 4xMI300x versus a single
 replica on 4xMI300x and 8xMI300x</p>
 <p>Finally, we extrapolate performance projections for upcoming GPUs like NVIDIA H200, B200, and AMD MI325x, MI350x.</p>
-<p><img src="https://github.com/dstackai/static-assets/blob/main/static-assets/images/h100-mi300x-inference-benchmark-v2.png?raw=true" width="630"/></p>
+<p><img src="https://dstack.ai/static-assets/static-assets/images/h100-mi300x-inference-benchmark-v2.png" width="630"/></p>
 <p>This benchmark is made possible through the generous support of our friends at
 <a href="https://hotaisle.xyz/" target="_blank">Hot Aisle <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> and 
 <a href="https://lambdalabs.com/" target="_blank">Lambda <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>,
@@ -4205,7 +4205,7 @@ who provided high-end hardware.</p>
 <p>While it's possible to use third-party monitoring tools with <code>dstack</code>, it is often more convenient to debug your run and
 track metrics out of the box. That's why, with the latest release, <code>dstack</code> introduced <a href="../../../docs/reference/cli/dstack/metrics/"><code>dstack stats</code></a>, a new CLI (and API)
 for monitoring container metrics, including GPU usage for <code>NVIDIA</code>, <code>AMD</code>, and other accelerators.</p>
-<p><img src="https://github.com/dstackai/static-assets/blob/main/static-assets/images/dstack-stats-v2.png?raw=true" width="725"/></p>
+<p><img src="https://dstack.ai/static-assets/static-assets/images/dstack-stats-v2.png" width="725"/></p>
 
     
       <nav class="md-post__action">
@@ -4252,7 +4252,7 @@ for monitoring container metrics, including GPU usage for <code>NVIDIA</code>, <
 so we saw this as a great chance to test our integration by benchmarking AMD GPUs. Our friends at 
 <a href="https://hotaisle.xyz/" target="_blank">Hot Aisle <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>, who build top-tier 
 bare metal compute for AMD GPUs, kindly provided the hardware for the benchmark.</p>
-<p><img src="https://github.com/dstackai/static-assets/blob/main/static-assets/images/dstack-hotaisle-amd-mi300x-prompt-v5.png?raw=true" width="750" /></p>
+<p><img src="https://dstack.ai/static-assets/static-assets/images/dstack-hotaisle-amd-mi300x-prompt-v5.png" width="750" /></p>
 
     
       <nav class="md-post__action">

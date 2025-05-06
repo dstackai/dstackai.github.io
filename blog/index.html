@@ -3923,7 +3923,7 @@ Support our project with a ⭐ on
 developer velocity and efficiency.
 <code>dstack</code> is an open-source orchestrator purpose-built for AI infrastructure—offering a lightweight, container-native
 alternative to Kubernetes and Slurm.</p>
-<p><img src="https://github.com/dstackai/static-assets/blob/main/static-assets/images/dstack-nebius-v2.png?raw=true" width="630"/></p>
+<p><img src="https://dstack.ai/static-assets/static-assets/images/dstack-nebius-v2.png" width="630"/></p>
 <p>Today, we’re announcing native integration with <a href="https://nebius.com/" target="_blank">Nebius <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>,
 offering a streamlined developer experience for teams using GPUs for AI workloads.</p>
 
@@ -3972,7 +3972,7 @@ offering a streamlined developer experience for teams using GPUs for AI workload
 <p>AI workloads generate vast amounts of metrics, making it essential to have efficient monitoring tools. While our recent
 update introduced the ability to export available metrics to Prometheus for maximum flexibility, there are times when
 users need to quickly access essential metrics without the need to switch to an external tool.</p>
-<p><img src="https://github.com/dstackai/static-assets/blob/main/static-assets/images/dstack-metrics-ui-v3-min.png?raw=true" width="630"/></p>
+<p><img src="https://dstack.ai/static-assets/static-assets/images/dstack-metrics-ui-v3-min.png" width="630"/></p>
 <p>Previously, we introduced a <a href="dstack-metrics/">CLI command</a> that allows users to view essential GPU metrics for both NVIDIA
 and AMD hardware. Now, with this latest update, we’re excited to announce the addition of a built-in dashboard within
 the <code>dstack</code> control plane.</p>
@@ -4026,7 +4026,7 @@ on-prem clusters, whether it's pre-training, fine-tuning, or batch processing.</
 <code>torchrun</code>, <code>accelerate</code>, or others. <code>dstack</code> handles node provisioning, job execution, and automatically propagates
 system environment variables—such as <code>DSTACK_NODE_RANK</code>, <code>DSTACK_MASTER_NODE_IP</code>,
 <code>DSTACK_GPUS_PER_NODE</code> and <a href="../docs/concepts/tasks/#system-environment-variables">others</a>—to containers.</p>
-<p><img src="https://github.com/dstackai/static-assets/blob/main/static-assets/images/dstack-mpi-v2.png?raw=true" width="630"/></p>
+<p><img src="https://dstack.ai/static-assets/static-assets/images/dstack-mpi-v2.png" width="630"/></p>
 <p>One use case <code>dstack</code> hasn’t supported until now is MPI, as it requires a scheduled environment or
 direct SSH connections between containers. Since <code>mpirun</code> is essential for running NCCL/RCCL tests—crucial for large-scale
 cluster usage—we’ve added support for it.</p>
@@ -4079,7 +4079,7 @@ across projects.</p>
 <p>While <code>dstack</code> provides key metrics through its UI and <a href="dstack-metrics/"><code>dstack metrics</code></a> CLI, teams often need more granular data and prefer
 using their own monitoring tools. To support this, we’ve introduced a new endpoint that allows real-time exporting all collected
 metrics—covering fleets and runs—directly to Prometheus.</p>
-<p><img src="https://github.com/dstackai/static-assets/blob/main/static-assets/images/dstack-prometheus-v3.png?raw=true" width="630"/></p>
+<p><img src="https://dstack.ai/static-assets/static-assets/images/dstack-prometheus-v3.png" width="630"/></p>
 
     
       <nav class="md-post__action">
@@ -4126,7 +4126,7 @@ automatic repository fetching, and streamlined access via SSH or a preferred des
 <p>Previously, support was limited to VS Code. However, as developers rely on a variety of desktop IDEs,
 we’ve expanded compatibility. With this update, dev environments now offer effortless access for users of 
 <a href="https://www.cursor.com/" target="_blank">Cursor <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>.</p>
-<p><img src="https://github.com/dstackai/static-assets/blob/main/static-assets/images/dstack-cursor-v2.png?raw=true" width="630"/></p>
+<p><img src="https://dstack.ai/static-assets/static-assets/images/dstack-cursor-v2.png" width="630"/></p>
 
     
       <nav class="md-post__action">
@@ -4176,7 +4176,7 @@ outputs, placing significant demands on memory capacity and bandwidth.</p>
 <p>In this benchmark, we evaluate the performance of three inference backends—SGLang, vLLM, and TensorRT-LLM—on two hardware
 configurations: 8x NVIDIA H200 and 8x AMD MI300X. Our goal is to compare throughput, latency, and overall efficiency to
 determine the optimal backend and hardware pairing for DeepSeek-R1's demanding requirements.</p>
-<p><img src="https://github.com/dstackai/static-assets/blob/main/static-assets/images/h200-mi300x-deepskeek-benchmark-v2.png?raw=true" width="630"/></p>
+<p><img src="https://dstack.ai/static-assets/static-assets/images/h200-mi300x-deepskeek-benchmark-v2.png" width="630"/></p>
 <p>This benchmark was made possible through the generous support of our partners at
 <a href="https://www.vultr.com/" target="_blank">Vultr <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> and 
 <a href="https://lambdalabs.com/" target="_blank">Lambda <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>,
@@ -4228,7 +4228,7 @@ to orchestrate AI containers with any AI cloud vendor, whether they provide on-d
 <p>In this tutorial, we’ll walk you through how <code>dstack</code> can be used with
 <a href="https://tensorwave.com/" target="_blank">TensorWave <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> using 
 <a href="../docs/concepts/fleets/#ssh">SSH fleets</a>.</p>
-<p><img src="https://github.com/dstackai/static-assets/blob/main/static-assets/images/dstack-tensorwave-v2.png?raw=true" width="630"/></p>
+<p><img src="https://dstack.ai/static-assets/static-assets/images/dstack-tensorwave-v2.png" width="630"/></p>
 
     
       <nav class="md-post__action">
@@ -4275,7 +4275,7 @@ to orchestrate AI containers with any AI cloud vendor, whether they provide on-d
 just leading cloud providers and on-prem environments but also a wide range of accelerators.</p>
 <p>With our latest release, we’re adding support
 for Intel Gaudi AI Accelerator and launching a new partnership with Intel.</p>
-<p><img src="https://github.com/dstackai/static-assets/blob/main/static-assets/images/dstack-intel-gaudi-and-intel-tiber-cloud-v2.png?raw=true" width="630"/></p>
+<p><img src="https://dstack.ai/static-assets/static-assets/images/dstack-intel-gaudi-and-intel-tiber-cloud-v2.png" width="630"/></p>
 
     
       <nav class="md-post__action">
@@ -4321,7 +4321,7 @@ for Intel Gaudi AI Accelerator and launching a new partnership with Intel.</p>
 ultra-low latency and high-throughput communication between nodes. This makes it an ideal solution for scaling
 distributed training workloads across multiple GPUs and instances.</p>
 <p>With the latest release of <code>dstack</code>, you can now leverage AWS EFA to supercharge your distributed training tasks.</p>
-<p><img src="https://github.com/dstackai/static-assets/blob/main/static-assets/images/distributed-training-with-aws-efa-v2.png?raw=true" width="630"/></p>
+<p><img src="https://dstack.ai/static-assets/static-assets/images/distributed-training-with-aws-efa-v2.png" width="630"/></p>
 
     
       <nav class="md-post__action">
@@ -4369,7 +4369,7 @@ make this easy by setting up a remote machine, cloning your repository, and conf
 a container that has GPU access.</p>
 <p>One issue with dev environments is forgetting to stop them or closing your laptop, leaving the GPU idle and costly. With
 our latest update, <code>dstack</code> now detects inactive environments and automatically shuts them down, saving you money.</p>
-<p><img src="https://github.com/dstackai/static-assets/blob/main/static-assets/images/inactive-dev-environments-auto-shutdown.png?raw=true" width="630"/></p>
+<p><img src="https://dstack.ai/static-assets/static-assets/images/inactive-dev-environments-auto-shutdown.png" width="630"/></p>
 
     
       <nav class="md-post__action">
