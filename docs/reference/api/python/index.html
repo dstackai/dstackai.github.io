@@ -2350,6 +2350,17 @@ Support our project with a ⭐ on
 </li>
         
           <li class="md-nav__item">
+  <a href="#dstack.api.CPU" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CPU
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#dstack.api.GPU" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -4406,6 +4417,17 @@ Support our project with a ⭐ on
 </li>
         
           <li class="md-nav__item">
+  <a href="#dstack.api.CPU" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CPU
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#dstack.api.GPU" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -6320,11 +6342,14 @@ You can override these credentials via the <code>git_identity_file</code> or <co
     </div>
 
 </div><h3 id="dstack.api.Resources"><code>dstack.api.Resources</code><a class="headerlink" href="#dstack.api.Resources" title="Permanent link">&para;</a></h3>
-<h6 class="reference-item" id="cpu"><code>cpu</code> - (Optional) The number of CPU cores. Defaults to <code>2..</code>.<a class="headerlink" href="#cpu" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="_cpu"><a href="#dstack.api.CPU"><code>cpu</code></a> - (Optional) The CPU requirements.<a class="headerlink" href="#_cpu" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="memory"><code>memory</code> - (Optional) The RAM size (e.g., <code>8GB</code>). Defaults to <code>8GB..</code>.<a class="headerlink" href="#memory" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="shm_size"><code>shm_size</code> - (Optional) The size of shared memory (e.g., <code>8GB</code>). If you are using parallel communicating processes (e.g., dataloaders in PyTorch), you may need to configure this.<a class="headerlink" href="#shm_size" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="_gpu"><a href="#dstack.api.GPU"><code>gpu</code></a> - (Optional) The GPU requirements.<a class="headerlink" href="#_gpu" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="_disk"><a href="#disk"><code>disk</code></a> - (Optional) The disk resources.<a class="headerlink" href="#_disk" title="Permanent link">&para;</a></h6>
+<h3 id="dstack.api.CPU"><code>dstack.api.CPU</code><a class="headerlink" href="#dstack.api.CPU" title="Permanent link">&para;</a></h3>
+<h6 class="reference-item" id="arch"><code>arch</code> - (Optional) The CPU architecture, one of: <code>x86</code>, <code>arm</code>.<a class="headerlink" href="#arch" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="count"><code>count</code> - (Optional) The number of CPU cores. Defaults to <code>2..</code>.<a class="headerlink" href="#count" title="Permanent link">&para;</a></h6>
 <h3 id="dstack.api.GPU"><code>dstack.api.GPU</code><a class="headerlink" href="#dstack.api.GPU" title="Permanent link">&para;</a></h3>
 <h6 class="reference-item" id="vendor"><code>vendor</code> - (Optional) The vendor of the GPU/accelerator, one of: <code>nvidia</code>, <code>amd</code>, <code>google</code> (alias: <code>tpu</code>), <code>intel</code>.<a class="headerlink" href="#vendor" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="name"><code>name</code> - (Optional) The name of the GPU (e.g., <code>A100</code> or <code>H100</code>).<a class="headerlink" href="#name" title="Permanent link">&para;</a></h6>

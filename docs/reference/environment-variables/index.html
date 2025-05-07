@@ -3927,8 +3927,11 @@ via <code>dstack server</code> or deployed using Docker.</p>
 <li><code>DSTACK_SERVER_MAX_OFFERS_TRIED</code> - Sets how many instance offers to try when starting a job.
    Setting a high value can degrade server performance.</li>
 <li><code>DSTACK_RUNNER_VERSION</code> – Sets exact runner version for debug. Defaults to <code>latest</code>. Ignored if <code>DSTACK_RUNNER_DOWNLOAD_URL</code> is set.</li>
-<li><code>DSTACK_RUNNER_DOWNLOAD_URL</code> – Overrides <code>dstack-runner</code> binary download URL.</li>
-<li><code>DSTACK_SHIM_DOWNLOAD_URL</code> – Overrides <code>dstack-shim</code> binary download URL.</li>
+<li><code>DSTACK_RUNNER_DOWNLOAD_URL</code> – Overrides <code>dstack-runner</code> binary download URL. The URL can contain <code>{version}</code> and/or <code>{arch}</code> placeholders,
+  where <code>{version}</code> is <code>dstack</code> version in the <code>X.Y.Z</code> format or <code>latest</code>, and <code>{arch}</code> is either <code>amd64</code> or <code>arm64</code>, for example,
+  <code>https://dstack.example.com/{arch}/{version}/dstack-runner</code>.</li>
+<li><code>DSTACK_SHIM_DOWNLOAD_URL</code> – Overrides <code>dstack-shim</code> binary download URL. The URL can contain <code>{version}</code> and/or <code>{arch}</code> placeholders,
+  see <code>DSTACK_RUNNER_DOWNLOAD_URL</code> for the details.</li>
 <li><code>DSTACK_DEFAULT_CREDS_DISABLED</code> – Disables default credentials detection if set. Defaults to <code>None</code>.</li>
 <li><code>DSTACK_LOCAL_BACKEND_ENABLED</code> – Enables local backend for debug if set. Defaults to <code>None</code>.</li>
 </ul>

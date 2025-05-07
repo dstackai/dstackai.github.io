@@ -1427,6 +1427,17 @@ Support our project with a ⭐ on
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#resources-cpu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        cpu
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#resources-gpu" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3808,6 +3819,17 @@ Support our project with a ⭐ on
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#resources-cpu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        cpu
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#resources-gpu" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -4001,19 +4023,22 @@ Support our project with a ⭐ on
 <h6 class="reference-item" id="min_gpu_utilization"><code>min_gpu_utilization</code> -  Minimum required GPU utilization, percent. If any GPU has utilization below specified value during the whole time window, the run is terminated.<a class="headerlink" href="#min_gpu_utilization" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="time_window"><code>time_window</code> -  The time window of metric samples taking into account to measure utilization (e.g., <code>30m</code>, <code>1h</code>). Minimum is <code>5m</code>.<a class="headerlink" href="#time_window" title="Permanent link">&para;</a></h6>
 <h3 id="resources"><code>resources</code><a class="headerlink" href="#resources" title="Permanent link">&para;</a></h3>
-<h6 class="reference-item" id="cpu"><code>cpu</code> - (Optional) The number of CPU cores. Defaults to <code>2..</code>.<a class="headerlink" href="#cpu" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="_cpu"><a href="#resources-cpu"><code>cpu</code></a> - (Optional) The CPU requirements.<a class="headerlink" href="#_cpu" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="memory"><code>memory</code> - (Optional) The RAM size (e.g., <code>8GB</code>). Defaults to <code>8GB..</code>.<a class="headerlink" href="#memory" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="shm_size"><code>shm_size</code> - (Optional) The size of shared memory (e.g., <code>8GB</code>). If you are using parallel communicating processes (e.g., dataloaders in PyTorch), you may need to configure this.<a class="headerlink" href="#shm_size" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="_gpu"><a href="#resources-gpu"><code>gpu</code></a> - (Optional) The GPU requirements.<a class="headerlink" href="#_gpu" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="_disk"><a href="#resources-disk"><code>disk</code></a> - (Optional) The disk resources.<a class="headerlink" href="#_disk" title="Permanent link">&para;</a></h6>
-<h4 id="resources-gpu"><code>resouces.gpu</code><a class="headerlink" href="#resources-gpu" title="Permanent link">&para;</a></h4>
+<h4 id="resources-cpu"><code>resources.cpu</code><a class="headerlink" href="#resources-cpu" title="Permanent link">&para;</a></h4>
+<h6 class="reference-item" id="arch"><code>arch</code> - (Optional) The CPU architecture, one of: <code>x86</code>, <code>arm</code>.<a class="headerlink" href="#arch" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="count"><code>count</code> - (Optional) The number of CPU cores. Defaults to <code>2..</code>.<a class="headerlink" href="#count" title="Permanent link">&para;</a></h6>
+<h4 id="resources-gpu"><code>resources.gpu</code><a class="headerlink" href="#resources-gpu" title="Permanent link">&para;</a></h4>
 <h6 class="reference-item" id="vendor"><code>vendor</code> - (Optional) The vendor of the GPU/accelerator, one of: <code>nvidia</code>, <code>amd</code>, <code>google</code> (alias: <code>tpu</code>), <code>intel</code>.<a class="headerlink" href="#vendor" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="name"><code>name</code> - (Optional) The name of the GPU (e.g., <code>A100</code> or <code>H100</code>).<a class="headerlink" href="#name" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="count"><code>count</code> - (Optional) The number of GPUs. Defaults to <code>1</code>.<a class="headerlink" href="#count" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="memory"><code>memory</code> - (Optional) The RAM size (e.g., <code>16GB</code>). Can be set to a range (e.g. <code>16GB..</code>, or <code>16GB..80GB</code>).<a class="headerlink" href="#memory" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="total_memory"><code>total_memory</code> - (Optional) The total RAM size (e.g., <code>32GB</code>). Can be set to a range (e.g. <code>16GB..</code>, or <code>16GB..80GB</code>).<a class="headerlink" href="#total_memory" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="compute_capability"><code>compute_capability</code> - (Optional) The minimum compute capability of the GPU (e.g., <code>7.5</code>).<a class="headerlink" href="#compute_capability" title="Permanent link">&para;</a></h6>
-<h4 id="resources-disk"><code>resouces.disk</code><a class="headerlink" href="#resources-disk" title="Permanent link">&para;</a></h4>
+<h4 id="resources-disk"><code>resources.disk</code><a class="headerlink" href="#resources-disk" title="Permanent link">&para;</a></h4>
 <h6 class="reference-item" id="size"><code>size</code> -  Disk size.<a class="headerlink" href="#size" title="Permanent link">&para;</a></h6>
 <h3 id="registry_auth"><code>registry_auth</code><a class="headerlink" href="#registry_auth" title="Permanent link">&para;</a></h3>
 <h6 class="reference-item" id="username"><code>username</code> -  The username.<a class="headerlink" href="#username" title="Permanent link">&para;</a></h6>
@@ -4022,7 +4047,7 @@ Support our project with a ⭐ on
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="network-volumes" name="__tabbed_1" type="radio" /><input id="instance-volumes" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="network-volumes">Network volumes</label><label for="instance-volumes">Instance volumes</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<h6 class="reference-item" id="name"><code>name</code> -  The network volume name or the list of network volume names to mount. If a list is specified, one of the volumes in the list will be mounted. Specify volumes from different backends/regions to increase availability..<a class="headerlink" href="#name" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="name"><code>name</code> -  The network volume name or the list of network volume names to mount. If a list is specified, one of the volumes in the list will be mounted. Specify volumes from different backends/regions to increase availability.<a class="headerlink" href="#name" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="path"><code>path</code> -  The absolute container path to mount the volume at.<a class="headerlink" href="#path" title="Permanent link">&para;</a></h6>
 </div>
 <div class="tabbed-block">

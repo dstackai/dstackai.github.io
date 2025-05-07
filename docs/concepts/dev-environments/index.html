@@ -4235,6 +4235,8 @@ range (e.g. <code>24GB..</code>, or <code>24GB..80GB</code>, or <code>..80GB</co
 <span class="nt">ide</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vscode</span>
 
 <span class="nt">resources</span><span class="p">:</span>
+<span class="w">  </span><span class="c1"># 16 or more x86_64 cores</span>
+<span class="w">  </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">16..</span>
 <span class="w">  </span><span class="c1"># 200GB or more RAM</span>
 <span class="w">  </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">200GB..</span>
 <span class="w">  </span><span class="c1"># 4 GPUs from 40GB to 80GB</span>
@@ -4247,10 +4249,15 @@ range (e.g. <code>24GB..</code>, or <code>24GB..80GB</code>, or <code>..80GB</co
 
 </div>
 
+<p>The <code>cpu</code> property also allows you to specify the CPU architecture, <code>x86</code> or <code>arm</code>. Examples:
+<code>x86:16</code> (16 x86-64 cores), <code>arm:8..</code> (at least 8 ARM64 cores).
+If the architecture is not specified, <code>dstack</code> tries to infer it from the <code>gpu</code> specification
+using <code>x86</code> as the fallback value.</p>
 <p>The <code>gpu</code> property allows specifying not only memory size but also GPU vendor, names
 and their quantity. Examples: <code>nvidia</code> (one NVIDIA GPU), <code>A100</code> (one A100), <code>A10G,A100</code> (either A10G or A100),
 <code>A100:80GB</code> (one A100 of 80GB), <code>A100:2</code> (two A100), <code>24GB..40GB:2</code> (two GPUs between 24GB and 40GB),
-<code>A100:40GB:2</code> (two A100 GPUs of 40GB).</p>
+<code>A100:40GB:2</code> (two A100 GPUs of 40GB).
+If the vendor is not specified, <code>dstack</code> tries to infer it from the GPU name using <code>nvidia</code> as the fallback value.</p>
 <details class="info">
 <summary>Google Cloud TPU</summary>
 <p>To use TPUs, specify its architecture via the <code>gpu</code> property.</p>

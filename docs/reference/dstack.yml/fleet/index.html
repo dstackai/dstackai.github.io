@@ -1517,6 +1517,17 @@ Support our project with a ⭐ on
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#resources-cpu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        cpu
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#resources-gpu" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3865,6 +3876,17 @@ Support our project with a ⭐ on
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#resources-cpu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        cpu
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#resources-gpu" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -4051,19 +4073,22 @@ Support our project with a ⭐ on
 <h6 class="reference-item" id="user"><code>user</code> -  The user to log in with for proxy host.<a class="headerlink" href="#user" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="identity_file"><code>identity_file</code> -  The private key to use for proxy host.<a class="headerlink" href="#identity_file" title="Permanent link">&para;</a></h6>
 <h3 id="resources"><code>resources</code><a class="headerlink" href="#resources" title="Permanent link">&para;</a></h3>
-<h6 class="reference-item" id="cpu"><code>cpu</code> - (Optional) The number of CPU cores. Defaults to <code>2..</code>.<a class="headerlink" href="#cpu" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="_cpu"><a href="#resources-cpu"><code>cpu</code></a> - (Optional) The CPU requirements.<a class="headerlink" href="#_cpu" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="memory"><code>memory</code> - (Optional) The RAM size (e.g., <code>8GB</code>). Defaults to <code>8GB..</code>.<a class="headerlink" href="#memory" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="shm_size"><code>shm_size</code> - (Optional) The size of shared memory (e.g., <code>8GB</code>). If you are using parallel communicating processes (e.g., dataloaders in PyTorch), you may need to configure this.<a class="headerlink" href="#shm_size" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="_gpu"><a href="#resources-gpu"><code>gpu</code></a> - (Optional) The GPU requirements.<a class="headerlink" href="#_gpu" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="_disk"><a href="#resources-disk"><code>disk</code></a> - (Optional) The disk resources.<a class="headerlink" href="#_disk" title="Permanent link">&para;</a></h6>
-<h4 id="resources-gpu"><code>resouces.gpu</code><a class="headerlink" href="#resources-gpu" title="Permanent link">&para;</a></h4>
+<h4 id="resources-cpu"><code>resources.cpu</code><a class="headerlink" href="#resources-cpu" title="Permanent link">&para;</a></h4>
+<h6 class="reference-item" id="arch"><code>arch</code> - (Optional) The CPU architecture, one of: <code>x86</code>, <code>arm</code>.<a class="headerlink" href="#arch" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="count"><code>count</code> - (Optional) The number of CPU cores. Defaults to <code>2..</code>.<a class="headerlink" href="#count" title="Permanent link">&para;</a></h6>
+<h4 id="resources-gpu"><code>resources.gpu</code><a class="headerlink" href="#resources-gpu" title="Permanent link">&para;</a></h4>
 <h6 class="reference-item" id="vendor"><code>vendor</code> - (Optional) The vendor of the GPU/accelerator, one of: <code>nvidia</code>, <code>amd</code>, <code>google</code> (alias: <code>tpu</code>), <code>intel</code>.<a class="headerlink" href="#vendor" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="name"><code>name</code> - (Optional) The name of the GPU (e.g., <code>A100</code> or <code>H100</code>).<a class="headerlink" href="#name" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="count"><code>count</code> - (Optional) The number of GPUs. Defaults to <code>1</code>.<a class="headerlink" href="#count" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="memory"><code>memory</code> - (Optional) The RAM size (e.g., <code>16GB</code>). Can be set to a range (e.g. <code>16GB..</code>, or <code>16GB..80GB</code>).<a class="headerlink" href="#memory" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="total_memory"><code>total_memory</code> - (Optional) The total RAM size (e.g., <code>32GB</code>). Can be set to a range (e.g. <code>16GB..</code>, or <code>16GB..80GB</code>).<a class="headerlink" href="#total_memory" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="compute_capability"><code>compute_capability</code> - (Optional) The minimum compute capability of the GPU (e.g., <code>7.5</code>).<a class="headerlink" href="#compute_capability" title="Permanent link">&para;</a></h6>
-<h4 id="resources-disk"><code>resouces.disk</code><a class="headerlink" href="#resources-disk" title="Permanent link">&para;</a></h4>
+<h4 id="resources-disk"><code>resources.disk</code><a class="headerlink" href="#resources-disk" title="Permanent link">&para;</a></h4>
 <h6 class="reference-item" id="size"><code>size</code> -  Disk size.<a class="headerlink" href="#size" title="Permanent link">&para;</a></h6>
 <h3 id="retry"><code>retry</code><a class="headerlink" href="#retry" title="Permanent link">&para;</a></h3>
 <h6 class="reference-item" id="on_events"><code>on_events</code> - (Optional) The list of events that should be handled with retry. Supported events are <code>no-capacity</code>, <code>interruption</code>, and <code>error</code>. Omit to retry on all events.<a class="headerlink" href="#on_events" title="Permanent link">&para;</a></h6>
