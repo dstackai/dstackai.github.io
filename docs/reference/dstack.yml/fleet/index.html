@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../../../assets/images/dstack-fav-32.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.13+insiders-4.53.16">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14+insiders-4.53.16">
     
     
       
@@ -1038,14 +1038,14 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../../guides/server-deployment/" class="md-nav__link">
+      <a href="../../../guides/metrics/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Server deployment
+    Metrics
   
 
     
@@ -1066,14 +1066,42 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../../guides/monitoring/" class="md-nav__link">
+      <a href="../../../guides/clusters/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Monitoring
+    Clusters
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guides/server-deployment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Server deployment
   
 
     
@@ -2486,7 +2514,7 @@ Support dstack with a ⭐ on
   <span class="md-ellipsis">
     
   
-    Distributed training
+    Clusters
   
 
     
@@ -2502,7 +2530,7 @@ Support dstack with a ⭐ on
             <span class="md-nav__icon md-icon"></span>
             
   
-    Distributed training
+    Clusters
   
 
           </label>
@@ -2515,7 +2543,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../../../examples/distributed-training/nccl-tests/" class="md-nav__link">
+      <a href="../../../../examples/clusters/nccl-tests/" class="md-nav__link">
         
   
   
@@ -2543,7 +2571,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../../../examples/distributed-training/rccl-tests/" class="md-nav__link">
+      <a href="../../../../examples/clusters/rccl-tests/" class="md-nav__link">
         
   
   
@@ -2571,7 +2599,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../../../examples/distributed-training/a3mega-clusters/" class="md-nav__link">
+      <a href="../../../../examples/clusters/a3mega/" class="md-nav__link">
         
   
   
@@ -2599,7 +2627,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../../../examples/distributed-training/a3high-clusters/" class="md-nav__link">
+      <a href="../../../../examples/clusters/a3high/" class="md-nav__link">
         
   
   
@@ -2687,7 +2715,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../../../examples/deployment/sglang/" class="md-nav__link">
+      <a href="../../../../examples/inference/sglang/" class="md-nav__link">
         
   
   
@@ -2715,7 +2743,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../../../examples/deployment/vllm/" class="md-nav__link">
+      <a href="../../../../examples/inference/vllm/" class="md-nav__link">
         
   
   
@@ -2743,7 +2771,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../../../examples/deployment/tgi/" class="md-nav__link">
+      <a href="../../../../examples/inference/tgi/" class="md-nav__link">
         
   
   
@@ -2771,7 +2799,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../../../examples/deployment/nim/" class="md-nav__link">
+      <a href="../../../../examples/inference/nim/" class="md-nav__link">
         
   
   
@@ -2799,7 +2827,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../../../examples/deployment/trtllm/" class="md-nav__link">
+      <a href="../../../../examples/inference/trtllm/" class="md-nav__link">
         
   
   
@@ -3672,7 +3700,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../../../blog/category/monitoring/" class="md-nav__link">
+      <a href="../../../../blog/category/metrics/" class="md-nav__link">
         
   
   
@@ -3680,7 +3708,7 @@ Support dstack with a ⭐ on
     
   
     <span class="md-typeset">
-      Monitoring
+      Metrics
     </span>
   
 
@@ -4155,7 +4183,7 @@ Support dstack with a ⭐ on
 <h4 id="resources-gpu"><code>resources.gpu</code><a class="headerlink" href="#resources-gpu" title="Permanent link">&para;</a></h4>
 <h6 class="reference-item" id="vendor"><code>vendor</code> - (Optional) The vendor of the GPU/accelerator, one of: <code>nvidia</code>, <code>amd</code>, <code>google</code> (alias: <code>tpu</code>), <code>intel</code>.<a class="headerlink" href="#vendor" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="name"><code>name</code> - (Optional) The name of the GPU (e.g., <code>A100</code> or <code>H100</code>).<a class="headerlink" href="#name" title="Permanent link">&para;</a></h6>
-<h6 class="reference-item" id="count"><code>count</code> - (Optional) The number of GPUs. Defaults to <code>1</code>.<a class="headerlink" href="#count" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="count"><code>count</code> - (Optional) The number of GPUs. Defaults to <code>1..</code>.<a class="headerlink" href="#count" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="memory"><code>memory</code> - (Optional) The RAM size (e.g., <code>16GB</code>). Can be set to a range (e.g. <code>16GB..</code>, or <code>16GB..80GB</code>).<a class="headerlink" href="#memory" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="total_memory"><code>total_memory</code> - (Optional) The total RAM size (e.g., <code>32GB</code>). Can be set to a range (e.g. <code>16GB..</code>, or <code>16GB..80GB</code>).<a class="headerlink" href="#total_memory" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="compute_capability"><code>compute_capability</code> - (Optional) The minimum compute capability of the GPU (e.g., <code>7.5</code>).<a class="headerlink" href="#compute_capability" title="Permanent link">&para;</a></h6>
@@ -4336,9 +4364,9 @@ Support dstack with a ⭐ on
 
                 <div class="tx-footer__section">
                     <div class="tx-footer__section-title">Examples</div>
-                    <a href="/examples#distributed-training" class="tx-footer__section-link">Distributed training</a>
                     <a href="/examples#fine-tuning" class="tx-footer__section-link">Fine-tuning</a>
-                    <a href="/examples#deployment" class="tx-footer__section-link">Deployment</a>
+                    <a href="/examples#clusters" class="tx-footer__section-link">Clusters</a>
+                    <a href="/examples#inference" class="tx-footer__section-link">Inference</a>
                     <a href="/examples#accelerators" class="tx-footer__section-link">Accelerators</a>
                     <a href="/examples#llms" class="tx-footer__section-link">LLMs</a>
                     <a href="/examples#misc" class="tx-footer__section-link">Misc</a>

@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../../assets/images/dstack-fav-32.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.13+insiders-4.53.16">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14+insiders-4.53.16">
     
     
       
@@ -1022,14 +1022,14 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../../docs/guides/server-deployment/" class="md-nav__link">
+      <a href="../../../docs/guides/metrics/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Server deployment
+    Metrics
   
 
     
@@ -1050,14 +1050,42 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../../docs/guides/monitoring/" class="md-nav__link">
+      <a href="../../../docs/guides/clusters/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Monitoring
+    Clusters
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docs/guides/server-deployment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Server deployment
   
 
     
@@ -2291,7 +2319,7 @@ Support dstack with a ⭐ on
   <span class="md-ellipsis">
     
   
-    Distributed training
+    Clusters
   
 
     
@@ -2307,7 +2335,7 @@ Support dstack with a ⭐ on
             <span class="md-nav__icon md-icon"></span>
             
   
-    Distributed training
+    Clusters
   
 
           </label>
@@ -2320,7 +2348,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../distributed-training/nccl-tests/" class="md-nav__link">
+      <a href="../../clusters/nccl-tests/" class="md-nav__link">
         
   
   
@@ -2348,7 +2376,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../distributed-training/rccl-tests/" class="md-nav__link">
+      <a href="../../clusters/rccl-tests/" class="md-nav__link">
         
   
   
@@ -2376,7 +2404,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../distributed-training/a3mega-clusters/" class="md-nav__link">
+      <a href="../../clusters/a3mega/" class="md-nav__link">
         
   
   
@@ -2404,7 +2432,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../distributed-training/a3high-clusters/" class="md-nav__link">
+      <a href="../../clusters/a3high/" class="md-nav__link">
         
   
   
@@ -2495,7 +2523,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../deployment/sglang/" class="md-nav__link">
+      <a href="../../inference/sglang/" class="md-nav__link">
         
   
   
@@ -2523,7 +2551,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../deployment/vllm/" class="md-nav__link">
+      <a href="../../inference/vllm/" class="md-nav__link">
         
   
   
@@ -2551,7 +2579,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../deployment/tgi/" class="md-nav__link">
+      <a href="../../inference/tgi/" class="md-nav__link">
         
   
   
@@ -2579,7 +2607,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../deployment/nim/" class="md-nav__link">
+      <a href="../../inference/nim/" class="md-nav__link">
         
   
   
@@ -2607,7 +2635,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../deployment/trtllm/" class="md-nav__link">
+      <a href="../../inference/trtllm/" class="md-nav__link">
         
   
   
@@ -3603,7 +3631,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../../blog/category/monitoring/" class="md-nav__link">
+      <a href="../../../blog/category/metrics/" class="md-nav__link">
         
   
   
@@ -3611,7 +3639,7 @@ Support dstack with a ⭐ on
     
   
     <span class="md-typeset">
-      Monitoring
+      Metrics
     </span>
   
 
@@ -3937,7 +3965,7 @@ Llama 3.1 70B in FP16 using <a href="https://huggingface.co/docs/text-generation
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="tgi" name="__tabbed_1" type="radio" /><input id="vllm" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="tgi">TGI</label><label for="vllm">vLLM</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p><div editor-title="examples/deployment/tgi/amd/.dstack.yml"> </p>
+<p><div editor-title="examples/inference/tgi/amd/.dstack.yml"> </p>
 <div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service</span>
 <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">amd-service-tgi</span>
 
@@ -3965,7 +3993,7 @@ Llama 3.1 70B in FP16 using <a href="https://huggingface.co/docs/text-generation
 </div>
 </div>
 <div class="tabbed-block">
-<p><div editor-title="examples/deployment/vllm/amd/.dstack.yml"> </p>
+<p><div editor-title="examples/inference/vllm/amd/.dstack.yml"> </p>
 <p><div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service</span>
 <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">llama31-service-vllm-amd</span>
 
@@ -4016,7 +4044,7 @@ Llama 3.1 70B in FP16 using <a href="https://huggingface.co/docs/text-generation
 <blockquote>
 <p>To speed up the <code>vLLM-ROCm</code> installation, we use a pre-built binary from S3. 
 You can find the task to build and upload the binary in 
-<a href="https://github.com/dstackai/dstack/blob/master/examples/deployment/vllm/amd/" target="_blank"><code>examples/deployment/vllm/amd/</code> <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>.</p>
+<a href="https://github.com/dstackai/dstack/blob/master/examples/inference/vllm/amd/" target="_blank"><code>examples/inference/vllm/amd/</code> <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>.</p>
 </blockquote>
 </div>
 </div>
@@ -4141,15 +4169,15 @@ $<span class="w"> </span><span class="nv">WANDB_API_KEY</span><span class="o">=<
 $<span class="w"> </span><span class="nv">WANDB_PROJECT</span><span class="o">=</span>...
 $<span class="w"> </span><span class="nv">WANDB_NAME</span><span class="o">=</span>axolotl-amd-llama31-train
 $<span class="w"> </span><span class="nv">HUB_MODEL_ID</span><span class="o">=</span>...
-$<span class="w"> </span>dstack<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>examples/deployment/vllm/amd/.dstack.yml
+$<span class="w"> </span>dstack<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>examples/inference/vllm/amd/.dstack.yml
 </code></pre></div>
 
 </div>
 
 <h2 id="source-code">Source code<a class="headerlink" href="#source-code" title="Permanent link">&para;</a></h2>
 <p>The source-code of this example can be found in 
-<a href="https://github.com/dstackai/dstack/blob/master/examples/deployment/tgi/amd" target="_blank"><code>examples/deployment/tgi/amd</code> <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>,
-<a href="https://github.com/dstackai/dstack/blob/master/examples/deployment/vllm/amd" target="_blank"><code>examples/deployment/vllm/amd</code> <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>,
+<a href="https://github.com/dstackai/dstack/blob/master/examples/inference/tgi/amd" target="_blank"><code>examples/inference/tgi/amd</code> <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>,
+<a href="https://github.com/dstackai/dstack/blob/master/examples/inference/vllm/amd" target="_blank"><code>examples/inference/vllm/amd</code> <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>,
 <a href="https://github.com/dstackai/dstack/blob/master/examples/fine-tuning/axolotl/amd" target="_blank"><code>examples/fine-tuning/axolotl/amd</code> <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> and
 <a href="https://github.com/dstackai/dstack/blob/master/examples/fine-tuning/trl/amd" target="_blank"><code>examples/fine-tuning/trl/amd</code> <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a></p>
 <h2 id="whats-next">What's next?<a class="headerlink" href="#whats-next" title="Permanent link">&para;</a></h2>
@@ -4334,9 +4362,9 @@ $<span class="w"> </span>dstack<span class="w"> </span>apply<span class="w"> </s
 
                 <div class="tx-footer__section">
                     <div class="tx-footer__section-title">Examples</div>
-                    <a href="/examples#distributed-training" class="tx-footer__section-link">Distributed training</a>
                     <a href="/examples#fine-tuning" class="tx-footer__section-link">Fine-tuning</a>
-                    <a href="/examples#deployment" class="tx-footer__section-link">Deployment</a>
+                    <a href="/examples#clusters" class="tx-footer__section-link">Clusters</a>
+                    <a href="/examples#inference" class="tx-footer__section-link">Inference</a>
                     <a href="/examples#accelerators" class="tx-footer__section-link">Accelerators</a>
                     <a href="/examples#llms" class="tx-footer__section-link">LLMs</a>
                     <a href="/examples#misc" class="tx-footer__section-link">Misc</a>

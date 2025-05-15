@@ -12,24 +12,24 @@
         <meta name="author" content="dstack GmbH">
       
       
-        <link rel="canonical" href="https://dstack.ai/examples/distributed-training/a3mega-clusters/">
+        <link rel="canonical" href="https://dstack.ai/examples/inference/sglang/">
       
       
-        <link rel="prev" href="../rccl-tests/">
+        <link rel="prev" href="../../clusters/a3high/">
       
       
-        <link rel="next" href="../a3high-clusters/">
+        <link rel="next" href="../vllm/">
       
       
         
       
       
       <link rel="icon" href="../../../assets/images/dstack-fav-32.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.13+insiders-4.53.16">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14+insiders-4.53.16">
     
     
       
-        <title>A3 Mega - dstack</title>
+        <title>SGLang - dstack</title>
       
     
     
@@ -89,17 +89,17 @@
     
   
 <meta property="og:type" content="website" />
-<meta property="og:title" content="A3 Mega - dstack" />
+<meta property="og:title" content="SGLang - dstack" />
 <meta property="og:description" content="dstack is an open-source AI container orchestration engine working with any cloud or data center." />
-<meta property="og:image" content="https://dstack.ai/assets/images/social/examples/distributed-training/a3mega-clusters/index.png" />
+<meta property="og:image" content="https://dstack.ai/assets/images/social/examples/inference/sglang/index.png" />
 <meta property="og:image:type" content="image/png" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
-<meta property="og:url" content="https://dstack.ai/examples/distributed-training/a3mega-clusters/" />
+<meta property="og:url" content="https://dstack.ai/examples/inference/sglang/" />
 <meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter.title" content="A3 Mega - dstack" />
+<meta property="twitter.title" content="SGLang - dstack" />
 <meta property="twitter:description" content="dstack is an open-source AI container orchestration engine working with any cloud or data center." />
-<meta property="twitter:image" content="https://dstack.ai/assets/images/social/examples/distributed-training/a3mega-clusters/index.png" />
+<meta property="twitter:image" content="https://dstack.ai/assets/images/social/examples/inference/sglang/index.png" />
 </head>
   
   
@@ -119,7 +119,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#gcp-a3-mega-clusters" class="md-skip">
+        <a href="#sglang" class="md-skip">
           Skip to content
         </a>
       
@@ -170,7 +170,7 @@ Support dstack with a ⭐ on
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              A3 Mega
+              SGLang
             
           </span>
         </div>
@@ -1022,14 +1022,14 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../../docs/guides/server-deployment/" class="md-nav__link">
+      <a href="../../../docs/guides/metrics/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Server deployment
+    Metrics
   
 
     
@@ -1050,14 +1050,42 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../../docs/guides/monitoring/" class="md-nav__link">
+      <a href="../../../docs/guides/clusters/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Monitoring
+    Clusters
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docs/guides/server-deployment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Server deployment
   
 
     
@@ -2262,8 +2290,6 @@ Support dstack with a ⭐ on
                 
   
   
-    
-  
   
   
     
@@ -2279,11 +2305,11 @@ Support dstack with a ⭐ on
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
         
           
           <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="">
@@ -2293,7 +2319,7 @@ Support dstack with a ⭐ on
   <span class="md-ellipsis">
     
   
-    Distributed training
+    Clusters
   
 
     
@@ -2304,12 +2330,12 @@ Support dstack with a ⭐ on
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3_3">
             <span class="md-nav__icon md-icon"></span>
             
   
-    Distributed training
+    Clusters
   
 
           </label>
@@ -2322,7 +2348,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../nccl-tests/" class="md-nav__link">
+      <a href="../../clusters/nccl-tests/" class="md-nav__link">
         
   
   
@@ -2350,7 +2376,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../rccl-tests/" class="md-nav__link">
+      <a href="../../clusters/rccl-tests/" class="md-nav__link">
         
   
   
@@ -2375,37 +2401,10 @@ Support dstack with a ⭐ on
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    A3 Mega
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../clusters/a3mega/" class="md-nav__link">
         
   
   
@@ -2421,104 +2420,6 @@ Support dstack with a ⭐ on
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#overview" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        <span class="md-typeset">
-          Overview
-        </span>
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#configure-gcp-backend" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        <span class="md-typeset">
-          Configure GCP backend
-        </span>
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#create-a3-mega-fleet" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        <span class="md-typeset">
-          Create A3 Mega fleet
-        </span>
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#run-nccl-tests-with-gpudirect-tcpxo-support" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        <span class="md-typeset">
-          Run NCCL Tests with GPUDirect-TCPXO support
-        </span>
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#run-nccl-workloads-with-gpudirect-tcpxo-support" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        <span class="md-typeset">
-          Run NCCL workloads with GPUDirect-TCPXO support
-        </span>
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#source-code" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        <span class="md-typeset">
-          Source code
-        </span>
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -2531,7 +2432,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../a3high-clusters/" class="md-nav__link">
+      <a href="../../clusters/a3high/" class="md-nav__link">
         
   
   
@@ -2564,6 +2465,8 @@ Support dstack with a ⭐ on
                 
   
   
+    
+  
   
   
     
@@ -2579,11 +2482,11 @@ Support dstack with a ⭐ on
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" checked>
         
           
           <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="">
@@ -2604,7 +2507,7 @@ Support dstack with a ⭐ on
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3_4">
             <span class="md-nav__icon md-icon"></span>
             
@@ -2619,10 +2522,37 @@ Support dstack with a ⭐ on
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../deployment/sglang/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SGLang
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -2638,6 +2568,84 @@ Support dstack with a ⭐ on
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#deployment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Deployment
+        </span>
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Deployment">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#applying-the-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Applying the configuration
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#source-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Source code
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#whats-next" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          What's next?
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -2650,7 +2658,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../deployment/vllm/" class="md-nav__link">
+      <a href="../vllm/" class="md-nav__link">
         
   
   
@@ -2678,7 +2686,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../deployment/tgi/" class="md-nav__link">
+      <a href="../tgi/" class="md-nav__link">
         
   
   
@@ -2706,7 +2714,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../deployment/nim/" class="md-nav__link">
+      <a href="../nim/" class="md-nav__link">
         
   
   
@@ -2734,7 +2742,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../deployment/trtllm/" class="md-nav__link">
+      <a href="../trtllm/" class="md-nav__link">
         
   
   
@@ -3616,7 +3624,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../../blog/category/monitoring/" class="md-nav__link">
+      <a href="../../../blog/category/metrics/" class="md-nav__link">
         
   
   
@@ -3624,7 +3632,7 @@ Support dstack with a ⭐ on
     
   
     <span class="md-typeset">
-      Monitoring
+      Metrics
     </span>
   
 
@@ -3809,67 +3817,34 @@ Support dstack with a ⭐ on
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#overview" class="md-nav__link">
+  <a href="#deployment" class="md-nav__link">
     <span class="md-ellipsis">
       
         <span class="md-typeset">
-          Overview
+          Deployment
+        </span>
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Deployment">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#applying-the-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Applying the configuration
         </span>
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#configure-gcp-backend" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        <span class="md-typeset">
-          Configure GCP backend
-        </span>
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#create-a3-mega-fleet" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        <span class="md-typeset">
-          Create A3 Mega fleet
-        </span>
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#run-nccl-tests-with-gpudirect-tcpxo-support" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        <span class="md-typeset">
-          Run NCCL Tests with GPUDirect-TCPXO support
-        </span>
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#run-nccl-workloads-with-gpudirect-tcpxo-support" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        <span class="md-typeset">
-          Run NCCL workloads with GPUDirect-TCPXO support
-        </span>
-      
-    </span>
-  </a>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -3879,6 +3854,19 @@ Support dstack with a ⭐ on
       
         <span class="md-typeset">
           Source code
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#whats-next" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          What's next?
         </span>
       
     </span>
@@ -3931,10 +3919,10 @@ Support dstack with a ⭐ on
     
     
       <li class="md-path__item">
-<!--        <a href="../nccl-tests/" class="md-path__link">-->
+<!--        <a href="./" class="md-path__link">-->
         
   <span class="md-ellipsis">
-    Distributed training
+    Deployment
   </span>
 
 <!--        </a>-->
@@ -3953,181 +3941,123 @@ Support dstack with a ⭐ on
 
 
 
-<h1 id="gcp-a3-mega-clusters">GCP A3 Mega clusters<a class="headerlink" href="#gcp-a3-mega-clusters" title="Permanent link">&para;</a></h1>
-<p>This example shows how to set up a GCP A3 Mega cluster with <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/gpu-bandwidth-gpudirect-tcpx-autopilot">GPUDirect-TCPXO</a>
-optimized NCCL communication and run <a href="https://github.com/NVIDIA/nccl-tests">NCCL Tests</a> on it using <code>dstack</code>.</p>
-<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
-<p>GCP's A3 Mega instances are 8xH100 VMs that have 1800Gbps maximum network bandwidth,
-which is the best among GCP H100 instances. To get that network performance, you need
-to set up GPUDirect-TCPXO – the GCP technology for GPU RDMA over TCP. This involves:</p>
-<ul>
-<li>Setting up eight extra data NICs on every node, each NIC in a separate VPC.</li>
-<li>Building a VM image with the GPUDirect-TCPXO support.</li>
-<li>Launching an RXDM service container.</li>
-<li>Installing the GPUDirect-TCPXO NCCL plugin.</li>
-</ul>
-<p><code>dstack</code> hides most of the setup complexity and provides optimized A3 Mega clusters out-of-the-box.</p>
-<h2 id="configure-gcp-backend">Configure GCP backend<a class="headerlink" href="#configure-gcp-backend" title="Permanent link">&para;</a></h2>
-<p>First configure the <code>gcp</code> backend for the GPUDirect-TCPXO support.
-You need to specify eight <code>extra_vpcs</code> to use for data NICs:</p>
-<div editor-title="~/.dstack/server/config.yml">
-
-<div class="highlight"><pre><span></span><code><span class="nt">projects</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">main</span>
-<span class="w">    </span><span class="nt">backends</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gcp</span>
-<span class="w">      </span><span class="nt">project_id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$MYPROJECT</span><span class="w"> </span><span class="c1"># Replace $MYPROJECT</span>
-<span class="w">      </span><span class="nt">extra_vpcs</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dstack-gpu-data-net-1</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dstack-gpu-data-net-2</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dstack-gpu-data-net-3</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dstack-gpu-data-net-4</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dstack-gpu-data-net-5</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dstack-gpu-data-net-6</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dstack-gpu-data-net-7</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dstack-gpu-data-net-8</span>
-<span class="w">      </span><span class="nt">regions</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">europe-west4</span><span class="p p-Indicator">]</span>
-<span class="w">      </span><span class="nt">creds</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">default</span>
-</code></pre></div>
-
-</div>
-
-<div class="admonition info">
-<p class="admonition-title">Custom VPC</p>
-<p>If you specify a non-default primary VPC, ensure it has a firewall rule
-allowing all traffic within the VPC. This is needed for MPI and NCCL to work.
-The default VPC already permits traffic within the VPC.</p>
-</div>
+<h1 id="sglang">SGLang<a class="headerlink" href="#sglang" title="Permanent link">&para;</a></h1>
+<p>This example shows how to deploy DeepSeek-R1-Distill-Llama 8B and 70B using <a href="https://github.com/sgl-project/sglang" target="_blank">SGLang <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> and <code>dstack</code>.</p>
 <details class="info">
-<summary>Create extra VPCs</summary>
-<p>Create the VPC networks for GPUDirect in your project, each with a subnet and a firewall rule:</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># Specify the region where you intend to deploy the cluster</span>
-<span class="nv">REGION</span><span class="o">=</span><span class="s2">&quot;europe-west4&quot;</span>
-
-<span class="k">for</span><span class="w"> </span>N<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="k">$(</span>seq<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">8</span><span class="k">)</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
-gcloud<span class="w"> </span>compute<span class="w"> </span>networks<span class="w"> </span>create<span class="w"> </span>dstack-gpu-data-net-<span class="nv">$N</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--subnet-mode<span class="o">=</span>custom<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--mtu<span class="o">=</span><span class="m">8244</span>
-
-gcloud<span class="w"> </span>compute<span class="w"> </span>networks<span class="w"> </span>subnets<span class="w"> </span>create<span class="w"> </span>dstack-gpu-data-sub-<span class="nv">$N</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--network<span class="o">=</span>dstack-gpu-data-net-<span class="nv">$N</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--region<span class="o">=</span><span class="nv">$REGION</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--range<span class="o">=</span><span class="m">192</span>.168.<span class="nv">$N</span>.0/24
-
-gcloud<span class="w"> </span>compute<span class="w"> </span>firewall-rules<span class="w"> </span>create<span class="w"> </span>dstack-gpu-data-internal-<span class="nv">$N</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--network<span class="o">=</span>dstack-gpu-data-net-<span class="nv">$N</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--action<span class="o">=</span>ALLOW<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--rules<span class="o">=</span>tcp:0-65535,udp:0-65535,icmp<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--source-ranges<span class="o">=</span><span class="m">192</span>.168.0.0/16
-<span class="k">done</span>
-</code></pre></div>
-</details>
-<h2 id="create-a3-mega-fleet">Create A3 Mega fleet<a class="headerlink" href="#create-a3-mega-fleet" title="Permanent link">&para;</a></h2>
-<p>Once you've configured the <code>gcp</code> backend, create the fleet configuration:</p>
-<div editor-title="fleet.dstack.yml">
-<div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">fleet</span>
-<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">a3mega-cluster</span>
-<span class="nt">nodes</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
-<span class="nt">placement</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cluster</span>
-<span class="nt">instance_types</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">a3-megagpu-8g</span>
-<span class="nt">spot_policy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">auto</span>
+<summary>Prerequisites</summary>
+<p>Once <code>dstack</code> is <a href="https://dstack.ai/docs/installation">installed</a>, go ahead clone the repo, and run <code>dstack init</code>.</p>
+<div class="termy">
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/dstackai/dstack
+$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>dstack
+$<span class="w"> </span>dstack<span class="w"> </span>init
 </code></pre></div>
 </div>
+</details>
+<h2 id="deployment">Deployment<a class="headerlink" href="#deployment" title="Permanent link">&para;</a></h2>
+<p>Here's an example of a service that deploys DeepSeek-R1-Distill-Llama 8B and 70B using SgLang.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="amd" name="__tabbed_1" type="radio" /><input id="nvidia" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="amd">AMD</label><label for="nvidia">NVIDIA</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div editor-title="examples/inference/sglang/amd/.dstack.yml">
+<p><div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service</span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">deepseek-r1-amd</span>
 
-<p>and apply the configuration:</p>
+<span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">lmsysorg/sglang:v0.4.1.post4-rocm620</span>
+<span class="nt">env</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MODEL_ID=deepseek-ai/DeepSeek-R1-Distill-Llama-70B</span>
+
+<span class="nt">commands</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python3 -m sglang.launch_server</span>
+<span class="w">     </span><span class="l l-Scalar l-Scalar-Plain">--model-path $MODEL_ID</span>
+<span class="w">     </span><span class="l l-Scalar l-Scalar-Plain">--port 8000</span>
+<span class="w">     </span><span class="l l-Scalar l-Scalar-Plain">--trust-remote-code</span>
+
+<span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8000</span>
+<span class="nt">model</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">deepseek-ai/DeepSeek-R1-Distill-Llama-70B</span>
+
+<span class="nt">resources</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MI300x</span>
+<span class="w">  </span><span class="nt">disk</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">300GB</span>
+</code></pre></div>
+</div></p>
+</div>
+<div class="tabbed-block">
+<div editor-title="examples/inference/sglang/nvidia/.dstack.yml">
+<p><div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service</span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">deepseek-r1-nvidia</span>
+
+<span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">lmsysorg/sglang:latest</span>
+<span class="nt">env</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MODEL_ID=deepseek-ai/DeepSeek-R1-Distill-Llama-8B</span>
+
+<span class="nt">commands</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python3 -m sglang.launch_server</span>
+<span class="w">     </span><span class="l l-Scalar l-Scalar-Plain">--model-path $MODEL_ID</span>
+<span class="w">     </span><span class="l l-Scalar l-Scalar-Plain">--port 8000</span>
+<span class="w">     </span><span class="l l-Scalar l-Scalar-Plain">--trust-remote-code</span>
+
+<span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8000</span>
+<span class="nt">model</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">deepseek-ai/DeepSeek-R1-Distill-Llama-8B</span>
+
+<span class="nt">resources</span><span class="p">:</span>
+<span class="w">   </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">24GB</span>
+</code></pre></div>
+</div></p>
+</div>
+</div>
+</div>
+<h3 id="applying-the-configuration">Applying the configuration<a class="headerlink" href="#applying-the-configuration" title="Permanent link">&para;</a></h3>
+<p>To run a configuration, use the <a href="https://dstack.ai/docs/reference/cli/dstack/apply.md"><code>dstack apply</code></a> command.</p>
 <div class="termy">
 
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>dstack<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>examples/misc/a3mega-clusters/fleet.dstack.yml
-<span class="w"> </span>Project<span class="w">        </span>main<span class="w">                           </span>
-<span class="w"> </span>User<span class="w">           </span>admin<span class="w">                          </span>
-<span class="w"> </span>Configuration<span class="w">  </span>examples/misc/a3mega-clusters/fleet.dstack.yml<span class="w"> </span>
-<span class="w"> </span>Type<span class="w">           </span>fleet<span class="w">                          </span>
-<span class="w"> </span>Fleet<span class="w"> </span><span class="nb">type</span><span class="w">     </span>cloud<span class="w">                          </span>
-<span class="w"> </span>Nodes<span class="w">          </span><span class="m">2</span><span class="w">                              </span>
-<span class="w"> </span>Placement<span class="w">      </span>cluster<span class="w">                        </span>
-<span class="w"> </span>Resources<span class="w">      </span><span class="m">2</span>..xCPU,<span class="w"> </span>8GB..,<span class="w"> </span>100GB..<span class="w"> </span><span class="o">(</span>disk<span class="o">)</span><span class="w"> </span>
-<span class="w"> </span>Spot<span class="w"> </span>policy<span class="w">    </span>auto<span class="w">                           </span>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>dstack<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>examples/llms/deepseek/sglang/amd/.dstack.yml
 
-<span class="w"> </span><span class="c1">#  BACKEND  REGION        INSTANCE       RESOURCES              SPOT  PRICE      </span>
-<span class="w"> </span><span class="m">1</span><span class="w">  </span>gcp<span class="w">      </span>europe-west4<span class="w">  </span>a3-megagpu-8g<span class="w">  </span>208xCPU,<span class="w"> </span>1872GB,<span class="w">       </span>yes<span class="w">   </span><span class="nv">$22</span>.1525<span class="w">   </span>
-<span class="w">                                          </span>8xH100<span class="w"> </span><span class="o">(</span>80GB<span class="o">)</span>,<span class="w">                          </span>
-<span class="w">                                          </span><span class="m">100</span>.0GB<span class="w"> </span><span class="o">(</span>disk<span class="o">)</span><span class="w">                          </span>
-<span class="w"> </span><span class="m">2</span><span class="w">  </span>gcp<span class="w">      </span>europe-west4<span class="w">  </span>a3-megagpu-8g<span class="w">  </span>208xCPU,<span class="w"> </span>1872GB,<span class="w">       </span>no<span class="w">    </span><span class="nv">$64</span>.2718<span class="w">   </span>
-<span class="w">                                          </span>8xH100<span class="w"> </span><span class="o">(</span>80GB<span class="o">)</span>,<span class="w">                          </span>
-<span class="w">                                          </span><span class="m">100</span>.0GB<span class="w"> </span><span class="o">(</span>disk<span class="o">)</span><span class="w">                          </span>
+<span class="w"> </span><span class="c1">#  BACKEND  REGION     RESOURCES                         SPOT  PRICE   </span>
+<span class="w"> </span><span class="m">1</span><span class="w">  </span>runpod<span class="w">   </span>EU-RO-1<span class="w">   </span>24xCPU,<span class="w"> </span>283GB,<span class="w"> </span>1xMI300X<span class="w"> </span><span class="o">(</span>192GB<span class="o">)</span><span class="w">    </span>no<span class="w">    </span><span class="nv">$2</span>.49<span class="w">  </span>
 
-Fleet<span class="w"> </span>a3mega-cluster<span class="w"> </span>does<span class="w"> </span>not<span class="w"> </span>exist<span class="w"> </span>yet.
-Create<span class="w"> </span>the<span class="w"> </span>fleet?<span class="w"> </span><span class="o">[</span>y/n<span class="o">]</span>:<span class="w"> </span>y
+Submit<span class="w"> </span>the<span class="w"> </span>run<span class="w"> </span>deepseek-r1-amd?<span class="w"> </span><span class="o">[</span>y/n<span class="o">]</span>:<span class="w"> </span>y
 
 Provisioning...
----&gt;<span class="w"> </span><span class="m">100</span>%<span class="w">                    </span>
+---&gt;<span class="w"> </span><span class="m">100</span>%
 </code></pre></div>
-
 </div>
 
-<p><code>dstack</code> will provision two A3 Mega nodes with GPUDirect-TCPXO configured.</p>
-<h2 id="run-nccl-tests-with-gpudirect-tcpxo-support">Run NCCL Tests with GPUDirect-TCPXO support<a class="headerlink" href="#run-nccl-tests-with-gpudirect-tcpxo-support" title="Permanent link">&para;</a></h2>
-<p>Once the nodes are provisioned, let's test the network by running NCCL Tests:</p>
+<p>Once the service is up, the model will be available via the OpenAI-compatible endpoint
+at <code>&lt;dstack server URL&gt;/proxy/models/&lt;project name&gt;/</code>.</p>
 <div class="termy">
 
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>dstack<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>examples/misc/a3mega-clusters/nccl-tests.dstack.yml<span class="w"> </span>
-
-nccl-tests<span class="w"> </span>provisioning<span class="w"> </span>completed<span class="w"> </span><span class="o">(</span>running<span class="o">)</span>
-nThread<span class="w"> </span><span class="m">1</span><span class="w"> </span>nGpus<span class="w"> </span><span class="m">1</span><span class="w"> </span>minBytes<span class="w"> </span><span class="m">8388608</span><span class="w"> </span>maxBytes<span class="w"> </span><span class="m">8589934592</span><span class="w"> </span>step:<span class="w"> </span><span class="m">2</span><span class="o">(</span>factor<span class="o">)</span><span class="w"> </span>warmup<span class="w"> </span>iters:<span class="w"> </span><span class="m">5</span><span class="w"> </span>iters:<span class="w"> </span><span class="m">200</span><span class="w"> </span>agg<span class="w"> </span>iters:<span class="w"> </span><span class="m">1</span><span class="w"> </span>validation:<span class="w"> </span><span class="m">0</span><span class="w"> </span>graph:<span class="w"> </span><span class="m">0</span>
-
-<span class="w">                                                             </span>out-of-place<span class="w">                       </span><span class="k">in</span>-place<span class="w">          </span>
-<span class="w">      </span>size<span class="w">         </span>count<span class="w">      </span><span class="nb">type</span><span class="w">   </span>redop<span class="w">    </span>root<span class="w">     </span><span class="nb">time</span><span class="w">   </span>algbw<span class="w">   </span>busbw<span class="w"> </span><span class="c1">#wrong     time   algbw   busbw #wrong</span>
-<span class="w">       </span><span class="o">(</span>B<span class="o">)</span><span class="w">    </span><span class="o">(</span>elements<span class="o">)</span><span class="w">                               </span><span class="o">(</span>us<span class="o">)</span><span class="w">  </span><span class="o">(</span>GB/s<span class="o">)</span><span class="w">  </span><span class="o">(</span>GB/s<span class="o">)</span><span class="w">            </span><span class="o">(</span>us<span class="o">)</span><span class="w">  </span><span class="o">(</span>GB/s<span class="o">)</span><span class="w">  </span><span class="o">(</span>GB/s<span class="o">)</span><span class="w">       </span>
-<span class="w">     </span><span class="m">8388608</span><span class="w">        </span><span class="m">131072</span><span class="w">     </span>float<span class="w">    </span>none<span class="w">      </span>-1<span class="w">    </span><span class="m">166</span>.6<span class="w">   </span><span class="m">50</span>.34<span class="w">   </span><span class="m">47</span>.19<span class="w">    </span>N/A<span class="w">    </span><span class="m">164</span>.1<span class="w">   </span><span class="m">51</span>.11<span class="w">   </span><span class="m">47</span>.92<span class="w">    </span>N/A
-<span class="w">    </span><span class="m">16777216</span><span class="w">        </span><span class="m">262144</span><span class="w">     </span>float<span class="w">    </span>none<span class="w">      </span>-1<span class="w">    </span><span class="m">204</span>.6<span class="w">   </span><span class="m">82</span>.01<span class="w">   </span><span class="m">76</span>.89<span class="w">    </span>N/A<span class="w">    </span><span class="m">203</span>.8<span class="w">   </span><span class="m">82</span>.30<span class="w">   </span><span class="m">77</span>.16<span class="w">    </span>N/A
-<span class="w">    </span><span class="m">33554432</span><span class="w">        </span><span class="m">524288</span><span class="w">     </span>float<span class="w">    </span>none<span class="w">      </span>-1<span class="w">    </span><span class="m">284</span>.0<span class="w">  </span><span class="m">118</span>.17<span class="w">  </span><span class="m">110</span>.78<span class="w">    </span>N/A<span class="w">    </span><span class="m">281</span>.7<span class="w">  </span><span class="m">119</span>.12<span class="w">  </span><span class="m">111</span>.67<span class="w">    </span>N/A
-<span class="w">    </span><span class="m">67108864</span><span class="w">       </span><span class="m">1048576</span><span class="w">     </span>float<span class="w">    </span>none<span class="w">      </span>-1<span class="w">    </span><span class="m">447</span>.4<span class="w">  </span><span class="m">150</span>.00<span class="w">  </span><span class="m">140</span>.62<span class="w">    </span>N/A<span class="w">    </span><span class="m">443</span>.5<span class="w">  </span><span class="m">151</span>.31<span class="w">  </span><span class="m">141</span>.86<span class="w">    </span>N/A
-<span class="w">   </span><span class="m">134217728</span><span class="w">       </span><span class="m">2097152</span><span class="w">     </span>float<span class="w">    </span>none<span class="w">      </span>-1<span class="w">    </span><span class="m">808</span>.3<span class="w">  </span><span class="m">166</span>.05<span class="w">  </span><span class="m">155</span>.67<span class="w">    </span>N/A<span class="w">    </span><span class="m">801</span>.9<span class="w">  </span><span class="m">167</span>.38<span class="w">  </span><span class="m">156</span>.92<span class="w">    </span>N/A
-<span class="w">   </span><span class="m">268435456</span><span class="w">       </span><span class="m">4194304</span><span class="w">     </span>float<span class="w">    </span>none<span class="w">      </span>-1<span class="w">   </span><span class="m">1522</span>.1<span class="w">  </span><span class="m">176</span>.36<span class="w">  </span><span class="m">165</span>.34<span class="w">    </span>N/A<span class="w">   </span><span class="m">1518</span>.7<span class="w">  </span><span class="m">176</span>.76<span class="w">  </span><span class="m">165</span>.71<span class="w">    </span>N/A
-<span class="w">   </span><span class="m">536870912</span><span class="w">       </span><span class="m">8388608</span><span class="w">     </span>float<span class="w">    </span>none<span class="w">      </span>-1<span class="w">   </span><span class="m">2892</span>.3<span class="w">  </span><span class="m">185</span>.62<span class="w">  </span><span class="m">174</span>.02<span class="w">    </span>N/A<span class="w">   </span><span class="m">2894</span>.4<span class="w">  </span><span class="m">185</span>.49<span class="w">  </span><span class="m">173</span>.89<span class="w">    </span>N/A
-<span class="w">  </span><span class="m">1073741824</span><span class="w">      </span><span class="m">16777216</span><span class="w">     </span>float<span class="w">    </span>none<span class="w">      </span>-1<span class="w">   </span><span class="m">5532</span>.7<span class="w">  </span><span class="m">194</span>.07<span class="w">  </span><span class="m">181</span>.94<span class="w">    </span>N/A<span class="w">   </span><span class="m">5530</span>.7<span class="w">  </span><span class="m">194</span>.14<span class="w">  </span><span class="m">182</span>.01<span class="w">    </span>N/A
-<span class="w">  </span><span class="m">2147483648</span><span class="w">      </span><span class="m">33554432</span><span class="w">     </span>float<span class="w">    </span>none<span class="w">      </span>-1<span class="w">    </span><span class="m">10863</span><span class="w">  </span><span class="m">197</span>.69<span class="w">  </span><span class="m">185</span>.34<span class="w">    </span>N/A<span class="w">    </span><span class="m">10837</span><span class="w">  </span><span class="m">198</span>.17<span class="w">  </span><span class="m">185</span>.78<span class="w">    </span>N/A
-<span class="w">  </span><span class="m">4294967296</span><span class="w">      </span><span class="m">67108864</span><span class="w">     </span>float<span class="w">    </span>none<span class="w">      </span>-1<span class="w">    </span><span class="m">21481</span><span class="w">  </span><span class="m">199</span>.94<span class="w">  </span><span class="m">187</span>.45<span class="w">    </span>N/A<span class="w">    </span><span class="m">21466</span><span class="w">  </span><span class="m">200</span>.08<span class="w">  </span><span class="m">187</span>.58<span class="w">    </span>N/A
-<span class="w">  </span><span class="m">8589934592</span><span class="w">     </span><span class="m">134217728</span><span class="w">     </span>float<span class="w">    </span>none<span class="w">      </span>-1<span class="w">    </span><span class="m">42713</span><span class="w">  </span><span class="m">201</span>.11<span class="w">  </span><span class="m">188</span>.54<span class="w">    </span>N/A<span class="w">    </span><span class="m">42701</span><span class="w">  </span><span class="m">201</span>.16<span class="w">  </span><span class="m">188</span>.59<span class="w">    </span>N/A
-Out<span class="w"> </span>of<span class="w"> </span>bounds<span class="w"> </span>values<span class="w"> </span>:<span class="w"> </span><span class="m">0</span><span class="w"> </span>OK
-Avg<span class="w"> </span>bus<span class="w"> </span>bandwidth<span class="w">    </span>:<span class="w"> </span><span class="m">146</span>.948<span class="w"> </span>
-
-Done
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>http://127.0.0.1:3000/proxy/models/main/chat/completions<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-X<span class="w"> </span>POST<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-H<span class="w"> </span><span class="s1">&#39;Authorization: Bearer &amp;lt;dstack token&amp;gt;&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-H<span class="w"> </span><span class="s1">&#39;Content-Type: application/json&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-d<span class="w"> </span><span class="s1">&#39;{</span>
+<span class="s1">      &quot;model&quot;: &quot;deepseek-ai/DeepSeek-R1-Distill-Llama-70B&quot;,</span>
+<span class="s1">      &quot;messages&quot;: [</span>
+<span class="s1">        {</span>
+<span class="s1">          &quot;role&quot;: &quot;system&quot;,</span>
+<span class="s1">          &quot;content&quot;: &quot;You are a helpful assistant.&quot;</span>
+<span class="s1">        },</span>
+<span class="s1">        {</span>
+<span class="s1">          &quot;role&quot;: &quot;user&quot;,</span>
+<span class="s1">          &quot;content&quot;: &quot;What is Deep Learning?&quot;</span>
+<span class="s1">        }</span>
+<span class="s1">      ],</span>
+<span class="s1">      &quot;stream&quot;: true,</span>
+<span class="s1">      &quot;max_tokens&quot;: 512</span>
+<span class="s1">    }&#39;</span>
 </code></pre></div>
-
-The networking bandwidth should be close to the maximum bandwidth supported by GCP.
-
 </div>
 
-<h2 id="run-nccl-workloads-with-gpudirect-tcpxo-support">Run NCCL workloads with GPUDirect-TCPXO support<a class="headerlink" href="#run-nccl-workloads-with-gpudirect-tcpxo-support" title="Permanent link">&para;</a></h2>
-<p>To take full advantage of GPUDirect-TCPXO in your workloads, you need properly set up the <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/gpu-bandwidth-gpudirect-tcpx-autopilot#environment-variables-nccl">NCCL environment variables</a>.
-This can be done with the following commands in your run configuration:</p>
-<div editor-title="task.dstack.yml">
-
-<div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">task</span>
-<span class="nt">nodes</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
-<span class="nt">commands</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
-<span class="w">    </span><span class="no">NCCL_LIB_DIR=&quot;/var/lib/tcpxo/lib64&quot;</span>
-<span class="w">    </span><span class="no">source ${NCCL_LIB_DIR}/nccl-env-profile-ll128.sh</span>
-<span class="w">    </span><span class="no">export NCCL_FASTRAK_CTRL_DEV=enp0s12</span>
-<span class="w">    </span><span class="no">export NCCL_FASTRAK_IFNAME=enp6s0,enp7s0,enp13s0,enp14s0,enp134s0,enp135s0,enp141s0,enp142s0</span>
-<span class="w">    </span><span class="no">export NCCL_SOCKET_IFNAME=enp0s12</span>
-<span class="w">    </span><span class="no">export NCCL_FASTRAK_LLCM_DEVICE_DIRECTORY=&quot;/dev/aperture_devices&quot;</span>
-<span class="w">    </span><span class="no">export LD_LIBRARY_PATH=&quot;${NCCL_LIB_DIR}:${LD_LIBRARY_PATH}&quot;</span>
-<span class="w">    </span><span class="no"># run NCCL</span>
-<span class="nt">resources</span><span class="p">:</span>
-<span class="w">  </span><span class="c1"># Allocate some shared memory for NCCL</span>
-<span class="w">  </span><span class="nt">shm_size</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">16GB</span>
-</code></pre></div>
-
-</div>
-
+<p>When a <a href="https://dstack.ai/docs/concepts/gateways.md">gateway</a> is configured, the OpenAI-compatible endpoint 
+is available at <code>https://gateway.&lt;gateway domain&gt;/</code>.</p>
 <h2 id="source-code">Source code<a class="headerlink" href="#source-code" title="Permanent link">&para;</a></h2>
-<p>The source code for this example can be found in 
-<a href="https://github.com/dstackai/dstack/blob/master/examples/misc/a3mega-clusters"><code>examples/misc/a3mega-clusters</code> <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>.</p>
+<p>The source-code of this example can be found in 
+<a href="https://github.com/dstackai/dstack/blob/master/examples/llms/deepseek/sglang" target="_blank"><code>examples/llms/deepseek/sglang</code> <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>.</p>
+<h2 id="whats-next">What's next?<a class="headerlink" href="#whats-next" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Check <a href="https://dstack.ai/docs/services">services</a></li>
+<li>Browse the <a href="https://docs.sglang.ai/references/deepseek.html">SgLang DeepSeek Usage</a>, <a href="https://rocm.blogs.amd.com/artificial-intelligence/DeepSeekR1-Part2/README.html">Supercharge DeepSeek-R1 Inference on AMD Instinct MI300X</a></li>
+</ol>
 
 
 
@@ -4148,7 +4078,7 @@ This can be done with the following commands in your run configuration:</p>
           <nav class="md-footer__inner md-grid" aria-label="Footer" >
             
               
-              <a href="../rccl-tests/" class="md-footer__link md-footer__link--prev" aria-label="Previous: RCCL tests">
+              <a href="../../clusters/a3high/" class="md-footer__link md-footer__link--prev" aria-label="Previous: A3 High">
                 <div class="md-footer__button md-icon">
                   
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -4158,20 +4088,20 @@ This can be done with the following commands in your run configuration:</p>
                     Previous
                   </span>
                   <div class="md-ellipsis">
-                    RCCL tests
+                    A3 High
                   </div>
                 </div>
               </a>
             
             
               
-              <a href="../a3high-clusters/" class="md-footer__link md-footer__link--next" aria-label="Next: A3 High">
+              <a href="../vllm/" class="md-footer__link md-footer__link--next" aria-label="Next: vLLM">
                 <div class="md-footer__title">
                   <span class="md-footer__direction">
                     Next
                   </span>
                   <div class="md-ellipsis">
-                    A3 High
+                    vLLM
                   </div>
                 </div>
                 <div class="md-footer__button md-icon">
@@ -4300,9 +4230,9 @@ This can be done with the following commands in your run configuration:</p>
 
                 <div class="tx-footer__section">
                     <div class="tx-footer__section-title">Examples</div>
-                    <a href="/examples#distributed-training" class="tx-footer__section-link">Distributed training</a>
                     <a href="/examples#fine-tuning" class="tx-footer__section-link">Fine-tuning</a>
-                    <a href="/examples#deployment" class="tx-footer__section-link">Deployment</a>
+                    <a href="/examples#clusters" class="tx-footer__section-link">Clusters</a>
+                    <a href="/examples#inference" class="tx-footer__section-link">Inference</a>
                     <a href="/examples#accelerators" class="tx-footer__section-link">Accelerators</a>
                     <a href="/examples#llms" class="tx-footer__section-link">LLMs</a>
                     <a href="/examples#misc" class="tx-footer__section-link">Misc</a>
