@@ -897,7 +897,7 @@ Support dstack with a ⭐ on
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#network-volumes" class="md-nav__link">
+  <a href="#network" class="md-nav__link">
     <span class="md-ellipsis">
       
         <span class="md-typeset">
@@ -1013,7 +1013,7 @@ Support dstack with a ⭐ on
 </li>
       
         <li class="md-nav__item">
-  <a href="#instance-volumes" class="md-nav__link">
+  <a href="#instance" class="md-nav__link">
     <span class="md-ellipsis">
       
         <span class="md-typeset">
@@ -1269,6 +1269,34 @@ Support dstack with a ⭐ on
     
   
     Metrics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/clusters/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Clusters
   
 
     
@@ -3901,7 +3929,7 @@ Support dstack with a ⭐ on
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#network-volumes" class="md-nav__link">
+  <a href="#network" class="md-nav__link">
     <span class="md-ellipsis">
       
         <span class="md-typeset">
@@ -4017,7 +4045,7 @@ Support dstack with a ⭐ on
 </li>
       
         <li class="md-nav__item">
-  <a href="#instance-volumes" class="md-nav__link">
+  <a href="#instance" class="md-nav__link">
     <span class="md-ellipsis">
       
         <span class="md-typeset">
@@ -4160,12 +4188,12 @@ Support dstack with a ⭐ on
 <p>Volumes enable data persistence between runs of dev environments, tasks, and services. </p>
 <p><code>dstack</code> supports two kinds of volumes: </p>
 <ul>
-<li><a href="#network-volumes">Network volumes</a> &mdash; provisioned via backends and mounted to specific container directories.
+<li><a href="#network">Network volumes</a> &mdash; provisioned via backends and mounted to specific container directories.
   Ideal for persistent storage.</li>
-<li><a href="#instance-volumes">Instance volumes</a> &mdash; bind directories on the host instance to container directories.
+<li><a href="#instance">Instance volumes</a> &mdash; bind directories on the host instance to container directories.
 Useful as a cache for cloud fleets or for persistent storage with SSH fleets.</li>
 </ul>
-<h2 id="network-volumes">Network volumes<a class="headerlink" href="#network-volumes" title="Permanent link">&para;</a></h2>
+<h2 id="network">Network volumes<a class="headerlink" href="#network" title="Permanent link">&para;</a></h2>
 <p>Network volumes are currently supported for the <code>aws</code>, <code>gcp</code>, and <code>runpod</code> backends.</p>
 <h3 id="apply-a-configuration">Apply a configuration<a class="headerlink" href="#apply-a-configuration" title="Permanent link">&para;</a></h3>
 <p>First, define a volume configuration as a YAML file in your project folder.
@@ -4267,6 +4295,7 @@ you can specify multiple volumes for the same path.</p>
 </div>
 <p><code>dstack</code> will attach one of the volumes based on the region and backend of the run.  </p>
 </details>
+<p><span id="distributed-tasks"></span></p>
 <details class="info">
 <summary>Distributed tasks</summary>
 <p>When using single-attach volumes such as AWS EBS with distributed tasks,
@@ -4339,7 +4368,7 @@ and specify them for the same mount point as <a href="#attach-network-volume">do
 <summary>Can I attach network volumes to multiple runs or instances?</summary>
 <p>You can mount a volume in multiple runs. This feature is currently supported only by the <code>runpod</code> backend.</p>
 </details>
-<h2 id="instance-volumes">Instance volumes<a class="headerlink" href="#instance-volumes" title="Permanent link">&para;</a></h2>
+<h2 id="instance">Instance volumes<a class="headerlink" href="#instance" title="Permanent link">&para;</a></h2>
 <p>Instance volumes allow mapping any directory on the instance where the run is executed to any path inside the container.
 This means that the data in instance volumes is persisted only if the run is executed on the same instance.</p>
 <h3 id="attach-a-volume">Attach a volume<a class="headerlink" href="#attach-a-volume" title="Permanent link">&para;</a></h3>
