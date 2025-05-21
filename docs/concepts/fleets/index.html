@@ -2140,14 +2140,14 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../reference/cli/dstack/config/" class="md-nav__link">
+      <a href="../../reference/cli/dstack/project/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    dstack config
+    dstack project
   
 
     
@@ -4649,29 +4649,31 @@ among <a href="../../reference/dstack.yml/fleet/">others</a>.</p>
 
 <details class="info">
 <summary>Requirements</summary>
-<p>1.&nbsp;Hosts should be pre-installed with Docker.</p>
+<p>1.&nbsp;Hosts must be pre-installed with Docker.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:4"><input checked="checked" id="nvidia" name="__tabbed_1" type="radio" /><input id="amd" name="__tabbed_1" type="radio" /><input id="intel-gaudi" name="__tabbed_1" type="radio" /><input id="tenstorrent" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="nvidia">NVIDIA</label><label for="amd">AMD</label><label for="intel-gaudi">Intel Gaudi</label><label for="tenstorrent">Tenstorrent</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p>2.&nbsp;Hosts with NVIDIA GPUs should also be pre-installed with CUDA 12.1 and
+<p>2.&nbsp;Hosts with NVIDIA GPUs must also be pre-installed with CUDA 12.1 and
 <a href="https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html">NVIDIA Container Toolkit <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>.</p>
 </div>
 <div class="tabbed-block">
-<p>2.&nbsp;Hosts with AMD GPUs should also be pre-installed with AMDGPU-DKMS kernel driver (e.g. via
+<p>2.&nbsp;Hosts with AMD GPUs must also be pre-installed with AMDGPU-DKMS kernel driver (e.g. via
 <a href="https://rocm.docs.amd.com/projects/install-on-linux/en/latest/install/native-install/index.html">native package manager <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>
 or <a href="https://rocm.docs.amd.com/projects/install-on-linux/en/latest/install/amdgpu-install.html">AMDGPU installer <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>.)</p>
 </div>
 <div class="tabbed-block">
-<p>2.&nbsp;Hosts with Intel Gaudi accelerators should be pre-installed with <a href="https://docs.habana.ai/en/latest/Installation_Guide/Driver_Installation.html#driver-installation">Gaudi software and drivers</a>.
-This should include the drivers, <code>hl-smi</code>, and Habana Container Runtime.</p>
+<p>2.&nbsp;Hosts with Intel Gaudi accelerators must be pre-installed with <a href="https://docs.habana.ai/en/latest/Installation_Guide/Driver_Installation.html#driver-installation">Gaudi software and drivers</a>.
+This must include the drivers, <code>hl-smi</code>, and Habana Container Runtime.</p>
 </div>
 <div class="tabbed-block">
-<p>2.&nbsp;Hosts with Tenstorrent accelerators should be pre-installed with <a href="https://docs.tenstorrent.com/getting-started/README.html#software-installation">Tenstorrent software</a>.
-This should include the drivers, <code>tt-smi</code>, and HugePages.</p>
+<p>2.&nbsp;Hosts with Tenstorrent accelerators must be pre-installed with <a href="https://docs.tenstorrent.com/getting-started/README.html#software-installation">Tenstorrent software</a>.
+This must include the drivers, <code>tt-smi</code>, and HugePages.</p>
 </div>
 </div>
 </div>
-<p>3.&nbsp;The user specified should have passwordless <code>sudo</code> access.</p>
+<p>3.&nbsp;The user specified must have passwordless <code>sudo</code> access.</p>
+<p>4.&nbsp;The SSH server must be running and configured with <code>AllowTcpForwarding yes</code> in <code>/etc/ssh/sshd_config</code>.</p>
+<p>5.&nbsp;The firewall must allow SSH and should forbid any other connections from external networks. For <code>placement: cluster</code> fleets, it should also allow any communication between fleet nodes.</p>
 </details>
 <p>To create or update the fleet, pass the fleet configuration to <a href="../../reference/cli/dstack/apply/"><code>dstack apply</code></a>:</p>
 <div class="termy">
@@ -4719,10 +4721,10 @@ divided into, allowing multiple jobs to use these blocks concurrently.</p>
 <span class="w">  </span><span class="nt">hosts</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">hostname</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.255.177.51</span>
 <span class="w">      </span><span class="nt">blocks</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">hostaname</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.255.177.52</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">hostname</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.255.177.52</span>
 <span class="w">      </span><span class="c1"># As many as possible, according to numbers of GPUs and CPUs</span>
 <span class="w">      </span><span class="nt">blocks</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">auto</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">hostaname</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.255.177.53</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">hostname</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.255.177.53</span>
 <span class="w">      </span><span class="c1"># Do not sclice. This is the default value, may be omitted</span>
 <span class="w">      </span><span class="nt">blocks</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
 </code></pre></div>
@@ -5012,7 +5014,7 @@ To terminate and delete specific instances from a fleet, pass <code>-i INSTANCE_
                     <a href="/examples#inference" class="tx-footer__section-link">Inference</a>
                     <a href="/examples#accelerators" class="tx-footer__section-link">Accelerators</a>
                     <a href="/examples#llms" class="tx-footer__section-link">LLMs</a>
-                    <a href="/examples#misc" class="tx-footer__section-link">Misc</a>
+                    <!-- <a href="/examples#misc" class="tx-footer__section-link">Misc</a> -->
                 </div>
 
                 <div class="tx-footer__section">
@@ -5026,7 +5028,7 @@ To terminate and delete specific instances from a fleet, pass <code>-i INSTANCE_
                 <div class="tx-footer__section">
                     <div class="tx-footer__section-title">Company</div>
                     <a href="https://calendly.com/dstackai/discovery-call" target="_blank" class="tx-footer__section-link external">Talk to an expert</a>
-                    <a href="/partners" class="tx-footer__section-link">Partners</a>
+                    <!-- <a href="/partners" class="tx-footer__section-link">Partners</a> -->
                     <a href="/terms" class="tx-footer__section-link">Terms</a>
                     <a href="/privacy" class="tx-footer__section-link">Privacy</a>
                     <!--<a href="https://dstackai.notion.site/Jobs-at-dstack-ff01a450c3174904b70c36124f2d8f4b" target="_blank" class="tx-footer__section-link external">Careers</a>-->

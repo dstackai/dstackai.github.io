@@ -1803,14 +1803,14 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../cli/dstack/config/" class="md-nav__link">
+      <a href="../cli/dstack/project/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    dstack config
+    dstack project
   
 
     
@@ -3993,7 +3993,7 @@ tasks, and services:</p>
 <h2 id="server">Server<a class="headerlink" href="#server" title="Permanent link">&para;</a></h2>
 <p>The following environment variables are supported by the <code>dstack</code> server and can be specified whether the server is run
 via <code>dstack server</code> or deployed using Docker.</p>
-<p>For more details on the options below, refer to the <a href="../../guides/server-deployment/">server deployment</a> guide. </p>
+<p>For more details on the options below, refer to the <a href="../../guides/server-deployment/">server deployment</a> guide.</p>
 <ul>
 <li>
 <p><code id="DSTACK_SERVER_LOG_LEVEL">DSTACK_SERVER_LOG_LEVEL</code> – Has the same effect as <code>--log-level</code>. Defaults to <code>INFO</code>.</p>
@@ -4018,10 +4018,11 @@ via <code>dstack server</code> or deployed using Docker.</p>
 <li><code id="DSTACK_ENABLE_PROMETHEUS_METRICS">DSTACK_ENABLE_PROMETHEUS_METRICS</code> — Enables Prometheus metrics collection and export.</li>
 <li><code id="DSTACK_DEFAULT_SERVICE_CLIENT_MAX_BODY_SIZE">DSTACK_DEFAULT_SERVICE_CLIENT_MAX_BODY_SIZE</code> – Request body size limit for services running with a gateway, in bytes. Defaults to 64 MiB.</li>
 <li><code id="DSTACK_FORBID_SERVICES_WITHOUT_GATEWAY">DSTACK_FORBID_SERVICES_WITHOUT_GATEWAY</code> – Forbids registering new services without a gateway if set to any value.</li>
+<li><code id="DSTACK_SERVER_CODE_UPLOAD_LIMIT">DSTACK_SERVER_CODE_UPLOAD_LIMIT</code> - The repo size limit when uploading diffs or local repos, in bytes. Set to 0 to disable size limits. Defaults to 2MiB.</li>
 </ul>
 <details class="info">
 <summary>Internal environment variables</summary>
-<p>The following environment variables are intended for development purposes: </p>
+<p>The following environment variables are intended for development purposes:</p>
 <ul>
 <li><code>DSTACK_SERVER_ROOT_LOG_LEVEL</code> – Sets root logger log level. Defaults to <code>ERROR</code>.</li>
 <li><code>DSTACK_SERVER_UVICORN_LOG_LEVEL</code> – Sets uvicorn logger log level. Defaults to <code>ERROR</code>.</li>
@@ -4230,7 +4231,7 @@ via <code>dstack server</code> or deployed using Docker.</p>
                     <a href="/examples#inference" class="tx-footer__section-link">Inference</a>
                     <a href="/examples#accelerators" class="tx-footer__section-link">Accelerators</a>
                     <a href="/examples#llms" class="tx-footer__section-link">LLMs</a>
-                    <a href="/examples#misc" class="tx-footer__section-link">Misc</a>
+                    <!-- <a href="/examples#misc" class="tx-footer__section-link">Misc</a> -->
                 </div>
 
                 <div class="tx-footer__section">
@@ -4244,7 +4245,7 @@ via <code>dstack server</code> or deployed using Docker.</p>
                 <div class="tx-footer__section">
                     <div class="tx-footer__section-title">Company</div>
                     <a href="https://calendly.com/dstackai/discovery-call" target="_blank" class="tx-footer__section-link external">Talk to an expert</a>
-                    <a href="/partners" class="tx-footer__section-link">Partners</a>
+                    <!-- <a href="/partners" class="tx-footer__section-link">Partners</a> -->
                     <a href="/terms" class="tx-footer__section-link">Terms</a>
                     <a href="/privacy" class="tx-footer__section-link">Privacy</a>
                     <!--<a href="https://dstackai.notion.site/Jobs-at-dstack-ff01a450c3174904b70c36124f2d8f4b" target="_blank" class="tx-footer__section-link external">Careers</a>-->

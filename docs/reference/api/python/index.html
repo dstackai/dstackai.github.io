@@ -1803,14 +1803,14 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../cli/dstack/config/" class="md-nav__link">
+      <a href="../../cli/dstack/project/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    dstack config
+    dstack project
   
 
     
@@ -5541,7 +5541,7 @@ Use this method to see the run plan before applying the cofiguration.</p>
 
 
 <h4 id="dstack.api.RunCollection.list" class="doc doc-heading">
-<code class="doc-symbol doc-symbol-heading doc-symbol-method"></code>            <code class="highlight language-python"><span class="nb">list</span><span class="p">(</span><span class="nb">all</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code>
+<code class="doc-symbol doc-symbol-heading doc-symbol-method"></code>            <code class="highlight language-python"><span class="nb">list</span><span class="p">(</span><span class="nb">all</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
 
 <a href="#dstack.api.RunCollection.list" class="headerlink" title="Permanent link">&para;</a></h4>
 
@@ -5576,6 +5576,22 @@ Use this method to see the run plan before applying the cofiguration.</p>
             </td>
             <td>
                   <code>False</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>limit</code>
+            </td>
+            <td>
+                  <code><span title="typing.Optional">Optional</span>[<span title="int">int</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Limit the number of runs to return. Must be less than 100.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
             </td>
           </tr>
       </tbody>
@@ -5996,6 +6012,7 @@ You can override these credentials via the <code>git_identity_file</code> or <co
 <h6 class="reference-item" id="_env"><a href="#env"><code>env</code></a> - (Optional) The mapping or the list of environment variables.<a class="headerlink" href="#_env" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="shell"><code>shell</code> - (Optional) The shell used to run commands. Allowed values are <code>sh</code>, <code>bash</code>, or an absolute path, e.g., <code>/usr/bin/zsh</code>. Defaults to <code>/bin/sh</code> if the <code>image</code> is specified, <code>/bin/bash</code> otherwise.<a class="headerlink" href="#shell" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="_resources"><a href="#dstack.api.Resources"><code>resources</code></a> - (Optional) The resources requirements to run the configuration.<a class="headerlink" href="#_resources" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="priority"><code>priority</code> - (Optional) The priority of the run, an integer between <code>0</code> and <code>100</code>. <code>dstack</code> tries to provision runs with higher priority first. Defaults to <code>0</code>.<a class="headerlink" href="#priority" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="volumes"><code>volumes</code> - (Optional) The volumes mount points.<a class="headerlink" href="#volumes" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="ports"><code>ports</code> - (Optional) Port numbers/mapping to expose.<a class="headerlink" href="#ports" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="commands"><code>commands</code> - (Optional) The shell commands to run.<a class="headerlink" href="#commands" title="Permanent link">&para;</a></h6>
@@ -6037,6 +6054,7 @@ You can override these credentials via the <code>git_identity_file</code> or <co
 <h6 class="reference-item" id="_env"><a href="#env"><code>env</code></a> - (Optional) The mapping or the list of environment variables.<a class="headerlink" href="#_env" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="shell"><code>shell</code> - (Optional) The shell used to run commands. Allowed values are <code>sh</code>, <code>bash</code>, or an absolute path, e.g., <code>/usr/bin/zsh</code>. Defaults to <code>/bin/sh</code> if the <code>image</code> is specified, <code>/bin/bash</code> otherwise.<a class="headerlink" href="#shell" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="_resources"><a href="#dstack.api.Resources"><code>resources</code></a> - (Optional) The resources requirements to run the configuration.<a class="headerlink" href="#_resources" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="priority"><code>priority</code> - (Optional) The priority of the run, an integer between <code>0</code> and <code>100</code>. <code>dstack</code> tries to provision runs with higher priority first. Defaults to <code>0</code>.<a class="headerlink" href="#priority" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="volumes"><code>volumes</code> - (Optional) The volumes mount points.<a class="headerlink" href="#volumes" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="commands"><code>commands</code> - (Optional) The shell commands to run.<a class="headerlink" href="#commands" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="backends"><code>backends</code> - (Optional) The backends to consider for provisioning (e.g., <code>[aws, gcp]</code>).<a class="headerlink" href="#backends" title="Permanent link">&para;</a></h6>
@@ -6072,6 +6090,7 @@ You can override these credentials via the <code>git_identity_file</code> or <co
 <h6 class="reference-item" id="_env"><a href="#env"><code>env</code></a> - (Optional) The mapping or the list of environment variables.<a class="headerlink" href="#_env" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="shell"><code>shell</code> - (Optional) The shell used to run commands. Allowed values are <code>sh</code>, <code>bash</code>, or an absolute path, e.g., <code>/usr/bin/zsh</code>. Defaults to <code>/bin/sh</code> if the <code>image</code> is specified, <code>/bin/bash</code> otherwise.<a class="headerlink" href="#shell" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="_resources"><a href="#dstack.api.Resources"><code>resources</code></a> - (Optional) The resources requirements to run the configuration.<a class="headerlink" href="#_resources" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="priority"><code>priority</code> - (Optional) The priority of the run, an integer between <code>0</code> and <code>100</code>. <code>dstack</code> tries to provision runs with higher priority first. Defaults to <code>0</code>.<a class="headerlink" href="#priority" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="volumes"><code>volumes</code> - (Optional) The volumes mount points.<a class="headerlink" href="#volumes" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="ports"><code>ports</code> - (Optional) Port numbers/mapping to expose.<a class="headerlink" href="#ports" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="backends"><code>backends</code> - (Optional) The backends to consider for provisioning (e.g., <code>[aws, gcp]</code>).<a class="headerlink" href="#backends" title="Permanent link">&para;</a></h6>
@@ -7402,7 +7421,7 @@ You can override these credentials via the <code>git_identity_file</code> or <co
                     <a href="/examples#inference" class="tx-footer__section-link">Inference</a>
                     <a href="/examples#accelerators" class="tx-footer__section-link">Accelerators</a>
                     <a href="/examples#llms" class="tx-footer__section-link">LLMs</a>
-                    <a href="/examples#misc" class="tx-footer__section-link">Misc</a>
+                    <!-- <a href="/examples#misc" class="tx-footer__section-link">Misc</a> -->
                 </div>
 
                 <div class="tx-footer__section">
@@ -7416,7 +7435,7 @@ You can override these credentials via the <code>git_identity_file</code> or <co
                 <div class="tx-footer__section">
                     <div class="tx-footer__section-title">Company</div>
                     <a href="https://calendly.com/dstackai/discovery-call" target="_blank" class="tx-footer__section-link external">Talk to an expert</a>
-                    <a href="/partners" class="tx-footer__section-link">Partners</a>
+                    <!-- <a href="/partners" class="tx-footer__section-link">Partners</a> -->
                     <a href="/terms" class="tx-footer__section-link">Terms</a>
                     <a href="/privacy" class="tx-footer__section-link">Privacy</a>
                     <!--<a href="https://dstackai.notion.site/Jobs-at-dstack-ff01a450c3174904b70c36124f2d8f4b" target="_blank" class="tx-footer__section-link external">Careers</a>-->

@@ -944,6 +944,19 @@ Support dstack with a ⭐ on
 </li>
         
           <li class="md-nav__item">
+  <a href="#priority" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Priority
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#creation-policy" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2025,14 +2038,14 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../reference/cli/dstack/config/" class="md-nav__link">
+      <a href="../../reference/cli/dstack/project/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    dstack config
+    dstack project
   
 
     
@@ -4061,6 +4074,19 @@ Support dstack with a ⭐ on
 </li>
         
           <li class="md-nav__item">
+  <a href="#priority" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Priority
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#creation-policy" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -4603,6 +4629,30 @@ the run will fail.</p>
 
 <p>If one job of a multi-node task fails with retry enabled,
 <code>dstack</code> will stop all the jobs and resubmit the run.</p>
+<h3 id="priority">Priority<a class="headerlink" href="#priority" title="Permanent link">&para;</a></h3>
+<p>Be default, submitted runs are scheduled in the order they were submitted.
+When compute resources are limited, you may want to prioritize some runs over others.
+This can be done by specifying the <a href="../../reference/dstack.yml/task/"><code>priority</code></a> property in the run configuration:</p>
+<div editor-title=".dstack.yml">
+
+<div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">task</span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">train</span>
+
+<span class="nt">python</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;3.10&quot;</span>
+
+<span class="c1"># Commands of the task</span>
+<span class="nt">commands</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip install -r fine-tuning/qlora/requirements.txt</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python fine-tuning/qlora/train.py</span>
+
+<span class="nt">priority</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">50</span>
+</code></pre></div>
+
+</div>
+
+<p><code>dstack</code> tries to provision runs with higher priority first.
+Note that if a high priority run cannot be scheduled,
+it does not block other runs with lower priority from scheduling.</p>
 <h3 id="creation-policy">Creation policy<a class="headerlink" href="#creation-policy" title="Permanent link">&para;</a></h3>
 <p>By default, when you run <code>dstack apply</code> with a dev environment, task, or service,
 if no <code>idle</code> instances from the available fleets meet the requirements, <code>dstack</code> creates a new fleet 
@@ -4827,7 +4877,7 @@ Pass <code>--diagnose</code> or <code>-d</code> to view diagnostic logs, which c
                     <a href="/examples#inference" class="tx-footer__section-link">Inference</a>
                     <a href="/examples#accelerators" class="tx-footer__section-link">Accelerators</a>
                     <a href="/examples#llms" class="tx-footer__section-link">LLMs</a>
-                    <a href="/examples#misc" class="tx-footer__section-link">Misc</a>
+                    <!-- <a href="/examples#misc" class="tx-footer__section-link">Misc</a> -->
                 </div>
 
                 <div class="tx-footer__section">
@@ -4841,7 +4891,7 @@ Pass <code>--diagnose</code> or <code>-d</code> to view diagnostic logs, which c
                 <div class="tx-footer__section">
                     <div class="tx-footer__section-title">Company</div>
                     <a href="https://calendly.com/dstackai/discovery-call" target="_blank" class="tx-footer__section-link external">Talk to an expert</a>
-                    <a href="/partners" class="tx-footer__section-link">Partners</a>
+                    <!-- <a href="/partners" class="tx-footer__section-link">Partners</a> -->
                     <a href="/terms" class="tx-footer__section-link">Terms</a>
                     <a href="/privacy" class="tx-footer__section-link">Privacy</a>
                     <!--<a href="https://dstackai.notion.site/Jobs-at-dstack-ff01a450c3174904b70c36124f2d8f4b" target="_blank" class="tx-footer__section-link external">Careers</a>-->

@@ -1865,14 +1865,14 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../config/" class="md-nav__link">
+      <a href="../project/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    dstack config
+    dstack project
   
 
     
@@ -3886,15 +3886,16 @@ Support dstack with a ⭐ on
 <div class="termy">
 
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>dstack<span class="w"> </span>ps<span class="w"> </span>--help
-Usage:<span class="w"> </span>dstack<span class="w"> </span>ps<span class="w"> </span><span class="o">[</span>-h<span class="o">]</span><span class="w"> </span><span class="o">[</span>--project<span class="w"> </span>NAME<span class="o">]</span><span class="w"> </span><span class="o">[</span>-a<span class="o">]</span><span class="w"> </span><span class="o">[</span>-v<span class="o">]</span><span class="w"> </span><span class="o">[</span>-w<span class="o">]</span>
+Usage:<span class="w"> </span>dstack<span class="w"> </span>ps<span class="w"> </span><span class="o">[</span>-h<span class="o">]</span><span class="w"> </span><span class="o">[</span>--project<span class="w"> </span>NAME<span class="o">]</span><span class="w"> </span><span class="o">[</span>-a<span class="o">]</span><span class="w"> </span><span class="o">[</span>-v<span class="o">]</span><span class="w"> </span><span class="o">[</span>-w<span class="o">]</span><span class="w"> </span><span class="o">[</span>-n<span class="w"> </span>LAST<span class="o">]</span>
 
 Options:
-<span class="w">  </span>-h,<span class="w"> </span>--help<span class="w">      </span>Show<span class="w"> </span>this<span class="w"> </span><span class="nb">help</span><span class="w"> </span>message<span class="w"> </span>and<span class="w"> </span><span class="nb">exit</span>
-<span class="w">  </span>--project<span class="w"> </span>NAME<span class="w">  </span>The<span class="w"> </span>name<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>project.<span class="w"> </span>Defaults<span class="w"> </span>to<span class="w"> </span><span class="nv">$DSTACK_PROJECT</span>
-<span class="w">  </span>-a,<span class="w"> </span>--all<span class="w">       </span>Show<span class="w"> </span>all<span class="w"> </span>runs.<span class="w"> </span>By<span class="w"> </span>default,<span class="w"> </span>it<span class="w"> </span>only<span class="w"> </span>shows<span class="w"> </span>unfinished<span class="w"> </span>runs<span class="w"> </span>or
-<span class="w">                  </span>the<span class="w"> </span>last<span class="w"> </span>finished.
-<span class="w">  </span>-v,<span class="w"> </span>--verbose<span class="w">   </span>Show<span class="w"> </span>more<span class="w"> </span>information<span class="w"> </span>about<span class="w"> </span>runs
-<span class="w">  </span>-w,<span class="w"> </span>--watch<span class="w">     </span>Watch<span class="w"> </span>statuses<span class="w"> </span>of<span class="w"> </span>runs<span class="w"> </span><span class="k">in</span><span class="w"> </span>realtime
+<span class="w">  </span>-h,<span class="w"> </span>--help<span class="w">            </span>Show<span class="w"> </span>this<span class="w"> </span><span class="nb">help</span><span class="w"> </span>message<span class="w"> </span>and<span class="w"> </span><span class="nb">exit</span>
+<span class="w">  </span>--project<span class="w"> </span>NAME<span class="w">        </span>The<span class="w"> </span>name<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>project.<span class="w"> </span>Defaults<span class="w"> </span>to<span class="w"> </span><span class="nv">$DSTACK_PROJECT</span>
+<span class="w">  </span>-a,<span class="w"> </span>--all<span class="w">             </span>Show<span class="w"> </span>all<span class="w"> </span>runs.<span class="w"> </span>By<span class="w"> </span>default,<span class="w"> </span>it<span class="w"> </span>only<span class="w"> </span>shows<span class="w"> </span>unfinished
+<span class="w">                        </span>runs<span class="w"> </span>or<span class="w"> </span>the<span class="w"> </span>last<span class="w"> </span>finished.
+<span class="w">  </span>-v,<span class="w"> </span>--verbose<span class="w">         </span>Show<span class="w"> </span>more<span class="w"> </span>information<span class="w"> </span>about<span class="w"> </span>runs
+<span class="w">  </span>-w,<span class="w"> </span>--watch<span class="w">           </span>Watch<span class="w"> </span>statuses<span class="w"> </span>of<span class="w"> </span>runs<span class="w"> </span><span class="k">in</span><span class="w"> </span>realtime
+<span class="w">  </span>-n,<span class="w"> </span>--last<span class="w"> </span>LAST<span class="w">       </span>Show<span class="w"> </span>only<span class="w"> </span>the<span class="w"> </span>last<span class="w"> </span>N<span class="w"> </span>runs.<span class="w"> </span>Implies<span class="w"> </span>--all
 </code></pre></div>
 
 </div>
@@ -4075,7 +4076,7 @@ Options:
                     <a href="/examples#inference" class="tx-footer__section-link">Inference</a>
                     <a href="/examples#accelerators" class="tx-footer__section-link">Accelerators</a>
                     <a href="/examples#llms" class="tx-footer__section-link">LLMs</a>
-                    <a href="/examples#misc" class="tx-footer__section-link">Misc</a>
+                    <!-- <a href="/examples#misc" class="tx-footer__section-link">Misc</a> -->
                 </div>
 
                 <div class="tx-footer__section">
@@ -4089,7 +4090,7 @@ Options:
                 <div class="tx-footer__section">
                     <div class="tx-footer__section-title">Company</div>
                     <a href="https://calendly.com/dstackai/discovery-call" target="_blank" class="tx-footer__section-link external">Talk to an expert</a>
-                    <a href="/partners" class="tx-footer__section-link">Partners</a>
+                    <!-- <a href="/partners" class="tx-footer__section-link">Partners</a> -->
                     <a href="/terms" class="tx-footer__section-link">Terms</a>
                     <a href="/privacy" class="tx-footer__section-link">Privacy</a>
                     <!--<a href="https://dstackai.notion.site/Jobs-at-dstack-ff01a450c3174904b70c36124f2d8f4b" target="_blank" class="tx-footer__section-link external">Careers</a>-->
