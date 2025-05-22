@@ -1169,6 +1169,19 @@ Support dstack with a ⭐ on
 </li>
       
         <li class="md-nav__item">
+  <a href="#projects" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Projects
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#environment-variables" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -4115,6 +4128,19 @@ Support dstack with a ⭐ on
 </li>
       
         <li class="md-nav__item">
+  <a href="#projects" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Projects
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#environment-variables" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -4439,6 +4465,20 @@ and add attach it in your run configuration:</p>
 </code></pre></div>
 </details>
 <p>See more Docker examples <a href="https://github.com/dstackai/dstack/tree/master/examples/misc/docker-compose">here</a>.</p>
+<h2 id="projects">Projects<a class="headerlink" href="#projects" title="Permanent link">&para;</a></h2>
+<p>If you're using multiple <code>dstack</code> projects (e.g., from different <code>dstack</code> servers),<br />
+you can switch between them using the <a href="../../reference/cli/dstack/project/"><code>dstack project</code></a> command.</p>
+<p>Alternatively, you can install <a href="https://direnv.net/" target="_blank"><code>direnv</code> <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a><br />
+to automatically apply environment variables from the <code>.envrc</code> file in your project directory.</p>
+<div editor-title=".envrc"> 
+
+<div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">DSTACK_PROJECT</span><span class="o">=</span>main
+</code></pre></div>
+
+</div>
+
+<p>Now, <code>dstack</code> will always use this project within this directory.</p>
+<p>Remember to add <code>.envrc</code> to <code>.gitignore</code> to avoid committing it to the repo. </p>
 <h2 id="environment-variables">Environment variables<a class="headerlink" href="#environment-variables" title="Permanent link">&para;</a></h2>
 <p>If a configuration requires an environment variable that you don't want to hardcode in the YAML, you can define it
 without assigning a value:</p>
@@ -4481,8 +4521,8 @@ $<span class="w"> </span>dstack<span class="w"> </span>apply<span class="w"> </s
 </code></pre></div>
 </div>
 <p>If you install <a href="https://direnv.net/" target="_blank"><code>direnv</code> <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>,
-it will automatically pass the environment variables from the <code>.env</code> file to the <code>dstack apply</code> command.</p>
-<p>Remember to add <code>.env</code> to <code>.gitignore</code> to avoid pushing it to the repo.    </p>
+it will automatically apply the environment variables from the <code>.envrc</code> file to the <code>dstack apply</code> command.</p>
+<p>Remember to add <code>.envrc</code> to <code>.gitignore</code> to avoid committing it to the repo.    </p>
 </details>
 <h2 id="attached-mode">Attached mode<a class="headerlink" href="#attached-mode" title="Permanent link">&para;</a></h2>
 <p>By default, <code>dstack apply</code> runs in attached mode.

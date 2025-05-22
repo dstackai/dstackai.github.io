@@ -4052,6 +4052,23 @@ Support dstack with a ⭐ on
 <p>The <code>dstack server</code> command automatically creates the default <code>main</code> project and adds its configuration in <code>~/.dstack/config.yml</code>.</p>
 </blockquote>
 <p>The <code>dstack project set-default</code> command can be used to switch between multiple projects.</p>
+<details class="info">
+<summary>Environment variable</summary>
+<p>Alternatively to <code>dstack project set-default</code>, you can set the <code>DSTACK_PROJECT</code> environment variable. It overrides the default project set in <code>~/.dstack/config.yml</code>.</p>
+<div class="termy">
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nv">DSTACK_PROJECT</span><span class="o">=</span>main
+$<span class="w"> </span>dstack<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>examples/.dstack.yml
+</code></pre></div>
+</div>
+<p>Also, you can install <a href="https://direnv.net/" target="_blank"><code>direnv</code> <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a><br />
+to automatically apply environment variables from the <code>.envrc</code> file in your project directory.</p>
+<p><div editor-title=".envrc"> </p>
+<div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">DSTACK_PROJECT</span><span class="o">=</span>main
+</code></pre></div>
+</div>
+<p>Now, <code>dstack</code> will always use this project within this directory.</p>
+<p>Remember to add <code>.envrc</code> to <code>.gitignore</code> to avoid committing it to the repo. </p>
+</details>
 <h2 id="dstack-project-add">dstack project add<a class="headerlink" href="#dstack-project-add" title="Permanent link">&para;</a></h2>
 <p>This command adds a new project configuration.</p>
 <div class="termy">

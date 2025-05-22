@@ -4795,9 +4795,7 @@ the <a href="../../reference/dstack.yml/fleet/#network"><code>network</code></a>
 <p>For more details on optimal inter-node connectivity, read the <a href="../../guides/clusters/">Clusters</a> guide.</p>
 </blockquote>
 <h4 id="ssh-blocks">Blocks<a class="headerlink" href="#ssh-blocks" title="Permanent link">&para;</a></h4>
-<p>By default, a single job occupies the entire instance, so if the instance has 8 GPUs, the job will use all of them.</p>
-<p>To make it more efficient, you can set the blocks property to specify how many blocks you’d like the instance to be
-divided into, allowing multiple jobs to use these blocks concurrently.</p>
+<p>By default, a job uses the entire instance—e.g., all 8 GPUs. To allow multiple jobs on the same instance, set the <code>blocks</code> property to divide the instance. Each job can then use one or more blocks, up to the full instance.</p>
 <div editor-title=".dstack.yml">
 
     <div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">fleet</span>
@@ -4819,13 +4817,13 @@ divided into, allowing multiple jobs to use these blocks concurrently.</p>
 
 </div>
 
-<p>For instance, with 8 GPUs, 128 CPUs, and 2TB of memory, setting blocks to 8 would assign 1 GPU, 16 CPUs, and 256 GB of
-memory to each block. These blocks can be used concurrently, and a single job can occupy multiple blocks if needed.</p>
-<blockquote>
-<p>GPUs and CPUs must be divisible by the number of blocks. All resources (GPU, CPU, memory) are split proportionally,
-except disk storage, which is shared.</p>
-</blockquote>
-<p>You can also set <code>blocks</code> to <code>auto</code>, which automatically sets the number of blocks to match the number of GPUs.</p>
+<p>All resources (GPU, CPU, memory) are split evenly across blocks, while disk is shared.</p>
+<p>For example, with 8 GPUs, 128 CPUs, and 2TB RAM, setting <code>blocks</code> to <code>8</code> gives each block 1 GPU, 16 CPUs, and 256 GB RAM.</p>
+<p>Set <code>blocks</code> to <code>auto</code> to match the number of blocks to the number of GPUs.</p>
+<div class="admonition info">
+<p class="admonition-title">Distributed tasks</p>
+<p>Distributed tasks require exclusive access to all host resources and therefore must use all blocks on each node.</p>
+</div>
 <h4 id="environment-variables">Environment variables<a class="headerlink" href="#environment-variables" title="Permanent link">&para;</a></h4>
 <p>If needed, you can specify environment variables that will be used by <code>dstack-shim</code> and passed to containers.</p>
 <p>For example, these variables can be used to configure a proxy:</p>
