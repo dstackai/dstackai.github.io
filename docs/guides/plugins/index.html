@@ -1222,6 +1222,38 @@ Support dstack with a ⭐ on
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#built-in-plugins" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Built-in Plugins
+        </span>
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Built-in Plugins">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rest-plugin" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          REST Plugin
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2169,6 +2201,94 @@ Support dstack with a ⭐ on
   
 
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_4_6" id="__nav_2_4_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Plugins
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_4_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_4_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Plugins
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/plugins/rest_plugin/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    REST Plugin API
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -3952,6 +4072,38 @@ Support dstack with a ⭐ on
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#built-in-plugins" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Built-in Plugins
+        </span>
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Built-in Plugins">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rest-plugin" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          REST Plugin
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -4131,7 +4283,16 @@ Subclass <code>dstack.plugins.ApplyPolicy</code> to implement them.</p>
 
 </div>
 
-<p>For more information on the plugin development, see the <a href="https://github.com/dstackai/dstack/tree/master/examples/plugins/example_plugin">plugin example</a>.</p>
+<h2 id="built-in-plugins">Built-in Plugins<a class="headerlink" href="#built-in-plugins" title="Permanent link">&para;</a></h2>
+<h3 id="rest-plugin">REST Plugin<a class="headerlink" href="#rest-plugin" title="Permanent link">&para;</a></h3>
+<p><code>rest_plugin</code> is a builtin <code>dstack</code> plugin that allows writing your custom plugins as API servers, so you don't need to install plugins as Python packages.</p>
+<p>Plugins implemented as API servers have advantages over plugins implemented as Python packages in some cases:</p>
+<ul>
+<li>No dependency conflicts with <code>dstack</code>.</li>
+<li>You can use any programming language.</li>
+<li>If you run the <code>dstack</code> server via Docker, you don't need to extend the <code>dstack</code> server image with plugins or map them via volumes.</li>
+</ul>
+<p>To get started, check out the <a href="https://github.com/dstackai/dstack/tree/master/examples/plugins/example_plugin_server">plugin server example</a>. The <code>rest_plugin</code> server API is documented <a href="../../reference/plugins/rest_plugin/">here</a>.</p>
 
 
 
