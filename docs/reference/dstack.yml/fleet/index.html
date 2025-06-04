@@ -4289,7 +4289,7 @@ Support dstack with a ⭐ on
 <h6 class="reference-item" id="regions"><code>regions</code> - (Optional) The regions to consider for provisioning (e.g., <code>[eu-west-1, us-west4, westeurope]</code>).<a class="headerlink" href="#regions" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="availability_zones"><code>availability_zones</code> - (Optional) The availability zones to consider for provisioning (e.g., <code>[eu-west-1a, us-west4-a]</code>).<a class="headerlink" href="#availability_zones" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="instance_types"><code>instance_types</code> - (Optional) The cloud-specific instance types to consider for provisioning (e.g., <code>[p3.8xlarge, n1-standard-4]</code>).<a class="headerlink" href="#instance_types" title="Permanent link">&para;</a></h6>
-<h6 class="reference-item" id="spot_policy"><code>spot_policy</code> - (Optional) The policy for provisioning spot or on-demand instances: <code>spot</code>, <code>on-demand</code>, or <code>auto</code>.<a class="headerlink" href="#spot_policy" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="spot_policy"><code>spot_policy</code> - (Optional) The policy for provisioning spot or on-demand instances: <code>spot</code>, <code>on-demand</code>, <code>auto</code>. Defaults to <code>on-demand</code>.<a class="headerlink" href="#spot_policy" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="_retry"><a href="#retry"><code>retry</code></a> - (Optional) The policy for provisioning retry. Defaults to <code>false</code>.<a class="headerlink" href="#_retry" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="max_price"><code>max_price</code> - (Optional) The maximum instance price per hour, in dollars.<a class="headerlink" href="#max_price" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="idle_duration"><code>idle_duration</code> - (Optional) Time to wait before terminating idle instances. Defaults to <code>5m</code> for runs and <code>3d</code> for fleets. Use <code>off</code> for unlimited duration.<a class="headerlink" href="#idle_duration" title="Permanent link">&para;</a></h6>
@@ -4338,7 +4338,7 @@ Support dstack with a ⭐ on
 <h4 id="resources-disk"><code>resources.disk</code><a class="headerlink" href="#resources-disk" title="Permanent link">&para;</a></h4>
 <h6 class="reference-item" id="size"><code>size</code> -  Disk size.<a class="headerlink" href="#size" title="Permanent link">&para;</a></h6>
 <h3 id="retry"><code>retry</code><a class="headerlink" href="#retry" title="Permanent link">&para;</a></h3>
-<h6 class="reference-item" id="on_events"><code>on_events</code> - (Optional) The list of events that should be handled with retry. Supported events are <code>no-capacity</code>, <code>interruption</code>, and <code>error</code>. Omit to retry on all events.<a class="headerlink" href="#on_events" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="on_events"><code>on_events</code> - (Optional) The list of events that should be handled with retry. Supported events are <code>no-capacity</code>, <code>interruption</code>, <code>error</code>. Omit to retry on all events.<a class="headerlink" href="#on_events" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="duration"><code>duration</code> - (Optional) The maximum period of retrying the run, e.g., <code>4h</code> or <code>1d</code>.<a class="headerlink" href="#duration" title="Permanent link">&para;</a></h6>
 
 

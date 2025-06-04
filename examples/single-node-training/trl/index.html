@@ -4095,19 +4095,19 @@ Support dstack with a ⭐ on
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">WANDB_API_KEY</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HUB_MODEL_ID</span>
 <span class="nt">commands</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip install &quot;transformers&gt;=4.43.2&quot;</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip install bitsandbytes</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip install flash-attn --no-build-isolation</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip install peft</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip install wandb</span>
+<span class="w">  </span><span class="c1"># Pin torch==2.6.0 to avoid building Flash Attention from source.</span>
+<span class="w">  </span><span class="c1"># Prebuilt Flash Attention wheels are not available for the latest torch==2.7.0.</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uv pip install torch==2.6.0</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uv pip install transformers bitsandbytes peft wandb</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uv pip install flash_attn --no-build-isolation</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">git clone https://github.com/huggingface/trl</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cd trl</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip install .</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span><span class="w"> </span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uv pip install .</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
 <span class="w">    </span><span class="no">accelerate launch \</span>
 <span class="w">      </span><span class="no">--config_file=examples/accelerate_configs/multi_gpu.yaml \</span>
 <span class="w">      </span><span class="no">--num_processes $DSTACK_GPUS_PER_NODE \</span>
-<span class="w">      </span><span class="no">examples/scripts/sft.py \</span>
+<span class="w">      </span><span class="no">trl/scripts/sft.py \</span>
 <span class="w">      </span><span class="no">--model_name meta-llama/Meta-Llama-3.1-8B \</span>
 <span class="w">      </span><span class="no">--dataset_name OpenAssistant/oasst_top1_2023-08-25 \</span>
 <span class="w">      </span><span class="no">--dataset_text_field=&quot;text&quot; \</span>
@@ -4118,14 +4118,15 @@ Support dstack with a ⭐ on
 <span class="w">      </span><span class="no">--report_to wandb \</span>
 <span class="w">      </span><span class="no">--bf16 \</span>
 <span class="w">      </span><span class="no">--max_seq_length 1024 \</span>
-<span class="w">      </span><span class="no">--lora_r 16 --lora_alpha 32 \</span>
+<span class="w">      </span><span class="no">--lora_r 16 \</span>
+<span class="w">      </span><span class="no">--lora_alpha 32 \</span>
 <span class="w">      </span><span class="no">--lora_target_modules q_proj k_proj v_proj o_proj \</span>
 <span class="w">      </span><span class="no">--load_in_4bit \</span>
 <span class="w">      </span><span class="no">--use_peft \</span>
 <span class="w">      </span><span class="no">--attn_implementation &quot;flash_attention_2&quot; \</span>
 <span class="w">      </span><span class="no">--logging_steps=10 \</span>
 <span class="w">      </span><span class="no">--output_dir models/llama31 \</span>
-<span class="w">      </span><span class="no">--hub_model_id $HUB_MODEL_ID</span>
+<span class="w">      </span><span class="no">--hub_model_id peterschmidt85/FineLlama-3.1-8B</span>
 
 <span class="nt">resources</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">gpu</span><span class="p">:</span>
