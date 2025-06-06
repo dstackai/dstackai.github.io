@@ -4114,24 +4114,29 @@ tasks, and services:</p>
 <div class="highlight"><pre><span></span><code><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">task</span>
 <span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">train-distrib</span>
 
+<span class="w"> </span><span class="c1"># The size of the cluster</span>
 <span class="w"> </span><span class="nt">nodes</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
-<span class="w"> </span><span class="nt">python</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;3.12&quot;</span>
 
+<span class="w"> </span><span class="nt">python</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.12</span>
+<span class="w"> </span><span class="nt">env</span><span class="p">:</span>
+<span class="w">   </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NCCL_DEBUG=INFO</span>
 <span class="w"> </span><span class="nt">commands</span><span class="p">:</span>
-<span class="w">   </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">git clone https://github.com/pytorch/examples.git</span>
-<span class="w">   </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cd examples/distributed/ddp-tutorial-series</span>
-<span class="w">   </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip install -r requirements.txt</span>
-<span class="w">   </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">torchrun</span>
-<span class="w">     </span><span class="l l-Scalar l-Scalar-Plain">--nproc-per-node=$DSTACK_GPUS_PER_NODE</span>
-<span class="w">     </span><span class="l l-Scalar l-Scalar-Plain">--node-rank=$DSTACK_NODE_RANK</span>
-<span class="w">     </span><span class="l l-Scalar l-Scalar-Plain">--nnodes=$DSTACK_NODES_NUM</span>
-<span class="w">     </span><span class="l l-Scalar l-Scalar-Plain">--master-addr=$DSTACK_MASTER_NODE_IP</span>
-<span class="w">     </span><span class="l l-Scalar l-Scalar-Plain">--master-port=12345</span>
-<span class="w">     </span><span class="l l-Scalar l-Scalar-Plain">multinode.py 50 10</span>
+<span class="w">   </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">git clone https://github.com/pytorch/examples.git pytorch-examples</span>
+<span class="w">   </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cd pytorch-examples/distributed/ddp-tutorial-series</span>
+<span class="w">   </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uv pip install -r requirements.txt</span>
+<span class="w">   </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">     </span><span class="no">torchrun \</span>
+<span class="w">       </span><span class="no">--nproc-per-node=$DSTACK_GPUS_PER_NODE \</span>
+<span class="w">       </span><span class="no">--node-rank=$DSTACK_NODE_RANK \</span>
+<span class="w">       </span><span class="no">--nnodes=$DSTACK_NODES_NUM \</span>
+<span class="w">       </span><span class="no">--master-addr=$DSTACK_MASTER_NODE_IP \</span>
+<span class="w">       </span><span class="no">--master-port=12345 \</span>
+<span class="w">       </span><span class="no">multinode.py 50 10</span>
 
 <span class="w"> </span><span class="nt">resources</span><span class="p">:</span>
-<span class="w">   </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">24GB</span>
-<span class="w">   </span><span class="nt">shm_size</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">24GB</span>
+<span class="w">   </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">24GB:1..2</span>
+<span class="w">   </span><span class="c1"># Uncomment if using multiple GPUs</span>
+<span class="w">   </span><span class="c1">#shm_size: 24GB</span>
 </code></pre></div>
 </li>
 <li>
@@ -4168,6 +4173,9 @@ via <code>dstack server</code> or deployed using Docker.</p>
 <li><code id="DSTACK_DEFAULT_SERVICE_CLIENT_MAX_BODY_SIZE">DSTACK_DEFAULT_SERVICE_CLIENT_MAX_BODY_SIZE</code> – Request body size limit for services running with a gateway, in bytes. Defaults to 64 MiB.</li>
 <li><code id="DSTACK_FORBID_SERVICES_WITHOUT_GATEWAY">DSTACK_FORBID_SERVICES_WITHOUT_GATEWAY</code> – Forbids registering new services without a gateway if set to any value.</li>
 <li><code id="DSTACK_SERVER_CODE_UPLOAD_LIMIT">DSTACK_SERVER_CODE_UPLOAD_LIMIT</code> - The repo size limit when uploading diffs or local repos, in bytes. Set to 0 to disable size limits. Defaults to 2MiB.</li>
+<li><code id="DSTACK_SERVER_S3_BUCKET">DSTACK_SERVER_S3_BUCKET</code> - The bucket that repo diffs will be uploaded to if set. If unset, diffs are uploaded to the database.</li>
+<li><code id="DSTACK_SERVER_S3_BUCKET_REGION">DSTACK_SERVER_S3_BUCKET_REGION</code> - The region of the S3 Bucket.</li>
+<li><code id="DSTACK_SERVER_GCD_BUCKET">DSTACK_SERVER_GCS_BUCKET</code> - The bucket that repo diffs will be uploaded to if set. If unset, diffs are uploaded to the database.</li>
 </ul>
 <details class="info">
 <summary>Internal environment variables</summary>

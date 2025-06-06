@@ -1173,11 +1173,11 @@ Support dstack with a ⭐ on
 </li>
       
         <li class="md-nav__item">
-  <a href="#ncclrccl-tests" class="md-nav__link">
+  <a href="#distributed-tasks" class="md-nav__link">
     <span class="md-ellipsis">
       
         <span class="md-typeset">
-          NCCL/RCCL tests
+          Distributed tasks
         </span>
       
     </span>
@@ -1186,11 +1186,11 @@ Support dstack with a ⭐ on
 </li>
       
         <li class="md-nav__item">
-  <a href="#distributed-tasks" class="md-nav__link">
+  <a href="#ncclrccl-tests" class="md-nav__link">
     <span class="md-ellipsis">
       
         <span class="md-typeset">
-          Distributed tasks
+          NCCL/RCCL tests
         </span>
       
     </span>
@@ -1213,11 +1213,11 @@ Support dstack with a ⭐ on
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#network-volumes" class="md-nav__link">
+  <a href="#instance-volumes" class="md-nav__link">
     <span class="md-ellipsis">
       
         <span class="md-typeset">
-          Network volumes
+          Instance volumes
         </span>
       
     </span>
@@ -1226,11 +1226,11 @@ Support dstack with a ⭐ on
 </li>
         
           <li class="md-nav__item">
-  <a href="#instance-volumes" class="md-nav__link">
+  <a href="#network-volumes" class="md-nav__link">
     <span class="md-ellipsis">
       
         <span class="md-typeset">
-          Instance volumes
+          Network volumes
         </span>
       
     </span>
@@ -4064,11 +4064,11 @@ Support dstack with a ⭐ on
 </li>
       
         <li class="md-nav__item">
-  <a href="#ncclrccl-tests" class="md-nav__link">
+  <a href="#distributed-tasks" class="md-nav__link">
     <span class="md-ellipsis">
       
         <span class="md-typeset">
-          NCCL/RCCL tests
+          Distributed tasks
         </span>
       
     </span>
@@ -4077,11 +4077,11 @@ Support dstack with a ⭐ on
 </li>
       
         <li class="md-nav__item">
-  <a href="#distributed-tasks" class="md-nav__link">
+  <a href="#ncclrccl-tests" class="md-nav__link">
     <span class="md-ellipsis">
       
         <span class="md-typeset">
-          Distributed tasks
+          NCCL/RCCL tests
         </span>
       
     </span>
@@ -4104,11 +4104,11 @@ Support dstack with a ⭐ on
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#network-volumes" class="md-nav__link">
+  <a href="#instance-volumes" class="md-nav__link">
     <span class="md-ellipsis">
       
         <span class="md-typeset">
-          Network volumes
+          Instance volumes
         </span>
       
     </span>
@@ -4117,11 +4117,11 @@ Support dstack with a ⭐ on
 </li>
         
           <li class="md-nav__item">
-  <a href="#instance-volumes" class="md-nav__link">
+  <a href="#network-volumes" class="md-nav__link">
     <span class="md-ellipsis">
       
         <span class="md-typeset">
-          Instance volumes
+          Network volumes
         </span>
       
     </span>
@@ -4217,16 +4217,16 @@ Support dstack with a ⭐ on
 
 
 <h1 id="clusters">Clusters<a class="headerlink" href="#clusters" title="Permanent link">&para;</a></h1>
-<p>A cluster is a fleet with its <code>placement</code> set to <code>cluster</code>. This configuration ensures that the instances within the fleet are interconnected, enabling fast inter-node communication—crucial for tasks such as efficient distributed training.</p>
+<p>A cluster is a <a href="../../concepts/fleets/">fleet</a> with its <code>placement</code> set to <code>cluster</code>. This configuration ensures that the instances within the fleet are interconnected, enabling fast inter-node communication—crucial for tasks such as efficient distributed training.</p>
 <h2 id="fleets">Fleets<a class="headerlink" href="#fleets" title="Permanent link">&para;</a></h2>
 <p>Ensure a fleet is created before you run any distributed task. This can be either an SSH fleet or a cloud fleet.</p>
 <h3 id="ssh-fleets">SSH fleets<a class="headerlink" href="#ssh-fleets" title="Permanent link">&para;</a></h3>
-<p>SSH fleets can be used to create a fleet out of existing baremetals or VMs, e.g. if they are already pre-provisioned, or set up on-premises.</p>
+<p><a href="../../concepts/fleets/#ssh">SSH fleets</a> can be used to create a fleet out of existing baremetals or VMs, e.g. if they are already pre-provisioned, or set up on-premises.</p>
 <blockquote>
 <p>For SSH fleets, fast interconnect is supported provided that the hosts are pre-configured with the appropriate interconnect drivers.</p>
 </blockquote>
 <h3 id="cloud-fleets">Cloud fleets<a class="headerlink" href="#cloud-fleets" title="Permanent link">&para;</a></h3>
-<p>Cloud fleets allow to provision interconnected clusters across supported backends.
+<p><a href="../../concepts/fleets/#cloud">Cloud fleets</a> allow to provision interconnected clusters across supported backends.
 For cloud fleets, fast interconnect is currently supported only on the <code>aws</code>, <code>gcp</code>, and <code>nebius</code> backends.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="aws" name="__tabbed_1" type="radio" /><input id="gcp" name="__tabbed_1" type="radio" /><input id="nebius" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="aws">AWS</label><label for="gcp">GCP</label><label for="nebius">Nebius</label></div>
 <div class="tabbed-content">
@@ -4256,31 +4256,34 @@ Refer to the <a href="../../../examples/clusters/a3mega/">A3 Mega</a> and
 <p>To request fast interconnect support for a other backends,
 file an <a href="https://github.com/dstackai/dstack/issues" target="_ blank">issue <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>. </p>
 </blockquote>
-<h2 id="ncclrccl-tests">NCCL/RCCL tests<a class="headerlink" href="#ncclrccl-tests" title="Permanent link">&para;</a></h2>
-<p>To test the interconnect of a created fleet, ensure you run <a href="../../../examples/clusters/nccl-tests/">NCCL</a> 
-(for NVIDIA) or <a href="../../../examples/clusters/rccl-tests/">RCCL</a> (for AMD) tests.</p>
 <h2 id="distributed-tasks">Distributed tasks<a class="headerlink" href="#distributed-tasks" title="Permanent link">&para;</a></h2>
 <p>A distributed task is a task with <code>nodes</code> set to a value greater than <code>2</code>. In this case, <code>dstack</code> first ensures a 
-suitable fleet is available, then starts the master node and runs the task container on it. Once the master is up,
-<code>dstack</code> starts the rest of the nodes and runs the task container on each of them.</p>
+suitable fleet is available, then selects the master node (to obtain its IP) and finally runs jobs on each node.</p>
 <p>Within the task's <code>commands</code>, it's possible to use <code>DSTACK_MASTER_NODE_IP</code>, <code>DSTACK_NODES_IPS</code>, <code>DSTACK_NODE_RANK</code>, and other
 <a href="../../concepts/tasks/#system-environment-variables">system environment variables</a> for inter-node communication.</p>
-<p>Refer to <a href="../../concepts/tasks/#distributed-tasks">distributed tasks</a> for an example.</p>
+<details class="info">
+<summary>MPI</summary>
+<p>If want to use MPI, you can set <code>startup_order</code> to <code>workers-first</code> and <code>stop_criteria</code> to <code>master-done</code>, and use <code>DSTACK_MPI_HOSTFILE</code>.
+See the <a href="../../../examples/clusters/nccl-tests/">NCCL</a> or <a href="../../../examples/clusters/rccl-tests/">RCCL</a> examples.</p>
+</details>
 <div class="admonition info">
 <p class="admonition-title">Retry policy</p>
 <p>By default, if any of the nodes fails, <code>dstack</code> terminates the entire run. Configure a <a href="../../concepts/tasks/#retry-policy">retry policy</a> to  restart the run if any node fails.</p>
 </div>
+<p>Refer to <a href="../../concepts/tasks/#distributed-tasks">distributed tasks</a> for an example.</p>
+<h2 id="ncclrccl-tests">NCCL/RCCL tests<a class="headerlink" href="#ncclrccl-tests" title="Permanent link">&para;</a></h2>
+<p>To test the interconnect of a created fleet, ensure you run <a href="../../../examples/clusters/nccl-tests/">NCCL</a> 
+(for NVIDIA) or <a href="../../../examples/clusters/rccl-tests/">RCCL</a> (for AMD) tests using MPI.</p>
 <h2 id="volumes">Volumes<a class="headerlink" href="#volumes" title="Permanent link">&para;</a></h2>
-<h3 id="network-volumes">Network volumes<a class="headerlink" href="#network-volumes" title="Permanent link">&para;</a></h3>
-<p>Currently, no backend supports multi-attach network volumes for distributed tasks. However, single-attach volumes can be used by leveraging volume name <a href="../../concepts/volumes/#distributed-tasks">interpolation syntax</a>. This approach mounts a separate single-attach volume to each node.</p>
 <h3 id="instance-volumes">Instance volumes<a class="headerlink" href="#instance-volumes" title="Permanent link">&para;</a></h3>
-<p>Instance volumes enable mounting any folder from the host into the container, allowing data persistence during distributed tasks.</p>
+<p><a href="../../concepts/volumes/#instance">Instance volumes</a> enable mounting any folder from the host into the container, allowing data persistence during distributed tasks.</p>
 <p>Instance volumes can be used to mount:</p>
 <ul>
 <li>Regular folders (data persists only while the fleet exists)</li>
 <li>Folders that are mounts of shared filesystems (e.g., manually mounted shared filesystems).</li>
 </ul>
-<p>Refer to <a href="../../concepts/volumes/#instance">instance volumes</a> for an example.</p>
+<h3 id="network-volumes">Network volumes<a class="headerlink" href="#network-volumes" title="Permanent link">&para;</a></h3>
+<p>Currently, no backend supports multi-attach <a href="../../concepts/volumes/#network">network volumes</a> for distributed tasks. However, single-attach volumes can be used by leveraging volume name <a href="../../concepts/volumes/#distributed-tasks">interpolation syntax</a>. This approach mounts a separate single-attach volume to each node.</p>
 <div class="admonition info">
 <p class="admonition-title">What's next?</p>
 <ol>

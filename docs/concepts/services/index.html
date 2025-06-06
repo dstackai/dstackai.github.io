@@ -985,6 +985,19 @@ Support dstack with a ⭐ on
 </li>
         
           <li class="md-nav__item">
+  <a href="#retry-policy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Retry policy
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#spot-policy" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -998,11 +1011,11 @@ Support dstack with a ⭐ on
 </li>
         
           <li class="md-nav__item">
-  <a href="#retry-policy" class="md-nav__link">
+  <a href="#utilization-policy" class="md-nav__link">
     <span class="md-ellipsis">
       
         <span class="md-typeset">
-          Retry policy
+          Utilization policy
         </span>
       
     </span>
@@ -4261,6 +4274,19 @@ Support dstack with a ⭐ on
 </li>
         
           <li class="md-nav__item">
+  <a href="#retry-policy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Retry policy
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#spot-policy" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -4274,11 +4300,11 @@ Support dstack with a ⭐ on
 </li>
         
           <li class="md-nav__item">
-  <a href="#retry-policy" class="md-nav__link">
+  <a href="#utilization-policy" class="md-nav__link">
     <span class="md-ellipsis">
       
         <span class="md-typeset">
-          Retry policy
+          Utilization policy
         </span>
       
     </span>
@@ -4423,13 +4449,13 @@ The filename must end with <code>.dstack.yml</code> (e.g. <code>.dstack.yml</cod
 <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">llama31</span>
 
 <span class="c1"># If `image` is not specified, dstack uses its default image</span>
-<span class="nt">python</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;3.11&quot;</span>
+<span class="nt">python</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.12</span>
 <span class="nt">env</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HF_TOKEN</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MODEL_ID=meta-llama/Meta-Llama-3.1-8B-Instruct</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MAX_MODEL_LEN=4096</span>
 <span class="nt">commands</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip install vllm</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uv pip install vllm</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vllm serve $MODEL_ID</span>
 <span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">--max-model-len $MAX_MODEL_LEN</span>
 <span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">--tensor-parallel-size $DSTACK_GPUS_NUM</span>
@@ -4524,13 +4550,13 @@ You can configure the number of replicas as well as the auto-scaling rules.</p>
 <span class="c1"># The name is optional, if not specified, generated randomly</span>
 <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">llama31-service</span>
 
-<span class="nt">python</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;3.10&quot;</span>
+<span class="nt">python</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.12</span>
 
 <span class="c1"># Required environment variables</span>
 <span class="nt">env</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HF_TOKEN</span>
 <span class="nt">commands</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip install vllm</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uv pip install vllm</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vllm serve meta-llama/Meta-Llama-3.1-8B-Instruct --max-model-len 4096</span>
 <span class="c1"># Expose the port of the service</span>
 <span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8000</span>
@@ -4573,7 +4599,7 @@ This can be disabled by setting <code>auth</code> to <code>false</code>.</p>
 <span class="c1"># Disable authorization</span>
 <span class="nt">auth</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
 
-<span class="nt">python</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;3.10&quot;</span>
+<span class="nt">python</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.12</span>
 
 <span class="c1"># Commands of the service</span>
 <span class="nt">commands</span><span class="p">:</span>
@@ -4606,7 +4632,7 @@ so that browser-side scripts and CSS work correctly with the path prefix.</p>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DASH_ROUTES_PATHNAME_PREFIX=/proxy/services/main/dash/</span>
 
 <span class="nt">commands</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip install dash</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uv pip install dash</span>
 <span class="w">  </span><span class="c1"># Assuming the Dash app is in your repo at app.py</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python app.py</span>
 
@@ -4676,11 +4702,11 @@ range (e.g. <code>24GB..</code>, or <code>24GB..80GB</code>, or <code>..80GB</co
 <span class="c1"># The name is optional, if not specified, generated randomly</span>
 <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">llama31-service</span>
 
-<span class="nt">python</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;3.10&quot;</span>
+<span class="nt">python</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.12</span>
 
 <span class="c1"># Commands of the service</span>
 <span class="nt">commands</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip install vllm</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uv pip install vllm</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python -m vllm.entrypoints.openai.api_server</span>
 <span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">--model mistralai/Mixtral-8X7B-Instruct-v0.1</span>
 <span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">--host 0.0.0.0</span>
@@ -4752,7 +4778,7 @@ The <code>python</code> property determines which default Docker image is used.<
 <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http-server-service</span><span class="w">    </span>
 
 <span class="c1"># If `image` is not specified, dstack uses its base image</span>
-<span class="nt">python</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;3.10&quot;</span>
+<span class="nt">python</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.12</span>
 
 <span class="c1"># Commands of the service</span>
 <span class="nt">commands</span><span class="p">:</span>
@@ -4773,7 +4799,7 @@ If you need <code>nvcc</code>, set the corresponding property to true.</p>
 <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http-server-service</span><span class="w">    </span>
 
 <span class="c1"># If `image` is not specified, dstack uses its base image</span>
-<span class="nt">python</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;3.10&quot;</span>
+<span class="nt">python</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.12</span>
 <span class="c1"># Ensure nvcc is installed (req. for Flash Attention) </span>
 <span class="nt">nvcc</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 
@@ -4839,7 +4865,7 @@ This mode allows using <a href="../../guides/protips/#docker-and-docker-compose"
 <span class="c1"># The name is optional, if not specified, generated randomly</span>
 <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">llama-2-7b-service</span>
 
-<span class="nt">python</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;3.10&quot;</span>
+<span class="nt">python</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.12</span>
 
 <span class="c1"># Environment variables</span>
 <span class="nt">env</span><span class="p">:</span>
@@ -4847,7 +4873,7 @@ This mode allows using <a href="../../guides/protips/#docker-and-docker-compose"
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MODEL=NousResearch/Llama-2-7b-chat-hf</span>
 <span class="c1"># Commands of the service</span>
 <span class="nt">commands</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip install vllm</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uv pip install vllm</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python -m vllm.entrypoints.openai.api_server --model $MODEL --port 8000</span>
 <span class="c1"># The port of the service</span>
 <span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8000</span>
@@ -4889,17 +4915,6 @@ This mode allows using <a href="../../guides/protips/#docker-and-docker-compose"
 </tbody>
 </table>
 </details>
-<h3 id="spot-policy">Spot policy<a class="headerlink" href="#spot-policy" title="Permanent link">&para;</a></h3>
-<p>By default, <code>dstack</code> uses on-demand instances. However, you can change that
-via the <a href="../../reference/dstack.yml/service/#spot_policy"><code>spot_policy</code></a> property. It accepts <code>spot</code>, <code>on-demand</code>, and <code>auto</code>.</p>
-<div class="admonition info">
-<p class="admonition-title">Reference</p>
-<p>Services support many more configuration options,
-incl. <a href="../../reference/dstack.yml/service/#backends"><code>backends</code></a>, 
-<a href="../../reference/dstack.yml/service/#regions"><code>regions</code></a>, 
-<a href="../../reference/dstack.yml/service/#max_price"><code>max_price</code></a>, and
-among <a href="../../reference/dstack.yml/service/">others</a>.</p>
-</div>
 <h3 id="retry-policy">Retry policy<a class="headerlink" href="#retry-policy" title="Permanent link">&para;</a></h3>
 <p>By default, if <code>dstack</code> can't find capacity, or the service exits with an error, or the instance is interrupted, the run will fail.</p>
 <p>If you'd like <code>dstack</code> to automatically retry, configure the 
@@ -4921,6 +4936,37 @@ among <a href="../../reference/dstack.yml/service/">others</a>.</p>
 
 <p>If one replica of a multi-replica service fails with retry enabled,
 <code>dstack</code> will resubmit only the failed replica while keeping active replicas running.</p>
+<h3 id="spot-policy">Spot policy<a class="headerlink" href="#spot-policy" title="Permanent link">&para;</a></h3>
+<p>By default, <code>dstack</code> uses on-demand instances. However, you can change that
+via the <a href="../../reference/dstack.yml/service/#spot_policy"><code>spot_policy</code></a> property. It accepts <code>spot</code>, <code>on-demand</code>, and <code>auto</code>.</p>
+<h3 id="utilization-policy">Utilization policy<a class="headerlink" href="#utilization-policy" title="Permanent link">&para;</a></h3>
+<p>Sometimes it’s useful to track whether a service is fully utilizing all GPUs. While you can check this with
+<a href="../../reference/cli/dstack/metrics/"><code>dstack metrics</code></a>, <code>dstack</code> also lets you set a policy to auto-terminate the run if any GPU is underutilized.</p>
+<p>Below is an example of a service that auto-terminate if any GPU stays below 10% utilization for 1 hour.</p>
+<div editor-title=".dstack.yml">
+
+<div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service</span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">llama-2-7b-service</span>
+
+<span class="nt">python</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.12</span>
+<span class="nt">env</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HF_TOKEN</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MODEL=NousResearch/Llama-2-7b-chat-hf</span>
+<span class="nt">commands</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uv pip install vllm</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python -m vllm.entrypoints.openai.api_server --model $MODEL --port 8000</span>
+<span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8000</span>
+
+<span class="nt">resources</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">24GB</span>
+
+<span class="nt">utilization_policy</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">min_gpu_utilization</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span>
+<span class="w">  </span><span class="nt">time_window</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1h</span>
+</code></pre></div>
+
+</div>
+
 <h3 id="creation-policy">Creation policy<a class="headerlink" href="#creation-policy" title="Permanent link">&para;</a></h3>
 <p>By default, when you run <code>dstack apply</code> with a dev environment, task, or service,
 if no <code>idle</code> instances from the available fleets meet the requirements, <code>dstack</code> creates a new fleet 
@@ -4945,6 +4991,14 @@ unlimited).</p>
 <p class="admonition-title">Fleets</p>
 <p>For greater control over fleet provisioning, it is recommended to create
 <a href="../fleets/">fleets</a> explicitly.</p>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Reference</p>
+<p>Services support many more configuration options,
+incl. <a href="../../reference/dstack.yml/service/#backends"><code>backends</code></a>, 
+<a href="../../reference/dstack.yml/service/#regions"><code>regions</code></a>, 
+<a href="../../reference/dstack.yml/service/#max_price"><code>max_price</code></a>, and
+among <a href="../../reference/dstack.yml/service/">others</a>.</p>
 </div>
 <h2 id="manage-runs">Manage runs<a class="headerlink" href="#manage-runs" title="Permanent link">&para;</a></h2>
 <p><code>dstack</code> provides several commands to manage runs:</p>

@@ -4125,6 +4125,8 @@ Support dstack with a ⭐ on
 <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rccl-tests</span>
 
 <span class="nt">nodes</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
+<span class="nt">startup_order</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">workers-first</span>
+<span class="nt">stop_criteria</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">master-done</span>
 
 <span class="c1"># Mount the system libraries folder from the host</span>
 <span class="nt">volumes</span><span class="p">:</span>
@@ -4139,41 +4141,26 @@ Support dstack with a ⭐ on
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apt-get install -y git libopenmpi-dev openmpi-bin</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">git clone https://github.com/ROCm/rccl-tests.git</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cd rccl-tests</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">make MPI=1 MPI_HOME=${OPEN_MPI_HOME}</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">make MPI=1 MPI_HOME=$OPEN_MPI_HOME</span>
 
 <span class="w">  </span><span class="c1"># Preload the RoCE driver library from the host (for Broadcom driver compatibility)</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">export LD_PRELOAD=/mnt/lib/libbnxt_re-rdmav34.so</span>
 
 <span class="w">  </span><span class="c1"># Run RCCL tests via MPI</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
-<span class="w">    </span><span class="no">FIFO=/tmp/${DSTACK_RUN_NAME}</span>
-<span class="w">    </span><span class="no">if [ ${DSTACK_NODE_RANK} -eq 0 ]; then</span>
-<span class="w">      </span><span class="no">sleep 10</span>
-<span class="w">      </span><span class="no">echo &quot;$DSTACK_NODES_IPS&quot; | tr &#39; &#39; &#39;\n&#39; &gt; hostfile</span>
-<span class="w">      </span><span class="no">MPIRUN=&#39;mpirun --allow-run-as-root --hostfile hostfile&#39;</span>
-<span class="w">      </span><span class="no"># Wait for other nodes</span>
-<span class="w">      </span><span class="no">while true; do</span>
-<span class="w">        </span><span class="no">if ${MPIRUN} -n ${DSTACK_NODES_NUM} -N 1 true &gt;/dev/null 2&gt;&amp;1; then</span>
-<span class="w">          </span><span class="no">break</span>
-<span class="w">        </span><span class="no">fi</span>
-<span class="w">        </span><span class="no">echo &#39;Waiting for other nodes...&#39;</span>
-<span class="w">        </span><span class="no">sleep 5</span>
-<span class="w">      </span><span class="no">done</span>
-<span class="w">      </span><span class="no"># Run NCCL Tests</span>
-<span class="w">      </span><span class="no">${MPIRUN} \</span>
-<span class="w">        </span><span class="no">-n ${DSTACK_GPUS_NUM} -N ${DSTACK_GPUS_PER_NODE} \</span>
+<span class="w">    </span><span class="no">if [ $DSTACK_NODE_RANK -eq 0 ]; then</span>
+<span class="w">      </span><span class="no">mpirun --allow-run-as-root \</span>
+<span class="w">        </span><span class="no">--hostfile $DSTACK_MPI_HOSTFILE \</span>
+<span class="w">        </span><span class="no">-n $DSTACK_GPUS_NUM \</span>
+<span class="w">        </span><span class="no">-N $DSTACK_GPUS_PER_NODE \</span>
 <span class="w">        </span><span class="no">--mca btl_tcp_if_include ens41np0 \</span>
 <span class="w">        </span><span class="no">-x LD_PRELOAD \</span>
 <span class="w">        </span><span class="no">-x NCCL_IB_HCA=mlx5_0/1,bnxt_re0,bnxt_re1,bnxt_re2,bnxt_re3,bnxt_re4,bnxt_re5,bnxt_re6,bnxt_re7 \</span>
 <span class="w">        </span><span class="no">-x NCCL_IB_GID_INDEX=3 \</span>
 <span class="w">        </span><span class="no">-x NCCL_IB_DISABLE=0 \</span>
 <span class="w">        </span><span class="no">./build/all_reduce_perf -b 8M -e 8G -f 2 -g 1 -w 5 --iters 20 -c 0;</span>
-<span class="w">      </span><span class="no"># Notify other nodes the MPI run is finished</span>
-<span class="w">      </span><span class="no">${MPIRUN} -n ${DSTACK_NODES_NUM} -N 1 sh -c &quot;echo done &gt; ${FIFO}&quot;</span>
 <span class="w">    </span><span class="no">else</span>
-<span class="w">      </span><span class="no">mkfifo ${FIFO}</span>
-<span class="w">      </span><span class="no"># Wait for a message from the master node</span>
-<span class="w">      </span><span class="no">cat ${FIFO}</span>
+<span class="w">      </span><span class="no">sleep infinity</span>
 <span class="w">    </span><span class="no">fi</span>
 
 <span class="nt">resources</span><span class="p">:</span>

@@ -1242,6 +1242,51 @@ Support dstack with a ⭐ on
 </li>
       
         <li class="md-nav__item">
+  <a href="#file-storage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          File storage
+        </span>
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="File storage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#s3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          S3
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gcs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          GCS
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#encryption" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -4142,6 +4187,51 @@ Support dstack with a ⭐ on
 </li>
       
         <li class="md-nav__item">
+  <a href="#file-storage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          File storage
+        </span>
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="File storage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#s3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          S3
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gcs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          GCS
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#encryption" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -4432,7 +4522,7 @@ For multi-replica server deployments, it's required to store logs externally.
 <h3 id="aws-cloudwatch">AWS CloudWatch<a class="headerlink" href="#aws-cloudwatch" title="Permanent link">&para;</a></h3>
 <p>To store logs in AWS CloudWatch, set the <code>DSTACK_SERVER_CLOUDWATCH_LOG_GROUP</code> and
 the <code>DSTACK_SERVER_CLOUDWATCH_LOG_REGION</code> environment variables. </p>
-<p>The log group must be created beforehand, <code>dstack</code> won't try to create it.</p>
+<p>The log group must be created beforehand. <code>dstack</code> won't try to create it.</p>
 <details class="info">
 <summary>Required permissions</summary>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
@@ -4479,6 +4569,48 @@ $<span class="w"> </span>gcloud<span class="w"> </span>logging<span class="w"> <
 <span class="w">    </span>--log-filter<span class="o">=</span><span class="s1">&#39;logName = &quot;projects/[PROJECT]/logs/dstack-run-logs&quot;&#39;</span>
 </code></pre></div>
 </div>
+</details>
+<h2 id="file-storage">File storage<a class="headerlink" href="#file-storage" title="Permanent link">&para;</a></h2>
+<p>When using <a href="../../concepts/repos/">repos</a>, the <code>dstack</code> CLI uploads uncommitted local files and diffs to the server so that you can have access to them within runs. By default, the files are stored in the DB and each upload is limited to 2MB. You can configure an object storage to be used for uploads and increase the default limit by setting the <code>DSTACK_SERVER_CODE_UPLOAD_LIMIT</code> environment variable</p>
+<h3 id="s3">S3<a class="headerlink" href="#s3" title="Permanent link">&para;</a></h3>
+<p>To use S3 for storing uploaded files, set the <code>DSTACK_SERVER_S3_BUCKET</code> and <code>DSTACK_SERVER_BUCKET_REGION</code> environment variables.
+The bucket must be created beforehand. <code>dstack</code> won't try to create it.</p>
+<details class="info">
+<summary>Required permissions</summary>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;Version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2012-10-17&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;Statement&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;Effect&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Allow&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;Action&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="s2">&quot;s3:GetObject&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;s3:PutObject&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;s3:DeleteObject&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;s3:ListBucket&quot;</span>
+<span class="w">        </span><span class="p">],</span>
+<span class="w">        </span><span class="nt">&quot;Resource&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="s2">&quot;arn:aws:s3:::&lt;bucket-name&gt;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;arn:aws:s3:::&lt;bucket-name&gt;/*&quot;</span>
+<span class="w">        </span><span class="p">]</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+</details>
+<h3 id="gcs">GCS<a class="headerlink" href="#gcs" title="Permanent link">&para;</a></h3>
+<p>To use GCS for storing uploaded files, set the <code>DSTACK_SERVER_GCS_BUCKET</code> environment variable.
+The bucket must be created beforehand. <code>dstack</code> won't try to create it.</p>
+<details class="info">
+<summary>Required permissions</summary>
+<p>Ensure you've configured Application Default Credentials with the following permissions:</p>
+<div class="highlight"><pre><span></span><code>storage.buckets.get
+storage.buckets.list
+storage.objects.get
+storage.objects.list
+storage.objects.create
+storage.objects.delete
+storage.objects.update
+</code></pre></div>
 </details>
 <h2 id="encryption">Encryption<a class="headerlink" href="#encryption" title="Permanent link">&para;</a></h2>
 <p>By default, <code>dstack</code> stores data in plaintext. To enforce encryption, you 
@@ -4563,7 +4695,7 @@ to <code>false</code> so that only global admins can create and manage projects:
 <p><code>dstack</code> follows the <code>{major}.{minor}.{patch}</code> versioning scheme.
 Backward compatibility is maintained based on these principles:</p>
 <ul>
-<li>The server backward compatibility is maintained across all minor and patch releases. The specific features can be removed but the removal is preceded with deprecation warnings for several minor releases. This means you can use older client versions with newer server versions.</li>
+<li>The server backward compatibility is maintained on a best-effort basis across minor and patch releases. The specific features can be removed, but the removal is preceded with deprecation warnings for several minor releases. This means you can use older client versions with newer server versions.</li>
 <li>The client backward compatibility is maintained across patch releases. A new minor release indicates that the release breaks client backward compatibility. This means you don't need to update the server when you update the client to a new patch release. Still, upgrading a client to a new minor version requires upgrading the server too.</li>
 </ul>
 <h2 id="server-limits">Server limits<a class="headerlink" href="#server-limits" title="Permanent link">&para;</a></h2>

@@ -4106,13 +4106,14 @@ Support dstack with a ⭐ on
 <span class="nt">env</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NCCL_DEBUG=INFO</span>
 <span class="nt">commands</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cd /root/nccl-tests/build</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
-<span class="w">    </span><span class="no">if [ ${DSTACK_NODE_RANK} -eq 0 ]; then</span>
-<span class="w">      </span><span class="no">cd /root/nccl-tests/build</span>
-<span class="w">      </span><span class="no">MPIRUN=&quot;mpirun --allow-run-as-root --hostfile $DSTACK_MPI_HOSTFILE&quot;</span>
-<span class="w">      </span><span class="no"># Run NCCL Tests</span>
-<span class="w">      </span><span class="no">${MPIRUN} \</span>
-<span class="w">        </span><span class="no">-n ${DSTACK_GPUS_NUM} -N ${DSTACK_GPUS_PER_NODE} \</span>
+<span class="w">    </span><span class="no">if [ $DSTACK_NODE_RANK -eq 0 ]; then</span>
+<span class="w">      </span><span class="no">mpirun \</span>
+<span class="w">        </span><span class="no">--allow-run-as-root \</span>
+<span class="w">        </span><span class="no">--hostfile $DSTACK_MPI_HOSTFILE \</span>
+<span class="w">        </span><span class="no">-n $DSTACK_GPUS_NUM \</span>
+<span class="w">        </span><span class="no">-N $DSTACK_GPUS_PER_NODE \</span>
 <span class="w">        </span><span class="no">--mca btl_tcp_if_exclude lo,docker0 \</span>
 <span class="w">        </span><span class="no">--bind-to none \</span>
 <span class="w">        </span><span class="no">./all_reduce_perf -b 8 -e 8G -f 2 -g 1</span>
@@ -4126,6 +4127,8 @@ Support dstack with a ⭐ on
 </code></pre></div>
 
 </div>
+
+<!-- TODO: Need to stop using our EFA image - either make our default image cluster-friendly, or recommend using NGC or other images -->
 
 <div class="admonition info">
 <p class="admonition-title">Docker image</p>

@@ -4314,7 +4314,9 @@ enabled.</p>
 <h3 id="gitignore-and-folder-size">.gitignore and folder size<a class="headerlink" href="#gitignore-and-folder-size" title="Permanent link">&para;</a></h3>
 <p>If the directory is cloned Git repo, <a href="../../reference/cli/dstack/apply/"><code>dstack apply</code></a> uploads to the <code>dstack</code> server only local changes.
 If the directory is not a cloned Git repo, it uploads the entire directory.</p>
-<p>Uploads are limited to 2MB. Use <code>.gitignore</code> to exclude unnecessary files from being uploaded.</p>
+<p>Uploads are limited to 2MB. Use <code>.gitignore</code> to exclude unnecessary files from being uploaded.
+You can set the <code>DSTACK_SERVER_CODE_UPLOAD_LIMIT</code> environment variable to increase the default server limit.
+Increasing the limit is recommended only if you <a href="../../guides/server-deployment/">configure an object storage</a>.</p>
 <h3 id="initialize-as-a-local-directory">Initialize as a local directory<a class="headerlink" href="#initialize-as-a-local-directory" title="Permanent link">&para;</a></h3>
 <p>If the directory is a cloned Git repo but you want to initialize it as a regular local directory,
 use <code>--local</code> with <a href="../../reference/cli/dstack/init/"><code>dstack init</code></a>.</p>
