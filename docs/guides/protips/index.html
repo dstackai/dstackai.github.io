@@ -4756,9 +4756,7 @@ Getting<span class="w"> </span>offers...
 </div>
 
 <h2 id="metrics">Metrics<a class="headerlink" href="#metrics" title="Permanent link">&para;</a></h2>
-<p>While <code>dstack</code> allows the use of any third-party monitoring tools (e.g., Weights and Biases), you can also
-monitor container metrics such as CPU, memory, and GPU usage using the <a href="../../../blog/dstack-metrics/">built-in
-<code>dstack metrics</code> CLI command</a> or the corresponding API.</p>
+<p><code>dstack</code> tracks essential metrics accessible via the CLI and UI. To access advanced metrics like DCGM, configure the server to export metrics to Prometheus. See <a href="../metrics/">Metrics</a> for details.</p>
 <h2 id="service-quotas">Service quotas<a class="headerlink" href="#service-quotas" title="Permanent link">&para;</a></h2>
 <p>If you're using your own AWS, GCP, Azure, or OCI accounts, before you can use GPUs or spot instances, you have to request the
 corresponding service quotas for each type of instance in each region.</p>

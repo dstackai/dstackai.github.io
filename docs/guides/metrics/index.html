@@ -1100,6 +1100,32 @@ Support dstack with a ⭐ on
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#ui" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          UI
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cli" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          CLI
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#prometheus" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3961,6 +3987,32 @@ Support dstack with a ⭐ on
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#ui" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          UI
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cli" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          CLI
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#prometheus" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -4101,10 +4153,37 @@ Support dstack with a ⭐ on
 
 
 <h1 id="metrics">Metrics<a class="headerlink" href="#metrics" title="Permanent link">&para;</a></h1>
+<p><code>dstack</code> automatically tracks essential metrics, which you can access via the CLI and UI.
+You can also configure the <code>dstack</code> server to export metrics to Prometheus—this is required to access advanced metrics such as those from DCGM.</p>
+<h2 id="ui">UI<a class="headerlink" href="#ui" title="Permanent link">&para;</a></h2>
+<p>To access metrics via the UI, open the page of the corresponding run or job and switch to the <code>Metrics</code> tab:</p>
+<p><img alt="" src="https://dstack.ai/static-assets/static-assets/images/dstack-newsletter-metrics.png" width="800" /></p>
+<p>This tab displays key CPU, memory, and GPU metrics collected during the last hour of the run or job.</p>
+<h2 id="cli">CLI<a class="headerlink" href="#cli" title="Permanent link">&para;</a></h2>
+<p>As an alternative to the UI, you can track real-time essential metrics via the CLI.
+The <code>dstack metrics</code> command displays the most recently tracked CPU, memory, and GPU metrics.</p>
+<div class="termy">
+
+<div class="highlight"><pre><span></span><code>dstack<span class="w"> </span>metrics<span class="w"> </span>gentle-mayfly-1
+
+<span class="w"> </span>NAME<span class="w">             </span>STATUS<span class="w">  </span>CPU<span class="w">  </span>MEMORY<span class="w">          </span>GPU
+<span class="w"> </span>gentle-mayfly-1<span class="w">  </span><span class="k">done</span><span class="w">    </span><span class="m">0</span>%<span class="w">   </span><span class="m">16</span>.27GB/2000GB<span class="w">  </span><span class="nv">gpu</span><span class="o">=</span><span class="m">0</span><span class="w"> </span><span class="nv">mem</span><span class="o">=</span><span class="m">72</span>.48GB/80GB<span class="w"> </span><span class="nv">util</span><span class="o">=</span><span class="m">0</span>%
+<span class="w">                                               </span><span class="nv">gpu</span><span class="o">=</span><span class="m">1</span><span class="w"> </span><span class="nv">mem</span><span class="o">=</span><span class="m">64</span>.99GB/80GB<span class="w"> </span><span class="nv">util</span><span class="o">=</span><span class="m">0</span>%
+<span class="w">                                               </span><span class="nv">gpu</span><span class="o">=</span><span class="m">2</span><span class="w"> </span><span class="nv">mem</span><span class="o">=</span>580MB/80GB<span class="w"> </span><span class="nv">util</span><span class="o">=</span><span class="m">0</span>%
+<span class="w">                                               </span><span class="nv">gpu</span><span class="o">=</span><span class="m">3</span><span class="w"> </span><span class="nv">mem</span><span class="o">=</span>4MB/80GB<span class="w"> </span><span class="nv">util</span><span class="o">=</span><span class="m">0</span>%
+<span class="w">                                               </span><span class="nv">gpu</span><span class="o">=</span><span class="m">4</span><span class="w"> </span><span class="nv">mem</span><span class="o">=</span>4MB/80GB<span class="w"> </span><span class="nv">util</span><span class="o">=</span><span class="m">0</span>%
+<span class="w">                                               </span><span class="nv">gpu</span><span class="o">=</span><span class="m">5</span><span class="w"> </span><span class="nv">mem</span><span class="o">=</span>4MB/80GB<span class="w"> </span><span class="nv">util</span><span class="o">=</span><span class="m">0</span>%
+<span class="w">                                               </span><span class="nv">gpu</span><span class="o">=</span><span class="m">6</span><span class="w"> </span><span class="nv">mem</span><span class="o">=</span>4MB/80GB<span class="w"> </span><span class="nv">util</span><span class="o">=</span><span class="m">0</span>%
+<span class="w">                                               </span><span class="nv">gpu</span><span class="o">=</span><span class="m">7</span><span class="w"> </span><span class="nv">mem</span><span class="o">=</span>292MB/80GB<span class="w"> </span><span class="nv">util</span><span class="o">=</span><span class="m">0</span>%
+</code></pre></div>
+
+</div>
+
 <h2 id="prometheus">Prometheus<a class="headerlink" href="#prometheus" title="Permanent link">&para;</a></h2>
-<p>To collect and export fleet and run metrics to Prometheus, enable the
-<code>DSTACK_ENABLE_PROMETHEUS_METRICS</code> environment variable and configure Prometheus to fetch metrics from
+<p>To enable exporting metrics to Prometheus, set the
+<code>DSTACK_ENABLE_PROMETHEUS_METRICS</code> environment variable and configure Prometheus to scrape metrics from
 <code>&lt;dstack server URL&gt;/metrics</code>.</p>
+<p>In addition to the essential metrics available via the CLI and UI, <code>dstack</code> exports additional metrics to Prometheus, including data on fleets, runs, jobs, and DCGM metrics.</p>
 <details class="info">
 <summary>NVIDIA DCGM</summary>
 <p>NVIDIA DCGM metrics are automatically collected for <code>aws</code>, <code>azure</code>, <code>gcp</code>, and <code>oci</code> backends, 
