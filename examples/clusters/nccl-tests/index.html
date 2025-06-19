@@ -2753,7 +2753,7 @@ Support dstack with a ⭐ on
   <span class="md-ellipsis">
     
   
-    A3 Mega
+    GCP A3 Mega
   
 
     
@@ -2781,7 +2781,35 @@ Support dstack with a ⭐ on
   <span class="md-ellipsis">
     
   
-    A3 High
+    GCP A3 High
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../efa/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AWS EFA
   
 
     
@@ -4099,14 +4127,13 @@ Support dstack with a ⭐ on
 <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nccl-tests</span>
 
 <span class="nt">nodes</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
+
 <span class="nt">startup_order</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">workers-first</span>
 <span class="nt">stop_criteria</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">master-done</span>
 
-<span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dstackai/efa</span>
 <span class="nt">env</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NCCL_DEBUG=INFO</span>
 <span class="nt">commands</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cd /root/nccl-tests/build</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
 <span class="w">    </span><span class="no">if [ $DSTACK_NODE_RANK -eq 0 ]; then</span>
 <span class="w">      </span><span class="no">mpirun \</span>
@@ -4114,15 +4141,14 @@ Support dstack with a ⭐ on
 <span class="w">        </span><span class="no">--hostfile $DSTACK_MPI_HOSTFILE \</span>
 <span class="w">        </span><span class="no">-n $DSTACK_GPUS_NUM \</span>
 <span class="w">        </span><span class="no">-N $DSTACK_GPUS_PER_NODE \</span>
-<span class="w">        </span><span class="no">--mca btl_tcp_if_exclude lo,docker0 \</span>
 <span class="w">        </span><span class="no">--bind-to none \</span>
-<span class="w">        </span><span class="no">./all_reduce_perf -b 8 -e 8G -f 2 -g 1</span>
+<span class="w">        </span><span class="no">/opt/nccl-tests/build/all_reduce_perf -b 8 -e 8G -f 2 -g 1</span>
 <span class="w">    </span><span class="no">else</span>
 <span class="w">      </span><span class="no">sleep infinity</span>
 <span class="w">    </span><span class="no">fi</span>
 
 <span class="nt">resources</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nvidia:4:16GB</span>
+<span class="w">  </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nvidia:1..8</span>
 <span class="w">  </span><span class="nt">shm_size</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">16GB</span>
 </code></pre></div>
 

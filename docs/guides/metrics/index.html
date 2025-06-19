@@ -1178,6 +1178,19 @@ Support dstack with a ⭐ on
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#server-health-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Server health metrics
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2784,7 +2797,7 @@ Support dstack with a ⭐ on
   <span class="md-ellipsis">
     
   
-    A3 Mega
+    GCP A3 Mega
   
 
     
@@ -2812,7 +2825,35 @@ Support dstack with a ⭐ on
   <span class="md-ellipsis">
     
   
-    A3 High
+    GCP A3 High
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/clusters/efa/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AWS EFA
   
 
     
@@ -4065,6 +4106,19 @@ Support dstack with a ⭐ on
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#server-health-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Server health metrics
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -4801,6 +4855,76 @@ telemetry, and more.</p>
 <td><em>string?</em></td>
 <td style="text-align: left;">GPU name</td>
 <td><code>H100</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<h3 id="server-health-metrics">Server health metrics<a class="headerlink" href="#server-health-metrics" title="Permanent link">&para;</a></h3>
+<p>These are operational metrics to monitor the health of the dstack server. For now, these only include HTTP metrics, but more will be added later.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="metrics_4" name="__tabbed_4" type="radio" /><input id="labels_3" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="metrics_4">Metrics</label><label for="labels_3">Labels</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Examples</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>dstack_server_requests_total</code></td>
+<td><em>counter</em></td>
+<td>Total number of HTTP requests</td>
+<td><code>100.0</code></td>
+</tr>
+<tr>
+<td><code>dstack_server_request_duration_seconds</code></td>
+<td><em>histogram</em></td>
+<td>HTTP request duration in seconds</td>
+<td><code>1.0</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="tabbed-block">
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th style="text-align: left;">Description</th>
+<th>Examples</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>method</code></td>
+<td><em>string</em></td>
+<td style="text-align: left;">HTTP method</td>
+<td><code>POST</code></td>
+</tr>
+<tr>
+<td><code>endpoint</code></td>
+<td><em>string</em></td>
+<td style="text-align: left;">Endpoint path</td>
+<td><code>/api/project/main/repos/get</code></td>
+</tr>
+<tr>
+<td><code>http_status</code></td>
+<td><em>string</em></td>
+<td style="text-align: left;">HTTP status code</td>
+<td><code>200</code></td>
+</tr>
+<tr>
+<td><code>project_name</code></td>
+<td><em>string?</em></td>
+<td style="text-align: left;">Project name</td>
+<td><code>main</code></td>
 </tr>
 </tbody>
 </table>

@@ -3170,7 +3170,7 @@ Support dstack with a ⭐ on
   <span class="md-ellipsis">
     
   
-    A3 Mega
+    GCP A3 Mega
   
 
     
@@ -3198,7 +3198,35 @@ Support dstack with a ⭐ on
   <span class="md-ellipsis">
     
   
-    A3 High
+    GCP A3 High
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../examples/clusters/efa/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AWS EFA
   
 
     
@@ -6366,7 +6394,7 @@ You can override these credentials via the <code>git_identity_file</code> or <co
 
 
 <h4 id="dstack.api.Run.attach" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">attach</span><span class="p">(</span><span class="n">ssh_identity_file</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">bind_address</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">ports_overrides</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">replica_num</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">job_num</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">attach</span><span class="p">(</span><span class="n">ssh_identity_file</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">bind_address</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">ports_overrides</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">replica_num</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">job_num</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span></code>
 
 <a href="#dstack.api.Run.attach" class="headerlink" title="Permanent link">&para;</a></h4>
 
@@ -6397,6 +6425,22 @@ You can override these credentials via the <code>git_identity_file</code> or <co
             <td>
               <div class="doc-md-description">
                 <p>SSH keypair to access instances.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>replica_num</code>
+            </td>
+            <td>
+                  <code><span title="typing.Optional">Optional</span>[<span title="int">int</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>replica_num or None to attach to any running replica.</p>
               </div>
             </td>
             <td>
@@ -6456,7 +6500,7 @@ You can override these credentials via the <code>git_identity_file</code> or <co
 
 
 <h4 id="dstack.api.Run.logs" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">logs</span><span class="p">(</span><span class="n">start_time</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">diagnose</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">replica_num</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">job_num</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">logs</span><span class="p">(</span><span class="n">start_time</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">diagnose</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">replica_num</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">job_num</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span></code>
 
 <a href="#dstack.api.Run.logs" class="headerlink" title="Permanent link">&para;</a></h4>
 
