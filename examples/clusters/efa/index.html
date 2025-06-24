@@ -4232,7 +4232,7 @@ To enforce EFA, you can specify <code>instance_types</code> explicitly:</p>
 <span class="w">        </span><span class="no">-n $DSTACK_GPUS_NUM \</span>
 <span class="w">        </span><span class="no">-N $DSTACK_GPUS_PER_NODE \</span>
 <span class="w">        </span><span class="no">--bind-to none \</span>
-<span class="w">        </span><span class="no">all_reduce_perf -b 8 -e 8G -f 2 -g 1</span>
+<span class="w">        </span><span class="no">/opt/nccl-tests/build/all_reduce_perf -b 8 -e 8G -f 2 -g 1</span>
 <span class="w">    </span><span class="no">else</span>
 <span class="w">      </span><span class="no">sleep infinity</span>
 <span class="w">    </span><span class="no">fi</span>
