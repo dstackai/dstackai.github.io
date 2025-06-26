@@ -838,19 +838,6 @@ Support dstack with a ⭐ on
 </li>
         
           <li class="md-nav__item">
-  <a href="#python-version" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        <span class="md-typeset">
-          Python version
-        </span>
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#docker" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -860,6 +847,90 @@ Support dstack with a ⭐ on
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Docker">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#default-image" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Default image
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nvcc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          NVCC
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#custom-image" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Custom image
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#docker-in-docker" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Docker in Docker
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#privileged-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Privileged mode
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#private-registry" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Private registry
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -4172,19 +4243,6 @@ Support dstack with a ⭐ on
 </li>
         
           <li class="md-nav__item">
-  <a href="#python-version" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        <span class="md-typeset">
-          Python version
-        </span>
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#docker" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -4194,6 +4252,90 @@ Support dstack with a ⭐ on
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Docker">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#default-image" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Default image
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nvcc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          NVCC
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#custom-image" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Custom image
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#docker-in-docker" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Docker in Docker
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#privileged-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Privileged mode
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#private-registry" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Private registry
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -4401,7 +4543,7 @@ The filename must end with <code>.dstack.yml</code> (e.g. <code>.dstack.yml</cod
 
 <span class="nt">python</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;3.11&quot;</span>
 <span class="c1"># Uncomment to use a custom Docker image</span>
-<span class="c1">#image: dstackai/base:py3.13-0.7-cuda-12.1</span>
+<span class="c1">#image: huggingface/trl-latest-gpu</span>
 <span class="nt">ide</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vscode</span>
 
 <span class="c1"># Uncomment to leverage spot instances</span>
@@ -4459,13 +4601,11 @@ property with a list of commands to run at startup:</p>
 <div editor-title="examples/.dstack.yml"> 
 
 <div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dev-environment</span>
-<span class="c1"># The name is optional, if not specified, generated randomly</span>
 <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vscode</span>
 
 <span class="nt">python</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;3.11&quot;</span>
 <span class="nt">ide</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vscode</span>
 
-<span class="c1"># Commands to run on startup</span>
 <span class="nt">init</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip install wandb</span>
 </code></pre></div>
@@ -4499,20 +4639,14 @@ range (e.g. <code>24GB..</code>, or <code>24GB..80GB</code>, or <code>..80GB</co
 
 </div>
 
-<p>The <code>cpu</code> property also allows you to specify the CPU architecture, <code>x86</code> or <code>arm</code>. Examples:
-<code>x86:16</code> (16 x86-64 cores), <code>arm:8..</code> (at least 8 ARM64 cores).
-If the architecture is not specified, <code>dstack</code> tries to infer it from the <code>gpu</code> specification
-using <code>x86</code> as the fallback value.</p>
-<p>The <code>gpu</code> property allows specifying not only memory size but also GPU vendor, names
-and their quantity. Examples: <code>nvidia</code> (one NVIDIA GPU), <code>A100</code> (one A100), <code>A10G,A100</code> (either A10G or A100),
-<code>A100:80GB</code> (one A100 of 80GB), <code>A100:2</code> (two A100), <code>24GB..40GB:2</code> (two GPUs between 24GB and 40GB),
-<code>A100:40GB:2</code> (two A100 GPUs of 40GB).
-If the vendor is not specified, <code>dstack</code> tries to infer it from the GPU name using <code>nvidia</code> as the fallback value.</p>
+<p>The <code>cpu</code> property lets you set the architecture (<code>x86</code> or <code>arm</code>) and core count — e.g., <code>x86:16</code> (16 x86 cores), <code>arm:8..</code> (at least 8 ARM cores). 
+If not set, <code>dstack</code> infers it from the GPU or defaults to <code>x86</code>.</p>
+<p>The <code>gpu</code> property lets you specify vendor, model, memory, and count — e.g., <code>nvidia</code> (one NVIDIA GPU), <code>A100</code> (one A100), <code>A10G,A100</code> (either), <code>A100:80GB</code> (one 80GB A100), <code>A100:2</code> (two A100), <code>24GB..40GB:2</code> (two GPUs with 24–40GB), <code>A100:40GB:2</code> (two 40GB A100s). </p>
+<p>If vendor is omitted, <code>dstack</code> infers it from the model or defaults to <code>nvidia</code>.</p>
 <details class="info">
 <summary>Google Cloud TPU</summary>
 <p>To use TPUs, specify its architecture via the <code>gpu</code> property.</p>
 <div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dev-environment</span>
-<span class="c1"># The name is optional, if not specified, generated randomly</span>
 <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vscode</span><span class="w">    </span>
 
 <span class="nt">ide</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vscode</span>
@@ -4531,62 +4665,101 @@ If the vendor is not specified, <code>dstack</code> tries to infer it from the G
 <p>If you’re unsure which offers (hardware configurations) are available from the configured backends, use the
 <a href="../../reference/cli/dstack/offer/#list-gpu-offers"><code>dstack offer</code></a> command to list them.</p>
 </blockquote>
-<h3 id="python-version">Python version<a class="headerlink" href="#python-version" title="Permanent link">&para;</a></h3>
+<h3 id="docker">Docker<a class="headerlink" href="#docker" title="Permanent link">&para;</a></h3>
+<h4 id="default-image">Default image<a class="headerlink" href="#default-image" title="Permanent link">&para;</a></h4>
 <p>If you don't specify <code>image</code>, <code>dstack</code> uses its base Docker image pre-configured with 
-<code>python</code>, <code>pip</code>, <code>conda</code> (Miniforge), and essential CUDA drivers. 
-The <code>python</code> property determines which default Docker image is used.</p>
-<details class="info">
-<summary>nvcc</summary>
+<code>uv</code>, <code>python</code>, <code>pip</code>, essential CUDA drivers, and NCCL tests (under <code>/opt/nccl-tests/build</code>). </p>
+<p>Set the <code>python</code> property to pre-install a specific version of Python.</p>
+<div editor-title=".dstack.yml"> 
+
+<div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dev-environment</span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vscode</span>
+
+<span class="nt">python</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.12</span>
+
+<span class="nt">ide</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vscode</span>
+</code></pre></div>
+
+</div>
+
+<h4 id="nvcc">NVCC<a class="headerlink" href="#nvcc" title="Permanent link">&para;</a></h4>
 <p>By default, the base Docker image doesn’t include <code>nvcc</code>, which is required for building custom CUDA kernels. 
 If you need <code>nvcc</code>, set the <a href="../../reference/dstack.yml/dev-environment/#nvcc"><code>nvcc</code></a> property to true.</p>
-</details>
-<h3 id="docker">Docker<a class="headerlink" href="#docker" title="Permanent link">&para;</a></h3>
+<div editor-title=".dstack.yml"> 
+
+<div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dev-environment</span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vscode</span>
+
+<span class="nt">python</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.12</span>
+<span class="nt">nvcc</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+
+<span class="nt">ide</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vscode</span>
+<span class="nt">init</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uv pip install flash_attn --no-build-isolation</span>
+</code></pre></div>
+
+</div>
+
+<h4 id="custom-image">Custom image<a class="headerlink" href="#custom-image" title="Permanent link">&para;</a></h4>
 <p>If you want, you can specify your own Docker image via <code>image</code>.</p>
 <div editor-title=".dstack.yml"> 
 
 <div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dev-environment</span>
-<span class="c1"># The name is optional, if not specified, generated randomly</span>
 <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vscode</span><span class="w">    </span>
 
-<span class="c1"># Any custom Docker image</span>
-<span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ghcr.io/huggingface/text-generation-inference:latest</span>
+<span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">huggingface/trl-latest-gpu</span>
 
 <span class="nt">ide</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vscode</span>
 </code></pre></div>
 
 </div>
 
-<div class="admonition info">
-<p class="admonition-title">Privileged mode</p>
-<p>To enable privileged mode, set <a href="../../reference/dstack.yml/dev-environment/#privileged"><code>privileged</code></a> to <code>true</code>.
-This mode allows using <a href="../../guides/protips/#docker-and-docker-compose">Docker and Docker Compose</a> inside <code>dstack</code> runs.</p>
-<p>Not supported with <code>runpod</code>, <code>vastai</code>, and <code>kubernetes</code>.</p>
-</div>
-<details class="info">
-<summary>Private registry</summary>
-<p>Use the <a href="../../reference/dstack.yml/dev-environment/#registry_auth"><code>registry_auth</code></a> property to provide credentials for a private Docker registry. </p>
+<h4 id="docker-in-docker">Docker in Docker<a class="headerlink" href="#docker-in-docker" title="Permanent link">&para;</a></h4>
+<p>Set <code>docker</code> to <code>true</code> to enable the <code>docker</code> CLI in your dev environment, e.g., to run or build Docker images, or use Docker Compose.</p>
+<div editor-title=".dstack.yml"> 
+
 <div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dev-environment</span>
-<span class="c1"># The name is optional, if not specified, generated randomly</span>
-<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vscode</span><span class="w">    </span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vscode</span>
 
-<span class="c1"># Any private Docker image</span>
-<span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ghcr.io/huggingface/text-generation-inference:latest</span>
-<span class="c1"># Credentials of the private Docker registry</span>
+<span class="nt">docker</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+
+<span class="nt">ide</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vscode</span>
+<span class="nt">init</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker run --gpus all nvidia/cuda:12.3.0-base-ubuntu22.04 nvidia-smi</span>
+</code></pre></div>
+
+</div>
+
+<p>Cannot be used with <code>python</code> or <code>image</code>. Not supported on <code>runpod</code>, <code>vastai</code>, or <code>kubernetes</code>.</p>
+<h4 id="privileged-mode">Privileged mode<a class="headerlink" href="#privileged-mode" title="Permanent link">&para;</a></h4>
+<p>To enable privileged mode, set <a href="../../reference/dstack.yml/dev-environment/#privileged"><code>privileged</code></a> to <code>true</code>.</p>
+<p>Not supported with <code>runpod</code>, <code>vastai</code>, and <code>kubernetes</code>.</p>
+<h4 id="private-registry">Private registry<a class="headerlink" href="#private-registry" title="Permanent link">&para;</a></h4>
+<p>Use the <a href="../../reference/dstack.yml/dev-environment/#registry_auth"><code>registry_auth</code></a> property to provide credentials for a private Docker registry. </p>
+<div editor-title=".dstack.yml"> 
+
+<div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dev-environment</span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vscode</span>
+
+<span class="nt">env</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NGC_API_KEY</span>
+
+<span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nvcr.io/nim/deepseek-ai/deepseek-r1-distill-llama-8b</span>
 <span class="nt">registry_auth</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">username</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">peterschmidt85</span>
-<span class="w">  </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ghp_e49HcZ9oYwBzUbcSk2080gXZOU2hiT9AeSR5</span>
+<span class="w">  </span><span class="nt">username</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$oauthtoken</span>
+<span class="w">  </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ env.NGC_API_KEY }}</span>
 
 <span class="nt">ide</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vscode</span>
 </code></pre></div>
-</details>
+
+</div>
+
 <h3 id="environment-variables">Environment variables<a class="headerlink" href="#environment-variables" title="Permanent link">&para;</a></h3>
 <div editor-title=".dstack.yml"> 
 
 <div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dev-environment</span>
-<span class="c1"># The name is optional, if not specified, generated randomly</span>
 <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vscode</span><span class="w">    </span>
 
-<span class="c1"># Environment variables</span>
 <span class="nt">env</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HF_TOKEN</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HF_HUB_ENABLE_HF_TRANSFER=1</span>
@@ -4652,6 +4825,7 @@ to automatically stop the dev environment after a configured period of inactivit
 
 <div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dev-environment</span>
 <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vscode</span>
+
 <span class="nt">ide</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vscode</span>
 
 <span class="c1"># Stop if inactive for 2 hours</span>
@@ -4665,10 +4839,10 @@ close any <code>ssh &lt;run name&gt;</code> shells, and stop the <code>dstack ap
 If you go offline without stopping anything manually, the dev environment will also become inactive
 within about 3 minutes.</p>
 <p>If <code>inactivity_duration</code> is configured for your dev environment, you can see how long
-it has been inactive in <code>dstack ps --verbose</code>.</p>
+it has been inactive in <code>dstack ps --verbose</code> (or <code>-v</code>).</p>
 <div class="termy">
 
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>dstack<span class="w"> </span>ps<span class="w"> </span>--verbose
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>dstack<span class="w"> </span>ps<span class="w"> </span>-v
 <span class="w"> </span>NAME<span class="w">    </span>BACKEND<span class="w">  </span>RESOURCES<span class="w">       </span>PRICE<span class="w">    </span>STATUS<span class="w">                 </span>SUBMITTED
 <span class="w"> </span>vscode<span class="w">  </span>cudo<span class="w">     </span>2xCPU,<span class="w"> </span>8GB,<span class="w">     </span><span class="nv">$0</span>.0286<span class="w">  </span>running<span class="w">                </span><span class="m">8</span><span class="w"> </span>mins<span class="w"> </span>ago
 <span class="w">                  </span><span class="m">100</span>.0GB<span class="w"> </span><span class="o">(</span>disk<span class="o">)</span><span class="w">           </span><span class="o">(</span>inactive<span class="w"> </span><span class="k">for</span><span class="w"> </span>2m<span class="w"> </span>34s<span class="o">)</span>

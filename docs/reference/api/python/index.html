@@ -6182,14 +6182,15 @@ You can override these credentials via the <code>git_identity_file</code> or <co
 <h6 class="reference-item" id="entrypoint"><code>entrypoint</code> - (Optional) The Docker entrypoint.<a class="headerlink" href="#entrypoint" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="working_dir"><code>working_dir</code> - (Optional) The path to the working directory inside the container. It's specified relative to the repository directory (<code>/workflow</code>) and should be inside it. Defaults to <code>"."</code> .<a class="headerlink" href="#working_dir" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="_registry_auth"><a href="#dstack.api.RegistryAuth"><code>registry_auth</code></a> - (Optional) Credentials for pulling a private Docker image.<a class="headerlink" href="#_registry_auth" title="Permanent link">&para;</a></h6>
-<h6 class="reference-item" id="python"><code>python</code> - (Optional) The major version of Python. Mutually exclusive with <code>image</code>.<a class="headerlink" href="#python" title="Permanent link">&para;</a></h6>
-<h6 class="reference-item" id="nvcc"><code>nvcc</code> - (Optional) Use image with NVIDIA CUDA Compiler (NVCC) included. Mutually exclusive with <code>image</code>.<a class="headerlink" href="#nvcc" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="python"><code>python</code> - (Optional) The major version of Python. Mutually exclusive with <code>image</code> and <code>docker</code>.<a class="headerlink" href="#python" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="nvcc"><code>nvcc</code> - (Optional) Use image with NVIDIA CUDA Compiler (NVCC) included. Mutually exclusive with <code>image</code> and <code>docker</code>.<a class="headerlink" href="#nvcc" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="single_branch"><code>single_branch</code> - (Optional) Whether to clone and track only the current branch or all remote branches. Relevant only when using remote Git repos. Defaults to <code>false</code> for dev environments and to <code>true</code> for tasks and services.<a class="headerlink" href="#single_branch" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="_env"><a href="#env"><code>env</code></a> - (Optional) The mapping or the list of environment variables.<a class="headerlink" href="#_env" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="shell"><code>shell</code> - (Optional) The shell used to run commands. Allowed values are <code>sh</code>, <code>bash</code>, or an absolute path, e.g., <code>/usr/bin/zsh</code>. Defaults to <code>/bin/sh</code> if the <code>image</code> is specified, <code>/bin/bash</code> otherwise.<a class="headerlink" href="#shell" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="_resources"><a href="#dstack.api.Resources"><code>resources</code></a> - (Optional) The resources requirements to run the configuration.<a class="headerlink" href="#_resources" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="priority"><code>priority</code> - (Optional) The priority of the run, an integer between <code>0</code> and <code>100</code>. <code>dstack</code> tries to provision runs with higher priority first. Defaults to <code>0</code>.<a class="headerlink" href="#priority" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="volumes"><code>volumes</code> - (Optional) The volumes mount points.<a class="headerlink" href="#volumes" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="docker"><code>docker</code> - (Optional) Use Docker inside the container. Mutually exclusive with <code>image</code>, <code>python</code>, and <code>nvcc</code>. Overrides <code>privileged</code>.<a class="headerlink" href="#docker" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="ports"><code>ports</code> - (Optional) Port numbers/mapping to expose.<a class="headerlink" href="#ports" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="commands"><code>commands</code> - (Optional) The shell commands to run.<a class="headerlink" href="#commands" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="backends"><code>backends</code> - (Optional) The backends to consider for provisioning (e.g., <code>[aws, gcp]</code>).<a class="headerlink" href="#backends" title="Permanent link">&para;</a></h6>
@@ -6226,14 +6227,15 @@ You can override these credentials via the <code>git_identity_file</code> or <co
 <h6 class="reference-item" id="entrypoint"><code>entrypoint</code> - (Optional) The Docker entrypoint.<a class="headerlink" href="#entrypoint" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="working_dir"><code>working_dir</code> - (Optional) The path to the working directory inside the container. It's specified relative to the repository directory (<code>/workflow</code>) and should be inside it. Defaults to <code>"."</code> .<a class="headerlink" href="#working_dir" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="_registry_auth"><a href="#dstack.api.RegistryAuth"><code>registry_auth</code></a> - (Optional) Credentials for pulling a private Docker image.<a class="headerlink" href="#_registry_auth" title="Permanent link">&para;</a></h6>
-<h6 class="reference-item" id="python"><code>python</code> - (Optional) The major version of Python. Mutually exclusive with <code>image</code>.<a class="headerlink" href="#python" title="Permanent link">&para;</a></h6>
-<h6 class="reference-item" id="nvcc"><code>nvcc</code> - (Optional) Use image with NVIDIA CUDA Compiler (NVCC) included. Mutually exclusive with <code>image</code>.<a class="headerlink" href="#nvcc" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="python"><code>python</code> - (Optional) The major version of Python. Mutually exclusive with <code>image</code> and <code>docker</code>.<a class="headerlink" href="#python" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="nvcc"><code>nvcc</code> - (Optional) Use image with NVIDIA CUDA Compiler (NVCC) included. Mutually exclusive with <code>image</code> and <code>docker</code>.<a class="headerlink" href="#nvcc" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="single_branch"><code>single_branch</code> - (Optional) Whether to clone and track only the current branch or all remote branches. Relevant only when using remote Git repos. Defaults to <code>false</code> for dev environments and to <code>true</code> for tasks and services.<a class="headerlink" href="#single_branch" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="_env"><a href="#env"><code>env</code></a> - (Optional) The mapping or the list of environment variables.<a class="headerlink" href="#_env" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="shell"><code>shell</code> - (Optional) The shell used to run commands. Allowed values are <code>sh</code>, <code>bash</code>, or an absolute path, e.g., <code>/usr/bin/zsh</code>. Defaults to <code>/bin/sh</code> if the <code>image</code> is specified, <code>/bin/bash</code> otherwise.<a class="headerlink" href="#shell" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="_resources"><a href="#dstack.api.Resources"><code>resources</code></a> - (Optional) The resources requirements to run the configuration.<a class="headerlink" href="#_resources" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="priority"><code>priority</code> - (Optional) The priority of the run, an integer between <code>0</code> and <code>100</code>. <code>dstack</code> tries to provision runs with higher priority first. Defaults to <code>0</code>.<a class="headerlink" href="#priority" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="volumes"><code>volumes</code> - (Optional) The volumes mount points.<a class="headerlink" href="#volumes" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="docker"><code>docker</code> - (Optional) Use Docker inside the container. Mutually exclusive with <code>image</code>, <code>python</code>, and <code>nvcc</code>. Overrides <code>privileged</code>.<a class="headerlink" href="#docker" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="commands"><code>commands</code> - (Optional) The shell commands to run.<a class="headerlink" href="#commands" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="backends"><code>backends</code> - (Optional) The backends to consider for provisioning (e.g., <code>[aws, gcp]</code>).<a class="headerlink" href="#backends" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="regions"><code>regions</code> - (Optional) The regions to consider for provisioning (e.g., <code>[eu-west-1, us-west4, westeurope]</code>).<a class="headerlink" href="#regions" title="Permanent link">&para;</a></h6>
@@ -6264,14 +6266,15 @@ You can override these credentials via the <code>git_identity_file</code> or <co
 <h6 class="reference-item" id="entrypoint"><code>entrypoint</code> - (Optional) The Docker entrypoint.<a class="headerlink" href="#entrypoint" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="working_dir"><code>working_dir</code> - (Optional) The path to the working directory inside the container. It's specified relative to the repository directory (<code>/workflow</code>) and should be inside it. Defaults to <code>"."</code> .<a class="headerlink" href="#working_dir" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="_registry_auth"><a href="#dstack.api.RegistryAuth"><code>registry_auth</code></a> - (Optional) Credentials for pulling a private Docker image.<a class="headerlink" href="#_registry_auth" title="Permanent link">&para;</a></h6>
-<h6 class="reference-item" id="python"><code>python</code> - (Optional) The major version of Python. Mutually exclusive with <code>image</code>.<a class="headerlink" href="#python" title="Permanent link">&para;</a></h6>
-<h6 class="reference-item" id="nvcc"><code>nvcc</code> - (Optional) Use image with NVIDIA CUDA Compiler (NVCC) included. Mutually exclusive with <code>image</code>.<a class="headerlink" href="#nvcc" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="python"><code>python</code> - (Optional) The major version of Python. Mutually exclusive with <code>image</code> and <code>docker</code>.<a class="headerlink" href="#python" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="nvcc"><code>nvcc</code> - (Optional) Use image with NVIDIA CUDA Compiler (NVCC) included. Mutually exclusive with <code>image</code> and <code>docker</code>.<a class="headerlink" href="#nvcc" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="single_branch"><code>single_branch</code> - (Optional) Whether to clone and track only the current branch or all remote branches. Relevant only when using remote Git repos. Defaults to <code>false</code> for dev environments and to <code>true</code> for tasks and services.<a class="headerlink" href="#single_branch" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="_env"><a href="#env"><code>env</code></a> - (Optional) The mapping or the list of environment variables.<a class="headerlink" href="#_env" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="shell"><code>shell</code> - (Optional) The shell used to run commands. Allowed values are <code>sh</code>, <code>bash</code>, or an absolute path, e.g., <code>/usr/bin/zsh</code>. Defaults to <code>/bin/sh</code> if the <code>image</code> is specified, <code>/bin/bash</code> otherwise.<a class="headerlink" href="#shell" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="_resources"><a href="#dstack.api.Resources"><code>resources</code></a> - (Optional) The resources requirements to run the configuration.<a class="headerlink" href="#_resources" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="priority"><code>priority</code> - (Optional) The priority of the run, an integer between <code>0</code> and <code>100</code>. <code>dstack</code> tries to provision runs with higher priority first. Defaults to <code>0</code>.<a class="headerlink" href="#priority" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="volumes"><code>volumes</code> - (Optional) The volumes mount points.<a class="headerlink" href="#volumes" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="docker"><code>docker</code> - (Optional) Use Docker inside the container. Mutually exclusive with <code>image</code>, <code>python</code>, and <code>nvcc</code>. Overrides <code>privileged</code>.<a class="headerlink" href="#docker" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="ports"><code>ports</code> - (Optional) Port numbers/mapping to expose.<a class="headerlink" href="#ports" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="backends"><code>backends</code> - (Optional) The backends to consider for provisioning (e.g., <code>[aws, gcp]</code>).<a class="headerlink" href="#backends" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="regions"><code>regions</code> - (Optional) The regions to consider for provisioning (e.g., <code>[eu-west-1, us-west4, westeurope]</code>).<a class="headerlink" href="#regions" title="Permanent link">&para;</a></h6>
@@ -7267,6 +7270,17 @@ You can override these credentials via the <code>git_identity_file</code> or <co
             <td>
               <div class="doc-md-description">
                 <p>Microsoft Azure</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><span title="dstack.api.BackendType.CLOUDRIFT">CLOUDRIFT</span></code></td>
+            <td>
+                  <code><span title="dstack._internal.core.models.backends.base.BackendType">BackendType</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>CloudRift</p>
               </div>
             </td>
           </tr>

@@ -1111,11 +1111,11 @@ Support dstack with a ⭐ on
 </li>
       
         <li class="md-nav__item">
-  <a href="#docker-and-docker-compose" class="md-nav__link">
+  <a href="#docker-in-docker" class="md-nav__link">
     <span class="md-ellipsis">
       
         <span class="md-typeset">
-          Docker and Docker Compose
+          Docker in Docker
         </span>
       
     </span>
@@ -4184,11 +4184,11 @@ Support dstack with a ⭐ on
 </li>
       
         <li class="md-nav__item">
-  <a href="#docker-and-docker-compose" class="md-nav__link">
+  <a href="#docker-in-docker" class="md-nav__link">
     <span class="md-ellipsis">
       
         <span class="md-typeset">
-          Docker and Docker Compose
+          Docker in Docker
         </span>
       
     </span>
@@ -4529,45 +4529,35 @@ and other service features. If you don't need them, you can use <a href="../../c
 
 </div>
 
-<h2 id="docker-and-docker-compose">Docker and Docker Compose<a class="headerlink" href="#docker-and-docker-compose" title="Permanent link">&para;</a></h2>
-<p>All backends except <code>runpod</code>, <code>vastai</code>, and <code>kubernetes</code> allow using Docker and Docker Compose 
-inside <code>dstack</code> runs. To do that, additional configuration steps are required:</p>
-<ol>
-<li>Set the <code>privileged</code> property to <code>true</code>.</li>
-<li>Set the <code>image</code> property to <code>dstackai/dind</code> (or another DinD image).</li>
-<li>For tasks and services, add <code>start-dockerd</code> as the first command. For dev environments, add <code>start-dockerd</code> as the first command
-   in the <code>init</code> property.</li>
-</ol>
-<p>Note, <code>start-dockerd</code> is a part of <code>dstackai/dind</code> image, if you use a different DinD image,
-replace it with a corresponding command to start Docker daemon.</p>
+<h2 id="docker-in-docker">Docker in Docker<a class="headerlink" href="#docker-in-docker" title="Permanent link">&para;</a></h2>
+<p>Set <code>docker</code> to <code>true</code> to enable the <code>docker</code> CLI in your dev environment, e.g., to run or build Docker images, or use Docker Compose.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="dev-environment" name="__tabbed_1" type="radio" /><input id="task" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="dev-environment">Dev environment</label><label for="task">Task</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div editor-title="examples/misc/docker-compose/.dstack.yml">
 <div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dev-environment</span>
-<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vscode-dind</span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vscode</span>
 
-<span class="nt">privileged</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dstackai/dind</span>
+<span class="nt">docker</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 
 <span class="nt">ide</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vscode</span>
-
 <span class="nt">init</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">start-dockerd</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker run --gpus all nvidia/cuda:12.3.0-base-ubuntu22.04 nvidia-smi</span>
 </code></pre></div>
 </div>
 </div>
 <div class="tabbed-block">
 <div editor-title="examples/misc/dind/task.dstack.yml">
 <div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">task</span>
-<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">task-dind</span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker-nvidia-smi</span>
 
-<span class="nt">privileged</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dstackai/dind</span>
+<span class="nt">docker</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 
 <span class="nt">commands</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">start-dockerd</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker compose up</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker run --gpus all nvidia/cuda:12.3.0-base-ubuntu22.04 nvidia-smi</span>
+
+<span class="nt">resources</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
 </code></pre></div>
 </div>
 </div>
@@ -4576,21 +4566,36 @@ replace it with a corresponding command to start Docker daemon.</p>
 <details class="info">
 <summary>Volumes</summary>
 <p>To persist Docker data between runs (e.g. images, containers, volumes, etc), create a <code>dstack</code> <a href="../../concepts/volumes/">volume</a>
-and add attach it in your run configuration:</p>
+and add attach it in your run configuration.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="network-volums" name="__tabbed_2" type="radio" /><input id="instance-volumes" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="network-volums">Network volums</label><label for="instance-volumes">Instance volumes</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dev-environment</span>
-<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vscode-dind</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vscode</span>
 
-<span class="w">    </span><span class="nt">privileged</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dstackai/dind</span>
+<span class="w">    </span><span class="nt">docker</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">    </span><span class="nt">ide</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vscode</span>
-
-<span class="w">    </span><span class="nt">init</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">start-dockerd</span>
 
 <span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker-volume</span>
 <span class="w">        </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/var/lib/docker</span>
 </code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dev-environment</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vscode</span>
+
+<span class="w">    </span><span class="nt">docker</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">ide</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vscode</span>
+
+<span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/docker-volume</span>
+<span class="w">        </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/var/lib/docker</span>
+<span class="w">        </span><span class="nt">optional</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</code></pre></div>
+</div>
+</div>
+</div>
 </details>
 <p>See more Docker examples <a href="https://github.com/dstackai/dstack/tree/master/examples/misc/docker-compose">here</a>.</p>
 <h2 id="fleets">Fleets<a class="headerlink" href="#fleets" title="Permanent link">&para;</a></h2>
@@ -4675,6 +4680,8 @@ it will automatically apply the environment variables from the <code>.envrc</cod
 <p>By default, if <code>dstack</code> can't find available capacity, the run will fail.</p>
 <p>If you'd like <code>dstack</code> to automatically retry, configure the 
 <a href="../../reference/dstack.yml/task/#retry">retry</a> property accordingly:</p>
+<!-- TODO: Add a relevant example here -->
+
 <div editor-title=".dstack.yml">
 
 <div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">task</span>
@@ -4722,6 +4729,8 @@ This means it streams the logs as they come in and, in the case of a task, forwa
 allows specifying not only memory size but also GPU vendor, names, their memory, and quantity.</p>
 <p>The general format is: <code>&lt;vendor&gt;:&lt;comma-sparated names&gt;:&lt;memory range&gt;:&lt;quantity range&gt;</code>.</p>
 <p>Each component is optional. </p>
+<!-- TODO: Mention, if count is not specified, it's set to `1..` -->
+
 <p>Ranges can be:</p>
 <ul>
 <li><strong>Closed</strong> (e.g. <code>24GB..80GB</code> or <code>1..8</code>)</li>
@@ -4762,7 +4771,7 @@ Support for multiple hosts is coming soon.</p>
 <a href="../../reference/cli/dstack/offer/#list-gpu-offers"><code>dstack offer</code></a> command.</p>
 <div class="termy">
 
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>dstack<span class="w"> </span>offer<span class="w"> </span>--gpu<span class="w"> </span>H100:1..<span class="w"> </span>--max-offers<span class="w"> </span><span class="m">10</span>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>dstack<span class="w"> </span>offer<span class="w"> </span>--gpu<span class="w"> </span>H100<span class="w"> </span>--max-offers<span class="w"> </span><span class="m">10</span>
 Getting<span class="w"> </span>offers...
 ---&gt;<span class="w"> </span><span class="m">100</span>%
 

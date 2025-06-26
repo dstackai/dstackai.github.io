@@ -879,19 +879,6 @@ Support dstack with a ⭐ on
 </li>
         
           <li class="md-nav__item">
-  <a href="#python-version" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        <span class="md-typeset">
-          Python version
-        </span>
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#docker" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -901,6 +888,90 @@ Support dstack with a ⭐ on
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Docker">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#default-image" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Default image
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nvcc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          NVCC
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#custom-image" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Custom image
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#docker-in-docker" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Docker in Docker
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#privileged-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Privileged mode
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#private-registry" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Private registry
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -4198,19 +4269,6 @@ Support dstack with a ⭐ on
 </li>
         
           <li class="md-nav__item">
-  <a href="#python-version" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        <span class="md-typeset">
-          Python version
-        </span>
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#docker" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -4220,6 +4278,90 @@ Support dstack with a ⭐ on
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Docker">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#default-image" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Default image
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nvcc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          NVCC
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#custom-image" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Custom image
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#docker-in-docker" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Docker in Docker
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#privileged-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Privileged mode
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#private-registry" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Private registry
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -4420,29 +4562,32 @@ They are best suited for jobs like training or batch processing.</p>
 <h2 id="apply-a-configuration">Apply a configuration<a class="headerlink" href="#apply-a-configuration" title="Permanent link">&para;</a></h2>
 <p>First, define a task configuration as a YAML file in your project folder.
 The filename must end with <code>.dstack.yml</code> (e.g. <code>.dstack.yml</code> or <code>dev.dstack.yml</code> are both acceptable).</p>
-<div editor-title="examples/single-node-training/axolotl/train.dstack.yml"> 
+<div editor-title=".dstack.yml"> 
 
 <div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">task</span>
 <span class="c1"># The name is optional, if not specified, generated randomly</span>
-<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">axolotl-train</span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">trl-sft</span><span class="w">    </span>
 
-<span class="c1"># Using the official Axolotl&#39;s Docker image</span>
-<span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">winglian/axolotl-cloud:main-20240429-py3.11-cu121-2.2.1</span>
+<span class="nt">python</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.12</span>
 
-<span class="c1"># Required environment variables</span>
+<span class="c1"># Uncomment to use a custom Docker image</span>
+<span class="c1">#image: huggingface/trl-latest-gpu</span>
+
 <span class="nt">env</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HF_TOKEN</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">WANDB_API_KEY</span>
-<span class="c1"># Commands of the task</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MODEL=Qwen/Qwen2.5-0.5B</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DATASET=stanfordnlp/imdb</span>
+
 <span class="nt">commands</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">accelerate launch -m axolotl.cli.train examples/single-node-training/axolotl/config.yaml</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uv pip install trl</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span><span class="w"> </span>
+<span class="w">    </span><span class="no">trl sft \</span>
+<span class="w">      </span><span class="no">--model_name_or_path $MODEL --dataset_name $DATASET</span>
+<span class="w">      </span><span class="no">--num_processes $DSTACK_GPUS_PER_NODE</span>
 
 <span class="nt">resources</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">gpu</span><span class="p">:</span>
-<span class="w">    </span><span class="c1"># 24GB or more VRAM</span>
-<span class="w">    </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">24GB..</span>
-<span class="w">    </span><span class="c1"># Two or more GPU</span>
-<span class="w">    </span><span class="nt">count</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2..</span>
+<span class="w">  </span><span class="c1"># One to two H100 GPUs</span>
+<span class="w">  </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">H100:1..2</span>
+<span class="w">  </span><span class="nt">shm_size</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">24GB</span>
 </code></pre></div>
 
 </div>
@@ -4450,16 +4595,14 @@ The filename must end with <code>.dstack.yml</code> (e.g. <code>.dstack.yml</cod
 <p>To run a task, pass the configuration to <a href="../../reference/cli/dstack/apply/"><code>dstack apply</code></a>:</p>
 <div class="termy">
 
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nv">HF_TOKEN</span><span class="o">=</span>...
-$<span class="w"> </span><span class="nv">WANDB_API_KEY</span><span class="o">=</span>...
-$<span class="w"> </span>dstack<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>examples/.dstack.yml
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>dstack<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>.dstack.yml
 
 <span class="w"> </span><span class="c1">#  BACKEND  REGION    RESOURCES                    SPOT  PRICE</span>
 <span class="w"> </span><span class="m">1</span><span class="w">  </span>runpod<span class="w">   </span>CA-MTL-1<span class="w">  </span>18xCPU,<span class="w"> </span>100GB,<span class="w"> </span>A5000:24GB:2<span class="w">  </span>yes<span class="w">   </span><span class="nv">$0</span>.22
 <span class="w"> </span><span class="m">2</span><span class="w">  </span>runpod<span class="w">   </span>EU-SE-1<span class="w">   </span>18xCPU,<span class="w"> </span>100GB,<span class="w"> </span>A5000:24GB:2<span class="w">  </span>yes<span class="w">   </span><span class="nv">$0</span>.22
 <span class="w"> </span><span class="m">3</span><span class="w">  </span>gcp<span class="w">      </span>us-west4<span class="w">  </span>27xCPU,<span class="w"> </span>150GB,<span class="w"> </span>A5000:24GB:3<span class="w">  </span>yes<span class="w">   </span><span class="nv">$0</span>.33
 
-Submit<span class="w"> </span>the<span class="w"> </span>run<span class="w"> </span>axolotl-train?<span class="w"> </span><span class="o">[</span>y/n<span class="o">]</span>:<span class="w"> </span>y
+Submit<span class="w"> </span>the<span class="w"> </span>run<span class="w"> </span>trl-sft?<span class="w"> </span><span class="o">[</span>y/n<span class="o">]</span>:<span class="w"> </span>y
 
 Launching<span class="w"> </span><span class="sb">`</span>axolotl-train<span class="sb">`</span>...
 ---&gt;<span class="w"> </span><span class="m">100</span>%
@@ -4477,19 +4620,16 @@ and runs the commands.</p>
 <h3 id="ports">Ports<a class="headerlink" href="#ports" title="Permanent link">&para;</a></h3>
 <p>A task can configure ports. In this case, if the task is running an application on a port, <code>dstack apply</code> 
 will securely allow you to access this port from your local machine through port forwarding.</p>
-<div editor-title="train.dstack.yml"> 
+<div editor-title=".dstack.yml"> 
 
 <div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">task</span>
-<span class="c1"># The name is optional, if not specified, generated randomly</span>
 <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">streamlit-hello</span>
 
 <span class="nt">python</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.12</span>
 
-<span class="c1"># Commands of the task</span>
 <span class="nt">commands</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uv pip install streamlit</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">streamlit hello</span>
-<span class="c1"># Expose the port to access the web app</span>
 <span class="nt">ports</span><span class="p">:</span><span class="w"> </span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8501</span>
 </code></pre></div>
@@ -4506,7 +4646,6 @@ However, you can run it on a cluster of nodes by specifying <code>nodes</code>.<
 <div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">task</span>
 <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">train-distrib</span>
 
-<span class="c1"># The size of the cluster</span>
 <span class="nt">nodes</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
 
 <span class="nt">python</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.12</span>
@@ -4527,8 +4666,7 @@ However, you can run it on a cluster of nodes by specifying <code>nodes</code>.<
 
 <span class="nt">resources</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">24GB:1..2</span>
-<span class="w">  </span><span class="c1"># Uncomment if using multiple GPUs</span>
-<span class="w">  </span><span class="c1">#shm_size: 24GB</span>
+<span class="w">  </span><span class="nt">shm_size</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">24GB</span>
 </code></pre></div>
 
 </div>
@@ -4586,13 +4724,20 @@ range (e.g. <code>24GB..</code>, or <code>24GB..80GB</code>, or <code>..80GB</co
 <div editor-title=".dstack.yml"> 
 
 <div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">task</span>
-<span class="c1"># The name is optional, if not specified, generated randomly</span>
-<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">train</span><span class="w">    </span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">trl-sft</span><span class="w">    </span>
 
-<span class="c1"># Commands of the task</span>
+<span class="nt">python</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.12</span>
+
+<span class="nt">env</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MODEL=Qwen/Qwen2.5-0.5B</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DATASET=stanfordnlp/imdb</span>
+
 <span class="nt">commands</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uv pip install -r fine-tuning/qlora/requirements.txt</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python fine-tuning/qlora/train.py</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uv pip install trl</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span><span class="w"> </span>
+<span class="w">    </span><span class="no">trl sft \</span>
+<span class="w">      </span><span class="no">--model_name_or_path $MODEL --dataset_name $DATASET</span>
+<span class="w">      </span><span class="no">--num_processes $DSTACK_GPUS_PER_NODE</span>
 
 <span class="nt">resources</span><span class="p">:</span>
 <span class="w">  </span><span class="c1"># 16 or more x86_64 cores</span>
@@ -4602,152 +4747,207 @@ range (e.g. <code>24GB..</code>, or <code>24GB..80GB</code>, or <code>..80GB</co
 <span class="w">  </span><span class="c1"># 4 GPUs from 40GB to 80GB</span>
 <span class="w">  </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">40GB..80GB:4</span>
 <span class="w">  </span><span class="c1"># Shared memory (required by multi-gpu)</span>
-<span class="w">  </span><span class="nt">shm_size</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">16GB</span>
+<span class="w">  </span><span class="nt">shm_size</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">24GB</span>
 <span class="w">  </span><span class="c1"># Disk size</span>
 <span class="w">  </span><span class="nt">disk</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">500GB</span>
 </code></pre></div>
 
 </div>
 
-<p>The <code>cpu</code> property also allows you to specify the CPU architecture, <code>x86</code> or <code>arm</code>. Examples:
-<code>x86:16</code> (16 x86-64 cores), <code>arm:8..</code> (at least 8 ARM64 cores).
-If the architecture is not specified, <code>dstack</code> tries to infer it from the <code>gpu</code> specification
-using <code>x86</code> as the fallback value.</p>
-<p>The <code>gpu</code> property allows specifying not only memory size but also GPU vendor, names
-and their quantity. Examples: <code>nvidia</code> (one NVIDIA GPU), <code>A100</code> (one A100), <code>A10G,A100</code> (either A10G or A100),
-<code>A100:80GB</code> (one A100 of 80GB), <code>A100:2</code> (two A100), <code>24GB..40GB:2</code> (two GPUs between 24GB and 40GB),
-<code>A100:40GB:2</code> (two A100 GPUs of 40GB).
-If the vendor is not specified, <code>dstack</code> tries to infer it from the GPU name using <code>nvidia</code> as the fallback value.</p>
-<details class="info">
-<summary>Google Cloud TPU</summary>
-<p>To use TPUs, specify its architecture via the <code>gpu</code> property.</p>
-<div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">task</span>
-<span class="c1"># The name is optional, if not specified, generated randomly</span>
-<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">train</span><span class="w">    </span>
+<p>The <code>cpu</code> property lets you set the architecture (<code>x86</code> or <code>arm</code>) and core count — e.g., <code>x86:16</code> (16 x86 cores), <code>arm:8..</code> (at least 8 ARM cores). 
+If not set, <code>dstack</code> infers it from the GPU or defaults to <code>x86</code>.</p>
+<p>The <code>gpu</code> property lets you specify vendor, model, memory, and count — e.g., <code>nvidia</code> (one NVIDIA GPU), <code>A100</code> (one A100), <code>A10G,A100</code> (either), <code>A100:80GB</code> (one 80GB A100), <code>A100:2</code> (two A100), <code>24GB..40GB:2</code> (two GPUs with 24–40GB), <code>A100:40GB:2</code> (two 40GB A100s). </p>
+<p>If vendor is omitted, <code>dstack</code> infers it from the model or defaults to <code>nvidia</code>.</p>
+<!-- ??? info "Google Cloud TPU"
+    To use TPUs, specify its architecture via the `gpu` property.
 
-<span class="nt">python</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.12</span>
+    <!-- TODO: Add a TRL TPU example -->
 
-<span class="c1"># Commands of the task</span>
-<span class="nt">commands</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip install -r fine-tuning/qlora/requirements.txt</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python fine-tuning/qlora/train.py</span>
+<div class="highlight"><pre><span></span><code>```yaml
+type: task
+name: train    
 
-<span class="nt">resources</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v2-8</span>
+python: 3.12
+
+commands:
+  - pip install -r fine-tuning/qlora/requirements.txt
+  - python fine-tuning/qlora/train.py
+
+resources:
+  gpu: v2-8
+```
+
+Currently, only 8 TPU cores can be specified, supporting single TPU device workloads. Multi-TPU support is coming soon. --&gt;
 </code></pre></div>
-<p>Currently, only 8 TPU cores can be specified, supporting single TPU device workloads. Multi-TPU support is coming soon.</p>
-</details>
 <details class="info">
 <summary>Shared memory</summary>
 <p>If you are using parallel communicating processes (e.g., dataloaders in PyTorch), you may need to configure 
-<code>shm_size</code>, e.g. set it to <code>16GB</code>.</p>
+<code>shm_size</code>, e.g. set it to <code>24GB</code>.</p>
 </details>
 <blockquote>
 <p>If you’re unsure which offers (hardware configurations) are available from the configured backends, use the
 <a href="../../reference/cli/dstack/offer/#list-gpu-offers"><code>dstack offer</code></a> command to list them.</p>
 </blockquote>
-<h3 id="python-version">Python version<a class="headerlink" href="#python-version" title="Permanent link">&para;</a></h3>
-<p>If you don't specify <code>image</code>, <code>dstack</code> uses its base Docker image pre-configured with 
-<code>python</code>, <code>pip</code>, <code>conda</code> (Miniforge), and essential CUDA drivers. 
-The <code>python</code> property determines which default Docker image is used.</p>
-<div editor-title="train.dstack.yml"> 
-
-<div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">task</span>
-<span class="c1"># The name is optional, if not specified, generated randomly</span>
-<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">train</span><span class="w">    </span>
-
-<span class="c1"># If `image` is not specified, dstack uses its base image</span>
-<span class="nt">python</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.12</span>
-
-<span class="c1"># Commands of the task</span>
-<span class="nt">commands</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip install -r fine-tuning/qlora/requirements.txt</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python fine-tuning/qlora/train.py</span>
-</code></pre></div>
-
-</div>
-
-<details class="info">
-<summary>nvcc</summary>
-<p>By default, the base Docker image doesn’t include <code>nvcc</code>, which is required for building custom CUDA kernels. 
-If you need <code>nvcc</code>, set the corresponding property to true.</p>
-<div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">task</span>
-<span class="c1"># The name is optional, if not specified, generated randomly</span>
-<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">train</span><span class="w">    </span>
-
-<span class="c1"># If `image` is not specified, dstack uses its base image</span>
-<span class="nt">python</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.12</span>
-<span class="c1"># Ensure nvcc is installed (req. for Flash Attention) </span>
-<span class="nt">nvcc</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-
-<span class="nt">commands</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip install -r fine-tuning/qlora/requirements.txt</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python fine-tuning/qlora/train.py</span>
-</code></pre></div>
-</details>
 <h3 id="docker">Docker<a class="headerlink" href="#docker" title="Permanent link">&para;</a></h3>
-<p>If you want, you can specify your own Docker image via <code>image</code>.</p>
+<h4 id="default-image">Default image<a class="headerlink" href="#default-image" title="Permanent link">&para;</a></h4>
+<p>If you don't specify <code>image</code>, <code>dstack</code> uses its base Docker image pre-configured with 
+<code>uv</code>, <code>python</code>, <code>pip</code>, essential CUDA drivers, and NCCL tests (under <code>/opt/nccl-tests/build</code>). </p>
+<p>Set the <code>python</code> property to pre-install a specific version of Python.</p>
 <div editor-title=".dstack.yml"> 
 
 <div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">task</span>
-<span class="c1"># The name is optional, if not specified, generated randomly</span>
 <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">train</span><span class="w">    </span>
-
-<span class="c1"># Any custom Docker image</span>
-<span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dstackai/base:py3.13-0.7-cuda-12.1</span>
-
-<span class="c1"># Commands of the task</span>
-<span class="nt">commands</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip install -r fine-tuning/qlora/requirements.txt</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python fine-tuning/qlora/train.py</span>
-</code></pre></div>
-
-</div>
-
-<div class="admonition info">
-<p class="admonition-title">Privileged mode</p>
-<p>To enable privileged mode, set <a href="../../reference/dstack.yml/task/#privileged"><code>privileged</code></a> to <code>true</code>.
-This mode allows using <a href="../../guides/protips/#docker-and-docker-compose">Docker and Docker Compose</a> inside <code>dstack</code> runs.</p>
-<p>Not supported with <code>runpod</code>, <code>vastai</code>, and <code>kubernetes</code>.</p>
-</div>
-<details class="info">
-<summary>Private registry</summary>
-<p>Use the <a href="../../reference/dstack.yml/task/#registry_auth"><code>registry_auth</code></a> property to provide credentials for a private Docker registry.</p>
-<div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dev-environment</span>
-<span class="c1"># The name is optional, if not specified, generated randomly</span>
-<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">train</span>
-
-<span class="c1"># Any private Docker image</span>
-<span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dstackai/base:py3.13-0.7-cuda-12.1</span>
-<span class="c1"># Credentials of the private Docker registry</span>
-<span class="nt">registry_auth</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">username</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">peterschmidt85</span>
-<span class="w">  </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ghp_e49HcZ9oYwBzUbcSk2080gXZOU2hiT9AeSR5</span>
-
-<span class="c1"># Commands of the task</span>
-<span class="nt">commands</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip install -r fine-tuning/qlora/requirements.txt</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python fine-tuning/qlora/train.py</span>
-</code></pre></div>
-</details>
-<h3 id="environment-variables">Environment variables<a class="headerlink" href="#environment-variables" title="Permanent link">&para;</a></h3>
-<div editor-title="train.dstack.yml"> 
-
-<div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">task</span>
-<span class="c1"># The name is optional, if not specified, generated randomly</span>
-<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">train</span>
 
 <span class="nt">python</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.12</span>
 
-<span class="c1"># Environment variables</span>
+<span class="nt">env</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MODEL=Qwen/Qwen2.5-0.5B</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DATASET=stanfordnlp/imdb</span>
+
+<span class="nt">commands</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uv pip install trl</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span><span class="w"> </span>
+<span class="w">    </span><span class="no">trl sft \</span>
+<span class="w">      </span><span class="no">--model_name_or_path $MODEL --dataset_name $DATASET</span>
+<span class="w">      </span><span class="no">--num_processes $DSTACK_GPUS_PER_NODE</span>
+
+<span class="nt">resources</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">H100:1..2</span>
+<span class="w">  </span><span class="nt">shm_size</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">24GB</span>
+</code></pre></div>
+
+</div>
+
+<h4 id="nvcc">NVCC<a class="headerlink" href="#nvcc" title="Permanent link">&para;</a></h4>
+<p>By default, the base Docker image doesn’t include <code>nvcc</code>, which is required for building custom CUDA kernels. 
+If you need <code>nvcc</code>, set the <a href="../../reference/dstack.yml/dev-environment/#nvcc"><code>nvcc</code></a> property to true.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">task</span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">train</span><span class="w">    </span>
+
+<span class="nt">python</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.12</span>
+<span class="nt">nvcc</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+
+<span class="nt">env</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MODEL=Qwen/Qwen2.5-0.5B</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DATASET=stanfordnlp/imdb</span>
+
+<span class="nt">commands</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uv pip install trl</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uv pip install flash_attn --no-build-isolation</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">    </span><span class="no">trl sft \</span>
+<span class="w">      </span><span class="no">--model_name_or_path $MODEL --dataset_name $DATASET \</span>
+<span class="w">      </span><span class="no">--attn_implementation=flash_attention_2 \</span>
+<span class="w">      </span><span class="no">--num_processes $DSTACK_GPUS_PER_NODE</span>
+
+<span class="nt">resources</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">H100:1</span>
+</code></pre></div>
+<h4 id="custom-image">Custom image<a class="headerlink" href="#custom-image" title="Permanent link">&para;</a></h4>
+<p>If you want, you can specify your own Docker image via <code>image</code>.</p>
+<!-- TODO: Automatically detect the shell -->
+
+<div editor-title=".dstack.yml"> 
+
+<div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">task</span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">trl-sft</span>
+
+<span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">huggingface/trl-latest-gpu</span>
+
+<span class="nt">env</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MODEL=Qwen/Qwen2.5-0.5B</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DATASET=stanfordnlp/imdb</span>
+
+<span class="c1"># if shell is not specified, `sh` is used for custom images</span>
+<span class="nt">shell</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bash</span>
+
+<span class="nt">commands</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">source activate trl</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">    </span><span class="no">trl sft --model_name_or_path $MODEL \</span>
+<span class="w">        </span><span class="no">--dataset_name $DATASET \</span>
+<span class="w">        </span><span class="no">--output_dir /output \</span>
+<span class="w">        </span><span class="no">--torch_dtype bfloat16 \</span>
+<span class="w">        </span><span class="no">--use_peft true</span>
+
+<span class="nt">resources</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">H100:1</span>
+</code></pre></div>
+
+</div>
+
+<h4 id="docker-in-docker">Docker in Docker<a class="headerlink" href="#docker-in-docker" title="Permanent link">&para;</a></h4>
+<p>Set <code>docker</code> to <code>true</code> to enable the <code>docker</code> CLI in your task, e.g., to run or build Docker images, or use Docker Compose.</p>
+<div editor-title=".dstack.yml"> 
+
+<div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">task</span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker-nvidia-smi</span>
+
+<span class="nt">docker</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+
+<span class="nt">commands</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker run --gpus all nvidia/cuda:12.3.0-base-ubuntu22.04 nvidia-smi</span>
+
+<span class="nt">resources</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+</code></pre></div>
+
+</div>
+
+<p>Cannot be used with <code>python</code> or <code>image</code>. Not supported on <code>runpod</code>, <code>vastai</code>, or <code>kubernetes</code>.</p>
+<h4 id="privileged-mode">Privileged mode<a class="headerlink" href="#privileged-mode" title="Permanent link">&para;</a></h4>
+<p>To enable privileged mode, set <a href="../../reference/dstack.yml/dev-environment/#privileged"><code>privileged</code></a> to <code>true</code>.</p>
+<p>Not supported with <code>runpod</code>, <code>vastai</code>, and <code>kubernetes</code>.</p>
+<h4 id="private-registry">Private registry<a class="headerlink" href="#private-registry" title="Permanent link">&para;</a></h4>
+<p>Use the <a href="../../reference/dstack.yml/dev-environment/#registry_auth"><code>registry_auth</code></a> property to provide credentials for a private Docker registry. </p>
+<div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">task</span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">train</span>
+
+<span class="nt">env</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NGC_API_KEY</span>
+
+<span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nvcr.io/nvidia/pytorch:25.05-py3</span>
+<span class="nt">registry_auth</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">username</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$oauthtoken</span>
+<span class="w">  </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ env.NGC_API_KEY }}</span>
+
+<span class="nt">commands</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">git clone https://github.com/pytorch/examples.git pytorch-examples</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cd pytorch-examples/distributed/ddp-tutorial-series</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip install -r requirements.txt</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">    </span><span class="no">torchrun \</span>
+<span class="w">      </span><span class="no">--nproc-per-node=$DSTACK_GPUS_PER_NODE \</span>
+<span class="w">      </span><span class="no">--nnodes=$DSTACK_NODES_NUM \</span>
+<span class="w">      </span><span class="no">multinode.py 50 10</span>
+
+<span class="nt">resources</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">H100:1..2</span>
+<span class="w">  </span><span class="nt">shm_size</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">24GB</span>
+</code></pre></div>
+<h3 id="environment-variables">Environment variables<a class="headerlink" href="#environment-variables" title="Permanent link">&para;</a></h3>
+<div editor-title=".dstack.yml"> 
+
+<div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">task</span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">trl-sft</span><span class="w">    </span>
+
+<span class="nt">python</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.12</span>
+
 <span class="nt">env</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HF_TOKEN</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HF_HUB_ENABLE_HF_TRANSFER=1</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MODEL=Qwen/Qwen2.5-0.5B</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DATASET=stanfordnlp/imdb</span>
 
-<span class="c1"># Commands of the task</span>
 <span class="nt">commands</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip install -r fine-tuning/qlora/requirements.txt</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python fine-tuning/qlora/train.py</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uv pip install trl</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span><span class="w"> </span>
+<span class="w">    </span><span class="no">trl sft \</span>
+<span class="w">      </span><span class="no">--model_name_or_path $MODEL --dataset_name $DATASET</span>
+<span class="w">      </span><span class="no">--num_processes $DSTACK_GPUS_PER_NODE</span>
+
+<span class="nt">resources</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">H100:1</span>
 </code></pre></div>
 
 </div>
@@ -4810,6 +5010,8 @@ This mode allows using <a href="../../guides/protips/#docker-and-docker-compose"
 the run will fail.</p>
 <p>If you'd like <code>dstack</code> to automatically retry, configure the 
 <a href="../../reference/dstack.yml/task/#retry">retry</a> property accordingly:</p>
+<!-- TODO: Add a relevant example -->
+
 <div editor-title=".dstack.yml">
 
 <div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">task</span>
@@ -4822,7 +5024,6 @@ the run will fail.</p>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python fine-tuning/qlora/train.py</span>
 
 <span class="nt">retry</span><span class="p">:</span>
-<span class="w">  </span><span class="c1"># Retry on specific events</span>
 <span class="w">  </span><span class="nt">on_events</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">no-capacity</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">error</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">interruption</span><span class="p p-Indicator">]</span>
 <span class="w">  </span><span class="c1"># Retry for up to 1 hour</span>
 <span class="w">  </span><span class="nt">duration</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1h</span>
@@ -4836,6 +5037,8 @@ the run will fail.</p>
 <p>Be default, submitted runs are scheduled in the order they were submitted.
 When compute resources are limited, you may want to prioritize some runs over others.
 This can be done by specifying the <a href="../../reference/dstack.yml/task/"><code>priority</code></a> property in the run configuration:</p>
+<!-- TODO: Add a relevant example -->
+
 <div editor-title=".dstack.yml">
 
 <div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">task</span>
@@ -4859,6 +5062,8 @@ it does not block other runs with lower priority from scheduling.</p>
 <p>Sometimes it’s useful to track whether a task is fully utilizing all GPUs. While you can check this with
 <a href="../../reference/cli/dstack/metrics/"><code>dstack metrics</code></a>, <code>dstack</code> also lets you set a policy to auto-terminate the run if any GPU is underutilized.</p>
 <p>Below is an example of a task that auto-terminate if any GPU stays below 10% utilization for 1 hour.</p>
+<!-- TODO: Add a relevant example -->
+
 <div editor-title=".dstack.yml">
 
 <div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">task</span>

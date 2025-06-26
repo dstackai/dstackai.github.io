@@ -913,6 +913,19 @@ Support dstack with a ⭐ on
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#cloudrift" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          CloudRift
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -4307,6 +4320,19 @@ Support dstack with a ⭐ on
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#cloudrift" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          CloudRift
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -5231,6 +5257,23 @@ Allow group &lt;dstack-users&gt; to manage virtual-network-family in compartment
 <span class="w">          </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">api_key</span>
 <span class="w">          </span><span class="nt">client_id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">xfaHBqYEsArqhKWX-e52x3HH7w8T</span>
 <span class="w">          </span><span class="nt">client_secret</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">B5ZU5Qx9Nt8oGMlmMhNI3iglK8bjMhagTbylZy4WzncZe39995f7Vxh8</span>
+</code></pre></div>
+
+</div>
+
+<h3 id="cloudrift">CloudRift<a class="headerlink" href="#cloudrift" title="Permanent link">&para;</a></h3>
+<p>Log into your <a href="https://console.cloudrift.ai/">CloudRift <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> console, click <code>API Keys</code> in the sidebar and click the button to create a new API key.</p>
+<p>Ensure you've created a project with CloudRift.</p>
+<p>Then proceed to configuring the backend.</p>
+<div editor-title="~/.dstack/server/config.yml">
+
+<div class="highlight"><pre><span></span><code><span class="nt">projects</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">main</span>
+<span class="w">    </span><span class="nt">backends</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cloudrift</span>
+<span class="w">        </span><span class="nt">creds</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">api_key</span>
+<span class="w">          </span><span class="nt">api_key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rift_2prgY1d0laOrf2BblTwx2B2d1zcf1zIp4tZYpj5j88qmNgz38pxNlpX3vAo</span>
 </code></pre></div>
 
 </div>
