@@ -118,6 +118,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#nccl-tests" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -2642,6 +2647,26 @@ Support dstack with a ⭐ on
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NCCL tests
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
         
@@ -2659,6 +2684,83 @@ Support dstack with a ⭐ on
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#running-as-a-task" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Running as a task
+        </span>
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Running as a task">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#apply-a-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Apply a configuration
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#source-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Source code
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#whats-next" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          What's next?
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -3846,6 +3948,74 @@ Support dstack with a ⭐ on
   
   
   
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#running-as-a-task" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Running as a task
+        </span>
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Running as a task">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#apply-a-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Apply a configuration
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#source-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Source code
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#whats-next" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          What's next?
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
           </div>
@@ -3911,18 +4081,77 @@ Support dstack with a ⭐ on
       
 
 
-  
-    <a href="https://github.com/dstackai/dstack/edit/master/docs/examples/clusters/nccl-tests/index.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
-      
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
-    </a>
-  
-  
 
+<h1 id="nccl-tests">NCCL tests<a class="headerlink" href="#nccl-tests" title="Permanent link">&para;</a></h1>
+<p>This example shows how to run distributed <a href="https://github.com/NVIDIA/nccl-tests" target="_blank">NCCL tests <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> with MPI using <code>dstack</code>.</p>
+<h2 id="running-as-a-task">Running as a task<a class="headerlink" href="#running-as-a-task" title="Permanent link">&para;</a></h2>
+<p>Here's an example of a task that runs AllReduce test on 2 nodes, each with 4 GPUs (8 processes in total).</p>
+<div editor-title="examples/clusters/nccl-tests/.dstack.yml">
 
-  <h1>NCCL tests</h1>
+<div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">task</span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nccl-tests</span>
 
+<span class="nt">nodes</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
 
+<span class="nt">startup_order</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">workers-first</span>
+<span class="nt">stop_criteria</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">master-done</span>
+
+<span class="nt">env</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NCCL_DEBUG=INFO</span>
+<span class="nt">commands</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">    </span><span class="no">if [ $DSTACK_NODE_RANK -eq 0 ]; then</span>
+<span class="w">      </span><span class="no">mpirun \</span>
+<span class="w">        </span><span class="no">--allow-run-as-root \</span>
+<span class="w">        </span><span class="no">--hostfile $DSTACK_MPI_HOSTFILE \</span>
+<span class="w">        </span><span class="no">-n $DSTACK_GPUS_NUM \</span>
+<span class="w">        </span><span class="no">-N $DSTACK_GPUS_PER_NODE \</span>
+<span class="w">        </span><span class="no">--bind-to none \</span>
+<span class="w">        </span><span class="no">/opt/nccl-tests/build/all_reduce_perf -b 8 -e 8G -f 2 -g 1</span>
+<span class="w">    </span><span class="no">else</span>
+<span class="w">      </span><span class="no">sleep infinity</span>
+<span class="w">    </span><span class="no">fi</span>
+
+<span class="nt">resources</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nvidia:1..8</span>
+<span class="w">  </span><span class="nt">shm_size</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">16GB</span>
+</code></pre></div>
+
+</div>
+
+<!-- TODO: Need to stop using our EFA image - either make our default image cluster-friendly, or recommend using NGC or other images -->
+
+<div class="admonition info">
+<p class="admonition-title">Docker image</p>
+<p>The <code>dstackai/efa</code> image used in the example comes with MPI and NCCL tests pre-installed. While it is optimized for
+<a href="https://aws.amazon.com/hpc/efa/" target="_blank">AWS EFA <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>, it can also
+be used with regular TCP/IP network adapters and InfiniBand. </p>
+<p>See the <a href="https://github.com/dstackai/dstack/blob/master/docker/efa">source code <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> for the image.</p>
+</div>
+<h3 id="apply-a-configuration">Apply a configuration<a class="headerlink" href="#apply-a-configuration" title="Permanent link">&para;</a></h3>
+<p>To run a configuration, use the <a href="https://dstack.ai/docs/reference/cli/dstack/apply/"><code>dstack apply</code></a> command.</p>
+<div class="termy">
+
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>dstack<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>examples/clusters/nccl-tests/.dstack.yml
+
+<span class="w"> </span><span class="c1">#  BACKEND  REGION     INSTANCE       RESOURCES                                   SPOT  PRICE</span>
+<span class="w"> </span><span class="m">1</span><span class="w">  </span>aws<span class="w">      </span>us-east-1<span class="w">  </span>g4dn.12xlarge<span class="w">  </span>48xCPU,<span class="w"> </span>192GB,<span class="w"> </span>4xT4<span class="w"> </span><span class="o">(</span>16GB<span class="o">)</span>,<span class="w"> </span><span class="m">100</span>.0GB<span class="w"> </span><span class="o">(</span>disk<span class="o">)</span><span class="w">  </span>no<span class="w">    </span><span class="nv">$3</span>.912
+<span class="w"> </span><span class="m">2</span><span class="w">  </span>aws<span class="w">      </span>us-west-2<span class="w">  </span>g4dn.12xlarge<span class="w">  </span>48xCPU,<span class="w"> </span>192GB,<span class="w"> </span>4xT4<span class="w"> </span><span class="o">(</span>16GB<span class="o">)</span>,<span class="w"> </span><span class="m">100</span>.0GB<span class="w"> </span><span class="o">(</span>disk<span class="o">)</span><span class="w">  </span>no<span class="w">    </span><span class="nv">$3</span>.912
+<span class="w"> </span><span class="m">3</span><span class="w">  </span>aws<span class="w">      </span>us-east-2<span class="w">  </span>g4dn.12xlarge<span class="w">  </span>48xCPU,<span class="w"> </span>192GB,<span class="w"> </span>4xT4<span class="w"> </span><span class="o">(</span>16GB<span class="o">)</span>,<span class="w"> </span><span class="m">100</span>.0GB<span class="w"> </span><span class="o">(</span>disk<span class="o">)</span><span class="w">  </span>no<span class="w">    </span><span class="nv">$3</span>.912
+
+Submit<span class="w"> </span>the<span class="w"> </span>run<span class="w"> </span>nccl-tests?<span class="w"> </span><span class="o">[</span>y/n<span class="o">]</span>:<span class="w"> </span>y
+</code></pre></div>
+
+</div>
+
+<h2 id="source-code">Source code<a class="headerlink" href="#source-code" title="Permanent link">&para;</a></h2>
+<p>The source-code of this example can be found in 
+<a href="https://github.com/dstackai/dstack/blob/master/examples/clusters/nccl-tests"><code>examples/clusters/nccl-tests</code> <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>.</p>
+<h2 id="whats-next">What's next?<a class="headerlink" href="#whats-next" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Check <a href="https://dstack.ai/docs/dev-environments">dev environments</a>, <a href="https://dstack.ai/docs/tasks">tasks</a>, 
+   <a href="https://dstack.ai/docs/services">services</a>, and <a href="https://dstack.ai/docs/concepts/fleets">fleets</a>.</li>
+</ol>
 
 
 

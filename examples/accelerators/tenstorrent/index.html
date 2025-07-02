@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="dstack is an open-source AI container orchestration engine working with any cloud or data center.">
+        <meta name="description" content="You can now use SSH fleets to run dev environments, tasks, and services on Tenstorrent.">
       
       
         <meta name="author" content="dstack GmbH">
@@ -90,16 +90,18 @@
   
 <meta property="og:type" content="website" />
 <meta property="og:title" content="Tenstorrent - dstack" />
-<meta property="og:description" content="dstack is an open-source AI container orchestration engine working with any cloud or data center." />
-<meta property="og:image" content="https://dstack.ai/assets/images/social/examples/accelerators/tenstorrent/index.png" />
+<meta property="og:description" content="You can now use SSH fleets to run dev environments, tasks, and services on Tenstorrent." />
+<meta property="og:image" content="
+  https://dstack.ai/static-assets/static-assets/images/dstack-tenstorrent-min.png" />
 <meta property="og:image:type" content="image/png" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
 <meta property="og:url" content="https://dstack.ai/examples/accelerators/tenstorrent/" />
 <meta property="twitter:card" content="summary_large_image" />
 <meta property="twitter.title" content="Tenstorrent - dstack" />
-<meta property="twitter:description" content="dstack is an open-source AI container orchestration engine working with any cloud or data center." />
-<meta property="twitter:image" content="https://dstack.ai/assets/images/social/examples/accelerators/tenstorrent/index.png" />
+<meta property="twitter:description" content="You can now use SSH fleets to run dev environments, tasks, and services on Tenstorrent." />
+<meta property="twitter:image" content="
+  https://dstack.ai/static-assets/static-assets/images/dstack-tenstorrent-min.png" />
 </head>
   
   
@@ -117,6 +119,11 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
+      
+        
+        <a href="#tenstorrent" class="md-skip">
+          Skip to content
+        </a>
       
     </div>
     <div data-md-component="announce">
@@ -3132,6 +3139,26 @@ Support dstack with a ⭐ on
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tenstorrent
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
         
@@ -3149,6 +3176,64 @@ Support dstack with a ⭐ on
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#services" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Services
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tasks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Tasks
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dev-environments" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Dev environments
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -3846,6 +3931,55 @@ Support dstack with a ⭐ on
   
   
   
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#services" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Services
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tasks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Tasks
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dev-environments" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Dev environments
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
           </div>
@@ -3911,24 +4045,186 @@ Support dstack with a ⭐ on
       
 
 
+
+<h1 id="tenstorrent">Tenstorrent<a class="headerlink" href="#tenstorrent" title="Permanent link">&para;</a></h1>
+<p><code>dstack</code> supports running dev environments, tasks, and services on Tenstorrent 
+<a href="https://tenstorrent.com/en/hardware/wormhole" target="_blank">Wormwhole <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> accelerators via SSH fleets.</p>
+<details class="info">
+<summary>SSH fleets</summary>
+<p><div editor-title="examples/acceleators/tenstorrent/fleet.dstack.yml"> </p>
+<div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">fleet</span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">wormwhole-fleet</span>
+
+<span class="nt">ssh_config</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">user</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">root</span>
+<span class="w">  </span><span class="nt">identity_file</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">~/.ssh/id_rsa</span>
+<span class="w">  </span><span class="c1"># Configure any number of hosts with n150 or n300 PCEe boards </span>
+<span class="w">  </span><span class="nt">hosts</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">192.168.2.108</span>
+</code></pre></div>
+</div>
+<blockquote>
+<p>Hosts should be pre-installed with <a href="https://docs.tenstorrent.com/getting-started/README.html#software-installation">Tenstorrent software</a>.
+This should include the drivers, <code>tt-smi</code>, and HugePages.</p>
+</blockquote>
+<p>To apply the fleet configuration, run:</p>
+<div class="termy">
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>dstack<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>examples/acceleators/tenstorrent/fleet.dstack.yml
+
+<span class="w"> </span>FLEET<span class="w">            </span>RESOURCES<span class="w">                             </span>PRICE<span class="w">  </span>STATUS<span class="w">  </span>CREATED
+<span class="w"> </span>wormwhole-fleet<span class="w">  </span><span class="nv">cpu</span><span class="o">=</span><span class="m">12</span><span class="w"> </span><span class="nv">mem</span><span class="o">=</span>32GB<span class="w"> </span><span class="nv">disk</span><span class="o">=</span>243GB<span class="w"> </span>n150:12GB<span class="w">  </span><span class="nv">$0</span><span class="w">     </span>idle<span class="w">    </span><span class="m">18</span><span class="w"> </span>sec<span class="w"> </span>ago
+</code></pre></div>
+</div>
+<p>For more details on fleet configuration, refer to <a href="https://dstack.ai/docs/concepts/fleets#ssh">SSH fleets</a>.</p>
+</details>
+<h2 id="services">Services<a class="headerlink" href="#services" title="Permanent link">&para;</a></h2>
+<p>Here's an example of a service that deploys
+<a href="https://huggingface.co/meta-llama/Llama-3.2-1B" target="_blank"><code>Llama-3.2-1B-Instruct</code> <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> 
+using <a href="https://github.com/tenstorrent/tt-inference-server" target="_blank">Tenstorrent Inference Service <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>.</p>
+<div editor-title="examples/acceleators/tenstorrent/tt-inference-server.dstack.yml"> 
+
+<div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service</span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tt-inference-server</span>
+
+<span class="nt">env</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HF_TOKEN</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HF_MODEL_REPO_ID=meta-llama/Llama-3.2-1B-Instruct</span>
+<span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ghcr.io/tenstorrent/tt-inference-server/vllm-tt-metal-src-release-ubuntu-20.04-amd64:0.0.4-v0.56.0-rc47-e2e0002ac7dc</span>
+<span class="nt">commands</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span><span class="w"> </span>
+<span class="w">    </span><span class="no">. ${PYTHON_ENV_DIR}/bin/activate</span>
+<span class="w">    </span><span class="no">pip install &quot;huggingface_hub[cli]&quot;</span>
+<span class="w">    </span><span class="no">export LLAMA_DIR=&quot;/data/models--$(echo &quot;$HF_MODEL_REPO_ID&quot; | sed &#39;s/\//--/g&#39;)/&quot;</span>
+<span class="w">    </span><span class="no">huggingface-cli download $HF_MODEL_REPO_ID --local-dir $LLAMA_DIR</span>
+<span class="w">    </span><span class="no">python /home/container_app_user/app/src/run_vllm_api_server.py</span>
+<span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">7000</span>
+
+<span class="nt">model</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">meta-llama/Llama-3.2-1B-Instruct</span>
+
+<span class="c1"># Cache downloaded model</span>
+<span class="nt">volumes</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/mnt/data/tt-inference-server/data:/data</span>
+
+<span class="nt">resources</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">n150:1</span>
+</code></pre></div>
+
+</div>
+
+<p>Go ahead and run configuration using <code>dstack apply</code>:</p>
+<div class="termy">
+
+    <div class="highlight"><pre><span></span><code>$<span class="w"> </span>dstack<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>examples/acceleators/tenstorrent/tt-inference-server.dstack.yml
+</code></pre></div>
+</div>
+
+<p>Once the service is up, it will be available via the service endpoint
+at <code>&lt;dstack server URL&gt;/proxy/services/&lt;project name&gt;/&lt;run name&gt;/</code>.</p>
+<div class="termy">
+
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>curl<span class="w"> </span>http://127.0.0.1:3000/proxy/models/main/chat/completions<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-X<span class="w"> </span>POST<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-H<span class="w"> </span><span class="s1">&#39;Authorization: Bearer &amp;lt;dstack token&amp;gt;&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-H<span class="w"> </span><span class="s1">&#39;Content-Type: application/json&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-d<span class="w"> </span><span class="s1">&#39;{</span>
+<span class="s1">      &quot;model&quot;: &quot;meta-llama/Llama-3.2-1B-Instruct&quot;,</span>
+<span class="s1">      &quot;messages&quot;: [</span>
+<span class="s1">        {</span>
+<span class="s1">          &quot;role&quot;: &quot;system&quot;,</span>
+<span class="s1">          &quot;content&quot;: &quot;You are a helpful assistant.&quot;</span>
+<span class="s1">        },</span>
+<span class="s1">        {</span>
+<span class="s1">          &quot;role&quot;: &quot;user&quot;,</span>
+<span class="s1">          &quot;content&quot;: &quot;What is Deep Learning?&quot;</span>
+<span class="s1">        }</span>
+<span class="s1">      ],</span>
+<span class="s1">      &quot;stream&quot;: true,</span>
+<span class="s1">      &quot;max_tokens&quot;: 512</span>
+<span class="s1">    }&#39;</span>
+</code></pre></div>
+
+</div>
+
+<p>Additionally, the model is available via <code>dstack</code>'s control plane UI:</p>
+<p><img alt="" src="https://dstack.ai/static-assets/static-assets/images/dstack-tenstorrent-model-ui.png" width="800" /></p>
+<p>When a <a href="https://dstack.ai/docs/concepts/gateways.md">gateway</a> is configured, the service endpoint 
+is available at <code>https://&lt;run name&gt;.&lt;gateway domain&gt;/</code>.</p>
+<blockquote>
+<p>Services support many options, including authentication, auto-scaling policies, etc. To learn more, refer to <a href="https://dstack.ai/docs/concepts/services">Services</a>.</p>
+</blockquote>
+<h2 id="tasks">Tasks<a class="headerlink" href="#tasks" title="Permanent link">&para;</a></h2>
+<p>Below is a task that simply runs <code>tt-smi -s</code>. Tasks can be used for training, fine-tuning, batch inference, or antything else.</p>
+<div editor-title="examples/acceleators/tenstorrent/tt-smi.dstack.yml"> 
+
+<div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">task</span>
+<span class="c1"># The name is optional, if not specified, generated randomly</span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tt-smi</span>
+
+<span class="nt">env</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HF_TOKEN</span>
+
+<span class="c1"># (Required) Use any image with TT drivers </span>
+<span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dstackai/tt-smi:latest</span>
+
+<span class="c1"># Use any commands</span>
+<span class="nt">commands</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tt-smi -s</span>
+
+<span class="c1"># Specify the number of accelerators, model, etc</span>
+<span class="nt">resources</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">n150:1</span>
+
+<span class="c1"># Uncomment if you want to run on a cluster of nodes</span>
+<span class="c1">#nodes: 2</span>
+</code></pre></div>
+
+</div>
+
+<blockquote>
+<p>Tasks support many options, including multi-node configuration, max duration, etc. To learn more, refer to <a href="https://dstack.ai/docs/concepts/tasks">Tasks</a>.</p>
+</blockquote>
+<h2 id="dev-environments">Dev environments<a class="headerlink" href="#dev-environments" title="Permanent link">&para;</a></h2>
+<p>Below is an example of a dev environment configuration. It can be used to provision a dev environemnt that can be accessed via your desktop IDE. </p>
+<div editor-title="examples/acceleators/tenstorrent/.dstack.yml"> 
+
+<div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dev-environment</span>
+<span class="c1"># The name is optional, if not specified, generated randomly</span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cursor</span>
+
+<span class="c1"># (Optional) List required env variables</span>
+<span class="nt">env</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HF_TOKEN</span>
+
+<span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dstackai/tt-smi:latest</span>
+
+<span class="c1"># Can be `vscode` or `cursor`</span>
+<span class="nt">ide</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cursor</span>
+
+<span class="nt">resources</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">n150:1</span>
+</code></pre></div>
+
+</div>
+
+<p>If you run it via <code>dstack apply</code>, it will output the URL to access it via your desktop IDE.</p>
+<p><img alt="" src="https://dstack.ai/static-assets/static-assets/images/dstack-tenstorrent-cursor.png" width="800" /></p>
+<blockquote>
+<p>Dev nevironments support many options, including inactivity and max duration, IDE configuration, etc. To learn more, refer to <a href="https://dstack.ai/docs/concepts/tasks">Dev environments</a>.</p>
+</blockquote>
+<details class="info">
+<summary>Feedback</summary>
+<p>Found a bug, or want to request a feature? File it in the <a href="https://github.com/dstackai/dstack/issues" target="_blank">issue tracker <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>,
+or share via <a href="https://discord.gg/u8SmfwPpMd" target="_blank">Discord <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>.</p>
+</details>
+
+
+
+
+
+
+
   
-    <a href="https://github.com/dstackai/dstack/edit/master/docs/examples/accelerators/tenstorrent/index.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
-      
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
-    </a>
   
-  
-
-
-  <h1>Tenstorrent</h1>
-
-
-
-
-
-
-
-
 
 
 

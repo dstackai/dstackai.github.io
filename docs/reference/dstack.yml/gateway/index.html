@@ -1507,6 +1507,23 @@ Support dstack with a ⭐ on
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Root reference">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#certificate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        certificate
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -3924,6 +3941,23 @@ Support dstack with a ⭐ on
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Root reference">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#certificate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        certificate
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -4023,42 +4057,27 @@ Support dstack with a ⭐ on
       
 
 
-  
-    <a href="https://github.com/dstackai/dstack/edit/master/docs/docs/reference/dstack.yml/gateway.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
-      
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
-    </a>
-  
-  
-
 
 <h1 id="gateway"><code>gateway</code><a class="headerlink" href="#gateway" title="Permanent link">&para;</a></h1>
 <p>The <code>gateway</code> configuration type allows creating and updating <a href="../../../concepts/gateways/">gateways</a>.</p>
 <h2 id="root-reference">Root reference<a class="headerlink" href="#root-reference" title="Permanent link">&para;</a></h2>
-<h1 id="schema-dstack_internalcoremodelsgatewaysgatewayconfiguration">SCHEMA# dstack._internal.core.models.gateways.GatewayConfiguration<a class="headerlink" href="#schema-dstack_internalcoremodelsgatewaysgatewayconfiguration" title="Permanent link">&para;</a></h1>
-<div class="highlight"><pre><span></span><code>overrides:
-  show_root_heading: false
-  type:
-    required: true
-</code></pre></div>
+<h6 class="reference-item" id="name"><code>name</code> - (Optional) The gateway name.<a class="headerlink" href="#name" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="default"><code>default</code> - (Optional) Make the gateway default.<a class="headerlink" href="#default" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="backend"><code>backend</code> -  The gateway backend.<a class="headerlink" href="#backend" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="region"><code>region</code> -  The gateway region.<a class="headerlink" href="#region" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="domain"><code>domain</code> - (Optional) The gateway domain, e.g. <code>example.com</code>.<a class="headerlink" href="#domain" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="public_ip"><code>public_ip</code> - (Optional) Allocate public IP for the gateway. Defaults to <code>True</code>.<a class="headerlink" href="#public_ip" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="_certificate"><a href="#certificate"><code>certificate</code></a> - (Optional) The SSL certificate configuration. Defaults to <code>type: lets-encrypt</code>.<a class="headerlink" href="#_certificate" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="tags"><code>tags</code> - (Optional) The custom tags to associate with the gateway. The tags are also propagated to the underlying backend resources. If there is a conflict with backend-level tags, does not override them.<a class="headerlink" href="#tags" title="Permanent link">&para;</a></h6>
 <h3 id="certificate"><code>certificate</code><a class="headerlink" href="#certificate" title="Permanent link">&para;</a></h3>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="lets-encrypt" name="__tabbed_1" type="radio" /><input id="acm" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="lets-encrypt">Let's encrypt</label><label for="acm">ACM</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<h1 id="schema-dstack_internalcoremodelsgatewaysletsencryptgatewaycertificate">SCHEMA# dstack._internal.core.models.gateways.LetsEncryptGatewayCertificate<a class="headerlink" href="#schema-dstack_internalcoremodelsgatewaysletsencryptgatewaycertificate" title="Permanent link">&para;</a></h1>
-<div class="highlight"><pre><span></span><code>overrides:
-  show_root_heading: false
-  type:
-    required: true
-</code></pre></div>
+<h6 class="reference-item" id="type"><code>type</code> -  Automatic certificates by Let's Encrypt. Must be <code>lets-encrypt</code>.<a class="headerlink" href="#type" title="Permanent link">&para;</a></h6>
 </div>
 <div class="tabbed-block">
-<h1 id="schema-dstack_internalcoremodelsgatewaysacmgatewaycertificate">SCHEMA# dstack._internal.core.models.gateways.ACMGatewayCertificate<a class="headerlink" href="#schema-dstack_internalcoremodelsgatewaysacmgatewaycertificate" title="Permanent link">&para;</a></h1>
-<div class="highlight"><pre><span></span><code>overrides:
-  show_root_heading: false
-  type:
-    required: true
-</code></pre></div>
+<h6 class="reference-item" id="type"><code>type</code> -  Certificates by AWS Certificate Manager (ACM). Must be <code>acm</code>.<a class="headerlink" href="#type" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="arn"><code>arn</code> -  The ARN of the wildcard ACM certificate for the domain.<a class="headerlink" href="#arn" title="Permanent link">&para;</a></h6>
 </div>
 </div>
 </div>

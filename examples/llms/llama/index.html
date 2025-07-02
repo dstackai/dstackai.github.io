@@ -25,7 +25,7 @@
     
     
       
-        <title>Index - dstack</title>
+        <title>Llama - dstack</title>
       
     
     
@@ -85,7 +85,7 @@
     
   
 <meta property="og:type" content="website" />
-<meta property="og:title" content="Index - dstack" />
+<meta property="og:title" content="Llama - dstack" />
 <meta property="og:description" content="dstack is an open-source AI container orchestration engine working with any cloud or data center." />
 <meta property="og:image" content="https://dstack.ai/assets/images/social/examples/llms/llama/index.png" />
 <meta property="og:image:type" content="image/png" />
@@ -93,7 +93,7 @@
 <meta property="og:image:height" content="630" />
 <meta property="og:url" content="https://dstack.ai/examples/llms/llama/" />
 <meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter.title" content="Index - dstack" />
+<meta property="twitter.title" content="Llama - dstack" />
 <meta property="twitter:description" content="dstack is an open-source AI container orchestration engine working with any cloud or data center." />
 <meta property="twitter:image" content="https://dstack.ai/assets/images/social/examples/llms/llama/index.png" />
 </head>
@@ -113,6 +113,11 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
+      
+        
+        <a href="#llama" class="md-skip">
+          Skip to content
+        </a>
       
     </div>
     <div data-md-component="announce">
@@ -161,7 +166,7 @@ Support dstack with a ⭐ on
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Index
+              Llama
             
           </span>
         </div>
@@ -3810,6 +3815,158 @@ Support dstack with a ⭐ on
   
   
   
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#deployment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Deployment
+        </span>
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Deployment">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#amd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          AMD
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nvidia" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          NVIDIA
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#memory-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Memory requirements
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#running-a-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Running a configuration
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fine-tuning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Fine-tuning
+        </span>
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Fine-tuning">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#memory-requirements_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Memory requirements
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-a-configuration_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Running a configuration
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#source-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Source code
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#whats-next" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          What's next?
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
           </div>
@@ -3835,18 +3992,336 @@ Support dstack with a ⭐ on
       
 
 
-  
-    <a href="https://github.com/dstackai/dstack/edit/master/docs/examples/llms/llama/index.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
-      
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
-    </a>
-  
-  
+
+<h1 id="llama">Llama<a class="headerlink" href="#llama" title="Permanent link">&para;</a></h1>
+<p>This example walks you through how to deploy Llama 4 Scout model with <code>dstack</code>.</p>
+<details class="info">
+<summary>Prerequisites</summary>
+<p>Once <code>dstack</code> is <a href="https://dstack.ai/docs/installation">installed</a>, go ahead clone the repo, and run <code>dstack init</code>.</p>
+<div class="termy">
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/dstackai/dstack
+$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>dstack
+$<span class="w"> </span>dstack<span class="w"> </span>init
+</code></pre></div>
+</div>
+</details>
+<h2 id="deployment">Deployment<a class="headerlink" href="#deployment" title="Permanent link">&para;</a></h2>
+<h3 id="amd">AMD<a class="headerlink" href="#amd" title="Permanent link">&para;</a></h3>
+<p>Here's an example of a service that deploys 
+<a href="https://huggingface.co/meta-llama/Llama-4-Scout-17B-16E-Instruct" target="_blank"><code>Llama-4-Scout-17B-16E-Instruct</code> <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> 
+using <a href="https://github.com/vllm-project/vllm" target="_blank">vLLM <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> 
+with AMD <code>MI300X</code> GPUs.</p>
+<div editor-title="examples/llms/llama/vllm/amd/.dstack.yml">
+
+<div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service</span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">llama4-scout</span>
+
+<span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rocm/vllm-dev:llama4-20250407</span>
+<span class="nt">env</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HF_TOKEN</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MODEL_ID=meta-llama/Llama-4-Scout-17B-16E-Instruct</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VLLM_WORKER_MULTIPROC_METHOD=spawn</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VLLM_USE_MODELSCOPE=False</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VLLM_USE_TRITON_FLASH_ATTN=0</span><span class="w"> </span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MAX_MODEL_LEN=256000</span>
+
+<span class="nt">commands</span><span class="p">:</span>
+<span class="w">   </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">     </span><span class="no">vllm serve $MODEL_ID \</span>
+<span class="w">       </span><span class="no">--tensor-parallel-size $DSTACK_GPUS_NUM \</span>
+<span class="w">       </span><span class="no">--max-model-len $MAX_MODEL_LEN \</span>
+<span class="w">       </span><span class="no">--kv-cache-dtype fp8 \</span>
+<span class="w">       </span><span class="no">--max-num-seqs 64 \</span>
+<span class="w">       </span><span class="no">--override-generation-config=&#39;{&quot;attn_temperature_tuning&quot;: true}&#39;</span>
 
 
-  <h1>Index</h1>
+<span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8000</span>
+<span class="c1"># Register the model</span>
+<span class="nt">model</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">meta-llama/Llama-4-Scout-17B-16E-Instruct</span>
+
+<span class="nt">resources</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Mi300x:2</span>
+<span class="w">  </span><span class="nt">disk</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">500GB..</span>
+</code></pre></div>
+</div>
+
+<h3 id="nvidia">NVIDIA<a class="headerlink" href="#nvidia" title="Permanent link">&para;</a></h3>
+<p>Here's an example of a service that deploys 
+<a href="https://huggingface.co/meta-llama/Llama-4-Scout-17B-16E-Instruct" target="_blank"><code>Llama-4-Scout-17B-16E-Instruct</code> <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> 
+using <a href="https://github.com/sgl-project/sglang" target="_blank">SGLang <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> and <a href="https://github.com/vllm-project/vllm" target="_blank">vLLM <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> 
+with NVIDIA <code>H200</code> GPUs.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="sglang" name="__tabbed_1" type="radio" /><input id="vllm" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="sglang">SGLang</label><label for="vllm">vLLM</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div editor-title="examples/llms/llama/sglang/nvidia/.dstack.yml">
+<p><div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service</span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">llama4-scout</span>
+
+<span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">lmsysorg/sglang</span>
+<span class="nt">env</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HF_TOKEN</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MODEL_ID=meta-llama/Llama-4-Scout-17B-16E-Instruct</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CONTEXT_LEN=256000</span>
+<span class="nt">commands</span><span class="p">:</span>
+<span class="w">   </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python3 -m sglang.launch_server</span>
+<span class="w">       </span><span class="l l-Scalar l-Scalar-Plain">--model-path $MODEL_ID</span>
+<span class="w">       </span><span class="l l-Scalar l-Scalar-Plain">--tp $DSTACK_GPUS_NUM</span>
+<span class="w">       </span><span class="l l-Scalar l-Scalar-Plain">--context-length $CONTEXT_LEN</span>
+<span class="w">       </span><span class="l l-Scalar l-Scalar-Plain">--kv-cache-dtype fp8_e5m2</span>
+<span class="w">       </span><span class="l l-Scalar l-Scalar-Plain">--port 8000</span>
+
+<span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8000</span>
+<span class="c1">## Register the model</span>
+<span class="nt">model</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">meta-llama/Llama-4-Scout-17B-16E-Instruct</span>
+
+<span class="nt">resources</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">H200:2</span>
+<span class="w">  </span><span class="nt">disk</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">500GB..</span>
+</code></pre></div>
+</div></p>
+</div>
+<div class="tabbed-block">
+<div editor-title="examples/llms/llama/vllm/nvidia/.dstack.yml">
+<p><div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service</span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">llama4-scout</span>
+
+<span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vllm/vllm-openai</span>
+<span class="nt">env</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HF_TOKEN</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MODEL_ID=meta-llama/Llama-4-Scout-17B-16E-Instruct</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VLLM_DISABLE_COMPILE_CACHE=1</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MAX_MODEL_LEN=256000</span>
+<span class="nt">commands</span><span class="p">:</span>
+<span class="w">   </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">     </span><span class="no">vllm serve $MODEL_ID \</span>
+<span class="w">       </span><span class="no">--tensor-parallel-size $DSTACK_GPUS_NUM \</span>
+<span class="w">       </span><span class="no">--max-model-len $MAX_MODEL_LEN \</span>
+<span class="w">       </span><span class="no">--kv-cache-dtype fp8 \</span>
+<span class="w">       </span><span class="no">--override-generation-config=&#39;{&quot;attn_temperature_tuning&quot;: true}&#39;</span>
+
+<span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8000</span>
+<span class="c1"># Register the model</span>
+<span class="nt">model</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">meta-llama/Llama-4-Scout-17B-16E-Instruct</span>
+
+<span class="nt">resources</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">H200:2</span>
+<span class="w">  </span><span class="nt">disk</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">500GB..</span>
+</code></pre></div>
+</div></p>
+</div>
+</div>
+</div>
+<div class="admonition info">
+<p class="admonition-title">NOTE:</p>
+<p>With vLLM, add <code>--override-generation-config='{"attn_temperature_tuning": true}'</code> to 
+improve accuracy for <a href="https://blog.vllm.ai/2025/04/05/llama4.html" target="_blank">contexts longer than 32K tokens <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>.</p>
+</div>
+<h3 id="memory-requirements">Memory requirements<a class="headerlink" href="#memory-requirements" title="Permanent link">&para;</a></h3>
+<p>Below are the approximate memory requirements for loading the model. 
+This excludes memory for the model context and CUDA kernel reservations.</p>
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th>Size</th>
+<th>FP16</th>
+<th>FP8</th>
+<th>INT4</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Behemoth</code></td>
+<td><strong>2T</strong></td>
+<td>4TB</td>
+<td>2TB</td>
+<td>1TB</td>
+</tr>
+<tr>
+<td><code>Maverick</code></td>
+<td><strong>400B</strong></td>
+<td>800GB</td>
+<td>200GB</td>
+<td>100GB</td>
+</tr>
+<tr>
+<td><code>Scout</code></td>
+<td><strong>109B</strong></td>
+<td>218GB</td>
+<td>109GB</td>
+<td>54.5GB</td>
+</tr>
+</tbody>
+</table>
+<h3 id="running-a-configuration">Running a configuration<a class="headerlink" href="#running-a-configuration" title="Permanent link">&para;</a></h3>
+<p>To run a configuration, use the <a href="https://dstack.ai/docs/reference/cli/dstack/apply.md"><code>dstack apply</code></a> command.</p>
+<div class="termy">
+
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nv">HF_TOKEN</span><span class="o">=</span>...
+$<span class="w"> </span>dstack<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>examples/llms/llama/sglang/nvidia/.dstack.yml
+
+<span class="w"> </span><span class="c1">#  BACKEND  REGION     RESOURCES                      SPOT PRICE   </span>
+<span class="w"> </span><span class="m">1</span><span class="w">  </span>vastai<span class="w">   </span>is-iceland<span class="w"> </span>48xCPU,<span class="w"> </span>128GB,<span class="w"> </span>2xH200<span class="w"> </span><span class="o">(</span>140GB<span class="o">)</span><span class="w">  </span>no<span class="w">   </span><span class="nv">$7</span>.87<span class="w">   </span>
+<span class="w"> </span><span class="m">2</span><span class="w">  </span>runpod<span class="w">   </span>EU-SE-1<span class="w">    </span>40xCPU,<span class="w"> </span>128GB,<span class="w"> </span>2xH200<span class="w"> </span><span class="o">(</span>140GB<span class="o">)</span><span class="w">  </span>no<span class="w">   </span><span class="nv">$7</span>.98<span class="w">  </span>
 
 
+Submit<span class="w"> </span>the<span class="w"> </span>run<span class="w"> </span>llama4-scout?<span class="w"> </span><span class="o">[</span>y/n<span class="o">]</span>:<span class="w"> </span>y
+
+Provisioning...
+---&gt;<span class="w"> </span><span class="m">100</span>%
+</code></pre></div>
+
+</div>
+
+<p>Once the service is up, it will be available via the service endpoint
+at <code>&lt;dstack server URL&gt;/proxy/services/&lt;project name&gt;/&lt;run name&gt;/</code>.</p>
+<div class="termy">
+
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>http://127.0.0.1:3000/proxy/models/main/chat/completions<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-X<span class="w"> </span>POST<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-H<span class="w"> </span><span class="s1">&#39;Authorization: Bearer &amp;lt;dstack token&amp;gt;&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-H<span class="w"> </span><span class="s1">&#39;Content-Type: application/json&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-d<span class="w"> </span><span class="s1">&#39;{</span>
+<span class="s1">      &quot;model&quot;: &quot;meta-llama/Llama-4-Scout-17B-16E-Instruct&quot;,</span>
+<span class="s1">      &quot;messages&quot;: [</span>
+<span class="s1">        {</span>
+<span class="s1">          &quot;role&quot;: &quot;system&quot;,</span>
+<span class="s1">          &quot;content&quot;: &quot;You are a helpful assistant.&quot;</span>
+<span class="s1">        },</span>
+<span class="s1">        {</span>
+<span class="s1">          &quot;role&quot;: &quot;user&quot;,</span>
+<span class="s1">          &quot;content&quot;: &quot;What is Deep Learning?&quot;</span>
+<span class="s1">        }</span>
+<span class="s1">      ],</span>
+<span class="s1">      &quot;stream&quot;: true,</span>
+<span class="s1">      &quot;max_tokens&quot;: 512</span>
+<span class="s1">    }&#39;</span>
+</code></pre></div>
+
+</div>
+
+<p>When a <a href="https://dstack.ai/docs/concepts/gateways.md">gateway</a> is configured, the service endpoint 
+is available at <code>https://&lt;run name&gt;.&lt;gateway domain&gt;/</code>.</p>
+<h2 id="fine-tuning">Fine-tuning<a class="headerlink" href="#fine-tuning" title="Permanent link">&para;</a></h2>
+<p>Here's and example of FSDP and QLoRA fine-tuning of 4-bit Quantized <a href="https://huggingface.co/axolotl-quants/Llama-4-Scout-17B-16E-Linearized-bnb-nf4-bf16">Llama-4-Scout-17B-16E <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> on 2xH100 NVIDIA GPUs using <a href="https://github.com/OpenAccess-AI-Collective/axolotl" target="_blank">Axolotl <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a></p>
+<div editor-title="examples/single-node-training/axolotl/.dstack.yml">
+
+<div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">task</span>
+<span class="c1"># The name is optional, if not specified, generated randomly</span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">axolotl-nvidia-llama-scout-train</span>
+
+<span class="c1"># Using the official Axolotl&#39;s Docker image</span>
+<span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">axolotlai/axolotl:main-latest</span>
+
+<span class="c1"># Required environment variables</span>
+<span class="nt">env</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HF_TOKEN</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">WANDB_API_KEY</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">WANDB_PROJECT</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">WANDB_NAME=axolotl-nvidia-llama-scout-train</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HUB_MODEL_ID</span>
+<span class="c1"># Commands of the task</span>
+<span class="nt">commands</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">wget https://raw.githubusercontent.com/axolotl-ai-cloud/axolotl/main/examples/llama-4/scout-qlora-fsdp1.yaml</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">axolotl train scout-qlora-fsdp1.yaml</span><span class="w"> </span>
+<span class="w">            </span><span class="l l-Scalar l-Scalar-Plain">--wandb-project $WANDB_PROJECT</span><span class="w"> </span>
+<span class="w">            </span><span class="l l-Scalar l-Scalar-Plain">--wandb-name $WANDB_NAME</span><span class="w"> </span>
+<span class="w">            </span><span class="l l-Scalar l-Scalar-Plain">--hub-model-id $HUB_MODEL_ID</span>
+
+<span class="nt">resources</span><span class="p">:</span>
+<span class="w">  </span><span class="c1"># Two GPU (required by FSDP)</span>
+<span class="w">  </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">H100:2</span>
+<span class="w">  </span><span class="c1"># Shared memory size for inter-process communication</span>
+<span class="w">  </span><span class="nt">shm_size</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">24GB</span>
+<span class="w">  </span><span class="nt">disk</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">500GB..</span>
+</code></pre></div>
+</div>
+
+<p>The task uses Axolotl's Docker image, where Axolotl is already pre-installed.</p>
+<h3 id="memory-requirements_1">Memory requirements<a class="headerlink" href="#memory-requirements_1" title="Permanent link">&para;</a></h3>
+<p>Below are the approximate memory requirements for loading the model. 
+This excludes memory for the model context and CUDA kernel reservations.</p>
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th>Size</th>
+<th>Full fine-tuning</th>
+<th>LoRA</th>
+<th>QLoRA</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Behemoth</code></td>
+<td><strong>2T</strong></td>
+<td>32TB</td>
+<td>4.3TB</td>
+<td>1.3TB</td>
+</tr>
+<tr>
+<td><code>Maverick</code></td>
+<td><strong>400B</strong></td>
+<td>6.5TB</td>
+<td>864GB</td>
+<td>264GB</td>
+</tr>
+<tr>
+<td><code>Scout</code></td>
+<td><strong>109B</strong></td>
+<td>1.75TB</td>
+<td>236GB</td>
+<td>72GB</td>
+</tr>
+</tbody>
+</table>
+<p>The memory estimates assume FP16 precision for model weights, with low-rank adaptation (LoRA/QLoRA) layers comprising 1% of the total model parameters.</p>
+<table>
+<thead>
+<tr>
+<th>Fine-tuning type</th>
+<th>Calculation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Full fine-tuning</td>
+<td>2T × 16 bytes = 32TB</td>
+</tr>
+<tr>
+<td>LoRA</td>
+<td>2T × 2 bytes + 1% of 2T × 16 bytes = 4.3TB</td>
+</tr>
+<tr>
+<td>QLoRA(4-bit)</td>
+<td>2T × 0.5 bytes + 1% of 2T × 16 bytes = 1.3TB</td>
+</tr>
+</tbody>
+</table>
+<h2 id="running-a-configuration_1">Running a configuration<a class="headerlink" href="#running-a-configuration_1" title="Permanent link">&para;</a></h2>
+<p>Once the configuration is ready, run <code>dstack apply -f &lt;configuration file&gt;</code>, and <code>dstack</code> will automatically provision the
+cloud resources and run the configuration.</p>
+<div class="termy">
+
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nv">HF_TOKEN</span><span class="o">=</span>...
+$<span class="w"> </span><span class="nv">WANDB_API_KEY</span><span class="o">=</span>...
+$<span class="w"> </span><span class="nv">WANDB_PROJECT</span><span class="o">=</span>...
+$<span class="w"> </span><span class="nv">WANDB_NAME</span><span class="o">=</span>axolotl-nvidia-llama-scout-train
+$<span class="w"> </span><span class="nv">HUB_MODEL_ID</span><span class="o">=</span>...
+$<span class="w"> </span>dstack<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>examples/single-node-training/axolotl/.dstack.yml
+</code></pre></div>
+
+</div>
+
+<h2 id="source-code">Source code<a class="headerlink" href="#source-code" title="Permanent link">&para;</a></h2>
+<p>The source-code for deployment examples can be found in 
+<a href="https://github.com/dstackai/dstack/blob/master/examples/llms/llama"><code>examples/llms/llama</code> <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> and the source-code for the finetuning example can be found in <a href="https://github.com/dstackai/dstack/blob/master/examples/single-node-training/axolotl" target="_blank"><code>examples/single-node-training/axolotl</code> <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>.</p>
+<h2 id="whats-next">What's next?<a class="headerlink" href="#whats-next" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Check <a href="https://dstack.ai/docs/dev-environments">dev environments</a>, <a href="https://dstack.ai/docs/tasks">tasks</a>, 
+   <a href="https://dstack.ai/docs/services">services</a>, and <a href="https://dstack.ai/docs/protips">protips</a>.</li>
+<li>Browse <a href="https://github.com/sgl-project/sglang/blob/main/docs/references/llama4.md">Llama 4 with SGLang <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>, <a href="https://blog.vllm.ai/2025/04/05/llama4.html">Llama 4 with vLLM <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>, <a href="https://rocm.blogs.amd.com/artificial-intelligence/llama4-day-0-support/README.html">Llama 4 with AMD <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> and <a href="https://github.com/OpenAccess-AI-Collective/axolotl" target="_blank">Axolotl <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>.</li>
+</ol>
 
 
 

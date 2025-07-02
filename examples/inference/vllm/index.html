@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="dstack is an open-source AI container orchestration engine working with any cloud or data center.">
+        <meta name="description" content="This example shows how to deploy Llama 3.1 to any cloud or on-premises environment using vLLM and dstack.">
       
       
         <meta name="author" content="dstack GmbH">
@@ -90,7 +90,7 @@
   
 <meta property="og:type" content="website" />
 <meta property="og:title" content="vLLM - dstack" />
-<meta property="og:description" content="dstack is an open-source AI container orchestration engine working with any cloud or data center." />
+<meta property="og:description" content="This example shows how to deploy Llama 3.1 to any cloud or on-premises environment using vLLM and dstack." />
 <meta property="og:image" content="https://dstack.ai/assets/images/social/examples/inference/vllm/index.png" />
 <meta property="og:image:type" content="image/png" />
 <meta property="og:image:width" content="1200" />
@@ -98,7 +98,7 @@
 <meta property="og:url" content="https://dstack.ai/examples/inference/vllm/" />
 <meta property="twitter:card" content="summary_large_image" />
 <meta property="twitter.title" content="vLLM - dstack" />
-<meta property="twitter:description" content="dstack is an open-source AI container orchestration engine working with any cloud or data center." />
+<meta property="twitter:description" content="This example shows how to deploy Llama 3.1 to any cloud or on-premises environment using vLLM and dstack." />
 <meta property="twitter:image" content="https://dstack.ai/assets/images/social/examples/inference/vllm/index.png" />
 </head>
   
@@ -117,6 +117,11 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
+      
+        
+        <a href="#vllm" class="md-skip">
+          Skip to content
+        </a>
       
     </div>
     <div data-md-component="announce">
@@ -2873,6 +2878,26 @@ Support dstack with a ⭐ on
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    vLLM
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
         
@@ -2890,6 +2915,83 @@ Support dstack with a ⭐ on
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#deployment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Deployment
+        </span>
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Deployment">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#running-a-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Running a configuration
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#source-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Source code
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#whats-next" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          What's next?
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -3846,6 +3948,74 @@ Support dstack with a ⭐ on
   
   
   
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#deployment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Deployment
+        </span>
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Deployment">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#running-a-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Running a configuration
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#source-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Source code
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#whats-next" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          What's next?
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
           </div>
@@ -3911,24 +4081,121 @@ Support dstack with a ⭐ on
       
 
 
+
+<h1 id="vllm">vLLM<a class="headerlink" href="#vllm" title="Permanent link">&para;</a></h1>
+<p>This example shows how to deploy Llama 3.1 8B with <code>dstack</code> using <a href="https://docs.vllm.ai/en/latest/" target="_blank">vLLM <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>.</p>
+<details class="info">
+<summary>Prerequisites</summary>
+<p>Once <code>dstack</code> is <a href="https://dstack.ai/docs/installation">installed</a>, go ahead clone the repo, and run <code>dstack init</code>.</p>
+<div class="termy">
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/dstackai/dstack
+$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>dstack
+$<span class="w"> </span>dstack<span class="w"> </span>init
+</code></pre></div>
+</div>
+</details>
+<h2 id="deployment">Deployment<a class="headerlink" href="#deployment" title="Permanent link">&para;</a></h2>
+<p>Here's an example of a service that deploys Llama 3.1 8B using vLLM.</p>
+<div editor-title="examples/inference/vllm/.dstack.yml">
+
+<div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service</span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">llama31</span>
+
+<span class="nt">python</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;3.11&quot;</span>
+<span class="nt">env</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HF_TOKEN</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MODEL_ID=meta-llama/Meta-Llama-3.1-8B-Instruct</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MAX_MODEL_LEN=4096</span>
+<span class="nt">commands</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip install vllm</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vllm serve $MODEL_ID</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">--max-model-len $MAX_MODEL_LEN</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">--tensor-parallel-size $DSTACK_GPUS_NUM</span>
+<span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8000</span>
+<span class="c1"># Register the model</span>
+<span class="nt">model</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">meta-llama/Meta-Llama-3.1-8B-Instruct</span>
+
+<span class="c1"># Uncomment to leverage spot instances</span>
+<span class="c1">#spot_policy: auto</span>
+
+<span class="c1"># Uncomment to cache downloaded models</span>
+<span class="c1">#volumes:</span>
+<span class="c1">#  - /root/.cache/huggingface/hub:/root/.cache/huggingface/hub</span>
+
+<span class="nt">resources</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">24GB</span>
+<span class="w">  </span><span class="c1"># Uncomment if using multiple GPUs</span>
+<span class="w">  </span><span class="c1">#shm_size: 24GB</span>
+</code></pre></div>
+
+</div>
+
+<h3 id="running-a-configuration">Running a configuration<a class="headerlink" href="#running-a-configuration" title="Permanent link">&para;</a></h3>
+<p>To run a configuration, use the <a href="https://dstack.ai/docs/reference/cli/dstack/apply.md"><code>dstack apply</code></a> command. </p>
+<div class="termy">
+
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>dstack<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>examples/inference/vllm/.dstack.yml
+
+<span class="w"> </span><span class="c1">#  BACKEND  REGION    RESOURCES                    SPOT  PRICE     </span>
+<span class="w"> </span><span class="m">1</span><span class="w">  </span>runpod<span class="w">   </span>CA-MTL-1<span class="w">  </span>18xCPU,<span class="w"> </span>100GB,<span class="w"> </span>A5000:24GB<span class="w">    </span>yes<span class="w">   </span><span class="nv">$0</span>.12
+<span class="w"> </span><span class="m">2</span><span class="w">  </span>runpod<span class="w">   </span>EU-SE-1<span class="w">   </span>18xCPU,<span class="w"> </span>100GB,<span class="w"> </span>A5000:24GB<span class="w">    </span>yes<span class="w">   </span><span class="nv">$0</span>.12
+<span class="w"> </span><span class="m">3</span><span class="w">  </span>gcp<span class="w">      </span>us-west4<span class="w">  </span>27xCPU,<span class="w"> </span>150GB,<span class="w"> </span>A5000:24GB:2<span class="w">  </span>yes<span class="w">   </span><span class="nv">$0</span>.23
+
+Submit<span class="w"> </span>a<span class="w"> </span>new<span class="w"> </span>run?<span class="w"> </span><span class="o">[</span>y/n<span class="o">]</span>:<span class="w"> </span>y
+
+Provisioning...
+---&gt;<span class="w"> </span><span class="m">100</span>%
+</code></pre></div>
+</div>
+
+<p>If no gateway is created, the model will be available via the OpenAI-compatible endpoint 
+at <code>&lt;dstack server URL&gt;/proxy/models/&lt;project name&gt;/</code>.</p>
+<div class="termy">
+
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>curl<span class="w"> </span>http://127.0.0.1:3000/proxy/models/main/chat/completions<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-X<span class="w"> </span>POST<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-H<span class="w"> </span><span class="s1">&#39;Authorization: Bearer &amp;lt;dstack token&amp;gt;&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-H<span class="w"> </span><span class="s1">&#39;Content-Type: application/json&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-d<span class="w"> </span><span class="s1">&#39;{</span>
+<span class="s1">      &quot;model&quot;: &quot;meta-llama/Meta-Llama-3.1-8B-Instruct&quot;,</span>
+<span class="s1">      &quot;messages&quot;: [</span>
+<span class="s1">        {</span>
+<span class="s1">          &quot;role&quot;: &quot;system&quot;,</span>
+<span class="s1">          &quot;content&quot;: &quot;You are a helpful assistant.&quot;</span>
+<span class="s1">        },</span>
+<span class="s1">        {</span>
+<span class="s1">          &quot;role&quot;: &quot;user&quot;,</span>
+<span class="s1">          &quot;content&quot;: &quot;What is Deep Learning?&quot;</span>
+<span class="s1">        }</span>
+<span class="s1">      ],</span>
+<span class="s1">      &quot;max_tokens&quot;: 128</span>
+<span class="s1">    }&#39;</span>
+</code></pre></div>
+
+</div>
+
+<p>When a <a href="https://dstack.ai/docs/concepts/gateways.md">gateway</a> is configured, the OpenAI-compatible endpoint 
+is available at <code>https://gateway.&lt;gateway domain&gt;/</code>.</p>
+<h2 id="source-code">Source code<a class="headerlink" href="#source-code" title="Permanent link">&para;</a></h2>
+<p>The source-code of this example can be found in 
+<a href="https://github.com/dstackai/dstack/blob/master/examples/inference/vllm"><code>examples/inference/vllm</code> <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>.</p>
+<h2 id="whats-next">What's next?<a class="headerlink" href="#whats-next" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Check <a href="https://dstack.ai/docs/services">services</a></li>
+<li>Browse the <a href="https://dstack.ai/examples/llms/llama31/">Llama 3.1</a>, <a href="https://dstack.ai/examples/inference/tgi/">TGI</a>
+   and <a href="https://dstack.ai/examples/inference/nim/">NIM</a> examples</li>
+<li>See also <a href="https://dstack.ai/examples/accelerators/amd/">AMD</a> and
+   <a href="https://dstack.ai/examples/accelerators/tpu/">TPU</a></li>
+</ol>
+
+
+
+
+
+
+
   
-    <a href="https://github.com/dstackai/dstack/edit/master/docs/examples/inference/vllm/index.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
-      
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
-    </a>
   
-  
-
-
-  <h1>vLLM</h1>
-
-
-
-
-
-
-
-
 
 
 

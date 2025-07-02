@@ -3943,14 +3943,6 @@ Support dstack with a ⭐ on
       
 
 
-  
-    <a href="https://github.com/dstackai/dstack/edit/master/docs/docs/reference/plugins/rest_plugin/index.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
-      
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
-    </a>
-  
-  
-
 
   <h1>REST Plugin API</h1>
 
@@ -3980,7 +3972,16 @@ Support dstack with a ⭐ on
 </style>
 
 <p><br></br></p>
-<p>!! SWAGGER ERROR: File rest_plugin_openapi.json not found. !!</p>
+<p><link type="text/css" rel="stylesheet" href="https://unpkg.com/swagger-ui-dist@5/swagger-ui.css"></p>
+<div id="swagger-ui-2">
+</div>
+<script src="https://unpkg.com/swagger-ui-dist@5/swagger-ui-bundle.js" charset="UTF-8"></script>
+<script>
+    SwaggerUIBundle({
+      url: 'rest_plugin_openapi.json',
+      dom_id: '#swagger-ui-2',
+    })
+</script>
 
 
 

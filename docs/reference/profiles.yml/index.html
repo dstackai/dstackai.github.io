@@ -3850,6 +3850,17 @@ Support dstack with a ⭐ on
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#retry" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        retry
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -3875,14 +3886,6 @@ Support dstack with a ⭐ on
     
       
 
-
-  
-    <a href="https://github.com/dstackai/dstack/edit/master/docs/docs/reference/profiles.yml.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
-      
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
-    </a>
-  
-  
 
 
 <h1 id="profilesyml">profiles.yml<a class="headerlink" href="#profilesyml" title="Permanent link">&para;</a></h1>
@@ -3918,17 +3921,28 @@ via <code>--profile NAME</code> in <code>dstack apply</code>.</p>
 
 <p>The profile configuration supports many properties. See below.</p>
 <h3 id="root-reference">Root reference<a class="headerlink" href="#root-reference" title="Permanent link">&para;</a></h3>
-<h1 id="schema-dstack_internalcoremodelsprofilesprofile">SCHEMA# dstack._internal.core.models.profiles.Profile<a class="headerlink" href="#schema-dstack_internalcoremodelsprofilesprofile" title="Permanent link">&para;</a></h1>
-<div class="highlight"><pre><span></span><code>overrides:
-  show_root_heading: false
-  max_price:
-    type: &#39;Optional[float]&#39;
-</code></pre></div>
+<h6 class="reference-item" id="backends"><code>backends</code> - (Optional) The backends to consider for provisioning (e.g., <code>[aws, gcp]</code>).<a class="headerlink" href="#backends" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="regions"><code>regions</code> - (Optional) The regions to consider for provisioning (e.g., <code>[eu-west-1, us-west4, westeurope]</code>).<a class="headerlink" href="#regions" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="availability_zones"><code>availability_zones</code> - (Optional) The availability zones to consider for provisioning (e.g., <code>[eu-west-1a, us-west4-a]</code>).<a class="headerlink" href="#availability_zones" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="instance_types"><code>instance_types</code> - (Optional) The cloud-specific instance types to consider for provisioning (e.g., <code>[p3.8xlarge, n1-standard-4]</code>).<a class="headerlink" href="#instance_types" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="reservation"><code>reservation</code> - (Optional) The existing reservation to use for instance provisioning. Supports AWS Capacity Reservations and Capacity Blocks.<a class="headerlink" href="#reservation" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="spot_policy"><code>spot_policy</code> - (Optional) The policy for provisioning spot or on-demand instances: <code>spot</code>, <code>on-demand</code>, <code>auto</code>. Defaults to <code>on-demand</code>.<a class="headerlink" href="#spot_policy" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="_retry"><a href="#retry"><code>retry</code></a> - (Optional) The policy for resubmitting the run. Defaults to <code>false</code>.<a class="headerlink" href="#_retry" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="max_duration"><code>max_duration</code> - (Optional) The maximum duration of a run (e.g., <code>2h</code>, <code>1d</code>, etc). After it elapses, the run is automatically stopped. Use <code>off</code> for unlimited duration. Defaults to <code>off</code>.<a class="headerlink" href="#max_duration" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="stop_duration"><code>stop_duration</code> - (Optional) The maximum duration of a run graceful stopping. After it elapses, the run is automatically forced stopped. This includes force detaching volumes used by the run. Use <code>off</code> for unlimited duration. Defaults to <code>5m</code>.<a class="headerlink" href="#stop_duration" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="max_price"><code>max_price</code> - (Optional) The maximum instance price per hour, in dollars.<a class="headerlink" href="#max_price" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="creation_policy"><code>creation_policy</code> - (Optional) The policy for using instances from fleets: <code>reuse</code>, <code>reuse-or-create</code>. Defaults to <code>reuse-or-create</code>.<a class="headerlink" href="#creation_policy" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="idle_duration"><code>idle_duration</code> - (Optional) Time to wait before terminating idle instances. Defaults to <code>5m</code> for runs and <code>3d</code> for fleets. Use <code>off</code> for unlimited duration.<a class="headerlink" href="#idle_duration" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="_utilization_policy"><a href="#utilization_policy"><code>utilization_policy</code></a> - (Optional) Run termination policy based on utilization.<a class="headerlink" href="#_utilization_policy" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="startup_order"><code>startup_order</code> - (Optional) The order in which master and workers jobs are started: <code>any</code>, <code>master-first</code>, <code>workers-first</code>. Defaults to <code>any</code>.<a class="headerlink" href="#startup_order" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="stop_criteria"><code>stop_criteria</code> - (Optional) The criteria determining when a multi-node run should be considered finished: <code>all-done</code>, <code>master-done</code>. Defaults to <code>all-done</code>.<a class="headerlink" href="#stop_criteria" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="fleets"><code>fleets</code> - (Optional) The fleets considered for reuse.<a class="headerlink" href="#fleets" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="tags"><code>tags</code> - (Optional) The custom tags to associate with the resource. The tags are also propagated to the underlying backend resources. If there is a conflict with backend-level tags, does not override them.<a class="headerlink" href="#tags" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="name"><code>name</code> -  The name of the profile that can be passed as <code>--profile</code> to <code>dstack apply</code>.<a class="headerlink" href="#name" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="default"><code>default</code> - (Optional) If set to true, <code>dstack apply</code> will use this profile by default..<a class="headerlink" href="#default" title="Permanent link">&para;</a></h6>
 <h3 id="retry"><code>retry</code><a class="headerlink" href="#retry" title="Permanent link">&para;</a></h3>
-<h1 id="schema-dstack_internalcoremodelsprofilesprofileretry">SCHEMA# dstack._internal.core.models.profiles.ProfileRetry<a class="headerlink" href="#schema-dstack_internalcoremodelsprofilesprofileretry" title="Permanent link">&para;</a></h1>
-<div class="highlight"><pre><span></span><code>overrides:
-  show_root_heading: false
-</code></pre></div>
+<h6 class="reference-item" id="on_events"><code>on_events</code> - (Optional) The list of events that should be handled with retry. Supported events are <code>no-capacity</code>, <code>interruption</code>, <code>error</code>. Omit to retry on all events.<a class="headerlink" href="#on_events" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="duration"><code>duration</code> - (Optional) The maximum period of retrying the run, e.g., <code>4h</code> or <code>1d</code>.<a class="headerlink" href="#duration" title="Permanent link">&para;</a></h6>
 
 
 
