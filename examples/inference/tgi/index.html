@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="This example shows how to deploy Llama 4 Scout to any cloud or on-premises environment using HuggingFace TGI and dstack.">
+        <meta name="description" content="dstack is an open-source AI container orchestration engine working with any cloud or data center.">
       
       
         <meta name="author" content="dstack GmbH">
@@ -25,11 +25,11 @@
       
       
       <link rel="icon" href="../../../assets/images/dstack-fav-32.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14+insiders-4.53.16">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.15+insiders-4.53.16">
     
     
       
-        <title>HuggingFace TGI - dstack</title>
+        <title>TGI - dstack</title>
       
     
     
@@ -89,16 +89,16 @@
     
   
 <meta property="og:type" content="website" />
-<meta property="og:title" content="HuggingFace TGI - dstack" />
-<meta property="og:description" content="This example shows how to deploy Llama 4 Scout to any cloud or on-premises environment using HuggingFace TGI and dstack." />
+<meta property="og:title" content="TGI - dstack" />
+<meta property="og:description" content="dstack is an open-source AI container orchestration engine working with any cloud or data center." />
 <meta property="og:image" content="https://dstack.ai/assets/images/social/examples/inference/tgi/index.png" />
 <meta property="og:image:type" content="image/png" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
 <meta property="og:url" content="https://dstack.ai/examples/inference/tgi/" />
 <meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter.title" content="HuggingFace TGI - dstack" />
-<meta property="twitter:description" content="This example shows how to deploy Llama 4 Scout to any cloud or on-premises environment using HuggingFace TGI and dstack." />
+<meta property="twitter.title" content="TGI - dstack" />
+<meta property="twitter:description" content="dstack is an open-source AI container orchestration engine working with any cloud or data center." />
 <meta property="twitter:image" content="https://dstack.ai/assets/images/social/examples/inference/tgi/index.png" />
 </head>
   
@@ -117,11 +117,6 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
-      
-        
-        <a href="#huggingface-tgi" class="md-skip">
-          Skip to content
-        </a>
       
     </div>
     <div data-md-component="announce">
@@ -170,7 +165,7 @@ Support dstack with a ⭐ on
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              HuggingFace TGI
+              TGI
             
           </span>
         </div>
@@ -2906,26 +2901,6 @@ Support dstack with a ⭐ on
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    TGI
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
         
@@ -2943,83 +2918,6 @@ Support dstack with a ⭐ on
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#deployment" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        <span class="md-typeset">
-          Deployment
-        </span>
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Deployment">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#running-a-configuration" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        <span class="md-typeset">
-          Running a configuration
-        </span>
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#source-code" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        <span class="md-typeset">
-          Source code
-        </span>
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#whats-next" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        <span class="md-typeset">
-          What's next?
-        </span>
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
       
     </li>
   
@@ -3948,74 +3846,6 @@ Support dstack with a ⭐ on
   
   
   
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#deployment" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        <span class="md-typeset">
-          Deployment
-        </span>
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Deployment">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#running-a-configuration" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        <span class="md-typeset">
-          Running a configuration
-        </span>
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#source-code" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        <span class="md-typeset">
-          Source code
-        </span>
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#whats-next" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        <span class="md-typeset">
-          What's next?
-        </span>
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
   
 </nav>
           </div>
@@ -4081,123 +3911,24 @@ Support dstack with a ⭐ on
       
 
 
-
-<h1 id="huggingface-tgi">HuggingFace TGI<a class="headerlink" href="#huggingface-tgi" title="Permanent link">&para;</a></h1>
-<p>This example shows how to deploy Llama 4 Scout with <code>dstack</code> using <a href="https://huggingface.co/docs/text-generation-inference/en/index" target="_blank">HuggingFace TGI <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>.</p>
-<details class="info">
-<summary>Prerequisites</summary>
-<p>Once <code>dstack</code> is <a href="https://dstack.ai/docs/installation">installed</a>, go ahead clone the repo, and run <code>dstack init</code>.</p>
-<div class="termy">
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/dstackai/dstack
-$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>dstack
-$<span class="w"> </span>dstack<span class="w"> </span>init
-</code></pre></div>
-</div>
-</details>
-<h2 id="deployment">Deployment<a class="headerlink" href="#deployment" title="Permanent link">&para;</a></h2>
-<p>Here's an example of a service that deploys <a href="https://huggingface.co/meta-llama/Llama-4-Scout-17B-16E-Instruct" target="_blank"><code>Llama-4-Scout-17B-16E-Instruct</code> <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> using TGI.</p>
-<div editor-title="examples/inference/tgi/.dstack.yml">
-
-<div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service</span>
-<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">llama4-scout</span>
-
-<span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ghcr.io/huggingface/text-generation-inference:latest</span>
-
-<span class="nt">env</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HF_TOKEN</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MODEL_ID=meta-llama/Llama-4-Scout-17B-16E-Instruct</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MAX_INPUT_LENGTH=8192</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MAX_TOTAL_TOKENS=16384</span>
-<span class="w">  </span><span class="c1"># max_batch_prefill_tokens must be &gt;= max_input_tokens</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MAX_BATCH_PREFILL_TOKENS=8192</span>
-<span class="nt">commands</span><span class="p">:</span>
-<span class="w">   </span><span class="c1"># Activate the virtual environment at /usr/src/.venv/ </span>
-<span class="w">   </span><span class="c1"># as required by TGI&#39;s latest image.</span>
-<span class="w">   </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">. /usr/src/.venv/bin/activate</span>
-<span class="w">   </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NUM_SHARD=$DSTACK_GPUS_NUM text-generation-launcher</span>
-
-<span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">80</span>
-<span class="c1"># Register the model</span>
-<span class="nt">model</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">meta-llama/Llama-4-Scout-17B-16E-Instruct</span>
-
-<span class="c1"># Uncomment to leverage spot instances</span>
-<span class="c1">#spot_policy: auto</span>
-
-<span class="c1"># Uncomment to cache downloaded models</span>
-<span class="c1">#volumes:</span>
-<span class="c1">#  - /data:/data</span>
-
-<span class="nt">resources</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">H200:2</span>
-<span class="w">  </span><span class="nt">disk</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">500GB..</span>
-</code></pre></div>
-</div>
-
-<h3 id="running-a-configuration">Running a configuration<a class="headerlink" href="#running-a-configuration" title="Permanent link">&para;</a></h3>
-<p>To run a configuration, use the <a href="https://dstack.ai/docs/reference/cli/dstack/apply.md"><code>dstack apply</code></a> command. </p>
-<div class="termy">
-
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nv">HF_TOKEN</span><span class="o">=</span>...
-$<span class="w"> </span>dstack<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>examples/inference/tgi/.dstack.yml
-
-<span class="w"> </span><span class="c1">#  BACKEND  REGION     RESOURCES                      SPOT PRICE   </span>
-<span class="w"> </span><span class="m">1</span><span class="w">  </span>vastai<span class="w">   </span>is-iceland<span class="w"> </span>48xCPU,<span class="w"> </span>128GB,<span class="w"> </span>2xH200<span class="w"> </span><span class="o">(</span>140GB<span class="o">)</span><span class="w">  </span>no<span class="w">   </span><span class="nv">$7</span>.87<span class="w">   </span>
-<span class="w"> </span><span class="m">2</span><span class="w">  </span>runpod<span class="w">   </span>EU-SE-1<span class="w">    </span>40xCPU,<span class="w"> </span>128GB,<span class="w"> </span>2xH200<span class="w"> </span><span class="o">(</span>140GB<span class="o">)</span><span class="w">  </span>no<span class="w">   </span><span class="nv">$7</span>.98<span class="w"> </span>
-
-Submit<span class="w"> </span>the<span class="w"> </span>run<span class="w"> </span>llama4-scout?<span class="w"> </span><span class="o">[</span>y/n<span class="o">]</span>:<span class="w"> </span>y
-
-Provisioning...
----&gt;<span class="w"> </span><span class="m">100</span>%
-</code></pre></div>
-</div>
-
-<p>If no gateway is created, the model will be available via the OpenAI-compatible endpoint 
-at <code>&lt;dstack server URL&gt;/proxy/models/&lt;project name&gt;/</code>.</p>
-<div class="termy">
-
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>curl<span class="w"> </span>http://127.0.0.1:3000/proxy/models/main/chat/completions<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-X<span class="w"> </span>POST<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-H<span class="w"> </span><span class="s1">&#39;Authorization: Bearer &amp;lt;dstack token&amp;gt;&#39;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-H<span class="w"> </span><span class="s1">&#39;Content-Type: application/json&#39;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-d<span class="w"> </span><span class="s1">&#39;{</span>
-<span class="s1">      &quot;model&quot;: &quot;meta-llama/Llama-4-Scout-17B-16E-Instruct&quot;,</span>
-<span class="s1">      &quot;messages&quot;: [</span>
-<span class="s1">        {</span>
-<span class="s1">          &quot;role&quot;: &quot;system&quot;,</span>
-<span class="s1">          &quot;content&quot;: &quot;You are a helpful assistant.&quot;</span>
-<span class="s1">        },</span>
-<span class="s1">        {</span>
-<span class="s1">          &quot;role&quot;: &quot;user&quot;,</span>
-<span class="s1">          &quot;content&quot;: &quot;What is Deep Learning?&quot;</span>
-<span class="s1">        }</span>
-<span class="s1">      ],</span>
-<span class="s1">      &quot;max_tokens&quot;: 128</span>
-<span class="s1">    }&#39;</span>
-</code></pre></div>
-
-</div>
-
-<p>When a <a href="https://dstack.ai/docs/concepts/gateways.md">gateway</a> is configured, the OpenAI-compatible endpoint 
-is available at <code>https://gateway.&lt;gateway domain&gt;/</code>.</p>
-<h2 id="source-code">Source code<a class="headerlink" href="#source-code" title="Permanent link">&para;</a></h2>
-<p>The source-code of this example can be found in 
-<a href="https://github.com/dstackai/dstack/blob/master/examples/inference/tgi"><code>examples/inference/tgi</code> <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>.</p>
-<h2 id="whats-next">What's next?<a class="headerlink" href="#whats-next" title="Permanent link">&para;</a></h2>
-<ol>
-<li>Check <a href="https://dstack.ai/docs/services">services</a></li>
-<li>Browse the <a href="https://dstack.ai/examples/llms/llama/">Llama</a>, <a href="https://dstack.ai/examples/inference/vllm/">vLLM</a>, <a href="https://dstack.ai/examples/inference/sglang/">SgLang</a> and <a href="https://dstack.ai/examples/inference/nim/">NIM</a> examples</li>
-<li>See also <a href="https://dstack.ai/examples/accelerators/amd/">AMD</a> and
-   <a href="https://dstack.ai/examples/accelerators/tpu/">TPU</a></li>
-</ol>
-
-
-
-
-
-
-
+  
+    <a href="https://github.com/dstackai/dstack/edit/master/docs/examples/inference/tgi/index.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
+    </a>
   
   
+
+
+  <h1>TGI</h1>
+
+
+
+
+
+
+
+
 
 
 
@@ -4377,7 +4108,7 @@ is available at <code>https://gateway.&lt;gateway domain&gt;/</code>.</p>
 <script src="/assets/javascripts/termynal.js" data-termynal-container="#termynal"></script>
 <script async src="https://tally.so/widgets/embed.js"></script>
 
-      <script src="../../../assets/javascripts/bundle.eb438620.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.5c86578b.min.js"></script>
       
         <script src="../../../assets/javascripts/extra.js"></script>
       

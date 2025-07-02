@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../../assets/images/dstack-fav-32.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14+insiders-4.53.16">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.15+insiders-4.53.16">
     
     
       
@@ -117,11 +117,6 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
-      
-        
-        <a href="#sglang" class="md-skip">
-          Skip to content
-        </a>
       
     </div>
     <div data-md-component="announce">
@@ -2850,26 +2845,6 @@ Support dstack with a ⭐ on
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    SGLang
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
         
@@ -2887,83 +2862,6 @@ Support dstack with a ⭐ on
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#deployment" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        <span class="md-typeset">
-          Deployment
-        </span>
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Deployment">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#applying-the-configuration" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        <span class="md-typeset">
-          Applying the configuration
-        </span>
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#source-code" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        <span class="md-typeset">
-          Source code
-        </span>
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#whats-next" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        <span class="md-typeset">
-          What's next?
-        </span>
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
       
     </li>
   
@@ -3948,74 +3846,6 @@ Support dstack with a ⭐ on
   
   
   
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#deployment" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        <span class="md-typeset">
-          Deployment
-        </span>
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Deployment">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#applying-the-configuration" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        <span class="md-typeset">
-          Applying the configuration
-        </span>
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#source-code" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        <span class="md-typeset">
-          Source code
-        </span>
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#whats-next" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        <span class="md-typeset">
-          What's next?
-        </span>
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
   
 </nav>
           </div>
@@ -4081,124 +3911,18 @@ Support dstack with a ⭐ on
       
 
 
+  
+    <a href="https://github.com/dstackai/dstack/edit/master/docs/examples/inference/sglang/index.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
+    </a>
+  
+  
 
-<h1 id="sglang">SGLang<a class="headerlink" href="#sglang" title="Permanent link">&para;</a></h1>
-<p>This example shows how to deploy DeepSeek-R1-Distill-Llama 8B and 70B using <a href="https://github.com/sgl-project/sglang" target="_blank">SGLang <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> and <code>dstack</code>.</p>
-<details class="info">
-<summary>Prerequisites</summary>
-<p>Once <code>dstack</code> is <a href="https://dstack.ai/docs/installation">installed</a>, go ahead clone the repo, and run <code>dstack init</code>.</p>
-<div class="termy">
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/dstackai/dstack
-$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>dstack
-$<span class="w"> </span>dstack<span class="w"> </span>init
-</code></pre></div>
-</div>
-</details>
-<h2 id="deployment">Deployment<a class="headerlink" href="#deployment" title="Permanent link">&para;</a></h2>
-<p>Here's an example of a service that deploys DeepSeek-R1-Distill-Llama 8B and 70B using SgLang.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="amd" name="__tabbed_1" type="radio" /><input id="nvidia" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="amd">AMD</label><label for="nvidia">NVIDIA</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div editor-title="examples/inference/sglang/amd/.dstack.yml">
-<p><div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service</span>
-<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">deepseek-r1-amd</span>
 
-<span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">lmsysorg/sglang:v0.4.1.post4-rocm620</span>
-<span class="nt">env</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MODEL_ID=deepseek-ai/DeepSeek-R1-Distill-Llama-70B</span>
+  <h1>SGLang</h1>
 
-<span class="nt">commands</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python3 -m sglang.launch_server</span>
-<span class="w">     </span><span class="l l-Scalar l-Scalar-Plain">--model-path $MODEL_ID</span>
-<span class="w">     </span><span class="l l-Scalar l-Scalar-Plain">--port 8000</span>
-<span class="w">     </span><span class="l l-Scalar l-Scalar-Plain">--trust-remote-code</span>
 
-<span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8000</span>
-<span class="nt">model</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">deepseek-ai/DeepSeek-R1-Distill-Llama-70B</span>
-
-<span class="nt">resources</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MI300x</span>
-<span class="w">  </span><span class="nt">disk</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">300GB</span>
-</code></pre></div>
-</div></p>
-</div>
-<div class="tabbed-block">
-<div editor-title="examples/inference/sglang/nvidia/.dstack.yml">
-<p><div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service</span>
-<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">deepseek-r1-nvidia</span>
-
-<span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">lmsysorg/sglang:latest</span>
-<span class="nt">env</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MODEL_ID=deepseek-ai/DeepSeek-R1-Distill-Llama-8B</span>
-
-<span class="nt">commands</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python3 -m sglang.launch_server</span>
-<span class="w">     </span><span class="l l-Scalar l-Scalar-Plain">--model-path $MODEL_ID</span>
-<span class="w">     </span><span class="l l-Scalar l-Scalar-Plain">--port 8000</span>
-<span class="w">     </span><span class="l l-Scalar l-Scalar-Plain">--trust-remote-code</span>
-
-<span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8000</span>
-<span class="nt">model</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">deepseek-ai/DeepSeek-R1-Distill-Llama-8B</span>
-
-<span class="nt">resources</span><span class="p">:</span>
-<span class="w">   </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">24GB</span>
-</code></pre></div>
-</div></p>
-</div>
-</div>
-</div>
-<h3 id="applying-the-configuration">Applying the configuration<a class="headerlink" href="#applying-the-configuration" title="Permanent link">&para;</a></h3>
-<p>To run a configuration, use the <a href="https://dstack.ai/docs/reference/cli/dstack/apply.md"><code>dstack apply</code></a> command.</p>
-<div class="termy">
-
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>dstack<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>examples/llms/deepseek/sglang/amd/.dstack.yml
-
-<span class="w"> </span><span class="c1">#  BACKEND  REGION     RESOURCES                         SPOT  PRICE   </span>
-<span class="w"> </span><span class="m">1</span><span class="w">  </span>runpod<span class="w">   </span>EU-RO-1<span class="w">   </span>24xCPU,<span class="w"> </span>283GB,<span class="w"> </span>1xMI300X<span class="w"> </span><span class="o">(</span>192GB<span class="o">)</span><span class="w">    </span>no<span class="w">    </span><span class="nv">$2</span>.49<span class="w">  </span>
-
-Submit<span class="w"> </span>the<span class="w"> </span>run<span class="w"> </span>deepseek-r1-amd?<span class="w"> </span><span class="o">[</span>y/n<span class="o">]</span>:<span class="w"> </span>y
-
-Provisioning...
----&gt;<span class="w"> </span><span class="m">100</span>%
-</code></pre></div>
-</div>
-
-<p>Once the service is up, the model will be available via the OpenAI-compatible endpoint
-at <code>&lt;dstack server URL&gt;/proxy/models/&lt;project name&gt;/</code>.</p>
-<div class="termy">
-
-<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>http://127.0.0.1:3000/proxy/models/main/chat/completions<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-X<span class="w"> </span>POST<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-H<span class="w"> </span><span class="s1">&#39;Authorization: Bearer &amp;lt;dstack token&amp;gt;&#39;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-H<span class="w"> </span><span class="s1">&#39;Content-Type: application/json&#39;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-d<span class="w"> </span><span class="s1">&#39;{</span>
-<span class="s1">      &quot;model&quot;: &quot;deepseek-ai/DeepSeek-R1-Distill-Llama-70B&quot;,</span>
-<span class="s1">      &quot;messages&quot;: [</span>
-<span class="s1">        {</span>
-<span class="s1">          &quot;role&quot;: &quot;system&quot;,</span>
-<span class="s1">          &quot;content&quot;: &quot;You are a helpful assistant.&quot;</span>
-<span class="s1">        },</span>
-<span class="s1">        {</span>
-<span class="s1">          &quot;role&quot;: &quot;user&quot;,</span>
-<span class="s1">          &quot;content&quot;: &quot;What is Deep Learning?&quot;</span>
-<span class="s1">        }</span>
-<span class="s1">      ],</span>
-<span class="s1">      &quot;stream&quot;: true,</span>
-<span class="s1">      &quot;max_tokens&quot;: 512</span>
-<span class="s1">    }&#39;</span>
-</code></pre></div>
-</div>
-
-<p>When a <a href="https://dstack.ai/docs/concepts/gateways.md">gateway</a> is configured, the OpenAI-compatible endpoint 
-is available at <code>https://gateway.&lt;gateway domain&gt;/</code>.</p>
-<h2 id="source-code">Source code<a class="headerlink" href="#source-code" title="Permanent link">&para;</a></h2>
-<p>The source-code of this example can be found in 
-<a href="https://github.com/dstackai/dstack/blob/master/examples/llms/deepseek/sglang" target="_blank"><code>examples/llms/deepseek/sglang</code> <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>.</p>
-<h2 id="whats-next">What's next?<a class="headerlink" href="#whats-next" title="Permanent link">&para;</a></h2>
-<ol>
-<li>Check <a href="https://dstack.ai/docs/services">services</a></li>
-<li>Browse the <a href="https://docs.sglang.ai/references/deepseek.html">SgLang DeepSeek Usage</a>, <a href="https://rocm.blogs.amd.com/artificial-intelligence/DeepSeekR1-Part2/README.html">Supercharge DeepSeek-R1 Inference on AMD Instinct MI300X</a></li>
-</ol>
 
 
 
@@ -4384,7 +4108,7 @@ is available at <code>https://gateway.&lt;gateway domain&gt;/</code>.</p>
 <script src="/assets/javascripts/termynal.js" data-termynal-container="#termynal"></script>
 <script async src="https://tally.so/widgets/embed.js"></script>
 
-      <script src="../../../assets/javascripts/bundle.eb438620.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.5c86578b.min.js"></script>
       
         <script src="../../../assets/javascripts/extra.js"></script>
       

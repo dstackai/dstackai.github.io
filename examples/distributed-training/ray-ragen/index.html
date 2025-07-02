@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../../assets/images/dstack-fav-32.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14+insiders-4.53.16">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.15+insiders-4.53.16">
     
     
       
@@ -117,11 +117,6 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
-      
-        
-        <a href="#ray-ragen" class="md-skip">
-          Skip to content
-        </a>
       
     </div>
     <div data-md-component="announce">
@@ -2556,26 +2551,6 @@ Support dstack with a ⭐ on
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Ray+RAGEN
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
         
@@ -2593,64 +2568,6 @@ Support dstack with a ⭐ on
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#create-fleet" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        <span class="md-typeset">
-          Create fleet
-        </span>
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#run-a-ray-cluster" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        <span class="md-typeset">
-          Run a Ray cluster
-        </span>
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#submit-ray-jobs" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        <span class="md-typeset">
-          Submit Ray jobs
-        </span>
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
       
     </li>
   
@@ -3929,55 +3846,6 @@ Support dstack with a ⭐ on
   
   
   
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#create-fleet" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        <span class="md-typeset">
-          Create fleet
-        </span>
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#run-a-ray-cluster" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        <span class="md-typeset">
-          Run a Ray cluster
-        </span>
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#submit-ray-jobs" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        <span class="md-typeset">
-          Submit Ray jobs
-        </span>
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
   
 </nav>
           </div>
@@ -4043,127 +3911,18 @@ Support dstack with a ⭐ on
       
 
 
+  
+    <a href="https://github.com/dstackai/dstack/edit/master/docs/examples/distributed-training/ray-ragen/index.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
+    </a>
+  
+  
 
-<h1 id="ray-ragen">Ray + RAGEN<a class="headerlink" href="#ray-ragen" title="Permanent link">&para;</a></h1>
-<p>This example shows how use <code>dstack</code> and <a href="https://github.com/RAGEN-AI/RAGEN" target="_blank">RAGEN <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> 
-to fine-tune an agent on mulitiple nodes.</p>
-<p>Under the hood <code>RAGEN</code> uses <a href="https://github.com/volcengine/verl" target="_blank">verl <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> for Reinforcement Learning and <a href="https://docs.ray.io/en/latest/" target="_blank">Ray <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> for ditributed training.</p>
-<h2 id="create-fleet">Create fleet<a class="headerlink" href="#create-fleet" title="Permanent link">&para;</a></h2>
-<p>Before submitted disributed training runs, make sure to create a fleet with a <code>placement</code> set to <code>cluster</code>.</p>
-<blockquote>
-<p>For more detials on how to use clusters with <code>dstack</code>, check the <a href="https://dstack.ai/docs/guides/clusters">Clusters</a> guide.</p>
-</blockquote>
-<h2 id="run-a-ray-cluster">Run a Ray cluster<a class="headerlink" href="#run-a-ray-cluster" title="Permanent link">&para;</a></h2>
-<p>If you want to use Ray with <code>dstack</code>, you have to first run a Ray cluster.</p>
-<p>The task below runs a Ray cluster on an existing fleet:</p>
-<div editor-title="examples/distributed-training/ray-ragen/.dstack.yml">
 
-<div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">task</span>
-<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ray-ragen-cluster</span>
+  <h1>Ray+RAGEN</h1>
 
-<span class="nt">nodes</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
 
-<span class="nt">env</span><span class="p">:</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">WANDB_API_KEY</span>
-<span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">whatcanyousee/verl:ngc-cu124-vllm0.8.5-sglang0.4.6-mcore0.12.0-te2.2</span>
-<span class="nt">commands</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">wget -O miniconda.sh https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bash miniconda.sh -b -p /workflow/miniconda</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">eval &quot;$(/workflow/miniconda/bin/conda shell.bash hook)&quot;</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">git clone https://github.com/RAGEN-AI/RAGEN.git</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cd RAGEN</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bash scripts/setup_ragen.sh</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">conda activate ragen</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cd verl</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip install --no-deps -e .</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip install hf_transfer hf_xet</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip uninstall -y ray</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip install -U &quot;ray[default]&quot;</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
-<span class="w">    </span><span class="no">if [ $DSTACK_NODE_RANK = 0 ]; then </span>
-<span class="w">        </span><span class="no">ray start --head --port=6379;</span>
-<span class="w">    </span><span class="no">else</span>
-<span class="w">        </span><span class="no">ray start --address=$DSTACK_MASTER_NODE_IP:6379</span>
-<span class="w">    </span><span class="no">fi</span>
-
-<span class="c1"># Expose Ray dashboard port</span>
-<span class="nt">ports</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8265</span>
-
-<span class="nt">resources</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">80GB:8</span>
-<span class="w">  </span><span class="nt">shm_size</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">128GB</span>
-
-<span class="c1"># Save checkpoints on the instance</span>
-<span class="nt">volumes</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/checkpoints:/checkpoints</span>
-</code></pre></div>
-
-</div>
-
-<p>We are using verl's docker image for vLLM with FSDP. See <a href="https://verl.readthedocs.io/en/latest/start/install.html" target="_blank">Installation <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> for more.</p>
-<p>The <code>RAGEN</code> setup script <code>scripts/setup_ragen.sh</code> isolates dependencies within Conda environment.</p>
-<p>Note that the Ray setup in the RAGEN environment is missing the dashboard, so we reinstall it using <code>ray[default]</code>.</p>
-<p>Now, if you run this task via <code>dstack apply</code>, it will automatically forward the Ray's dashboard port to <code>localhost:8265</code>.</p>
-<div class="termy">
-
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>dstack<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>examples/distributed-training/ray-ragen/.dstack.yml
-</code></pre></div>
-
-</div>
-
-<p>As long as the <code>dstack apply</code> is attached, you can use <code>localhost:8265</code> to submit Ray jobs for execution.
-If <code>dstack apply</code> is detached, you can use <code>dstack attach</code> to re-attach.</p>
-<h2 id="submit-ray-jobs">Submit Ray jobs<a class="headerlink" href="#submit-ray-jobs" title="Permanent link">&para;</a></h2>
-<p>Before you can submit Ray jobs, ensure to install <code>ray</code> locally:</p>
-<div class="termy">
-
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>ray
-</code></pre></div>
-
-</div>
-
-<p>Now you can submit the training job to the Ray cluster which is available at <code>localhost:8265</code>:</p>
-<div class="termy">
-
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nv">RAY_ADDRESS</span><span class="o">=</span>http://localhost:8265
-$<span class="w"> </span>ray<span class="w"> </span>job<span class="w"> </span>submit<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--<span class="w"> </span>bash<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;\</span>
-<span class="s2">    export PYTHONPATH=/workflow/RAGEN; \</span>
-<span class="s2">    cd /workflow/RAGEN; \</span>
-<span class="s2">    /workflow/miniconda/envs/ragen/bin/python train.py \</span>
-<span class="s2">      --config-name base \</span>
-<span class="s2">      system.CUDA_VISIBLE_DEVICES=[0,1,2,3,4,5,6,7] \</span>
-<span class="s2">      model_path=Qwen/Qwen2.5-7B-Instruct \</span>
-<span class="s2">      trainer.experiment_name=agent-fine-tuning-Qwen2.5-7B \</span>
-<span class="s2">      trainer.n_gpus_per_node=8 \</span>
-<span class="s2">      trainer.nnodes=2 \</span>
-<span class="s2">      micro_batch_size_per_gpu=2 \</span>
-<span class="s2">      trainer.default_local_dir=/checkpoints \</span>
-<span class="s2">      trainer.save_freq=50 \</span>
-<span class="s2">      actor_rollout_ref.rollout.tp_size_check=False \</span>
-<span class="s2">      actor_rollout_ref.rollout.tensor_model_parallel_size=4&quot;</span>
-</code></pre></div>
-
-</div>
-
-<div class="admonition info">
-<p class="admonition-title">Training parameters</p>
-<ol>
-<li><code>actor_rollout_ref.rollout.tensor_model_parallel_size=4</code>, because <code>Qwen/Qwen2.5-7B-Instruct</code> has 28 attention heads and number of attention heads should be divisible by <code>tensor_model_parallel_size</code></li>
-<li><code>actor_rollout_ref.rollout.tp_size_check=False</code>, if True <code>tensor_model_parallel_size</code> should be equal to <code>trainer.n_gpus_per_node</code></li>
-<li><code>micro_batch_size_per_gpu=2</code>, to keep the RAGEN-paper's <code>rollout_filter_ratio</code> and <code>es_manager</code> settings as it is for world size <code>16</code></li>
-</ol>
-</div>
-<p>Using Ray via <code>dstack</code> is a powerful way to get access to the rich Ray ecosystem while benefiting from <code>dstack</code>'s provisioning capabilities.</p>
-<div class="admonition info">
-<p class="admonition-title">What's next</p>
-<ol>
-<li>Check the <a href="https://dstack.ai/docs/guides/clusters">Clusters</a> guide</li>
-<li>Read about <a href="https://dstack.ai/docs/concepts/tasks#distributed-tasks">distributed tasks</a> and <a href="https://dstack.ai/docs/concepts/fleets">fleets</a></li>
-<li>Browse Ray's <a href="https://docs.ray.io/en/latest/train/examples.html" target="_blank">docs <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> for other examples.</li>
-</ol>
-</div>
 
 
 
@@ -4349,7 +4108,7 @@ $<span class="w"> </span>ray<span class="w"> </span>job<span class="w"> </span>s
 <script src="/assets/javascripts/termynal.js" data-termynal-container="#termynal"></script>
 <script async src="https://tally.so/widgets/embed.js"></script>
 
-      <script src="../../../assets/javascripts/bundle.eb438620.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.5c86578b.min.js"></script>
       
         <script src="../../../assets/javascripts/extra.js"></script>
       

@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../../assets/images/dstack-fav-32.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14+insiders-4.53.16">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.15+insiders-4.53.16">
     
     
       
@@ -1048,6 +1048,19 @@ Support dstack with a ⭐ on
       
         <span class="md-typeset">
           Environment variables
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#files" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Files
         </span>
       
     </span>
@@ -4412,6 +4425,19 @@ Support dstack with a ⭐ on
 </li>
         
           <li class="md-nav__item">
+  <a href="#files" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Files
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#retry-policy" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -4568,7 +4594,7 @@ Support dstack with a ⭐ on
 
 
   
-    <a href="https://github.com/dstackai/dstack/edit/master/docs/docs/concepts/services.md" title="Edit this page" class="md-content__button md-icon">
+    <a href="https://github.com/dstackai/dstack/edit/master/docs/docs/concepts/services.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
     </a>
@@ -5041,6 +5067,89 @@ If you need <code>nvcc</code>, set the <a href="../../reference/dstack.yml/dev-e
 </details>
 <!-- TODO: Ellaborate on using environment variables in `registry_auth` -->
 
+<h3 id="files">Files<a class="headerlink" href="#files" title="Permanent link">&para;</a></h3>
+<p>By default, <code>dstack</code> automatically mounts the <a href="../repos/">repo</a> directory where you ran <code>dstack init</code> to any run configuration. </p>
+<p>However, in some cases, you may not want to mount the entire directory (e.g., if it’s too large),
+or you might want to mount files outside of it. In such cases, you can use the <a href="../../reference/dstack.yml/dev-environment/#files"><code>files</code></a> property.</p>
+<!-- TODO: Add a more relevant example -->
+
+<div editor-title="examples/.dstack.yml"> 
+
+<div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service</span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">llama-2-7b-service</span>
+
+<span class="nt">files</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">.:examples</span><span class="w">  </span><span class="c1"># Maps the directory where `.dstack.yml` to `/workflow/examples`</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">~/.ssh/id_rsa:/root/.ssh/id_rsa</span><span class="w">  </span><span class="c1"># Maps `~/.ssh/id_rsa` to `/root/.ssh/id_rsa`</span>
+
+<span class="nt">python</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.12</span>
+
+<span class="nt">env</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HF_TOKEN</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MODEL=NousResearch/Llama-2-7b-chat-hf</span>
+<span class="nt">commands</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uv pip install vllm</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python -m vllm.entrypoints.openai.api_server --model $MODEL --port 8000</span>
+<span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8000</span>
+
+<span class="nt">resources</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">24GB</span>
+</code></pre></div>
+
+</div>
+
+<p>Each entry maps a local directory or file to a path inside the container. Both local and container paths can be relative or absolute.</p>
+<ul>
+<li>If the local path is relative, it’s resolved relative to the configuration file.</li>
+<li>If the container path is relative, it’s resolved relative to <code>/workflow</code>.</li>
+</ul>
+<p>The container path is optional. If not specified, it will be automatically calculated.</p>
+<!-- TODO: Add a more relevant example -->
+
+<div editor-title="examples/.dstack.yml"> 
+
+<div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service</span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">llama-2-7b-service</span>
+
+<span class="nt">files</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">../examples</span><span class="w">  </span><span class="c1"># Maps `examples` (the parent directory of `.dstack.yml`) to `/workflow/examples`</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">~/.ssh/id_rsa</span><span class="w">  </span><span class="c1"># Maps `~/.ssh/id_rsa` to `/root/.ssh/id_rsa`</span>
+
+<span class="nt">python</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.12</span>
+
+<span class="nt">env</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HF_TOKEN</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MODEL=NousResearch/Llama-2-7b-chat-hf</span>
+<span class="nt">commands</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uv pip install vllm</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python -m vllm.entrypoints.openai.api_server --model $MODEL --port 8000</span>
+<span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8000</span>
+
+<span class="nt">resources</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">24GB</span>
+</code></pre></div>
+
+</div>
+
+<p>Note: If you want to use <code>files</code> without mounting the entire repo directory,
+make sure to pass <code>--no-repo</code> when running <code>dstack apply</code>:</p>
+<div class="termy">
+
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>dstack<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>examples/.dstack.yml<span class="w"> </span>--no-repo
+</code></pre></div>
+
+</div>
+
+<details class="info">
+<summary>.gitignore and .dstackignore</summary>
+<p><code>dstack</code> automatically excludes files and folders listed in <code>.gitignore</code> and <code>.dstackignore</code>.</p>
+<p>Uploads are limited to 2MB. To avoid exceeding this limit, make sure to exclude unnecessary files.
+You can increase the default server limit by setting the <code>DSTACK_SERVER_CODE_UPLOAD_LIMIT</code> environment variable.</p>
+</details>
+<div class="admonition warning">
+<p class="admonition-title">Experimental</p>
+<p>The <code>files</code> feature is experimental. Feedback is highly appreciated.</p>
+</div>
 <h3 id="retry-policy">Retry policy<a class="headerlink" href="#retry-policy" title="Permanent link">&para;</a></h3>
 <p>By default, if <code>dstack</code> can't find capacity, or the service exits with an error, or the instance is interrupted, the run will fail.</p>
 <p>If you'd like <code>dstack</code> to automatically retry, configure the 
@@ -5339,7 +5448,7 @@ Pass <code>--diagnose</code> or <code>-d</code> to view diagnostic logs, which c
 <script src="/assets/javascripts/termynal.js" data-termynal-container="#termynal"></script>
 <script async src="https://tally.so/widgets/embed.js"></script>
 
-      <script src="../../../assets/javascripts/bundle.eb438620.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.5c86578b.min.js"></script>
       
         <script src="../../../assets/javascripts/extra.js"></script>
       

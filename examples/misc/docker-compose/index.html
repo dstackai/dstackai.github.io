@@ -21,11 +21,11 @@
       
       
       <link rel="icon" href="../../../assets/images/dstack-fav-32.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14+insiders-4.53.16">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.15+insiders-4.53.16">
     
     
       
-        <title>Docker Compose - dstack</title>
+        <title>Index - dstack</title>
       
     
     
@@ -85,7 +85,7 @@
     
   
 <meta property="og:type" content="website" />
-<meta property="og:title" content="Docker Compose - dstack" />
+<meta property="og:title" content="Index - dstack" />
 <meta property="og:description" content="dstack is an open-source AI container orchestration engine working with any cloud or data center." />
 <meta property="og:image" content="https://dstack.ai/assets/images/social/examples/misc/docker-compose/index.png" />
 <meta property="og:image:type" content="image/png" />
@@ -93,7 +93,7 @@
 <meta property="og:image:height" content="630" />
 <meta property="og:url" content="https://dstack.ai/examples/misc/docker-compose/" />
 <meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter.title" content="Docker Compose - dstack" />
+<meta property="twitter.title" content="Index - dstack" />
 <meta property="twitter:description" content="dstack is an open-source AI container orchestration engine working with any cloud or data center." />
 <meta property="twitter:image" content="https://dstack.ai/assets/images/social/examples/misc/docker-compose/index.png" />
 </head>
@@ -113,11 +113,6 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
-      
-        
-        <a href="#docker-compose" class="md-skip">
-          Skip to content
-        </a>
       
     </div>
     <div data-md-component="announce">
@@ -166,7 +161,7 @@ Support dstack with a ⭐ on
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Docker Compose
+              Index
             
           </span>
         </div>
@@ -3815,113 +3810,6 @@ Support dstack with a ⭐ on
   
   
   
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#deployment" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        <span class="md-typeset">
-          Deployment
-        </span>
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Deployment">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#running-as-a-task" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        <span class="md-typeset">
-          Running as a task
-        </span>
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#deploying-as-a-service" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        <span class="md-typeset">
-          Deploying as a service
-        </span>
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#running-a-configuration" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        <span class="md-typeset">
-          Running a configuration
-        </span>
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#persisting-data" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        <span class="md-typeset">
-          Persisting data
-        </span>
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#source-code" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        <span class="md-typeset">
-          Source code
-        </span>
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#whats-next" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        <span class="md-typeset">
-          What's next?
-        </span>
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
   
 </nav>
           </div>
@@ -3947,164 +3835,18 @@ Support dstack with a ⭐ on
       
 
 
+  
+    <a href="https://github.com/dstackai/dstack/edit/master/docs/examples/misc/docker-compose/index.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
+    </a>
+  
+  
 
-<h1 id="docker-compose">Docker Compose<a class="headerlink" href="#docker-compose" title="Permanent link">&para;</a></h1>
-<p>All backends except <code>runpod</code>, <code>vastai</code>, and <code>kubernetes</code> allow using <a href="https://dstack.ai/docs/guides/protips#docker-and-docker-compose">Docker and Docker Compose</a> inside <code>dstack</code> runs.</p>
-<p>This example shows how to deploy Hugging Face <a href="https://huggingface.co/docs/chat-ui/index" target="_blank">Chat UI <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>
-with <a href="https://huggingface.co/docs/text-generation-inference/en/index" target="_blank">TGI <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>
-serving <a href="https://huggingface.co/meta-llama/Llama-3.2-3B-Instruct" target="_blank">Llama-3.2-3B-Instruct <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>
-using <a href="https://docs.docker.com/compose/" target="_blank">Docker Compose <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>.</p>
-<details class="info">
-<summary>Prerequisites</summary>
-<p>Once <code>dstack</code> is <a href="https://dstack.ai/docs/installation">installed</a>, go ahead clone the repo, and run <code>dstack init</code>.</p>
-<div class="termy">
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/dstackai/dstack
-$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>dstack
-$<span class="w"> </span>dstack<span class="w"> </span>init
-</code></pre></div>
-</div>
-</details>
-<h2 id="deployment">Deployment<a class="headerlink" href="#deployment" title="Permanent link">&para;</a></h2>
-<h3 id="running-as-a-task">Running as a task<a class="headerlink" href="#running-as-a-task" title="Permanent link">&para;</a></h3>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="taskdstackyml" name="__tabbed_1" type="radio" /><input id="composeyaml" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="taskdstackyml"><code>task.dstack.yml</code></label><label for="composeyaml"><code>compose.yaml</code></label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<p><div editor-title="examples/misc/docker-compose/task.dstack.yml"> </p>
-<div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">task</span>
-<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">chat-ui-task</span>
 
-<span class="nt">docker</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="nt">env</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MODEL_ID=meta-llama/Llama-3.2-3B-Instruct</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HF_TOKEN</span>
-<span class="nt">working_dir</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">examples/misc/docker-compose</span>
-<span class="nt">commands</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker compose up</span>
-<span class="nt">ports</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">9000</span>
+  <h1>Index</h1>
 
-<span class="nt">resources</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;nvidia:24GB&quot;</span>
-</code></pre></div>
-</div>
-</div>
-<div class="tabbed-block">
-<p><div editor-title="examples/misc/docker-compose/compose.yaml"> </p>
-<div class="highlight"><pre><span></span><code><span class="nt">services</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">app</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ghcr.io/huggingface/chat-ui:sha-bf0bc92</span>
-<span class="w">    </span><span class="nt">command</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bash</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-c</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
-<span class="w">        </span><span class="no">echo MONGODB_URL=mongodb://db:27017 &gt; .env.local</span>
-<span class="w">        </span><span class="no">echo MODELS=&#39;`[{</span>
-<span class="w">          </span><span class="no">&quot;name&quot;: &quot;${MODEL_ID?}&quot;,</span>
-<span class="w">          </span><span class="no">&quot;endpoints&quot;: [{&quot;type&quot;: &quot;tgi&quot;, &quot;url&quot;: &quot;http://tgi:8000&quot;}]</span>
-<span class="w">        </span><span class="no">}]`&#39; &gt;&gt; .env.local</span>
-<span class="w">        </span><span class="no">exec ./entrypoint.sh</span>
-<span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">127.0.0.1:9000:3000</span>
-<span class="w">    </span><span class="nt">depends_on</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tgi</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">db</span>
 
-<span class="w">  </span><span class="nt">tgi</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ghcr.io/huggingface/text-generation-inference:sha-704a58c</span>
-<span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tgi_data:/data</span>
-<span class="w">    </span><span class="nt">environment</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">HF_TOKEN</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${HF_TOKEN?}</span>
-<span class="w">      </span><span class="nt">MODEL_ID</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${MODEL_ID?}</span>
-<span class="w">      </span><span class="nt">PORT</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8000</span>
-<span class="w">    </span><span class="nt">deploy</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">resources</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">reservations</span><span class="p">:</span>
-<span class="w">          </span><span class="nt">devices</span><span class="p">:</span>
-<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">driver</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nvidia</span>
-<span class="w">              </span><span class="nt">count</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">all</span>
-<span class="w">              </span><span class="nt">capabilities</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">gpu</span><span class="p p-Indicator">]</span>
-
-<span class="w">  </span><span class="nt">db</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mongo:latest</span>
-<span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">db_data:/data/db</span>
-
-<span class="nt">volumes</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">tgi_data</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">db_data</span><span class="p">:</span>
-</code></pre></div>
-</div>
-</div>
-</div>
-</div>
-<h3 id="deploying-as-a-service">Deploying as a service<a class="headerlink" href="#deploying-as-a-service" title="Permanent link">&para;</a></h3>
-<p>If you'd like to deploy Chat UI as an auto-scalable and secure endpoint,
-use the service configuration. You can find it at <a href="https://github.com/dstackai/dstack/blob/master/examples/misc/docker-compose/service.dstack.yml"><code>examples/misc/docker-compose/service.dstack.yml</code> <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a></p>
-<h3 id="running-a-configuration">Running a configuration<a class="headerlink" href="#running-a-configuration" title="Permanent link">&para;</a></h3>
-<p>To run a configuration, use the <a href="https://dstack.ai/docs/reference/cli/dstack/apply.md"><code>dstack apply</code></a> command.</p>
-<div class="termy">
-
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nv">HF_TOKEN</span><span class="o">=</span>...
-$<span class="w"> </span>dstack<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>examples/examples/misc/docker-compose/task.dstack.yml
-
-<span class="w"> </span><span class="c1">#  BACKEND  REGION    RESOURCES                    SPOT  PRICE</span>
-<span class="w"> </span><span class="m">1</span><span class="w">  </span>runpod<span class="w">   </span>CA-MTL-1<span class="w">  </span>18xCPU,<span class="w"> </span>100GB,<span class="w"> </span>A5000:24GB<span class="w">    </span>yes<span class="w">   </span><span class="nv">$0</span>.12
-<span class="w"> </span><span class="m">2</span><span class="w">  </span>runpod<span class="w">   </span>EU-SE-1<span class="w">   </span>18xCPU,<span class="w"> </span>100GB,<span class="w"> </span>A5000:24GB<span class="w">    </span>yes<span class="w">   </span><span class="nv">$0</span>.12
-<span class="w"> </span><span class="m">3</span><span class="w">  </span>gcp<span class="w">      </span>us-west4<span class="w">  </span>27xCPU,<span class="w"> </span>150GB,<span class="w"> </span>A5000:24GB:2<span class="w">  </span>yes<span class="w">   </span><span class="nv">$0</span>.23
-
-Submit<span class="w"> </span>the<span class="w"> </span>run<span class="w"> </span>chat-ui-task?<span class="w"> </span><span class="o">[</span>y/n<span class="o">]</span>:<span class="w"> </span>y
-
-Provisioning...
----&gt;<span class="w"> </span><span class="m">100</span>%
-</code></pre></div>
-
-</div>
-
-<h2 id="persisting-data">Persisting data<a class="headerlink" href="#persisting-data" title="Permanent link">&para;</a></h2>
-<p>To persist data between runs, create a <a href="https://dstack.ai/docs/concepts/volumes/">volume</a> and attach it to the run
-configuration.</p>
-<div editor-title="examples/misc/docker-compose/task.dstack.yml"> 
-
-<div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">task</span>
-<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">chat-ui-task</span>
-
-<span class="nt">privileged</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dstackai/dind</span>
-<span class="nt">env</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MODEL_ID=meta-llama/Llama-3.2-3B-Instruct</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HF_TOKEN</span>
-<span class="nt">working_dir</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">examples/misc/docker-compose</span>
-<span class="nt">commands</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">start-dockerd</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker compose up</span>
-<span class="nt">ports</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">9000</span>
-
-<span class="c1"># Uncomment to leverage spot instances</span>
-<span class="c1">#spot_policy: auto</span>
-
-<span class="nt">resources</span><span class="p">:</span>
-<span class="w">  </span><span class="c1"># Required resources</span>
-<span class="w">  </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;nvidia:24GB&quot;</span>
-
-<span class="nt">volumes</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my-dind-volume</span>
-<span class="w">    </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/var/lib/docker</span>
-</code></pre></div>
-
-</div>
-
-<p>With this change, all Docker data—pulled images, containers, and crucially, volumes for database and model storage—will
-be persisted.</p>
-<h2 id="source-code">Source code<a class="headerlink" href="#source-code" title="Permanent link">&para;</a></h2>
-<p>The source-code of this example can be found in 
-<a href="https://github.com/dstackai/dstack/blob/master/examples/misc/docker-compose"><code>examples/misc/docker-compose</code> <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>.</p>
-<h2 id="whats-next">What's next?<a class="headerlink" href="#whats-next" title="Permanent link">&para;</a></h2>
-<ol>
-<li>Check <a href="https://dstack.ai/docs/dev-environments">dev environments</a>, <a href="https://dstack.ai/docs/tasks">tasks</a>, 
-   <a href="https://dstack.ai/docs/services">services</a>, and <a href="https://dstack.ai/docs/protips">protips</a>.</li>
-</ol>
 
 
 
@@ -4252,7 +3994,7 @@ be persisted.</p>
 <script src="/assets/javascripts/termynal.js" data-termynal-container="#termynal"></script>
 <script async src="https://tally.so/widgets/embed.js"></script>
 
-      <script src="../../../assets/javascripts/bundle.eb438620.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.5c86578b.min.js"></script>
       
         <script src="../../../assets/javascripts/extra.js"></script>
       
