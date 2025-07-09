@@ -3856,10 +3856,13 @@ via <code>dstack server</code> or deployed using Docker.</p>
 <li><code id="DSTACK_ENABLE_PROMETHEUS_METRICS">DSTACK_ENABLE_PROMETHEUS_METRICS</code> — Enables Prometheus metrics collection and export.</li>
 <li><code id="DSTACK_DEFAULT_SERVICE_CLIENT_MAX_BODY_SIZE">DSTACK_DEFAULT_SERVICE_CLIENT_MAX_BODY_SIZE</code> – Request body size limit for services running with a gateway, in bytes. Defaults to 64 MiB.</li>
 <li><code id="DSTACK_FORBID_SERVICES_WITHOUT_GATEWAY">DSTACK_FORBID_SERVICES_WITHOUT_GATEWAY</code> – Forbids registering new services without a gateway if set to any value.</li>
-<li><code id="DSTACK_SERVER_CODE_UPLOAD_LIMIT">DSTACK_SERVER_CODE_UPLOAD_LIMIT</code> - The repo size limit when uploading diffs or local repos, in bytes. Set to 0 to disable size limits. Defaults to 2MiB.</li>
+<li><code id="DSTACK_SERVER_CODE_UPLOAD_LIMIT">DSTACK_SERVER_CODE_UPLOAD_LIMIT</code> - The repo size limit when uploading diffs or local repos, in bytes. Set to <code>0</code> to disable size limits. Defaults to <code>2MiB</code>.</li>
 <li><code id="DSTACK_SERVER_S3_BUCKET">DSTACK_SERVER_S3_BUCKET</code> - The bucket that repo diffs will be uploaded to if set. If unset, diffs are uploaded to the database.</li>
 <li><code id="DSTACK_SERVER_S3_BUCKET_REGION">DSTACK_SERVER_S3_BUCKET_REGION</code> - The region of the S3 Bucket.</li>
-<li><code id="DSTACK_SERVER_GCD_BUCKET">DSTACK_SERVER_GCS_BUCKET</code> - The bucket that repo diffs will be uploaded to if set. If unset, diffs are uploaded to the database.</li>
+<li><code id="DSTACK_SERVER_GCS_BUCKET">DSTACK_SERVER_GCS_BUCKET</code> - The bucket that repo diffs will be uploaded to if set. If unset, diffs are uploaded to the database.</li>
+<li><code id="DSTACK_DB_POOL_SIZE">DSTACK_DB_POOL_SIZE</code> - The client DB connections pool size. Defaults to <code>20</code>,</li>
+<li><code id="DSTACK_DB_MAX_OVERFLOW">DSTACK_DB_MAX_OVERFLOW</code> - The client DB connections pool allowed overflow. Defaults to <code>20</code>.</li>
+<li><code id="DSTACK_SERVER_BACKGROUND_PROCESSING_FACTOR">DSTACK_SERVER_BACKGROUND_PROCESSING_FACTOR</code> - The number of background jobs for processing server resources. Increase if you need to process more resources per server replica quickly. Defaults to <code>1</code>.</li>
 </ul>
 <details class="info">
 <summary>Internal environment variables</summary>
