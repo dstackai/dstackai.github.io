@@ -4174,7 +4174,9 @@ This allows persisting the server state across re-deployments when using SQLite.
 <p>More <a href="https://litestream.io/guides/">details</a> on options for configuring replication.</p>
 </details>
 <h3 id="postgresql">PostgreSQL<a class="headerlink" href="#postgresql" title="Permanent link">&para;</a></h3>
-<p>To store the server state in Postgres, set the <code>DSTACK_DATABASE_URL</code> environment variable.</p>
+<p>To store the server state in Postgres, set the <code>DSTACK_DATABASE_URL</code> environment variable:</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nv">DSTACK_DATABASE_URL</span><span class="o">=</span>postgresql+asyncpg://user:password@db-host:5432/dstack<span class="w"> </span>dstack<span class="w"> </span>server
+</code></pre></div>
 <details class="info">
 <summary>Migrate from SQLite to PostgreSQL</summary>
 <p>You can migrate the existing state from SQLite to PostgreSQL using <code>pgloader</code>:</p>

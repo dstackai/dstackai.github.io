@@ -1177,6 +1177,19 @@ Support dstack with a ⭐ on
 </li>
       
         <li class="md-nav__item">
+  <a href="#rolling-deployment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Rolling deployment
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#manage-runs" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -4196,6 +4209,19 @@ Support dstack with a ⭐ on
 </li>
       
         <li class="md-nav__item">
+  <a href="#rolling-deployment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Rolling deployment
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#manage-runs" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -4926,6 +4952,50 @@ incl. <a href="../../reference/dstack.yml/service/#backends"><code>backends</cod
 <a href="../../reference/dstack.yml/service/#max_price"><code>max_price</code></a>, and
 among <a href="../../reference/dstack.yml/service/">others</a>.</p>
 </div>
+<h2 id="rolling-deployment">Rolling deployment<a class="headerlink" href="#rolling-deployment" title="Permanent link">&para;</a></h2>
+<p>To deploy a new version of a service that is already <code>running</code>, use <code>dstack apply</code>. <code>dstack</code> will automatically detect changes and suggest a rolling deployment update.</p>
+<div class="termy">
+
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>dstack<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>my-service.dstack.yml
+
+Active<span class="w"> </span>run<span class="w"> </span>my-service<span class="w"> </span>already<span class="w"> </span>exists.<span class="w"> </span>Detected<span class="w"> </span>changes<span class="w"> </span>that<span class="w"> </span>can<span class="w"> </span>be<span class="w"> </span>updated<span class="w"> </span><span class="k">in</span>-place:
+-<span class="w"> </span>Repo<span class="w"> </span>state<span class="w"> </span><span class="o">(</span>branch,<span class="w"> </span>commit,<span class="w"> </span>or<span class="w"> </span>other<span class="o">)</span>
+-<span class="w"> </span>File<span class="w"> </span>archives
+-<span class="w"> </span>Configuration<span class="w"> </span>properties:
+<span class="w">  </span>-<span class="w"> </span>env
+<span class="w">  </span>-<span class="w"> </span>files
+
+Update<span class="w"> </span>the<span class="w"> </span>run?<span class="w"> </span><span class="o">[</span>y/n<span class="o">]</span>:
+</code></pre></div>
+
+</div>
+
+<p>If approved, <code>dstack</code> gradually updates the service replicas. To update a replica, <code>dstack</code> starts a new replica, waits for it to become <code>running</code>, then terminates the old replica. This process is repeated for each replica, one at a time.</p>
+<p>You can track the progress of rolling deployment in both <code>dstack apply</code> or <code>dstack ps</code>. 
+Older replicas have lower <code>deployment</code> numbers; newer ones have higher.</p>
+<!--
+    Not using termy for this example, since the example shows an intermediate CLI state,
+    not a completed command.
+-->
+
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>dstack<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>my-service.dstack.yml
+
+⠋<span class="w"> </span>Launching<span class="w"> </span>my-service...
+<span class="w"> </span>NAME<span class="w">                            </span>BACKEND<span class="w">          </span>PRICE<span class="w">    </span>STATUS<span class="w">       </span>SUBMITTED
+<span class="w"> </span>my-service<span class="w"> </span><span class="nv">deployment</span><span class="o">=</span><span class="m">1</span><span class="w">                                   </span>running<span class="w">      </span><span class="m">11</span><span class="w"> </span>mins<span class="w"> </span>ago
+<span class="w">   </span><span class="nv">replica</span><span class="o">=</span><span class="m">0</span><span class="w"> </span><span class="nv">job</span><span class="o">=</span><span class="m">0</span><span class="w"> </span><span class="nv">deployment</span><span class="o">=</span><span class="m">0</span><span class="w">  </span>aws<span class="w"> </span><span class="o">(</span>us-west-2<span class="o">)</span><span class="w">  </span><span class="nv">$0</span>.0026<span class="w">  </span>terminating<span class="w">  </span><span class="m">11</span><span class="w"> </span>mins<span class="w"> </span>ago
+<span class="w">   </span><span class="nv">replica</span><span class="o">=</span><span class="m">1</span><span class="w"> </span><span class="nv">job</span><span class="o">=</span><span class="m">0</span><span class="w"> </span><span class="nv">deployment</span><span class="o">=</span><span class="m">1</span><span class="w">  </span>aws<span class="w"> </span><span class="o">(</span>us-west-2<span class="o">)</span><span class="w">  </span><span class="nv">$0</span>.0026<span class="w">  </span>running<span class="w">      </span><span class="m">1</span><span class="w"> </span>min<span class="w"> </span>ago
+</code></pre></div>
+<p>The rolling deployment stops when all replicas are updated or when a new deployment is submitted.</p>
+<details class="info">
+<summary>Supported properties</summary>
+<!-- NOTE: should be in sync with constants in server/services/runs.py -->
+<p>Rolling deployment supports changes to the following properties: <code>resources</code>, <code>volumes</code>, <code>docker</code>, <code>files</code>, <code>image</code>, <code>user</code>, <code>privileged</code>, <code>entrypoint</code>, <code>working_dir</code>, <code>python</code>, <code>nvcc</code>, <code>single_branch</code>, <code>env</code>, <code>shell</code>, <code>commands</code>, as well as changes to <a href="../repos/">repo</a> or <a href="#files">file</a> contents.</p>
+<p>Changes to <code>replicas</code> and <code>scaling</code> can be applied without redeploying replicas.</p>
+<p>Changes to other properties require a full service restart.</p>
+<p>To trigger a rolling deployment when no properties have changed (e.g., after updating <a href="../secrets/">secrets</a> or to restart all replicas),<br />
+make a minor config change, such as adding a dummy <a href="#environment-variables">environment variable</a>.</p>
+</details>
 <h2 id="manage-runs">Manage runs<a class="headerlink" href="#manage-runs" title="Permanent link">&para;</a></h2>
 <p><code>dstack</code> provides several commands to manage runs:</p>
 <ul>
