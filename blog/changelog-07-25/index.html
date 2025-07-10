@@ -3758,7 +3758,7 @@ Support dstack with a ⭐ on
                           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20a8 8 0 0 0 8-8 8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8m0-18a10 10 0 0 1 10 10 10 10 0 0 1-10 10C6.47 22 2 17.5 2 12A10 10 0 0 1 12 2m.5 5v5.25l4.5 2.67-.75 1.23L11 13V7z"/></svg>
                           <span class="md-ellipsis">
                             
-                              3 min read
+                              4 min read
                             
                           </span>
                         </div>
@@ -3796,7 +3796,7 @@ Support dstack with a ⭐ on
 <p>Previously, updating running services could cause downtime. The latest release fixes this with <a href="../../docs/concepts/services/#rolling-deployment">rolling deployments</a>. Replicas are now updated one by one, allowing uninterrupted traffic during redeployments.</p>
 <div class="termy">
 
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>dstack<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>my-service.dstack.yml
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>dstack<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>.dstack.yml
 
 Active<span class="w"> </span>run<span class="w"> </span>my-service<span class="w"> </span>already<span class="w"> </span>exists.<span class="w"> </span>Detected<span class="w"> </span>changes<span class="w"> </span>that<span class="w"> </span>can<span class="w"> </span>be<span class="w"> </span>updated<span class="w"> </span><span class="k">in</span>-place:
 -<span class="w"> </span>Repo<span class="w"> </span>state<span class="w"> </span><span class="o">(</span>branch,<span class="w"> </span>commit,<span class="w"> </span>or<span class="w"> </span>other<span class="o">)</span>
@@ -3805,7 +3805,14 @@ Active<span class="w"> </span>run<span class="w"> </span>my-service<span class="
 <span class="w">  </span>-<span class="w"> </span>env
 <span class="w">  </span>-<span class="w"> </span>files
 
-Update<span class="w"> </span>the<span class="w"> </span>run?<span class="w"> </span><span class="o">[</span>y/n<span class="o">]</span>:
+Update<span class="w"> </span>the<span class="w"> </span>run?<span class="w"> </span><span class="o">[</span>y/n<span class="o">]</span>:<span class="w"> </span>y<span class="w"> </span>
+
+⠋<span class="w"> </span>Launching<span class="w"> </span>my-service...
+
+<span class="w"> </span>NAME<span class="w">                            </span>BACKEND<span class="w">          </span>PRICE<span class="w">    </span>STATUS<span class="w">       </span>SUBMITTED
+<span class="w"> </span>my-service<span class="w"> </span><span class="nv">deployment</span><span class="o">=</span><span class="m">1</span><span class="w">                                   </span>running<span class="w">      </span><span class="m">11</span><span class="w"> </span>mins<span class="w"> </span>ago
+<span class="w">   </span><span class="nv">replica</span><span class="o">=</span><span class="m">0</span><span class="w"> </span><span class="nv">job</span><span class="o">=</span><span class="m">0</span><span class="w"> </span><span class="nv">deployment</span><span class="o">=</span><span class="m">0</span><span class="w">  </span>aws<span class="w"> </span><span class="o">(</span>us-west-2<span class="o">)</span><span class="w">  </span><span class="nv">$0</span>.0026<span class="w">  </span>terminating<span class="w">  </span><span class="m">11</span><span class="w"> </span>mins<span class="w"> </span>ago
+<span class="w">   </span><span class="nv">replica</span><span class="o">=</span><span class="m">1</span><span class="w"> </span><span class="nv">job</span><span class="o">=</span><span class="m">0</span><span class="w"> </span><span class="nv">deployment</span><span class="o">=</span><span class="m">1</span><span class="w">  </span>aws<span class="w"> </span><span class="o">(</span>us-west-2<span class="o">)</span><span class="w">  </span><span class="nv">$0</span>.0026<span class="w">  </span>running<span class="w">      </span><span class="m">1</span><span class="w"> </span>min<span class="w"> </span>ago
 </code></pre></div>
 
 </div>
@@ -3938,7 +3945,7 @@ Update<span class="w"> </span>the<span class="w"> </span>run?<span class="w"> </
 <h4 id="server-performance">Server performance<a class="headerlink" href="#server-performance" title="Permanent link">&para;</a></h4>
 <p>Server-side performance has been improved. With optimized handling and background processing, each server replica can now handle more runs.</p>
 <h4 id="google-sso">Google SSO<a class="headerlink" href="#google-sso" title="Permanent link">&para;</a></h4>
-<p>Alongside the open-source version, <code>dstack</code> also offers <a href="https://github.com/dstackai/dstack-enterprise">dstack Enterprise</a>—which adds dedicated support and extra integrations like Single Sign-On (SSO). The latest release introduces support for configuring your company’s Google account for authentication.</p>
+<p>Alongside the open-source version, <code>dstack</code> also offers <a href="https://github.com/dstackai/dstack-enterprise" target="_blank">dstack Enterprise <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> — which adds dedicated support and extra integrations like Single Sign-On (SSO). The latest release introduces support for configuring your company’s Google account for authentication.</p>
 <p><img src="https://dstack.ai/static-assets/static-assets/images/dstack-enterprise-google-sso.png" width="630"/></p>
 <p>If you’d like to learn more about <code>dstack</code> Enterprise, <a href="https://calendly.com/dstackai/discovery-call">let us know</a>.</p>
 <p>That’s all for now. </p>
@@ -4052,6 +4059,14 @@ Update<span class="w"> </span>the<span class="w"> </span>run?<span class="w"> </
                   &lt;!&ndash;<a class="tx-footer__section-link" href="javascript:void(0)" onclick="$crisp.push(['do', 'chat:show'])">Open chat</a>&ndash;&gt;
               </div>-->
             
+              <div class="tx-footer__section">
+                <div class="tx-footer__section-title">Documentation</div>
+                <a href="/docs/installation" class="tx-footer__section-link">Getting started</a>
+                <a href="/docs/concepts/backends/" class="tx-footer__section-link">Concepts</a>
+                <a href="/docs/guides/protips/" class="tx-footer__section-link">Guides</a>
+                <a href="/docs/reference/dstack.yml/dev-environment/" class="tx-footer__section-link">Reference</a>
+              </div>
+              
               <div class="tx-footer__section">
                 <div class="tx-footer__section-title">Examples</div>
                 <a href="/examples#fine-tuning" class="tx-footer__section-link">Single-node training</a>
