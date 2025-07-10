@@ -12,13 +12,13 @@
         <meta name="author" content="dstack GmbH">
       
       
-        <link rel="canonical" href="https://dstack.ai/blog/releases/">
+        <link rel="canonical" href="https://dstack.ai/blog/changelog/">
       
       
-        <link rel="prev" href="../">
+        <link rel="prev" href="../case-studies/">
       
       
-        <link rel="next" href="../case-studies/">
+        <link rel="next" href="../">
       
       
         
@@ -29,7 +29,7 @@
     
     
       
-        <title>Releases - dstack</title>
+        <title>Changelog - dstack</title>
       
     
     
@@ -89,17 +89,17 @@
     
   
 <meta property="og:type" content="website" />
-<meta property="og:title" content="Releases - dstack" />
+<meta property="og:title" content="Changelog - dstack" />
 <meta property="og:description" content="dstack is an open-source AI container orchestration engine working with any cloud or data center." />
-<meta property="og:image" content="https://dstack.ai/assets/images/social/blog/releases.png" />
+<meta property="og:image" content="https://dstack.ai/assets/images/social/blog/changelog.png" />
 <meta property="og:image:type" content="image/png" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
-<meta property="og:url" content="https://dstack.ai/blog/releases/" />
+<meta property="og:url" content="https://dstack.ai/blog/changelog/" />
 <meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter.title" content="Releases - dstack" />
+<meta property="twitter.title" content="Changelog - dstack" />
 <meta property="twitter:description" content="dstack is an open-source AI container orchestration engine working with any cloud or data center." />
-<meta property="twitter:image" content="https://dstack.ai/assets/images/social/blog/releases.png" />
+<meta property="twitter:image" content="https://dstack.ai/assets/images/social/blog/changelog.png" />
 </head>
   
   
@@ -119,7 +119,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#releases" class="md-skip">
+        <a href="#changelog" class="md-skip">
           Skip to content
         </a>
       
@@ -170,7 +170,7 @@ Support dstack with a ⭐ on
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Releases
+              Changelog
             
           </span>
         </div>
@@ -249,7 +249,7 @@ Support dstack with a ⭐ on
 
     <div class="md-header__buttons">
       <a href="https://github.com/dstackai/dstack" target="_blank" class="md-button md-button--primary github external">GitHub</a>
-      <a href="https://discord.gg/u8SmfwPpMd" target="_blank" class="md-button md-button--primary sky discord external">Discord</a>
+      <!-- <a href="https://discord.gg/u8SmfwPpMd" target="_blank" class="md-button md-button--primary sky discord external">Discord</a> -->
     </div>
   </nav>
   
@@ -366,6 +366,27 @@ Support dstack with a ⭐ on
     
   
   Case studies
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Changelog
 
       </a>
     </li>
@@ -3252,6 +3273,198 @@ Support dstack with a ⭐ on
     
   
   
+    
+      
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    <span class="md-typeset">
+      Changelog
+    </span>
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    <span class="md-typeset">
+      Changelog
+    </span>
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#rolling-deployment-secrets-files-tenstorrent-and-more" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rolling deployment, Secrets, Files, Tenstorrent, and more
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#supporting-arm-and-nvidia-gh200-on-lambda" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Supporting ARM and NVIDIA GH200 on Lambda
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#supporting-gpu-provisioning-and-orchestration-on-nebius" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Supporting GPU provisioning and orchestration on Nebius
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#built-in-ui-for-monitoring-essential-gpu-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Built-in UI for monitoring essential GPU metrics
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#supporting-mpi-and-ncclrccl-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Supporting MPI and NCCL/RCCL tests
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exporting-gpu-cost-and-other-metrics-to-prometheus" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exporting GPU, cost, and other metrics to Prometheus
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#accessing-dev-environments-with-cursor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Accessing dev environments with Cursor
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#supporting-intel-gaudi-ai-accelerators-with-ssh-fleets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Supporting Intel Gaudi AI accelerators with SSH fleets
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#auto-shutdown-for-inactive-dev-environmentsno-idle-gpus" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Auto-shutdown for inactive dev environments—no idle GPUs
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introducing-gpu-blocks-and-proxy-jump-for-ssh-fleets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Introducing GPU blocks and proxy jump for SSH fleets
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
   
     
     
@@ -3270,10 +3483,10 @@ Support dstack with a ⭐ on
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
         
           
-          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
             
   
   
@@ -3291,8 +3504,8 @@ Support dstack with a ⭐ on
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_6">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_7">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -3359,10 +3572,10 @@ Support dstack with a ⭐ on
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_2" checked>
         
           
-          <label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="">
+          <label class="md-nav__link" for="__nav_7_2" id="__nav_7_2_label" tabindex="">
             
   
   
@@ -3380,8 +3593,8 @@ Support dstack with a ⭐ on
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_6_2">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_7_2">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -3390,6 +3603,70 @@ Support dstack with a ⭐ on
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../benchmarks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    <span class="md-typeset">
+      Benchmarks
+    </span>
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../case-studies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    <span class="md-typeset">
+      Case studies
+    </span>
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
             
               
                 
@@ -3419,7 +3696,7 @@ Support dstack with a ⭐ on
     
   
     <span class="md-typeset">
-      Releases
+      Changelog
     </span>
   
 
@@ -3439,7 +3716,7 @@ Support dstack with a ⭐ on
     
   
     <span class="md-typeset">
-      Releases
+      Changelog
     </span>
   
 
@@ -3464,6 +3741,17 @@ Support dstack with a ⭐ on
       Table of contents
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#rolling-deployment-secrets-files-tenstorrent-and-more" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rolling deployment, Secrets, Files, Tenstorrent, and more
+      
+    </span>
+  </a>
+  
+</li>
       
         <li class="md-nav__item">
   <a href="#supporting-arm-and-nvidia-gh200-on-lambda" class="md-nav__link">
@@ -3564,85 +3852,10 @@ Support dstack with a ⭐ on
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#supporting-nvidia-and-amd-accelerators-on-vultr" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Supporting NVIDIA and AMD accelerators on Vultr
-      
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
       
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    
-  
-  
-    <li class="md-nav__item">
-      <a href="../case-studies/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    <span class="md-typeset">
-      Case studies
-    </span>
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    
-  
-  
-    <li class="md-nav__item">
-      <a href="../benchmarks/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    <span class="md-typeset">
-      Benchmarks
-    </span>
-  
-
-    
-  </span>
-  
-  
-
-      </a>
     </li>
   
 
@@ -3690,6 +3903,17 @@ Support dstack with a ⭐ on
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#rolling-deployment-secrets-files-tenstorrent-and-more" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rolling deployment, Secrets, Files, Tenstorrent, and more
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#supporting-arm-and-nvidia-gh200-on-lambda" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3788,17 +4012,6 @@ Support dstack with a ⭐ on
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#supporting-nvidia-and-amd-accelerators-on-vultr" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Supporting NVIDIA and AMD accelerators on Vultr
-      
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -3811,8 +4024,196 @@ Support dstack with a ⭐ on
   <div class="md-content" data-md-component="content">
     <div class="md-content__inner">
       <header class="md-typeset">
-        <h1 id="releases">Releases<a class="headerlink" href="#releases" title="Permanent link">&para;</a></h1>
+        <h1 id="changelog">Changelog<a class="headerlink" href="#changelog" title="Permanent link">&para;</a></h1>
       </header>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2025-07-10 00:00:00+00:00">July 10, 2025</time></li>
+        
+          <li class="md-meta__item">
+            in
+            
+              <a href="./" class="md-meta__link">Changelog</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              3 min read
+            
+          </li>
+        
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="rolling-deployment-secrets-files-tenstorrent-and-more"><a class="toclink" href="../changelog-07-25/">Rolling deployment, Secrets, Files, Tenstorrent, and more</a></h2>
+<p>Thanks to feedback from the community, <code>dstack</code> continues to evolve. Here’s a look at what’s new.</p>
+<h5 id="rolling-deployments"><a class="toclink" href="../changelog-07-25/#rolling-deployments">Rolling deployments</a></h5>
+<p>Previously, updating running services could cause downtime. The latest release fixes this with <a href="../../docs/concepts/services/#rolling-deployment">rolling deployments</a>. Replicas are now updated one by one, allowing uninterrupted traffic during redeployments.</p>
+<div class="termy">
+
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>dstack<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>my-service.dstack.yml
+
+Active<span class="w"> </span>run<span class="w"> </span>my-service<span class="w"> </span>already<span class="w"> </span>exists.<span class="w"> </span>Detected<span class="w"> </span>changes<span class="w"> </span>that<span class="w"> </span>can<span class="w"> </span>be<span class="w"> </span>updated<span class="w"> </span><span class="k">in</span>-place:
+-<span class="w"> </span>Repo<span class="w"> </span>state<span class="w"> </span><span class="o">(</span>branch,<span class="w"> </span>commit,<span class="w"> </span>or<span class="w"> </span>other<span class="o">)</span>
+-<span class="w"> </span>File<span class="w"> </span>archives
+-<span class="w"> </span>Configuration<span class="w"> </span>properties:
+<span class="w">  </span>-<span class="w"> </span>env
+<span class="w">  </span>-<span class="w"> </span>files
+
+Update<span class="w"> </span>the<span class="w"> </span>run?<span class="w"> </span><span class="o">[</span>y/n<span class="o">]</span>:
+</code></pre></div>
+
+</div>
+
+<h5 id="secrets"><a class="toclink" href="../changelog-07-25/#secrets">Secrets</a></h5>
+<p>Secrets let you centrally manage sensitive data like API keys and credentials. They’re scoped to a project, managed by project admins, and can be <a href="../../docs/concepts/secrets/">securely referenced</a> in run configurations.</p>
+<div editor-title=".dstack.yml"> 
+
+<div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">task</span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">train</span>
+
+<span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nvcr.io/nvidia/pytorch:25.05-py3</span>
+<span class="nt">registry_auth</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">username</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$oauthtoken</span>
+<span class="hll"><span class="w">  </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ secrets.ngc_api_key }}</span>
+</span>
+<span class="nt">commands</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">git clone https://github.com/pytorch/examples.git pytorch-examples</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cd pytorch-examples/distributed/ddp-tutorial-series</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip install -r requirements.txt</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">    </span><span class="no">torchrun \</span>
+<span class="w">      </span><span class="no">--nproc-per-node=$DSTACK_GPUS_PER_NODE \</span>
+<span class="w">      </span><span class="no">--nnodes=$DSTACK_NODES_NUM \</span>
+<span class="w">      </span><span class="no">multinode.py 50 10</span>
+
+<span class="nt">resources</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">H100:1..2</span>
+<span class="w">  </span><span class="nt">shm_size</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">24GB</span>
+</code></pre></div>
+
+</div>
+
+<h5 id="files"><a class="toclink" href="../changelog-07-25/#files">Files</a></h5>
+<p>By default, <code>dstack</code> mounts the repo directory (where you ran <code>dstack init</code>) to all runs.</p>
+<p>If the directory is large or you need files outside of it, use the new <a href="../../docs/concepts/dev-environments/#files">files</a> property to map specific local paths into the container.</p>
+<div editor-title=".dstack.yml"> 
+
+<div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">task</span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">trl-sft</span>
+
+<span class="nt">files</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">.:examples</span><span class="w">  </span><span class="c1"># Maps the directory where `.dstack.yml` to `/workflow/examples`</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">~/.ssh/id_rsa:/root/.ssh/id_rsa</span><span class="w">  </span><span class="c1"># Maps `~/.ssh/id_rsa` to `/root/.ssh/id_rs</span>
+
+<span class="nt">python</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.12</span>
+
+<span class="nt">env</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HF_TOKEN</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HF_HUB_ENABLE_HF_TRANSFER=1</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MODEL=Qwen/Qwen2.5-0.5B</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DATASET=stanfordnlp/imdb</span>
+
+<span class="nt">commands</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uv pip install trl</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span><span class="w"> </span>
+<span class="w">    </span><span class="no">trl sft \</span>
+<span class="w">      </span><span class="no">--model_name_or_path $MODEL --dataset_name $DATASET</span>
+<span class="w">      </span><span class="no">--num_processes $DSTACK_GPUS_PER_NODE</span>
+
+<span class="nt">resources</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">H100:1</span>
+</code></pre></div>
+
+</div>
+
+<h5 id="tenstorrent"><a class="toclink" href="../changelog-07-25/#tenstorrent">Tenstorrent</a></h5>
+<p><code>dstack</code> remains committed to supporting multiple GPU vendors—including NVIDIA, AMD, TPUs, and more recently, <a href="https://tenstorrent.com/" target="_blank">Tenstorrent <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>. The latest release improves Tenstorrent support by handling hosts with multiple N300 cards and adds Docker-in-Docker support.</p>
+<p><img src="https://dstack.ai/static-assets/static-assets/images/dstack-tenstorrent-n300.png" width="630"/></p>
+<p>Huge thanks to the Tenstorrent community for testing these improvements!</p>
+<h5 id="docker-in-docker"><a class="toclink" href="../changelog-07-25/#docker-in-docker">Docker in Docker</a></h5>
+<p>Using Docker inside <code>dstack</code> run configurations is now even simpler. Just set <code>docker</code> to <code>true</code> to <a href="../../docs/concepts/tasks/#docker-in-docker">enable the use of Docker CLI</a> in your runs—allowing you to build images, run containers, use Docker Compose, and more.</p>
+<div editor-title=".dstack.yml"> 
+
+<div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">task</span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker-nvidia-smi</span>
+
+<span class="nt">docker</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+
+<span class="nt">commands</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">    </span><span class="no">docker run --gpus all \</span>
+<span class="w">      </span><span class="no">nvidia/cuda:12.3.0-base-ubuntu22.04 \</span>
+<span class="w">      </span><span class="no">nvidia-smi</span>
+
+<span class="nt">resources</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">H100:1</span>
+</code></pre></div>
+
+</div>
+
+<h5 id="aws-efa"><a class="toclink" href="../changelog-07-25/#aws-efa">AWS EFA</a></h5>
+<p>EFA is a network interface for EC2 that enables low-latency, high-bandwidth communication between nodes—crucial for scaling distributed deep learning. With <code>dstack</code>, EFA is automatically enabled when using supported instance types in fleets. Check out our <a href="../../examples/clusters/efa/">example</a></p>
+<h5 id="default-docker-images"><a class="toclink" href="../changelog-07-25/#default-docker-images">Default Docker images</a></h5>
+<p>If no <code>image</code> is specified, <code>dstack</code> uses a base Docker image that now comes pre-configured with <code>uv</code>, <code>python</code>, <code>pip</code>, essential CUDA drivers, InfiniBand, and NCCL tests (located at <code>/opt/nccl-tests/build</code>).  </p>
+<div editor-title="examples/clusters/nccl-tests/.dstack.yml">
+
+<div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">task</span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nccl-tests</span>
+
+<span class="nt">nodes</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
+
+<span class="nt">startup_order</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">workers-first</span>
+<span class="nt">stop_criteria</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">master-done</span>
+
+<span class="nt">env</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NCCL_DEBUG=INFO</span>
+<span class="nt">commands</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">    </span><span class="no">if [ $DSTACK_NODE_RANK -eq 0 ]; then</span>
+<span class="w">      </span><span class="no">mpirun \</span>
+<span class="w">        </span><span class="no">--allow-run-as-root \</span>
+<span class="w">        </span><span class="no">--hostfile $DSTACK_MPI_HOSTFILE \</span>
+<span class="w">        </span><span class="no">-n $DSTACK_GPUS_NUM \</span>
+<span class="w">        </span><span class="no">-N $DSTACK_GPUS_PER_NODE \</span>
+<span class="w">        </span><span class="no">--bind-to none \</span>
+<span class="w">        </span><span class="no">/opt/nccl-tests/build/all_reduce_perf -b 8 -e 8G -f 2 -g 1</span>
+<span class="w">    </span><span class="no">else</span>
+<span class="w">      </span><span class="no">sleep infinity</span>
+<span class="w">    </span><span class="no">fi</span>
+
+<span class="nt">resources</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nvidia:1..8</span>
+<span class="w">  </span><span class="nt">shm_size</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">16GB</span>
+</code></pre></div>
+
+</div>
+
+<p>These images are optimized for common use cases and kept lightweight—ideal for everyday development, training, and inference.</p>
+<h5 id="server-performance"><a class="toclink" href="../changelog-07-25/#server-performance">Server performance</a></h5>
+<p>Server-side performance has been improved. With optimized handling and background processing, each server replica can now handle more runs.</p>
+<h5 id="google-sso"><a class="toclink" href="../changelog-07-25/#google-sso">Google SSO</a></h5>
+<p>Alongside the open-source version, <code>dstack</code> also offers <a href="https://github.com/dstackai/dstack-enterprise">dstack Enterprise</a>—which adds dedicated support and extra integrations like Single Sign-On (SSO). The latest release introduces support for configuring your company’s Google account for authentication.</p>
+<p><img src="https://dstack.ai/static-assets/static-assets/images/dstack-enterprise-google-sso.png" width="630"/></p>
+<p>If you’d like to learn more about <code>dstack</code> Enterprise, <a href="https://calendly.com/dstackai/discovery-call">let us know</a>.</p>
+<p>That’s all for now. </p>
+<div class="admonition info">
+<p class="admonition-title">What's next?</p>
+<p>Give dstack a try, and share your feedback—whether it’s <a href="https://github.com/dstackai/dstack" target="_blank">GitHub <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> issues, PRs, or questions on <a href="https://discord.gg/u8SmfwPpMd" target="_blank">Discord <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>. We’re eager to hear from you!</p>
+</div>
+    
+    
+  </div>
+</article>
       
         <article class="md-post md-post--excerpt">
   <header class="md-post__header">
@@ -3825,7 +4226,7 @@ Support dstack with a ⭐ on
           <li class="md-meta__item">
             in
             
-              <a href="./" class="md-meta__link">Releases</a></li>
+              <a href="./" class="md-meta__link">Changelog</a></li>
         
         
           
@@ -3869,7 +4270,7 @@ and enables ARM-powered hosts, including GH200 and GB200, with <a href="../../do
           <li class="md-meta__item">
             in
             
-              <a href="./" class="md-meta__link">Releases</a></li>
+              <a href="./" class="md-meta__link">Changelog</a></li>
         
         
           
@@ -3917,7 +4318,7 @@ offering a streamlined developer experience for teams using GPUs for AI workload
           <li class="md-meta__item">
             in
             
-              <a href="./" class="md-meta__link">Releases</a></li>
+              <a href="./" class="md-meta__link">Changelog</a></li>
         
         
           
@@ -3965,7 +4366,7 @@ the <code>dstack</code> control plane.</p>
           <li class="md-meta__item">
             in
             
-              <a href="./" class="md-meta__link">Releases</a></li>
+              <a href="./" class="md-meta__link">Changelog</a></li>
         
         
           
@@ -4018,7 +4419,7 @@ cluster usage—we’ve added support for it.</p>
           <li class="md-meta__item">
             in
             
-              <a href="./" class="md-meta__link">Releases</a></li>
+              <a href="./" class="md-meta__link">Changelog</a></li>
         
         
           
@@ -4067,7 +4468,7 @@ metrics—covering fleets and runs—directly to Prometheus.</p>
           <li class="md-meta__item">
             in
             
-              <a href="./" class="md-meta__link">Releases</a></li>
+              <a href="./" class="md-meta__link">Changelog</a></li>
         
         
           
@@ -4114,7 +4515,7 @@ we’ve expanded compatibility. With this update, dev environments now offer eff
           <li class="md-meta__item">
             in
             
-              <a href="./" class="md-meta__link">Releases</a></li>
+              <a href="./" class="md-meta__link">Changelog</a></li>
         
         
           
@@ -4160,7 +4561,7 @@ for Intel Gaudi AI Accelerator and launching a new partnership with Intel.</p>
           <li class="md-meta__item">
             in
             
-              <a href="./" class="md-meta__link">Releases</a></li>
+              <a href="./" class="md-meta__link">Changelog</a></li>
         
         
           
@@ -4208,7 +4609,7 @@ our latest update, <code>dstack</code> now detects inactive environments and aut
           <li class="md-meta__item">
             in
             
-              <a href="./" class="md-meta__link">Releases</a></li>
+              <a href="./" class="md-meta__link">Changelog</a></li>
         
         
           
@@ -4238,56 +4639,6 @@ Slurm.</p>
     
       <nav class="md-post__action">
         <a href="../gpu-blocks-and-proxy-jump/">
-            <span>Continue reading</span>
-            <span class="icon"><svg viewBox="0 0 13 10" xmlns="http://www.w3.org/2000/svg"><path d="M12.823 4.164L8.954.182a.592.592 0 0 0-.854 0 .635.635 0 0 0 0 .88l2.836 2.92H.604A.614.614 0 0 0 0 4.604c0 .344.27.622.604.622h10.332L8.1 8.146a.635.635 0 0 0 0 .88.594.594 0 0 0 .854 0l3.869-3.982a.635.635 0 0 0 0-.88z" fill-rule="nonzero" fill="currentColor" class="fill-main"></path></svg></span>
-        </a>
-      </nav>
-    
-    
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2025-02-17 00:00:00+00:00">February 17, 2025</time></li>
-        
-          <li class="md-meta__item">
-            in
-            
-              <a href="./" class="md-meta__link">Releases</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              2 min read
-            
-          </li>
-        
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="supporting-nvidia-and-amd-accelerators-on-vultr"><a class="toclink" href="../nvidia-and-amd-on-vultr/">Supporting NVIDIA and AMD accelerators on Vultr</a></h2>
-<p>As demand for AI infrastructure grows, the need for efficient, vendor-neutral orchestration tools is becoming
-increasingly important.
-At <code>dstack</code>, we’re committed to redefining AI container orchestration by prioritizing an AI-native, open-source-first
-approach.
-Today, we’re excited to share a new integration and partnership
-with <a href="https://www.vultr.com/" target="_blank">Vultr <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>.</p>
-<p><img src="https://dstack.ai/static-assets/static-assets/images/dstack-vultr.png" width="630"/></p>
-<p>This new integration enables Vultr customers to train and deploy models on both AMD
-and NVIDIA GPUs with greater flexibility and efficiency–using <code>dstack</code>. </p>
-
-    
-      <nav class="md-post__action">
-        <a href="../nvidia-and-amd-on-vultr/">
             <span>Continue reading</span>
             <span class="icon"><svg viewBox="0 0 13 10" xmlns="http://www.w3.org/2000/svg"><path d="M12.823 4.164L8.954.182a.592.592 0 0 0-.854 0 .635.635 0 0 0 0 .88l2.836 2.92H.604A.614.614 0 0 0 0 4.604c0 .344.27.622.604.622h10.332L8.1 8.146a.635.635 0 0 0 0 .88.594.594 0 0 0 .854 0l3.869-3.982a.635.635 0 0 0 0-.88z" fill-rule="nonzero" fill="currentColor" class="fill-main"></path></svg></span>
         </a>
@@ -4388,38 +4739,34 @@ and NVIDIA GPUs with greater flexibility and efficiency–using <code>dstack</co
             </div>
 
             <div class="tx-footer__right-side">
-                <!--<div class="tx-footer__section">
-                    <div class="tx-footer__section-title">Contact</div>
-                    <a href="mailto:hello@dstack.ai" class="tx-footer__section-link">hello@dstack.ai</a>
-                    &lt;!&ndash;<a class="tx-footer__section-link" href="javascript:void(0)" onclick="$crisp.push(['do', 'chat:show'])">Open chat</a>&ndash;&gt;
-                </div>-->
-
+              <!--<div class="tx-footer__section">
+                  <div class="tx-footer__section-title">Contact</div>
+                  <a href="mailto:hello@dstack.ai" class="tx-footer__section-link">hello@dstack.ai</a>
+                  &lt;!&ndash;<a class="tx-footer__section-link" href="javascript:void(0)" onclick="$crisp.push(['do', 'chat:show'])">Open chat</a>&ndash;&gt;
+              </div>-->
+            
               <div class="tx-footer__section">
-                    <div class="tx-footer__section-title">Resources</div>
-                    <a href="/docs" class="tx-footer__section-link">Documentation</a>
-                    <a href="/blog" class="tx-footer__section-link">Blog</a>
-                    <a href="https://github.com/dstackai/dstack/releases" target="_blank" class="tx-footer__section-link external">Changelog</a>
-                </div>
-
-                <div class="tx-footer__section">
-                    <div class="tx-footer__section-title">Examples</div>
-                    <a href="/examples#fine-tuning" class="tx-footer__section-link">Single-node training</a>
-                    <a href="/examples#distributed-training" class="tx-footer__section-link">Distributed training</a>
-                    <a href="/examples#clusters" class="tx-footer__section-link">Clusters</a>
-                    <a href="/examples#inference" class="tx-footer__section-link">Inference</a>
-                    <!-- <a href="/examples#accelerators" class="tx-footer__section-link">Accelerators</a> -->
-                    <!-- <a href="/examples#misc" class="tx-footer__section-link">Misc</a> -->
-                </div>
-
-                <div class="tx-footer__section">
-                    <div class="tx-footer__section-title">Company</div>
-                    <a href="https://calendly.com/dstackai/discovery-call" target="_blank" class="tx-footer__section-link external">Book a demo</a>
-                    <!-- <a href="/partners" class="tx-footer__section-link">Partners</a> -->
-                    <a href="/terms" class="tx-footer__section-link">Terms</a>
-                    <a href="/privacy" class="tx-footer__section-link">Privacy</a>
-                    <!--<a href="https://dstackai.notion.site/Jobs-at-dstack-ff01a450c3174904b70c36124f2d8f4b" target="_blank" class="tx-footer__section-link external">Careers</a>-->
-                </div>
-            </div>
+                <div class="tx-footer__section-title">Examples</div>
+                <a href="/examples#fine-tuning" class="tx-footer__section-link">Single-node training</a>
+                <a href="/examples#distributed-training" class="tx-footer__section-link">Distributed training</a>
+                <a href="/examples#clusters" class="tx-footer__section-link">Clusters</a>
+                <a href="/examples#inference" class="tx-footer__section-link">Inference</a>
+              </div>
+              
+              <div class="tx-footer__section">
+                <div class="tx-footer__section-title">Community</div>
+                <a href="https://discord.gg/u8SmfwPpMd" target="_blank" class="tx-footer__section-link external">Discord</a>
+                <a href="https://github.com/dstackai/dstacks" target="_blank" class="tx-footer__section-link external">GitHub</a>
+              </div>
+              
+              <div class="tx-footer__section">
+                <div class="tx-footer__section-title">Company</div>
+                <a href="https://calendly.com/dstackai/discovery-call" target="_blank" class="tx-footer__section-link external">Talk to us</a>
+                <!-- <a href="/partners" class="tx-footer__section-link">Partners</a> -->
+                <a href="/terms" class="tx-footer__section-link">Terms</a>
+                <a href="/privacy" class="tx-footer__section-link">Privacy</a>
+                <!--<a href="https://dstackai.notion.site/Jobs-at-dstack-ff01a450c3174904b70c36124f2d8f4b" target="_blank" class="tx-footer__section-link external">Careers</a>-->
+              </div>
         </div>
     </footer>
 
