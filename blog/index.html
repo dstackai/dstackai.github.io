@@ -15,10 +15,10 @@
         <link rel="canonical" href="https://dstack.ai/blog/">
       
       
-        <link rel="prev" href="changelog/">
+        <link rel="prev" href="benchmarks/">
       
       
-        <link rel="next" href="benchmarks/">
+        <link rel="next" href="changelog/">
       
       
         
@@ -340,13 +340,13 @@ Support dstack with a ⭐ on
   
   
     <li class="md-tabs__item">
-      <a href="benchmarks/" class="md-tabs__link">
+      <a href="changelog/" class="md-tabs__link">
         
   
   
     
   
-  Benchmarks
+  Changelog
 
       </a>
     </li>
@@ -378,13 +378,13 @@ Support dstack with a ⭐ on
   
   
     <li class="md-tabs__item">
-      <a href="changelog/" class="md-tabs__link">
+      <a href="benchmarks/" class="md-tabs__link">
         
   
   
     
   
-  Changelog
+  Benchmarks
 
       </a>
     </li>
@@ -3211,7 +3211,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="benchmarks/" class="md-nav__link">
+      <a href="changelog/" class="md-nav__link">
         
   
   
@@ -3219,7 +3219,7 @@ Support dstack with a ⭐ on
     
   
     <span class="md-typeset">
-      Benchmarks
+      Changelog
     </span>
   
 
@@ -3273,7 +3273,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="changelog/" class="md-nav__link">
+      <a href="benchmarks/" class="md-nav__link">
         
   
   
@@ -3281,7 +3281,7 @@ Support dstack with a ⭐ on
     
   
     <span class="md-typeset">
-      Changelog
+      Benchmarks
     </span>
   
 
@@ -3427,6 +3427,17 @@ Support dstack with a ⭐ on
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#benchmarking-amd-gpus-bare-metal-containers-partitions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Benchmarking AMD GPUs: bare-metal, containers, partitions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#rolling-deployment-secrets-files-tenstorrent-and-more" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3519,17 +3530,6 @@ Support dstack with a ⭐ on
     <span class="md-ellipsis">
       
         DeepSeek R1 inference performance: MI300X vs. H200
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#using-ssh-fleets-with-tensorwaves-private-amd-cloud" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Using SSH fleets with TensorWave's private AMD cloud
       
     </span>
   </a>
@@ -3609,7 +3609,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="benchmarks/" class="md-nav__link">
+      <a href="changelog/" class="md-nav__link">
         
   
   
@@ -3617,7 +3617,7 @@ Support dstack with a ⭐ on
     
   
     <span class="md-typeset">
-      Benchmarks
+      Changelog
     </span>
   
 
@@ -3673,7 +3673,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="changelog/" class="md-nav__link">
+      <a href="benchmarks/" class="md-nav__link">
         
   
   
@@ -3681,7 +3681,7 @@ Support dstack with a ⭐ on
     
   
     <span class="md-typeset">
-      Changelog
+      Benchmarks
     </span>
   
 
@@ -3736,6 +3736,17 @@ Support dstack with a ⭐ on
       Table of contents
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#benchmarking-amd-gpus-bare-metal-containers-partitions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Benchmarking AMD GPUs: bare-metal, containers, partitions
+      
+    </span>
+  </a>
+  
+</li>
       
         <li class="md-nav__item">
   <a href="#rolling-deployment-secrets-files-tenstorrent-and-more" class="md-nav__link">
@@ -3836,17 +3847,6 @@ Support dstack with a ⭐ on
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#using-ssh-fleets-with-tensorwaves-private-amd-cloud" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Using SSH fleets with TensorWave's private AMD cloud
-      
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -3867,6 +3867,51 @@ Support dstack with a ⭐ on
 
 <h1 id="blog">Blog<a class="headerlink" href="#blog" title="Permanent link">&para;</a></h1>
       </header>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2025-07-15 00:00:00+00:00">July 15, 2025</time></li>
+        
+          <li class="md-meta__item">
+            in
+            
+              <a href="benchmarks/" class="md-meta__link">Benchmarks</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              9 min read
+            
+          </li>
+        
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="benchmarking-amd-gpus-bare-metal-containers-partitions"><a class="toclink" href="benchmark-amd-containers-and-partitions/">Benchmarking AMD GPUs: bare-metal, containers, partitions</a></h2>
+<p>Our new benchmark explores two important areas for optimizing AI workloads on AMD GPUs: First, do containers introduce a performance penalty for network-intensive tasks compared to a bare-metal setup? Second, how does partitioning a powerful GPU like the MI300X affect its real-world performance for different types of AI workloads?</p>
+<p><img src="https://dstack.ai/static-assets/static-assets/images/benchmark-amd-containers-and-partitions.png" width="630"/></p>
+<p>This benchmark was supported by <a href="https://hotaisle.xyz/" target="_blank">Hot Aisle <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>,
+a provider of AMD GPU bare-metal and VM infrastructure.</p>
+
+    
+      <nav class="md-post__action">
+        <a href="benchmark-amd-containers-and-partitions/">
+            <span>Continue reading</span>
+            <span class="icon"><svg viewBox="0 0 13 10" xmlns="http://www.w3.org/2000/svg"><path d="M12.823 4.164L8.954.182a.592.592 0 0 0-.854 0 .635.635 0 0 0 0 .88l2.836 2.92H.604A.614.614 0 0 0 0 4.604c0 .344.27.622.604.622h10.332L8.1 8.146a.635.635 0 0 0 0 .88.594.594 0 0 0 .854 0l3.869-3.982a.635.635 0 0 0 0-.88z" fill-rule="nonzero" fill="currentColor" class="fill-main"></path></svg></span>
+        </a>
+      </nav>
+    
+    
+  </div>
+</article>
       
         <article class="md-post md-post--excerpt">
   <header class="md-post__header">
@@ -3911,153 +3956,24 @@ Active<span class="w"> </span>run<span class="w"> </span>my-service<span class="
 <span class="w">  </span>-<span class="w"> </span>files
 
 Update<span class="w"> </span>the<span class="w"> </span>run?<span class="w"> </span><span class="o">[</span>y/n<span class="o">]</span>:<span class="w"> </span>y<span class="w"> </span>
-
 ⠋<span class="w"> </span>Launching<span class="w"> </span>my-service...
 
-<span class="w"> </span>NAME<span class="w">                            </span>BACKEND<span class="w">          </span>PRICE<span class="w">    </span>STATUS<span class="w">       </span>SUBMITTED
-<span class="w"> </span>my-service<span class="w"> </span><span class="nv">deployment</span><span class="o">=</span><span class="m">1</span><span class="w">                                   </span>running<span class="w">      </span><span class="m">11</span><span class="w"> </span>mins<span class="w"> </span>ago
-<span class="w">   </span><span class="nv">replica</span><span class="o">=</span><span class="m">0</span><span class="w"> </span><span class="nv">job</span><span class="o">=</span><span class="m">0</span><span class="w"> </span><span class="nv">deployment</span><span class="o">=</span><span class="m">0</span><span class="w">  </span>aws<span class="w"> </span><span class="o">(</span>us-west-2<span class="o">)</span><span class="w">  </span><span class="nv">$0</span>.0026<span class="w">  </span>terminating<span class="w">  </span><span class="m">11</span><span class="w"> </span>mins<span class="w"> </span>ago
-<span class="w">   </span><span class="nv">replica</span><span class="o">=</span><span class="m">1</span><span class="w"> </span><span class="nv">job</span><span class="o">=</span><span class="m">0</span><span class="w"> </span><span class="nv">deployment</span><span class="o">=</span><span class="m">1</span><span class="w">  </span>aws<span class="w"> </span><span class="o">(</span>us-west-2<span class="o">)</span><span class="w">  </span><span class="nv">$0</span>.0026<span class="w">  </span>running<span class="w">      </span><span class="m">1</span><span class="w"> </span>min<span class="w"> </span>ago
+<span class="w"> </span>NAME<span class="w">                      </span>BACKEND<span class="w">          </span>PRICE<span class="w">    </span>STATUS<span class="w">       </span>SUBMITTED
+<span class="w"> </span>my-service<span class="w"> </span><span class="nv">deployment</span><span class="o">=</span><span class="m">1</span><span class="w">                             </span>running<span class="w">      </span><span class="m">11</span><span class="w"> </span>mins<span class="w"> </span>ago
+<span class="w">   </span><span class="nv">replica</span><span class="o">=</span><span class="m">0</span><span class="w"> </span><span class="nv">deployment</span><span class="o">=</span><span class="m">0</span><span class="w">  </span>aws<span class="w"> </span><span class="o">(</span>us-west-2<span class="o">)</span><span class="w">  </span><span class="nv">$0</span>.0026<span class="w">  </span>terminating<span class="w">  </span><span class="m">11</span><span class="w"> </span>mins<span class="w"> </span>ago
+<span class="w">   </span><span class="nv">replica</span><span class="o">=</span><span class="m">1</span><span class="w"> </span><span class="nv">deployment</span><span class="o">=</span><span class="m">1</span><span class="w">  </span>aws<span class="w"> </span><span class="o">(</span>us-west-2<span class="o">)</span><span class="w">  </span><span class="nv">$0</span>.0026<span class="w">  </span>running<span class="w">      </span><span class="m">1</span><span class="w"> </span>min<span class="w"> </span>ago
 </code></pre></div>
 
 </div>
 
-<h5 id="secrets"><a class="toclink" href="changelog-07-25/#secrets">Secrets</a></h5>
-<p>Secrets let you centrally manage sensitive data like API keys and credentials. They’re scoped to a project, managed by project admins, and can be <a href="../docs/concepts/secrets/">securely referenced</a> in run configurations.</p>
-<div editor-title=".dstack.yml"> 
 
-<div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">task</span>
-<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">train</span>
-
-<span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nvcr.io/nvidia/pytorch:25.05-py3</span>
-<span class="nt">registry_auth</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">username</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$oauthtoken</span>
-<span class="hll"><span class="w">  </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ secrets.ngc_api_key }}</span>
-</span>
-<span class="nt">commands</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">git clone https://github.com/pytorch/examples.git pytorch-examples</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cd pytorch-examples/distributed/ddp-tutorial-series</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip install -r requirements.txt</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
-<span class="w">    </span><span class="no">torchrun \</span>
-<span class="w">      </span><span class="no">--nproc-per-node=$DSTACK_GPUS_PER_NODE \</span>
-<span class="w">      </span><span class="no">--nnodes=$DSTACK_NODES_NUM \</span>
-<span class="w">      </span><span class="no">multinode.py 50 10</span>
-
-<span class="nt">resources</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">H100:1..2</span>
-<span class="w">  </span><span class="nt">shm_size</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">24GB</span>
-</code></pre></div>
-
-</div>
-
-<h5 id="files"><a class="toclink" href="changelog-07-25/#files">Files</a></h5>
-<p>By default, <code>dstack</code> mounts the repo directory (where you ran <code>dstack init</code>) to all runs.</p>
-<p>If the directory is large or you need files outside of it, use the new <a href="../../docs/concepts/dev-environments/#files">files</a> property to map specific local paths into the container.</p>
-<div editor-title=".dstack.yml"> 
-
-<div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">task</span>
-<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">trl-sft</span>
-
-<span class="nt">files</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">.:examples</span><span class="w">  </span><span class="c1"># Maps the directory where `.dstack.yml` to `/workflow/examples`</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">~/.ssh/id_rsa:/root/.ssh/id_rsa</span><span class="w">  </span><span class="c1"># Maps `~/.ssh/id_rsa` to `/root/.ssh/id_rs</span>
-
-<span class="nt">python</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.12</span>
-
-<span class="nt">env</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HF_TOKEN</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HF_HUB_ENABLE_HF_TRANSFER=1</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MODEL=Qwen/Qwen2.5-0.5B</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DATASET=stanfordnlp/imdb</span>
-
-<span class="nt">commands</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uv pip install trl</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span><span class="w"> </span>
-<span class="w">    </span><span class="no">trl sft \</span>
-<span class="w">      </span><span class="no">--model_name_or_path $MODEL --dataset_name $DATASET</span>
-<span class="w">      </span><span class="no">--num_processes $DSTACK_GPUS_PER_NODE</span>
-
-<span class="nt">resources</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">H100:1</span>
-</code></pre></div>
-
-</div>
-
-<h5 id="tenstorrent"><a class="toclink" href="changelog-07-25/#tenstorrent">Tenstorrent</a></h5>
-<p><code>dstack</code> remains committed to supporting multiple GPU vendors—including NVIDIA, AMD, TPUs, and more recently, <a href="https://tenstorrent.com/" target="_blank">Tenstorrent <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>. The latest release improves Tenstorrent support by handling hosts with multiple N300 cards and adds Docker-in-Docker support.</p>
-<p><img src="https://dstack.ai/static-assets/static-assets/images/dstack-tenstorrent-n300.png" width="630"/></p>
-<p>Huge thanks to the Tenstorrent community for testing these improvements!</p>
-<h5 id="docker-in-docker"><a class="toclink" href="changelog-07-25/#docker-in-docker">Docker in Docker</a></h5>
-<p>Using Docker inside <code>dstack</code> run configurations is now even simpler. Just set <code>docker</code> to <code>true</code> to <a href="../docs/concepts/tasks/#docker-in-docker">enable the use of Docker CLI</a> in your runs—allowing you to build images, run containers, use Docker Compose, and more.</p>
-<div editor-title=".dstack.yml"> 
-
-<div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">task</span>
-<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker-nvidia-smi</span>
-
-<span class="nt">docker</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-
-<span class="nt">commands</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
-<span class="w">    </span><span class="no">docker run --gpus all \</span>
-<span class="w">      </span><span class="no">nvidia/cuda:12.3.0-base-ubuntu22.04 \</span>
-<span class="w">      </span><span class="no">nvidia-smi</span>
-
-<span class="nt">resources</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">H100:1</span>
-</code></pre></div>
-
-</div>
-
-<h5 id="aws-efa"><a class="toclink" href="changelog-07-25/#aws-efa">AWS EFA</a></h5>
-<p>EFA is a network interface for EC2 that enables low-latency, high-bandwidth communication between nodes—crucial for scaling distributed deep learning. With <code>dstack</code>, EFA is automatically enabled when using supported instance types in fleets. Check out our <a href="../examples/clusters/efa/">example</a></p>
-<h5 id="default-docker-images"><a class="toclink" href="changelog-07-25/#default-docker-images">Default Docker images</a></h5>
-<p>If no <code>image</code> is specified, <code>dstack</code> uses a base Docker image that now comes pre-configured with <code>uv</code>, <code>python</code>, <code>pip</code>, essential CUDA drivers, InfiniBand, and NCCL tests (located at <code>/opt/nccl-tests/build</code>).  </p>
-<div editor-title="examples/clusters/nccl-tests/.dstack.yml">
-
-<div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">task</span>
-<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nccl-tests</span>
-
-<span class="nt">nodes</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
-
-<span class="nt">startup_order</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">workers-first</span>
-<span class="nt">stop_criteria</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">master-done</span>
-
-<span class="nt">env</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NCCL_DEBUG=INFO</span>
-<span class="nt">commands</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
-<span class="w">    </span><span class="no">if [ $DSTACK_NODE_RANK -eq 0 ]; then</span>
-<span class="w">      </span><span class="no">mpirun \</span>
-<span class="w">        </span><span class="no">--allow-run-as-root \</span>
-<span class="w">        </span><span class="no">--hostfile $DSTACK_MPI_HOSTFILE \</span>
-<span class="w">        </span><span class="no">-n $DSTACK_GPUS_NUM \</span>
-<span class="w">        </span><span class="no">-N $DSTACK_GPUS_PER_NODE \</span>
-<span class="w">        </span><span class="no">--bind-to none \</span>
-<span class="w">        </span><span class="no">/opt/nccl-tests/build/all_reduce_perf -b 8 -e 8G -f 2 -g 1</span>
-<span class="w">    </span><span class="no">else</span>
-<span class="w">      </span><span class="no">sleep infinity</span>
-<span class="w">    </span><span class="no">fi</span>
-
-<span class="nt">resources</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nvidia:1..8</span>
-<span class="w">  </span><span class="nt">shm_size</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">16GB</span>
-</code></pre></div>
-
-</div>
-
-<p>These images are optimized for common use cases and kept lightweight—ideal for everyday development, training, and inference.</p>
-<h5 id="server-performance"><a class="toclink" href="changelog-07-25/#server-performance">Server performance</a></h5>
-<p>Server-side performance has been improved. With optimized handling and background processing, each server replica can now handle more runs.</p>
-<h5 id="google-sso"><a class="toclink" href="changelog-07-25/#google-sso">Google SSO</a></h5>
-<p>Alongside the open-source version, <code>dstack</code> also offers <a href="https://github.com/dstackai/dstack-enterprise" target="_blank">dstack Enterprise <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> — which adds dedicated support and extra integrations like Single Sign-On (SSO). The latest release introduces support for configuring your company’s Google account for authentication.</p>
-<p><img src="https://dstack.ai/static-assets/static-assets/images/dstack-enterprise-google-sso.png" width="630"/></p>
-<p>If you’d like to learn more about <code>dstack</code> Enterprise, <a href="https://calendly.com/dstackai/discovery-call">let us know</a>.</p>
-<p>That’s all for now. </p>
-<div class="admonition info">
-<p class="admonition-title">What's next?</p>
-<p>Give dstack a try, and share your feedback—whether it’s <a href="https://github.com/dstackai/dstack" target="_blank">GitHub <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> issues, PRs, or questions on <a href="https://discord.gg/u8SmfwPpMd" target="_blank">Discord <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>. We’re eager to hear from you!</p>
-</div>
+    
+      <nav class="md-post__action">
+        <a href="changelog-07-25/">
+            <span>Continue reading</span>
+            <span class="icon"><svg viewBox="0 0 13 10" xmlns="http://www.w3.org/2000/svg"><path d="M12.823 4.164L8.954.182a.592.592 0 0 0-.854 0 .635.635 0 0 0 0 .88l2.836 2.92H.604A.614.614 0 0 0 0 4.604c0 .344.27.622.604.622h10.332L8.1 8.146a.635.635 0 0 0 0 .88.594.594 0 0 0 .854 0l3.869-3.982a.635.635 0 0 0 0-.88z" fill-rule="nonzero" fill="currentColor" class="fill-main"></path></svg></span>
+        </a>
+      </nav>
     
     
   </div>
@@ -4439,53 +4355,6 @@ who provided access to the necessary hardware.</p>
     
       <nav class="md-post__action">
         <a href="h200-mi300x-deepskeek-benchmark/">
-            <span>Continue reading</span>
-            <span class="icon"><svg viewBox="0 0 13 10" xmlns="http://www.w3.org/2000/svg"><path d="M12.823 4.164L8.954.182a.592.592 0 0 0-.854 0 .635.635 0 0 0 0 .88l2.836 2.92H.604A.614.614 0 0 0 0 4.604c0 .344.27.622.604.622h10.332L8.1 8.146a.635.635 0 0 0 0 .88.594.594 0 0 0 .854 0l3.869-3.982a.635.635 0 0 0 0-.88z" fill-rule="nonzero" fill="currentColor" class="fill-main"></path></svg></span>
-        </a>
-      </nav>
-    
-    
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2025-03-11 00:00:00+00:00">March 11, 2025</time></li>
-        
-          <li class="md-meta__item">
-            in
-            
-              <a href="case-studies/" class="md-meta__link">Case studies</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              3 min read
-            
-          </li>
-        
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="using-ssh-fleets-with-tensorwaves-private-amd-cloud"><a class="toclink" href="amd-on-tensorwave/">Using SSH fleets with TensorWave's private AMD cloud</a></h2>
-<p>Since last month, when we introduced support for private clouds and data centers, it has become easier to use <code>dstack</code>
-to orchestrate AI containers with any AI cloud vendor, whether they provide on-demand compute or reserved clusters.</p>
-<p>In this tutorial, we’ll walk you through how <code>dstack</code> can be used with
-<a href="https://tensorwave.com/" target="_blank">TensorWave <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> using 
-<a href="../docs/concepts/fleets/#ssh">SSH fleets</a>.</p>
-<p><img src="https://dstack.ai/static-assets/static-assets/images/dstack-tensorwave-v2.png" width="630"/></p>
-
-    
-      <nav class="md-post__action">
-        <a href="amd-on-tensorwave/">
             <span>Continue reading</span>
             <span class="icon"><svg viewBox="0 0 13 10" xmlns="http://www.w3.org/2000/svg"><path d="M12.823 4.164L8.954.182a.592.592 0 0 0-.854 0 .635.635 0 0 0 0 .88l2.836 2.92H.604A.614.614 0 0 0 0 4.604c0 .344.27.622.604.622h10.332L8.1 8.146a.635.635 0 0 0 0 .88.594.594 0 0 0 .854 0l3.869-3.982a.635.635 0 0 0 0-.88z" fill-rule="nonzero" fill="currentColor" class="fill-main"></path></svg></span>
         </a>
