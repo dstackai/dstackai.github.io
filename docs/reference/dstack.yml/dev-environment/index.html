@@ -1478,6 +1478,17 @@ Support dstack with a ⭐ on
 </li>
         
           <li class="md-nav__item">
+  <a href="#schedule" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        schedule
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#resources" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3760,6 +3771,17 @@ Support dstack with a ⭐ on
 </li>
         
           <li class="md-nav__item">
+  <a href="#schedule" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        schedule
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#resources" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3946,6 +3968,7 @@ Support dstack with a ⭐ on
 <h6 class="reference-item" id="_utilization_policy"><a href="#utilization_policy"><code>utilization_policy</code></a> - (Optional) Run termination policy based on utilization.<a class="headerlink" href="#_utilization_policy" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="startup_order"><code>startup_order</code> - (Optional) The order in which master and workers jobs are started: <code>any</code>, <code>master-first</code>, <code>workers-first</code>. Defaults to <code>any</code>.<a class="headerlink" href="#startup_order" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="stop_criteria"><code>stop_criteria</code> - (Optional) The criteria determining when a multi-node run should be considered finished: <code>all-done</code>, <code>master-done</code>. Defaults to <code>all-done</code>.<a class="headerlink" href="#stop_criteria" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="_schedule"><a href="#schedule"><code>schedule</code></a> - (Optional) The schedule for starting the run at specified time.<a class="headerlink" href="#_schedule" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="fleets"><code>fleets</code> - (Optional) The fleets considered for reuse.<a class="headerlink" href="#fleets" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="tags"><code>tags</code> - (Optional) The custom tags to associate with the resource. The tags are also propagated to the underlying backend resources. If there is a conflict with backend-level tags, does not override them.<a class="headerlink" href="#tags" title="Permanent link">&para;</a></h6>
 <h3 id="retry"><code>retry</code><a class="headerlink" href="#retry" title="Permanent link">&para;</a></h3>
@@ -3954,6 +3977,8 @@ Support dstack with a ⭐ on
 <h3 id="utilization_policy"><code>utilization_policy</code><a class="headerlink" href="#utilization_policy" title="Permanent link">&para;</a></h3>
 <h6 class="reference-item" id="min_gpu_utilization"><code>min_gpu_utilization</code> -  Minimum required GPU utilization, percent. If any GPU has utilization below specified value during the whole time window, the run is terminated.<a class="headerlink" href="#min_gpu_utilization" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="time_window"><code>time_window</code> -  The time window of metric samples taking into account to measure utilization (e.g., <code>30m</code>, <code>1h</code>). Minimum is <code>5m</code>.<a class="headerlink" href="#time_window" title="Permanent link">&para;</a></h6>
+<h3 id="schedule"><code>schedule</code><a class="headerlink" href="#schedule" title="Permanent link">&para;</a></h3>
+<h6 class="reference-item" id="cron"><code>cron</code> -  A cron expression or a list of cron expressions specifying the UTC time when the run needs to be started.<a class="headerlink" href="#cron" title="Permanent link">&para;</a></h6>
 <h3 id="resources"><code>resources</code><a class="headerlink" href="#resources" title="Permanent link">&para;</a></h3>
 <h6 class="reference-item" id="_cpu"><a href="#resources-cpu"><code>cpu</code></a> - (Optional) The CPU requirements.<a class="headerlink" href="#_cpu" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="memory"><code>memory</code> - (Optional) The RAM size (e.g., <code>8GB</code>). Defaults to <code>8GB..</code>.<a class="headerlink" href="#memory" title="Permanent link">&para;</a></h6>
@@ -4199,7 +4224,7 @@ Support dstack with a ⭐ on
 <script src="/assets/javascripts/termynal.js" data-termynal-container="#termynal"></script>
 <script async src="https://tally.so/widgets/embed.js"></script>
 
-      <script src="../../../../assets/javascripts/bundle.5c86578b.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.b66b2b78.min.js"></script>
       
         <script src="../../../../assets/javascripts/extra.js"></script>
       

@@ -18,6 +18,8 @@
         <link rel="prev" href="../changelog-07-25/">
       
       
+        <link rel="next" href="../benchmark-amd-vms/">
+      
       
         
       
@@ -3850,10 +3852,10 @@ Support dstack with a ⭐ on
 <h1 id="benchmarking-amd-gpus-bare-metal-containers-partitions">Benchmarking AMD GPUs: bare-metal, containers, partitions<a class="headerlink" href="#benchmarking-amd-gpus-bare-metal-containers-partitions" title="Permanent link">&para;</a></h1>
 <p>Our new benchmark explores two important areas for optimizing AI workloads on AMD GPUs: First, do containers introduce a performance penalty for network-intensive tasks compared to a bare-metal setup? Second, how does partitioning a powerful GPU like the MI300X affect its real-world performance for different types of AI workloads?</p>
 <p><img src="https://dstack.ai/static-assets/static-assets/images/benchmark-amd-containers-and-partitions.png" width="630"/></p>
-<p>This benchmark was supported by <a href="https://hotaisle.xyz/" target="_blank">Hot Aisle <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>,
-a provider of AMD GPU bare-metal and VM infrastructure.</p>
 <!-- more -->
 
+<p>This benchmark was supported by <a href="https://hotaisle.xyz/" target="_blank">Hot Aisle <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>,
+a provider of AMD GPU bare-metal and VM infrastructure.</p>
 <h2 id="benchmark-1-bare-metal-vs-containers">Benchmark 1: Bare-metal vs containers<a class="headerlink" href="#benchmark-1-bare-metal-vs-containers" title="Permanent link">&para;</a></h2>
 <h3 id="finding-1-no-loss-in-interconnect-bandwidth">Finding 1: No loss in interconnect bandwidth<a class="headerlink" href="#finding-1-no-loss-in-interconnect-bandwidth" title="Permanent link">&para;</a></h3>
 <p>A common concern is that the abstraction layer of containers might slow down communication between GPUs on different nodes. To test this, we measured interconnect performance using two critical methods: high-level RCCL collectives (AllGather, AllReduce) essential for distributed AI, and low-level RDMA write tests for a raw measure of network bandwidth.</p>
@@ -4383,7 +4385,7 @@ If you’re looking for fast AMD GPU bare-metal or VM instances, they’re defin
 <script src="/assets/javascripts/termynal.js" data-termynal-container="#termynal"></script>
 <script async src="https://tally.so/widgets/embed.js"></script>
 
-      <script src="../../assets/javascripts/bundle.5c86578b.min.js"></script>
+      <script src="../../assets/javascripts/bundle.b66b2b78.min.js"></script>
       
         <script src="../../assets/javascripts/extra.js"></script>
       

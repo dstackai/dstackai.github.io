@@ -3946,7 +3946,7 @@ The <code>dstack metrics</code> command displays the most recently tracked CPU, 
 <p>In addition to the essential metrics available via the CLI and UI, <code>dstack</code> exports additional metrics to Prometheus, including data on fleets, runs, jobs, and DCGM metrics.</p>
 <details class="info">
 <summary>NVIDIA DCGM</summary>
-<p>NVIDIA DCGM metrics are automatically collected for <code>aws</code>, <code>azure</code>, <code>gcp</code>, and <code>oci</code> backends, 
+<p>NVIDIA DCGM metrics are automatically collected for <code>aws</code>, <code>azure</code>, <code>gcp</code>, and <code>oci</code> backends,
 as well as for <a href="../../concepts/fleets/#ssh">SSH fleets</a>.</p>
 <p>To ensure NVIDIA DCGM metrics are collected from SSH fleets, ensure the <code>datacenter-gpu-manager-4-core</code>,
 <code>datacenter-gpu-manager-4-proprietary</code>, and <code>datacenter-gpu-manager-exporter</code> packages are installed on the hosts.</p>
@@ -4187,6 +4187,24 @@ telemetry, and more.</p>
 <td><em>gauge</em></td>
 <td>Memory used by the job (not including cache), bytes</td>
 <td><code>147251200.0</code></td>
+</tr>
+<tr>
+<td><code>dstack_job_gpu_usage_ratio</code></td>
+<td><em>gauge</em></td>
+<td>Job GPU usage, percent (as 0.0-1.0)</td>
+<td><code>0.93</code></td>
+</tr>
+<tr>
+<td><code>dstack_job_gpu_memory_total_bytes</code></td>
+<td><em>gauge</em></td>
+<td>Total GPU memory allocated for the job, bytes</td>
+<td><code>8589934592.0</code></td>
+</tr>
+<tr>
+<td><code>dstack_job_gpu_memory_usage_bytes</code></td>
+<td><em>gauge</em></td>
+<td>GPU memory used by the job, bytes</td>
+<td><code>1048576.0</code></td>
 </tr>
 <tr>
 <td><code>DCGM_FI_DEV_GPU_UTIL</code></td>
@@ -4562,6 +4580,12 @@ telemetry, and more.</p>
 <td style="text-align: left;">GPU name</td>
 <td><code>H100</code></td>
 </tr>
+<tr>
+<td><code>dstack_gpu_num</code><sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup></td>
+<td><em>integer</em></td>
+<td style="text-align: left;">GPU number (0-based)</td>
+<td><code>0</code></td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -4636,6 +4660,14 @@ telemetry, and more.</p>
 </table>
 </div>
 </div>
+</div>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p>For <code>dstack_gpu_*</code> metrics only.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+</ol>
 </div>
 
 
@@ -4826,7 +4858,7 @@ telemetry, and more.</p>
 <script src="/assets/javascripts/termynal.js" data-termynal-container="#termynal"></script>
 <script async src="https://tally.so/widgets/embed.js"></script>
 
-      <script src="../../../assets/javascripts/bundle.5c86578b.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.b66b2b78.min.js"></script>
       
         <script src="../../../assets/javascripts/extra.js"></script>
       
