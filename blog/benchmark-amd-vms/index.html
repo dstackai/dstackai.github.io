@@ -6,37 +6,35 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="dstack is an open-source AI container orchestration engine working with any cloud or data center.">
+        <meta name="description" content="TBA">
       
       
         <meta name="author" content="dstack GmbH">
       
       
-        <link rel="canonical" href="https://dstack.ai/blog/">
+        <link rel="canonical" href="https://dstack.ai/blog/benchmark-amd-vms/">
       
       
-        <link rel="prev" href="benchmarks/">
+        <link rel="prev" href="../benchmark-amd-containers-and-partitions/">
       
-      
-        <link rel="next" href="changelog/">
       
       
         
       
       
-      <link rel="icon" href="../assets/images/dstack-fav-32.ico">
+      <link rel="icon" href="../../assets/images/dstack-fav-32.ico">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.16+insiders-4.53.16">
     
     
       
-        <title>Blog - dstack</title>
+        <title>Benchmarking AMD GPUs: bare-metal, VMs - dstack</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.1caf78d2.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.1caf78d2.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -61,17 +59,17 @@
       
     
     
-      <link rel="stylesheet" href="../assets/_mkdocstrings.css">
+      <link rel="stylesheet" href="../../assets/_mkdocstrings.css">
     
-      <link rel="stylesheet" href="../assets/stylesheets/extra.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/extra.css">
     
-      <link rel="stylesheet" href="../assets/stylesheets/termynal.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/termynal.css">
     
-      <link rel="stylesheet" href="../assets/stylesheets/landing.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/landing.css">
     
-      <link rel="stylesheet" href="../assets/stylesheets/pricing.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/pricing.css">
     
-    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
   
@@ -89,17 +87,19 @@
     
   
 <meta property="og:type" content="website" />
-<meta property="og:title" content="Blog - dstack" />
-<meta property="og:description" content="dstack is an open-source AI container orchestration engine working with any cloud or data center." />
-<meta property="og:image" content="https://dstack.ai/assets/images/social/blog/index.png" />
+<meta property="og:title" content="Benchmarking AMD GPUs: bare-metal, VMs - dstack" />
+<meta property="og:description" content="TBA" />
+<meta property="og:image" content="
+  https://dstack.ai/static-assets/static-assets/images/benchmark-amd-vms.png" />
 <meta property="og:image:type" content="image/png" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
-<meta property="og:url" content="https://dstack.ai/blog/" />
+<meta property="og:url" content="https://dstack.ai/blog/benchmark-amd-vms/" />
 <meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter.title" content="Blog - dstack" />
-<meta property="twitter:description" content="dstack is an open-source AI container orchestration engine working with any cloud or data center." />
-<meta property="twitter:image" content="https://dstack.ai/assets/images/social/blog/index.png" />
+<meta property="twitter.title" content="Benchmarking AMD GPUs: bare-metal, VMs - dstack" />
+<meta property="twitter:description" content="TBA" />
+<meta property="twitter:image" content="
+  https://dstack.ai/static-assets/static-assets/images/benchmark-amd-vms.png" />
 </head>
   
   
@@ -119,7 +119,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#blog" class="md-skip">
+        <a href="#benchmarking-amd-gpus-bare-metal-vms" class="md-skip">
           Skip to content
         </a>
       
@@ -153,7 +153,7 @@ Support dstack with a ⭐ on
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href="/" title="dstack" class="md-header__button md-logo" aria-label="dstack" data-md-component="logo">
       
-  <img src="../assets/images/dstack-logo-notext.svg" alt="logo">
+  <img src="../../assets/images/dstack-logo-notext.svg" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -170,7 +170,7 @@ Support dstack with a ⭐ on
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Blog
+              Benchmarking AMD GPUs: bare-metal, VMs
             
           </span>
         </div>
@@ -271,7 +271,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-tabs__item">
-      <a href=".." class="md-tabs__link">
+      <a href="../.." class="md-tabs__link">
         
   
   
@@ -299,7 +299,7 @@ Support dstack with a ⭐ on
     
     
       <li class="md-tabs__item">
-        <a href="../docs/" class="md-tabs__link">
+        <a href="../../docs/" class="md-tabs__link">
           
   
   
@@ -322,7 +322,7 @@ Support dstack with a ⭐ on
     
     
       <li class="md-tabs__item">
-        <a href="../examples/" class="md-tabs__link">
+        <a href="../../examples/" class="md-tabs__link">
           
   
   
@@ -340,7 +340,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-tabs__item">
-      <a href="changelog/" class="md-tabs__link">
+      <a href="../changelog/" class="md-tabs__link">
         
   
   
@@ -359,7 +359,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-tabs__item">
-      <a href="case-studies/" class="md-tabs__link">
+      <a href="../case-studies/" class="md-tabs__link">
         
   
   
@@ -378,7 +378,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-tabs__item">
-      <a href="benchmarks/" class="md-tabs__link">
+      <a href="../benchmarks/" class="md-tabs__link">
         
   
   
@@ -401,7 +401,7 @@ Support dstack with a ⭐ on
     
     
       <li class="md-tabs__item md-tabs__item--active">
-        <a href="./" class="md-tabs__link">
+        <a href="../" class="md-tabs__link">
           
   
   
@@ -424,7 +424,9 @@ Support dstack with a ⭐ on
           
     
       
-      <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+        
+      
+      <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" hidden>
         <div class="md-sidebar__scrollwrap">
           <div class="md-sidebar__inner">
             
@@ -437,7 +439,7 @@ Support dstack with a ⭐ on
   <label class="md-nav__title" for="__drawer">
     <a href="/" title="dstack" class="md-nav__button md-logo" aria-label="dstack" data-md-component="logo">
       
-  <img src="../assets/images/dstack-logo-notext.svg" alt="logo">
+  <img src="../../assets/images/dstack-logo-notext.svg" alt="logo">
 
     </a>
     dstack
@@ -464,7 +466,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         
   
   
@@ -595,7 +597,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../docs/" class="md-nav__link">
+      <a href="../../docs/" class="md-nav__link">
         
   
   
@@ -623,7 +625,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../docs/installation/" class="md-nav__link">
+      <a href="../../docs/installation/" class="md-nav__link">
         
   
   
@@ -651,7 +653,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../docs/quickstart/" class="md-nav__link">
+      <a href="../../docs/quickstart/" class="md-nav__link">
         
   
   
@@ -739,7 +741,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../docs/concepts/backends/" class="md-nav__link">
+      <a href="../../docs/concepts/backends/" class="md-nav__link">
         
   
   
@@ -767,7 +769,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../docs/concepts/dev-environments/" class="md-nav__link">
+      <a href="../../docs/concepts/dev-environments/" class="md-nav__link">
         
   
   
@@ -795,7 +797,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../docs/concepts/tasks/" class="md-nav__link">
+      <a href="../../docs/concepts/tasks/" class="md-nav__link">
         
   
   
@@ -823,7 +825,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../docs/concepts/services/" class="md-nav__link">
+      <a href="../../docs/concepts/services/" class="md-nav__link">
         
   
   
@@ -851,7 +853,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../docs/concepts/fleets/" class="md-nav__link">
+      <a href="../../docs/concepts/fleets/" class="md-nav__link">
         
   
   
@@ -879,7 +881,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../docs/concepts/volumes/" class="md-nav__link">
+      <a href="../../docs/concepts/volumes/" class="md-nav__link">
         
   
   
@@ -907,7 +909,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../docs/concepts/repos/" class="md-nav__link">
+      <a href="../../docs/concepts/repos/" class="md-nav__link">
         
   
   
@@ -935,7 +937,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../docs/concepts/secrets/" class="md-nav__link">
+      <a href="../../docs/concepts/secrets/" class="md-nav__link">
         
   
   
@@ -963,7 +965,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../docs/concepts/projects/" class="md-nav__link">
+      <a href="../../docs/concepts/projects/" class="md-nav__link">
         
   
   
@@ -991,7 +993,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../docs/concepts/gateways/" class="md-nav__link">
+      <a href="../../docs/concepts/gateways/" class="md-nav__link">
         
   
   
@@ -1079,7 +1081,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../docs/guides/protips/" class="md-nav__link">
+      <a href="../../docs/guides/protips/" class="md-nav__link">
         
   
   
@@ -1107,7 +1109,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../docs/guides/metrics/" class="md-nav__link">
+      <a href="../../docs/guides/metrics/" class="md-nav__link">
         
   
   
@@ -1135,7 +1137,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../docs/guides/clusters/" class="md-nav__link">
+      <a href="../../docs/guides/clusters/" class="md-nav__link">
         
   
   
@@ -1163,7 +1165,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../docs/guides/server-deployment/" class="md-nav__link">
+      <a href="../../docs/guides/server-deployment/" class="md-nav__link">
         
   
   
@@ -1191,7 +1193,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../docs/guides/plugins/" class="md-nav__link">
+      <a href="../../docs/guides/plugins/" class="md-nav__link">
         
   
   
@@ -1219,7 +1221,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../docs/guides/troubleshooting/" class="md-nav__link">
+      <a href="../../docs/guides/troubleshooting/" class="md-nav__link">
         
   
   
@@ -1359,7 +1361,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../docs/reference/dstack.yml/dev-environment/" class="md-nav__link">
+      <a href="../../docs/reference/dstack.yml/dev-environment/" class="md-nav__link">
         
   
   
@@ -1387,7 +1389,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../docs/reference/dstack.yml/task/" class="md-nav__link">
+      <a href="../../docs/reference/dstack.yml/task/" class="md-nav__link">
         
   
   
@@ -1415,7 +1417,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../docs/reference/dstack.yml/service/" class="md-nav__link">
+      <a href="../../docs/reference/dstack.yml/service/" class="md-nav__link">
         
   
   
@@ -1443,7 +1445,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../docs/reference/dstack.yml/fleet/" class="md-nav__link">
+      <a href="../../docs/reference/dstack.yml/fleet/" class="md-nav__link">
         
   
   
@@ -1471,7 +1473,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../docs/reference/dstack.yml/gateway/" class="md-nav__link">
+      <a href="../../docs/reference/dstack.yml/gateway/" class="md-nav__link">
         
   
   
@@ -1499,7 +1501,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../docs/reference/dstack.yml/volume/" class="md-nav__link">
+      <a href="../../docs/reference/dstack.yml/volume/" class="md-nav__link">
         
   
   
@@ -1535,7 +1537,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../docs/reference/server/config.yml/" class="md-nav__link">
+      <a href="../../docs/reference/server/config.yml/" class="md-nav__link">
         
   
   
@@ -1615,7 +1617,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../docs/reference/cli/dstack/server/" class="md-nav__link">
+      <a href="../../docs/reference/cli/dstack/server/" class="md-nav__link">
         
   
   
@@ -1643,7 +1645,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../docs/reference/cli/dstack/init/" class="md-nav__link">
+      <a href="../../docs/reference/cli/dstack/init/" class="md-nav__link">
         
   
   
@@ -1671,7 +1673,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../docs/reference/cli/dstack/apply/" class="md-nav__link">
+      <a href="../../docs/reference/cli/dstack/apply/" class="md-nav__link">
         
   
   
@@ -1699,7 +1701,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../docs/reference/cli/dstack/delete/" class="md-nav__link">
+      <a href="../../docs/reference/cli/dstack/delete/" class="md-nav__link">
         
   
   
@@ -1727,7 +1729,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../docs/reference/cli/dstack/ps/" class="md-nav__link">
+      <a href="../../docs/reference/cli/dstack/ps/" class="md-nav__link">
         
   
   
@@ -1755,7 +1757,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../docs/reference/cli/dstack/stop/" class="md-nav__link">
+      <a href="../../docs/reference/cli/dstack/stop/" class="md-nav__link">
         
   
   
@@ -1783,7 +1785,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../docs/reference/cli/dstack/attach/" class="md-nav__link">
+      <a href="../../docs/reference/cli/dstack/attach/" class="md-nav__link">
         
   
   
@@ -1811,7 +1813,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../docs/reference/cli/dstack/logs/" class="md-nav__link">
+      <a href="../../docs/reference/cli/dstack/logs/" class="md-nav__link">
         
   
   
@@ -1839,7 +1841,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../docs/reference/cli/dstack/metrics/" class="md-nav__link">
+      <a href="../../docs/reference/cli/dstack/metrics/" class="md-nav__link">
         
   
   
@@ -1867,7 +1869,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../docs/reference/cli/dstack/project/" class="md-nav__link">
+      <a href="../../docs/reference/cli/dstack/project/" class="md-nav__link">
         
   
   
@@ -1895,7 +1897,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../docs/reference/cli/dstack/fleet/" class="md-nav__link">
+      <a href="../../docs/reference/cli/dstack/fleet/" class="md-nav__link">
         
   
   
@@ -1923,7 +1925,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../docs/reference/cli/dstack/offer/" class="md-nav__link">
+      <a href="../../docs/reference/cli/dstack/offer/" class="md-nav__link">
         
   
   
@@ -1951,7 +1953,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../docs/reference/cli/dstack/volume/" class="md-nav__link">
+      <a href="../../docs/reference/cli/dstack/volume/" class="md-nav__link">
         
   
   
@@ -1979,7 +1981,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../docs/reference/cli/dstack/gateway/" class="md-nav__link">
+      <a href="../../docs/reference/cli/dstack/gateway/" class="md-nav__link">
         
   
   
@@ -2007,7 +2009,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../docs/reference/cli/dstack/secret/" class="md-nav__link">
+      <a href="../../docs/reference/cli/dstack/secret/" class="md-nav__link">
         
   
   
@@ -2095,7 +2097,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../docs/reference/api/python/" class="md-nav__link">
+      <a href="../../docs/reference/api/python/" class="md-nav__link">
         
   
   
@@ -2123,7 +2125,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../docs/reference/api/rest/" class="md-nav__link">
+      <a href="../../docs/reference/api/rest/" class="md-nav__link">
         
   
   
@@ -2159,7 +2161,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../docs/reference/environment-variables/" class="md-nav__link">
+      <a href="../../docs/reference/environment-variables/" class="md-nav__link">
         
   
   
@@ -2239,7 +2241,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../docs/reference/plugins/rest_plugin/" class="md-nav__link">
+      <a href="../../docs/reference/plugins/rest_plugin/" class="md-nav__link">
         
   
   
@@ -2342,7 +2344,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../examples/" class="md-nav__link">
+      <a href="../../examples/" class="md-nav__link">
         
   
   
@@ -2422,7 +2424,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../examples/single-node-training/trl/" class="md-nav__link">
+      <a href="../../examples/single-node-training/trl/" class="md-nav__link">
         
   
   
@@ -2450,7 +2452,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../examples/single-node-training/axolotl/" class="md-nav__link">
+      <a href="../../examples/single-node-training/axolotl/" class="md-nav__link">
         
   
   
@@ -2538,7 +2540,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../examples/distributed-training/trl/" class="md-nav__link">
+      <a href="../../examples/distributed-training/trl/" class="md-nav__link">
         
   
   
@@ -2566,7 +2568,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../examples/distributed-training/axolotl/" class="md-nav__link">
+      <a href="../../examples/distributed-training/axolotl/" class="md-nav__link">
         
   
   
@@ -2594,7 +2596,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../examples/distributed-training/ray-ragen/" class="md-nav__link">
+      <a href="../../examples/distributed-training/ray-ragen/" class="md-nav__link">
         
   
   
@@ -2682,7 +2684,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../examples/clusters/nccl-tests/" class="md-nav__link">
+      <a href="../../examples/clusters/nccl-tests/" class="md-nav__link">
         
   
   
@@ -2710,7 +2712,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../examples/clusters/rccl-tests/" class="md-nav__link">
+      <a href="../../examples/clusters/rccl-tests/" class="md-nav__link">
         
   
   
@@ -2738,7 +2740,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../examples/clusters/a3mega/" class="md-nav__link">
+      <a href="../../examples/clusters/a3mega/" class="md-nav__link">
         
   
   
@@ -2766,7 +2768,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../examples/clusters/a3high/" class="md-nav__link">
+      <a href="../../examples/clusters/a3high/" class="md-nav__link">
         
   
   
@@ -2794,7 +2796,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../examples/clusters/efa/" class="md-nav__link">
+      <a href="../../examples/clusters/efa/" class="md-nav__link">
         
   
   
@@ -2882,7 +2884,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../examples/inference/sglang/" class="md-nav__link">
+      <a href="../../examples/inference/sglang/" class="md-nav__link">
         
   
   
@@ -2910,7 +2912,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../examples/inference/vllm/" class="md-nav__link">
+      <a href="../../examples/inference/vllm/" class="md-nav__link">
         
   
   
@@ -2938,7 +2940,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../examples/inference/tgi/" class="md-nav__link">
+      <a href="../../examples/inference/tgi/" class="md-nav__link">
         
   
   
@@ -2966,7 +2968,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../examples/inference/nim/" class="md-nav__link">
+      <a href="../../examples/inference/nim/" class="md-nav__link">
         
   
   
@@ -2994,7 +2996,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../examples/inference/trtllm/" class="md-nav__link">
+      <a href="../../examples/inference/trtllm/" class="md-nav__link">
         
   
   
@@ -3082,7 +3084,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../examples/accelerators/amd/" class="md-nav__link">
+      <a href="../../examples/accelerators/amd/" class="md-nav__link">
         
   
   
@@ -3110,7 +3112,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../examples/accelerators/tpu/" class="md-nav__link">
+      <a href="../../examples/accelerators/tpu/" class="md-nav__link">
         
   
   
@@ -3138,7 +3140,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../examples/accelerators/intel/" class="md-nav__link">
+      <a href="../../examples/accelerators/intel/" class="md-nav__link">
         
   
   
@@ -3166,7 +3168,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../examples/accelerators/tenstorrent/" class="md-nav__link">
+      <a href="../../examples/accelerators/tenstorrent/" class="md-nav__link">
         
   
   
@@ -3211,7 +3213,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="changelog/" class="md-nav__link">
+      <a href="../changelog/" class="md-nav__link">
         
   
   
@@ -3242,7 +3244,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="case-studies/" class="md-nav__link">
+      <a href="../case-studies/" class="md-nav__link">
         
   
   
@@ -3273,7 +3275,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="benchmarks/" class="md-nav__link">
+      <a href="../benchmarks/" class="md-nav__link">
         
   
   
@@ -3360,39 +3362,10 @@ Support dstack with a ⭐ on
   
   
     
-      
-    
   
   
     <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    <span class="md-typeset">
-      Blog
-    </span>
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+      <a href="../" class="md-nav__link">
         
   
   
@@ -3410,136 +3383,6 @@ Support dstack with a ⭐ on
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#benchmarking-amd-gpus-bare-metal-vms" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Benchmarking AMD GPUs: bare-metal, VMs
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#benchmarking-amd-gpus-bare-metal-containers-partitions" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Benchmarking AMD GPUs: bare-metal, containers, partitions
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#rolling-deployment-secrets-files-tenstorrent-and-more" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Rolling deployment, Secrets, Files, Tenstorrent, and more
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#how-ea-uses-dstack-to-fast-track-ai-development" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        How EA uses dstack to fast-track AI development
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#supporting-arm-and-nvidia-gh200-on-lambda" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Supporting ARM and NVIDIA GH200 on Lambda
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#supporting-gpu-provisioning-and-orchestration-on-nebius" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Supporting GPU provisioning and orchestration on Nebius
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#built-in-ui-for-monitoring-essential-gpu-metrics" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Built-in UI for monitoring essential GPU metrics
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#supporting-mpi-and-ncclrccl-tests" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Supporting MPI and NCCL/RCCL tests
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#exporting-gpu-cost-and-other-metrics-to-prometheus" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Exporting GPU, cost, and other metrics to Prometheus
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#accessing-dev-environments-with-cursor" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Accessing dev environments with Cursor
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -3609,7 +3452,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="changelog/" class="md-nav__link">
+      <a href="../changelog/" class="md-nav__link">
         
   
   
@@ -3641,7 +3484,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="case-studies/" class="md-nav__link">
+      <a href="../case-studies/" class="md-nav__link">
         
   
   
@@ -3673,7 +3516,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="benchmarks/" class="md-nav__link">
+      <a href="../benchmarks/" class="md-nav__link">
         
   
   
@@ -3719,6 +3562,8 @@ Support dstack with a ⭐ on
     
     
       
+        
+      
       <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
         <div class="md-sidebar__scrollwrap">
           <div class="md-sidebar__inner">
@@ -3738,10 +3583,89 @@ Support dstack with a ⭐ on
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#benchmarking-amd-gpus-bare-metal-vms" class="md-nav__link">
+  <a href="#benchmark-1-inference" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Benchmarking AMD GPUs: bare-metal, VMs
+        <span class="md-typeset">
+          Benchmark 1: Inference
+        </span>
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Benchmark 1: Inference">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#finding-1-identical-performance-at-moderate-concurrency-levels-and-slightly-worse-otherwise" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Finding 1: Identical performance at moderate concurrency levels and slightly worse otherwise
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#benchmark-2-training" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Benchmark 2: Training
+        </span>
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Benchmark 2: Training">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#finding-1-identical-performance-at-large-batches-with-only-minor-variations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Finding 1: Identical performance at large batches with only minor variations
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#finding-2-identical-convergence-gpu-utilization-memory-consumption" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Finding 2: Identical convergence, GPU utilization, memory consumption
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#limitations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Limitations
+        </span>
       
     </span>
   </a>
@@ -3749,10 +3673,12 @@ Support dstack with a ⭐ on
 </li>
       
         <li class="md-nav__item">
-  <a href="#benchmarking-amd-gpus-bare-metal-containers-partitions" class="md-nav__link">
+  <a href="#conclusion" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Benchmarking AMD GPUs: bare-metal, containers, partitions
+        <span class="md-typeset">
+          Conclusion
+        </span>
       
     </span>
   </a>
@@ -3760,10 +3686,57 @@ Support dstack with a ⭐ on
 </li>
       
         <li class="md-nav__item">
-  <a href="#rolling-deployment-secrets-files-tenstorrent-and-more" class="md-nav__link">
+  <a href="#benchmark-setup" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Rolling deployment, Secrets, Files, Tenstorrent, and more
+        <span class="md-typeset">
+          Benchmark setup
+        </span>
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Benchmark setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hardware-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Hardware configuration
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#benchmark-methodology" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Benchmark methodology
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#source-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Source code
+        </span>
       
     </span>
   </a>
@@ -3771,10 +3744,12 @@ Support dstack with a ⭐ on
 </li>
       
         <li class="md-nav__item">
-  <a href="#how-ea-uses-dstack-to-fast-track-ai-development" class="md-nav__link">
+  <a href="#references" class="md-nav__link">
     <span class="md-ellipsis">
       
-        How EA uses dstack to fast-track AI development
+        <span class="md-typeset">
+          References
+        </span>
       
     </span>
   </a>
@@ -3782,10 +3757,12 @@ Support dstack with a ⭐ on
 </li>
       
         <li class="md-nav__item">
-  <a href="#supporting-arm-and-nvidia-gh200-on-lambda" class="md-nav__link">
+  <a href="#whats-next" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Supporting ARM and NVIDIA GH200 on Lambda
+        <span class="md-typeset">
+          What's next?
+        </span>
       
     </span>
   </a>
@@ -3793,54 +3770,12 @@ Support dstack with a ⭐ on
 </li>
       
         <li class="md-nav__item">
-  <a href="#supporting-gpu-provisioning-and-orchestration-on-nebius" class="md-nav__link">
+  <a href="#acknowledgments" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Supporting GPU provisioning and orchestration on Nebius
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#built-in-ui-for-monitoring-essential-gpu-metrics" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Built-in UI for monitoring essential GPU metrics
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#supporting-mpi-and-ncclrccl-tests" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Supporting MPI and NCCL/RCCL tests
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#exporting-gpu-cost-and-other-metrics-to-prometheus" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Exporting GPU, cost, and other metrics to Prometheus
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#accessing-dev-environments-with-cursor" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Accessing dev environments with Cursor
+        <span class="md-typeset">
+          Acknowledgments
+        </span>
       
     </span>
   </a>
@@ -3856,515 +3791,265 @@ Support dstack with a ⭐ on
     
 
           
-  <div class="md-content" data-md-component="content">
-    <div class="md-content__inner">
-      <header class="md-typeset">
-        <style>
-.md-sidebar--secondary {
-    visibility: hidden;
-}
-</style>
-
-<h1 id="blog">Blog<a class="headerlink" href="#blog" title="Permanent link">&para;</a></h1>
-      </header>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2025-07-22 00:00:00+00:00">July 22, 2025</time></li>
-        
-          <li class="md-meta__item">
-            in
+  <div class="md-content md-content--post" data-md-component="content">
+    <div class="md-sidebar md-sidebar--post" data-md-component="sidebar" data-md-type="navigation">
+      <div class="md-sidebar__scrollwrap">
+        <div class="md-sidebar__inner md-post">
+          <nav class="md-nav md-nav--primary">
+            <div class="md-post__back">
+              <div class="md-nav__title md-nav__container">
+                <a href="../" class="md-nav__link">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+                  <span class="md-ellipsis">
+                    Back to index
+                  </span>
+                </a>
+              </div>
+            </div>
             
-              <a href="benchmarks/" class="md-meta__link">Benchmarks</a></li>
-        
-        
+            <ul class="md-post__meta md-nav__list">
+              <li class="md-nav__item md-nav__item--section">
+                <div class="md-post__title">
+                  <span class="md-ellipsis">
+                    Metadata
+                  </span>
+                </div>
+                <nav class="md-nav">
+                  <ul class="md-nav__list">
+                    <li class="md-nav__item">
+                      <div class="md-nav__link">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 19H5V8h14m-3-7v2H8V1H6v2H5c-1.11 0-2 .89-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-1V1m-1 11h-5v5h5z"/></svg>
+                        <time datetime="2025-07-22 00:00:00+00:00" class="md-ellipsis">July 22, 2025</time>
+                      </div>
+                    </li>
+                    
+                    
+                      <li class="md-nav__item">
+                        <div class="md-nav__link">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 3v15h3V3zm3 2 4 13 3-1-4-13zM5 5v13h3V5zM3 19v2h18v-2z"/></svg>
+                          <span class="md-ellipsis">
+                            in
+                            
+                              <a href="../benchmarks/">Benchmarks</a></span>
+                        </div>
+                      </li>
+                    
+                    
+                      
+                      <li class="md-nav__item">
+                        <div class="md-nav__link">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20a8 8 0 0 0 8-8 8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8m0-18a10 10 0 0 1 10 10 10 10 0 0 1-10 10C6.47 22 2 17.5 2 12A10 10 0 0 1 12 2m.5 5v5.25l4.5 2.67-.75 1.23L11 13V7z"/></svg>
+                          <span class="md-ellipsis">
+                            
+                              6 min read
+                            
+                          </span>
+                        </div>
+                      </li>
+                    
+                  </ul>
+                </nav>
+              </li>
+            </ul>
+            
+          </nav>
           
-          <li class="md-meta__item">
-            
-              6 min read
-            
-          </li>
-        
-        
-      </ul>
-      
+        </div>
+      </div>
     </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="benchmarking-amd-gpus-bare-metal-vms"><a class="toclink" href="benchmark-amd-vms/">Benchmarking AMD GPUs: bare-metal, VMs</a></h2>
+    <article class="md-content__inner md-typeset">
+      
+        
+  
+
+
+
+  
+    <a href="https://github.com/dstackai/dstack/edit/master/docs/blog/posts/benchmark-amd-vms.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="benchmarking-amd-gpus-bare-metal-vms">Benchmarking AMD GPUs: bare-metal, VMs<a class="headerlink" href="#benchmarking-amd-gpus-bare-metal-vms" title="Permanent link">&para;</a></h1>
 <p>This is the first in our series of benchmarks exploring the performance of AMD GPUs in virtualized versus bare-metal environments. As cloud infrastructure increasingly relies on virtualization, a key question arises: can VMs match bare-metal performance for GPU-intensive tasks? For this initial investigation, we focus specifically on a single-GPU setup, comparing a containerized workload on a VM against a bare-metal server, both equipped with the powerful AMD MI300X GPU.</p>
 <p><img src="https://dstack.ai/static-assets/static-assets/images/benchmark-amd-vms.png" width="630"/></p>
+<!-- more -->
 
-    
-      <nav class="md-post__action">
-        <a href="benchmark-amd-vms/">
-            <span>Continue reading</span>
-            <span class="icon"><svg viewBox="0 0 13 10" xmlns="http://www.w3.org/2000/svg"><path d="M12.823 4.164L8.954.182a.592.592 0 0 0-.854 0 .635.635 0 0 0 0 .88l2.836 2.92H.604A.614.614 0 0 0 0 4.604c0 .344.27.622.604.622h10.332L8.1 8.146a.635.635 0 0 0 0 .88.594.594 0 0 0 .854 0l3.869-3.982a.635.635 0 0 0 0-.88z" fill-rule="nonzero" fill="currentColor" class="fill-main"></path></svg></span>
-        </a>
-      </nav>
-    
-    
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2025-07-15 00:00:00+00:00">July 15, 2025</time></li>
-        
-          <li class="md-meta__item">
-            in
-            
-              <a href="benchmarks/" class="md-meta__link">Benchmarks</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              9 min read
-            
-          </li>
-        
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="benchmarking-amd-gpus-bare-metal-containers-partitions"><a class="toclink" href="benchmark-amd-containers-and-partitions/">Benchmarking AMD GPUs: bare-metal, containers, partitions</a></h2>
-<p>Our new benchmark explores two important areas for optimizing AI workloads on AMD GPUs: First, do containers introduce a performance penalty for network-intensive tasks compared to a bare-metal setup? Second, how does partitioning a powerful GPU like the MI300X affect its real-world performance for different types of AI workloads?</p>
-<p><img src="https://dstack.ai/static-assets/static-assets/images/benchmark-amd-containers-and-partitions.png" width="630"/></p>
-
-    
-      <nav class="md-post__action">
-        <a href="benchmark-amd-containers-and-partitions/">
-            <span>Continue reading</span>
-            <span class="icon"><svg viewBox="0 0 13 10" xmlns="http://www.w3.org/2000/svg"><path d="M12.823 4.164L8.954.182a.592.592 0 0 0-.854 0 .635.635 0 0 0 0 .88l2.836 2.92H.604A.614.614 0 0 0 0 4.604c0 .344.27.622.604.622h10.332L8.1 8.146a.635.635 0 0 0 0 .88.594.594 0 0 0 .854 0l3.869-3.982a.635.635 0 0 0 0-.88z" fill-rule="nonzero" fill="currentColor" class="fill-main"></path></svg></span>
-        </a>
-      </nav>
-    
-    
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2025-07-10 00:00:00+00:00">July 10, 2025</time></li>
-        
-          <li class="md-meta__item">
-            in
-            
-              <a href="changelog/" class="md-meta__link">Changelog</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              4 min read
-            
-          </li>
-        
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="rolling-deployment-secrets-files-tenstorrent-and-more"><a class="toclink" href="changelog-07-25/">Rolling deployment, Secrets, Files, Tenstorrent, and more</a></h2>
-<p>Thanks to feedback from the community, <code>dstack</code> continues to evolve. Here’s a look at what’s new.</p>
-<h5 id="rolling-deployments"><a class="toclink" href="changelog-07-25/#rolling-deployments">Rolling deployments</a></h5>
-<p>Previously, updating running services could cause downtime. The latest release fixes this with <a href="../docs/concepts/services/#rolling-deployment">rolling deployments</a>. Replicas are now updated one by one, allowing uninterrupted traffic during redeployments.</p>
-<div class="termy">
-
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>dstack<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>.dstack.yml
-
-Active<span class="w"> </span>run<span class="w"> </span>my-service<span class="w"> </span>already<span class="w"> </span>exists.<span class="w"> </span>Detected<span class="w"> </span>changes<span class="w"> </span>that<span class="w"> </span>can<span class="w"> </span>be<span class="w"> </span>updated<span class="w"> </span><span class="k">in</span>-place:
--<span class="w"> </span>Repo<span class="w"> </span>state<span class="w"> </span><span class="o">(</span>branch,<span class="w"> </span>commit,<span class="w"> </span>or<span class="w"> </span>other<span class="o">)</span>
--<span class="w"> </span>File<span class="w"> </span>archives
--<span class="w"> </span>Configuration<span class="w"> </span>properties:
-<span class="w">  </span>-<span class="w"> </span>env
-<span class="w">  </span>-<span class="w"> </span>files
-
-Update<span class="w"> </span>the<span class="w"> </span>run?<span class="w"> </span><span class="o">[</span>y/n<span class="o">]</span>:<span class="w"> </span>y<span class="w"> </span>
-⠋<span class="w"> </span>Launching<span class="w"> </span>my-service...
-
-<span class="w"> </span>NAME<span class="w">                      </span>BACKEND<span class="w">          </span>PRICE<span class="w">    </span>STATUS<span class="w">       </span>SUBMITTED
-<span class="w"> </span>my-service<span class="w"> </span><span class="nv">deployment</span><span class="o">=</span><span class="m">1</span><span class="w">                             </span>running<span class="w">      </span><span class="m">11</span><span class="w"> </span>mins<span class="w"> </span>ago
-<span class="w">   </span><span class="nv">replica</span><span class="o">=</span><span class="m">0</span><span class="w"> </span><span class="nv">deployment</span><span class="o">=</span><span class="m">0</span><span class="w">  </span>aws<span class="w"> </span><span class="o">(</span>us-west-2<span class="o">)</span><span class="w">  </span><span class="nv">$0</span>.0026<span class="w">  </span>terminating<span class="w">  </span><span class="m">11</span><span class="w"> </span>mins<span class="w"> </span>ago
-<span class="w">   </span><span class="nv">replica</span><span class="o">=</span><span class="m">1</span><span class="w"> </span><span class="nv">deployment</span><span class="o">=</span><span class="m">1</span><span class="w">  </span>aws<span class="w"> </span><span class="o">(</span>us-west-2<span class="o">)</span><span class="w">  </span><span class="nv">$0</span>.0026<span class="w">  </span>running<span class="w">      </span><span class="m">1</span><span class="w"> </span>min<span class="w"> </span>ago
+<p>Our findings reveal that for single-GPU LLM training and inference, both setups deliver comparable performance. The subtle differences we observed highlight how virtualization overhead can influence performance under specific conditions, but for most practical purposes, the performance is nearly identical.</p>
+<p>This benchmark was supported by <a href="https://hotaisle.xyz/" target="_blank">Hot Aisle <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>,
+a provider of AMD GPU bare-metal and VM infrastructure.</p>
+<h2 id="benchmark-1-inference">Benchmark 1: Inference<a class="headerlink" href="#benchmark-1-inference" title="Permanent link">&para;</a></h2>
+<h3 id="finding-1-identical-performance-at-moderate-concurrency-levels-and-slightly-worse-otherwise">Finding 1: Identical performance at moderate concurrency levels and slightly worse otherwise<a class="headerlink" href="#finding-1-identical-performance-at-moderate-concurrency-levels-and-slightly-worse-otherwise" title="Permanent link">&para;</a></h3>
+<p><strong>Throughput vs latency</strong></p>
+<p>Comparing throughput (tokens/second) against end-to-end latency across multiple concurrency levels is an effective way to measure an LLM inference system's scalability and responsiveness. This benchmark reveals how VM and bare-metal environments handle varying loads and pinpoints their throughput saturation points.</p>
+<p><img src="https://dstack.ai/static-assets/static-assets/images/benchmark-amd-vms-throuput-latency.png" width="750"/></p>
+<p>At moderate concurrency levels (16–64), both bare-metal and VM deliver near-identical inference performance. At lower levels (4-16), bare-metal shows slightly better throughput, likely due to faster kernel launches and direct device access. At high concurrency (64–128), bare-metal maintains a slight edge in latency and throughput. At a concurrency of 256, throughput saturates for both, suggesting a bottleneck from KV cache pressure on GPU memory.</p>
+<h2 id="benchmark-2-training">Benchmark 2: Training<a class="headerlink" href="#benchmark-2-training" title="Permanent link">&para;</a></h2>
+<h3 id="finding-1-identical-performance-at-large-batches-with-only-minor-variations">Finding 1: Identical performance at large batches with only minor variations<a class="headerlink" href="#finding-1-identical-performance-at-large-batches-with-only-minor-variations" title="Permanent link">&para;</a></h3>
+<p>For training, we compare throughput (samples/second) and total runtime across increasing batch sizes. These metrics are crucial for evaluating cost and training efficiency.</p>
+<p><strong>Throughput</strong></p>
+<p>Bare metal performs slightly better at small batch sizes, but the VM consistently shows slightly better throughput and runtime at larger batch sizes (≥8). </p>
+<p><img src="https://dstack.ai/static-assets/static-assets/images/benchmark-amd-vms-throuput.png" width="750"/></p>
+<p>This may be because larger batches are compute-bound, making CPU-GPU synchronization less frequent. </p>
+<p><img src="https://dstack.ai/static-assets/static-assets/images/benchmark-amd-vms-runtime.png" width="750"/></p>
+<p>One plausible explanation for the VM's slight advantage here is that in the bare-metal setup, using only one of eight available GPUs may lead to minor interference from shared background services.</p>
+<h3 id="finding-2-identical-convergence-gpu-utilization-memory-consumption">Finding 2: Identical convergence, GPU utilization, memory consumption<a class="headerlink" href="#finding-2-identical-convergence-gpu-utilization-memory-consumption" title="Permanent link">&para;</a></h3>
+<p>Training/eval loss, GPU utilization, and VRAM usage are key indicators of training stability and system efficiency. Loss shows model convergence, while utilization and memory reflect hardware efficiency.</p>
+<p><img src="https://dstack.ai/static-assets/static-assets/images/benchmark-amd-vms-vm.png" width="750"/></p>
+<p>Both VM and bare-metal setups exhibited nearly identical training and evaluation loss curves, indicating consistent model convergence. GPU utilization remained high (~95–100%) and stable in both environments, with similar VRAM consumption. </p>
+<p><img src="https://dstack.ai/static-assets/static-assets/images/benchmark-amd-vms-bare-metal.png" width="750"/></p>
+<p>This demonstrates that from a model training and hardware utilization perspective, both setups are equally efficient.</p>
+<h2 id="limitations">Limitations<a class="headerlink" href="#limitations" title="Permanent link">&para;</a></h2>
+<p><strong>Multi-GPU</strong></p>
+<p>This initial benchmark deliberately focused on a single-GPU setup to establish a baseline. A more production-representative evaluation would compare multi-GPU VMs with multi-GPU bare-metal systems. In multi-GPU inference, bare-metal’s direct hardware access could offer an advantage. For distributed training, however, where all GPUs are fully engaged, the performance between VM and bare-metal would likely be even closer. </p>
+<p>Furthermore, it's important to note that the performance gap in virtualized setups can potentially be narrowed significantly with expert hypervisor tuning, such as CPU pinning and NUMA node alignment.</p>
+<p><strong>Multi-node</strong></p>
+<p>For distributed training, models are trained across multi-node clusters where control-plane operations rely on the CPU. This can impact interconnect bandwidth and overall performance. A future comparison is critical, as performance will heavily depend on the network virtualization technology used.</p>
+<p>For instance, testing setups that use SR-IOV (Single Root I/O Virtualization)—a technology designed to provide near-native network performance to VMs—would be essential for a complete picture.</p>
+<h2 id="conclusion">Conclusion<a class="headerlink" href="#conclusion" title="Permanent link">&para;</a></h2>
+<p>Our initial benchmark shows that performance differences between a VM and bare-metal are minimal. Both environments exhibit near-identical behavior aside from a few subtle variations. These findings suggest that VMs are a highly viable option for demanding GPU tasks, with only minor trade-offs under specific conditions, and that AMD GPUs deliver exceptional performance in both virtualized and bare-metal environments.</p>
+<h2 id="benchmark-setup">Benchmark setup<a class="headerlink" href="#benchmark-setup" title="Permanent link">&para;</a></h2>
+<h3 id="hardware-configuration">Hardware configuration<a class="headerlink" href="#hardware-configuration" title="Permanent link">&para;</a></h3>
+<p><strong>VM</strong></p>
+<ul>
+<li>CPU: Intel Xeon Platinum 8470: 13c @ 2 GHz</li>
+<li>RAM: 224 GiB</li>
+<li>NVMe: 13 TB</li>
+<li>GPUs: 1 x AMD MI300X</li>
+</ul>
+<p><strong>Bare-metal</strong></p>
+<ul>
+<li>CPU: Intel Xeon Pla*tinum 8470: 13c @ 2 GHz (<code>--cpuset-cpus="0-12"</code>)</li>
+<li>RAM: 224 GiB (<code>--memory="224g"</code>)</li>
+<li>GPUs: 1x AMD MI300X</li>
+</ul>
+<h3 id="benchmark-methodology">Benchmark methodology<a class="headerlink" href="#benchmark-methodology" title="Permanent link">&para;</a></h3>
+<p>The steps to run benchmarks are identical for both setups, except that the docker run command for bare metal includes <code>--cpuset-cpus="0-12"</code> and <code>--memory="224g"</code> to match the VM's resources.</p>
+<h4 id="inference">Inference<a class="headerlink" href="#inference" title="Permanent link">&para;</a></h4>
+<ol>
+<li>Run a <code>rocm/vllm</code> container:</li>
+</ol>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--network<span class="o">=</span>host<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--group-add<span class="o">=</span>video<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--ipc<span class="o">=</span>host<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--cap-add<span class="o">=</span>SYS_PTRACE<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--security-opt<span class="w"> </span><span class="nv">seccomp</span><span class="o">=</span>unconfined<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--device<span class="w"> </span>/dev/kfd<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--device<span class="w"> </span>/dev/dri<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>rocm/vllm:latest<span class="w"> </span>/bin/bash
 </code></pre></div>
+<ol>
+<li>Start the vLLM server:</li>
+</ol>
+<div class="highlight"><pre><span></span><code>vllm<span class="w"> </span>serve<span class="w"> </span>meta-llama/Llama-3.3-70B-Instruct<span class="w"> </span>--max-model-len<span class="w"> </span><span class="m">100000</span>
+</code></pre></div>
+<ol>
+<li>Start the benchmark</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="nv">isl</span><span class="o">=</span><span class="m">1024</span>
+<span class="nv">osl</span><span class="o">=</span><span class="m">1024</span>
+<span class="nv">MaxConcurrency</span><span class="o">=</span><span class="s2">&quot;4 8 16 32 64 128 256&quot;</span>
+<span class="nv">RESULT_DIR</span><span class="o">=</span><span class="s2">&quot;./results_concurrency_sweep&quot;</span>
+mkdir<span class="w"> </span>-p<span class="w"> </span><span class="nv">$RESULT_DIR</span>
 
-</div>
+<span class="k">for</span><span class="w"> </span>concurrency<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="nv">$MaxConcurrency</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="w">    </span><span class="nv">TIMESTAMP</span><span class="o">=</span><span class="k">$(</span>date<span class="w"> </span>+%Y%m%d-%H%M%S<span class="k">)</span>
+<span class="w">    </span><span class="nv">FILENAME</span><span class="o">=</span><span class="s2">&quot;llama3.3-70B-random-</span><span class="si">${</span><span class="nv">concurrency</span><span class="si">}</span><span class="s2">concurrency-</span><span class="si">${</span><span class="nv">TIMESTAMP</span><span class="si">}</span><span class="s2">.json&quot;</span>
 
-
-    
-      <nav class="md-post__action">
-        <a href="changelog-07-25/">
-            <span>Continue reading</span>
-            <span class="icon"><svg viewBox="0 0 13 10" xmlns="http://www.w3.org/2000/svg"><path d="M12.823 4.164L8.954.182a.592.592 0 0 0-.854 0 .635.635 0 0 0 0 .88l2.836 2.92H.604A.614.614 0 0 0 0 4.604c0 .344.27.622.604.622h10.332L8.1 8.146a.635.635 0 0 0 0 .88.594.594 0 0 0 .854 0l3.869-3.982a.635.635 0 0 0 0-.88z" fill-rule="nonzero" fill="currentColor" class="fill-main"></path></svg></span>
-        </a>
-      </nav>
-    
-    
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2025-05-22 00:00:00+00:00">May 22, 2025</time></li>
-        
-          <li class="md-meta__item">
-            in
-            
-              <a href="case-studies/" class="md-meta__link">Case studies</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              3 min read
-            
-          </li>
-        
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="how-ea-uses-dstack-to-fast-track-ai-development"><a class="toclink" href="ea-gtc25/">How EA uses dstack to fast-track AI development</a></h2>
-<p>At NVIDIA GTC 2025, Electronic Arts <a href="https://www.nvidia.com/en-us/on-demand/session/gtc25-s73667/" target="_blank">shared <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> how they’re scaling AI development and managing infrastructure across teams. They highlighted using tools like <code>dstack</code> to provision GPUs quickly, flexibly, and cost-efficiently. This case study summarizes key insights from their talk.</p>
-<p><img src="https://dstack.ai/static-assets/static-assets/images/dstack-ea-slide-1.png" width="630" /></p>
-<p>EA has over 100+ AI projects running, and the number keeps growing. There are many teams with AI needs—game dev, ML engineers, AI researchers, and platform teams—supported by a central tech team. Some need full MLOps support; others have in-house expertise but need flexible tooling and infrastructure.</p>
-
-    
-      <nav class="md-post__action">
-        <a href="ea-gtc25/">
-            <span>Continue reading</span>
-            <span class="icon"><svg viewBox="0 0 13 10" xmlns="http://www.w3.org/2000/svg"><path d="M12.823 4.164L8.954.182a.592.592 0 0 0-.854 0 .635.635 0 0 0 0 .88l2.836 2.92H.604A.614.614 0 0 0 0 4.604c0 .344.27.622.604.622h10.332L8.1 8.146a.635.635 0 0 0 0 .88.594.594 0 0 0 .854 0l3.869-3.982a.635.635 0 0 0 0-.88z" fill-rule="nonzero" fill="currentColor" class="fill-main"></path></svg></span>
-        </a>
-      </nav>
-    
-    
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2025-05-12 00:00:00+00:00">May 12, 2025</time></li>
-        
-          <li class="md-meta__item">
-            in
-            
-              <a href="changelog/" class="md-meta__link">Changelog</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              3 min read
-            
-          </li>
-        
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="supporting-arm-and-nvidia-gh200-on-lambda"><a class="toclink" href="gh200-on-lambda/">Supporting ARM and NVIDIA GH200 on Lambda</a></h2>
-<p>The latest update to <code>dstack</code> introduces support for NVIDIA GH200 instances on <a href="../docs/concepts/backends/#lambda">Lambda</a>
-and enables ARM-powered hosts, including GH200 and GB200, with <a href="../docs/concepts/fleets/#ssh">SSH fleets</a>.</p>
-<p><img src="https://dstack.ai/static-assets/static-assets/images/dstack-arm--gh200-lambda-min.png" width="630"/></p>
-
-    
-      <nav class="md-post__action">
-        <a href="gh200-on-lambda/">
-            <span>Continue reading</span>
-            <span class="icon"><svg viewBox="0 0 13 10" xmlns="http://www.w3.org/2000/svg"><path d="M12.823 4.164L8.954.182a.592.592 0 0 0-.854 0 .635.635 0 0 0 0 .88l2.836 2.92H.604A.614.614 0 0 0 0 4.604c0 .344.27.622.604.622h10.332L8.1 8.146a.635.635 0 0 0 0 .88.594.594 0 0 0 .854 0l3.869-3.982a.635.635 0 0 0 0-.88z" fill-rule="nonzero" fill="currentColor" class="fill-main"></path></svg></span>
-        </a>
-      </nav>
-    
-    
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2025-04-11 00:00:00+00:00">April 11, 2025</time></li>
-        
-          <li class="md-meta__item">
-            in
-            
-              <a href="changelog/" class="md-meta__link">Changelog</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              2 min read
-            
-          </li>
-        
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="supporting-gpu-provisioning-and-orchestration-on-nebius"><a class="toclink" href="nebius/">Supporting GPU provisioning and orchestration on Nebius</a></h2>
-<p>As demand for GPU compute continues to scale, open-source tools tailored for AI workloads are becoming critical to
-developer velocity and efficiency.
-<code>dstack</code> is an open-source orchestrator purpose-built for AI infrastructure—offering a lightweight, container-native
-alternative to Kubernetes and Slurm.</p>
-<p><img src="https://dstack.ai/static-assets/static-assets/images/dstack-nebius-v2.png" width="630"/></p>
-<p>Today, we’re announcing native integration with <a href="https://nebius.com/" target="_blank">Nebius <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>,
-offering a streamlined developer experience for teams using GPUs for AI workloads.</p>
-
-    
-      <nav class="md-post__action">
-        <a href="nebius/">
-            <span>Continue reading</span>
-            <span class="icon"><svg viewBox="0 0 13 10" xmlns="http://www.w3.org/2000/svg"><path d="M12.823 4.164L8.954.182a.592.592 0 0 0-.854 0 .635.635 0 0 0 0 .88l2.836 2.92H.604A.614.614 0 0 0 0 4.604c0 .344.27.622.604.622h10.332L8.1 8.146a.635.635 0 0 0 0 .88.594.594 0 0 0 .854 0l3.869-3.982a.635.635 0 0 0 0-.88z" fill-rule="nonzero" fill="currentColor" class="fill-main"></path></svg></span>
-        </a>
-      </nav>
-    
-    
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2025-04-03 00:00:00+00:00">April 3, 2025</time></li>
-        
-          <li class="md-meta__item">
-            in
-            
-              <a href="changelog/" class="md-meta__link">Changelog</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              2 min read
-            
-          </li>
-        
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="built-in-ui-for-monitoring-essential-gpu-metrics"><a class="toclink" href="metrics-ui/">Built-in UI for monitoring essential GPU metrics</a></h2>
-<p>AI workloads generate vast amounts of metrics, making it essential to have efficient monitoring tools. While our recent
-update introduced the ability to export available metrics to Prometheus for maximum flexibility, there are times when
-users need to quickly access essential metrics without the need to switch to an external tool.</p>
-<p><img src="https://dstack.ai/static-assets/static-assets/images/dstack-metrics-ui-v3-min.png" width="630"/></p>
-<p>Previously, we introduced a <a href="dstack-metrics/">CLI command</a> that allows users to view essential GPU metrics for both NVIDIA
-and AMD hardware. Now, with this latest update, we’re excited to announce the addition of a built-in dashboard within
-the <code>dstack</code> control plane.</p>
-
-    
-      <nav class="md-post__action">
-        <a href="metrics-ui/">
-            <span>Continue reading</span>
-            <span class="icon"><svg viewBox="0 0 13 10" xmlns="http://www.w3.org/2000/svg"><path d="M12.823 4.164L8.954.182a.592.592 0 0 0-.854 0 .635.635 0 0 0 0 .88l2.836 2.92H.604A.614.614 0 0 0 0 4.604c0 .344.27.622.604.622h10.332L8.1 8.146a.635.635 0 0 0 0 .88.594.594 0 0 0 .854 0l3.869-3.982a.635.635 0 0 0 0-.88z" fill-rule="nonzero" fill="currentColor" class="fill-main"></path></svg></span>
-        </a>
-      </nav>
-    
-    
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2025-04-02 00:00:00+00:00">April 2, 2025</time></li>
-        
-          <li class="md-meta__item">
-            in
-            
-              <a href="changelog/" class="md-meta__link">Changelog</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              2 min read
-            
-          </li>
-        
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="supporting-mpi-and-ncclrccl-tests"><a class="toclink" href="mpi/">Supporting MPI and NCCL/RCCL tests</a></h2>
-<p>As AI models grow in complexity, efficient orchestration tools become increasingly important. 
-<a href="../docs/concepts/fleets/">Fleets</a> introduced by <code>dstack</code> last year streamline 
-<a href="../docs/concepts/tasks/">task execution</a> on both cloud and 
-on-prem clusters, whether it's pre-training, fine-tuning, or batch processing.</p>
-<p>The strength of <code>dstack</code> lies in its flexibility. Users can leverage distributed framework like
-<code>torchrun</code>, <code>accelerate</code>, or others. <code>dstack</code> handles node provisioning, job execution, and automatically propagates
-system environment variables—such as <code>DSTACK_NODE_RANK</code>, <code>DSTACK_MASTER_NODE_IP</code>,
-<code>DSTACK_GPUS_PER_NODE</code> and <a href="../docs/concepts/tasks/#system-environment-variables">others</a>—to containers.</p>
-<p><img src="https://dstack.ai/static-assets/static-assets/images/dstack-mpi-v2.png" width="630"/></p>
-<p>One use case <code>dstack</code> hasn’t supported until now is MPI, as it requires a scheduled environment or
-direct SSH connections between containers. Since <code>mpirun</code> is essential for running NCCL/RCCL tests—crucial for large-scale
-cluster usage—we’ve added support for it.</p>
-
-    
-      <nav class="md-post__action">
-        <a href="mpi/">
-            <span>Continue reading</span>
-            <span class="icon"><svg viewBox="0 0 13 10" xmlns="http://www.w3.org/2000/svg"><path d="M12.823 4.164L8.954.182a.592.592 0 0 0-.854 0 .635.635 0 0 0 0 .88l2.836 2.92H.604A.614.614 0 0 0 0 4.604c0 .344.27.622.604.622h10.332L8.1 8.146a.635.635 0 0 0 0 .88.594.594 0 0 0 .854 0l3.869-3.982a.635.635 0 0 0 0-.88z" fill-rule="nonzero" fill="currentColor" class="fill-main"></path></svg></span>
-        </a>
-      </nav>
-    
-    
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2025-04-01 00:00:00+00:00">April 1, 2025</time></li>
-        
-          <li class="md-meta__item">
-            in
-            
-              <a href="changelog/" class="md-meta__link">Changelog</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              2 min read
-            
-          </li>
-        
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="exporting-gpu-cost-and-other-metrics-to-prometheus"><a class="toclink" href="prometheus/">Exporting GPU, cost, and other metrics to Prometheus</a></h2>
-<h3 id="why-prometheus" style="display:none"><a class="toclink" href="prometheus/#why-prometheus">Why Prometheus</a></h3>
-<p>Effective AI infrastructure management requires full visibility into compute performance and costs. AI researchers need
-detailed insights into container- and GPU-level performance, while managers rely on cost metrics to track resource usage
-across projects.</p>
-<p>While <code>dstack</code> provides key metrics through its UI and <a href="dstack-metrics/"><code>dstack metrics</code></a> CLI, teams often need more granular data and prefer
-using their own monitoring tools. To support this, we’ve introduced a new endpoint that allows real-time exporting all collected
-metrics—covering fleets and runs—directly to Prometheus.</p>
-<p><img src="https://dstack.ai/static-assets/static-assets/images/dstack-prometheus-v3.png" width="630"/></p>
-
-    
-      <nav class="md-post__action">
-        <a href="prometheus/">
-            <span>Continue reading</span>
-            <span class="icon"><svg viewBox="0 0 13 10" xmlns="http://www.w3.org/2000/svg"><path d="M12.823 4.164L8.954.182a.592.592 0 0 0-.854 0 .635.635 0 0 0 0 .88l2.836 2.92H.604A.614.614 0 0 0 0 4.604c0 .344.27.622.604.622h10.332L8.1 8.146a.635.635 0 0 0 0 .88.594.594 0 0 0 .854 0l3.869-3.982a.635.635 0 0 0 0-.88z" fill-rule="nonzero" fill="currentColor" class="fill-main"></path></svg></span>
-        </a>
-      </nav>
-    
-    
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2025-03-31 00:00:00+00:00">March 31, 2025</time></li>
-        
-          <li class="md-meta__item">
-            in
-            
-              <a href="changelog/" class="md-meta__link">Changelog</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              2 min read
-            
-          </li>
-        
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="accessing-dev-environments-with-cursor"><a class="toclink" href="cursor/">Accessing dev environments with Cursor</a></h2>
-<p>Dev environments enable seamless provisioning of remote instances with the necessary GPU resources,
-automatic repository fetching, and streamlined access via SSH or a preferred desktop IDE.</p>
-<p>Previously, support was limited to VS Code. However, as developers rely on a variety of desktop IDEs,
-we’ve expanded compatibility. With this update, dev environments now offer effortless access for users of 
-<a href="https://www.cursor.com/" target="_blank">Cursor <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>.</p>
-<p><img src="https://dstack.ai/static-assets/static-assets/images/dstack-cursor-v2.png" width="630"/></p>
-
-    
-      <nav class="md-post__action">
-        <a href="cursor/">
-            <span>Continue reading</span>
-            <span class="icon"><svg viewBox="0 0 13 10" xmlns="http://www.w3.org/2000/svg"><path d="M12.823 4.164L8.954.182a.592.592 0 0 0-.854 0 .635.635 0 0 0 0 .88l2.836 2.92H.604A.614.614 0 0 0 0 4.604c0 .344.27.622.604.622h10.332L8.1 8.146a.635.635 0 0 0 0 .88.594.594 0 0 0 .854 0l3.869-3.982a.635.635 0 0 0 0-.88z" fill-rule="nonzero" fill="currentColor" class="fill-main"></path></svg></span>
-        </a>
-      </nav>
-    
-    
-  </div>
-</article>
-      
-      
-        
-          
+<span class="w">    </span>python3<span class="w"> </span>/app/vllm/benchmarks/benchmark_serving.py<span class="w"> </span><span class="se">\</span>
+<span class="w">        </span>--model<span class="w"> </span>meta-llama/Llama-3.3-70B-Instruct<span class="w"> </span><span class="se">\</span>
+<span class="w">        </span>--dataset-name<span class="w"> </span>random<span class="w"> </span><span class="se">\</span>
+<span class="w">        </span>--random-input-len<span class="w"> </span><span class="nv">$isl</span><span class="w"> </span><span class="se">\</span>
+<span class="w">        </span>--random-output-len<span class="w"> </span><span class="nv">$osl</span><span class="w"> </span><span class="se">\</span>
+<span class="w">        </span>--num-prompts<span class="w"> </span><span class="k">$((</span><span class="m">10</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nv">$concurrency</span><span class="k">))</span><span class="w"> </span><span class="se">\</span>
+<span class="w">        </span>--max-concurrency<span class="w"> </span><span class="nv">$concurrency</span><span class="w"> </span><span class="se">\</span>
+<span class="w">        </span>--ignore-eos<span class="w"> </span><span class="se">\</span>
+<span class="w">        </span>--percentile-metrics<span class="w"> </span>ttft,tpot,e2el<span class="w"> </span><span class="se">\</span>
+<span class="w">        </span>--save-result<span class="w"> </span><span class="se">\</span>
+<span class="w">        </span>--result-dir<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$RESULT_DIR</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">        </span>--result-filename<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$FILENAME</span><span class="s2">&quot;</span>
+<span class="k">done</span>
+</code></pre></div>
+<h4 id="training">Training<a class="headerlink" href="#training" title="Permanent link">&para;</a></h4>
+<ol>
+<li>Run the <code>rocm/dev-ubuntu-22.04:6.4-complete</code> container:</li>
+</ol>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--network<span class="o">=</span>host<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--group-add<span class="o">=</span>video<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--ipc<span class="o">=</span>host<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--cap-add<span class="o">=</span>SYS_PTRACE<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--security-opt<span class="w"> </span><span class="nv">seccomp</span><span class="o">=</span>unconfined<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--device<span class="w"> </span>/dev/kfd<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--device<span class="w"> </span>/dev/dri<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>rocm/dev-ubuntu-22.04:6.4-complete<span class="w"> </span>/bin/bash
+</code></pre></div>
+<ol>
+<li>Install TRL:</li>
+</ol>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>apt-get<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>git<span class="w"> </span>cmake<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
+pip<span class="w"> </span>install<span class="w"> </span>torch<span class="w"> </span>--index-url<span class="w"> </span>https://download.pytorch.org/whl/nightly/rocm6.4<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
+pip<span class="w"> </span>install<span class="w"> </span>transformers<span class="w"> </span>peft<span class="w"> </span>wandb<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
+git<span class="w"> </span>clone<span class="w"> </span>https://github.com/huggingface/trl<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
+<span class="nb">cd</span><span class="w"> </span>trl<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
+pip<span class="w"> </span>install<span class="w"> </span>.
+</code></pre></div>
+<ol>
+<li>Run the benchmark</li>
+</ol>
+<div class="highlight"><pre><span></span><code>python3<span class="w"> </span>trl/scripts/sft.py<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--model_name_or_path<span class="w"> </span>Qwen/Qwen2-0.5B<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--dataset_name<span class="w"> </span>trl-lib/Capybara<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--learning_rate<span class="w"> </span><span class="m">2</span>.0e-4<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--num_train_epochs<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--packing<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--per_device_train_batch_size<span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--gradient_accumulation_steps<span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--gradient_checkpointing<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--eos_token<span class="w"> </span><span class="s1">&#39;&lt;|im_end|&gt;&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--eval_strategy<span class="w"> </span>steps<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--eval_steps<span class="w"> </span><span class="m">100</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--use_peft<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--lora_r<span class="w"> </span><span class="m">32</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--lora_alpha<span class="w"> </span><span class="m">16</span>
+</code></pre></div>
+<h2 id="source-code">Source code<a class="headerlink" href="#source-code" title="Permanent link">&para;</a></h2>
+<p>All source code and findings are available in our <a href="https://github.com/dstackai/benchmarks/tree/main/amd/single_gpu_vm_vs_bare-metal" target="_blank">GitHub repo <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>.</p>
+<h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="https://rocm.blogs.amd.com/software-tools-optimization/vllmv1-rocm-llm/README.html" target="_blank">vLLM V1 Meets AMD Instinct GPUs: A New Era for LLM Inference Performance <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a></li>
+</ul>
+<h2 id="whats-next">What's next?<a class="headerlink" href="#whats-next" title="Permanent link">&para;</a></h2>
+<p>Our next steps are to benchmark VM vs. bare-metal performance in multi-GPU and multi-node setups, covering tensor-parallel inference and distributed training scenarios.</p>
+<h2 id="acknowledgments">Acknowledgments<a class="headerlink" href="#acknowledgments" title="Permanent link">&para;</a></h2>
+<h4 id="hot-aisle">Hot Aisle<a class="headerlink" href="#hot-aisle" title="Permanent link">&para;</a></h4>
+<p>Big thanks to <a href="https://hotaisle.xyz/" target="_blank">Hot Aisle <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> for providing the compute power behind these benchmarks. 
+If you’re looking for fast AMD GPU bare-metal or VM instances, they’re definitely worth checking out.</p>
 
 
 
-<nav class="md-pagination">
-  <span class="md-pagination__current">1</span> <a class="md-pagination__link" href="page/2/">2</a> <a class="md-pagination__link" href="page/3/">3</a>
-</nav>
-        
+
+
+
+
+  
+  
+
+
+
+  
+
+
+  
+
+
+
       
-    </div>
+    </article>
   </div>
 
           
@@ -4492,17 +4177,17 @@ we’ve expanded compatibility. With this update, dev environments now offer eff
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["content.tooltips", "navigation.path", "content.code.copy", "content.action.edit", "navigation.tabs", "navigation.sections", "navigation.top", "announce.dismiss", "navigation.tracking", "navigation.footer"], "search": "../assets/javascripts/workers/search.ad38c271.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.tooltips", "navigation.path", "content.code.copy", "content.action.edit", "navigation.tabs", "navigation.sections", "navigation.top", "announce.dismiss", "navigation.tracking", "navigation.footer"], "search": "../../assets/javascripts/workers/search.ad38c271.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
 <script src="/assets/javascripts/termynal.js" data-termynal-container="#termynal"></script>
 <script async src="https://tally.so/widgets/embed.js"></script>
 
-      <script src="../assets/javascripts/bundle.b66b2b78.min.js"></script>
+      <script src="../../assets/javascripts/bundle.b66b2b78.min.js"></script>
       
-        <script src="../assets/javascripts/extra.js"></script>
+        <script src="../../assets/javascripts/extra.js"></script>
       
-        <script src="../assets/javascripts/pricing.js"></script>
+        <script src="../../assets/javascripts/pricing.js"></script>
       
     
 <script src="https://widget.kapa.ai/kapa-widget.bundle.js"

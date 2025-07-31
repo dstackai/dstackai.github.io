@@ -3425,6 +3425,17 @@ Support dstack with a ⭐ on
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#deepseek-r1-inference-performance-mi300x-vs-h200" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DeepSeek R1 inference performance: MI300X vs. H200
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#using-ssh-fleets-with-tensorwaves-private-amd-cloud" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3517,17 +3528,6 @@ Support dstack with a ⭐ on
     <span class="md-ellipsis">
       
         Using Docker and Docker Compose inside GPU-enabled containers
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#monitoring-essential-gpu-metrics-via-cli" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Monitoring essential GPU metrics via CLI
       
     </span>
   </a>
@@ -3736,6 +3736,17 @@ Support dstack with a ⭐ on
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#deepseek-r1-inference-performance-mi300x-vs-h200" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DeepSeek R1 inference performance: MI300X vs. H200
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#using-ssh-fleets-with-tensorwaves-private-amd-cloud" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3834,17 +3845,6 @@ Support dstack with a ⭐ on
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#monitoring-essential-gpu-metrics-via-cli" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Monitoring essential GPU metrics via CLI
-      
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -3859,6 +3859,58 @@ Support dstack with a ⭐ on
       <header class="md-typeset">
         <h1 id="blog">Blog<a class="headerlink" href="#blog" title="Permanent link">&para;</a></h1>
       </header>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2025-03-18 00:00:00+00:00">March 18, 2025</time></li>
+        
+          <li class="md-meta__item">
+            in
+            
+              <a href="../../benchmarks/" class="md-meta__link">Benchmarks</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              6 min read
+            
+          </li>
+        
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="deepseek-r1-inference-performance-mi300x-vs-h200"><a class="toclink" href="../../h200-mi300x-deepskeek-benchmark/">DeepSeek R1 inference performance: MI300X vs. H200</a></h2>
+<p>DeepSeek-R1, with its innovative architecture combining Multi-head Latent Attention (MLA) and DeepSeekMoE, presents
+unique challenges for inference workloads. As a reasoning-focused model, it generates intermediate chain-of-thought
+outputs, placing significant demands on memory capacity and bandwidth.</p>
+<p>In this benchmark, we evaluate the performance of three inference backends—SGLang, vLLM, and TensorRT-LLM—on two hardware
+configurations: 8x NVIDIA H200 and 8x AMD MI300X. Our goal is to compare throughput, latency, and overall efficiency to
+determine the optimal backend and hardware pairing for DeepSeek-R1's demanding requirements.</p>
+<p><img src="https://dstack.ai/static-assets/static-assets/images/h200-mi300x-deepskeek-benchmark-v2.png" width="630"/></p>
+<p>This benchmark was made possible through the generous support of our partners at
+<a href="https://www.vultr.com/" target="_blank">Vultr <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> and 
+<a href="https://lambdalabs.com/" target="_blank">Lambda <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>,
+who provided access to the necessary hardware.</p>
+
+    
+      <nav class="md-post__action">
+        <a href="../../h200-mi300x-deepskeek-benchmark/">
+            <span>Continue reading</span>
+            <span class="icon"><svg viewBox="0 0 13 10" xmlns="http://www.w3.org/2000/svg"><path d="M12.823 4.164L8.954.182a.592.592 0 0 0-.854 0 .635.635 0 0 0 0 .88l2.836 2.92H.604A.614.614 0 0 0 0 4.604c0 .344.27.622.604.622h10.332L8.1 8.146a.635.635 0 0 0 0 .88.594.594 0 0 0 .854 0l3.869-3.982a.635.635 0 0 0 0-.88z" fill-rule="nonzero" fill="currentColor" class="fill-main"></path></svg></span>
+        </a>
+      </nav>
+    
+    
+  </div>
+</article>
       
         <article class="md-post md-post--excerpt">
   <header class="md-post__header">
@@ -4310,52 +4362,6 @@ in our latest release, we've added this option.</p>
     
       <nav class="md-post__action">
         <a href="../../docker-inside-containers/">
-            <span>Continue reading</span>
-            <span class="icon"><svg viewBox="0 0 13 10" xmlns="http://www.w3.org/2000/svg"><path d="M12.823 4.164L8.954.182a.592.592 0 0 0-.854 0 .635.635 0 0 0 0 .88l2.836 2.92H.604A.614.614 0 0 0 0 4.604c0 .344.27.622.604.622h10.332L8.1 8.146a.635.635 0 0 0 0 .88.594.594 0 0 0 .854 0l3.869-3.982a.635.635 0 0 0 0-.88z" fill-rule="nonzero" fill="currentColor" class="fill-main"></path></svg></span>
-        </a>
-      </nav>
-    
-    
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2024-10-22 00:00:00+00:00">October 22, 2024</time></li>
-        
-          <li class="md-meta__item">
-            in
-            
-              <a href="../../changelog/" class="md-meta__link">Changelog</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              2 min read
-            
-          </li>
-        
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="monitoring-essential-gpu-metrics-via-cli"><a class="toclink" href="../../dstack-metrics/">Monitoring essential GPU metrics via CLI</a></h2>
-<h3 id="how-it-works" style="display:none"><a class="toclink" href="../../dstack-metrics/#how-it-works">How it works</a></h3>
-<p>While it's possible to use third-party monitoring tools with <code>dstack</code>, it is often more convenient to debug your run and
-track metrics out of the box. That's why, with the latest release, <code>dstack</code> introduced <a href="../../../docs/reference/cli/dstack/metrics/"><code>dstack stats</code></a>, a new CLI (and API)
-for monitoring container metrics, including GPU usage for <code>NVIDIA</code>, <code>AMD</code>, and other accelerators.</p>
-<p><img src="https://dstack.ai/static-assets/static-assets/images/dstack-stats-v2.png" width="725"/></p>
-
-    
-      <nav class="md-post__action">
-        <a href="../../dstack-metrics/">
             <span>Continue reading</span>
             <span class="icon"><svg viewBox="0 0 13 10" xmlns="http://www.w3.org/2000/svg"><path d="M12.823 4.164L8.954.182a.592.592 0 0 0-.854 0 .635.635 0 0 0 0 .88l2.836 2.92H.604A.614.614 0 0 0 0 4.604c0 .344.27.622.604.622h10.332L8.1 8.146a.635.635 0 0 0 0 .88.594.594 0 0 0 .854 0l3.869-3.982a.635.635 0 0 0 0-.88z" fill-rule="nonzero" fill="currentColor" class="fill-main"></path></svg></span>
         </a>
