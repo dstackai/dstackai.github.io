@@ -248,8 +248,8 @@ Support dstack with a ⭐ on
     -->
 
     <div class="md-header__buttons">
-      <a href="https://github.com/dstackai/dstack" target="_blank" class="md-button md-button--primary github external">GitHub</a>
-      <!-- <a href="https://discord.gg/u8SmfwPpMd" target="_blank" class="md-button md-button--primary sky discord external">Discord</a> -->
+      <a href="https://github.com/dstackai/dstack" target="_blank" class="md-button md-button--primary github">GitHub</a>
+      <a href="https://sky.dstack.ai" target="_blank" class="md-button md-button--primary sky external">Sign up</a>
     </div>
   </nav>
   
@@ -1538,6 +1538,17 @@ Support dstack with a ⭐ on
     <span class="md-ellipsis">
       
         rate_limits
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#probes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        probes
       
     </span>
   </a>
@@ -3815,6 +3826,17 @@ Support dstack with a ⭐ on
 </li>
         
           <li class="md-nav__item">
+  <a href="#probes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        probes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#retry" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -4006,6 +4028,7 @@ Support dstack with a ⭐ on
 <h6 class="reference-item" id="replicas"><code>replicas</code> - (Optional) The number of replicas. Can be a number (e.g. <code>2</code>) or a range (<code>0..4</code> or <code>1..8</code>). If it's a range, the <code>scaling</code> property is required. Defaults to <code>1</code>.<a class="headerlink" href="#replicas" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="_scaling"><a href="#scaling"><code>scaling</code></a> - (Optional) The auto-scaling rules. Required if <code>replicas</code> is set to a range.<a class="headerlink" href="#_scaling" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="_rate_limits"><a href="#rate_limits"><code>rate_limits</code></a> - (Optional) Rate limiting rules.<a class="headerlink" href="#_rate_limits" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="_probes"><a href="#probes"><code>probes</code></a> - (Optional) List of probes used to determine job health.<a class="headerlink" href="#_probes" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="name"><code>name</code> - (Optional) The run name. If not specified, a random name is generated.<a class="headerlink" href="#name" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="image"><code>image</code> - (Optional) The name of the Docker image to run.<a class="headerlink" href="#image" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="user"><code>user</code> - (Optional) The user inside the container, <code>user_name_or_id[:group_name_or_id]</code> (e.g., <code>ubuntu</code>, <code>1000:1000</code>). Defaults to the default <code>image</code> user.<a class="headerlink" href="#user" title="Permanent link">&para;</a></h6>
@@ -4121,6 +4144,12 @@ from the model's repository. If it is not present there, manual configuration is
 </div>
 </div>
 </div>
+<h3 id="probes"><code>probes</code><a class="headerlink" href="#probes" title="Permanent link">&para;</a></h3>
+<h4 id="probesn"><code>probes[n]</code><a class="headerlink" href="#probesn" title="Permanent link">&para;</a></h4>
+<h6 class="reference-item" id="url"><code>url</code> - (Optional) The URL to request. Defaults to <code>/</code>.<a class="headerlink" href="#url" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="timeout"><code>timeout</code> - (Optional) Maximum amount of time the HTTP request is allowed to take. Defaults to <code>10s</code>.<a class="headerlink" href="#timeout" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="interval"><code>interval</code> - (Optional) Minimum amount of time between the end of one probe execution and the start of the next. Defaults to <code>15s</code>.<a class="headerlink" href="#interval" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="ready_after"><code>ready_after</code> - (Optional) The number of consecutive successful probe executions required for the replica to be considered ready. Used during rolling deployments. Defaults to <code>1</code>.<a class="headerlink" href="#ready_after" title="Permanent link">&para;</a></h6>
 <h3 id="retry"><code>retry</code><a class="headerlink" href="#retry" title="Permanent link">&para;</a></h3>
 <h6 class="reference-item" id="on_events"><code>on_events</code> - (Optional) The list of events that should be handled with retry. Supported events are <code>no-capacity</code>, <code>interruption</code>, <code>error</code>. Omit to retry on all events.<a class="headerlink" href="#on_events" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="duration"><code>duration</code> - (Optional) The maximum period of retrying the run, e.g., <code>4h</code> or <code>1d</code>.<a class="headerlink" href="#duration" title="Permanent link">&para;</a></h6>

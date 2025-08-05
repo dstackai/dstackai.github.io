@@ -248,8 +248,8 @@ Support dstack with a ⭐ on
     -->
 
     <div class="md-header__buttons">
-      <a href="https://github.com/dstackai/dstack" target="_blank" class="md-button md-button--primary github external">GitHub</a>
-      <!-- <a href="https://discord.gg/u8SmfwPpMd" target="_blank" class="md-button md-button--primary sky discord external">Discord</a> -->
+      <a href="https://github.com/dstackai/dstack" target="_blank" class="md-button md-button--primary github">GitHub</a>
+      <a href="https://sky.dstack.ai" target="_blank" class="md-button md-button--primary sky external">Sign up</a>
     </div>
   </nav>
   
@@ -4039,8 +4039,11 @@ a <a href="https://github.com/dstackai/dstack/issues/new/choose" target="_blank"
 <h3 id="steps-to-reproduce">Steps to reproduce<a class="headerlink" href="#steps-to-reproduce" title="Permanent link">&para;</a></h3>
 <p>Make sure to provide clear, detailed steps to reproduce the issue. 
 Include server logs, CLI outputs, and configuration samples. Avoid using screenshots for logs or errors—use text instead. </p>
-<p>To get more detailed logs, make sure to set the <code>DSTACK_CLI_LOG_LEVEL</code> and <code>DSTACK_SERVER_LOG_LEVEL</code> 
-environment variables to <code>debug</code> when running the CLI and the server, respectively.</p>
+<h4 id="server-logs">Server logs<a class="headerlink" href="#server-logs" title="Permanent link">&para;</a></h4>
+<p>To get more detailed server logs, set the <code>DSTACK_SERVER_LOG_LEVEL</code> 
+environment variable to <code>DEBUG</code>. By default, it is set to <code>INFO</code>.</p>
+<h4 id="cli-logs">CLI logs<a class="headerlink" href="#cli-logs" title="Permanent link">&para;</a></h4>
+<p>CLI logs are located in <code>~/.dstack/logs/cli</code>, and the default log level is <code>DEBUG</code>.</p>
 <blockquote>
 <p>See these examples for well-reported issues: <a href="https://github.com/dstackai/dstack/issues/1640" target="_blank">this <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>
 and <a href="https://github.com/dstackai/dstack/issues/1551" target="_blank">this <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>.</p>

@@ -248,8 +248,8 @@ Support dstack with a ⭐ on
     -->
 
     <div class="md-header__buttons">
-      <a href="https://github.com/dstackai/dstack" target="_blank" class="md-button md-button--primary github external">GitHub</a>
-      <!-- <a href="https://discord.gg/u8SmfwPpMd" target="_blank" class="md-button md-button--primary sky discord external">Discord</a> -->
+      <a href="https://github.com/dstackai/dstack" target="_blank" class="md-button md-button--primary github">GitHub</a>
+      <a href="https://sky.dstack.ai" target="_blank" class="md-button md-button--primary sky external">Sign up</a>
     </div>
   </nav>
   
@@ -956,6 +956,19 @@ Support dstack with a ⭐ on
       
         <span class="md-typeset">
           Authorization
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#probes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Probes
         </span>
       
     </span>
@@ -3956,6 +3969,19 @@ Support dstack with a ⭐ on
 </li>
         
           <li class="md-nav__item">
+  <a href="#probes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Probes
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#path-prefix" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -4388,6 +4414,47 @@ This can be disabled by setting <code>auth</code> to <code>false</code>.</p>
 
 </div>
 
+<h3 id="probes">Probes<a class="headerlink" href="#probes" title="Permanent link">&para;</a></h3>
+<p>Configure one or more HTTP probes to periodically check the health of the service.</p>
+<div editor-title="service.dstack.yml">
+
+<div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service</span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my-service</span>
+<span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">80</span>
+<span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my-app:latest</span>
+<span class="nt">probes</span><span class="p">:</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http</span>
+<span class="w">  </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/health</span>
+<span class="w">  </span><span class="nt">interval</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">15s</span>
+</code></pre></div>
+
+</div>
+
+<p>You can track probe statuses in <code>dstack ps --verbose</code>.</p>
+<div class="termy">
+
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>dstack<span class="w"> </span>ps<span class="w"> </span>--verbose
+
+<span class="w"> </span>NAME<span class="w">                            </span>BACKEND<span class="w">          </span>STATUS<span class="w">   </span>PROBES<span class="w">  </span>SUBMITTED
+<span class="w"> </span>my-service<span class="w"> </span><span class="nv">deployment</span><span class="o">=</span><span class="m">1</span><span class="w">                          </span>running<span class="w">          </span><span class="m">11</span><span class="w"> </span>mins<span class="w"> </span>ago
+<span class="w">   </span><span class="nv">replica</span><span class="o">=</span><span class="m">0</span><span class="w"> </span><span class="nv">job</span><span class="o">=</span><span class="m">0</span><span class="w"> </span><span class="nv">deployment</span><span class="o">=</span><span class="m">0</span><span class="w">  </span>aws<span class="w"> </span><span class="o">(</span>us-west-2<span class="o">)</span><span class="w">  </span>running<span class="w">  </span>✓<span class="w">       </span><span class="m">11</span><span class="w"> </span>mins<span class="w"> </span>ago
+<span class="w">   </span><span class="nv">replica</span><span class="o">=</span><span class="m">1</span><span class="w"> </span><span class="nv">job</span><span class="o">=</span><span class="m">0</span><span class="w"> </span><span class="nv">deployment</span><span class="o">=</span><span class="m">1</span><span class="w">  </span>aws<span class="w"> </span><span class="o">(</span>us-west-2<span class="o">)</span><span class="w">  </span>running<span class="w">  </span>×<span class="w">       </span><span class="m">1</span><span class="w"> </span>min<span class="w"> </span>ago
+</code></pre></div>
+
+</div>
+
+<details class="info">
+<summary>Probe statuses</summary>
+<p>The following symbols are used for probe statuses:</p>
+<ul>
+<li><code>×</code> &mdash; the last probe execution failed.</li>
+<li><code>~</code> &mdash; the last probe execution succeeded, but the <a href="../../reference/dstack.yml/service/#ready_after"><code>ready_after</code></a> threshold is not yet reached.</li>
+<li><code>✓</code> &mdash; the last <code>ready_after</code> probe executions succeeded.</li>
+</ul>
+<p>If multiple probes are configured for the service, their statuses are displayed in the order in which the probes appear in the configuration.</p>
+</details>
+<p>Probes are executed for each service replica while the replica is <code>running</code>. Probe statuses do not affect how <code>dstack</code> handles replicas, except during <a href="#rolling-deployment">rolling deployments</a>.</p>
+<p>See the <a href="../../reference/dstack.yml/service/#probes">reference</a> for more probe configuration options.</p>
 <h3 id="path-prefix">Path prefix<a class="headerlink" href="#path-prefix" title="Permanent link">&para;</a></h3>
 <p>If your <code>dstack</code> project doesn't have a <a href="../gateways/">gateway</a>, services are hosted with the
 <code>/proxy/services/&lt;project name&gt;/&lt;run name&gt;/</code> path prefix in the URL.
@@ -4952,7 +5019,7 @@ Update<span class="w"> </span>the<span class="w"> </span>run?<span class="w"> </
 
 </div>
 
-<p>If approved, <code>dstack</code> gradually updates the service replicas. To update a replica, <code>dstack</code> starts a new replica, waits for it to become <code>running</code>, then terminates the old replica. This process is repeated for each replica, one at a time.</p>
+<p>If approved, <code>dstack</code> gradually updates the service replicas. To update a replica, <code>dstack</code> starts a new replica, waits for it to become <code>running</code> and for all of its <a href="#probes">probes</a> to pass, then terminates the old replica. This process is repeated for each replica, one at a time.</p>
 <p>You can track the progress of rolling deployment in both <code>dstack apply</code> or <code>dstack ps</code>. 
 Older replicas have lower <code>deployment</code> numbers; newer ones have higher.</p>
 <!--
@@ -4972,7 +5039,7 @@ Older replicas have lower <code>deployment</code> numbers; newer ones have highe
 <details class="info">
 <summary>Supported properties</summary>
 <!-- NOTE: should be in sync with constants in server/services/runs.py -->
-<p>Rolling deployment supports changes to the following properties: <code>port</code>, <code>resources</code>, <code>volumes</code>, <code>docker</code>, <code>files</code>, <code>image</code>, <code>user</code>, <code>privileged</code>, <code>entrypoint</code>, <code>working_dir</code>, <code>python</code>, <code>nvcc</code>, <code>single_branch</code>, <code>env</code>, <code>shell</code>, <code>commands</code>, as well as changes to <a href="../repos/">repo</a> or <a href="#files">file</a> contents.</p>
+<p>Rolling deployment supports changes to the following properties: <code>port</code>, <code>probes</code>, <code>resources</code>, <code>volumes</code>, <code>docker</code>, <code>files</code>, <code>image</code>, <code>user</code>, <code>privileged</code>, <code>entrypoint</code>, <code>working_dir</code>, <code>python</code>, <code>nvcc</code>, <code>single_branch</code>, <code>env</code>, <code>shell</code>, <code>commands</code>, as well as changes to <a href="../repos/">repo</a> or <a href="#files">file</a> contents.</p>
 <p>Changes to <code>replicas</code> and <code>scaling</code> can be applied without redeploying replicas.</p>
 <p>Changes to other properties require a full service restart.</p>
 <p>To trigger a rolling deployment when no properties have changed (e.g., after updating <a href="../secrets/">secrets</a> or to restart all replicas),<br />

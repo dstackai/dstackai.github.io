@@ -248,8 +248,8 @@ Support dstack with a ⭐ on
     -->
 
     <div class="md-header__buttons">
-      <a href="https://github.com/dstackai/dstack" target="_blank" class="md-button md-button--primary github external">GitHub</a>
-      <!-- <a href="https://discord.gg/u8SmfwPpMd" target="_blank" class="md-button md-button--primary sky discord external">Discord</a> -->
+      <a href="https://github.com/dstackai/dstack" target="_blank" class="md-button md-button--primary github">GitHub</a>
+      <a href="https://sky.dstack.ai" target="_blank" class="md-button md-button--primary sky external">Sign up</a>
     </div>
   </nav>
   
@@ -3914,6 +3914,8 @@ via <code>dstack server</code> or deployed using Docker.</p>
 <li><code id="DSTACK_DB_MAX_OVERFLOW">DSTACK_DB_MAX_OVERFLOW</code> - The client DB connections pool allowed overflow. Defaults to <code>20</code>.</li>
 <li><code id="DSTACK_SERVER_BACKGROUND_PROCESSING_FACTOR">DSTACK_SERVER_BACKGROUND_PROCESSING_FACTOR</code> - The number of background jobs for processing server resources. Increase if you need to process more resources per server replica quickly. Defaults to <code>1</code>.</li>
 <li><code id="DSTACK_SERVER_BACKGROUND_PROCESSING_DISABLED">DSTACK_SERVER_BACKGROUND_PROCESSING_DISABLED</code> - Disables background processing if set to any value. Useful to run only web frontend and API server.</li>
+<li><code id="DSTACK_SERVER_MAX_PROBES_PER_JOB">DSTACK_SERVER_MAX_PROBES_PER_JOB</code> - Maximum number of probes allowed in a run configuration. Validated at apply time.</li>
+<li><code id="DSTACK_SERVER_MAX_PROBE_TIMEOUT">DSTACK_SERVER_MAX_PROBE_TIMEOUT</code> - Maximum allowed timeout for a probe. Validated at apply time.</li>
 </ul>
 <details class="info">
 <summary>Internal environment variables</summary>
@@ -3936,12 +3938,25 @@ via <code>dstack server</code> or deployed using Docker.</p>
 <h2 id="cli">CLI<a class="headerlink" href="#cli" title="Permanent link">&para;</a></h2>
 <p>The following environment variables are supported by the CLI.</p>
 <ul>
-<li><code id="DSTACK_CLI_LOG_LEVEL">DSTACK_CLI_LOG_LEVEL</code> – Configures CLI logging level. Defaults to <code>INFO</code>.</li>
+<li><code id="DSTACK_CLI_LOG_LEVEL">DSTACK_CLI_LOG_LEVEL</code> – Sets the logging level for CLI output to stdout. Defaults to <code>INFO</code>.</li>
 </ul>
 <p>Example:</p>
 <div class="termy">
 
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nv">DSTACK_CLI_LOG_LEVEL</span><span class="o">=</span>debug<span class="w"> </span>dstack<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>.dstack.yml
+</code></pre></div>
+
+</div>
+
+<ul>
+<li><code id="DSTACK_CLI_FILE_LOG_LEVEL">DSTACK_CLI_FILE_LOG_LEVEL</code> – Sets the logging level for CLI log files. Defaults to <code>DEBUG</code>.</li>
+</ul>
+<div class="termy">
+
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>find<span class="w"> </span>~/.dstack/logs/cli/
+
+<span class="w"> </span>~/.dstack/logs/cli/latest.log
+<span class="w"> </span>~/.dstack/logs/cli/2025-07-31.log
 </code></pre></div>
 
 </div>
