@@ -4453,7 +4453,31 @@ This can be disabled by setting <code>auth</code> to <code>false</code>.</p>
 </ul>
 <p>If multiple probes are configured for the service, their statuses are displayed in the order in which the probes appear in the configuration.</p>
 </details>
-<p>Probes are executed for each service replica while the replica is <code>running</code>. Probe statuses do not affect how <code>dstack</code> handles replicas, except during <a href="#rolling-deployment">rolling deployments</a>.</p>
+<p>Probes are executed for each service replica while the replica is <code>running</code>. A probe execution is considered successful if the replica responds with a <code>2xx</code> status code. Probe statuses do not affect how <code>dstack</code> handles replicas, except during <a href="#rolling-deployment">rolling deployments</a>.</p>
+<details class="info">
+<summary>HTTP request configuration</summary>
+<p>You can configure the HTTP request method, headers, and other properties. To include secret values in probe requests, use environment variable interpolation, which is enabled for the <code>url</code>, <code>headers[i].value</code>, and <code>body</code> properties.</p>
+<div editor-title="service.dstack.yml">
+<div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service</span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my-service</span>
+<span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">80</span>
+<span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my-app:latest</span>
+<span class="nt">env</span><span class="p">:</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PROBES_API_KEY</span>
+<span class="nt">probes</span><span class="p">:</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http</span>
+<span class="w">  </span><span class="nt">method</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">post</span>
+<span class="w">  </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/check-health</span>
+<span class="w">  </span><span class="nt">headers</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">X-API-Key</span>
+<span class="w">    </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ env.PROBES_API_KEY }}</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Content-Type</span>
+<span class="w">    </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">application/json</span>
+<span class="w">  </span><span class="nt">body</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;{&quot;level&quot;:</span><span class="nv"> </span><span class="s">2}&#39;</span>
+<span class="w">  </span><span class="nt">timeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">20s</span>
+</code></pre></div>
+</div>
+</details>
 <p>See the <a href="../../reference/dstack.yml/service/#probes">reference</a> for more probe configuration options.</p>
 <h3 id="path-prefix">Path prefix<a class="headerlink" href="#path-prefix" title="Permanent link">&para;</a></h3>
 <p>If your <code>dstack</code> project doesn't have a <a href="../gateways/">gateway</a>, services are hosted with the

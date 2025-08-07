@@ -3916,6 +3916,10 @@ via <code>dstack server</code> or deployed using Docker.</p>
 <li><code id="DSTACK_SERVER_BACKGROUND_PROCESSING_DISABLED">DSTACK_SERVER_BACKGROUND_PROCESSING_DISABLED</code> - Disables background processing if set to any value. Useful to run only web frontend and API server.</li>
 <li><code id="DSTACK_SERVER_MAX_PROBES_PER_JOB">DSTACK_SERVER_MAX_PROBES_PER_JOB</code> - Maximum number of probes allowed in a run configuration. Validated at apply time.</li>
 <li><code id="DSTACK_SERVER_MAX_PROBE_TIMEOUT">DSTACK_SERVER_MAX_PROBE_TIMEOUT</code> - Maximum allowed timeout for a probe. Validated at apply time.</li>
+<li><code id="DSTACK_SERVER_METRICS_RUNNING_TTL_SECONDS">DSTACK_SERVER_METRICS_RUNNING_TTL_SECONDS</code> – Maximum age of metrics samples for running jobs.</li>
+<li><code id="DSTACK_SERVER_METRICS_FINISHED_TTL_SECONDS">DSTACK_SERVER_METRICS_FINISHED_TTL_SECONDS</code> – Maximum age of metrics samples for finished jobs.</li>
+<li><code id="DSTACK_SERVER_INSTANCE_HEALTH_TTL_SECONDS">DSTACK_SERVER_INSTANCE_HEALTH_TTL_SECONDS</code> – Maximum age of instance health checks.</li>
+<li><code id="DSTACK_SERVER_INSTANCE_HEALTH_MIN_COLLECT_INTERVAL_SECONDS">DSTACK_SERVER_INSTANCE_HEALTH_MIN_COLLECT_INTERVAL_SECONDS</code> – Minimum time interval between consecutive health checks of the same instance.</li>
 </ul>
 <details class="info">
 <summary>Internal environment variables</summary>

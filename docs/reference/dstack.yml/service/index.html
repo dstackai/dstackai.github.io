@@ -4147,9 +4147,16 @@ from the model's repository. If it is not present there, manual configuration is
 <h3 id="probes"><code>probes</code><a class="headerlink" href="#probes" title="Permanent link">&para;</a></h3>
 <h4 id="probesn"><code>probes[n]</code><a class="headerlink" href="#probesn" title="Permanent link">&para;</a></h4>
 <h6 class="reference-item" id="url"><code>url</code> - (Optional) The URL to request. Defaults to <code>/</code>.<a class="headerlink" href="#url" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="method"><code>method</code> - (Optional) The HTTP method to use for the probe (e.g., <code>get</code>, <code>post</code>, etc.). Defaults to <code>get</code>.<a class="headerlink" href="#method" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="headers"><code>headers</code> - (Optional) A list of HTTP headers to include in the request.<a class="headerlink" href="#headers" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="body"><code>body</code> - (Optional) The HTTP request body to send with the probe.<a class="headerlink" href="#body" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="timeout"><code>timeout</code> - (Optional) Maximum amount of time the HTTP request is allowed to take. Defaults to <code>10s</code>.<a class="headerlink" href="#timeout" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="interval"><code>interval</code> - (Optional) Minimum amount of time between the end of one probe execution and the start of the next. Defaults to <code>15s</code>.<a class="headerlink" href="#interval" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="ready_after"><code>ready_after</code> - (Optional) The number of consecutive successful probe executions required for the replica to be considered ready. Used during rolling deployments. Defaults to <code>1</code>.<a class="headerlink" href="#ready_after" title="Permanent link">&para;</a></h6>
+<h5 id="probesnheaders"><code>probes[n].headers</code><a class="headerlink" href="#probesnheaders" title="Permanent link">&para;</a></h5>
+<h6 id="probesnheadersm"><code>probes[n].headers[m]</code><a class="headerlink" href="#probesnheadersm" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="name"><code>name</code> -  The name of the HTTP header.<a class="headerlink" href="#name" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="value"><code>value</code> -  The value of the HTTP header.<a class="headerlink" href="#value" title="Permanent link">&para;</a></h6>
 <h3 id="retry"><code>retry</code><a class="headerlink" href="#retry" title="Permanent link">&para;</a></h3>
 <h6 class="reference-item" id="on_events"><code>on_events</code> - (Optional) The list of events that should be handled with retry. Supported events are <code>no-capacity</code>, <code>interruption</code>, <code>error</code>. Omit to retry on all events.<a class="headerlink" href="#on_events" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="duration"><code>duration</code> - (Optional) The maximum period of retrying the run, e.g., <code>4h</code> or <code>1d</code>.<a class="headerlink" href="#duration" title="Permanent link">&para;</a></h6>
