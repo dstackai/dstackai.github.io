@@ -3427,6 +3427,17 @@ Support dstack with a ⭐ on
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#introducing-passive-gpu-health-checks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Introducing passive GPU health checks
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#supporting-hot-aisle-amd-ai-developer-cloud" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3519,17 +3530,6 @@ Support dstack with a ⭐ on
     <span class="md-ellipsis">
       
         Supporting MPI and NCCL/RCCL tests
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#exporting-gpu-cost-and-other-metrics-to-prometheus" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Exporting GPU, cost, and other metrics to Prometheus
       
     </span>
   </a>
@@ -3738,6 +3738,17 @@ Support dstack with a ⭐ on
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#introducing-passive-gpu-health-checks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Introducing passive GPU health checks
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#supporting-hot-aisle-amd-ai-developer-cloud" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3836,17 +3847,6 @@ Support dstack with a ⭐ on
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#exporting-gpu-cost-and-other-metrics-to-prometheus" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Exporting GPU, cost, and other metrics to Prometheus
-      
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -3867,6 +3867,50 @@ Support dstack with a ⭐ on
 
 <h1 id="blog">Blog<a class="headerlink" href="#blog" title="Permanent link">&para;</a></h1>
       </header>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2025-08-12 00:00:00+00:00">August 12, 2025</time></li>
+        
+          <li class="md-meta__item">
+            in
+            
+              <a href="changelog/" class="md-meta__link">Changelog</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              3 min read
+            
+          </li>
+        
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="introducing-passive-gpu-health-checks"><a class="toclink" href="gpu-helth-checks/">Introducing passive GPU health checks</a></h2>
+<p>In large-scale training, a single bad GPU can derail progress. Sometimes the failure is obvious — jobs crash outright. Other times it’s subtle: correctable memory errors, intermittent instability, or thermal throttling that quietly drags down throughput. In big experiments, these issues can go unnoticed for hours or days, wasting compute and delaying results.</p>
+<p><code>dstack</code> already supports GPU telemetry monitoring through NVIDIA DCGM <a href="../docs/guides/metrics/">metrics</a>, covering utilization, memory, and temperature. This release extends that capability with passive hardware health checks powered by DCGM <a href="https://docs.nvidia.com/datacenter/dcgm/latest/user-guide/feature-overview.html#background-health-checks">background health checks</a>. With these, <code>dstack</code> continuously evaluates fleet GPUs for hardware reliability and displays their status before scheduling workloads.</p>
+<p><img src="https://dstack.ai/static-assets/static-assets/images/gpu-health-checks.png" width="630"/></p>
+
+    
+      <nav class="md-post__action">
+        <a href="gpu-helth-checks/">
+            <span>Continue reading</span>
+            <span class="icon"><svg viewBox="0 0 13 10" xmlns="http://www.w3.org/2000/svg"><path d="M12.823 4.164L8.954.182a.592.592 0 0 0-.854 0 .635.635 0 0 0 0 .88l2.836 2.92H.604A.614.614 0 0 0 0 4.604c0 .344.27.622.604.622h10.332L8.1 8.146a.635.635 0 0 0 0 .88.594.594 0 0 0 .854 0l3.869-3.982a.635.635 0 0 0 0-.88z" fill-rule="nonzero" fill="currentColor" class="fill-main"></path></svg></span>
+        </a>
+      </nav>
+    
+    
+  </div>
+</article>
       
         <article class="md-post md-post--excerpt">
   <header class="md-post__header">
@@ -4293,55 +4337,6 @@ cluster usage—we’ve added support for it.</p>
     
       <nav class="md-post__action">
         <a href="mpi/">
-            <span>Continue reading</span>
-            <span class="icon"><svg viewBox="0 0 13 10" xmlns="http://www.w3.org/2000/svg"><path d="M12.823 4.164L8.954.182a.592.592 0 0 0-.854 0 .635.635 0 0 0 0 .88l2.836 2.92H.604A.614.614 0 0 0 0 4.604c0 .344.27.622.604.622h10.332L8.1 8.146a.635.635 0 0 0 0 .88.594.594 0 0 0 .854 0l3.869-3.982a.635.635 0 0 0 0-.88z" fill-rule="nonzero" fill="currentColor" class="fill-main"></path></svg></span>
-        </a>
-      </nav>
-    
-    
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2025-04-01 00:00:00+00:00">April 1, 2025</time></li>
-        
-          <li class="md-meta__item">
-            in
-            
-              <a href="changelog/" class="md-meta__link">Changelog</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              2 min read
-            
-          </li>
-        
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="exporting-gpu-cost-and-other-metrics-to-prometheus"><a class="toclink" href="prometheus/">Exporting GPU, cost, and other metrics to Prometheus</a></h2>
-<h3 id="why-prometheus" style="display:none"><a class="toclink" href="prometheus/#why-prometheus">Why Prometheus</a></h3>
-<p>Effective AI infrastructure management requires full visibility into compute performance and costs. AI researchers need
-detailed insights into container- and GPU-level performance, while managers rely on cost metrics to track resource usage
-across projects.</p>
-<p>While <code>dstack</code> provides key metrics through its UI and <a href="dstack-metrics/"><code>dstack metrics</code></a> CLI, teams often need more granular data and prefer
-using their own monitoring tools. To support this, we’ve introduced a new endpoint that allows real-time exporting all collected
-metrics—covering fleets and runs—directly to Prometheus.</p>
-<p><img src="https://dstack.ai/static-assets/static-assets/images/dstack-prometheus-v3.png" width="630"/></p>
-
-    
-      <nav class="md-post__action">
-        <a href="prometheus/">
             <span>Continue reading</span>
             <span class="icon"><svg viewBox="0 0 13 10" xmlns="http://www.w3.org/2000/svg"><path d="M12.823 4.164L8.954.182a.592.592 0 0 0-.854 0 .635.635 0 0 0 0 .88l2.836 2.92H.604A.614.614 0 0 0 0 4.604c0 .344.27.622.604.622h10.332L8.1 8.146a.635.635 0 0 0 0 .88.594.594 0 0 0 .854 0l3.869-3.982a.635.635 0 0 0 0-.88z" fill-rule="nonzero" fill="currentColor" class="fill-main"></path></svg></span>
         </a>
