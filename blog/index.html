@@ -3427,6 +3427,17 @@ Support dstack with a ⭐ on
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#introducing-service-probes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Introducing service probes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#introducing-passive-gpu-health-checks" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3519,17 +3530,6 @@ Support dstack with a ⭐ on
     <span class="md-ellipsis">
       
         Built-in UI for monitoring essential GPU metrics
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#supporting-mpi-and-ncclrccl-tests" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Supporting MPI and NCCL/RCCL tests
       
     </span>
   </a>
@@ -3738,6 +3738,17 @@ Support dstack with a ⭐ on
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#introducing-service-probes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Introducing service probes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#introducing-passive-gpu-health-checks" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3836,17 +3847,6 @@ Support dstack with a ⭐ on
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#supporting-mpi-and-ncclrccl-tests" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Supporting MPI and NCCL/RCCL tests
-      
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -3867,6 +3867,50 @@ Support dstack with a ⭐ on
 
 <h1 id="blog">Blog<a class="headerlink" href="#blog" title="Permanent link">&para;</a></h1>
       </header>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2025-08-14 00:00:00+00:00">August 14, 2025</time></li>
+        
+          <li class="md-meta__item">
+            in
+            
+              <a href="changelog/" class="md-meta__link">Changelog</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              2 min read
+            
+          </li>
+        
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="introducing-service-probes"><a class="toclink" href="probes/">Introducing service probes</a></h2>
+<p><code>dstack</code> services are long-running workloads—most often inference endpoints and sometimes web apps—that run continuously on GPU or CPU instances. They can scale across replicas and support rolling deployments.</p>
+<p>This release adds HTTP probes inspired by Kubernetes readiness probes. Probes periodically call an endpoint on each replica (for example, <code>/health</code>) to confirm it responds as expected. The result gives clear visibility into startup progress and, during rolling deployments, ensures traffic only shifts to a replacement replica after all configured probes have proven ready.</p>
+<p><img src="https://dstack.ai/static-assets/static-assets/images/dstack-service-probes.png" width="630"/></p>
+
+    
+      <nav class="md-post__action">
+        <a href="probes/">
+            <span>Continue reading</span>
+            <span class="icon"><svg viewBox="0 0 13 10" xmlns="http://www.w3.org/2000/svg"><path d="M12.823 4.164L8.954.182a.592.592 0 0 0-.854 0 .635.635 0 0 0 0 .88l2.836 2.92H.604A.614.614 0 0 0 0 4.604c0 .344.27.622.604.622h10.332L8.1 8.146a.635.635 0 0 0 0 .88.594.594 0 0 0 .854 0l3.869-3.982a.635.635 0 0 0 0-.88z" fill-rule="nonzero" fill="currentColor" class="fill-main"></path></svg></span>
+        </a>
+      </nav>
+    
+    
+  </div>
+</article>
       
         <article class="md-post md-post--excerpt">
   <header class="md-post__header">
@@ -4284,59 +4328,6 @@ the <code>dstack</code> control plane.</p>
     
       <nav class="md-post__action">
         <a href="metrics-ui/">
-            <span>Continue reading</span>
-            <span class="icon"><svg viewBox="0 0 13 10" xmlns="http://www.w3.org/2000/svg"><path d="M12.823 4.164L8.954.182a.592.592 0 0 0-.854 0 .635.635 0 0 0 0 .88l2.836 2.92H.604A.614.614 0 0 0 0 4.604c0 .344.27.622.604.622h10.332L8.1 8.146a.635.635 0 0 0 0 .88.594.594 0 0 0 .854 0l3.869-3.982a.635.635 0 0 0 0-.88z" fill-rule="nonzero" fill="currentColor" class="fill-main"></path></svg></span>
-        </a>
-      </nav>
-    
-    
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2025-04-02 00:00:00+00:00">April 2, 2025</time></li>
-        
-          <li class="md-meta__item">
-            in
-            
-              <a href="changelog/" class="md-meta__link">Changelog</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              2 min read
-            
-          </li>
-        
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="supporting-mpi-and-ncclrccl-tests"><a class="toclink" href="mpi/">Supporting MPI and NCCL/RCCL tests</a></h2>
-<p>As AI models grow in complexity, efficient orchestration tools become increasingly important. 
-<a href="../docs/concepts/fleets/">Fleets</a> introduced by <code>dstack</code> last year streamline 
-<a href="../docs/concepts/tasks/">task execution</a> on both cloud and 
-on-prem clusters, whether it's pre-training, fine-tuning, or batch processing.</p>
-<p>The strength of <code>dstack</code> lies in its flexibility. Users can leverage distributed framework like
-<code>torchrun</code>, <code>accelerate</code>, or others. <code>dstack</code> handles node provisioning, job execution, and automatically propagates
-system environment variables—such as <code>DSTACK_NODE_RANK</code>, <code>DSTACK_MASTER_NODE_IP</code>,
-<code>DSTACK_GPUS_PER_NODE</code> and <a href="../docs/concepts/tasks/#system-environment-variables">others</a>—to containers.</p>
-<p><img src="https://dstack.ai/static-assets/static-assets/images/dstack-mpi-v2.png" width="630"/></p>
-<p>One use case <code>dstack</code> hasn’t supported until now is MPI, as it requires a scheduled environment or
-direct SSH connections between containers. Since <code>mpirun</code> is essential for running NCCL/RCCL tests—crucial for large-scale
-cluster usage—we’ve added support for it.</p>
-
-    
-      <nav class="md-post__action">
-        <a href="mpi/">
             <span>Continue reading</span>
             <span class="icon"><svg viewBox="0 0 13 10" xmlns="http://www.w3.org/2000/svg"><path d="M12.823 4.164L8.954.182a.592.592 0 0 0-.854 0 .635.635 0 0 0 0 .88l2.836 2.92H.604A.614.614 0 0 0 0 4.604c0 .344.27.622.604.622h10.332L8.1 8.146a.635.635 0 0 0 0 .88.594.594 0 0 0 .854 0l3.869-3.982a.635.635 0 0 0 0-.88z" fill-rule="nonzero" fill="currentColor" class="fill-main"></path></svg></span>
         </a>
