@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../../assets/images/dstack-fav-32.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.16+insiders-4.53.16">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.17+insiders-4.53.16">
     
     
       
@@ -4498,6 +4498,30 @@ Getting<span class="w"> </span>offers...
 
 </div>
 
+<details class="info">
+<summary>Grouping offers</summary>
+<p>Use <code>--group-by</code> to aggregate offers. Accepted values: <code>gpu</code>, <code>backend</code>, <code>region</code>, and <code>count</code>.</p>
+<div class="termy">
+<div class="highlight"><pre><span></span><code>dstack<span class="w"> </span>offer<span class="w"> </span>--gpu<span class="w"> </span>b200<span class="w"> </span>--group-by<span class="w"> </span>gpu,backend,region
+Project<span class="w">      </span>main
+User<span class="w">         </span>admin
+Resources<span class="w">    </span><span class="nv">cpu</span><span class="o">=</span><span class="m">2</span>..<span class="w"> </span><span class="nv">mem</span><span class="o">=</span>8GB..<span class="w"> </span><span class="nv">disk</span><span class="o">=</span>100GB..<span class="w"> </span>b200:1..
+Spot<span class="w"> </span>policy<span class="w">  </span>auto
+Max<span class="w"> </span>price<span class="w">    </span>-
+Reservation<span class="w">  </span>-
+Group<span class="w"> </span>by<span class="w">     </span>gpu,<span class="w"> </span>backend,<span class="w"> </span>region
+
+<span class="c1">#   GPU              SPOT             $/GPU       BACKEND  REGION</span>
+<span class="m">1</span><span class="w">   </span>B200:180GB:1..8<span class="w">  </span>spot,<span class="w"> </span>on-demand<span class="w">  </span><span class="m">3</span>.59..5.99<span class="w">  </span>runpod<span class="w">   </span>EU-RO-1
+<span class="m">2</span><span class="w">   </span>B200:180GB:1..8<span class="w">  </span>spot,<span class="w"> </span>on-demand<span class="w">  </span><span class="m">3</span>.59..5.99<span class="w">  </span>runpod<span class="w">   </span>US-CA-2
+<span class="m">3</span><span class="w">   </span>B200:180GB:8<span class="w">     </span>on-demand<span class="w">        </span><span class="m">4</span>.99<span class="w">        </span>lambda<span class="w">   </span>us-east-1
+<span class="m">4</span><span class="w">   </span>B200:180GB:8<span class="w">     </span>on-demand<span class="w">        </span><span class="m">5</span>.5<span class="w">         </span>nebius<span class="w">   </span>us-central1
+</code></pre></div>
+</div>
+<p>When using <code>--group-by</code>, <code>gpu</code> must always be <code>included</code>.
+The <code>region</code> value can only be used together with <code>backend</code>.</p>
+</details>
+<p>The <code>offer</code> command allows you to filter and group offers with various <a href="../../reference/cli/dstack/offer/#usage">advanced options</a>.</p>
 <h2 id="metrics">Metrics<a class="headerlink" href="#metrics" title="Permanent link">&para;</a></h2>
 <p><code>dstack</code> tracks essential metrics accessible via the CLI and UI. To access advanced metrics like DCGM, configure the server to export metrics to Prometheus. See <a href="../metrics/">Metrics</a> for details.</p>
 <h2 id="service-quotas">Service quotas<a class="headerlink" href="#service-quotas" title="Permanent link">&para;</a></h2>
@@ -4644,7 +4668,8 @@ The relevant service category is compute. The relevant resources include:</p>
   
 </div>
                     
-                        <div class="md-social">
+                        
+<div class="md-social">
   
     
     
@@ -4744,13 +4769,13 @@ The relevant service category is compute. The relevant resources include:</p>
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["content.tooltips", "navigation.path", "content.code.copy", "content.action.edit", "navigation.tabs", "navigation.sections", "navigation.top", "announce.dismiss", "navigation.tracking", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.ad38c271.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["content.tooltips", "navigation.path", "content.code.copy", "content.action.edit", "navigation.tabs", "navigation.sections", "navigation.top", "announce.dismiss", "navigation.tracking", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.26099bd0.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
 <script src="/assets/javascripts/termynal.js" data-termynal-container="#termynal"></script>
 <script async src="https://tally.so/widgets/embed.js"></script>
 
-      <script src="../../../assets/javascripts/bundle.b66b2b78.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.bb65021c.min.js"></script>
       
         <script src="../../../assets/javascripts/extra.js"></script>
       

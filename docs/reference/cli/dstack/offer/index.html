@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../../../../assets/images/dstack-fav-32.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.16+insiders-4.53.16">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.17+insiders-4.53.16">
     
     
       
@@ -2033,11 +2033,24 @@ Support dstack with a ⭐ on
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#list-gpu-offers" class="md-nav__link">
+  <a href="#filtering-offers" class="md-nav__link">
     <span class="md-ellipsis">
       
         <span class="md-typeset">
-          List GPU offers
+          Filtering offers
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#grouping-offers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Grouping offers
         </span>
       
     </span>
@@ -3724,11 +3737,24 @@ Support dstack with a ⭐ on
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#list-gpu-offers" class="md-nav__link">
+  <a href="#filtering-offers" class="md-nav__link">
     <span class="md-ellipsis">
       
         <span class="md-typeset">
-          List GPU offers
+          Filtering offers
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#grouping-offers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Grouping offers
         </span>
       
     </span>
@@ -3853,8 +3879,8 @@ Support dstack with a ⭐ on
 
 
 <h1 id="dstack-offer">dstack offer<a class="headerlink" href="#dstack-offer" title="Permanent link">&para;</a></h1>
-<p>Displays available offers (hardware configurations) with the configured backends (or offers that match already provisioned fleets).</p>
-<p>The output includes backend, region, instance type, resources, spot availability, and pricing details.</p>
+<p>Displays available offers (hardware configurations) from configured backends or from fleets you’ve already provisioned. Supports filtering and grouping.</p>
+<p>The output shows backend, region, instance type, resources, spot availability, and pricing.</p>
 <h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
 <p>This command accepts most of the same arguments as <a href="../apply/"><code>dstack apply</code></a>.</p>
 <div class="termy">
@@ -3868,6 +3894,7 @@ Usage:<span class="w"> </span>dstack<span class="w"> </span>offer<span class="w"
 <span class="w">                    </span><span class="o">[</span>-R<span class="w"> </span><span class="p">|</span><span class="w"> </span>--dont-destroy<span class="w"> </span><span class="p">|</span><span class="w"> </span>--idle-duration<span class="w"> </span>IDLE_DURATION<span class="o">]</span>
 <span class="w">                    </span><span class="o">[</span>--spot<span class="w"> </span><span class="p">|</span><span class="w"> </span>--on-demand<span class="w"> </span><span class="p">|</span><span class="w"> </span>--spot-auto<span class="w"> </span><span class="p">|</span><span class="w"> </span>--spot-policy<span class="w"> </span>POLICY<span class="o">]</span>
 <span class="w">                    </span><span class="o">[</span>--retry<span class="w"> </span><span class="p">|</span><span class="w"> </span>--no-retry<span class="w"> </span><span class="p">|</span><span class="w"> </span>--retry-duration<span class="w"> </span>DURATION<span class="o">]</span>
+<span class="w">                    </span><span class="o">[</span>--group-by<span class="w"> </span>GROUP_BY<span class="o">]</span>
 
 Options:
 <span class="w">  </span>-h,<span class="w"> </span>--help<span class="w">            </span>Show<span class="w"> </span>this<span class="w"> </span><span class="nb">help</span><span class="w"> </span>message<span class="w"> </span>and<span class="w"> </span><span class="nb">exit</span>
@@ -3875,6 +3902,10 @@ Options:
 <span class="w">  </span>--format<span class="w"> </span><span class="o">{</span>plain,json<span class="o">}</span>
 <span class="w">                        </span>Output<span class="w"> </span>format<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span>plain<span class="o">)</span>
 <span class="w">  </span>--json<span class="w">                </span>Output<span class="w"> </span><span class="k">in</span><span class="w"> </span>JSON<span class="w"> </span>format<span class="w"> </span><span class="o">(</span>equivalent<span class="w"> </span>to<span class="w"> </span>--format<span class="w"> </span>json<span class="o">)</span>
+<span class="w">  </span>--group-by<span class="w"> </span>GROUP_BY<span class="w">   </span>Group<span class="w"> </span>results<span class="w"> </span>by<span class="w"> </span>fields<span class="w"> </span><span class="o">(</span>gpu,<span class="w"> </span>backend,<span class="w"> </span>region,<span class="w"> </span>count<span class="o">)</span>.
+<span class="w">                        </span>Optional,<span class="w"> </span>but<span class="w"> </span><span class="k">if</span><span class="w"> </span>used,<span class="w"> </span>must<span class="w"> </span>include<span class="w"> </span>gpu.<span class="w"> </span>The<span class="w"> </span>use<span class="w"> </span>of
+<span class="w">                        </span>region<span class="w"> </span>also<span class="w"> </span>requires<span class="w"> </span>backend.<span class="w"> </span>Can<span class="w"> </span>be<span class="w"> </span>repeated<span class="w"> </span>or
+<span class="w">                        </span>comma-separated<span class="w"> </span><span class="o">(</span>e.g.<span class="w"> </span>--group-by<span class="w"> </span>gpu,backend<span class="o">)</span>.
 
 Task<span class="w"> </span>Options:
 <span class="w">  </span>-n,<span class="w"> </span>--name<span class="w"> </span>RUN_NAME<span class="w">   </span>The<span class="w"> </span>name<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>run.<span class="w"> </span>If<span class="w"> </span>not<span class="w"> </span>specified,<span class="w"> </span>a<span class="w"> </span>random<span class="w"> </span>name
@@ -3926,7 +3957,7 @@ Retry<span class="w"> </span>Policy:
 </div>
 
 <h2 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h2>
-<h3 id="list-gpu-offers">List GPU offers<a class="headerlink" href="#list-gpu-offers" title="Permanent link">&para;</a></h3>
+<h3 id="filtering-offers">Filtering offers<a class="headerlink" href="#filtering-offers" title="Permanent link">&para;</a></h3>
 <p>The <code>--gpu</code> flag accepts the same specification format as the <code>gpu</code> property in <a href="../../../../concepts/dev-environments/"><code>dev environment</code></a>, <a href="../../../../concepts/tasks/"><code>task</code></a>, 
 <a href="../../../../concepts/services/"><code>service</code></a>, and <a href="../../../../concepts/fleets/"><code>fleet</code></a> configurations.</p>
 <p>The general format is: <code>&lt;vendor&gt;:&lt;comma-sparated names&gt;:&lt;memory range&gt;:&lt;quantity range&gt;</code>.</p>
@@ -3972,6 +4003,30 @@ Getting<span class="w"> </span>offers...
 
 </div>
 
+<h3 id="grouping-offers">Grouping offers<a class="headerlink" href="#grouping-offers" title="Permanent link">&para;</a></h3>
+<p>Use <code>--group-by</code> to aggregate offers. Accepted values: <code>gpu</code>, <code>backend</code>, <code>region</code>, and <code>count</code>.</p>
+<div class="termy">
+
+<div class="highlight"><pre><span></span><code>dstack<span class="w"> </span>offer<span class="w"> </span>--gpu<span class="w"> </span>b200<span class="w"> </span>--group-by<span class="w"> </span>gpu,backend,region
+<span class="w"> </span>Project<span class="w">      </span>main
+<span class="w"> </span>User<span class="w">         </span>admin
+<span class="w"> </span>Resources<span class="w">    </span><span class="nv">cpu</span><span class="o">=</span><span class="m">2</span>..<span class="w"> </span><span class="nv">mem</span><span class="o">=</span>8GB..<span class="w"> </span><span class="nv">disk</span><span class="o">=</span>100GB..<span class="w"> </span>b200:1..
+<span class="w"> </span>Spot<span class="w"> </span>policy<span class="w">  </span>auto
+<span class="w"> </span>Max<span class="w"> </span>price<span class="w">    </span>-
+<span class="w"> </span>Reservation<span class="w">  </span>-
+<span class="w"> </span>Group<span class="w"> </span>by<span class="w">     </span>gpu,<span class="w"> </span>backend,<span class="w"> </span>region
+
+<span class="w"> </span><span class="c1">#   GPU              SPOT             $/GPU       BACKEND  REGION</span>
+<span class="w"> </span><span class="m">1</span><span class="w">   </span>B200:180GB:1..8<span class="w">  </span>spot,<span class="w"> </span>on-demand<span class="w">  </span><span class="m">3</span>.59..5.99<span class="w">  </span>runpod<span class="w">   </span>EU-RO-1
+<span class="w"> </span><span class="m">2</span><span class="w">   </span>B200:180GB:1..8<span class="w">  </span>spot,<span class="w"> </span>on-demand<span class="w">  </span><span class="m">3</span>.59..5.99<span class="w">  </span>runpod<span class="w">   </span>US-CA-2
+<span class="w"> </span><span class="m">3</span><span class="w">   </span>B200:180GB:8<span class="w">     </span>on-demand<span class="w">        </span><span class="m">4</span>.99<span class="w">        </span>lambda<span class="w">   </span>us-east-1
+<span class="w"> </span><span class="m">4</span><span class="w">   </span>B200:180GB:8<span class="w">     </span>on-demand<span class="w">        </span><span class="m">5</span>.5<span class="w">         </span>nebius<span class="w">   </span>us-central1
+</code></pre></div>
+
+</div>
+
+<p>When using <code>--group-by</code>, <code>gpu</code> must always be <code>included</code>.
+The <code>region</code> value can only be used together with <code>backend</code>.</p>
 <h3 id="json-format">JSON format<a class="headerlink" href="#json-format" title="Permanent link">&para;</a></h3>
 <p>Use <code>--json</code> to output offers in the JSON format.</p>
 <div class="termy">
@@ -4125,7 +4180,8 @@ Getting<span class="w"> </span>offers...
   
 </div>
                     
-                        <div class="md-social">
+                        
+<div class="md-social">
   
     
     
@@ -4225,13 +4281,13 @@ Getting<span class="w"> </span>offers...
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../../../..", "features": ["content.tooltips", "navigation.path", "content.code.copy", "content.action.edit", "navigation.tabs", "navigation.sections", "navigation.top", "announce.dismiss", "navigation.tracking", "navigation.footer"], "search": "../../../../../assets/javascripts/workers/search.ad38c271.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../../..", "features": ["content.tooltips", "navigation.path", "content.code.copy", "content.action.edit", "navigation.tabs", "navigation.sections", "navigation.top", "announce.dismiss", "navigation.tracking", "navigation.footer"], "search": "../../../../../assets/javascripts/workers/search.26099bd0.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
 <script src="/assets/javascripts/termynal.js" data-termynal-container="#termynal"></script>
 <script async src="https://tally.so/widgets/embed.js"></script>
 
-      <script src="../../../../../assets/javascripts/bundle.b66b2b78.min.js"></script>
+      <script src="../../../../../assets/javascripts/bundle.bb65021c.min.js"></script>
       
         <script src="../../../../../assets/javascripts/extra.js"></script>
       

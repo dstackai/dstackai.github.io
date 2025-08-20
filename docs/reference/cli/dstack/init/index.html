@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../../../../assets/images/dstack-fav-32.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.16+insiders-4.53.16">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.17+insiders-4.53.16">
     
     
       
@@ -3692,17 +3692,17 @@ Support dstack with a ⭐ on
 
 
 <h1 id="dstack-init">dstack init<a class="headerlink" href="#dstack-init" title="Permanent link">&para;</a></h1>
-<p>This command initializes the current directory as a <code>dstack</code> <a href="../../../../concepts/repos/">repo</a>.</p>
+<p>This command initializes the current directory as a <code>dstack</code> <a href="../../../../concepts/repos/">repo</a>.
+The directory must be a cloned Git repository.</p>
 <p><strong>Git credentials</strong></p>
-<p>If the directory is a cloned Git repository, <code>dstack init</code> ensures that <code>dstack</code> can access it.
-By default, the command uses the user's default Git credentials. These can be overridden with 
+<p><code>dstack init</code> ensures that <code>dstack</code> can access a remote Git repository.
+By default, the command uses the user's default Git credentials. These can be overridden with
 <code>--git-identity</code> (private SSH key) or <code>--token</code> (OAuth token).</p>
 <div class="termy">
 
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>dstack<span class="w"> </span>init<span class="w"> </span>--help
 Usage:<span class="w"> </span>dstack<span class="w"> </span>init<span class="w"> </span><span class="o">[</span>-h<span class="o">]</span><span class="w"> </span><span class="o">[</span>--project<span class="w"> </span>PROJECT<span class="o">]</span><span class="w"> </span><span class="o">[</span>-t<span class="w"> </span>OAUTH_TOKEN<span class="o">]</span>
 <span class="w">                   </span><span class="o">[</span>--git-identity<span class="w"> </span>SSH_PRIVATE_KEY<span class="o">]</span>
-<span class="w">                   </span><span class="o">[</span>--ssh-identity<span class="w"> </span>SSH_PRIVATE_KEY<span class="o">]</span><span class="w"> </span><span class="o">[</span>--local<span class="o">]</span>
 
 Options:
 <span class="w">  </span>-h,<span class="w"> </span>--help<span class="w">            </span>Show<span class="w"> </span>this<span class="w"> </span><span class="nb">help</span><span class="w"> </span>message<span class="w"> </span>and<span class="w"> </span><span class="nb">exit</span>
@@ -3711,16 +3711,9 @@ Options:
 <span class="w">                        </span>An<span class="w"> </span>authentication<span class="w"> </span>token<span class="w"> </span>to<span class="w"> </span>access<span class="w"> </span>a<span class="w"> </span>private<span class="w"> </span>Git<span class="w"> </span>repo
 <span class="w">  </span>--git-identity<span class="w"> </span>SSH_PRIVATE_KEY
 <span class="w">                        </span>The<span class="w"> </span>private<span class="w"> </span>SSH<span class="w"> </span>key<span class="w"> </span>path<span class="w"> </span>to<span class="w"> </span>access<span class="w"> </span>a<span class="w"> </span>private<span class="w"> </span>Git<span class="w"> </span>repo
-<span class="w">  </span>--ssh-identity<span class="w"> </span>SSH_PRIVATE_KEY
-<span class="w">                        </span>The<span class="w"> </span>private<span class="w"> </span>SSH<span class="w"> </span>key<span class="w"> </span>path<span class="w"> </span><span class="k">for</span><span class="w"> </span>SSH<span class="w"> </span>tunneling
-<span class="w">  </span>--local<span class="w">               </span>Do<span class="w"> </span>not<span class="w"> </span>use<span class="w"> </span>Git
 </code></pre></div>
 
 </div>
-
-<p><strong>User SSH key</strong></p>
-<p>By default, <code>dstack</code> uses its own SSH key to access instances (<code>~/.dstack/ssh/id_rsa</code>). 
-It is possible to override this key via the <code>--ssh-identity</code> argument.</p>
 
 
 
@@ -3804,7 +3797,8 @@ It is possible to override this key via the <code>--ssh-identity</code> argument
   
 </div>
                     
-                        <div class="md-social">
+                        
+<div class="md-social">
   
     
     
@@ -3904,13 +3898,13 @@ It is possible to override this key via the <code>--ssh-identity</code> argument
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../../../..", "features": ["content.tooltips", "navigation.path", "content.code.copy", "content.action.edit", "navigation.tabs", "navigation.sections", "navigation.top", "announce.dismiss", "navigation.tracking", "navigation.footer"], "search": "../../../../../assets/javascripts/workers/search.ad38c271.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../../..", "features": ["content.tooltips", "navigation.path", "content.code.copy", "content.action.edit", "navigation.tabs", "navigation.sections", "navigation.top", "announce.dismiss", "navigation.tracking", "navigation.footer"], "search": "../../../../../assets/javascripts/workers/search.26099bd0.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
 <script src="/assets/javascripts/termynal.js" data-termynal-container="#termynal"></script>
 <script async src="https://tally.so/widgets/embed.js"></script>
 
-      <script src="../../../../../assets/javascripts/bundle.b66b2b78.min.js"></script>
+      <script src="../../../../../assets/javascripts/bundle.bb65021c.min.js"></script>
       
         <script src="../../../../../assets/javascripts/extra.js"></script>
       

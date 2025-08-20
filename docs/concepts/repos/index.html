@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../../assets/images/dstack-fav-32.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.16+insiders-4.53.16">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.17+insiders-4.53.16">
     
     
       
@@ -1022,11 +1022,11 @@ Support dstack with a ⭐ on
 </li>
         
           <li class="md-nav__item">
-  <a href="#initialize-as-a-local-directory" class="md-nav__link">
+  <a href="#use-a-local-directory-instead-of-a-git-repo" class="md-nav__link">
     <span class="md-ellipsis">
       
         <span class="md-typeset">
-          Initialize as a local directory
+          Use a local directory instead of a Git repo
         </span>
       
     </span>
@@ -3832,11 +3832,11 @@ Support dstack with a ⭐ on
 </li>
         
           <li class="md-nav__item">
-  <a href="#initialize-as-a-local-directory" class="md-nav__link">
+  <a href="#use-a-local-directory-instead-of-a-git-repo" class="md-nav__link">
     <span class="md-ellipsis">
       
         <span class="md-typeset">
-          Initialize as a local directory
+          Use a local directory instead of a Git repo
         </span>
       
     </span>
@@ -4034,10 +4034,10 @@ mounts the contents of that directory to the container’s <code>/workflow</code
 This allows accessing the directory files from within the run.</p>
 <h2 id="initialize-a-repo">Initialize a repo<a class="headerlink" href="#initialize-a-repo" title="Permanent link">&para;</a></h2>
 <p>To use a directory with <code>dstack apply</code>, it must first be initialized as a repo by running <a href="../../reference/cli/dstack/init/"><code>dstack init</code></a>.
-The directory can be either a regular local directory or a cloned Git repo.</p>
+The directory must be a cloned Git repo.</p>
 <p><a href="../../reference/cli/dstack/init/"><code>dstack init</code></a> is not required if you pass <code>-P</code> (or <code>--repo</code>) to <a href="../../reference/cli/dstack/apply/"><code>dstack apply</code></a> (see below).</p>
 <h3 id="git-credentials">Git credentials<a class="headerlink" href="#git-credentials" title="Permanent link">&para;</a></h3>
-<p>If the directory is a cloned Git repo, <a href="../../reference/cli/dstack/init/"><code>dstack init</code></a> grants the <code>dstack</code> server access by uploading the current user's default
+<p><a href="../../reference/cli/dstack/init/"><code>dstack init</code></a> grants the <code>dstack</code> server access by uploading the current user's default
 Git credentials, ensuring that dstack can clone the Git repo when running the container.</p>
 <p>To use custom credentials, pass them directly with <code>--token</code> (GitHub token) or <code>--git-identity</code> (path to a private SSH
 key).</p>
@@ -4046,22 +4046,20 @@ key).</p>
 enabled.</p>
 </blockquote>
 <h3 id="gitignore-and-folder-size">.gitignore and folder size<a class="headerlink" href="#gitignore-and-folder-size" title="Permanent link">&para;</a></h3>
-<p>If the directory is cloned Git repo, <a href="../../reference/cli/dstack/apply/"><code>dstack apply</code></a> uploads to the <code>dstack</code> server only local changes.
-If the directory is not a cloned Git repo, it uploads the entire directory.</p>
+<p><a href="../../reference/cli/dstack/apply/"><code>dstack apply</code></a> uploads to the <code>dstack</code> server only local changes.</p>
 <p>Uploads are limited to 2MB. Use <code>.gitignore</code> to exclude unnecessary files from being uploaded.
 You can set the <code>DSTACK_SERVER_CODE_UPLOAD_LIMIT</code> environment variable to increase the default server limit.
 Increasing the limit is recommended only if you <a href="../../guides/server-deployment/">configure an object storage</a>.</p>
-<h3 id="initialize-as-a-local-directory">Initialize as a local directory<a class="headerlink" href="#initialize-as-a-local-directory" title="Permanent link">&para;</a></h3>
-<p>If the directory is a cloned Git repo but you want to initialize it as a regular local directory,
-use <code>--local</code> with <a href="../../reference/cli/dstack/init/"><code>dstack init</code></a>.</p>
+<h3 id="use-a-local-directory-instead-of-a-git-repo">Use a local directory instead of a Git repo<a class="headerlink" href="#use-a-local-directory-instead-of-a-git-repo" title="Permanent link">&para;</a></h3>
+<p>If the directory is not a cloned Git repo, use <a href="../../reference/dstack.yml/task/#_files"><code>files</code></a>.</p>
 <h2 id="specify-the-repo">Specify the repo<a class="headerlink" href="#specify-the-repo" title="Permanent link">&para;</a></h2>
-<p>By default, <code>dstack apply</code> uses the current directory as a repo and requires <code>dstack init</code>.
+<p>By default, <code>dstack apply</code> uses the current directory as a repo if it is already initialized.
 You can change this by explicitly specifying the repo to use for <code>dstack apply</code>.</p>
 <h3 id="pass-the-repo-path">Pass the repo path<a class="headerlink" href="#pass-the-repo-path" title="Permanent link">&para;</a></h3>
 <p>To use a specific directory as the repo, specify its path using <code>-P</code> (or <code>--repo</code>):</p>
 <div class="termy">
 
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>dstack<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>.dstack.yml<span class="w"> </span>-P<span class="w"> </span>../parent_dir<span class="w"> </span>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>dstack<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>.dstack.yml<span class="w"> </span>-P<span class="w"> </span>../parent_dir
 </code></pre></div>
 
 </div>
@@ -4080,7 +4078,7 @@ You can change this by explicitly specifying the repo to use for <code>dstack ap
 <code>dstack init</code> is not required.
 If you use a private Git repo, you can pass Git credentials to <code>dstack apply</code> using <code>--token</code> or <code>--git-identity</code>.</p>
 <h3 id="do-not-use-a-repo">Do not use a repo<a class="headerlink" href="#do-not-use-a-repo" title="Permanent link">&para;</a></h3>
-<p>To run a configuration without a repo (the <code>/workflow</code> directory inside the container will be empty), use <code>--no-repo</code>:</p>
+<p>To run a configuration without a repo (the <code>/workflow</code> directory inside the container will be empty) if it is already initialized, use <code>--no-repo</code>:</p>
 <div class="termy">
 
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>dstack<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>.dstack.yml<span class="w"> </span>--no-repo
@@ -4180,7 +4178,8 @@ On subsequent runs, <code>dstack</code> will use the repo contents from the volu
   
 </div>
                     
-                        <div class="md-social">
+                        
+<div class="md-social">
   
     
     
@@ -4280,13 +4279,13 @@ On subsequent runs, <code>dstack</code> will use the repo contents from the volu
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["content.tooltips", "navigation.path", "content.code.copy", "content.action.edit", "navigation.tabs", "navigation.sections", "navigation.top", "announce.dismiss", "navigation.tracking", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.ad38c271.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["content.tooltips", "navigation.path", "content.code.copy", "content.action.edit", "navigation.tabs", "navigation.sections", "navigation.top", "announce.dismiss", "navigation.tracking", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.26099bd0.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
 <script src="/assets/javascripts/termynal.js" data-termynal-container="#termynal"></script>
 <script async src="https://tally.so/widgets/embed.js"></script>
 
-      <script src="../../../assets/javascripts/bundle.b66b2b78.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.bb65021c.min.js"></script>
       
         <script src="../../../assets/javascripts/extra.js"></script>
       

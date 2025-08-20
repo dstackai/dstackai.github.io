@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../../../../assets/images/dstack-fav-32.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.16+insiders-4.53.16">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.17+insiders-4.53.16">
     
     
       
@@ -1759,6 +1759,19 @@ Support dstack with a ⭐ on
       
         <span class="md-typeset">
           Usage
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#user-ssh-key" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          User SSH key
         </span>
       
     </span>
@@ -3664,6 +3677,19 @@ Support dstack with a ⭐ on
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#user-ssh-key" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          User SSH key
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -3765,17 +3791,17 @@ Support dstack with a ⭐ on
 <h1 id="dstack-apply">dstack apply<a class="headerlink" href="#dstack-apply" title="Permanent link">&para;</a></h1>
 <p>This command applies a given configuration. If a resource does not exist, <code>dstack apply</code> creates the resource.
 If a resource exists, <code>dstack apply</code> updates the resource in-place or re-creates the resource if the update is not possible.</p>
-<p>When applying run configurations, <code>dstack apply</code> requires that you run <code>dstack init</code> first,
+<p>To mount a Git repo to the run's container, <code>dstack apply</code> requires that you run <code>dstack init</code> first,
 or specify a repo to work with via <code>-P</code> (or <code>--repo</code>), or specify <code>--no-repo</code> if you don't need any repo for the run.</p>
 <h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
 <div class="termy">
 
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>dstack<span class="w"> </span>apply<span class="w"> </span>--help
 Usage:<span class="w"> </span>dstack<span class="w"> </span>apply<span class="w"> </span><span class="o">[</span>--project<span class="w"> </span>NAME<span class="o">]</span><span class="w"> </span><span class="o">[</span>-h<span class="w"> </span><span class="o">[</span>TYPE<span class="o">]]</span><span class="w"> </span><span class="o">[</span>-f<span class="w"> </span>FILE<span class="o">]</span><span class="w"> </span><span class="o">[</span>-y<span class="o">]</span><span class="w"> </span><span class="o">[</span>--force<span class="o">]</span><span class="w"> </span><span class="o">[</span>-d<span class="o">]</span>
-<span class="w">                    </span><span class="o">[</span>-P<span class="w"> </span>REPO<span class="o">]</span><span class="w"> </span><span class="o">[</span>--repo-branch<span class="w"> </span>REPO_BRANCH<span class="o">]</span>
-<span class="w">                    </span><span class="o">[</span>--repo-hash<span class="w"> </span>REPO_HASH<span class="o">]</span><span class="w"> </span><span class="o">[</span>--no-repo<span class="o">]</span><span class="w"> </span><span class="o">[</span>-t<span class="w"> </span>OAUTH_TOKEN<span class="o">]</span>
+<span class="w">                    </span><span class="o">[</span>--ssh-identity<span class="w"> </span>SSH_PRIVATE_KEY<span class="o">]</span><span class="w"> </span><span class="o">[</span>-P<span class="w"> </span>REPO<span class="o">]</span>
+<span class="w">                    </span><span class="o">[</span>--repo-branch<span class="w"> </span>REPO_BRANCH<span class="o">]</span><span class="w"> </span><span class="o">[</span>--repo-hash<span class="w"> </span>REPO_HASH<span class="o">]</span>
+<span class="w">                    </span><span class="o">[</span>--no-repo<span class="o">]</span><span class="w"> </span><span class="o">[</span>-t<span class="w"> </span>OAUTH_TOKEN<span class="o">]</span>
 <span class="w">                    </span><span class="o">[</span>--git-identity<span class="w"> </span>SSH_PRIVATE_KEY<span class="o">]</span>
-<span class="w">                    </span><span class="o">[</span>--ssh-identity<span class="w"> </span>SSH_PRIVATE_KEY<span class="o">]</span><span class="w"> </span><span class="o">[</span>--local<span class="o">]</span>
 
 Options:
 <span class="w">  </span>--project<span class="w"> </span>NAME<span class="w">        </span>The<span class="w"> </span>name<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>project.<span class="w"> </span>Defaults<span class="w"> </span>to<span class="w"> </span><span class="nv">$DSTACK_PROJECT</span>
@@ -3785,6 +3811,8 @@ Options:
 <span class="w">  </span>-y,<span class="w"> </span>--yes<span class="w">             </span>Do<span class="w"> </span>not<span class="w"> </span>ask<span class="w"> </span><span class="k">for</span><span class="w"> </span>confirmation
 <span class="w">  </span>--force<span class="w">               </span>Force<span class="w"> </span>apply<span class="w"> </span>when<span class="w"> </span>no<span class="w"> </span>changes<span class="w"> </span>detected
 <span class="w">  </span>-d,<span class="w"> </span>--detach<span class="w">          </span>Exit<span class="w"> </span>immediately<span class="w"> </span>after<span class="w"> </span>submitting<span class="w"> </span>configuration
+<span class="w">  </span>--ssh-identity<span class="w"> </span>SSH_PRIVATE_KEY
+<span class="w">                        </span>The<span class="w"> </span>private<span class="w"> </span>SSH<span class="w"> </span>key<span class="w"> </span>path<span class="w"> </span><span class="k">for</span><span class="w"> </span>SSH<span class="w"> </span>tunneling
 
 Repo<span class="w"> </span>Options:
 <span class="w">  </span>-P,<span class="w"> </span>--repo<span class="w"> </span>REPO<span class="w">       </span>The<span class="w"> </span>repo<span class="w"> </span>to<span class="w"> </span>use<span class="w"> </span><span class="k">for</span><span class="w"> </span>the<span class="w"> </span>run.<span class="w"> </span>Can<span class="w"> </span>be<span class="w"> </span>a<span class="w"> </span><span class="nb">local</span><span class="w"> </span>path<span class="w"> </span>or<span class="w"> </span>a
@@ -3798,14 +3826,15 @@ Repo<span class="w"> </span>Options:
 <span class="w">                        </span>An<span class="w"> </span>authentication<span class="w"> </span>token<span class="w"> </span>to<span class="w"> </span>access<span class="w"> </span>a<span class="w"> </span>private<span class="w"> </span>Git<span class="w"> </span>repo
 <span class="w">  </span>--git-identity<span class="w"> </span>SSH_PRIVATE_KEY
 <span class="w">                        </span>The<span class="w"> </span>private<span class="w"> </span>SSH<span class="w"> </span>key<span class="w"> </span>path<span class="w"> </span>to<span class="w"> </span>access<span class="w"> </span>a<span class="w"> </span>private<span class="w"> </span>Git<span class="w"> </span>repo
-<span class="w">  </span>--ssh-identity<span class="w"> </span>SSH_PRIVATE_KEY
-<span class="w">                        </span>The<span class="w"> </span>private<span class="w"> </span>SSH<span class="w"> </span>key<span class="w"> </span>path<span class="w"> </span><span class="k">for</span><span class="w"> </span>SSH<span class="w"> </span>tunneling
-<span class="w">  </span>--local<span class="w">               </span>Do<span class="w"> </span>not<span class="w"> </span>use<span class="w"> </span>Git
 
 Type<span class="w"> </span><span class="sb">`</span>dstack<span class="w"> </span>apply<span class="w"> </span>-h<span class="w"> </span>CONFIGURATION_TYPE<span class="sb">`</span><span class="w"> </span>to<span class="w"> </span>see<span class="w"> </span>configuration-specific<span class="w"> </span>options.
 </code></pre></div>
 
 </div>
+
+<h2 id="user-ssh-key">User SSH key<a class="headerlink" href="#user-ssh-key" title="Permanent link">&para;</a></h2>
+<p>By default, <code>dstack</code> uses its own SSH key to attach to runs (<code>~/.dstack/ssh/id_rsa</code>).
+It is possible to override this key via the <code>--ssh-identity</code> argument.</p>
 
 
 
@@ -3889,7 +3918,8 @@ Type<span class="w"> </span><span class="sb">`</span>dstack<span class="w"> </sp
   
 </div>
                     
-                        <div class="md-social">
+                        
+<div class="md-social">
   
     
     
@@ -3989,13 +4019,13 @@ Type<span class="w"> </span><span class="sb">`</span>dstack<span class="w"> </sp
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../../../..", "features": ["content.tooltips", "navigation.path", "content.code.copy", "content.action.edit", "navigation.tabs", "navigation.sections", "navigation.top", "announce.dismiss", "navigation.tracking", "navigation.footer"], "search": "../../../../../assets/javascripts/workers/search.ad38c271.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../../..", "features": ["content.tooltips", "navigation.path", "content.code.copy", "content.action.edit", "navigation.tabs", "navigation.sections", "navigation.top", "announce.dismiss", "navigation.tracking", "navigation.footer"], "search": "../../../../../assets/javascripts/workers/search.26099bd0.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
 <script src="/assets/javascripts/termynal.js" data-termynal-container="#termynal"></script>
 <script async src="https://tally.so/widgets/embed.js"></script>
 
-      <script src="../../../../../assets/javascripts/bundle.b66b2b78.min.js"></script>
+      <script src="../../../../../assets/javascripts/bundle.bb65021c.min.js"></script>
       
         <script src="../../../../../assets/javascripts/extra.js"></script>
       
