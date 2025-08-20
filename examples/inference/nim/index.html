@@ -3824,11 +3824,10 @@ Support dstack with a ⭐ on
 <p>This example shows how to deploy DeepSeek-R1-Distill-Llama-8B using <a href="https://docs.nvidia.com/nim/large-language-models/latest/getting-started.html" target="_blank">NVIDIA NIM <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> and <code>dstack</code>.</p>
 <details class="info">
 <summary>Prerequisites</summary>
-<p>Once <code>dstack</code> is <a href="https://dstack.ai/docs/installation">installed</a>, go ahead clone the repo, and run <code>dstack init</code>.</p>
+<p>Once <code>dstack</code> is <a href="https://dstack.ai/docs/installation">installed</a>, clone the repo with examples.</p>
 <div class="termy">
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/dstackai/dstack
 $<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>dstack
-$<span class="w"> </span>dstack<span class="w"> </span>init
 </code></pre></div>
 </div>
 </details>
@@ -3867,16 +3866,16 @@ $<span class="w"> </span>dstack<span class="w"> </span>init
 </div>
 
 <h3 id="running-a-configuration">Running a configuration<a class="headerlink" href="#running-a-configuration" title="Permanent link">&para;</a></h3>
-<p>To run a configuration, use the <a href="https://dstack.ai/docs/reference/cli/dstack/apply.md"><code>dstack apply</code></a> command. </p>
+<p>To run a configuration, use the <a href="https://dstack.ai/docs/reference/cli/dstack/apply.md"><code>dstack apply</code></a> command.</p>
 <div class="termy">
 
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nv">NGC_API_KEY</span><span class="o">=</span>...
 $<span class="w"> </span>dstack<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>examples/inference/nim/.dstack.yml
 
-<span class="w"> </span><span class="c1">#  BACKEND  REGION    RESOURCES                  SPOT  PRICE       </span>
-<span class="w"> </span><span class="m">1</span><span class="w">  </span>vultr<span class="w">    </span>ewr<span class="w">       </span>6xCPU,<span class="w"> </span>60GB,<span class="w"> </span>1xA100<span class="w"> </span><span class="o">(</span>40GB<span class="o">)</span><span class="w"> </span>no<span class="w">    </span><span class="nv">$1</span>.199<span class="w">   </span>
-<span class="w"> </span><span class="m">2</span><span class="w">  </span>vultr<span class="w">    </span>ewr<span class="w">       </span>6xCPU,<span class="w"> </span>60GB,<span class="w"> </span>1xA100<span class="w"> </span><span class="o">(</span>40GB<span class="o">)</span><span class="w"> </span>no<span class="w">    </span><span class="nv">$1</span>.199<span class="w">  </span>
-<span class="w"> </span><span class="m">3</span><span class="w">  </span>vultr<span class="w">    </span>nrt<span class="w">       </span>6xCPU,<span class="w"> </span>60GB,<span class="w"> </span>1xA100<span class="w"> </span><span class="o">(</span>40GB<span class="o">)</span><span class="w"> </span>no<span class="w">    </span><span class="nv">$1</span>.199<span class="w"> </span>
+<span class="w"> </span><span class="c1">#  BACKEND  REGION    RESOURCES                  SPOT  PRICE</span>
+<span class="w"> </span><span class="m">1</span><span class="w">  </span>vultr<span class="w">    </span>ewr<span class="w">       </span>6xCPU,<span class="w"> </span>60GB,<span class="w"> </span>1xA100<span class="w"> </span><span class="o">(</span>40GB<span class="o">)</span><span class="w"> </span>no<span class="w">    </span><span class="nv">$1</span>.199
+<span class="w"> </span><span class="m">2</span><span class="w">  </span>vultr<span class="w">    </span>ewr<span class="w">       </span>6xCPU,<span class="w"> </span>60GB,<span class="w"> </span>1xA100<span class="w"> </span><span class="o">(</span>40GB<span class="o">)</span><span class="w"> </span>no<span class="w">    </span><span class="nv">$1</span>.199
+<span class="w"> </span><span class="m">3</span><span class="w">  </span>vultr<span class="w">    </span>nrt<span class="w">       </span>6xCPU,<span class="w"> </span>60GB,<span class="w"> </span>1xA100<span class="w"> </span><span class="o">(</span>40GB<span class="o">)</span><span class="w"> </span>no<span class="w">    </span><span class="nv">$1</span>.199
 
 Submit<span class="w"> </span>the<span class="w"> </span>run<span class="w"> </span>serve-distill-deepseek?<span class="w"> </span><span class="o">[</span>y/n<span class="o">]</span>:<span class="w"> </span>y
 
@@ -3885,7 +3884,7 @@ Provisioning...
 </code></pre></div>
 </div>
 
-<p>If no gateway is created, the model will be available via the OpenAI-compatible endpoint 
+<p>If no gateway is created, the model will be available via the OpenAI-compatible endpoint
 at <code>&lt;dstack server URL&gt;/proxy/models/&lt;project name&gt;/</code>.</p>
 <div class="termy">
 
@@ -3911,10 +3910,10 @@ at <code>&lt;dstack server URL&gt;/proxy/models/&lt;project name&gt;/</code>.</p
 
 </div>
 
-<p>When a <a href="https://dstack.ai/docs/concepts/gateways/">gateway</a> is configured, the OpenAI-compatible endpoint 
+<p>When a <a href="https://dstack.ai/docs/concepts/gateways/">gateway</a> is configured, the OpenAI-compatible endpoint
 is available at <code>https://gateway.&lt;gateway domain&gt;/</code>.</p>
 <h2 id="source-code">Source code<a class="headerlink" href="#source-code" title="Permanent link">&para;</a></h2>
-<p>The source-code of this example can be found in 
+<p>The source-code of this example can be found in
 <a href="https://github.com/dstackai/dstack/blob/master/examples/inference/nim" target="_blank"><code>examples/inference/nim</code> <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>.</p>
 <h2 id="whats-next">What's next?<a class="headerlink" href="#whats-next" title="Permanent link">&para;</a></h2>
 <ol>

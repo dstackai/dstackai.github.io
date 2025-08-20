@@ -3824,11 +3824,10 @@ Support dstack with a ⭐ on
 <p>This example walks you through how to run distributed fine-tune using <a href="https://github.com/huggingface/trl" target="_blank">TRL <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>, <a href="https://github.com/huggingface/accelerate" target="_blank">Accelerate <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> and <a href="https://github.com/deepspeedai/DeepSpeed" target="_blank">Deepspeed <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>.</p>
 <details class="info">
 <summary>Prerequisites</summary>
-<p>Once <code>dstack</code> is <a href="https://dstack.ai/docs/installation">installed</a>, go ahead clone the repo, and run <code>dstack init</code>.</p>
+<p>Once <code>dstack</code> is <a href="https://dstack.ai/docs/installation">installed</a>, clone the repo with examples.</p>
 <div class="termy">
 <p><div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/dstackai/dstack
 $<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>dstack
-$<span class="w"> </span>dstack<span class="w"> </span>init
 </code></pre></div>
 </div></p>
 </details>
@@ -3966,9 +3965,9 @@ $<span class="w"> </span><span class="nv">WANDB_API_KEY</span><span class="o">=<
 $<span class="w"> </span><span class="nv">HUB_MODEL_ID</span><span class="o">=</span>...
 $<span class="w"> </span>dstack<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>examples/distributed-training/trl/fsdp.dstack.yml
 
-<span class="w"> </span><span class="c1">#  BACKEND       RESOURCES                       INSTANCE TYPE  PRICE       </span>
-<span class="w"> </span><span class="m">1</span><span class="w">  </span>ssh<span class="w"> </span><span class="o">(</span>remote<span class="o">)</span><span class="w">  </span><span class="nv">cpu</span><span class="o">=</span><span class="m">208</span><span class="w"> </span><span class="nv">mem</span><span class="o">=</span>1772GB<span class="w"> </span>H100:80GB:8<span class="w">  </span>instance<span class="w">       </span><span class="nv">$0</span><span class="w">     </span>idle<span class="w"> </span>
-<span class="w"> </span><span class="m">2</span><span class="w">  </span>ssh<span class="w"> </span><span class="o">(</span>remote<span class="o">)</span><span class="w">  </span><span class="nv">cpu</span><span class="o">=</span><span class="m">208</span><span class="w"> </span><span class="nv">mem</span><span class="o">=</span>1772GB<span class="w"> </span>H100:80GB:8<span class="w">  </span>instance<span class="w">       </span><span class="nv">$0</span><span class="w">     </span>idle<span class="w">  </span>
+<span class="w"> </span><span class="c1">#  BACKEND       RESOURCES                       INSTANCE TYPE  PRICE</span>
+<span class="w"> </span><span class="m">1</span><span class="w">  </span>ssh<span class="w"> </span><span class="o">(</span>remote<span class="o">)</span><span class="w">  </span><span class="nv">cpu</span><span class="o">=</span><span class="m">208</span><span class="w"> </span><span class="nv">mem</span><span class="o">=</span>1772GB<span class="w"> </span>H100:80GB:8<span class="w">  </span>instance<span class="w">       </span><span class="nv">$0</span><span class="w">     </span>idle
+<span class="w"> </span><span class="m">2</span><span class="w">  </span>ssh<span class="w"> </span><span class="o">(</span>remote<span class="o">)</span><span class="w">  </span><span class="nv">cpu</span><span class="o">=</span><span class="m">208</span><span class="w"> </span><span class="nv">mem</span><span class="o">=</span>1772GB<span class="w"> </span>H100:80GB:8<span class="w">  </span>instance<span class="w">       </span><span class="nv">$0</span><span class="w">     </span>idle
 
 Submit<span class="w"> </span>the<span class="w"> </span>run<span class="w"> </span>trl-train-fsdp-distrib?<span class="w"> </span><span class="o">[</span>y/n<span class="o">]</span>:<span class="w"> </span>y
 
@@ -3978,13 +3977,13 @@ Provisioning...
 </div>
 
 <h2 id="source-code">Source code<a class="headerlink" href="#source-code" title="Permanent link">&para;</a></h2>
-<p>The source-code of this example can be found in 
+<p>The source-code of this example can be found in
 <a href="https://github.com/dstackai/dstack/blob/master/examples/distributed-training/trl" target="_blank"><code>examples/distributed-training/trl</code> <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>.</p>
 <div class="admonition info">
 <p class="admonition-title">What's next?</p>
 <ol>
 <li>Read the <a href="https://dstack.ai/docs/guides/clusters">clusters</a> guide</li>
-<li>Check <a href="https://dstack.ai/docs/concepts/dev-environments">dev environments</a>, <a href="https://dstack.ai/docs/concepts/tasks">tasks</a>, 
+<li>Check <a href="https://dstack.ai/docs/concepts/dev-environments">dev environments</a>, <a href="https://dstack.ai/docs/concepts/tasks">tasks</a>,
    <a href="https://dstack.ai/docs/concepts/services">services</a>, and <a href="https://dstack.ai/docs/concepts/fleets">fleets</a></li>
 </ol>
 </div>

@@ -3877,11 +3877,10 @@ Support dstack with a ⭐ on
 using <a href="https://github.com/NVIDIA/TensorRT-LLM" target="_blank">TensorRT-LLM <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> and <code>dstack</code>.</p>
 <details class="info">
 <summary>Prerequisites</summary>
-<p>Once <code>dstack</code> is <a href="https://dstack.ai/docs/installation">installed</a>, go ahead clone the repo, and run <code>dstack init</code>.</p>
+<p>Once <code>dstack</code> is <a href="https://dstack.ai/docs/installation">installed</a>, clone the repo with examples.</p>
 <div class="termy">
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/dstackai/dstack
 $<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>dstack
-$<span class="w"> </span>dstack<span class="w"> </span>init
 </code></pre></div>
 </div>
 </details>
@@ -3927,8 +3926,8 @@ version, DeepSeek R1 isn’t yet compatible. So, for DeepSeek R1, we’ll use <c
 
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>dstack<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>examples/inference/trtllm/build-image.dstack.yml
 
-<span class="w"> </span><span class="c1">#  BACKEND  REGION             RESOURCES               SPOT  PRICE       </span>
-<span class="w"> </span><span class="m">1</span><span class="w">  </span>cudo<span class="w">     </span>ca-montreal-2<span class="w">      </span>8xCPU,<span class="w"> </span>25GB,<span class="w"> </span><span class="o">(</span><span class="m">500</span>.0GB<span class="o">)</span><span class="w">  </span>yes<span class="w">   </span><span class="nv">$0</span>.1073<span class="w">   </span>
+<span class="w"> </span><span class="c1">#  BACKEND  REGION             RESOURCES               SPOT  PRICE</span>
+<span class="w"> </span><span class="m">1</span><span class="w">  </span>cudo<span class="w">     </span>ca-montreal-2<span class="w">      </span>8xCPU,<span class="w"> </span>25GB,<span class="w"> </span><span class="o">(</span><span class="m">500</span>.0GB<span class="o">)</span><span class="w">  </span>yes<span class="w">   </span><span class="nv">$0</span>.1073
 
 Submit<span class="w"> </span>the<span class="w"> </span>run<span class="w"> </span>build-image?<span class="w"> </span><span class="o">[</span>y/n<span class="o">]</span>:<span class="w"> </span>y
 
@@ -3945,7 +3944,7 @@ Provisioning...
 <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">serve-r1</span>
 
 <span class="c1"># Specify the image built with `examples/inference/trtllm/build-image.dstack.yml`</span>
-<span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dstackai/tensorrt_llm:9b931c0f6305aefa3660e6fb84a76a42c0eef167</span><span class="w"> </span>
+<span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dstackai/tensorrt_llm:9b931c0f6305aefa3660e6fb84a76a42c0eef167</span>
 <span class="nt">env</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MAX_BATCH_SIZE=256</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MAX_NUM_TOKENS=16384</span>
@@ -3976,13 +3975,13 @@ Provisioning...
 </code></pre></div>
     </div>
 
-<p>To run it, pass the configuration to <code>dstack apply</code>. </p>
+<p>To run it, pass the configuration to <code>dstack apply</code>.</p>
 <div class="termy">
 
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>dstack<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>examples/inference/trtllm/serve-r1.dstack.yml
 
-<span class="w"> </span><span class="c1">#  BACKEND  REGION             RESOURCES                        SPOT  PRICE       </span>
-<span class="w"> </span><span class="m">1</span><span class="w">  </span>vastai<span class="w">   </span>is-iceland<span class="w">         </span>192xCPU,<span class="w"> </span>2063GB,<span class="w"> </span>8xH200<span class="w"> </span><span class="o">(</span>141GB<span class="o">)</span><span class="w">  </span>yes<span class="w">   </span><span class="nv">$25</span>.62<span class="w">   </span>
+<span class="w"> </span><span class="c1">#  BACKEND  REGION             RESOURCES                        SPOT  PRICE</span>
+<span class="w"> </span><span class="m">1</span><span class="w">  </span>vastai<span class="w">   </span>is-iceland<span class="w">         </span>192xCPU,<span class="w"> </span>2063GB,<span class="w"> </span>8xH200<span class="w"> </span><span class="o">(</span>141GB<span class="o">)</span><span class="w">  </span>yes<span class="w">   </span><span class="nv">$25</span>.62
 
 Submit<span class="w"> </span>the<span class="w"> </span>run<span class="w"> </span>serve-r1?<span class="w"> </span><span class="o">[</span>y/n<span class="o">]</span>:<span class="w"> </span>y
 
@@ -3994,7 +3993,7 @@ Provisioning...
 <h3 id="deepseek-r1-distill-llama-8b">DeepSeek R1 Distill Llama 8B<a class="headerlink" href="#deepseek-r1-distill-llama-8b" title="Permanent link">&para;</a></h3>
 <p>To deploy DeepSeek R1 Distill Llama 8B, follow the steps below.</p>
 <h4 id="convert-and-upload-checkpoints">Convert and upload checkpoints<a class="headerlink" href="#convert-and-upload-checkpoints" title="Permanent link">&para;</a></h4>
-<p>Here’s the task config that converts a Hugging Face model to a TensorRT-LLM checkpoint format 
+<p>Here’s the task config that converts a Hugging Face model to a TensorRT-LLM checkpoint format
 and uploads it to S3 using the provided AWS credentials.</p>
 <div editor-title="examples/inference/trtllm/convert-model.dstack.yml">
 
@@ -4011,7 +4010,7 @@ and uploads it to S3 using the provided AWS credentials.</p>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AWS_DEFAULT_REGION</span>
 <span class="nt">commands</span><span class="p">:</span>
 <span class="w">  </span><span class="c1"># nvcr.io/nvidia/tritonserver:25.01-trtllm-python-py3 container uses TensorRT-LLM version 0.17.0,</span>
-<span class="w">  </span><span class="c1"># therefore we are using branch v0.17.0 </span>
+<span class="w">  </span><span class="c1"># therefore we are using branch v0.17.0</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">git clone --branch v0.17.0 --depth 1 https://github.com/triton-inference-server/tensorrtllm_backend.git</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">git clone --branch v0.17.0 --single-branch https://github.com/NVIDIA/TensorRT-LLM.git</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">git clone https://github.com/triton-inference-server/server.git</span>
@@ -4033,13 +4032,13 @@ and uploads it to S3 using the provided AWS credentials.</p>
 </code></pre></div>
     </div>
 
-<p>To run it, pass the configuration to <code>dstack apply</code>. </p>
+<p>To run it, pass the configuration to <code>dstack apply</code>.</p>
 <div class="termy">
 
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>dstack<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>examples/inference/trtllm/convert-model.dstack.yml
 
-<span class="w"> </span><span class="c1">#  BACKEND  REGION       RESOURCES                    SPOT  PRICE       </span>
-<span class="w"> </span><span class="m">1</span><span class="w">  </span>vastai<span class="w">   </span>us-iowa<span class="w">      </span>12xCPU,<span class="w"> </span>85GB,<span class="w"> </span>1xA100<span class="w"> </span><span class="o">(</span>40GB<span class="o">)</span><span class="w">  </span>yes<span class="w">   </span><span class="nv">$0</span>.66904<span class="w">  </span>
+<span class="w"> </span><span class="c1">#  BACKEND  REGION       RESOURCES                    SPOT  PRICE</span>
+<span class="w"> </span><span class="m">1</span><span class="w">  </span>vastai<span class="w">   </span>us-iowa<span class="w">      </span>12xCPU,<span class="w"> </span>85GB,<span class="w"> </span>1xA100<span class="w"> </span><span class="o">(</span>40GB<span class="o">)</span><span class="w">  </span>yes<span class="w">   </span><span class="nv">$0</span>.66904
 
 Submit<span class="w"> </span>the<span class="w"> </span>run<span class="w"> </span>convert-model?<span class="w"> </span><span class="o">[</span>y/n<span class="o">]</span>:<span class="w"> </span>y
 
@@ -4063,7 +4062,7 @@ Provisioning...
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AWS_SECRET_ACCESS_KEY</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AWS_DEFAULT_REGION</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MAX_SEQ_LEN=8192</span><span class="w"> </span><span class="c1"># Sum of Max Input Length &amp; Max Output Length</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MAX_INPUT_LEN=4096</span><span class="w"> </span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MAX_INPUT_LEN=4096</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MAX_BATCH_SIZE=256</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TRITON_MAX_BATCH_SIZE=1</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">INSTANCE_COUNT=1</span>
@@ -4095,13 +4094,13 @@ Provisioning...
 </code></pre></div>
     </div>
 
-<p>To run it, pass the configuration to <code>dstack apply</code>. </p>
+<p>To run it, pass the configuration to <code>dstack apply</code>.</p>
 <div class="termy">
 
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>dstack<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>examples/inference/trtllm/build-model.dstack.yml
 
-<span class="w"> </span><span class="c1">#  BACKEND  REGION       RESOURCES                    SPOT  PRICE       </span>
-<span class="w"> </span><span class="m">1</span><span class="w">  </span>vastai<span class="w">   </span>us-iowa<span class="w">      </span>12xCPU,<span class="w"> </span>85GB,<span class="w"> </span>1xA100<span class="w"> </span><span class="o">(</span>40GB<span class="o">)</span><span class="w">  </span>yes<span class="w">   </span><span class="nv">$0</span>.66904<span class="w">  </span>
+<span class="w"> </span><span class="c1">#  BACKEND  REGION       RESOURCES                    SPOT  PRICE</span>
+<span class="w"> </span><span class="m">1</span><span class="w">  </span>vastai<span class="w">   </span>us-iowa<span class="w">      </span>12xCPU,<span class="w"> </span>85GB,<span class="w"> </span>1xA100<span class="w"> </span><span class="o">(</span>40GB<span class="o">)</span><span class="w">  </span>yes<span class="w">   </span><span class="nv">$0</span>.66904
 
 Submit<span class="w"> </span>the<span class="w"> </span>run<span class="w"> </span>build-model?<span class="w"> </span><span class="o">[</span>y/n<span class="o">]</span>:<span class="w"> </span>y
 
@@ -4132,7 +4131,7 @@ Provisioning...
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./aws/install</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">aws s3 sync s3://${S3_BUCKET_NAME}/tllm_engine_1gpu_bf16 ./tllm_engine_1gpu_bf16</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">git clone https://github.com/triton-inference-server/server.git</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python3 server/python/openai/openai_frontend/main.py --model-repository s3://${S3_BUCKET_NAME}/triton_model_repo  --tokenizer tokenizer_dir --openai-port 8000</span><span class="w">  </span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python3 server/python/openai/openai_frontend/main.py --model-repository s3://${S3_BUCKET_NAME}/triton_model_repo  --tokenizer tokenizer_dir --openai-port 8000</span>
 <span class="w">    </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8000</span>
 <span class="w">    </span><span class="nt">model</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ensemble</span>
 
@@ -4141,13 +4140,13 @@ Provisioning...
 </code></pre></div>
 </div>
 
-<p>To run it, pass the configuration to <code>dstack apply</code>. </p>
+<p>To run it, pass the configuration to <code>dstack apply</code>.</p>
 <div class="termy">
 
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>dstack<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>examples/inference/trtllm/serve-distill.dstack.yml
 
-<span class="w"> </span><span class="c1">#  BACKEND  REGION       RESOURCES                    SPOT  PRICE       </span>
-<span class="w"> </span><span class="m">1</span><span class="w">  </span>vastai<span class="w">   </span>us-iowa<span class="w">      </span>12xCPU,<span class="w"> </span>85GB,<span class="w"> </span>1xA100<span class="w"> </span><span class="o">(</span>40GB<span class="o">)</span><span class="w">  </span>yes<span class="w">   </span><span class="nv">$0</span>.66904<span class="w">  </span>
+<span class="w"> </span><span class="c1">#  BACKEND  REGION       RESOURCES                    SPOT  PRICE</span>
+<span class="w"> </span><span class="m">1</span><span class="w">  </span>vastai<span class="w">   </span>us-iowa<span class="w">      </span>12xCPU,<span class="w"> </span>85GB,<span class="w"> </span>1xA100<span class="w"> </span><span class="o">(</span>40GB<span class="o">)</span><span class="w">  </span>yes<span class="w">   </span><span class="nv">$0</span>.66904
 
 Submit<span class="w"> </span>the<span class="w"> </span>run<span class="w"> </span>serve-distill?<span class="w"> </span><span class="o">[</span>y/n<span class="o">]</span>:<span class="w"> </span>y
 
@@ -4157,7 +4156,7 @@ Provisioning...
 </div>
 
 <h2 id="access-the-endpoint">Access the endpoint<a class="headerlink" href="#access-the-endpoint" title="Permanent link">&para;</a></h2>
-<p>If no gateway is created, the model will be available via the OpenAI-compatible endpoint 
+<p>If no gateway is created, the model will be available via the OpenAI-compatible endpoint
 at <code>&lt;dstack server URL&gt;/proxy/models/&lt;project name&gt;/</code>.</p>
 <div class="termy">
 
@@ -4184,10 +4183,10 @@ at <code>&lt;dstack server URL&gt;/proxy/models/&lt;project name&gt;/</code>.</p
 
 </div>
 
-<p>When a <a href="https://dstack.ai/docs/concepts/gateways/">gateway</a> is configured, the OpenAI-compatible endpoint 
+<p>When a <a href="https://dstack.ai/docs/concepts/gateways/">gateway</a> is configured, the OpenAI-compatible endpoint
 is available at <code>https://gateway.&lt;gateway domain&gt;/</code>.</p>
 <h2 id="source-code">Source code<a class="headerlink" href="#source-code" title="Permanent link">&para;</a></h2>
-<p>The source-code of this example can be found in 
+<p>The source-code of this example can be found in
 <a href="https://github.com/dstackai/dstack/blob/master/examples/inference/trtllm" target="_blank"><code>examples/inference/trtllm</code> <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>.</p>
 <h2 id="whats-next">What's next?<a class="headerlink" href="#whats-next" title="Permanent link">&para;</a></h2>
 <ol>

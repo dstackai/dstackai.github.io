@@ -3836,15 +3836,15 @@ Support dstack with a ⭐ on
 
 <h1 id="amd">AMD<a class="headerlink" href="#amd" title="Permanent link">&para;</a></h1>
 <p><code>dstack</code> supports running dev environments, tasks, and services on AMD GPUs.
-You can do that by setting up an <a href="https://dstack.ai/docs/concepts/fleets#ssh">SSH fleet</a> 
+You can do that by setting up an <a href="https://dstack.ai/docs/concepts/fleets#ssh">SSH fleet</a>
 with on-prem AMD GPUs or configuring a backend that offers AMD GPUs such as the <code>runpod</code> backend.</p>
 <h2 id="deployment">Deployment<a class="headerlink" href="#deployment" title="Permanent link">&para;</a></h2>
-<p>Most serving frameworks including vLLM and TGI have AMD support. Here's an example of a <a href="https://dstack.ai/docs/services">service</a> that deploys 
+<p>Most serving frameworks including vLLM and TGI have AMD support. Here's an example of a <a href="https://dstack.ai/docs/services">service</a> that deploys
 Llama 3.1 70B in FP16 using <a href="https://huggingface.co/docs/text-generation-inference/en/installation_amd" target="_blank">TGI <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> and <a href="https://docs.vllm.ai/en/latest/getting_started/amd-installation.html" target="_blank">vLLM <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="tgi" name="__tabbed_1" type="radio" /><input id="vllm" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="tgi">TGI</label><label for="vllm">vLLM</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p><div editor-title="examples/inference/tgi/amd/.dstack.yml"> </p>
+<div editor-title="examples/inference/tgi/amd/.dstack.yml">
 <div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service</span>
 <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">amd-service-tgi</span>
 
@@ -3872,7 +3872,7 @@ Llama 3.1 70B in FP16 using <a href="https://huggingface.co/docs/text-generation
 </div>
 </div>
 <div class="tabbed-block">
-<p><div editor-title="examples/inference/vllm/amd/.dstack.yml"> </p>
+<div editor-title="examples/inference/vllm/amd/.dstack.yml">
 <p><div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service</span>
 <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">llama31-service-vllm-amd</span>
 
@@ -3921,8 +3921,8 @@ Llama 3.1 70B in FP16 using <a href="https://huggingface.co/docs/text-generation
 </div></p>
 <p>Note, maximum size of vLLM’s <code>KV cache</code> is 126192, consequently we must set <code>MAX_MODEL_LEN</code> to 126192. Adding <code>/opt/conda/envs/py_3.10/bin</code> to PATH ensures we use the Python 3.10 environment necessary for the pre-built binaries compiled specifically for this version.</p>
 <blockquote>
-<p>To speed up the <code>vLLM-ROCm</code> installation, we use a pre-built binary from S3. 
-You can find the task to build and upload the binary in 
+<p>To speed up the <code>vLLM-ROCm</code> installation, we use a pre-built binary from S3.
+You can find the task to build and upload the binary in
 <a href="https://github.com/dstackai/dstack/blob/master/examples/inference/vllm/amd/" target="_blank"><code>examples/inference/vllm/amd/</code> <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>.</p>
 </blockquote>
 </div>
@@ -3938,7 +3938,7 @@ ROCm drivers.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="trl" name="__tabbed_2" type="radio" /><input id="axolotl" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="trl">TRL</label><label for="axolotl">Axolotl</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p>Below is an example of LoRA fine-tuning Llama 3.1 8B using <a href="https://rocm.docs.amd.com/en/latest/how-to/llm-fine-tuning-optimization/single-gpu-fine-tuning-and-inference.html" target="_blank">TRL <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> 
+<p>Below is an example of LoRA fine-tuning Llama 3.1 8B using <a href="https://rocm.docs.amd.com/en/latest/how-to/llm-fine-tuning-optimization/single-gpu-fine-tuning-and-inference.html" target="_blank">TRL <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>
 and the <a href="https://huggingface.co/datasets/mlabonne/guanaco-llama2-1k" target="_blank"><code>mlabonne/guanaco-llama2-1k</code> <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>
 dataset.</p>
 <div editor-title="examples/single-node-training/trl/amd/.dstack.yml">
@@ -3951,6 +3951,9 @@ dataset.</p>
 <span class="c1"># Required environment variables</span>
 <span class="nt">env</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HF_TOKEN</span>
+<span class="c1"># Mount files</span>
+<span class="nt">files</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">train.py</span>
 <span class="c1"># Commands of the task</span>
 <span class="nt">commands</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">export PATH=/opt/conda/envs/py_3.10/bin:$PATH</span>
@@ -3965,7 +3968,7 @@ dataset.</p>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip install peft</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip install transformers datasets huggingface-hub scipy</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cd ..</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python examples/single-node-training/trl/amd/train.py</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python train.py</span>
 
 <span class="c1"># Uncomment to leverage spot instances</span>
 <span class="c1">#spot_policy: auto</span>
@@ -3977,7 +3980,7 @@ dataset.</p>
 </div>
 </div>
 <div class="tabbed-block">
-<p>Below is an example of fine-tuning Llama 3.1 8B using <a href="https://rocm.blogs.amd.com/artificial-intelligence/axolotl/README.html" target="_blank">Axolotl <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> 
+<p>Below is an example of fine-tuning Llama 3.1 8B using <a href="https://rocm.blogs.amd.com/artificial-intelligence/axolotl/README.html" target="_blank">Axolotl <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>
 and the <a href="https://huggingface.co/datasets/tatsu-lab/alpaca" target="_blank">tatsu-lab/alpaca <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>
 dataset.</p>
 <div editor-title="examples/single-node-training/axolotl/amd/.dstack.yml">
@@ -4019,9 +4022,9 @@ dataset.</p>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">make</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip install .</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cd ..</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">accelerate launch -m axolotl.cli.train -- axolotl/examples/llama-3/fft-8b.yaml</span><span class="w"> </span>
-<span class="w">          </span><span class="l l-Scalar l-Scalar-Plain">--wandb-project &quot;$WANDB_PROJECT&quot;</span><span class="w"> </span>
-<span class="w">          </span><span class="l l-Scalar l-Scalar-Plain">--wandb-name &quot;$WANDB_NAME&quot;</span><span class="w"> </span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">accelerate launch -m axolotl.cli.train -- axolotl/examples/llama-3/fft-8b.yaml</span>
+<span class="w">          </span><span class="l l-Scalar l-Scalar-Plain">--wandb-project &quot;$WANDB_PROJECT&quot;</span>
+<span class="w">          </span><span class="l l-Scalar l-Scalar-Plain">--wandb-name &quot;$WANDB_NAME&quot;</span>
 <span class="w">          </span><span class="l l-Scalar l-Scalar-Plain">--hub-model-id &quot;$HUB_MODEL_ID&quot;</span>
 
 <span class="nt">resources</span><span class="p">:</span>
@@ -4031,7 +4034,7 @@ dataset.</p>
 </div></p>
 <p>Note, to support ROCm, we need to checkout to commit <code>d4f6c65</code>. This commit eliminates the need to manually modify the Axolotl source code to make xformers compatible with ROCm, as described in the <a href="https://docs.axolotl.ai/docs/amd_hpc.html#apply-xformers-workaround">xformers workaround <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>. This installation approach is also followed for building Axolotl ROCm docker image. <a href="https://github.com/ROCm/rocm-blogs/blob/release/blogs/artificial-intelligence/axolotl/src/Dockerfile.rocm" target="_blank">(See Dockerfile) <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>.</p>
 <blockquote>
-<p>To speed up installation of <code>flash-attention</code> and <code>xformers</code>, we use pre-built binaries uploaded to S3. 
+<p>To speed up installation of <code>flash-attention</code> and <code>xformers</code>, we use pre-built binaries uploaded to S3.
 You can find the tasks that build and upload the binaries
 in <a href="https://github.com/dstackai/dstack/blob/master/examples/single-node-training/axolotl/amd/" target="_blank"><code>examples/single-node-training/axolotl/amd/</code> <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>.</p>
 </blockquote>
@@ -4054,7 +4057,7 @@ $<span class="w"> </span>dstack<span class="w"> </span>apply<span class="w"> </s
 </div>
 
 <h2 id="source-code">Source code<a class="headerlink" href="#source-code" title="Permanent link">&para;</a></h2>
-<p>The source-code of this example can be found in 
+<p>The source-code of this example can be found in
 <a href="https://github.com/dstackai/dstack/blob/master/examples/inference/tgi/amd" target="_blank"><code>examples/inference/tgi/amd</code> <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>,
 <a href="https://github.com/dstackai/dstack/blob/master/examples/inference/vllm/amd" target="_blank"><code>examples/inference/vllm/amd</code> <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>,
 <a href="https://github.com/dstackai/dstack/blob/master/examples/single-node-training/axolotl/amd" target="_blank"><code>examples/single-node-training/axolotl/amd</code> <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> and

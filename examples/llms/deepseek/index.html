@@ -3760,17 +3760,16 @@ Support dstack with a ⭐ on
 <h1 id="deepseek">Deepseek<a class="headerlink" href="#deepseek" title="Permanent link">&para;</a></h1>
 <p>This example walks you through how to deploy and
 train <a href="https://huggingface.co/deepseek-ai" target="_blank">Deepseek <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>
-models with <code>dstack</code>. </p>
+models with <code>dstack</code>.</p>
 <blockquote>
 <p>We used Deepseek-R1 distilled models and Deepseek-V2-Lite, a 16B model with the same architecture as Deepseek-R1 (671B). Deepseek-V2-Lite retains MLA and DeepSeekMoE but requires less memory, making it ideal for testing and fine-tuning on smaller GPUs.</p>
 </blockquote>
 <details class="info">
 <summary>Prerequisites</summary>
-<p>Once <code>dstack</code> is <a href="https://dstack.ai/docs/installation">installed</a>, go ahead clone the repo, and run <code>dstack init</code>.</p>
+<p>Once <code>dstack</code> is <a href="https://dstack.ai/docs/installation">installed</a>, clone the repo with examples.</p>
 <div class="termy">
 <p><div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/dstackai/dstack
 $<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>dstack
-$<span class="w"> </span>dstack<span class="w"> </span>init
 </code></pre></div>
 </div></p>
 </details>
@@ -3831,7 +3830,7 @@ $<span class="w"> </span>dstack<span class="w"> </span>init
 <h3 id="intel-gaudi">Intel Gaudi<a class="headerlink" href="#intel-gaudi" title="Permanent link">&para;</a></h3>
 <p>Here's an example of a service that deploys <code>Deepseek-R1-Distill-Llama-70B</code>
 using <a href="https://github.com/huggingface/tgi-gaudi" target="_blank">TGI on Gaudi <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>
-and <a href="https://github.com/HabanaAI/vllm-fork" target="_blank">vLLM <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> (Gaudi fork) with Intel Gaudi 2. </p>
+and <a href="https://github.com/HabanaAI/vllm-fork" target="_blank">vLLM <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> (Gaudi fork) with Intel Gaudi 2.</p>
 <blockquote>
 <p>Both <a href="https://github.com/huggingface/tgi-gaudi" target="_blank">TGI on Gaudi <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>
 and <a href="https://github.com/HabanaAI/vllm-fork" target="_blank">vLLM <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> do not support <code>Deepseek-V2-Lite</code>.
@@ -3897,7 +3896,7 @@ and <a href="https://github.com/HabanaAI/vllm-fork/issues/809#issuecomment-26524
 <span class="nt">env</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MODEL_ID=deepseek-ai/DeepSeek-R1-Distill-Llama-70B</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HABANA_VISIBLE_DEVICES=all</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">OMPI_MCA_btl_vader_single_copy_mechanism=none</span><span class="w">  </span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">OMPI_MCA_btl_vader_single_copy_mechanism=none</span>
 
 <span class="nt">commands</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">git clone https://github.com/HabanaAI/vllm-fork.git</span>
@@ -3912,14 +3911,14 @@ and <a href="https://github.com/HabanaAI/vllm-fork/issues/809#issuecomment-26524
 
 <span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8000</span>
 </code></pre></div>
-</div>  </p>
+</div></p>
 </div>
 </div>
 </div>
 <h3 id="nvidia">NVIDIA<a class="headerlink" href="#nvidia" title="Permanent link">&para;</a></h3>
 <p>Here's an example of a service that deploys <code>Deepseek-R1-Distill-Llama-8B</code>
 using <a href="https://github.com/sgl-project/sglang" target="_blank">SGLang <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>
-and <a href="https://github.com/vllm-project/vllm" target="_blank">vLLM <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> with NVIDIA GPUs. 
+and <a href="https://github.com/vllm-project/vllm" target="_blank">vLLM <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> with NVIDIA GPUs.
 Both SGLang and vLLM also support <code>Deepseek-V2-Lite</code>.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="sglang_1" name="__tabbed_3" type="radio" /><input id="vllm_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="sglang_1">SGLang</label><label for="vllm_2">vLLM</label></div>
 <div class="tabbed-content">
@@ -3956,8 +3955,8 @@ Both SGLang and vLLM also support <code>Deepseek-V2-Lite</code>.</p>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MAX_MODEL_LEN=4096</span>
 <span class="nt">commands</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vllm serve $MODEL_ID</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">--max-model-len $MAX_MODEL_LEN</span><span class="w"> </span>
-<span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8000</span><span class="w"> </span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">--max-model-len $MAX_MODEL_LEN</span>
+<span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8000</span>
 <span class="nt">model</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">deepseek-ai/DeepSeek-R1-Distill-Llama-8B</span>
 
 <span class="nt">resources</span><span class="p">:</span>
@@ -4045,8 +4044,8 @@ H200 with eight 141GB GPUs, or a single node of Intel Gaudi2 with eight 96GB GPU
 
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>dstack<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>examples/llms/deepseek/sglang/amd/.dstack.yml
 
-<span class="w"> </span><span class="c1">#  BACKEND  REGION     RESOURCES                         SPOT  PRICE   </span>
-<span class="w"> </span><span class="m">1</span><span class="w">  </span>runpod<span class="w">   </span>EU-RO-1<span class="w">   </span>24xCPU,<span class="w"> </span>283GB,<span class="w"> </span>1xMI300X<span class="w"> </span><span class="o">(</span>192GB<span class="o">)</span><span class="w">    </span>no<span class="w">    </span><span class="nv">$2</span>.49<span class="w">  </span>
+<span class="w"> </span><span class="c1">#  BACKEND  REGION     RESOURCES                         SPOT  PRICE</span>
+<span class="w"> </span><span class="m">1</span><span class="w">  </span>runpod<span class="w">   </span>EU-RO-1<span class="w">   </span>24xCPU,<span class="w"> </span>283GB,<span class="w"> </span>1xMI300X<span class="w"> </span><span class="o">(</span>192GB<span class="o">)</span><span class="w">    </span>no<span class="w">    </span><span class="nv">$2</span>.49
 
 Submit<span class="w"> </span>the<span class="w"> </span>run<span class="w"> </span>deepseek-r1-amd?<span class="w"> </span><span class="o">[</span>y/n<span class="o">]</span>:<span class="w"> </span>y
 
@@ -4081,7 +4080,7 @@ at <code>&lt;dstack server URL&gt;/proxy/models/&lt;project name&gt;/</code>.</p
 </code></pre></div>
 </div>
 
-<p>When a <a href="https://dstack.ai/docs/concepts/gateways/">gateway</a> is configured, the OpenAI-compatible endpoint 
+<p>When a <a href="https://dstack.ai/docs/concepts/gateways/">gateway</a> is configured, the OpenAI-compatible endpoint
 is available at <code>https://gateway.&lt;gateway domain&gt;/</code>.</p>
 <h2 id="fine-tuning">Fine-tuning<a class="headerlink" href="#fine-tuning" title="Permanent link">&para;</a></h2>
 <h3 id="amd_1">AMD<a class="headerlink" href="#amd_1" title="Permanent link">&para;</a></h3>
@@ -4154,19 +4153,21 @@ is available at <code>https://gateway.&lt;gateway domain&gt;/</code>.</p>
 <div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">task</span>
 <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">trl-train-grpo</span>
 
-<span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rocm/pytorch:rocm6.2.3_ubuntu22.04_py3.10_pytorch_release_2.3.0</span><span class="w"> </span>
+<span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rocm/pytorch:rocm6.2.3_ubuntu22.04_py3.10_pytorch_release_2.3.0</span>
 
 <span class="nt">env</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">WANDB_API_KEY</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">WANDB_PROJECT</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MODEL_ID=deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B</span>
+<span class="nt">files</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">grpo_train.py</span>
 <span class="nt">commands</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip install trl</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip install datasets</span>
 <span class="w">  </span><span class="c1"># numPy version less than 2 is required for the scipy installation with AMD.</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip install &quot;numpy&lt;2&quot;</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mkdir -p grpo_example</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cp examples/llms/deepseek/trl/amd/grpo_train.py grpo_example/grpo_train.py</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cp grpo_train.py grpo_example/grpo_train.py</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cd grpo_example</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python grpo_train.py</span>
 <span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">--model_name_or_path $MODEL_ID</span>
@@ -4307,43 +4308,43 @@ on NVIDIA GPU using HuggingFace's <a href="https://github.com/huggingface/trl" t
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip install bitsandbytes</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cd peft/examples/sft</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python train.py</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">--seed 100</span><span class="w"> </span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">--model_name_or_path &quot;deepseek-ai/DeepSeek-V2-Lite&quot;</span><span class="w"> </span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">--dataset_name &quot;smangrul/ultrachat-10k-chatml&quot;</span><span class="w"> </span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">--chat_template_format &quot;chatml&quot;</span><span class="w"> </span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">--add_special_tokens False</span><span class="w"> </span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">--append_concat_token False</span><span class="w"> </span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">--splits &quot;train,test&quot;</span><span class="w"> </span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">--max_seq_len 512</span><span class="w"> </span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">--num_train_epochs 1</span><span class="w"> </span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">--logging_steps 5</span><span class="w"> </span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">--log_level &quot;info&quot;</span><span class="w"> </span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">--logging_strategy &quot;steps&quot;</span><span class="w"> </span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">--eval_strategy &quot;epoch&quot;</span><span class="w"> </span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">--save_strategy &quot;epoch&quot;</span><span class="w"> </span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">--hub_private_repo True</span><span class="w"> </span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">--hub_strategy &quot;every_save&quot;</span><span class="w"> </span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">--bf16 True</span><span class="w"> </span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">--packing True</span><span class="w"> </span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">--learning_rate 1e-4</span><span class="w"> </span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">--lr_scheduler_type &quot;cosine&quot;</span><span class="w"> </span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">--weight_decay 1e-4</span><span class="w"> </span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">--warmup_ratio 0.0</span><span class="w"> </span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">--max_grad_norm 1.0</span><span class="w"> </span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">--output_dir &quot;mistral-sft-lora&quot;</span><span class="w"> </span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">--per_device_train_batch_size 8</span><span class="w"> </span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">--per_device_eval_batch_size 8</span><span class="w"> </span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">--gradient_accumulation_steps 4</span><span class="w"> </span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">--gradient_checkpointing True</span><span class="w"> </span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">--use_reentrant True</span><span class="w"> </span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">--dataset_text_field &quot;content&quot;</span><span class="w"> </span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">--use_peft_lora True</span><span class="w"> </span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">--lora_r 16</span><span class="w"> </span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">--lora_alpha 16</span><span class="w"> </span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">--lora_dropout 0.05</span><span class="w"> </span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">--lora_target_modules &quot;all-linear&quot;</span><span class="w"> </span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">--use_4bit_quantization True</span><span class="w"> </span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">--use_nested_quant True</span><span class="w"> </span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">--seed 100</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">--model_name_or_path &quot;deepseek-ai/DeepSeek-V2-Lite&quot;</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">--dataset_name &quot;smangrul/ultrachat-10k-chatml&quot;</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">--chat_template_format &quot;chatml&quot;</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">--add_special_tokens False</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">--append_concat_token False</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">--splits &quot;train,test&quot;</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">--max_seq_len 512</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">--num_train_epochs 1</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">--logging_steps 5</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">--log_level &quot;info&quot;</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">--logging_strategy &quot;steps&quot;</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">--eval_strategy &quot;epoch&quot;</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">--save_strategy &quot;epoch&quot;</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">--hub_private_repo True</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">--hub_strategy &quot;every_save&quot;</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">--bf16 True</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">--packing True</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">--learning_rate 1e-4</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">--lr_scheduler_type &quot;cosine&quot;</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">--weight_decay 1e-4</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">--warmup_ratio 0.0</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">--max_grad_norm 1.0</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">--output_dir &quot;mistral-sft-lora&quot;</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">--per_device_train_batch_size 8</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">--per_device_eval_batch_size 8</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">--gradient_accumulation_steps 4</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">--gradient_checkpointing True</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">--use_reentrant True</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">--dataset_text_field &quot;content&quot;</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">--use_peft_lora True</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">--lora_r 16</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">--lora_alpha 16</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">--lora_dropout 0.05</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">--lora_target_modules &quot;all-linear&quot;</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">--use_4bit_quantization True</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">--use_nested_quant True</span>
 <span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">--bnb_4bit_compute_dtype &quot;bfloat16&quot;</span>
 
 <span class="nt">resources</span><span class="p">:</span>
@@ -4449,12 +4450,12 @@ needs 7–10GB due to intermediate hidden states.</p>
 </tbody>
 </table>
 <h2 id="source-code">Source code<a class="headerlink" href="#source-code" title="Permanent link">&para;</a></h2>
-<p>The source-code of this example can be found in 
+<p>The source-code of this example can be found in
 <a href="https://github.com/dstackai/dstack/blob/master/examples/llms/deepseek"><code>examples/llms/deepseek</code> <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>.</p>
 <div class="admonition info">
 <p class="admonition-title">What's next?</p>
 <ol>
-<li>Check <a href="https://dstack.ai/docs/dev-environments">dev environments</a>, <a href="https://dstack.ai/docs/tasks">tasks</a>, 
+<li>Check <a href="https://dstack.ai/docs/dev-environments">dev environments</a>, <a href="https://dstack.ai/docs/tasks">tasks</a>,
    <a href="https://dstack.ai/docs/services">services</a>, and <a href="https://dstack.ai/docs/protips">protips</a>.</li>
 </ol>
 </div>

@@ -3824,11 +3824,10 @@ Support dstack with a ⭐ on
 <p>This example shows how to deploy Llama 4 Scout with <code>dstack</code> using <a href="https://huggingface.co/docs/text-generation-inference/en/index" target="_blank">HuggingFace TGI <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>.</p>
 <details class="info">
 <summary>Prerequisites</summary>
-<p>Once <code>dstack</code> is <a href="https://dstack.ai/docs/installation">installed</a>, go ahead clone the repo, and run <code>dstack init</code>.</p>
+<p>Once <code>dstack</code> is <a href="https://dstack.ai/docs/installation">installed</a>, clone the repo with examples.</p>
 <div class="termy">
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/dstackai/dstack
 $<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>dstack
-$<span class="w"> </span>dstack<span class="w"> </span>init
 </code></pre></div>
 </div>
 </details>
@@ -3849,7 +3848,7 @@ $<span class="w"> </span>dstack<span class="w"> </span>init
 <span class="w">  </span><span class="c1"># max_batch_prefill_tokens must be &gt;= max_input_tokens</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MAX_BATCH_PREFILL_TOKENS=8192</span>
 <span class="nt">commands</span><span class="p">:</span>
-<span class="w">   </span><span class="c1"># Activate the virtual environment at /usr/src/.venv/ </span>
+<span class="w">   </span><span class="c1"># Activate the virtual environment at /usr/src/.venv/</span>
 <span class="w">   </span><span class="c1"># as required by TGI&#39;s latest image.</span>
 <span class="w">   </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">. /usr/src/.venv/bin/activate</span>
 <span class="w">   </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NUM_SHARD=$DSTACK_GPUS_NUM text-generation-launcher</span>
@@ -3872,15 +3871,15 @@ $<span class="w"> </span>dstack<span class="w"> </span>init
 </div>
 
 <h3 id="running-a-configuration">Running a configuration<a class="headerlink" href="#running-a-configuration" title="Permanent link">&para;</a></h3>
-<p>To run a configuration, use the <a href="https://dstack.ai/docs/reference/cli/dstack/apply.md"><code>dstack apply</code></a> command. </p>
+<p>To run a configuration, use the <a href="https://dstack.ai/docs/reference/cli/dstack/apply.md"><code>dstack apply</code></a> command.</p>
 <div class="termy">
 
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nv">HF_TOKEN</span><span class="o">=</span>...
 $<span class="w"> </span>dstack<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>examples/inference/tgi/.dstack.yml
 
-<span class="w"> </span><span class="c1">#  BACKEND  REGION     RESOURCES                      SPOT PRICE   </span>
-<span class="w"> </span><span class="m">1</span><span class="w">  </span>vastai<span class="w">   </span>is-iceland<span class="w"> </span>48xCPU,<span class="w"> </span>128GB,<span class="w"> </span>2xH200<span class="w"> </span><span class="o">(</span>140GB<span class="o">)</span><span class="w">  </span>no<span class="w">   </span><span class="nv">$7</span>.87<span class="w">   </span>
-<span class="w"> </span><span class="m">2</span><span class="w">  </span>runpod<span class="w">   </span>EU-SE-1<span class="w">    </span>40xCPU,<span class="w"> </span>128GB,<span class="w"> </span>2xH200<span class="w"> </span><span class="o">(</span>140GB<span class="o">)</span><span class="w">  </span>no<span class="w">   </span><span class="nv">$7</span>.98<span class="w"> </span>
+<span class="w"> </span><span class="c1">#  BACKEND  REGION     RESOURCES                      SPOT PRICE</span>
+<span class="w"> </span><span class="m">1</span><span class="w">  </span>vastai<span class="w">   </span>is-iceland<span class="w"> </span>48xCPU,<span class="w"> </span>128GB,<span class="w"> </span>2xH200<span class="w"> </span><span class="o">(</span>140GB<span class="o">)</span><span class="w">  </span>no<span class="w">   </span><span class="nv">$7</span>.87
+<span class="w"> </span><span class="m">2</span><span class="w">  </span>runpod<span class="w">   </span>EU-SE-1<span class="w">    </span>40xCPU,<span class="w"> </span>128GB,<span class="w"> </span>2xH200<span class="w"> </span><span class="o">(</span>140GB<span class="o">)</span><span class="w">  </span>no<span class="w">   </span><span class="nv">$7</span>.98
 
 Submit<span class="w"> </span>the<span class="w"> </span>run<span class="w"> </span>llama4-scout?<span class="w"> </span><span class="o">[</span>y/n<span class="o">]</span>:<span class="w"> </span>y
 
@@ -3889,7 +3888,7 @@ Provisioning...
 </code></pre></div>
 </div>
 
-<p>If no gateway is created, the model will be available via the OpenAI-compatible endpoint 
+<p>If no gateway is created, the model will be available via the OpenAI-compatible endpoint
 at <code>&lt;dstack server URL&gt;/proxy/models/&lt;project name&gt;/</code>.</p>
 <div class="termy">
 
@@ -3915,10 +3914,10 @@ at <code>&lt;dstack server URL&gt;/proxy/models/&lt;project name&gt;/</code>.</p
 
 </div>
 
-<p>When a <a href="https://dstack.ai/docs/concepts/gateways/">gateway</a> is configured, the OpenAI-compatible endpoint 
+<p>When a <a href="https://dstack.ai/docs/concepts/gateways/">gateway</a> is configured, the OpenAI-compatible endpoint
 is available at <code>https://gateway.&lt;gateway domain&gt;/</code>.</p>
 <h2 id="source-code">Source code<a class="headerlink" href="#source-code" title="Permanent link">&para;</a></h2>
-<p>The source-code of this example can be found in 
+<p>The source-code of this example can be found in
 <a href="https://github.com/dstackai/dstack/blob/master/examples/inference/tgi"><code>examples/inference/tgi</code> <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>.</p>
 <h2 id="whats-next">What's next?<a class="headerlink" href="#whats-next" title="Permanent link">&para;</a></h2>
 <ol>

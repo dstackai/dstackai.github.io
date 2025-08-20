@@ -3812,16 +3812,15 @@ Support dstack with a ⭐ on
 <p>This example shows how to use <a href="https://github.com/OpenAccess-AI-Collective/axolotl" target="_blank">Axolotl <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> with <code>dstack</code> to fine-tune 4-bit Quantized <code>Llama-4-Scout-17B-16E</code> using SFT with FSDP and QLoRA.</p>
 <details class="info">
 <summary>Prerequisites</summary>
-<p>Once <code>dstack</code> is <a href="https://dstack.ai/docs/installation">installed</a>, go ahead clone the repo, and run <code>dstack init</code>.</p>
+<p>Once <code>dstack</code> is <a href="https://dstack.ai/docs/installation">installed</a>, clone the repo with examples.</p>
 <div class="termy">
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/dstackai/dstack
 $<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>dstack
-$<span class="w"> </span>dstack<span class="w"> </span>init
 </code></pre></div>
 </div>
 </details>
 <h2 id="define-a-configuration">Define a configuration<a class="headerlink" href="#define-a-configuration" title="Permanent link">&para;</a></h2>
-<p>Axolotl reads the model, QLoRA, and dataset arguments, as well as trainer configuration from a <a href="https://github.com/axolotl-ai-cloud/axolotl/blob/main/examples/llama-4/scout-qlora-fsdp1.yaml" target="_blank"><code>scout-qlora-fsdp1.yaml</code> <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> file. The configuration uses 4-bit axolotl quantized version of <code>meta-llama/Llama-4-Scout-17B-16E</code>, requiring only ~43GB VRAM/GPU with 4K context length.</p>
+<p>Axolotl reads the model, QLoRA, and dataset arguments, as well as trainer configuration from a <a href="https://github.com/axolotl-ai-cloud/axolotl/blob/main/examples/llama-4/scout-qlora-flexattn-fsdp2.yaml" target="_blank"><code>scout-qlora-flexattn-fsdp2.yaml</code> <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> file. The configuration uses 4-bit axolotl quantized version of <code>meta-llama/Llama-4-Scout-17B-16E</code>, requiring only ~43GB VRAM/GPU with 4K context length.</p>
 <p>Below is a task configuration that does fine-tuning.</p>
 <div editor-title="examples/single-node-training/axolotl/.dstack.yml">
 
@@ -3838,12 +3837,11 @@ $<span class="w"> </span>dstack<span class="w"> </span>init
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">WANDB_API_KEY</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">WANDB_PROJECT</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HUB_MODEL_ID</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DSTACK_RUN_NAME</span>
 <span class="c1"># Commands of the task</span>
 <span class="nt">commands</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">wget https://raw.githubusercontent.com/axolotl-ai-cloud/axolotl/main/examples/llama-4/scout-qlora-fsdp1.yaml</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">wget https://raw.githubusercontent.com/axolotl-ai-cloud/axolotl/main/examples/llama-4/scout-qlora-flexattn-fsdp2.yaml</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
-<span class="w">    </span><span class="no">axolotl train scout-qlora-fsdp1.yaml \</span>
+<span class="w">    </span><span class="no">axolotl train scout-qlora-flexattn-fsdp2.yaml \</span>
 <span class="w">      </span><span class="no">--wandb-project $WANDB_PROJECT \</span>
 <span class="w">      </span><span class="no">--wandb-name $DSTACK_RUN_NAME \</span>
 <span class="w">      </span><span class="no">--hub-model-id $HUB_MODEL_ID</span>
@@ -3874,9 +3872,9 @@ $<span class="w"> </span><span class="nv">WANDB_PROJECT</span><span class="o">=<
 $<span class="w"> </span><span class="nv">HUB_MODEL_ID</span><span class="o">=</span>...
 $<span class="w"> </span>dstack<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>examples/single-node-training/axolotl/.dstack.yml
 
-<span class="w"> </span><span class="c1">#  BACKEND              RESOURCES                     INSTANCE TYPE  PRICE     </span>
-<span class="w"> </span><span class="m">1</span><span class="w">  </span>vastai<span class="w"> </span><span class="o">(</span>cz-czechia<span class="o">)</span><span class="w">  </span><span class="nv">cpu</span><span class="o">=</span><span class="m">64</span><span class="w"> </span><span class="nv">mem</span><span class="o">=</span>128GB<span class="w"> </span>H100:80GB:2<span class="w">  </span><span class="m">18794506</span><span class="w">       </span><span class="nv">$3</span>.8907<span class="w">   </span>
-<span class="w"> </span><span class="m">2</span><span class="w">  </span>vastai<span class="w"> </span><span class="o">(</span>us-texas<span class="o">)</span><span class="w">    </span><span class="nv">cpu</span><span class="o">=</span><span class="m">52</span><span class="w"> </span><span class="nv">mem</span><span class="o">=</span>64GB<span class="w">  </span>H100:80GB:2<span class="w">  </span><span class="m">20442365</span><span class="w">       </span><span class="nv">$3</span>.6926<span class="w">   </span>
+<span class="w"> </span><span class="c1">#  BACKEND              RESOURCES                     INSTANCE TYPE  PRICE</span>
+<span class="w"> </span><span class="m">1</span><span class="w">  </span>vastai<span class="w"> </span><span class="o">(</span>cz-czechia<span class="o">)</span><span class="w">  </span><span class="nv">cpu</span><span class="o">=</span><span class="m">64</span><span class="w"> </span><span class="nv">mem</span><span class="o">=</span>128GB<span class="w"> </span>H100:80GB:2<span class="w">  </span><span class="m">18794506</span><span class="w">       </span><span class="nv">$3</span>.8907
+<span class="w"> </span><span class="m">2</span><span class="w">  </span>vastai<span class="w"> </span><span class="o">(</span>us-texas<span class="o">)</span><span class="w">    </span><span class="nv">cpu</span><span class="o">=</span><span class="m">52</span><span class="w"> </span><span class="nv">mem</span><span class="o">=</span>64GB<span class="w">  </span>H100:80GB:2<span class="w">  </span><span class="m">20442365</span><span class="w">       </span><span class="nv">$3</span>.6926
 <span class="w"> </span><span class="m">3</span><span class="w">  </span>vastai<span class="w"> </span><span class="o">(</span>fr-france<span class="o">)</span><span class="w">   </span><span class="nv">cpu</span><span class="o">=</span><span class="m">64</span><span class="w"> </span><span class="nv">mem</span><span class="o">=</span>96GB<span class="w">  </span>H100:80GB:2<span class="w">  </span><span class="m">20379984</span><span class="w">       </span><span class="nv">$3</span>.7389
 
 Submit<span class="w"> </span>the<span class="w"> </span>run<span class="w"> </span>axolotl-nvidia-llama-scout-train?<span class="w"> </span><span class="o">[</span>y/n<span class="o">]</span>:
@@ -3893,7 +3891,7 @@ Provisioning...
 <h2 id="whats-next">What's next?<a class="headerlink" href="#whats-next" title="Permanent link">&para;</a></h2>
 <ol>
 <li>Browse the <a href="https://dstack.ai/docs/examples/distributed-training/axolotl">Axolotl distributed training</a> example</li>
-<li>Check <a href="https://dstack.ai/docs/dev-environments">dev environments</a>, <a href="https://dstack.ai/docs/tasks">tasks</a>, 
+<li>Check <a href="https://dstack.ai/docs/dev-environments">dev environments</a>, <a href="https://dstack.ai/docs/tasks">tasks</a>,
    <a href="https://dstack.ai/docs/services">services</a>, <a href="https://dstack.ai/docs/concepts/fleets">fleets</a></li>
 <li>See the <a href="https://dstack.ai/examples/accelerators/amd#axolotl">AMD</a> example</li>
 </ol>

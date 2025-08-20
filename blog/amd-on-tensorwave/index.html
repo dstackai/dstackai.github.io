@@ -3763,7 +3763,7 @@ Support dstack with a ⭐ on
 <p>Since last month, when we introduced support for private clouds and data centers, it has become easier to use <code>dstack</code>
 to orchestrate AI containers with any AI cloud vendor, whether they provide on-demand compute or reserved clusters.</p>
 <p>In this tutorial, we’ll walk you through how <code>dstack</code> can be used with
-<a href="https://tensorwave.com/" target="_blank">TensorWave <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> using 
+<a href="https://tensorwave.com/" target="_blank">TensorWave <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> using
 <a href="../../docs/concepts/fleets/#ssh">SSH fleets</a>.</p>
 <p><img src="https://dstack.ai/static-assets/static-assets/images/dstack-tensorwave-v2.png" width="630"/></p>
 <!-- more -->
@@ -3776,10 +3776,9 @@ TensorWave dashboard.</p>
 <h2 id="creating-a-fleet">Creating a fleet<a class="headerlink" href="#creating-a-fleet" title="Permanent link">&para;</a></h2>
 <details class="info">
 <summary>Prerequisites</summary>
-<p>Once <code>dstack</code> is <a href="https://dstack.ai/docs/installation">installed</a>, create a project repo folder and run <code>dstack init</code>.</p>
+<p>Once <code>dstack</code> is <a href="https://dstack.ai/docs/installation">installed</a>, create a project folder.</p>
 <div class="termy">
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>mkdir<span class="w"> </span>tensorwave-demo<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>tensorwave-demo
-$<span class="w"> </span>dstack<span class="w"> </span>init
 </code></pre></div>
 </div>
 </details>
@@ -3814,9 +3813,9 @@ Otherwise, you can omit this property.</p>
 Provisioning...
 ---&gt;<span class="w"> </span><span class="m">100</span>%
 
-<span class="w"> </span>FLEET<span class="w">                </span>INSTANCE<span class="w">  </span>RESOURCES<span class="w">         </span>STATUS<span class="w">     </span>CREATED<span class="w"> </span>
-<span class="w"> </span>my-tensorwave-fleet<span class="w">  </span><span class="m">0</span><span class="w">         </span>8xMI300X<span class="w"> </span><span class="o">(</span>192GB<span class="o">)</span><span class="w">  </span><span class="m">0</span>/8<span class="w"> </span>busy<span class="w">   </span><span class="m">3</span><span class="w"> </span>mins<span class="w"> </span>ago<span class="w">      </span>
-<span class="w">                      </span><span class="m">1</span><span class="w">         </span>8xMI300X<span class="w"> </span><span class="o">(</span>192GB<span class="o">)</span><span class="w">  </span><span class="m">0</span>/8<span class="w"> </span>busy<span class="w">   </span><span class="m">3</span><span class="w"> </span>mins<span class="w"> </span>ago<span class="w">    </span>
+<span class="w"> </span>FLEET<span class="w">                </span>INSTANCE<span class="w">  </span>RESOURCES<span class="w">         </span>STATUS<span class="w">     </span>CREATED
+<span class="w"> </span>my-tensorwave-fleet<span class="w">  </span><span class="m">0</span><span class="w">         </span>8xMI300X<span class="w"> </span><span class="o">(</span>192GB<span class="o">)</span><span class="w">  </span><span class="m">0</span>/8<span class="w"> </span>busy<span class="w">   </span><span class="m">3</span><span class="w"> </span>mins<span class="w"> </span>ago
+<span class="w">                      </span><span class="m">1</span><span class="w">         </span>8xMI300X<span class="w"> </span><span class="o">(</span>192GB<span class="o">)</span><span class="w">  </span><span class="m">0</span>/8<span class="w"> </span>busy<span class="w">   </span><span class="m">3</span><span class="w"> </span>mins<span class="w"> </span>ago
 </code></pre></div>
 
 </div>
@@ -3827,7 +3826,7 @@ workloads.</p>
 <p>Once the fleet is created, you can use <code>dstack</code> to run workloads.</p>
 <h3 id="dev-environments">Dev environments<a class="headerlink" href="#dev-environments" title="Permanent link">&para;</a></h3>
 <p>A dev environment lets you access an instance through your desktop IDE.</p>
-<div editor-title=".dstack.yml"> 
+<div editor-title=".dstack.yml">
 
 <div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dev-environment</span>
 <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vscode</span>
@@ -3860,8 +3859,8 @@ To<span class="w"> </span>open<span class="w"> </span><span class="k">in</span><
 <p>Open the link to access the dev environment using your desktop IDE.</p>
 <h3 id="tasks">Tasks<a class="headerlink" href="#tasks" title="Permanent link">&para;</a></h3>
 <p>A task allows you to schedule a job or run a web app. Tasks can be distributed and support port forwarding.</p>
-<p>Below is a distributed training task configuration: </p>
-<div editor-title="train.dstack.yml"> 
+<p>Below is a distributed training task configuration:</p>
+<div editor-title="train.dstack.yml">
 
 <div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">task</span>
 <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">train-distrib</span>
@@ -3894,13 +3893,13 @@ Provisioning<span class="w"> </span><span class="sb">`</span>train-distrib<span 
 
 </div>
 
-<p><code>dstack</code> automatically runs the container on each node while passing 
+<p><code>dstack</code> automatically runs the container on each node while passing
 <a href="../../docs/concepts/tasks/#system-environment-variables">system environment variables</a>
 which you can use with <code>torchrun</code>, <code>accelerate</code>, or other distributed frameworks.</p>
 <h3 id="services">Services<a class="headerlink" href="#services" title="Permanent link">&para;</a></h3>
 <p>A service allows you to deploy a model or any web app as a scalable and secure endpoint.</p>
 <p>Create the following configuration file inside the repo:</p>
-<div editor-title="deepseek.dstack.yml"> 
+<div editor-title="deepseek.dstack.yml">
 
 <div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service</span>
 <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">deepseek-r1-sglang</span>
@@ -3910,7 +3909,7 @@ which you can use with <code>torchrun</code>, <code>accelerate</code>, or other 
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MODEL_ID=deepseek-ai/DeepSeek-R1</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HSA_NO_SCRATCH_RECLAIM=1</span>
 <span class="nt">commands</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python3 -m sglang.launch_server --model-path $MODEL_ID --port 8000 --tp 8 --trust-remote-code</span><span class="w"> </span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python3 -m sglang.launch_server --model-path $MODEL_ID --port 8000 --tp 8 --trust-remote-code</span>
 <span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8000</span>
 <span class="nt">model</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">deepseek-ai/DeepSeek-R1</span>
 
@@ -3933,7 +3932,7 @@ Submit<span class="w"> </span>the<span class="w"> </span>run<span class="w"> </s
 Provisioning<span class="w"> </span><span class="sb">`</span>deepseek-r1-sglang<span class="sb">`</span>...
 ---&gt;<span class="w"> </span><span class="m">100</span>%
 
-Service<span class="w"> </span>is<span class="w"> </span>published<span class="w"> </span>at:<span class="w"> </span>
+Service<span class="w"> </span>is<span class="w"> </span>published<span class="w"> </span>at:
 <span class="w">  </span>http://localhost:3000/proxy/services/main/deepseek-r1-sglang/
 Model<span class="w"> </span>deepseek-ai/DeepSeek-R1<span class="w"> </span>is<span class="w"> </span>published<span class="w"> </span>at:
 <span class="w">  </span>http://localhost:3000/proxy/models/main/
@@ -3948,7 +3947,7 @@ Model<span class="w"> </span>deepseek-ai/DeepSeek-R1<span class="w"> </span>is<s
 <div class="admonition info">
 <p class="admonition-title">What's next?</p>
 <ol>
-<li>See <a href="../../docs/concepts/fleets/#ssh">SSH fleets</a> </li>
+<li>See <a href="../../docs/concepts/fleets/#ssh">SSH fleets</a></li>
 <li>Read about <a href="../../docs/concepts/dev-environments/">dev environments</a>, <a href="../../docs/concepts/tasks/">tasks</a>, and <a href="../../docs/concepts/services/">services</a></li>
 <li>Join <a href="https://discord.gg/u8SmfwPpMd">Discord <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a></li>
 </ol>
