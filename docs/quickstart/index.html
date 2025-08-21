@@ -723,11 +723,11 @@ Support dstack with a ⭐ on
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#initialize-a-repo" class="md-nav__link">
+  <a href="#set-up-a-directory" class="md-nav__link">
     <span class="md-ellipsis">
       
         <span class="md-typeset">
-          Initialize a repo
+          Set up a directory
         </span>
       
     </span>
@@ -736,11 +736,11 @@ Support dstack with a ⭐ on
 </li>
       
         <li class="md-nav__item">
-  <a href="#apply-a-configuration" class="md-nav__link">
+  <a href="#run-your-first-workload" class="md-nav__link">
     <span class="md-ellipsis">
       
         <span class="md-typeset">
-          Apply a configuration
+          Run your first workload
         </span>
       
     </span>
@@ -3676,11 +3676,11 @@ Support dstack with a ⭐ on
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#initialize-a-repo" class="md-nav__link">
+  <a href="#set-up-a-directory" class="md-nav__link">
     <span class="md-ellipsis">
       
         <span class="md-typeset">
-          Initialize a repo
+          Set up a directory
         </span>
       
     </span>
@@ -3689,11 +3689,11 @@ Support dstack with a ⭐ on
 </li>
       
         <li class="md-nav__item">
-  <a href="#apply-a-configuration" class="md-nav__link">
+  <a href="#run-your-first-workload" class="md-nav__link">
     <span class="md-ellipsis">
       
         <span class="md-typeset">
-          Apply a configuration
+          Run your first workload
         </span>
       
     </span>
@@ -3800,22 +3800,27 @@ Support dstack with a ⭐ on
 <blockquote>
 <p>Before using <code>dstack</code>, ensure you've <a href="../installation/">installed</a> the server, or signed up for <a href="https://sky.dstack.ai" target="_blank">dstack Sky <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>.</p>
 </blockquote>
-<h2 id="initialize-a-repo">Initialize a repo<a class="headerlink" href="#initialize-a-repo" title="Permanent link">&para;</a></h2>
-<p>Before using <code>dstack</code>'s CLI in a directory, initialize the directory as a repo with <a href="../reference/cli/dstack/init/"><code>dstack init</code></a>.</p>
+<h2 id="set-up-a-directory">Set up a directory<a class="headerlink" href="#set-up-a-directory" title="Permanent link">&para;</a></h2>
+<p>Set up a directory where you'll store you project files and <code>dstack</code> configurations.</p>
 <div class="termy">
 
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>mkdir<span class="w"> </span>quickstart<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>quickstart
-$<span class="w"> </span>dstack<span class="w"> </span>init
 </code></pre></div>
 
 </div>
 
-<h2 id="apply-a-configuration">Apply a configuration<a class="headerlink" href="#apply-a-configuration" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>If the directory is a remote Git repo that you want to mount with workloads, run <code>dstack init</code>.
+Starting with 0.19.26, repos will be <a href="https://github.com/dstackai/dstack/issues/2851" target="_blank">configurable <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> in the run configuration.</p>
+</blockquote>
+<h2 id="run-your-first-workload">Run your first workload<a class="headerlink" href="#run-your-first-workload" title="Permanent link">&para;</a></h2>
+<p><code>dstack</code> supports three types of workloads.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="dev-environment" name="__tabbed_1" type="radio" /><input id="task" name="__tabbed_1" type="radio" /><input id="service" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="dev-environment">Dev environment</label><label for="task">Task</label><label for="service">Service</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>A dev environment lets you provision an instance and access it with your desktop IDE.</p>
-<p>Create the following configuration file inside the repo:</p>
+<p><h3>Define a configuration</h3></p>
+<p>Create the following run configuration inside your project folder:</p>
 <p><div editor-title=".dstack.yml"> </p>
 <div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dev-environment</span>
 <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vscode</span>
@@ -3831,6 +3836,7 @@ $<span class="w"> </span>dstack<span class="w"> </span>init
 <span class="c1">#  gpu: 24GB</span>
 </code></pre></div>
 </div>
+<p><h3>Apply the configuration</h3></p>
 <p>Apply the configuration via <a href="../reference/cli/dstack/apply/"><code>dstack apply</code></a>:</p>
 <div class="termy">
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>dstack<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>.dstack.yml
@@ -3854,7 +3860,8 @@ To<span class="w"> </span>open<span class="w"> </span><span class="k">in</span><
 </div>
 <div class="tabbed-block">
 <p>A task allows you to schedule a job or run a web app. Tasks can be distributed and can forward ports.</p>
-<p>Create the following configuration file inside the repo:</p>
+<p><h3>Define a configuration</h3></p>
+<p>Create the following run configuration inside your project folder:</p>
 <p><div editor-title="task.dstack.yml"> </p>
 <div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">task</span>
 <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">streamlit</span>
@@ -3878,6 +3885,7 @@ To<span class="w"> </span>open<span class="w"> </span><span class="k">in</span><
 </div>
 <p>By default, tasks run on a single instance. To run a distributed task, specify 
 <a href="../concepts/tasks/#distributed-tasks"><code>nodes</code></a>, and <code>dstack</code> will run it on a cluster.</p>
+<p><h3>Apply the configuration</h3></p>
 <p>Run the configuration via <a href="../reference/cli/dstack/apply/"><code>dstack apply</code></a>:</p>
 <div class="termy">
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>dstack<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>task.dstack.yml
@@ -3901,7 +3909,8 @@ Provisioning<span class="w"> </span><span class="sb">`</span>streamlit<span clas
 </div>
 <div class="tabbed-block">
 <p>A service allows you to deploy a model or any web app as an endpoint.</p>
-<p>Create the following configuration file inside the repo:</p>
+<p><h3>Define a configuration</h3></p>
+<p>Create the following run configuration inside your project folder:</p>
 <p><div editor-title="service.dstack.yml"> </p>
 <div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service</span>
 <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">llama31-service</span>
@@ -3927,6 +3936,7 @@ Provisioning<span class="w"> </span><span class="sb">`</span>streamlit<span clas
 <span class="w">  </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">24GB</span>
 </code></pre></div>
 </div>
+<p><h3>Apply the configuration</h3></p>
 <p>Run the configuration via <a href="../reference/cli/dstack/apply/"><code>dstack apply</code></a>:</p>
 <div class="termy">
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nv">HF_TOKEN</span><span class="o">=</span>...
@@ -3960,16 +3970,22 @@ a gateway is pre-configured for you.</p>
 </div>
 </div>
 </div>
-<blockquote>
-<p><code>dstack apply</code> automatically provisions instances, uploads the contents of the repo (incl. your local uncommitted changes),
-and runs the configuration.</p>
-</blockquote>
+<p><code>dstack apply</code> automatically provisions instances and runs the workload according to the configuration.</p>
+<details class="info">
+<summary>Repo is not initialized</summary>
+<p>If you don't run <code>dstack init</code>, you may see the following warning:</p>
+<div class="highlight"><pre><span></span><code>Repo is not initialized. Use --repo &lt;dir&gt; or --no-repo to initialize it.
+Starting from 0.19.26, repos will be configured via YAML and this message won&#39;t appear.
+</code></pre></div>
+<p>From 0.19.26 onward, this message will no longer be shown since repos can be 
+<a href="https://github.com/dstackai/dstack/issues/2851" target="_blank">configured <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> in the run configuration.</p>
+</details>
 <h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h2>
 <p>Something not working? See the <a href="../guides/troubleshooting/">troubleshooting</a> guide.</p>
 <div class="admonition info">
 <p class="admonition-title">What's next?</p>
 <ol>
-<li>Read about <a href="../concepts/backends/">backends</a>,  <a href="../concepts/dev-environments/">dev environments</a>, <a href="../concepts/tasks/">tasks</a>, and <a href="../concepts/services/">services</a></li>
+<li>Read about <a href="../concepts/backends/">backends</a>,  <a href="../concepts/dev-environments/">dev environments</a>, <a href="../concepts/tasks/">tasks</a>, <a href="../concepts/services/">services</a>, and <a href="../concepts/services/">fleets</a></li>
 <li>Browse <a href="../../examples/">examples</a></li>
 <li>Join <a href="https://discord.gg/u8SmfwPpMd">Discord <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a></li>
 </ol>

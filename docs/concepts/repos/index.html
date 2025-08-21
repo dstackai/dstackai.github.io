@@ -1021,19 +1021,6 @@ Support dstack with a ⭐ on
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#use-a-local-directory-instead-of-a-git-repo" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        <span class="md-typeset">
-          Use a local directory instead of a Git repo
-        </span>
-      
-    </span>
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -1107,19 +1094,6 @@ Support dstack with a ⭐ on
         
       </ul>
     </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#store-the-repo-on-a-volume" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        <span class="md-typeset">
-          Store the repo on a volume
-        </span>
-      
-    </span>
-  </a>
   
 </li>
       
@@ -3831,19 +3805,6 @@ Support dstack with a ⭐ on
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#use-a-local-directory-instead-of-a-git-repo" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        <span class="md-typeset">
-          Use a local directory instead of a Git repo
-        </span>
-      
-    </span>
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -3917,19 +3878,6 @@ Support dstack with a ⭐ on
         
       </ul>
     </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#store-the-repo-on-a-volume" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        <span class="md-typeset">
-          Store the repo on a volume
-        </span>
-      
-    </span>
-  </a>
   
 </li>
       
@@ -4029,12 +3977,18 @@ Support dstack with a ⭐ on
 
 
 <h1 id="repos">Repos<a class="headerlink" href="#repos" title="Permanent link">&para;</a></h1>
-<p>Running a dev environment, task, or service with <a href="../../reference/cli/dstack/apply/"><code>dstack apply</code></a> in a directory
-mounts the contents of that directory to the container’s <code>/workflow</code> directory and sets it as the container’s current working directory.
-This allows accessing the directory files from within the run.</p>
+<p>Repos allow mounting remote Git repos with workloads.</p>
+<blockquote>
+<p>Starting with 0.19.26, repos will be <a href="https://github.com/dstackai/dstack/issues/2851" target="_blank">configurable <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> in the run configuration. </p>
+</blockquote>
+<p>For now, to mount a repo with workloads, run <a href="../../reference/cli/dstack/init/"><code>dstack init</code></a> in the repo directory, and then execute <a href="../../reference/cli/dstack/apply/"><code>dstack apply</code></a> from the same directory. </p>
+<p>In this case, <code>dstack</code> mounts the contents of the repo to the container’s <code>/workflow</code> directory and sets it as the container’s current working directory. Note that <code>dstack</code> also includes any local changes.</p>
+<details class="info">
+<summary>Files</summary>
+<p>In some cases, you don’t need to mount an entire repo and can mount only specific directories. This can be done using
+<a href="../../reference/dstack.yml/task/#_files"><code>files</code></a> instead of repos.</p>
+</details>
 <h2 id="initialize-a-repo">Initialize a repo<a class="headerlink" href="#initialize-a-repo" title="Permanent link">&para;</a></h2>
-<p>To use a directory with <code>dstack apply</code>, it must first be initialized as a repo by running <a href="../../reference/cli/dstack/init/"><code>dstack init</code></a>.
-The directory must be a cloned Git repo.</p>
 <p><a href="../../reference/cli/dstack/init/"><code>dstack init</code></a> is not required if you pass <code>-P</code> (or <code>--repo</code>) to <a href="../../reference/cli/dstack/apply/"><code>dstack apply</code></a> (see below).</p>
 <h3 id="git-credentials">Git credentials<a class="headerlink" href="#git-credentials" title="Permanent link">&para;</a></h3>
 <p><a href="../../reference/cli/dstack/init/"><code>dstack init</code></a> grants the <code>dstack</code> server access by uploading the current user's default
@@ -4050,8 +4004,6 @@ enabled.</p>
 <p>Uploads are limited to 2MB. Use <code>.gitignore</code> to exclude unnecessary files from being uploaded.
 You can set the <code>DSTACK_SERVER_CODE_UPLOAD_LIMIT</code> environment variable to increase the default server limit.
 Increasing the limit is recommended only if you <a href="../../guides/server-deployment/">configure an object storage</a>.</p>
-<h3 id="use-a-local-directory-instead-of-a-git-repo">Use a local directory instead of a Git repo<a class="headerlink" href="#use-a-local-directory-instead-of-a-git-repo" title="Permanent link">&para;</a></h3>
-<p>If the directory is not a cloned Git repo, use <a href="../../reference/dstack.yml/task/#_files"><code>files</code></a>.</p>
 <h2 id="specify-the-repo">Specify the repo<a class="headerlink" href="#specify-the-repo" title="Permanent link">&para;</a></h2>
 <p>By default, <code>dstack apply</code> uses the current directory as a repo if it is already initialized.
 You can change this by explicitly specifying the repo to use for <code>dstack apply</code>.</p>
@@ -4086,11 +4038,13 @@ If you use a private Git repo, you can pass Git credentials to <code>dstack appl
 
 </div>
 
-<h2 id="store-the-repo-on-a-volume">Store the repo on a volume<a class="headerlink" href="#store-the-repo-on-a-volume" title="Permanent link">&para;</a></h2>
-<p>You can use <a href="../volumes/">Volumes</a> to persist repo changes without pushing them to the Git remote.
-Attach a volume to the repo directory (<code>/workflow</code>) or any of its subdirectories.
-<code>dstack</code> will clone the repo to the volume on the first run.
-On subsequent runs, <code>dstack</code> will use the repo contents from the volume instead of cloning the repo.</p>
+<!-- ## Store the repo on a volume
+
+You can use [Volumes](../concepts/volumes.md) to persist repo changes without pushing them to the Git remote.
+Attach a volume to the repo directory (`/workflow`) or any of its subdirectories.
+`dstack` will clone the repo to the volume on the first run.
+On subsequent runs, `dstack` will use the repo contents from the volume instead of cloning the repo. -->
+
 <h2 id="whats-next">What's next?<a class="headerlink" href="#whats-next" title="Permanent link">&para;</a></h2>
 <ol>
 <li>Read about <a href="../dev-environments/">dev environments</a>, <a href="../tasks/">tasks</a>, <a href="../services/">services</a></li>

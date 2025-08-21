@@ -4204,8 +4204,7 @@ Launching<span class="w"> </span><span class="sb">`</span>axolotl-train<span cla
 
 </div>
 
-<p><code>dstack apply</code> automatically provisions instances, uploads the contents of the repo (incl. your local uncommitted changes),
-and runs the commands.</p>
+<p><code>dstack apply</code> automatically provisions instances and runs the task.</p>
 <h2 id="configuration-options">Configuration options<a class="headerlink" href="#configuration-options" title="Permanent link">&para;</a></h2>
 <h3 id="ports">Ports<a class="headerlink" href="#ports" title="Permanent link">&para;</a></h3>
 <p>A task can configure ports. In this case, if the task is running an application on a port, <code>dstack apply</code> 
@@ -4596,9 +4595,9 @@ If you need <code>nvcc</code>, set the <a href="../../reference/dstack.yml/dev-e
 </table>
 </details>
 <h3 id="files">Files<a class="headerlink" href="#files" title="Permanent link">&para;</a></h3>
-<p>By default, <code>dstack</code> automatically mounts the <a href="../repos/">repo</a> directory where you ran <code>dstack init</code> to any run configuration. </p>
-<p>However, in some cases, you may not want to mount the entire directory (e.g., if it’s too large),
-or you might want to mount files outside of it. In such cases, you can use the <a href="../../reference/dstack.yml/dev-environment/#files"><code>files</code></a> property.</p>
+<p>If you configured a <a href="../repos/">repo</a>, <code>dstack</code> automatically mounts its content (incl. your local changes) inside the container.</p>
+<p>In some cases, you don’t need to mount an entire repo and can mount only specific directories. This can be done using
+<a href="../../reference/dstack.yml/task/#_files"><code>files</code></a> instead of repos.</p>
 <div editor-title="examples/.dstack.yml"> 
 
 <div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">task</span>
@@ -4678,7 +4677,7 @@ make sure to pass <code>--no-repo</code> when running <code>dstack apply</code>:
 
 <details class="info">
 <summary>.gitignore and .dstackignore</summary>
-<p><code>dstack</code> automatically excludes files and folders listed in <code>.gitignore</code> and <code>.dstackignore</code>.</p>
+<p>If you configured a <a href="../repos/">repo</a> or <a href="#files">files</a>, <code>dstack</code> excludes files and folders listed in <code>.gitignore</code> and <code>.dstackignore</code>.</p>
 <p>Uploads are limited to 2MB. To avoid exceeding this limit, make sure to exclude unnecessary files.
 You can increase the default server limit by setting the <code>DSTACK_SERVER_CODE_UPLOAD_LIMIT</code> environment variable.</p>
 </details>
