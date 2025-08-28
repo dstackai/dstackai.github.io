@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../../assets/images/dstack-fav-32.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.17+insiders-4.53.16">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.18+insiders-4.53.17">
     
     
       
@@ -975,6 +975,19 @@ Support dstack with a ⭐ on
 </li>
         
           <li class="md-nav__item">
+  <a href="#repos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Repos
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#retry-policy" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1163,34 +1176,6 @@ Support dstack with a ⭐ on
     
   
     Volumes
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../repos/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Repos
   
 
     
@@ -3477,6 +3462,94 @@ Support dstack with a ⭐ on
 
               
             
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_7" id="__nav_3_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Models
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Models
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/models/wan22/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Wan2.2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -3948,6 +4021,19 @@ Support dstack with a ⭐ on
       
         <span class="md-typeset">
           Files
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#repos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Repos
         </span>
       
     </span>
@@ -4595,9 +4681,7 @@ If you need <code>nvcc</code>, set the <a href="../../reference/dstack.yml/dev-e
 </table>
 </details>
 <h3 id="files">Files<a class="headerlink" href="#files" title="Permanent link">&para;</a></h3>
-<p>If you configured a <a href="../repos/">repo</a>, <code>dstack</code> automatically mounts its content (incl. your local changes) inside the container.</p>
-<p>In some cases, you don’t need to mount an entire repo and can mount only specific directories. This can be done using
-<a href="../../reference/dstack.yml/task/#_files"><code>files</code></a> instead of repos.</p>
+<p>Sometimes, when you run a task, you may want to mount local files. This is possible via the <a href="../../reference/dstack.yml/task/#_files"><code>files</code></a> property. Each entry maps a local directory or file to a path inside the container.</p>
 <div editor-title="examples/.dstack.yml"> 
 
 <div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">task</span>
@@ -4629,10 +4713,7 @@ If you need <code>nvcc</code>, set the <a href="../../reference/dstack.yml/dev-e
 </div>
 
 <p>Each entry maps a local directory or file to a path inside the container. Both local and container paths can be relative or absolute.</p>
-<ul>
-<li>If the local path is relative, it’s resolved relative to the configuration file.</li>
-<li>If the container path is relative, it’s resolved relative to <code>/workflow</code>.</li>
-</ul>
+<p>If the local path is relative, it’s resolved relative to the configuration file. If the container path is relative, it’s resolved relative to <code>/workflow</code>.</p>
 <p>The container path is optional. If not specified, it will be automatically calculated.</p>
 <!-- TODO: Add a more elevant example -->
 
@@ -4666,25 +4747,102 @@ If you need <code>nvcc</code>, set the <a href="../../reference/dstack.yml/dev-e
 
 </div>
 
-<p>Note: If you want to use <code>files</code> without mounting the entire repo directory,
-make sure to pass <code>--no-repo</code> when running <code>dstack apply</code>:</p>
-<div class="termy">
+<details class="info">
+<summary>Upload limit and excludes</summary>
+<p>Whether its a file or folder, each entry is limited to 2MB. To avoid exceeding this limit, make sure to exclude unnecessary files
+by listing it via <code>.gitignore</code> or <code>.dstackignore</code>.
+The 2MB upload limit can be increased by setting the <code>DSTACK_SERVER_CODE_UPLOAD_LIMIT</code> environment variable.</p>
+</details>
+<h3 id="repos">Repos<a class="headerlink" href="#repos" title="Permanent link">&para;</a></h3>
+<p>Sometimes, you may want to mount an entire Git repo inside the container.</p>
+<p>Imagine you have a cloned Git repo containing an <code>examples</code> subdirectory with a <code>.dstack.yml</code> file:</p>
+<!-- TODO: Add a more elevant example -->
 
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>dstack<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>examples/.dstack.yml<span class="w"> </span>--no-repo
+<div editor-title="examples/.dstack.yml"> 
+
+<div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">task</span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">trl-sft</span><span class="w">    </span>
+
+<span class="nt">repos</span><span class="p">:</span>
+<span class="w">  </span><span class="c1"># Mounts the parent directory of `examples` (must be a Git repo)</span>
+<span class="w">  </span><span class="c1">#   to `/workflow` (the default working directory)</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">..</span>
+
+<span class="nt">python</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.12</span>
+
+<span class="nt">env</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HF_TOKEN</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HF_HUB_ENABLE_HF_TRANSFER=1</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MODEL=Qwen/Qwen2.5-0.5B</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DATASET=stanfordnlp/imdb</span>
+
+<span class="nt">commands</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uv pip install trl</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span><span class="w"> </span>
+<span class="w">    </span><span class="no">trl sft \</span>
+<span class="w">      </span><span class="no">--model_name_or_path $MODEL --dataset_name $DATASET</span>
+<span class="w">      </span><span class="no">--num_processes $DSTACK_GPUS_PER_NODE</span>
+
+<span class="nt">resources</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">H100:1</span>
 </code></pre></div>
 
 </div>
 
+<p>When you run it, <code>dstack</code> fetches the repo on the instance, applies your local changes, and mounts it—so the container matches your local repo.</p>
+<p>The local path can be either relative to the configuration file or absolute.</p>
 <details class="info">
-<summary>.gitignore and .dstackignore</summary>
-<p>If you configured a <a href="../repos/">repo</a> or <a href="#files">files</a>, <code>dstack</code> excludes files and folders listed in <code>.gitignore</code> and <code>.dstackignore</code>.</p>
-<p>Uploads are limited to 2MB. To avoid exceeding this limit, make sure to exclude unnecessary files.
-You can increase the default server limit by setting the <code>DSTACK_SERVER_CODE_UPLOAD_LIMIT</code> environment variable.</p>
+<summary>Path</summary>
+<p>Currently, <code>dstack</code> always mounts the repo to <code>/workflow</code> inside the container. It's the default working directory. 
+Starting with the next release, it will be possible to specify a custom container path.</p>
 </details>
-<div class="admonition warning">
-<p class="admonition-title">Experimental</p>
-<p>The <code>files</code> feature is experimental. Feedback is highly appreciated.</p>
+<details class="info">
+<summary>Local diff limit and excludes</summary>
+<p>The local diff size is limited to 2MB. To avoid exceeding this limit, exclude unnecessary files
+via <code>.gitignore</code> or <code>.dstackignore</code>.
+The 2MB local diff limit can be increased by setting the <code>DSTACK_SERVER_CODE_UPLOAD_LIMIT</code> environment variable.</p>
+</details>
+<details class="info">
+<summary>Repo URL</summary>
+<p>Sometimes you may want to mount a Git repo without cloning it locally. In this case, simply provide a URL in <code>repos</code>:</p>
+<!-- TODO: Add a more elevant example -->
+<p><div editor-title="examples/.dstack.yml"> </p>
+<div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">task</span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">trl-sft</span><span class="w">    </span>
+
+<span class="nt">repos</span><span class="p">:</span>
+<span class="w">  </span><span class="c1"># Clone the specified repo to `/workflow` (the default working directory)</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://github.com/dstackai/dstack</span>
+
+<span class="nt">python</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.12</span>
+
+<span class="nt">env</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HF_TOKEN</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HF_HUB_ENABLE_HF_TRANSFER=1</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MODEL=Qwen/Qwen2.5-0.5B</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DATASET=stanfordnlp/imdb</span>
+
+<span class="nt">commands</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uv pip install trl</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span><span class="w"> </span>
+<span class="w">    </span><span class="no">trl sft \</span>
+<span class="w">      </span><span class="no">--model_name_or_path $MODEL --dataset_name $DATASET</span>
+<span class="w">      </span><span class="no">--num_processes $DSTACK_GPUS_PER_NODE</span>
+
+<span class="nt">resources</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">H100:1</span>
+</code></pre></div>
 </div>
+</details>
+<details class="info">
+<summary>Private repos</summary>
+<p>If a Git repo is private, <code>dstack</code> will automatically try to use your default Git credentials (from
+<code>~/.ssh/config</code> or <code>~/.config/gh/hosts.yml</code>).</p>
+<p>If you want to use custom credentials, you can provide them with <a href="../../reference/cli/dstack/init/"><code>dstack init</code></a>.</p>
+</details>
+<blockquote>
+<p>Currently, you can configure up to one repo per run configuration.</p>
+</blockquote>
 <h3 id="retry-policy">Retry policy<a class="headerlink" href="#retry-policy" title="Permanent link">&para;</a></h3>
 <p>By default, if <code>dstack</code> can't find capacity, or the task exits with an error, or the instance is interrupted, 
 the run will fail.</p>
@@ -4887,7 +5045,7 @@ Pass <code>--diagnose</code> or <code>-d</code> to view diagnostic logs, which c
 <div class="admonition info">
 <p class="admonition-title">What's next?</p>
 <ol>
-<li>Read about <a href="../dev-environments/">dev environments</a>, <a href="../services/">services</a>, and <a href="../repos/">repos</a></li>
+<li>Read about <a href="../dev-environments/">dev environments</a> and <a href="../services/">services</a></li>
 <li>Learn how to manage <a href="../fleets/">fleets</a></li>
 <li>Check the <a href="/examples/single-node-training/axolotl">Axolotl</a> example</li>
 </ol>
@@ -5048,6 +5206,7 @@ Pass <code>--diagnose</code> or <code>-d</code> to view diagnostic logs, which c
                 <a href="/examples#distributed-training" class="tx-footer__section-link">Distributed training</a>
                 <a href="/examples#clusters" class="tx-footer__section-link">Clusters</a>
                 <a href="/examples#inference" class="tx-footer__section-link">Inference</a>
+                <a href="/examples#models" class="tx-footer__section-link">Models</a>
               </div>
               
               <div class="tx-footer__section">
@@ -5082,7 +5241,7 @@ Pass <code>--diagnose</code> or <code>-d</code> to view diagnostic logs, which c
 <script src="/assets/javascripts/termynal.js" data-termynal-container="#termynal"></script>
 <script async src="https://tally.so/widgets/embed.js"></script>
 
-      <script src="../../../assets/javascripts/bundle.bb65021c.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.f55ec18e.min.js"></script>
       
         <script src="../../../assets/javascripts/extra.js"></script>
       

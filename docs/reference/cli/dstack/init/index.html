@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../../../../assets/images/dstack-fav-32.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.17+insiders-4.53.16">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.18+insiders-4.53.17">
     
     
       
@@ -900,34 +900,6 @@ Support dstack with a ⭐ on
     
   
     Volumes
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../../concepts/repos/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Repos
   
 
     
@@ -3228,6 +3200,94 @@ Support dstack with a ⭐ on
 
               
             
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_7" id="__nav_3_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Models
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Models
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../examples/models/wan22/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Wan2.2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -3692,21 +3752,21 @@ Support dstack with a ⭐ on
 
 
 <h1 id="dstack-init">dstack init<a class="headerlink" href="#dstack-init" title="Permanent link">&para;</a></h1>
-<p>This command initializes the current directory as a <code>dstack</code> <a href="../../../../concepts/repos/">repo</a>.
-The directory must be a cloned Git repository.</p>
-<p><strong>Git credentials</strong></p>
-<p><code>dstack init</code> ensures that <code>dstack</code> can access a remote Git repository.
-By default, the command uses the user's default Git credentials. These can be overridden with
-<code>--git-identity</code> (private SSH key) or <code>--token</code> (OAuth token).</p>
+<p>If you’re using private Git repos in your runs via <a href="../../../../concepts/dev-environments/#repos"><code>repos</code></a>,
+<code>dstack</code> will automatically try to use your default Git credentials (from
+<code>~/.ssh/config</code> or <code>~/.config/gh/hosts.yml</code>). </p>
+<p>To provide custom Git credentials, run <code>dstack init</code>. </p>
 <div class="termy">
 
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>dstack<span class="w"> </span>init<span class="w"> </span>--help
-Usage:<span class="w"> </span>dstack<span class="w"> </span>init<span class="w"> </span><span class="o">[</span>-h<span class="o">]</span><span class="w"> </span><span class="o">[</span>--project<span class="w"> </span>PROJECT<span class="o">]</span><span class="w"> </span><span class="o">[</span>-t<span class="w"> </span>OAUTH_TOKEN<span class="o">]</span>
+Usage:<span class="w"> </span>dstack<span class="w"> </span>init<span class="w"> </span><span class="o">[</span>-h<span class="o">]</span><span class="w"> </span><span class="o">[</span>--project<span class="w"> </span>PROJECT<span class="o">]</span><span class="w"> </span><span class="o">[</span>-P<span class="w"> </span>REPO<span class="o">]</span><span class="w"> </span><span class="o">[</span>-t<span class="w"> </span>OAUTH_TOKEN<span class="o">]</span>
 <span class="w">                   </span><span class="o">[</span>--git-identity<span class="w"> </span>SSH_PRIVATE_KEY<span class="o">]</span>
 
 Options:
 <span class="w">  </span>-h,<span class="w"> </span>--help<span class="w">            </span>Show<span class="w"> </span>this<span class="w"> </span><span class="nb">help</span><span class="w"> </span>message<span class="w"> </span>and<span class="w"> </span><span class="nb">exit</span>
 <span class="w">  </span>--project<span class="w"> </span>PROJECT<span class="w">     </span>The<span class="w"> </span>name<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>project
+<span class="w">  </span>-P,<span class="w"> </span>--repo<span class="w"> </span>REPO<span class="w">       </span>The<span class="w"> </span>repo<span class="w"> </span>to<span class="w"> </span>initialize.<span class="w"> </span>Can<span class="w"> </span>be<span class="w"> </span>a<span class="w"> </span><span class="nb">local</span><span class="w"> </span>path<span class="w"> </span>or<span class="w"> </span>a<span class="w"> </span>Git
+<span class="w">                        </span>repo<span class="w"> </span>URL.<span class="w"> </span>Defaults<span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span>current<span class="w"> </span>working<span class="w"> </span>directory.
 <span class="w">  </span>-t,<span class="w"> </span>--token<span class="w"> </span>OAUTH_TOKEN
 <span class="w">                        </span>An<span class="w"> </span>authentication<span class="w"> </span>token<span class="w"> </span>to<span class="w"> </span>access<span class="w"> </span>a<span class="w"> </span>private<span class="w"> </span>Git<span class="w"> </span>repo
 <span class="w">  </span>--git-identity<span class="w"> </span>SSH_PRIVATE_KEY
@@ -3714,6 +3774,9 @@ Options:
 </code></pre></div>
 
 </div>
+
+<p>You can set credentials with  <code>--git-identity</code> (private SSH key) or <code>--token</code> (OAuth token).</p>
+<p>Run <code>dstack init</code> in the repo’s directory, or pass the repo path or URL with <code>--repo</code> (or <code>-P</code>).</p>
 
 
 
@@ -3870,6 +3933,7 @@ Options:
                 <a href="/examples#distributed-training" class="tx-footer__section-link">Distributed training</a>
                 <a href="/examples#clusters" class="tx-footer__section-link">Clusters</a>
                 <a href="/examples#inference" class="tx-footer__section-link">Inference</a>
+                <a href="/examples#models" class="tx-footer__section-link">Models</a>
               </div>
               
               <div class="tx-footer__section">
@@ -3904,7 +3968,7 @@ Options:
 <script src="/assets/javascripts/termynal.js" data-termynal-container="#termynal"></script>
 <script async src="https://tally.so/widgets/embed.js"></script>
 
-      <script src="../../../../../assets/javascripts/bundle.bb65021c.min.js"></script>
+      <script src="../../../../../assets/javascripts/bundle.f55ec18e.min.js"></script>
       
         <script src="../../../../../assets/javascripts/extra.js"></script>
       

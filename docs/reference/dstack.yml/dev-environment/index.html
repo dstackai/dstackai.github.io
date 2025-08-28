@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../../../assets/images/dstack-fav-32.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.17+insiders-4.53.16">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.18+insiders-4.53.17">
     
     
       
@@ -900,34 +900,6 @@ Support dstack with a ⭐ on
     
   
     Volumes
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../concepts/repos/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Repos
   
 
     
@@ -3361,6 +3333,94 @@ Support dstack with a ⭐ on
 
               
             
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_7" id="__nav_3_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Models
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Models
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../examples/models/wan22/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Wan2.2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -3952,6 +4012,7 @@ Support dstack with a ⭐ on
 <h6 class="reference-item" id="priority"><code>priority</code> - (Optional) The priority of the run, an integer between <code>0</code> and <code>100</code>. <code>dstack</code> tries to provision runs with higher priority first. Defaults to <code>0</code>.<a class="headerlink" href="#priority" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="volumes"><code>volumes</code> - (Optional) The volumes mount points.<a class="headerlink" href="#volumes" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="docker"><code>docker</code> - (Optional) Use Docker inside the container. Mutually exclusive with <code>image</code>, <code>python</code>, and <code>nvcc</code>. Overrides <code>privileged</code>.<a class="headerlink" href="#docker" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="_repos"><a href="#repos"><code>repos</code></a> - (Optional) The list of Git repos.<a class="headerlink" href="#_repos" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="_files"><a href="#files"><code>files</code></a> - (Optional) The local to container file path mappings.<a class="headerlink" href="#_files" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="backends"><code>backends</code> - (Optional) The backends to consider for provisioning (e.g., <code>[aws, gcp]</code>).<a class="headerlink" href="#backends" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="regions"><code>regions</code> - (Optional) The regions to consider for provisioning (e.g., <code>[eu-west-1, us-west4, westeurope]</code>).<a class="headerlink" href="#regions" title="Permanent link">&para;</a></h6>
@@ -4024,7 +4085,7 @@ Support dstack with a ⭐ on
 </details>
 <h3 id="_files"><code>files[n]</code><a class="headerlink" href="#_files" title="Permanent link">&para;</a></h3>
 <h6 class="reference-item" id="local_path"><code>local_path</code> -  The path on the user's machine. Relative paths are resolved relative to the parent directory of the the configuration file.<a class="headerlink" href="#local_path" title="Permanent link">&para;</a></h6>
-<h6 class="reference-item" id="path"><code>path</code> -  The path in the container. Relative paths are resolved relative to the repo directory (<code>/workflow</code>).<a class="headerlink" href="#path" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="path"><code>path</code> -  The path in the container. Relative paths are resolved relative to the repo directory.<a class="headerlink" href="#path" title="Permanent link">&para;</a></h6>
 <details class="info">
 <summary>Short syntax</summary>
 <p>The short syntax for files is a colon-separated string in the form of <code>local_path[:path]</code> where
@@ -4191,6 +4252,7 @@ Support dstack with a ⭐ on
                 <a href="/examples#distributed-training" class="tx-footer__section-link">Distributed training</a>
                 <a href="/examples#clusters" class="tx-footer__section-link">Clusters</a>
                 <a href="/examples#inference" class="tx-footer__section-link">Inference</a>
+                <a href="/examples#models" class="tx-footer__section-link">Models</a>
               </div>
               
               <div class="tx-footer__section">
@@ -4225,7 +4287,7 @@ Support dstack with a ⭐ on
 <script src="/assets/javascripts/termynal.js" data-termynal-container="#termynal"></script>
 <script async src="https://tally.so/widgets/embed.js"></script>
 
-      <script src="../../../../assets/javascripts/bundle.bb65021c.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.f55ec18e.min.js"></script>
       
         <script src="../../../../assets/javascripts/extra.js"></script>
       
