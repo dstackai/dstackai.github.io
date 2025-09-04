@@ -3981,14 +3981,6 @@ to configure <a href="../../../concepts/backends/">backends</a> and other <a hre
 <div class="tabbed-block"></div>
 </div>
 </div>
-<h5 id="hotaisle"><code>projects[n].backends[type=hotaisle]</code><a class="headerlink" href="#hotaisle" title="Permanent link">&para;</a></h5>
-<h6 class="reference-item" id="type"><code>type</code> -  The type of backend. Must be <code>hotaisle</code>.<a class="headerlink" href="#type" title="Permanent link">&para;</a></h6>
-<h6 class="reference-item" id="team_handle"><code>team_handle</code> -  The Hot Aisle team handle.<a class="headerlink" href="#team_handle" title="Permanent link">&para;</a></h6>
-<h6 class="reference-item" id="regions"><code>regions</code> - (Optional) The list of Hot Aisle regions. Omit to use all regions.<a class="headerlink" href="#regions" title="Permanent link">&para;</a></h6>
-<h6 class="reference-item" id="_creds"><a href="#hotaisle-creds"><code>creds</code></a> -  The credentials.<a class="headerlink" href="#_creds" title="Permanent link">&para;</a></h6>
-<h6 id="hotaisle-creds"><code>projects[n].backends[type=hotaisle].creds</code><a class="headerlink" href="#hotaisle-creds" title="Permanent link">&para;</a></h6>
-<h6 class="reference-item" id="type"><code>type</code> -  The type of credentials. Must be <code>api_key</code>.<a class="headerlink" href="#type" title="Permanent link">&para;</a></h6>
-<h6 class="reference-item" id="api_key"><code>api_key</code> -  The Hot Aisle API key.<a class="headerlink" href="#api_key" title="Permanent link">&para;</a></h6>
 <h5 id="lambda"><code>projects[n].backends[type=lambda]</code><a class="headerlink" href="#lambda" title="Permanent link">&para;</a></h5>
 <h6 class="reference-item" id="type"><code>type</code> -  The type of backend. Must be <code>lambda</code>.<a class="headerlink" href="#type" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="regions"><code>regions</code> - (Optional) The list of Lambda regions. Omit to use all regions.<a class="headerlink" href="#regions" title="Permanent link">&para;</a></h6>
@@ -4093,6 +4085,30 @@ to configure <a href="../../../concepts/backends/">backends</a> and other <a hre
 <h6 id="vultr-creds"><code>projects[n].backends[type=vultr].creds</code><a class="headerlink" href="#vultr-creds" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="type"><code>type</code> -  The type of credentials. Must be <code>api_key</code>.<a class="headerlink" href="#type" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="api_key"><code>api_key</code> -  The API key.<a class="headerlink" href="#api_key" title="Permanent link">&para;</a></h6>
+<h5 id="amddevcloud"><code>projects[n].backends[type=amddevcloud]</code><a class="headerlink" href="#amddevcloud" title="Permanent link">&para;</a></h5>
+<h6 class="reference-item" id="type"><code>type</code> -  The type of backend.<a class="headerlink" href="#type" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="project_name"><code>project_name</code> - (Optional) The name of the project.<a class="headerlink" href="#project_name" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="regions"><code>regions</code> - (Optional) The list of regions. Omit to use all regions.<a class="headerlink" href="#regions" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="_creds"><a href="#amddevcloud-creds"><code>creds</code></a> -  The credentials.<a class="headerlink" href="#_creds" title="Permanent link">&para;</a></h6>
+<h6 id="amddevcloud-creds"><code>projects[n].backends[type=amddevcloud].creds</code><a class="headerlink" href="#amddevcloud-creds" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="type"><code>type</code> -  The type of credentials. Must be <code>api_key</code>.<a class="headerlink" href="#type" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="api_key"><code>api_key</code> -  The API key.<a class="headerlink" href="#api_key" title="Permanent link">&para;</a></h6>
+<h5 id="digitalocean"><code>projects[n].backends[type=digitalocean]</code><a class="headerlink" href="#digitalocean" title="Permanent link">&para;</a></h5>
+<h6 class="reference-item" id="type"><code>type</code> -  The type of backend.<a class="headerlink" href="#type" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="project_name"><code>project_name</code> - (Optional) The name of the project.<a class="headerlink" href="#project_name" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="regions"><code>regions</code> - (Optional) The list of regions. Omit to use all regions.<a class="headerlink" href="#regions" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="_creds"><a href="#digitalocean-creds"><code>creds</code></a> -  The credentials.<a class="headerlink" href="#_creds" title="Permanent link">&para;</a></h6>
+<h6 id="digitalocean-creds"><code>projects[n].backends[type=digitalocean].creds</code><a class="headerlink" href="#digitalocean-creds" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="type"><code>type</code> -  The type of credentials. Must be <code>api_key</code>.<a class="headerlink" href="#type" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="api_key"><code>api_key</code> -  The API key.<a class="headerlink" href="#api_key" title="Permanent link">&para;</a></h6>
+<h5 id="hotaisle"><code>projects[n].backends[type=hotaisle]</code><a class="headerlink" href="#hotaisle" title="Permanent link">&para;</a></h5>
+<h6 class="reference-item" id="type"><code>type</code> -  The type of backend. Must be <code>hotaisle</code>.<a class="headerlink" href="#type" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="team_handle"><code>team_handle</code> -  The Hot Aisle team handle.<a class="headerlink" href="#team_handle" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="regions"><code>regions</code> - (Optional) The list of Hot Aisle regions. Omit to use all regions.<a class="headerlink" href="#regions" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="_creds"><a href="#hotaisle-creds"><code>creds</code></a> -  The credentials.<a class="headerlink" href="#_creds" title="Permanent link">&para;</a></h6>
+<h6 id="hotaisle-creds"><code>projects[n].backends[type=hotaisle].creds</code><a class="headerlink" href="#hotaisle-creds" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="type"><code>type</code> -  The type of credentials. Must be <code>api_key</code>.<a class="headerlink" href="#type" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="api_key"><code>api_key</code> -  The Hot Aisle API key.<a class="headerlink" href="#api_key" title="Permanent link">&para;</a></h6>
 <h5 id="cloudrift"><code>projects[n].backends[type=cloudrift]</code><a class="headerlink" href="#cloudrift" title="Permanent link">&para;</a></h5>
 <h6 class="reference-item" id="type"><code>type</code> -  The type of backend. Must be <code>cloudrift</code>.<a class="headerlink" href="#type" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="regions"><code>regions</code> - (Optional) The list of CloudRift regions. Omit to use all regions.<a class="headerlink" href="#regions" title="Permanent link">&para;</a></h6>

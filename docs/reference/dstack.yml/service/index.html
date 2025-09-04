@@ -1594,6 +1594,17 @@ Support dstack with a ⭐ on
 </li>
         
           <li class="md-nav__item">
+  <a href="#_repos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        repos
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#_files" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3963,6 +3974,17 @@ Support dstack with a ⭐ on
 </li>
         
           <li class="md-nav__item">
+  <a href="#_repos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        repos
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#_files" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -4092,10 +4114,10 @@ Support dstack with a ⭐ on
 <h6 class="reference-item" id="commands"><code>commands</code> - (Optional) The shell commands to run.<a class="headerlink" href="#commands" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="name"><code>name</code> - (Optional) The run name. If not specified, a random name is generated.<a class="headerlink" href="#name" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="image"><code>image</code> - (Optional) The name of the Docker image to run.<a class="headerlink" href="#image" title="Permanent link">&para;</a></h6>
-<h6 class="reference-item" id="user"><code>user</code> - (Optional) The user inside the container, <code>user_name_or_id[:group_name_or_id]</code> (e.g., <code>ubuntu</code>, <code>1000:1000</code>). Defaults to the default <code>image</code> user.<a class="headerlink" href="#user" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="user"><code>user</code> - (Optional) The user inside the container, <code>user_name_or_id[:group_name_or_id]</code> (e.g., <code>ubuntu</code>, <code>1000:1000</code>). Defaults to the default user from the <code>image</code>.<a class="headerlink" href="#user" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="privileged"><code>privileged</code> - (Optional) Run the container in privileged mode.<a class="headerlink" href="#privileged" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="entrypoint"><code>entrypoint</code> - (Optional) The Docker entrypoint.<a class="headerlink" href="#entrypoint" title="Permanent link">&para;</a></h6>
-<h6 class="reference-item" id="working_dir"><code>working_dir</code> - (Optional) The path to the working directory inside the container. It's specified relative to the repository directory (<code>/workflow</code>) and should be inside it. Defaults to <code>"."</code> .<a class="headerlink" href="#working_dir" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="working_dir"><code>working_dir</code> - (Optional) The absolute path to the working directory inside the container. Defaults to <code>/workflow</code>.<a class="headerlink" href="#working_dir" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="_registry_auth"><a href="#registry_auth"><code>registry_auth</code></a> - (Optional) Credentials for pulling a private Docker image.<a class="headerlink" href="#_registry_auth" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="python"><code>python</code> - (Optional) The major version of Python. Mutually exclusive with <code>image</code> and <code>docker</code>.<a class="headerlink" href="#python" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="nvcc"><code>nvcc</code> - (Optional) Use image with NVIDIA CUDA Compiler (NVCC) included. Mutually exclusive with <code>image</code> and <code>docker</code>.<a class="headerlink" href="#nvcc" title="Permanent link">&para;</a></h6>
@@ -4269,9 +4291,30 @@ from the model's repository. If it is not present there, manual configuration is
 <li><code>/instance/path:/container/path</code> for instance volumes</li>
 </ul>
 </details>
+<h3 id="_repos"><code>repos[n]</code><a class="headerlink" href="#_repos" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>Currently, a maximum of one repo is supported.</p>
+<p>Either <code>local_path</code> or <code>url</code> must be specified.</p>
+</blockquote>
+<h6 class="reference-item" id="local_path"><code>local_path</code> - (Optional) The path to the Git repo on the user's machine. Relative paths are resolved relative to the parent directory of the the configuration file. Mutually exclusive with <code>url</code>.<a class="headerlink" href="#local_path" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="url"><code>url</code> - (Optional) The Git repo URL. Mutually exclusive with <code>local_path</code>.<a class="headerlink" href="#url" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="branch"><code>branch</code> - (Optional) The repo branch. Defaults to the active branch for local paths and the default branch for URLs.<a class="headerlink" href="#branch" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="hash"><code>hash</code> - (Optional) The commit hash.<a class="headerlink" href="#hash" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="path"><code>path</code> - (Optional) The repo path inside the run container. Relative paths are resolved relative to the working directory. Defaults to <code>/workflow</code>.<a class="headerlink" href="#path" title="Permanent link">&para;</a></h6>
+<details class="info">
+<summary>Short syntax</summary>
+<p>The short syntax for repos is a colon-separated string in the form of <code>local_path_or_url:path</code>.</p>
+<ul>
+<li><code>.:/repo</code></li>
+<li><code>..:repo</code></li>
+<li><code>~/repos/demo:~/repo</code></li>
+<li><code>https://github.com/org/repo:~/data/repo</code></li>
+<li><code>git@github.com:org/repo.git:data/repo</code></li>
+</ul>
+</details>
 <h3 id="_files"><code>files[n]</code><a class="headerlink" href="#_files" title="Permanent link">&para;</a></h3>
 <h6 class="reference-item" id="local_path"><code>local_path</code> -  The path on the user's machine. Relative paths are resolved relative to the parent directory of the the configuration file.<a class="headerlink" href="#local_path" title="Permanent link">&para;</a></h6>
-<h6 class="reference-item" id="path"><code>path</code> -  The path in the container. Relative paths are resolved relative to the repo directory.<a class="headerlink" href="#path" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="path"><code>path</code> -  The path in the container. Relative paths are resolved relative to the working directory.<a class="headerlink" href="#path" title="Permanent link">&para;</a></h6>
 <details class="info">
 <summary>Short syntax</summary>
 <p>The short syntax for files is a colon-separated string in the form of <code>local_path[:path]</code> where

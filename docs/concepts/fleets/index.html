@@ -4097,6 +4097,23 @@ Provisioning...
 
 <p>Once the status of instances changes to <code>idle</code>, they can be used by dev environments, tasks, and services.</p>
 <h3 id="configuration-options">Configuration options<a class="headerlink" href="#configuration-options" title="Permanent link">&para;</a></h3>
+<h4 id="nodes">Nodes<a class="headerlink" href="#nodes" title="Permanent link">&para;</a></h4>
+<p>The <code>nodes</code> property controls how many instances to provision and maintain in the fleet:</p>
+<div editor-title=".dstack.yml"> 
+
+<div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">fleet</span>
+
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my-fleet</span>
+
+<span class="nt">nodes</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">min</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span><span class="w"> </span><span class="c1"># Always maintain at least 1 instance</span>
+<span class="w">  </span><span class="nt">target</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span><span class="w"> </span><span class="c1"># Provision 2 instances initially</span>
+<span class="w">  </span><span class="nt">max</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span><span class="w"> </span><span class="c1"># Do not allow more than 3 instances</span>
+</code></pre></div>
+
+</div>
+
+<p><code>dstack</code> ensures the fleet always has at least <code>nodes.min</code> instances, creating new instances in the background if necessary. If you don't need to keep instances in the fleet forever, you can set <code>nodes.min</code> to <code>0</code>. By default, <code>dstack apply</code> also provisions <code>nodes.min</code> instances. The <code>nodes.target</code> property allows provisioning more instances initially than needs to be maintained.</p>
 <h4 id="cloud-placement">Placement<a class="headerlink" href="#cloud-placement" title="Permanent link">&para;</a></h4>
 <p>To ensure instances are interconnected (e.g., for
 <a href="../tasks/#distributed-tasks">distributed tasks</a>), set <code>placement</code> to <code>cluster</code>. 

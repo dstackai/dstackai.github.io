@@ -1042,6 +1042,19 @@ Support dstack with a ⭐ on
 </li>
         
           <li class="md-nav__item">
+  <a href="#working-directory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Working directory
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#files" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -4120,6 +4133,19 @@ Support dstack with a ⭐ on
 </li>
         
           <li class="md-nav__item">
+  <a href="#working-directory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Working directory
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#files" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -4438,6 +4464,10 @@ a gateway is already pre-configured for you.</p>
 at <code>https://gateway.&lt;gateway domain&gt;/</code>.</p>
 </details>
 <h2 id="configuration-options">Configuration options<a class="headerlink" href="#configuration-options" title="Permanent link">&para;</a></h2>
+<div class="admonition info">
+<p class="admonition-title">No commands</p>
+<p>If <code>commands</code> are not specified, <code>dstack</code> runs <code>image</code>’s entrypoint (or fails if none is set).</p>
+</div>
 <h3 id="replicas-and-scaling">Replicas and scaling<a class="headerlink" href="#replicas-and-scaling" title="Permanent link">&para;</a></h3>
 <p>By default, <code>dstack</code> runs a single replica of the service.
 You can configure the number of replicas as well as the auto-scaling rules.</p>
@@ -4860,10 +4890,29 @@ If you need <code>nvcc</code>, set the <a href="../../reference/dstack.yml/dev-e
 <td><code>DSTACK_GPUS_NUM</code></td>
 <td>The total number of GPUs in the run</td>
 </tr>
+<tr>
+<td><code>DSTACK_WORKING_DIR</code></td>
+<td>The working directory of the run</td>
+</tr>
+<tr>
+<td><code>DSTACK_REPO_DIR</code></td>
+<td>The directory where the repo is mounted (if any)</td>
+</tr>
 </tbody>
 </table>
 </details>
 <!-- TODO: Ellaborate on using environment variables in `registry_auth` -->
+
+<h3 id="working-directory">Working directory<a class="headerlink" href="#working-directory" title="Permanent link">&para;</a></h3>
+<p>If <code>working_dir</code> is not specified, it defaults to <code>/workflow</code>.</p>
+<div class="admonition info">
+<p class="admonition-title">No commands</p>
+<p>If you’re using a custom <code>image</code> without <code>commands</code>, then <code>working_dir</code> is taken from <code>image</code>.</p>
+</div>
+<p>The <code>working_dir</code> must be an absolute path. The tilde (<code>~</code>) is supported (e.g., <code>~/my-working-dir</code>).</p>
+<!-- TODO: In a future version, the default working directory will be taken from `image`. -->
+
+<!-- TODO: Elaborate on `entrypoint` -->
 
 <h3 id="files">Files<a class="headerlink" href="#files" title="Permanent link">&para;</a></h3>
 <p>Sometimes, when you run a service, you may want to mount local files. This is possible via the <a href="../../reference/dstack.yml/task/#_files"><code>files</code></a> property. Each entry maps a local directory or file to a path inside the container.</p>
@@ -4925,7 +4974,7 @@ If you need <code>nvcc</code>, set the <a href="../../reference/dstack.yml/dev-e
 </div>
 
 <details class="info">
-<summary>Upload limit and excludes</summary>
+<summary>File size</summary>
 <p>Whether its a file or folder, each entry is limited to 2MB. To avoid exceeding this limit, make sure to exclude unnecessary files
 by listing it via <code>.gitignore</code> or <code>.dstackignore</code>.
 The 2MB upload limit can be increased by setting the <code>DSTACK_SERVER_CODE_UPLOAD_LIMIT</code> environment variable.</p>
@@ -4964,15 +5013,40 @@ The 2MB upload limit can be increased by setting the <code>DSTACK_SERVER_CODE_UP
 <p>When you run it, <code>dstack</code> fetches the repo on the instance, applies your local changes, and mounts it—so the container matches your local repo.</p>
 <p>The local path can be either relative to the configuration file or absolute.</p>
 <details class="info">
-<summary>Path</summary>
-<p>Currently, <code>dstack</code> always mounts the repo to <code>/workflow</code> inside the container. It's the default working directory. 
-Starting with the next release, it will be possible to specify a custom container path.</p>
+<summary>Repo directory</summary>
+<p>By default, <code>dstack</code> mounts the repo to <code>/workflow</code> (the default working directory).</p>
+<!-- TODO: In a future version, the default working directory will come from the image, so this should be revisited. -->
+<p>You can override the repo directory using either a relative or an absolute path:</p>
+<p><div editor-title="examples/.dstack.yml"> </p>
+<div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service</span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">llama-2-7b-service</span>
+
+<span class="nt">repos</span><span class="p">:</span>
+<span class="w">  </span><span class="c1"># Mounts the parent directory of `examples` (must be a Git repo)</span>
+<span class="w">  </span><span class="c1">#   to `/my-repo`</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">..:/my-repo</span>
+
+<span class="nt">python</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.12</span>
+
+<span class="nt">env</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HF_TOKEN</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MODEL=NousResearch/Llama-2-7b-chat-hf</span>
+<span class="nt">commands</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uv pip install vllm</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python -m vllm.entrypoints.openai.api_server --model $MODEL --port 8000</span>
+<span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8000</span>
+
+<span class="nt">resources</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">24GB</span>
+</code></pre></div>
+</div>
+<p>If the path is relative, it is resolved against <code>working_dir</code>.</p>
 </details>
 <details class="info">
-<summary>Local diff limit and excludes</summary>
-<p>The local diff size is limited to 2MB. To avoid exceeding this limit, exclude unnecessary files
-via <code>.gitignore</code> or <code>.dstackignore</code>.
-The 2MB local diff limit can be increased by setting the <code>DSTACK_SERVER_CODE_UPLOAD_LIMIT</code> environment variable.</p>
+<summary>Repo size</summary>
+<p>The repo size is not limited. However, local changes are limited to 2MB. 
+To avoid exceeding this limit, exclude unnecessary files using <code>.gitignore</code> or <code>.dstackignore</code>.
+You can increase the 2MB limit by setting the <code>DSTACK_SERVER_CODE_UPLOAD_LIMIT</code> environment variable.</p>
 </details>
 <details class="info">
 <summary>Repo URL</summary>

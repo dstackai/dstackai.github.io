@@ -853,19 +853,6 @@ Support dstack with a ⭐ on
 </li>
       
         <li class="md-nav__item">
-  <a href="#hot-aisle" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        <span class="md-typeset">
-          Hot Aisle
-        </span>
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#lambda" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -962,6 +949,45 @@ Support dstack with a ⭐ on
       
         <span class="md-typeset">
           DataCrunch
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#amd-developer-cloud" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          AMD Developer Cloud
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#digital-ocean" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Digital Ocean
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hot-aisle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Hot Aisle
         </span>
       
     </span>
@@ -3931,19 +3957,6 @@ Support dstack with a ⭐ on
 </li>
       
         <li class="md-nav__item">
-  <a href="#hot-aisle" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        <span class="md-typeset">
-          Hot Aisle
-        </span>
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#lambda" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -4040,6 +4053,45 @@ Support dstack with a ⭐ on
       
         <span class="md-typeset">
           DataCrunch
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#amd-developer-cloud" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          AMD Developer Cloud
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#digital-ocean" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Digital Ocean
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hot-aisle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Hot Aisle
         </span>
       
     </span>
@@ -4394,6 +4446,7 @@ The <code>user</code> specifies an OS user for instance provisioning.</p>
 <li><code>user</code> with passwordless sudo access</li>
 <li>Docker is installed</li>
 <li>(For NVIDIA instances) NVIDIA/CUDA drivers and NVIDIA Container Toolkit are installed</li>
+<li>The firewall (<code>iptables</code>, <code>ufw</code>, etc.) must allow external traffic to port 22 and all traffic within the private subnet, and should forbid any other incoming external traffic.</li>
 </ul>
 </div>
 </details>
@@ -4679,32 +4732,6 @@ If you want <code>dstack</code> to use private subnets and provision instances w
 <p>Using private subnets assumes that both the <code>dstack</code> server and users can access the configured VPC's private subnets.
 Additionally, <a href="https://cloud.google.com/nat/docs/overview">Cloud NAT</a> must be configured to provide access to external resources for provisioned instances.</p>
 </details>
-<h2 id="hot-aisle">Hot Aisle<a class="headerlink" href="#hot-aisle" title="Permanent link">&para;</a></h2>
-<p>Log in to the SSH TUI as described in the <a href="https://hotaisle.xyz/quick-start/">Hot Aisle Quick Start <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>.
-Create a new team and generate an API key for the member in the team.</p>
-<p>Then, go ahead and configure the backend:</p>
-<div editor-title="~/.dstack/server/config.yml">
-
-<div class="highlight"><pre><span></span><code><span class="nt">projects</span><span class="p">:</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">main</span>
-<span class="w">  </span><span class="nt">backends</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hotaisle</span>
-<span class="w">      </span><span class="nt">team_handle</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hotaisle-team-handle</span>
-<span class="w">      </span><span class="nt">creds</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">api_key</span>
-<span class="w">        </span><span class="nt">api_key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">9c27a4bb7a8e472fae12ab34.3f2e3c1db75b9a0187fd2196c6b3e56d2b912e1c439ba08d89e7b6fcd4ef1d3f</span>
-</code></pre></div>
-
-</div>
-
-<details class="info">
-<summary>Required permissions</summary>
-<p>The API key must have the following roles assigned:</p>
-<ul>
-<li><strong>Owner role for the user</strong> - Required for creating and managing SSH keys</li>
-<li><strong>Operator role for the team</strong> - Required for managing virtual machines within the team</li>
-</ul>
-</details>
 <h2 id="lambda">Lambda<a class="headerlink" href="#lambda" title="Permanent link">&para;</a></h2>
 <p>Log into your <a href="https://lambdalabs.com/service/gpu-cloud">Lambda Cloud <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> account, click API keys in the sidebar, and then click the <code>Generate API key</code>
 button to create a new API key.</p>
@@ -4975,6 +5002,98 @@ Allow group &lt;dstack-users&gt; to manage virtual-network-family in compartment
 
 </div>
 
+<h2 id="amd-developer-cloud">AMD Developer Cloud<a class="headerlink" href="#amd-developer-cloud" title="Permanent link">&para;</a></h2>
+<p>Log into your <a href="https://amd.digitalocean.com/login">AMD Developer Cloud <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> account. Click <code>API</code> in the sidebar and click the button <code>Generate New Token</code>. </p>
+<p>Then, go ahead and configure the backend:</p>
+<div editor-title="~/.dstack/server/config.yml">
+
+<div class="highlight"><pre><span></span><code><span class="nt">projects</span><span class="p">:</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">main</span>
+<span class="w">  </span><span class="nt">backends</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">amddevcloud</span>
+<span class="w">      </span><span class="nt">project_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my-amd-project</span>
+<span class="w">      </span><span class="nt">creds</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">api_key</span>
+<span class="w">        </span><span class="nt">api_key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;api_key_amd_dev_cloud&gt;</span>
+</code></pre></div>
+
+</div>
+
+<details class="info">
+<summary>Project Name</summary>
+<p><strong>project_name</strong> configuration is optional. If it is not provided, the default project is used.</p>
+</details>
+<details class="info">
+<summary>Required permissions</summary>
+<p>The API key must have the following scopes assigned:</p>
+<ul>
+<li><strong>account</strong> - read</li>
+<li><strong>droplet</strong> - create,read,update,delete,admin</li>
+<li><strong>project</strong> - create,read,update,delete</li>
+<li><strong>regions</strong> - read</li>
+<li><strong>sizes</strong>   - read</li>
+<li><strong>ssh_key</strong>  - create,read,update,delete</li>
+</ul>
+</details>
+<h2 id="digital-ocean">Digital Ocean<a class="headerlink" href="#digital-ocean" title="Permanent link">&para;</a></h2>
+<p>Log into your <a href="https://cloud.digitalocean.com/login">Digital Ocean <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> account. Click <code>API</code> in the sidebar and click the button <code>Generate New Token</code>. </p>
+<p>Then, go ahead and configure the backend:</p>
+<div editor-title="~/.dstack/server/config.yml">
+
+<div class="highlight"><pre><span></span><code><span class="nt">projects</span><span class="p">:</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">main</span>
+<span class="w">  </span><span class="nt">backends</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">digitalocean</span>
+<span class="w">      </span><span class="nt">project_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my-digital-ocean-project</span>
+<span class="w">      </span><span class="nt">creds</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">api_key</span>
+<span class="w">        </span><span class="nt">api_key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;api_key_digitalocean&gt;</span>
+</code></pre></div>
+
+</div>
+
+<details class="info">
+<summary>Project Name</summary>
+<p><strong>project_name</strong> configuration is optional. If it is not provided, the default project is used.</p>
+</details>
+<details class="info">
+<summary>Required permissions</summary>
+<p>The API key must have the following scopes assigned:</p>
+<ul>
+<li><strong>account</strong> - read</li>
+<li><strong>droplet</strong> - create,read,update,delete,admin</li>
+<li><strong>project</strong> - create,read,update,delete</li>
+<li><strong>regions</strong> - read</li>
+<li><strong>sizes</strong>   - read</li>
+<li><strong>ssh_key</strong>  - create,read,update,delete</li>
+</ul>
+</details>
+<h2 id="hot-aisle">Hot Aisle<a class="headerlink" href="#hot-aisle" title="Permanent link">&para;</a></h2>
+<p>Log in to the SSH TUI as described in the <a href="https://hotaisle.xyz/quick-start/">Hot Aisle Quick Start <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>.
+Create a new team and generate an API key for the member in the team.</p>
+<p>Then, go ahead and configure the backend:</p>
+<div editor-title="~/.dstack/server/config.yml">
+
+<div class="highlight"><pre><span></span><code><span class="nt">projects</span><span class="p">:</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">main</span>
+<span class="w">  </span><span class="nt">backends</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hotaisle</span>
+<span class="w">      </span><span class="nt">team_handle</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hotaisle-team-handle</span>
+<span class="w">      </span><span class="nt">creds</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">api_key</span>
+<span class="w">        </span><span class="nt">api_key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">9c27a4bb7a8e472fae12ab34.3f2e3c1db75b9a0187fd2196c6b3e56d2b912e1c439ba08d89e7b6fcd4ef1d3f</span>
+</code></pre></div>
+
+</div>
+
+<details class="info">
+<summary>Required permissions</summary>
+<p>The API key must have the following roles assigned:</p>
+<ul>
+<li><strong>Owner role for the user</strong> - Required for creating and managing SSH keys</li>
+<li><strong>Operator role for the team</strong> - Required for managing virtual machines within the team</li>
+</ul>
+</details>
 <h2 id="cloudrift">CloudRift<a class="headerlink" href="#cloudrift" title="Permanent link">&para;</a></h2>
 <p>Log into your <a href="https://console.cloudrift.ai/">CloudRift <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> console, click <code>API Keys</code> in the sidebar and click the button to create a new API key.</p>
 <p>Ensure you've created a project with CloudRift.</p>

@@ -4864,7 +4864,7 @@ Use this method to apply run plans returned by <code>get_run_plan</code>.</p>
 
 
 <h4 id="dstack.api.RunCollection.get_run_plan" class="doc doc-heading">
-<code class="doc-symbol doc-symbol-heading doc-symbol-method"></code>            <code class="highlight language-python"><span class="n">get_run_plan</span><span class="p">(</span><span class="n">configuration</span><span class="p">,</span> <span class="n">repo</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">profile</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">configuration_path</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+<code class="doc-symbol doc-symbol-heading doc-symbol-method"></code>            <code class="highlight language-python"><span class="n">get_run_plan</span><span class="p">(</span><span class="n">configuration</span><span class="p">,</span> <span class="n">repo</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">profile</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">configuration_path</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">repo_dir</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
 
 <a href="#dstack.api.RunCollection.get_run_plan" class="headerlink" title="Permanent link">&para;</a></h4>
 
@@ -4943,7 +4943,26 @@ Use this method to see the run plan before applying the configuration.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>The path to the configuration file. Omit if the configuration is not loaded from a file.</p>
+                <p>The path to the configuration file. Omit if the configuration
+is not loaded from a file.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>repo_dir</code>
+            </td>
+            <td>
+                  <code><span title="typing.Optional">Optional</span>[<span title="str">str</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The path of the cloned repo inside the run container. If not set,
+defaults first to the <code>repos[0].path</code> property of the configuration (for remote
+repos only), then to <code>/workflow</code>.</p>
               </div>
             </td>
             <td>
@@ -5112,8 +5131,104 @@ Use this method to see the run plan before applying the configuration.</p>
 <div class="doc doc-object doc-function">
 
 
+<h4 id="dstack.api.RepoCollection.get" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">get</span><span class="p">(</span><span class="n">repo_id</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">with_creds</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code>
+
+<a href="#dstack.api.RepoCollection.get" class="headerlink" title="Permanent link">&para;</a></h4>
+          <div class="doc-overloads">
+<div class="doc-signature highlight"><pre><span></span><code><span class="nf">get</span><span class="p">(</span>
+    <span class="n">repo_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">with_creds</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="kc">False</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">RepoHead</span><span class="p">]</span>
+</code></pre></div><div class="doc-signature highlight"><pre><span></span><code><span class="nf">get</span><span class="p">(</span>
+    <span class="n">repo_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">with_creds</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="kc">True</span><span class="p">]</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">RepoHeadWithCreds</span><span class="p">]</span>
+</code></pre></div>          </div>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Returns the repo by <code>repo_id</code></p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>repo_id</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The repo ID.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>with_creds</code>
+            </td>
+            <td>
+                  <code><span title="bool">bool</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>include repo credentials in the response.</p>
+              </div>
+            </td>
+            <td>
+                  <code>False</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="typing.Optional">Optional</span>[<span title="typing.Union">Union</span>[<span title="dstack._internal.core.models.repos.RepoHead">RepoHead</span>, <span title="dstack._internal.core.models.repos.RepoHeadWithCreds">RepoHeadWithCreds</span>]]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The repo or <code>None</code> if the repo is not found.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
 <h4 id="dstack.api.RepoCollection.init" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">init</span><span class="p">(</span><span class="n">repo</span><span class="p">,</span> <span class="n">git_identity_file</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">oauth_token</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">init</span><span class="p">(</span><span class="n">repo</span><span class="p">,</span> <span class="n">git_identity_file</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">oauth_token</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">creds</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
 
 <a href="#dstack.api.RepoCollection.init" class="headerlink" title="Permanent link">&para;</a></h4>
 
@@ -5192,6 +5307,23 @@ You can override these credentials via the <code>git_identity_file</code> or <co
             <td>
               <div class="doc-md-description">
                 <p>The GitHub OAuth token to access the remote repo.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>creds</code>
+            </td>
+            <td>
+                  <code><span title="typing.Optional">Optional</span>[<span title="dstack._internal.core.models.repos.RemoteRepoCreds">RemoteRepoCreds</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Optional prepared repo credentials. If specified, both <code>git_identity_file</code>
+and <code>oauth_token</code> are ignored.</p>
               </div>
             </td>
             <td>
@@ -5466,10 +5598,10 @@ the user's credentials. Ignored for other repo types.</p>
 <h6 class="reference-item" id="commands"><code>commands</code> - (Optional) The shell commands to run.<a class="headerlink" href="#commands" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="name"><code>name</code> - (Optional) The run name. If not specified, a random name is generated.<a class="headerlink" href="#name" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="image"><code>image</code> - (Optional) The name of the Docker image to run.<a class="headerlink" href="#image" title="Permanent link">&para;</a></h6>
-<h6 class="reference-item" id="user"><code>user</code> - (Optional) The user inside the container, <code>user_name_or_id[:group_name_or_id]</code> (e.g., <code>ubuntu</code>, <code>1000:1000</code>). Defaults to the default <code>image</code> user.<a class="headerlink" href="#user" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="user"><code>user</code> - (Optional) The user inside the container, <code>user_name_or_id[:group_name_or_id]</code> (e.g., <code>ubuntu</code>, <code>1000:1000</code>). Defaults to the default user from the <code>image</code>.<a class="headerlink" href="#user" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="privileged"><code>privileged</code> - (Optional) Run the container in privileged mode.<a class="headerlink" href="#privileged" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="entrypoint"><code>entrypoint</code> - (Optional) The Docker entrypoint.<a class="headerlink" href="#entrypoint" title="Permanent link">&para;</a></h6>
-<h6 class="reference-item" id="working_dir"><code>working_dir</code> - (Optional) The path to the working directory inside the container. It's specified relative to the repository directory (<code>/workflow</code>) and should be inside it. Defaults to <code>"."</code> .<a class="headerlink" href="#working_dir" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="working_dir"><code>working_dir</code> - (Optional) The absolute path to the working directory inside the container. Defaults to <code>/workflow</code>.<a class="headerlink" href="#working_dir" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="_registry_auth"><a href="#dstack.api.RegistryAuth"><code>registry_auth</code></a> - (Optional) Credentials for pulling a private Docker image.<a class="headerlink" href="#_registry_auth" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="python"><code>python</code> - (Optional) The major version of Python. Mutually exclusive with <code>image</code> and <code>docker</code>.<a class="headerlink" href="#python" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="nvcc"><code>nvcc</code> - (Optional) Use image with NVIDIA CUDA Compiler (NVCC) included. Mutually exclusive with <code>image</code> and <code>docker</code>.<a class="headerlink" href="#nvcc" title="Permanent link">&para;</a></h6>
@@ -5514,10 +5646,10 @@ the user's credentials. Ignored for other repo types.</p>
 <h6 class="reference-item" id="commands"><code>commands</code> - (Optional) The shell commands to run.<a class="headerlink" href="#commands" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="name"><code>name</code> - (Optional) The run name. If not specified, a random name is generated.<a class="headerlink" href="#name" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="image"><code>image</code> - (Optional) The name of the Docker image to run.<a class="headerlink" href="#image" title="Permanent link">&para;</a></h6>
-<h6 class="reference-item" id="user"><code>user</code> - (Optional) The user inside the container, <code>user_name_or_id[:group_name_or_id]</code> (e.g., <code>ubuntu</code>, <code>1000:1000</code>). Defaults to the default <code>image</code> user.<a class="headerlink" href="#user" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="user"><code>user</code> - (Optional) The user inside the container, <code>user_name_or_id[:group_name_or_id]</code> (e.g., <code>ubuntu</code>, <code>1000:1000</code>). Defaults to the default user from the <code>image</code>.<a class="headerlink" href="#user" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="privileged"><code>privileged</code> - (Optional) Run the container in privileged mode.<a class="headerlink" href="#privileged" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="entrypoint"><code>entrypoint</code> - (Optional) The Docker entrypoint.<a class="headerlink" href="#entrypoint" title="Permanent link">&para;</a></h6>
-<h6 class="reference-item" id="working_dir"><code>working_dir</code> - (Optional) The path to the working directory inside the container. It's specified relative to the repository directory (<code>/workflow</code>) and should be inside it. Defaults to <code>"."</code> .<a class="headerlink" href="#working_dir" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="working_dir"><code>working_dir</code> - (Optional) The absolute path to the working directory inside the container. Defaults to <code>/workflow</code>.<a class="headerlink" href="#working_dir" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="_registry_auth"><a href="#dstack.api.RegistryAuth"><code>registry_auth</code></a> - (Optional) Credentials for pulling a private Docker image.<a class="headerlink" href="#_registry_auth" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="python"><code>python</code> - (Optional) The major version of Python. Mutually exclusive with <code>image</code> and <code>docker</code>.<a class="headerlink" href="#python" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="nvcc"><code>nvcc</code> - (Optional) Use image with NVIDIA CUDA Compiler (NVCC) included. Mutually exclusive with <code>image</code> and <code>docker</code>.<a class="headerlink" href="#nvcc" title="Permanent link">&para;</a></h6>
@@ -5556,10 +5688,10 @@ the user's credentials. Ignored for other repo types.</p>
 <h6 class="reference-item" id="ports"><code>ports</code> - (Optional) Port numbers/mapping to expose.<a class="headerlink" href="#ports" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="name"><code>name</code> - (Optional) The run name. If not specified, a random name is generated.<a class="headerlink" href="#name" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="image"><code>image</code> - (Optional) The name of the Docker image to run.<a class="headerlink" href="#image" title="Permanent link">&para;</a></h6>
-<h6 class="reference-item" id="user"><code>user</code> - (Optional) The user inside the container, <code>user_name_or_id[:group_name_or_id]</code> (e.g., <code>ubuntu</code>, <code>1000:1000</code>). Defaults to the default <code>image</code> user.<a class="headerlink" href="#user" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="user"><code>user</code> - (Optional) The user inside the container, <code>user_name_or_id[:group_name_or_id]</code> (e.g., <code>ubuntu</code>, <code>1000:1000</code>). Defaults to the default user from the <code>image</code>.<a class="headerlink" href="#user" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="privileged"><code>privileged</code> - (Optional) Run the container in privileged mode.<a class="headerlink" href="#privileged" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="entrypoint"><code>entrypoint</code> - (Optional) The Docker entrypoint.<a class="headerlink" href="#entrypoint" title="Permanent link">&para;</a></h6>
-<h6 class="reference-item" id="working_dir"><code>working_dir</code> - (Optional) The path to the working directory inside the container. It's specified relative to the repository directory (<code>/workflow</code>) and should be inside it. Defaults to <code>"."</code> .<a class="headerlink" href="#working_dir" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="working_dir"><code>working_dir</code> - (Optional) The absolute path to the working directory inside the container. Defaults to <code>/workflow</code>.<a class="headerlink" href="#working_dir" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="_registry_auth"><a href="#dstack.api.RegistryAuth"><code>registry_auth</code></a> - (Optional) Credentials for pulling a private Docker image.<a class="headerlink" href="#_registry_auth" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="python"><code>python</code> - (Optional) The major version of Python. Mutually exclusive with <code>image</code> and <code>docker</code>.<a class="headerlink" href="#python" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="nvcc"><code>nvcc</code> - (Optional) Use image with NVIDIA CUDA Compiler (NVCC) included. Mutually exclusive with <code>image</code> and <code>docker</code>.<a class="headerlink" href="#nvcc" title="Permanent link">&para;</a></h6>
@@ -6557,6 +6689,17 @@ You can override these credentials via the <code>git_identity_file</code> or <co
       </thead>
       <tbody>
           <tr class="doc-section-item">
+            <td><code><span title="dstack.api.BackendType.AMDDEVCLOUD">AMDDEVCLOUD</span></code></td>
+            <td>
+                  <code><span title="dstack._internal.core.models.backends.base.BackendType">BackendType</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>AMD Developer Cloud</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
             <td><code><span title="dstack.api.BackendType.AWS">AWS</span></code></td>
             <td>
                   <code><span title="dstack._internal.core.models.backends.base.BackendType">BackendType</span></code>
@@ -6601,6 +6744,28 @@ You can override these credentials via the <code>git_identity_file</code> or <co
             </td>
           </tr>
           <tr class="doc-section-item">
+            <td><code><span title="dstack.api.BackendType.DATACRUNCH">DATACRUNCH</span></code></td>
+            <td>
+                  <code><span title="dstack._internal.core.models.backends.base.BackendType">BackendType</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>DataCrunch</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><span title="dstack.api.BackendType.DIGITALOCEAN">DIGITALOCEAN</span></code></td>
+            <td>
+                  <code><span title="dstack._internal.core.models.backends.base.BackendType">BackendType</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>DigitalOcean</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
             <td><code><span title="dstack.api.BackendType.DSTACK">DSTACK</span></code></td>
             <td>
                   <code><span title="dstack._internal.core.models.backends.base.BackendType">BackendType</span></code>
@@ -6619,17 +6784,6 @@ You can override these credentials via the <code>git_identity_file</code> or <co
             <td>
               <div class="doc-md-description">
                 <p>Google Cloud Platform</p>
-              </div>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td><code><span title="dstack.api.BackendType.DATACRUNCH">DATACRUNCH</span></code></td>
-            <td>
-                  <code><span title="dstack._internal.core.models.backends.base.BackendType">BackendType</span></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>DataCrunch</p>
               </div>
             </td>
           </tr>
