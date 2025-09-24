@@ -242,7 +242,7 @@ Support dstack with a ⭐ on
 
     <div class="md-header__buttons">
       <a href="https://github.com/dstackai/dstack" target="_blank" class="md-button md-button--primary github">GitHub</a>
-      <a href="https://sky.dstack.ai" target="_blank" class="md-button md-button--primary sky external">Sign up</a>
+      <a href="https://sky.dstack.ai" target="_blank" class="md-button md-button--primary sky">dstack Sky</a>
     </div>
   </nav>
   
@@ -3605,8 +3605,9 @@ Support dstack with a ⭐ on
                 <h1>The orchestration layer for modern ML teams</h1>
 
                 <p>
-                    <span class="highlight">dstack</span> gives your team a single control plane to run development, training, and inference
-                    jobs on GPU—whether on hyperscalers, neoclouds, or your on-prem hardware. Avoid vendor lock-in and minimize GPU spend.
+                    <span class="highlight">dstack</span> provides a unified control plane for running development, training, and inference
+                    on GPUs — across cloud VMs, Kubernetes, or on-prem clusters. It helps your team avoid vendor lock-in and reduce GPU
+                    costs.
                 </p>
             </div>
 
@@ -3626,8 +3627,8 @@ Support dstack with a ⭐ on
                     </a>
                 </div>
             </div>
-            <div class="tx-landing__hero_button_container_text" style="text-align: center; font-size: 85%; margin-top: 25px;">
-                The entire setup takes minutes.
+            <div class="tx-landing__hero_button_container_text" style="text-align: center; font-size: 85%; margin-top: 1.25rem">
+                Open-source self-hosted or fully-managed. Setup takes a few minutes.
             </div>
         </div>
 
@@ -3655,7 +3656,7 @@ Support dstack with a ⭐ on
                 </div>
 
                 <div class="block large">
-                    <img src="https://dstack.ai/static-assets/static-assets/images/dstack-architecture-diagram-v10.svg" />
+                    <img src="https://dstack.ai/static-assets/static-assets/images/dstack-architecture-diagram-v11.svg" />
                 </div>
             </div>
         </div>
@@ -3715,21 +3716,33 @@ Support dstack with a ⭐ on
                 </div>
 
                 <div class="block margin">
-                    <h2>Run on any cloud. Or all of them.</h2>
+                    <h2>Native integration with GPU clouds</h2>
                     <p>
-                        <span class="highlight">dstack</span> natively provisions GPU instances and clusters across your preferred cloud
-                        providers—maximizing efficiency and minimizing overhead.
+                        <span class="highlight">dstack</span> natively integrates with top GPU clouds—automating cluster provisioning and
+                        workload orchestration to maximize efficiency and minimize overhead.
                     </p>
                     
                     <p>
-                        Connect GPU clouds directly to <span class="highlight">dstack</span> natively, or run <span class="highlight">dstack</span> on top of Kubernetes if needed.
+                        It can provision and manage VM clusters through native integrations or via <span class="highlight">Kuberenetes</span>.
                     </p>
 
                     <p>
-                        <a href="/docs/concepts/backends" target="_blank"
-                            class="md-button md-button-secondary small">
+                        <a href="/docs/concepts/backends" target="_blank" class="md-button md-button-secondary small">
                             <span>Backends</span>
-                            <span class="icon"><svg viewBox="0 0 13 10" xmlns="http://www.w3.org/2000/svg"><path d="M12.823 4.164L8.954.182a.592.592 0 0 0-.854 0 .635.635 0 0 0 0 .88l2.836 2.92H.604A.614.614 0 0 0 0 4.604c0 .344.27.622.604.622h10.332L8.1 8.146a.635.635 0 0 0 0 .88.594.594 0 0 0 .854 0l3.869-3.982a.635.635 0 0 0 0-.88z" fill-rule="nonzero" fill="currentColor" class="fill-main"></path></svg></span>
+                            <span class="icon"><svg viewBox="0 0 13 10" xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M12.823 4.164L8.954.182a.592.592 0 0 0-.854 0 .635.635 0 0 0 0 .88l2.836 2.92H.604A.614.614 0 0 0 0 4.604c0 .344.27.622.604.622h10.332L8.1 8.146a.635.635 0 0 0 0 .88.594.594 0 0 0 .854 0l3.869-3.982a.635.635 0 0 0 0-.88z"
+                                        fill-rule="nonzero" fill="currentColor" class="fill-main"></path>
+                                </svg></span>
+                        </a>
+
+                        <a href="/docs/concepts/backends#kubernetes" target="_blank" class="md-button md-button-secondary small">
+                            <span>Kubernetes</span>
+                            <span class="icon"><svg viewBox="0 0 13 10" xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M12.823 4.164L8.954.182a.592.592 0 0 0-.854 0 .635.635 0 0 0 0 .88l2.836 2.92H.604A.614.614 0 0 0 0 4.604c0 .344.27.622.604.622h10.332L8.1 8.146a.635.635 0 0 0 0 .88.594.594 0 0 0 .854 0l3.869-3.982a.635.635 0 0 0 0-.88z"
+                                        fill-rule="nonzero" fill="currentColor" class="fill-main"></path>
+                                </svg></span>
                         </a>
                     </p>
                 </div>
@@ -3739,24 +3752,37 @@ Support dstack with a ⭐ on
         <div class="tx-landing__major_feature">
             <div class="section">
                 <div class="block margin right">
-                    <h2>Bring your own compute</h2>
-
+                    <h2>Easy to use with on-prem clusters</h2>
+                    
                     <p>
-                        Have bare-metal servers or on-prem GPU clusters? <span class="highlight">dstack</span> makes it easy to integrate them
-                        and manage everything alongside your cloud resources.
+                        For provisioned <span class="highlight">Kuberenetes</span> clusters, connect them to <span class="highlight">dstack</span> using the <span
+                            class="highlight">Kubernetes</span> backend.
+                        If you run vanilla bare-metal servers or VMs without <span class="highlight">Kuberenetes</span>, use <span class="highlight">SSH fleets</span>
+                        instead.
                     </p>
                     
-                    <p>With SSH fleets, you can connect any existing cluster in minutes. Once added to <span
-                            class="highlight">dstack</span>, it's a first-class resource &mdash; available for dev environments, tasks, and
-                        services.
-                    </p>
-
                     <p>
-                        <a href="/docs/concepts/fleets#ssh" target="_blank"
-                            class="md-button md-button-secondary small">
-                            <span>SSH fleets</span>
-                            <span class="icon"><svg viewBox="0 0 13 10" xmlns="http://www.w3.org/2000/svg"><path d="M12.823 4.164L8.954.182a.592.592 0 0 0-.854 0 .635.635 0 0 0 0 .88l2.836 2.92H.604A.614.614 0 0 0 0 4.604c0 .344.27.622.604.622h10.332L8.1 8.146a.635.635 0 0 0 0 .88.594.594 0 0 0 .854 0l3.869-3.982a.635.635 0 0 0 0-.88z" fill-rule="nonzero" fill="currentColor" class="fill-main"></path></svg></span>
+                        <a href="/docs/concepts/backends#kubernetes" target="_blank" class="md-button md-button-secondary small">
+                            <span>Kubernetes</span>
+                            <span class="icon"><svg viewBox="0 0 13 10" xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M12.823 4.164L8.954.182a.592.592 0 0 0-.854 0 .635.635 0 0 0 0 .88l2.836 2.92H.604A.614.614 0 0 0 0 4.604c0 .344.27.622.604.622h10.332L8.1 8.146a.635.635 0 0 0 0 .88.594.594 0 0 0 .854 0l3.869-3.982a.635.635 0 0 0 0-.88z"
+                                        fill-rule="nonzero" fill="currentColor" class="fill-main"></path>
+                                </svg></span>
                         </a>
+                    
+                        <a href="/docs/concepts/fleets#ssh" target="_blank" class="md-button md-button-secondary small">
+                            <span>SSH fleets</span>
+                            <span class="icon"><svg viewBox="0 0 13 10" xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M12.823 4.164L8.954.182a.592.592 0 0 0-.854 0 .635.635 0 0 0 0 .88l2.836 2.92H.604A.614.614 0 0 0 0 4.604c0 .344.27.622.604.622h10.332L8.1 8.146a.635.635 0 0 0 0 .88.594.594 0 0 0 .854 0l3.869-3.982a.635.635 0 0 0 0-.88z"
+                                        fill-rule="nonzero" fill="currentColor" class="fill-main"></path>
+                                </svg></span>
+                        </a>
+                    </p>
+                    
+                    <p>
+                        Either way, connecting existing on-prem clusters to <span class="highlight">dstack</span> takes just minutes.
                     </p>
                 </div>
 
@@ -3776,7 +3802,7 @@ Support dstack with a ⭐ on
                 </div>
 
                 <div class="block margin left">
-                    <h2>Code locally, run remotely</h2>
+                    <h2>Dev environments</h2>
                     <p>
                         Before training or deployment, ML engineers explore and debug their code.
                     </p>
@@ -3799,7 +3825,7 @@ Support dstack with a ⭐ on
         <div class="tx-landing__major_feature">
             <div class="section">
                 <div class="block margin right">
-                    <h2>Run complex training with simple config</h2>
+                    <h2>Single-node &amp; distributed tasks</h2>
 
                     <p>
                         Move from single-instance experiments to multi-node distributed training without friction. <span
@@ -3813,6 +3839,12 @@ Support dstack with a ⭐ on
                         <a href="/docs/concepts/tasks" target="_blank"
                             class="md-button md-button-secondary small">
                             <span>Tasks</span>
+                            <span class="icon"><svg viewBox="0 0 13 10" xmlns="http://www.w3.org/2000/svg"><path d="M12.823 4.164L8.954.182a.592.592 0 0 0-.854 0 .635.635 0 0 0 0 .88l2.836 2.92H.604A.614.614 0 0 0 0 4.604c0 .344.27.622.604.622h10.332L8.1 8.146a.635.635 0 0 0 0 .88.594.594 0 0 0 .854 0l3.869-3.982a.635.635 0 0 0 0-.88z" fill-rule="nonzero" fill="currentColor" class="fill-main"></path></svg></span>
+                        </a>
+
+                        <a href="/docs/guides/clusters" target="_blank"
+                            class="md-button md-button-secondary small">
+                            <span>Clusters</span>
                             <span class="icon"><svg viewBox="0 0 13 10" xmlns="http://www.w3.org/2000/svg"><path d="M12.823 4.164L8.954.182a.592.592 0 0 0-.854 0 .635.635 0 0 0 0 .88l2.836 2.92H.604A.614.614 0 0 0 0 4.604c0 .344.27.622.604.622h10.332L8.1 8.146a.635.635 0 0 0 0 .88.594.594 0 0 0 .854 0l3.869-3.982a.635.635 0 0 0 0-.88z" fill-rule="nonzero" fill="currentColor" class="fill-main"></path></svg></span>
                         </a>
                     </p>
@@ -3833,7 +3865,7 @@ Support dstack with a ⭐ on
                 </div>
 
                 <div class="block margin left">
-                    <h2>Deploy scalable, OpenAI-compatible endpoints</h2>
+                    <h2>Scalable service endpoints</h2>
 
                     <p>
                         With <span class="highlight">dstack</span>, you can easily deploy any model as a secure,
@@ -4070,17 +4102,17 @@ Support dstack with a ⭐ on
                     <p>Set up backends or SSH fleets, then add your team.</p>
 
                     <p>
-                        <a href="/docs/installation" target="_blank"
-                           class="md-button md-button--primary small"
+                        <a href="/docs/quickstart" target="_blank"
+                           class="md-button md-button-secondary small"
                             style="margin-right: 10px">
-                            <span>Installation</span>
+                            <span>Quickstart</span>
                             <span class="icon"><svg viewBox="0 0 13 10" xmlns="http://www.w3.org/2000/svg"><path d="M12.823 4.164L8.954.182a.592.592 0 0 0-.854 0 .635.635 0 0 0 0 .88l2.836 2.92H.604A.614.614 0 0 0 0 4.604c0 .344.27.622.604.622h10.332L8.1 8.146a.635.635 0 0 0 0 .88.594.594 0 0 0 .854 0l3.869-3.982a.635.635 0 0 0 0-.88z" fill-rule="nonzero" fill="currentColor" class="fill-main"></path></svg></span>
                         </a>
 
-                        <a href="/docs/quickstart" target="_blank" class="md-button md-button-secondary small"
+                        <!-- <a href="/docs/quickstart" target="_blank" class="md-button md-button-secondary small"
                            style="">
                             Quickstart
-                        </a>
+                        </a> -->
                     </p>
                 </div>
 
@@ -4111,7 +4143,7 @@ Support dstack with a ⭐ on
                         </div>
 
                         <div class="tx-landing__bottom_cta_card_button_subheader">
-                            Already have an account? <a href="https://sky.dstack.ai" target="_blank"
+                            Get $5 free credit. Already have an account? <a href="https://sky.dstack.ai" target="_blank"
                                 class="tx-footer__section-link external">Sign in</a>
                         </div>
                     </div>
@@ -4130,7 +4162,7 @@ Support dstack with a ⭐ on
                         <div>
                             <a href="https://calendly.com/dstackai/discovery-call" target="_blank"
                                 class="md-button md-button--primary external small">
-                                <span>Get a demo</span>
+                                <span>Book a demo</span>
                             </a>
                         </div>
 
