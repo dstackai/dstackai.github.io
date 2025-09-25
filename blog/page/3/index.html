@@ -3373,6 +3373,17 @@ Support dstack with a ⭐ on
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#auto-shutdown-for-inactive-dev-environmentsno-idle-gpus" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Auto-shutdown for inactive dev environments—no idle GPUs
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#introducing-gpu-blocks-and-proxy-jump-for-ssh-fleets" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3465,17 +3476,6 @@ Support dstack with a ⭐ on
     <span class="md-ellipsis">
       
         Using TPUs for fine-tuning and deploying LLMs
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#supporting-amd-accelerators-on-runpod" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Supporting AMD accelerators on RunPod
       
     </span>
   </a>
@@ -3746,6 +3746,17 @@ Support dstack with a ⭐ on
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#auto-shutdown-for-inactive-dev-environmentsno-idle-gpus" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Auto-shutdown for inactive dev environments—no idle GPUs
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#introducing-gpu-blocks-and-proxy-jump-for-ssh-fleets" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3844,17 +3855,6 @@ Support dstack with a ⭐ on
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#supporting-amd-accelerators-on-runpod" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Supporting AMD accelerators on RunPod
-      
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -3869,6 +3869,54 @@ Support dstack with a ⭐ on
       <header class="md-typeset">
         <h1 id="blog">Blog<a class="headerlink" href="#blog" title="Permanent link">&para;</a></h1>
       </header>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2025-02-19 00:00:00+00:00">February 19, 2025</time></li>
+        
+          <li class="md-meta__item">
+            in
+            
+              <a href="../../changelog/" class="md-meta__link">Changelog</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              2 min read
+            
+          </li>
+        
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="auto-shutdown-for-inactive-dev-environmentsno-idle-gpus"><a class="toclink" href="../../inactivity-duration/">Auto-shutdown for inactive dev environments—no idle GPUs</a></h2>
+<p>Whether you’re using cloud or on-prem compute, you may want to test your code before launching a
+training task or deploying a service. <code>dstack</code>’s <a href="../../../docs/concepts/dev-environments/">dev environments</a>
+make this easy by setting up a remote machine, cloning your repository, and configuring your IDE —all within 
+a container that has GPU access.</p>
+<p>One issue with dev environments is forgetting to stop them or closing your laptop, leaving the GPU idle and costly. With
+our latest update, <code>dstack</code> now detects inactive environments and automatically shuts them down, saving you money.</p>
+<p><img src="https://dstack.ai/static-assets/static-assets/images/inactive-dev-environments-auto-shutdown.png" width="630"/></p>
+
+    
+      <nav class="md-post__action">
+        <a href="../../inactivity-duration/">
+            <span>Continue reading</span>
+            <span class="icon"><svg viewBox="0 0 13 10" xmlns="http://www.w3.org/2000/svg"><path d="M12.823 4.164L8.954.182a.592.592 0 0 0-.854 0 .635.635 0 0 0 0 .88l2.836 2.92H.604A.614.614 0 0 0 0 4.604c0 .344.27.622.604.622h10.332L8.1 8.146a.635.635 0 0 0 0 .88.594.594 0 0 0 .854 0l3.869-3.982a.635.635 0 0 0 0-.88z" fill-rule="nonzero" fill="currentColor" class="fill-main"></path></svg></span>
+        </a>
+      </nav>
+    
+    
+  </div>
+</article>
       
         <article class="md-post md-post--excerpt">
   <header class="md-post__header">
@@ -4318,51 +4366,6 @@ and <a href="https://docs.vllm.ai/en/latest/getting_started/tpu-installation.htm
     
       <nav class="md-post__action">
         <a href="../../tpu-on-gcp/">
-            <span>Continue reading</span>
-            <span class="icon"><svg viewBox="0 0 13 10" xmlns="http://www.w3.org/2000/svg"><path d="M12.823 4.164L8.954.182a.592.592 0 0 0-.854 0 .635.635 0 0 0 0 .88l2.836 2.92H.604A.614.614 0 0 0 0 4.604c0 .344.27.622.604.622h10.332L8.1 8.146a.635.635 0 0 0 0 .88.594.594 0 0 0 .854 0l3.869-3.982a.635.635 0 0 0 0-.88z" fill-rule="nonzero" fill="currentColor" class="fill-main"></path></svg></span>
-        </a>
-      </nav>
-    
-    
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2024-08-21 00:00:00+00:00">August 21, 2024</time></li>
-        
-          <li class="md-meta__item">
-            in
-            
-              <a href="../../changelog/" class="md-meta__link">Changelog</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              3 min read
-            
-          </li>
-        
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="supporting-amd-accelerators-on-runpod"><a class="toclink" href="../../amd-on-runpod/">Supporting AMD accelerators on RunPod</a></h2>
-<p>While <code>dstack</code> helps streamline the orchestration of containers for AI, its primary goal is to offer vendor independence
-and portability, ensuring compatibility across different hardware and cloud providers.</p>
-<p>Inspired by the recent <code>MI300X</code> benchmarks, we are pleased to announce that RunPod is the first cloud provider to offer
-AMD GPUs through <code>dstack</code>, with support for other cloud providers and on-prem servers to follow.</p>
-
-    
-      <nav class="md-post__action">
-        <a href="../../amd-on-runpod/">
             <span>Continue reading</span>
             <span class="icon"><svg viewBox="0 0 13 10" xmlns="http://www.w3.org/2000/svg"><path d="M12.823 4.164L8.954.182a.592.592 0 0 0-.854 0 .635.635 0 0 0 0 .88l2.836 2.92H.604A.614.614 0 0 0 0 4.604c0 .344.27.622.604.622h10.332L8.1 8.146a.635.635 0 0 0 0 .88.594.594 0 0 0 .854 0l3.869-3.982a.635.635 0 0 0 0-.88z" fill-rule="nonzero" fill="currentColor" class="fill-main"></path></svg></span>
         </a>
