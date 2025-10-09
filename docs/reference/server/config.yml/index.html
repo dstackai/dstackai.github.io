@@ -4109,8 +4109,8 @@ to configure <a href="../../../concepts/backends/">backends</a> and other <a hre
 <h6 class="reference-item" id="data"><code>data</code> - (Optional) The contents of the kubeconfig file. When configuring via <code>server/config.yml</code>, it's automatically filled from <code>filename</code>. When configuring via UI, it has to be specified explicitly.<a class="headerlink" href="#data" title="Permanent link">&para;</a></h6>
 <details class="info">
 <summary>Specifying <code>data</code></summary>
-<p>To specify service account file contents as a string, use <code>jq</code>:</p>
-<div class="highlight"><pre><span></span><code>cat<span class="w"> </span>my-service-account-file.json<span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>-c<span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>-R
+<p>To specify kubeconfig contents directly via <code>data</code>, convert it to a string:</p>
+<div class="highlight"><pre><span></span><code>yq<span class="w"> </span>-o<span class="o">=</span>json<span class="w"> </span>~/.kube/config<span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>-c<span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>-R
 </code></pre></div>
 </details>
 <h6 id="kubernetes-proxy_jump"><code>projects[n].backends[type=kubernetes].proxy_jump</code><a class="headerlink" href="#kubernetes-proxy_jump" title="Permanent link">&para;</a></h6>
