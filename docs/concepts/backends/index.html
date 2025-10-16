@@ -33,7 +33,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.010a373c.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.7d528353.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -4828,6 +4828,7 @@ compute.networks.get
 compute.networks.updatePolicy
 compute.regions.get
 compute.regions.list
+compute.reservations.list
 compute.resourcePolicies.create
 compute.resourcePolicies.delete
 compute.routers.list
@@ -4846,6 +4847,8 @@ tpu.operations.list
 </code></pre></div>
 <p>Also, the use of TPUs requires the <code>serviceAccountUser</code> role.
 For TPU VMs, dstack will use the default service account.</p>
+<p>If you plan to use shared reservations, the <code>compute.reservations.list</code>
+permission is required in the project that owns the reservations.</p>
 </details>
 <details class="info">
 <summary>Required APIs</summary>

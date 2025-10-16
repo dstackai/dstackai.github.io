@@ -33,7 +33,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../../assets/stylesheets/main.010a373c.min.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.7d528353.min.css">
       
         
         <link rel="stylesheet" href="../../../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -3998,6 +3998,7 @@ to configure <a href="../../../concepts/backends/">backends</a> and other <a hre
 <h6 class="reference-item" id="nat_check"><code>nat_check</code> - (Optional) A flag to enable/disable a check that Cloud NAT is configured for the VPC. This should be set to <code>false</code> when <code>public_ips: false</code> and outbound internet connectivity is provided by a mechanism other than Cloud NAT such as a third-party NAT appliance. Defaults to <code>true</code>.<a class="headerlink" href="#nat_check" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="vm_service_account"><code>vm_service_account</code> - (Optional) The service account to associate with provisioned VMs.<a class="headerlink" href="#vm_service_account" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="tags"><code>tags</code> - (Optional) The tags (labels) that will be assigned to resources created by <code>dstack</code>.<a class="headerlink" href="#tags" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="preview_features"><code>preview_features</code> - (Optional) The list of preview GCP features to enable. Supported values: <code>g4</code>.<a class="headerlink" href="#preview_features" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="_creds"><a href="#gcp-creds"><code>creds</code></a> -  The credentials.<a class="headerlink" href="#_creds" title="Permanent link">&para;</a></h6>
 <h6 id="gcp-creds"><code>projects[n].backends[type=gcp].creds</code><a class="headerlink" href="#gcp-creds" title="Permanent link">&para;</a></h6>
 <div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="service-account" name="__tabbed_3" type="radio" /><input id="default_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="service-account">Service account</label><label for="default_2">Default</label></div>
@@ -4105,7 +4106,7 @@ to configure <a href="../../../concepts/backends/">backends</a> and other <a hre
 <h6 class="reference-item" id="namespace"><code>namespace</code> - (Optional) The namespace for resources managed by <code>dstack</code>. Defaults to <code>default</code>.<a class="headerlink" href="#namespace" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="_kubeconfig"><a href="#kubernetes-kubeconfig"><code>kubeconfig</code></a> -  The kubeconfig configuration.<a class="headerlink" href="#_kubeconfig" title="Permanent link">&para;</a></h6>
 <h6 id="kubernetes-kubeconfig"><code>projects[n].backends[type=kubernetes].kubeconfig</code><a class="headerlink" href="#kubernetes-kubeconfig" title="Permanent link">&para;</a></h6>
-<h6 class="reference-item" id="filename"><code>filename</code> -  The path to the kubeconfig file.<a class="headerlink" href="#filename" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="filename"><code>filename</code> - (Optional) The path to the kubeconfig file.<a class="headerlink" href="#filename" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="data"><code>data</code> - (Optional) The contents of the kubeconfig file. When configuring via <code>server/config.yml</code>, it's automatically filled from <code>filename</code>. When configuring via UI, it has to be specified explicitly.<a class="headerlink" href="#data" title="Permanent link">&para;</a></h6>
 <details class="info">
 <summary>Specifying <code>data</code></summary>

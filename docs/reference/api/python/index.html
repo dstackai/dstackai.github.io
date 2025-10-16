@@ -33,7 +33,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../../assets/stylesheets/main.010a373c.min.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.7d528353.min.css">
       
         
         <link rel="stylesheet" href="../../../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -4420,7 +4420,7 @@ configured <code>ports</code> to <code>localhost</code>.</li>
 
 
 <h4 id="dstack.api.Client.from_config" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">from_config</span><span class="p">(</span><span class="n">project_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">server_url</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">user_token</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">ssh_identity_file</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">from_config</span><span class="p">(</span><span class="n">project_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">server_url</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">user_token</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
 
   <span class="doc doc-labels">
       <small class="doc doc-label doc-label-staticmethod"><code>staticmethod</code></small>
@@ -4487,22 +4487,6 @@ configured <code>ports</code> to <code>localhost</code>.</li>
             <td>
               <div class="doc-md-description">
                 <p>The dstack user token.</p>
-              </div>
-            </td>
-            <td>
-                  <code>None</code>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                <code>ssh_identity_file</code>
-            </td>
-            <td>
-                  <code><span title="typing.Optional">Optional</span>[<span title="dstack._internal.utils.path.PathLike">PathLike</span>]</code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>The private SSH key path for SSH tunneling.</p>
               </div>
             </td>
             <td>
@@ -4584,7 +4568,7 @@ configured <code>ports</code> to <code>localhost</code>.</li>
 
 
 <h4 id="dstack.api.RunCollection.apply_configuration" class="doc doc-heading">
-<code class="doc-symbol doc-symbol-heading doc-symbol-method"></code>            <code class="highlight language-python"><span class="n">apply_configuration</span><span class="p">(</span><span class="n">configuration</span><span class="p">,</span> <span class="n">repo</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">profile</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">configuration_path</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">reserve_ports</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></code>
+<code class="doc-symbol doc-symbol-heading doc-symbol-method"></code>            <code class="highlight language-python"><span class="n">apply_configuration</span><span class="p">(</span><span class="n">configuration</span><span class="p">,</span> <span class="n">repo</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">profile</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">configuration_path</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">reserve_ports</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ssh_identity_file</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
 
 <a href="#dstack.api.RunCollection.apply_configuration" class="headerlink" title="Permanent link">&para;</a></h4>
 
@@ -4898,7 +4882,7 @@ Use this method to apply run plans returned by <code>get_run_plan</code>.</p>
 
 
 <h4 id="dstack.api.RunCollection.get_run_plan" class="doc doc-heading">
-<code class="doc-symbol doc-symbol-heading doc-symbol-method"></code>            <code class="highlight language-python"><span class="n">get_run_plan</span><span class="p">(</span><span class="n">configuration</span><span class="p">,</span> <span class="n">repo</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">profile</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">configuration_path</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">repo_dir</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+<code class="doc-symbol doc-symbol-heading doc-symbol-method"></code>            <code class="highlight language-python"><span class="n">get_run_plan</span><span class="p">(</span><span class="n">configuration</span><span class="p">,</span> <span class="n">repo</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">profile</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">configuration_path</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">repo_dir</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">ssh_identity_file</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
 
 <a href="#dstack.api.RunCollection.get_run_plan" class="headerlink" title="Permanent link">&para;</a></h4>
 
@@ -5652,7 +5636,7 @@ the user's credentials. Ignored for other repo types.</p>
 <h6 class="reference-item" id="regions"><code>regions</code> - (Optional) The regions to consider for provisioning (e.g., <code>[eu-west-1, us-west4, westeurope]</code>).<a class="headerlink" href="#regions" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="availability_zones"><code>availability_zones</code> - (Optional) The availability zones to consider for provisioning (e.g., <code>[eu-west-1a, us-west4-a]</code>).<a class="headerlink" href="#availability_zones" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="instance_types"><code>instance_types</code> - (Optional) The cloud-specific instance types to consider for provisioning (e.g., <code>[p3.8xlarge, n1-standard-4]</code>).<a class="headerlink" href="#instance_types" title="Permanent link">&para;</a></h6>
-<h6 class="reference-item" id="reservation"><code>reservation</code> - (Optional) The existing reservation to use for instance provisioning. Supports AWS Capacity Reservations and Capacity Blocks.<a class="headerlink" href="#reservation" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="reservation"><code>reservation</code> - (Optional) The existing reservation to use for instance provisioning. Supports AWS Capacity Reservations, AWS Capacity Blocks, and GCP reservations.<a class="headerlink" href="#reservation" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="spot_policy"><code>spot_policy</code> - (Optional) The policy for provisioning spot or on-demand instances: <code>spot</code>, <code>on-demand</code>, <code>auto</code>. Defaults to <code>on-demand</code>.<a class="headerlink" href="#spot_policy" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="_retry"><a href="#retry"><code>retry</code></a> - (Optional) The policy for resubmitting the run. Defaults to <code>false</code>.<a class="headerlink" href="#_retry" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="max_duration"><code>max_duration</code> - (Optional) The maximum duration of a run (e.g., <code>2h</code>, <code>1d</code>, etc). After it elapses, the run is automatically stopped. Use <code>off</code> for unlimited duration. Defaults to <code>off</code>.<a class="headerlink" href="#max_duration" title="Permanent link">&para;</a></h6>
@@ -5700,7 +5684,7 @@ the user's credentials. Ignored for other repo types.</p>
 <h6 class="reference-item" id="regions"><code>regions</code> - (Optional) The regions to consider for provisioning (e.g., <code>[eu-west-1, us-west4, westeurope]</code>).<a class="headerlink" href="#regions" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="availability_zones"><code>availability_zones</code> - (Optional) The availability zones to consider for provisioning (e.g., <code>[eu-west-1a, us-west4-a]</code>).<a class="headerlink" href="#availability_zones" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="instance_types"><code>instance_types</code> - (Optional) The cloud-specific instance types to consider for provisioning (e.g., <code>[p3.8xlarge, n1-standard-4]</code>).<a class="headerlink" href="#instance_types" title="Permanent link">&para;</a></h6>
-<h6 class="reference-item" id="reservation"><code>reservation</code> - (Optional) The existing reservation to use for instance provisioning. Supports AWS Capacity Reservations and Capacity Blocks.<a class="headerlink" href="#reservation" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="reservation"><code>reservation</code> - (Optional) The existing reservation to use for instance provisioning. Supports AWS Capacity Reservations, AWS Capacity Blocks, and GCP reservations.<a class="headerlink" href="#reservation" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="spot_policy"><code>spot_policy</code> - (Optional) The policy for provisioning spot or on-demand instances: <code>spot</code>, <code>on-demand</code>, <code>auto</code>. Defaults to <code>on-demand</code>.<a class="headerlink" href="#spot_policy" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="_retry"><a href="#retry"><code>retry</code></a> - (Optional) The policy for resubmitting the run. Defaults to <code>false</code>.<a class="headerlink" href="#_retry" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="max_duration"><code>max_duration</code> - (Optional) The maximum duration of a run (e.g., <code>2h</code>, <code>1d</code>, etc). After it elapses, the run is automatically stopped. Use <code>off</code> for unlimited duration. Defaults to <code>off</code>.<a class="headerlink" href="#max_duration" title="Permanent link">&para;</a></h6>
@@ -5742,7 +5726,7 @@ the user's credentials. Ignored for other repo types.</p>
 <h6 class="reference-item" id="regions"><code>regions</code> - (Optional) The regions to consider for provisioning (e.g., <code>[eu-west-1, us-west4, westeurope]</code>).<a class="headerlink" href="#regions" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="availability_zones"><code>availability_zones</code> - (Optional) The availability zones to consider for provisioning (e.g., <code>[eu-west-1a, us-west4-a]</code>).<a class="headerlink" href="#availability_zones" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="instance_types"><code>instance_types</code> - (Optional) The cloud-specific instance types to consider for provisioning (e.g., <code>[p3.8xlarge, n1-standard-4]</code>).<a class="headerlink" href="#instance_types" title="Permanent link">&para;</a></h6>
-<h6 class="reference-item" id="reservation"><code>reservation</code> - (Optional) The existing reservation to use for instance provisioning. Supports AWS Capacity Reservations and Capacity Blocks.<a class="headerlink" href="#reservation" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="reservation"><code>reservation</code> - (Optional) The existing reservation to use for instance provisioning. Supports AWS Capacity Reservations, AWS Capacity Blocks, and GCP reservations.<a class="headerlink" href="#reservation" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="spot_policy"><code>spot_policy</code> - (Optional) The policy for provisioning spot or on-demand instances: <code>spot</code>, <code>on-demand</code>, <code>auto</code>. Defaults to <code>on-demand</code>.<a class="headerlink" href="#spot_policy" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="_retry"><a href="#retry"><code>retry</code></a> - (Optional) The policy for resubmitting the run. Defaults to <code>false</code>.<a class="headerlink" href="#_retry" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="max_duration"><code>max_duration</code> - (Optional) The maximum duration of a run (e.g., <code>2h</code>, <code>1d</code>, etc). After it elapses, the run is automatically stopped. Use <code>off</code> for unlimited duration. Defaults to <code>off</code>.<a class="headerlink" href="#max_duration" title="Permanent link">&para;</a></h6>
