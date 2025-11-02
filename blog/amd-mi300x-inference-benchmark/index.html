@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../assets/images/dstack-fav-32.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.21+insiders-4.53.17">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.23+insiders-4.53.17">
     
     
       
@@ -752,6 +752,34 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
+      <a href="../../docs/concepts/fleets/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fleets
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../docs/concepts/dev-environments/" class="md-nav__link">
         
   
@@ -816,34 +844,6 @@ Support dstack with a ⭐ on
     
   
     Services
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../docs/concepts/fleets/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Fleets
   
 
     
@@ -3970,7 +3970,7 @@ Support dstack with a ⭐ on
 
 
 <h1 id="benchmarking-llama-31-405b-on-8x-amd-mi300x-gpus">Benchmarking Llama 3.1 405B on 8x AMD MI300X GPUs<a class="headerlink" href="#benchmarking-llama-31-405b-on-8x-amd-mi300x-gpus" title="Permanent link">&para;</a></h1>
-<p>At <code>dstack</code>, we've been adding support for AMD GPUs with <a href="../../docs/concepts/fleets/#ssh">SSH fleets</a>, 
+<p>At <code>dstack</code>, we've been adding support for AMD GPUs with <a href="../../docs/concepts/fleets/#ssh-fleets">SSH fleets</a>, 
 so we saw this as a great chance to test our integration by benchmarking AMD GPUs. Our friends at 
 <a href="https://hotaisle.xyz/" target="_blank">Hot Aisle <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>, who build top-tier 
 bare metal compute for AMD GPUs, kindly provided the hardware for the benchmark.</p>
@@ -3990,7 +3990,7 @@ backends (vLLM and TGI) and use cases (real-time vs batch inference, different c
 <details class="info">
 <summary>Set up an SSH fleet</summary>
 <p>Hot Aisle provided us with SSH access to the machine. To make it accessible via <code>dstack</code>,
-we created an <a href="../../docs/concepts/fleets/#ssh">SSH fleet</a> using the following configuration:</p>
+we created an <a href="../../docs/concepts/fleets/#ssh-fleets">SSH fleet</a> using the following configuration:</p>
 <p><div editor-title="hotaisle.dstack.yml"> </p>
 <div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">fleet</span>
 <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hotaisle-fleet</span>
@@ -4132,7 +4132,7 @@ like the H100 and H200, as well as possibly Google TPU. </p>
 <p><a href="https://hotaisle.xyz/" target="_blank">Hot Aisle <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> 
 is the primary sponsor of this benchmark, and we are sincerely grateful for their hardware and support.  </p>
 <p>If you'd like to use top-tier bare metal compute with AMD GPUs, we recommend going
-with Hot Aisle. Once you gain access to a cluster, it can be easily accessed via <code>dstack</code>'s <a href="../../docs/concepts/fleets/#ssh">SSH fleet</a> easily.</p>
+with Hot Aisle. Once you gain access to a cluster, it can be easily accessed via <code>dstack</code>'s <a href="../../docs/concepts/fleets/#ssh-fleets">SSH fleet</a> easily.</p>
 <h3 id="runpod">RunPod<a class="headerlink" href="#runpod" title="Permanent link">&para;</a></h3>
 <p>If you’d like to use on-demand compute with AMD GPUs at affordable prices, you can configure <code>dstack</code> to
 use <a href="https://runpod.io/" target="_blank">RunPod <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>. In

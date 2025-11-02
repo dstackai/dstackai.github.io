@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../../assets/images/dstack-fav-32.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.21+insiders-4.53.17">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.23+insiders-4.53.17">
     
     
       
@@ -761,6 +761,34 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
+      <a href="../../concepts/fleets/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fleets
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../concepts/dev-environments/" class="md-nav__link">
         
   
@@ -825,34 +853,6 @@ Support dstack with a ⭐ on
     
   
     Services
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../concepts/fleets/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Fleets
   
 
     
@@ -1345,6 +1345,64 @@ Support dstack with a ⭐ on
       
     </span>
   </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#server-upgrades" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Server upgrades
+        </span>
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Server upgrades">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#before-upgrading" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Before upgrading
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Best practices
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Troubleshooting
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -4112,6 +4170,64 @@ Support dstack with a ⭐ on
 </li>
       
         <li class="md-nav__item">
+  <a href="#server-upgrades" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Server upgrades
+        </span>
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Server upgrades">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#before-upgrading" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Before upgrading
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Best practices
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Troubleshooting
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#faqs" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -4546,6 +4662,23 @@ export DSTACK_DB_MAX_OVERFLOW=80
 </code></pre></div>
 <p>You have to ensure your Postgres installation supports that many connections by
 configuring <a href="https://www.postgresql.org/docs/current/runtime-config-connection.html#GUC-MAX-CONNECTIONS"><code>max_connections</code></a> and/or using connection pooler.</p>
+<h2 id="server-upgrades">Server upgrades<a class="headerlink" href="#server-upgrades" title="Permanent link">&para;</a></h2>
+<p>When upgrading the <code>dstack</code> server, follow these guidelines to ensure a smooth transition and minimize downtime.</p>
+<h3 id="before-upgrading">Before upgrading<a class="headerlink" href="#before-upgrading" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Check the changelog</strong>: Review the <a href="https://github.com/dstackai/dstack/releases" target="_blank">release notes <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> for breaking changes, new features, and migration notes.</li>
+<li><strong>Review backward compatibility</strong>: Understand the <a href="#backward-compatibility">backward compatibility</a> policy.</li>
+<li><strong>Back up your data</strong>: Ensure you always create a backup before upgrading.</li>
+</ol>
+<h3 id="best-practices">Best practices<a class="headerlink" href="#best-practices" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Test in staging</strong>: Always test upgrades in a non-production environment first.</li>
+<li><strong>Monitor logs</strong>: Watch server logs during and after the upgrade for any errors or warnings.</li>
+<li><strong>Keep backups</strong>: Retain backups for at least a few days after a successful upgrade.</li>
+</ul>
+<h3 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h3>
+<p><strong>Deadlock when upgrading a multi-replica PostgreSQL deployment</strong></p>
+<p>If a deployment is stuck due to a deadlock when applying DB migrations, try scaling server replicas to 1 and retry the deployment multiple times. Some releases may not support rolling deployments, which is always noted in the release notes. If you think there is a bug, please <a href="https://github.com/dstackai/dstack/issues">file an issue</a>.</p>
 <h2 id="faqs">FAQs<a class="headerlink" href="#faqs" title="Permanent link">&para;</a></h2>
 <details class="info">
 <summary>Can I run multiple replicas of dstack server?</summary>

@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../../assets/images/dstack-fav-32.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.21+insiders-4.53.17">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.23+insiders-4.53.17">
     
     
       
@@ -761,6 +761,34 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
+      <a href="../../concepts/fleets/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fleets
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../concepts/dev-environments/" class="md-nav__link">
         
   
@@ -825,34 +853,6 @@ Support dstack with a ⭐ on
     
   
     Services
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../concepts/fleets/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Fleets
   
 
     
@@ -4427,10 +4427,8 @@ and add attach it in your run configuration.</p>
 <h2 id="fleets">Fleets<a class="headerlink" href="#fleets" title="Permanent link">&para;</a></h2>
 <h3 id="creation-policy">Creation policy<a class="headerlink" href="#creation-policy" title="Permanent link">&para;</a></h3>
 <p>By default, when you run <code>dstack apply</code> with a dev environment, task, or service,
-<code>dstack</code> reuses <code>idle</code> instances from an existing <a href="../../concepts/fleets/">fleet</a>.
-If no <code>idle</code> instances match the requirements, <code>dstack</code> automatically creates a new fleet 
-using configured backends.</p>
-<p>To ensure <code>dstack apply</code> doesn't create a new fleet but reuses an existing one,
+if no <code>idle</code> instances from the available fleets meet the requirements, <code>dstack</code> provisions a new instance using configured backends.</p>
+<p>To ensure <code>dstack apply</code> doesn't provision a new instance but reuses an existing one,
 pass <code>-R</code> (or <code>--reuse</code>) to <code>dstack apply</code>.</p>
 <div class="termy">
 
@@ -4439,16 +4437,12 @@ pass <code>-R</code> (or <code>--reuse</code>) to <code>dstack apply</code>.</p>
 
 </div>
 
+<p>Or, set <a href="../../reference/dstack.yml/dev-environment/#creation_policy"><code>creation_policy</code></a> to <code>reuse</code> in the run configuration.</p>
 <h3 id="idle-duration">Idle duration<a class="headerlink" href="#idle-duration" title="Permanent link">&para;</a></h3>
-<p>If a fleet is created automatically, it stays <code>idle</code> for 5 minutes by default and can be reused within that time.
-If the fleet is not reused within this period, it is automatically terminated.
+<p>If a run provisions a new instance, the instance stays <code>idle</code> for 5 minutes by default and can be reused within that time.
+If the instance is not reused within this period, it is automatically terminated.
 To change the default idle duration, set
-<a href="../../reference/dstack.yml/fleet/#idle_duration"><code>idle_duration</code></a> in the run configuration (e.g., <code>0s</code>, <code>1m</code>, or <code>off</code> for
-unlimited).</p>
-<blockquote>
-<p>For greater control over fleet provisioning, configuration, and lifecycle management, it is recommended to use
-<a href="../../concepts/fleets/">fleets</a> directly.</p>
-</blockquote>
+<a href="../../reference/dstack.yml/fleet/#idle_duration"><code>idle_duration</code></a> in the run configuration (e.g., <code>0s</code>, <code>1m</code>, or <code>off</code> for unlimited).</p>
 <h2 id="volumes">Volumes<a class="headerlink" href="#volumes" title="Permanent link">&para;</a></h2>
 <p>To persist data across runs, it is recommended to use volumes.
 <code>dstack</code> supports two types of volumes: <a href="../../concepts/volumes/#network">network</a> 

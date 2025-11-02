@@ -15,7 +15,7 @@
         <link rel="canonical" href="https://dstack.ai/docs/concepts/dev-environments/">
       
       
-        <link rel="prev" href="../backends/">
+        <link rel="prev" href="../fleets/">
       
       
         <link rel="next" href="../tasks/">
@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../../assets/images/dstack-fav-32.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.21+insiders-4.53.17">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.23+insiders-4.53.17">
     
     
       
@@ -760,6 +760,34 @@ Support dstack with a ⭐ on
                 
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../fleets/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fleets
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
   
   
@@ -1101,34 +1129,6 @@ Support dstack with a ⭐ on
     
   
     Services
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../fleets/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Fleets
   
 
     
@@ -4817,9 +4817,9 @@ The latter determines how soon the underlying cloud instance will be terminated
 via the <a href="../../reference/dstack.yml/dev-environment/#spot_policy"><code>spot_policy</code></a> property. It accepts <code>spot</code>, <code>on-demand</code>, and <code>auto</code>.</p>
 <h3 id="creation-policy">Creation policy<a class="headerlink" href="#creation-policy" title="Permanent link">&para;</a></h3>
 <p>By default, when you run <code>dstack apply</code> with a dev environment, task, or service,
-if no <code>idle</code> instances from the available fleets meet the requirements, <code>dstack</code> creates a new fleet 
+if no <code>idle</code> instances from the available fleets meet the requirements, <code>dstack</code> provisions a new instance
 using configured backends.</p>
-<p>To ensure <code>dstack apply</code> doesn't create a new fleet but reuses an existing one,
+<p>To ensure <code>dstack apply</code> doesn't provision a new instance but reuses an existing one,
 pass <code>-R</code> (or <code>--reuse</code>) to <code>dstack apply</code>.</p>
 <div class="termy">
 
@@ -4830,16 +4830,10 @@ pass <code>-R</code> (or <code>--reuse</code>) to <code>dstack apply</code>.</p>
 
 <p>Or, set <a href="../../reference/dstack.yml/dev-environment/#creation_policy"><code>creation_policy</code></a> to <code>reuse</code> in the run configuration.</p>
 <h3 id="idle-duration">Idle duration<a class="headerlink" href="#idle-duration" title="Permanent link">&para;</a></h3>
-<p>If a fleet is created automatically, it stays <code>idle</code> for 5 minutes by default and can be reused within that time.
-If the fleet is not reused within this period, it is automatically terminated.
+<p>If a run provisions a new instance, the instance stays <code>idle</code> for 5 minutes by default and can be reused within that time.
+If the instance is not reused within this period, it is automatically terminated.
 To change the default idle duration, set
-<a href="../../reference/dstack.yml/fleet/#idle_duration"><code>idle_duration</code></a> in the run configuration (e.g., <code>0s</code>, <code>1m</code>, or <code>off</code> for
-unlimited).</p>
-<div class="admonition info">
-<p class="admonition-title">Fleets</p>
-<p>For greater control over fleet provisioning, it is recommended to create
-<a href="../fleets/">fleets</a> explicitly.</p>
-</div>
+<a href="../../reference/dstack.yml/fleet/#idle_duration"><code>idle_duration</code></a> in the run configuration (e.g., <code>0s</code>, <code>1m</code>, or <code>off</code> for unlimited).</p>
 <div class="admonition info">
 <p class="admonition-title">Reference</p>
 <p>Dev environments support many more configuration options,
@@ -4890,7 +4884,7 @@ Pass <code>--diagnose</code> or <code>-d</code> to view diagnostic logs, which c
           <nav class="md-footer__inner md-grid" aria-label="Footer" >
             
               
-              <a href="../backends/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Backends">
+              <a href="../fleets/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Fleets">
                 <div class="md-footer__button md-icon">
                   
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -4900,7 +4894,7 @@ Pass <code>--diagnose</code> or <code>-d</code> to view diagnostic logs, which c
                     Previous
                   </span>
                   <div class="md-ellipsis">
-                    Backends
+                    Fleets
                   </div>
                 </div>
               </a>

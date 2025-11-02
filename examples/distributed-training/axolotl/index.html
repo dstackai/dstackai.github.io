@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../../assets/images/dstack-fav-32.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.21+insiders-4.53.17">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.23+insiders-4.53.17">
     
     
       
@@ -748,6 +748,34 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
+      <a href="../../../docs/concepts/fleets/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fleets
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../../docs/concepts/dev-environments/" class="md-nav__link">
         
   
@@ -812,34 +840,6 @@ Support dstack with a ⭐ on
     
   
     Services
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../docs/concepts/fleets/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Fleets
   
 
     
@@ -2648,19 +2648,6 @@ Support dstack with a ⭐ on
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#create-a-fleet" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        <span class="md-typeset">
-          Create a fleet
-        </span>
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#define-a-configuration" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3793,19 +3780,6 @@ Support dstack with a ⭐ on
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#create-a-fleet" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        <span class="md-typeset">
-          Create a fleet
-        </span>
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#define-a-configuration" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3918,21 +3892,11 @@ Support dstack with a ⭐ on
 
 
 <h1 id="axolotl">Axolotl<a class="headerlink" href="#axolotl" title="Permanent link">&para;</a></h1>
-<p>This example walks you through how to run distributed fine-tune using <a href="https://github.com/axolotl-ai-cloud/axolotl" target="_blank">Axolotl <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> with <code>dstack</code>.</p>
-<details class="info">
-<summary>Prerequisites</summary>
-<p>Once <code>dstack</code> is <a href="https://dstack.ai/docs/installation">installed</a>, clone the repo with examples.</p>
-<div class="termy">
-<p><div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/dstackai/dstack
-$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>dstack
-</code></pre></div>
-</div></p>
-</details>
-<h2 id="create-a-fleet">Create a fleet<a class="headerlink" href="#create-a-fleet" title="Permanent link">&para;</a></h2>
-<p>Before submitting distributed training runs, make sure to create a fleet with a <code>placement</code> set to <code>cluster</code>.</p>
-<blockquote>
-<p>For more detials on how to use clusters with <code>dstack</code>, check the <a href="https://dstack.ai/docs/guides/clusters">Clusters</a> guide.</p>
-</blockquote>
+<p>This example walks you through how to run distributed fine-tune using <a href="https://github.com/axolotl-ai-cloud/axolotl" target="_blank">Axolotl <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> and <a href="https://dstack.ai/docs/concepts/tasks#distributed-tasks">distributed tasks</a>.</p>
+<div class="admonition info">
+<p class="admonition-title">Prerequisites</p>
+<p>Before running a distributed task, make sure to create a fleet with <code>placement</code> set to <code>cluster</code> (can be a <a href="https://dstack.ai/docs/concepts/fleets#backend-placement">managed fleet</a> or an <a href="https://dstack.ai/docs/concepts/fleets#ssh-placement">SSH fleet</a>).</p>
+</div>
 <h2 id="define-a-configuration">Define a configuration<a class="headerlink" href="#define-a-configuration" title="Permanent link">&para;</a></h2>
 <p>Once the fleet is created, define a distributed task configuration. Here's an example of distributed <code>QLORA</code> task using <code>FSDP</code>.</p>
 <div editor-title="examples/distributed-training/axolotl/.dstack.yml">

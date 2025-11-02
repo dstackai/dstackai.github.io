@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../../../assets/images/dstack-fav-32.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.21+insiders-4.53.17">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.23+insiders-4.53.17">
     
     
       
@@ -761,6 +761,34 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
+      <a href="../../../concepts/fleets/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fleets
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../../concepts/dev-environments/" class="md-nav__link">
         
   
@@ -825,34 +853,6 @@ Support dstack with a ⭐ on
     
   
     Services
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../concepts/fleets/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Fleets
   
 
     
@@ -5643,7 +5643,7 @@ the user's credentials. Ignored for other repo types.</p>
 <h6 class="reference-item" id="stop_duration"><code>stop_duration</code> - (Optional) The maximum duration of a run graceful stopping. After it elapses, the run is automatically forced stopped. This includes force detaching volumes used by the run. Use <code>off</code> for unlimited duration. Defaults to <code>5m</code>.<a class="headerlink" href="#stop_duration" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="max_price"><code>max_price</code> - (Optional) The maximum instance price per hour, in dollars.<a class="headerlink" href="#max_price" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="creation_policy"><code>creation_policy</code> - (Optional) The policy for using instances from fleets: <code>reuse</code>, <code>reuse-or-create</code>. Defaults to <code>reuse-or-create</code>.<a class="headerlink" href="#creation_policy" title="Permanent link">&para;</a></h6>
-<h6 class="reference-item" id="idle_duration"><code>idle_duration</code> - (Optional) Time to wait before terminating idle instances. Defaults to <code>5m</code> for runs and <code>3d</code> for fleets. Use <code>off</code> for unlimited duration.<a class="headerlink" href="#idle_duration" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="idle_duration"><code>idle_duration</code> - (Optional) Time to wait before terminating idle instances. Instances are not terminated if the fleet is already at <code>nodes.min</code>. Defaults to <code>5m</code> for runs and <code>3d</code> for fleets. Use <code>off</code> for unlimited duration.<a class="headerlink" href="#idle_duration" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="_utilization_policy"><a href="#utilization_policy"><code>utilization_policy</code></a> - (Optional) Run termination policy based on utilization.<a class="headerlink" href="#_utilization_policy" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="startup_order"><code>startup_order</code> - (Optional) The order in which master and workers jobs are started: <code>any</code>, <code>master-first</code>, <code>workers-first</code>. Defaults to <code>any</code>.<a class="headerlink" href="#startup_order" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="stop_criteria"><code>stop_criteria</code> - (Optional) The criteria determining when a multi-node run should be considered finished: <code>all-done</code>, <code>master-done</code>. Defaults to <code>all-done</code>.<a class="headerlink" href="#stop_criteria" title="Permanent link">&para;</a></h6>
@@ -5691,7 +5691,7 @@ the user's credentials. Ignored for other repo types.</p>
 <h6 class="reference-item" id="stop_duration"><code>stop_duration</code> - (Optional) The maximum duration of a run graceful stopping. After it elapses, the run is automatically forced stopped. This includes force detaching volumes used by the run. Use <code>off</code> for unlimited duration. Defaults to <code>5m</code>.<a class="headerlink" href="#stop_duration" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="max_price"><code>max_price</code> - (Optional) The maximum instance price per hour, in dollars.<a class="headerlink" href="#max_price" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="creation_policy"><code>creation_policy</code> - (Optional) The policy for using instances from fleets: <code>reuse</code>, <code>reuse-or-create</code>. Defaults to <code>reuse-or-create</code>.<a class="headerlink" href="#creation_policy" title="Permanent link">&para;</a></h6>
-<h6 class="reference-item" id="idle_duration"><code>idle_duration</code> - (Optional) Time to wait before terminating idle instances. Defaults to <code>5m</code> for runs and <code>3d</code> for fleets. Use <code>off</code> for unlimited duration.<a class="headerlink" href="#idle_duration" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="idle_duration"><code>idle_duration</code> - (Optional) Time to wait before terminating idle instances. Instances are not terminated if the fleet is already at <code>nodes.min</code>. Defaults to <code>5m</code> for runs and <code>3d</code> for fleets. Use <code>off</code> for unlimited duration.<a class="headerlink" href="#idle_duration" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="_utilization_policy"><a href="#utilization_policy"><code>utilization_policy</code></a> - (Optional) Run termination policy based on utilization.<a class="headerlink" href="#_utilization_policy" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="startup_order"><code>startup_order</code> - (Optional) The order in which master and workers jobs are started: <code>any</code>, <code>master-first</code>, <code>workers-first</code>. Defaults to <code>any</code>.<a class="headerlink" href="#startup_order" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="stop_criteria"><code>stop_criteria</code> - (Optional) The criteria determining when a multi-node run should be considered finished: <code>all-done</code>, <code>master-done</code>. Defaults to <code>all-done</code>.<a class="headerlink" href="#stop_criteria" title="Permanent link">&para;</a></h6>
@@ -5733,7 +5733,7 @@ the user's credentials. Ignored for other repo types.</p>
 <h6 class="reference-item" id="stop_duration"><code>stop_duration</code> - (Optional) The maximum duration of a run graceful stopping. After it elapses, the run is automatically forced stopped. This includes force detaching volumes used by the run. Use <code>off</code> for unlimited duration. Defaults to <code>5m</code>.<a class="headerlink" href="#stop_duration" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="max_price"><code>max_price</code> - (Optional) The maximum instance price per hour, in dollars.<a class="headerlink" href="#max_price" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="creation_policy"><code>creation_policy</code> - (Optional) The policy for using instances from fleets: <code>reuse</code>, <code>reuse-or-create</code>. Defaults to <code>reuse-or-create</code>.<a class="headerlink" href="#creation_policy" title="Permanent link">&para;</a></h6>
-<h6 class="reference-item" id="idle_duration"><code>idle_duration</code> - (Optional) Time to wait before terminating idle instances. Defaults to <code>5m</code> for runs and <code>3d</code> for fleets. Use <code>off</code> for unlimited duration.<a class="headerlink" href="#idle_duration" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="idle_duration"><code>idle_duration</code> - (Optional) Time to wait before terminating idle instances. Instances are not terminated if the fleet is already at <code>nodes.min</code>. Defaults to <code>5m</code> for runs and <code>3d</code> for fleets. Use <code>off</code> for unlimited duration.<a class="headerlink" href="#idle_duration" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="_utilization_policy"><a href="#utilization_policy"><code>utilization_policy</code></a> - (Optional) Run termination policy based on utilization.<a class="headerlink" href="#_utilization_policy" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="startup_order"><code>startup_order</code> - (Optional) The order in which master and workers jobs are started: <code>any</code>, <code>master-first</code>, <code>workers-first</code>. Defaults to <code>any</code>.<a class="headerlink" href="#startup_order" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="stop_criteria"><code>stop_criteria</code> - (Optional) The criteria determining when a multi-node run should be considered finished: <code>all-done</code>, <code>master-done</code>. Defaults to <code>all-done</code>.<a class="headerlink" href="#stop_criteria" title="Permanent link">&para;</a></h6>

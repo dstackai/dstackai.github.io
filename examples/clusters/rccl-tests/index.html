@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../../assets/images/dstack-fav-32.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.21+insiders-4.53.17">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.23+insiders-4.53.17">
     
     
       
@@ -748,6 +748,34 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
+      <a href="../../../docs/concepts/fleets/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fleets
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../../docs/concepts/dev-environments/" class="md-nav__link">
         
   
@@ -812,34 +840,6 @@ Support dstack with a ⭐ on
     
   
     Services
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../docs/concepts/fleets/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Fleets
   
 
     
@@ -3944,7 +3944,11 @@ Support dstack with a ⭐ on
 
 
 <h1 id="rccl-tests">RCCL tests<a class="headerlink" href="#rccl-tests" title="Permanent link">&para;</a></h1>
-<p>This example shows how to run distributed <a href="https://github.com/ROCm/rccl-tests" target="_blank">RCCL tests <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> with MPI using <code>dstack</code>.</p>
+<p>This example shows how to run distributed <a href="https://github.com/ROCm/rccl-tests" target="_blank">RCCL tests <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> using <a href="https://dstack.ai/docs/concepts/tasks#distributed-tasks">distributed tasks</a>.</p>
+<div class="admonition info">
+<p class="admonition-title">Prerequisites</p>
+<p>Before running a distributed task, make sure to create a fleet with <code>placement</code> set to <code>cluster</code> (can be a <a href="https://dstack.ai/docs/concepts/fleets#backend-placement">managed fleet</a> or an <a href="https://dstack.ai/docs/concepts/fleets#ssh-placement">SSH fleet</a>).</p>
+</div>
 <h2 id="running-as-a-task">Running as a task<a class="headerlink" href="#running-as-a-task" title="Permanent link">&para;</a></h2>
 <p>Here's an example of a task that runs AllReduce test on 2 nodes, each with 8 <code>Mi300x</code> GPUs (16 processes in total).</p>
 <div editor-title="examples/distributed-training/rccl-tests/.dstack.yml">

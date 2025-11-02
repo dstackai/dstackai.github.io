@@ -18,14 +18,14 @@
         <link rel="prev" href="../../quickstart/">
       
       
-        <link rel="next" href="../dev-environments/">
+        <link rel="next" href="../fleets/">
       
       
         
       
       
       <link rel="icon" href="../../../assets/images/dstack-fav-32.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.21+insiders-4.53.17">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.23+insiders-4.53.17">
     
     
       
@@ -1088,6 +1088,34 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
+      <a href="../fleets/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fleets
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../dev-environments/" class="md-nav__link">
         
   
@@ -1152,34 +1180,6 @@ Support dstack with a ⭐ on
     
   
     Services
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../fleets/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Fleets
   
 
     
@@ -4377,11 +4377,10 @@ They can be configured via <code>~/.dstack/server/config.yml</code> or through t
 <li><a href="#container-based">Container-based</a> – use either <code>dstack</code>'s native integration with cloud providers or Kubernetes to orchestrate container-based runs; provisioning in this case is delegated to the cloud provider or Kubernetes.  </li>
 <li><a href="#on-prem">On-prem</a> – use <code>dstack</code>'s native support for on-prem servers without needing Kubernetes.  </li>
 </ul>
-<details class="info">
-<summary>dstack Sky</summary>
-<p>If you're using <a href="https://sky.dstack.ai" target="_blank">dstack Sky <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>,<br />
-you can either configure your own backends or use the pre-configured backend that gives you access to compute from the GPU marketplace.</p>
-</details>
+<div class="admonition info">
+<p class="admonition-title">dstack Sky</p>
+<p>If you're using <a href="https://sky.dstack.ai" target="_blank">dstack Sky <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>, backend configuration is optional. dstack Sky lets you use pre-configured backends to access GPU marketplace.</p>
+</div>
 <p>See the examples of backend configuration below.</p>
 <h2 id="vm-based">VM-based<a class="headerlink" href="#vm-based" title="Permanent link">&para;</a></h2>
 <p>VM-based backends allow <code>dstack</code> users to manage clusters and orchestrate container-based runs across a wide range of cloud providers.<br />
@@ -5419,13 +5418,13 @@ All you need to do is <a href="../fleets/#ssh">provide hostnames and SSH credent
             
             
               
-              <a href="../dev-environments/" class="md-footer__link md-footer__link--next" aria-label="Next: Dev environments">
+              <a href="../fleets/" class="md-footer__link md-footer__link--next" aria-label="Next: Fleets">
                 <div class="md-footer__title">
                   <span class="md-footer__direction">
                     Next
                   </span>
                   <div class="md-ellipsis">
-                    Dev environments
+                    Fleets
                   </div>
                 </div>
                 <div class="md-footer__button md-icon">

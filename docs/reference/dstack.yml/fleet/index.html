@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../../../assets/images/dstack-fav-32.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.21+insiders-4.53.17">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.23+insiders-4.53.17">
     
     
       
@@ -761,6 +761,34 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
+      <a href="../../../concepts/fleets/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fleets
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../../concepts/dev-environments/" class="md-nav__link">
         
   
@@ -825,34 +853,6 @@ Support dstack with a ⭐ on
     
   
     Services
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../concepts/fleets/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Fleets
   
 
     
@@ -3952,7 +3952,7 @@ Support dstack with a ⭐ on
 <h6 class="reference-item" id="spot_policy"><code>spot_policy</code> - (Optional) The policy for provisioning spot or on-demand instances: <code>spot</code>, <code>on-demand</code>, <code>auto</code>. Defaults to <code>on-demand</code>.<a class="headerlink" href="#spot_policy" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="_retry"><a href="#retry"><code>retry</code></a> - (Optional) The policy for provisioning retry. Defaults to <code>false</code>.<a class="headerlink" href="#_retry" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="max_price"><code>max_price</code> - (Optional) The maximum instance price per hour, in dollars.<a class="headerlink" href="#max_price" title="Permanent link">&para;</a></h6>
-<h6 class="reference-item" id="idle_duration"><code>idle_duration</code> - (Optional) Time to wait before terminating idle instances. Defaults to <code>5m</code> for runs and <code>3d</code> for fleets. Use <code>off</code> for unlimited duration.<a class="headerlink" href="#idle_duration" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="idle_duration"><code>idle_duration</code> - (Optional) Time to wait before terminating idle instances. Instances are not terminated if the fleet is already at <code>nodes.min</code>. Defaults to <code>5m</code> for runs and <code>3d</code> for fleets. Use <code>off</code> for unlimited duration.<a class="headerlink" href="#idle_duration" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="tags"><code>tags</code> - (Optional) The custom tags to associate with the resource. The tags are also propagated to the underlying backend resources. If there is a conflict with backend-level tags, does not override them.<a class="headerlink" href="#tags" title="Permanent link">&para;</a></h6>
 <h3 id="ssh_config"><code>ssh_config</code><a class="headerlink" href="#ssh_config" title="Permanent link">&para;</a></h3>
 <h6 class="reference-item" id="user"><code>user</code> - (Optional) The user to log in with on all hosts.<a class="headerlink" href="#user" title="Permanent link">&para;</a></h6>

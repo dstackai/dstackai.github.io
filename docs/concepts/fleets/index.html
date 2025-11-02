@@ -15,17 +15,17 @@
         <link rel="canonical" href="https://dstack.ai/docs/concepts/fleets/">
       
       
-        <link rel="prev" href="../services/">
+        <link rel="prev" href="../backends/">
       
       
-        <link rel="next" href="../volumes/">
+        <link rel="next" href="../dev-environments/">
       
       
         
       
       
       <link rel="icon" href="../../../assets/images/dstack-fav-32.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.21+insiders-4.53.17">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.23+insiders-4.53.17">
     
     
       
@@ -760,90 +760,6 @@ Support dstack with a ⭐ on
                 
   
   
-  
-  
-    <li class="md-nav__item">
-      <a href="../dev-environments/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Dev environments
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../tasks/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Tasks
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../services/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Services
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
     
   
   
@@ -907,17 +823,17 @@ Support dstack with a ⭐ on
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#standard" class="md-nav__link">
+  <a href="#backend-fleets" class="md-nav__link">
     <span class="md-ellipsis">
       
         <span class="md-typeset">
-          Standard fleets
+          Backend fleets
         </span>
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Standard fleets">
+    <nav class="md-nav" aria-label="Backend fleets">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -952,7 +868,7 @@ Support dstack with a ⭐ on
 </li>
       
         <li class="md-nav__item">
-  <a href="#ssh" class="md-nav__link">
+  <a href="#ssh-fleets" class="md-nav__link">
     <span class="md-ellipsis">
       
         <span class="md-typeset">
@@ -1045,6 +961,90 @@ Support dstack with a ⭐ on
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dev-environments/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dev environments
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tasks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tasks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../services/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Services
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -3866,17 +3866,17 @@ Support dstack with a ⭐ on
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#standard" class="md-nav__link">
+  <a href="#backend-fleets" class="md-nav__link">
     <span class="md-ellipsis">
       
         <span class="md-typeset">
-          Standard fleets
+          Backend fleets
         </span>
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Standard fleets">
+    <nav class="md-nav" aria-label="Backend fleets">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -3911,7 +3911,7 @@ Support dstack with a ⭐ on
 </li>
       
         <li class="md-nav__item">
-  <a href="#ssh" class="md-nav__link">
+  <a href="#ssh-fleets" class="md-nav__link">
     <span class="md-ellipsis">
       
         <span class="md-typeset">
@@ -4086,30 +4086,35 @@ Support dstack with a ⭐ on
 <p>Fleets act both as pools of instances and as templates for how those instances are provisioned.</p>
 <p><code>dstack</code> supports two kinds of fleets: </p>
 <ul>
-<li><a href="#standard">Standard fleets</a> – dynamically provisioned through configured backends; they are supported with any type of backends: <a href="../backends/#vm-based">VM-based</a>, <a href="../backends/#container-based">container-based</a>, and <a href="../backends/#kubernetes">Kubernetes</a></li>
+<li><a href="#backend">Backend fleets</a> – dynamically provisioned through configured backends; they are supported with any type of backends: <a href="../backends/#vm-based">VM-based</a> and <a href="../backends/#container-based">container-based</a> (incl. <a href="../backends/#kubernetes"><code>kubernetes</code></a>)</li>
 <li><a href="#ssh">SSH fleets</a> – created using on-prem servers; do not require backends</li>
 </ul>
-<h2 id="standard">Standard fleets<a class="headerlink" href="#standard" title="Permanent link">&para;</a></h2>
-<p>When you run <code>dstack apply</code> to start a dev environment, task, or service, <code>dstack</code> will reuse idle instances<br />
-from an existing fleet whenever available.</p>
-<p>If no fleet meets the requirements or has idle capacity, <code>dstack</code> can create a new fleet on the fly.<br />
-However, it’s generally better to define fleets explicitly in configuration files for greater control.  </p>
+<p>When you run <code>dstack apply</code> to start a dev environment, task, or service, <code>dstack</code> will reuse idle instances from an existing fleet whenever available.</p>
+<h2 id="backend-fleets">Backend fleets<a class="headerlink" href="#backend-fleets" title="Permanent link">&para;</a></h2>
+<p>If you configured <a href="../backends/">backends</a>, <code>dstack</code> can provision fleets on the fly.
+However, it’s recommended to define fleets explicitly.</p>
 <h3 id="apply-a-configuration">Apply a configuration<a class="headerlink" href="#apply-a-configuration" title="Permanent link">&para;</a></h3>
-<p>Define a fleet configuration as a YAML file in your project directory. The file must have a
+<p>To create a backend fleet, define a configuration as a YAML file in your project directory. The file must have a
 <code>.dstack.yml</code> extension (e.g. <code>.dstack.yml</code> or <code>fleet.dstack.yml</code>).</p>
 <div editor-title="examples/misc/fleets/.dstack.yml">
 
     <div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">fleet</span>
 <span class="c1"># The name is optional, if not specified, generated randomly</span>
-<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my-fleet</span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">default-fleet</span>
 
 <span class="c1"># Can be a range or a fixed number</span>
-<span class="nt">nodes</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
+<span class="c1"># Allow to provision of up to 2 instances</span>
+<span class="nt">nodes</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0..2</span>
+
 <span class="c1"># Uncomment to ensure instances are inter-connected</span>
 <span class="c1">#placement: cluster</span>
 
+<span class="c1"># Deprovision instances above the minimum if they remain idle</span>
+<span class="nt">idle_duration</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1h</span>
+
 <span class="nt">resources</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">24GB</span>
+<span class="w">  </span><span class="c1"># Allow to provision up to 8 GPUs</span>
+<span class="w">  </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0..8</span>
 </code></pre></div>
 
 </div>
@@ -4122,53 +4127,42 @@ However, it’s generally better to define fleets explicitly in configuration fi
 Provisioning...
 ---&gt;<span class="w"> </span><span class="m">100</span>%
 
-<span class="w"> </span>FLEET<span class="w">     </span>INSTANCE<span class="w">  </span>BACKEND<span class="w">              </span>GPU<span class="w">             </span>PRICE<span class="w">    </span>STATUS<span class="w">  </span>CREATED<span class="w"> </span>
-<span class="w"> </span>my-fleet<span class="w">  </span><span class="m">0</span><span class="w">         </span>gcp<span class="w"> </span><span class="o">(</span>europe-west-1<span class="o">)</span><span class="w">  </span>L4:24GB<span class="w"> </span><span class="o">(</span>spot<span class="o">)</span><span class="w">  </span><span class="nv">$0</span>.1624<span class="w">  </span>idle<span class="w">    </span><span class="m">3</span><span class="w"> </span>mins<span class="w"> </span>ago<span class="w">      </span>
-<span class="w">           </span><span class="m">1</span><span class="w">         </span>gcp<span class="w"> </span><span class="o">(</span>europe-west-1<span class="o">)</span><span class="w">  </span>L4:24GB<span class="w"> </span><span class="o">(</span>spot<span class="o">)</span><span class="w">  </span><span class="nv">$0</span>.1624<span class="w">  </span>idle<span class="w">    </span><span class="m">3</span><span class="w"> </span>mins<span class="w"> </span>ago<span class="w">    </span>
+<span class="w"> </span>FLEET<span class="w">     </span>INSTANCE<span class="w">  </span>BACKEND<span class="w">  </span>GPU<span class="w">  </span>PRICE<span class="w">  </span>STATUS<span class="w">  </span>CREATED<span class="w"> </span>
+<span class="w"> </span>my-fleet<span class="w">  </span>-<span class="w">         </span>-<span class="w">        </span>-<span class="w">    </span>-<span class="w">      </span>-<span class="w">       </span>-
 </code></pre></div>
 
 </div>
 
-<p>Once the status of instances changes to <code>idle</code>, they can be used by dev environments, tasks, and services.</p>
+<p><code>dstack</code> always keeps the minimum number of nodes provisioned. Additional instances, up to the maximum limit, are provisioned on demand.</p>
+<div class="admonition info">
+<p class="admonition-title">Container-based backends</p>
+<p>For <a href="../backends/#container-based">container-based</a> backends  (such as <code>kubernetes</code>, <code>runpod</code>, etc), <code>nodes</code> must be defined as a range starting with <code>0</code>. In these cases, instances are provisioned on demand as needed.</p>
+<!-- TODO: Ensure the user sees the error or warning otherwise -->
+</div>
 <details class="info">
-<summary>Container-based backends</summary>
-<p><a href="../backends/#container-based">Container-based</a> backends don’t support pre-provisioning,
-so <code>nodes</code> can only be set to a range starting with <code>0</code>.</p>
-<p>This means instances are created only when a run starts, and once it finishes, they’re terminated and released back to the provider (either a cloud service or Kubernetes).</p>
-<div editor-title=".dstack.yml">
-<div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">fleet</span>
-<span class="c1"># The name is optional, if not specified, generated randomly</span>
-<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my-fleet</span>
-
-<span class="c1"># Specify the number of instances</span>
-<span class="nt">nodes</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0..2</span>
-<span class="c1"># Uncomment to ensure instances are inter-connected</span>
-<span class="c1">#placement: cluster</span>
-
-<span class="nt">resources</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">24GB</span>
-</code></pre></div>
-</div>
-</details>
-<h3 id="configuration-options">Configuration options<a class="headerlink" href="#configuration-options" title="Permanent link">&para;</a></h3>
-<h4 id="nodes">Nodes<a class="headerlink" href="#nodes" title="Permanent link">&para;</a></h4>
-<p>The <code>nodes</code> property controls how many instances to provision and maintain in the fleet:</p>
-<div editor-title=".dstack.yml"> 
-
+<summary>Target number of nodes</summary>
+<p>If <code>nodes</code> is defined as a range, you can start with more than the minimum number of instances by using the <code>target</code> parameter when creating the fleet.</p>
+<p><div editor-title=".dstack.yml"> </p>
 <div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">fleet</span>
 
 <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my-fleet</span>
 
 <span class="nt">nodes</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">min</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span><span class="w"> </span><span class="c1"># Always maintain at least 1 idle instance. Can be 0.</span>
-<span class="w">  </span><span class="nt">target</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span><span class="w"> </span><span class="c1"># (Optional) Provision 2 instances initially</span>
-<span class="w">  </span><span class="nt">max</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span><span class="w"> </span><span class="c1"># (Optional) Do not allow more than 3 instances</span>
+<span class="w">  </span><span class="nt">min</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span>
+<span class="w">  </span><span class="nt">max</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
+
+<span class="w">  </span><span class="c1"># Provision 2 instances initially</span>
+<span class="w">  </span><span class="nt">target</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
+
+<span class="c1"># Deprovision instances above the minimum if they remain idle</span>
+<span class="nt">idle_duration</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1h</span>
 </code></pre></div>
-
 </div>
-
-<p><code>dstack</code> ensures the fleet always has at least <code>nodes.min</code> instances, creating new instances in the background if necessary. If you don't need to keep instances in the fleet forever, you can set <code>nodes.min</code> to <code>0</code>. By default, <code>dstack apply</code> also provisions <code>nodes.min</code> instances. The <code>nodes.target</code> property allows provisioning more instances initially than needs to be maintained.</p>
-<h4 id="standard-placement">Placement<a class="headerlink" href="#standard-placement" title="Permanent link">&para;</a></h4>
+</details>
+<p>By default, when you submit a <a href="../dev-environments/">dev environment</a>, <a href="../tasks/">task</a>, or <a href="../services/">service</a>, <code>dstack</code> tries all available fleets. However, you can explicitly specify the <a href="../../reference/dstack.yml/dev-environment/#fleets"><code>fleets</code></a> in your run configuration
+or via <a href="../../reference/cli/dstack/apply/#fleet"><code>--fleet</code></a> with <code>dstack apply</code>.</p>
+<h3 id="configuration-options">Configuration options<a class="headerlink" href="#configuration-options" title="Permanent link">&para;</a></h3>
+<h4 id="backend-placement">Placement<a class="headerlink" href="#backend-placement" title="Permanent link">&para;</a></h4>
 <p>To ensure instances are interconnected (e.g., for
 <a href="../tasks/#distributed-tasks">distributed tasks</a>), set <code>placement</code> to <code>cluster</code>. 
 This ensures all instances are provisioned with optimal inter-node connectivity.</p>
@@ -4249,8 +4243,8 @@ and their quantity. Examples: <code>nvidia</code> (one NVIDIA GPU), <code>A100</
 <p>If you’re unsure which offers (hardware configurations) are available from the configured backends, use the
 <a href="../../reference/cli/dstack/offer/#list-gpu-offers"><code>dstack offer</code></a> command to list them.</p>
 </blockquote>
-<h4 id="standard-blocks">Blocks<a class="headerlink" href="#standard-blocks" title="Permanent link">&para;</a></h4>
-<p>For standard fleets, <code>blocks</code> function the same way as in SSH fleets. 
+<h4 id="backend-blocks">Blocks<a class="headerlink" href="#backend-blocks" title="Permanent link">&para;</a></h4>
+<p>For backend fleets, <code>blocks</code> function the same way as in SSH fleets. 
 See the <a href="#ssh-blocks"><code>Blocks</code></a> section under SSH fleets for details on the blocks concept.</p>
 <div editor-title=".dstack.yml">
 
@@ -4269,9 +4263,9 @@ See the <a href="#ssh-blocks"><code>Blocks</code></a> section under SSH fleets f
 
 <h4 id="idle-duration">Idle duration<a class="headerlink" href="#idle-duration" title="Permanent link">&para;</a></h4>
 <p>By default, fleet instances stay <code>idle</code> for 3 days and can be reused within that time.
-If the fleet is not reused within this period, it is automatically terminated.</p>
+If an instance is not reused within this period, it is automatically terminated.</p>
 <p>To change the default idle duration, set
-<a href="../../reference/dstack.yml/fleet/#idle_duration"><code>idle_duration</code></a> in the run configuration (e.g., <code>0s</code>, <code>1m</code>, or <code>off</code> for
+<a href="../../reference/dstack.yml/fleet/#idle_duration"><code>idle_duration</code></a> in the fleet configuration (e.g., <code>0s</code>, <code>1m</code>, or <code>off</code> for
 unlimited).</p>
 <div editor-title="examples/misc/fleets/.dstack.yml">
 
@@ -4319,13 +4313,13 @@ via the <a href="../../reference/dstack.yml/fleet/#spot_policy"><code>spot_polic
 
 <div class="admonition info">
 <p class="admonition-title">Reference</p>
-<p>Standard fleets support many more configuration options,
+<p>Backend fleets support many more configuration options,
 incl. <a href="../../reference/dstack.yml/fleet/#backends"><code>backends</code></a>, 
 <a href="../../reference/dstack.yml/fleet/#regions"><code>regions</code></a>, 
 <a href="../../reference/dstack.yml/fleet/#max_price"><code>max_price</code></a>, and
 among <a href="../../reference/dstack.yml/fleet/">others</a>.</p>
 </div>
-<h2 id="ssh">SSH fleets<a class="headerlink" href="#ssh" title="Permanent link">&para;</a></h2>
+<h2 id="ssh-fleets">SSH fleets<a class="headerlink" href="#ssh-fleets" title="Permanent link">&para;</a></h2>
 <p>If you have a group of on-prem servers accessible via SSH, you can create an SSH fleet.</p>
 <h3 id="apply-a-configuration_1">Apply a configuration<a class="headerlink" href="#apply-a-configuration_1" title="Permanent link">&para;</a></h3>
 <p>Define a fleet configuration as a YAML file in your project directory. The file must have a
@@ -4558,7 +4552,7 @@ To terminate and delete specific instances from a fleet, pass <code>-i INSTANCE_
           <nav class="md-footer__inner md-grid" aria-label="Footer" >
             
               
-              <a href="../services/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Services">
+              <a href="../backends/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Backends">
                 <div class="md-footer__button md-icon">
                   
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -4568,20 +4562,20 @@ To terminate and delete specific instances from a fleet, pass <code>-i INSTANCE_
                     Previous
                   </span>
                   <div class="md-ellipsis">
-                    Services
+                    Backends
                   </div>
                 </div>
               </a>
             
             
               
-              <a href="../volumes/" class="md-footer__link md-footer__link--next" aria-label="Next: Volumes">
+              <a href="../dev-environments/" class="md-footer__link md-footer__link--next" aria-label="Next: Dev environments">
                 <div class="md-footer__title">
                   <span class="md-footer__direction">
                     Next
                   </span>
                   <div class="md-ellipsis">
-                    Volumes
+                    Dev environments
                   </div>
                 </div>
                 <div class="md-footer__button md-icon">

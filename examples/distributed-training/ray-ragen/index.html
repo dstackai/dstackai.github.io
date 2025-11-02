@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../../assets/images/dstack-fav-32.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.21+insiders-4.53.17">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.23+insiders-4.53.17">
     
     
       
@@ -748,6 +748,34 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
+      <a href="../../../docs/concepts/fleets/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fleets
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../../docs/concepts/dev-environments/" class="md-nav__link">
         
   
@@ -812,34 +840,6 @@ Support dstack with a ⭐ on
     
   
     Services
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../docs/concepts/fleets/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Fleets
   
 
     
@@ -2676,19 +2676,6 @@ Support dstack with a ⭐ on
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#create-fleet" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        <span class="md-typeset">
-          Create fleet
-        </span>
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#run-a-ray-cluster" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3774,19 +3761,6 @@ Support dstack with a ⭐ on
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#create-fleet" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        <span class="md-typeset">
-          Create fleet
-        </span>
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#run-a-ray-cluster" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3881,13 +3855,12 @@ Support dstack with a ⭐ on
 
 <h1 id="ray-ragen">Ray + RAGEN<a class="headerlink" href="#ray-ragen" title="Permanent link">&para;</a></h1>
 <p>This example shows how use <code>dstack</code> and <a href="https://github.com/RAGEN-AI/RAGEN" target="_blank">RAGEN <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> 
-to fine-tune an agent on mulitiple nodes.</p>
-<p>Under the hood <code>RAGEN</code> uses <a href="https://github.com/volcengine/verl" target="_blank">verl <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> for Reinforcement Learning and <a href="https://docs.ray.io/en/latest/" target="_blank">Ray <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> for ditributed training.</p>
-<h2 id="create-fleet">Create fleet<a class="headerlink" href="#create-fleet" title="Permanent link">&para;</a></h2>
-<p>Before submitted disributed training runs, make sure to create a fleet with a <code>placement</code> set to <code>cluster</code>.</p>
-<blockquote>
-<p>For more detials on how to use clusters with <code>dstack</code>, check the <a href="https://dstack.ai/docs/guides/clusters">Clusters</a> guide.</p>
-</blockquote>
+to fine-tune an agent on multiple nodes.</p>
+<p>Under the hood <code>RAGEN</code> uses <a href="https://github.com/volcengine/verl" target="_blank">verl <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> for Reinforcement Learning and <a href="https://docs.ray.io/en/latest/" target="_blank">Ray <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> for distributed training.</p>
+<div class="admonition info">
+<p class="admonition-title">Prerequisites</p>
+<p>Before running a distributed task, make sure to create a fleet with <code>placement</code> set to <code>cluster</code> (can be a <a href="https://dstack.ai/docs/concepts/fleets#backend-placement">managed fleet</a> or an <a href="https://dstack.ai/docs/concepts/fleets#ssh-placement">SSH fleet</a>).</p>
+</div>
 <h2 id="run-a-ray-cluster">Run a Ray cluster<a class="headerlink" href="#run-a-ray-cluster" title="Permanent link">&para;</a></h2>
 <p>If you want to use Ray with <code>dstack</code>, you have to first run a Ray cluster.</p>
 <p>The task below runs a Ray cluster on an existing fleet:</p>

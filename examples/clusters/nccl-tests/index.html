@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../../assets/images/dstack-fav-32.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.21+insiders-4.53.17">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.23+insiders-4.53.17">
     
     
       
@@ -748,6 +748,34 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
+      <a href="../../../docs/concepts/fleets/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fleets
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../../docs/concepts/dev-environments/" class="md-nav__link">
         
   
@@ -812,34 +840,6 @@ Support dstack with a ⭐ on
     
   
     Services
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../docs/concepts/fleets/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Fleets
   
 
     
@@ -3918,7 +3918,11 @@ Support dstack with a ⭐ on
 
 
 <h1 id="nccl-tests">NCCL tests<a class="headerlink" href="#nccl-tests" title="Permanent link">&para;</a></h1>
-<p>This example shows how to run distributed <a href="https://github.com/NVIDIA/nccl-tests" target="_blank">NCCL tests <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> with MPI using <code>dstack</code>.</p>
+<p>This example shows how to run <a href="https://github.com/NVIDIA/nccl-tests" target="_blank">NCCL tests <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> on a cluster using <a href="https://dstack.ai/docs/concepts/tasks#distributed-tasks">distributed tasks</a>.</p>
+<div class="admonition info">
+<p class="admonition-title">Prerequisites</p>
+<p>Before running a distributed task, make sure to create a fleet with <code>placement</code> set to <code>cluster</code> (can be a <a href="https://dstack.ai/docs/concepts/fleets#backend-placement">managed fleet</a> or an <a href="https://dstack.ai/docs/concepts/fleets#ssh-placement">SSH fleet</a>).</p>
+</div>
 <h2 id="running-as-a-task">Running as a task<a class="headerlink" href="#running-as-a-task" title="Permanent link">&para;</a></h2>
 <p>Here's an example of a task that runs AllReduce test on 2 nodes, each with 4 GPUs (8 processes in total).</p>
 <div editor-title="examples/clusters/nccl-tests/.dstack.yml">
@@ -3987,8 +3991,8 @@ Submit<span class="w"> </span>the<span class="w"> </span>run<span class="w"> </s
 <a href="https://github.com/dstackai/dstack/blob/master/examples/clusters/nccl-tests"><code>examples/clusters/nccl-tests</code> <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>.</p>
 <h2 id="whats-next">What's next?<a class="headerlink" href="#whats-next" title="Permanent link">&para;</a></h2>
 <ol>
-<li>Check <a href="https://dstack.ai/docs/dev-environments">dev environments</a>, <a href="https://dstack.ai/docs/tasks">tasks</a>, 
-   <a href="https://dstack.ai/docs/services">services</a>, and <a href="https://dstack.ai/docs/concepts/fleets">fleets</a>.</li>
+<li>Check <a href="https://dstack.ai/docs/concepts/dev-environments">dev environments</a>, <a href="https://dstack.ai/docs/concepts/tasks">tasks</a>, 
+   <a href="https://dstack.ai/docsconcepts/services">services</a>, and <a href="https://dstack.ai/docs/concepts/fleets">fleets</a>.</li>
 </ol>
 
 

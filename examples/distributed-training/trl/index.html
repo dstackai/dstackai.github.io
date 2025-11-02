@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../../assets/images/dstack-fav-32.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.21+insiders-4.53.17">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.23+insiders-4.53.17">
     
     
       
@@ -748,6 +748,34 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
+      <a href="../../../docs/concepts/fleets/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fleets
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../../docs/concepts/dev-environments/" class="md-nav__link">
         
   
@@ -812,34 +840,6 @@ Support dstack with a ⭐ on
     
   
     Services
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../docs/concepts/fleets/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Fleets
   
 
     
@@ -2620,30 +2620,17 @@ Support dstack with a ⭐ on
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#create-fleet" class="md-nav__link">
+  <a href="#define-a-configuration" class="md-nav__link">
     <span class="md-ellipsis">
       
         <span class="md-typeset">
-          Create fleet
+          Define a configuration
         </span>
       
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#define-a-configurtation" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        <span class="md-typeset">
-          Define a configurtation
-        </span>
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Define a configurtation">
+    <nav class="md-nav" aria-label="Define a configuration">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -3793,30 +3780,17 @@ Support dstack with a ⭐ on
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#create-fleet" class="md-nav__link">
+  <a href="#define-a-configuration" class="md-nav__link">
     <span class="md-ellipsis">
       
         <span class="md-typeset">
-          Create fleet
+          Define a configuration
         </span>
       
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#define-a-configurtation" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        <span class="md-typeset">
-          Define a configurtation
-        </span>
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Define a configurtation">
+    <nav class="md-nav" aria-label="Define a configuration">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -3919,21 +3893,11 @@ Support dstack with a ⭐ on
 
 <h1 id="trl">TRL<a class="headerlink" href="#trl" title="Permanent link">&para;</a></h1>
 <p>This example walks you through how to run distributed fine-tune using <a href="https://github.com/huggingface/trl" target="_blank">TRL <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>, <a href="https://github.com/huggingface/accelerate" target="_blank">Accelerate <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> and <a href="https://github.com/deepspeedai/DeepSpeed" target="_blank">Deepspeed <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>.</p>
-<details class="info">
-<summary>Prerequisites</summary>
-<p>Once <code>dstack</code> is <a href="https://dstack.ai/docs/installation">installed</a>, clone the repo with examples.</p>
-<div class="termy">
-<p><div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/dstackai/dstack
-$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>dstack
-</code></pre></div>
-</div></p>
-</details>
-<h2 id="create-fleet">Create fleet<a class="headerlink" href="#create-fleet" title="Permanent link">&para;</a></h2>
-<p>Before submitting distributed training runs, make sure to create a fleet with a <code>placement</code> set to <code>cluster</code>.</p>
-<blockquote>
-<p>For more detials on how to use clusters with <code>dstack</code>, check the <a href="https://dstack.ai/docs/guides/clusters">Clusters</a> guide.</p>
-</blockquote>
-<h2 id="define-a-configurtation">Define a configurtation<a class="headerlink" href="#define-a-configurtation" title="Permanent link">&para;</a></h2>
+<div class="admonition info">
+<p class="admonition-title">Prerequisites</p>
+<p>Before running a distributed task, make sure to create a fleet with <code>placement</code> set to <code>cluster</code> (can be a <a href="https://dstack.ai/docs/concepts/fleets#backend-placement">managed fleet</a> or an <a href="https://dstack.ai/docs/concepts/fleets#ssh-placement">SSH fleet</a>).</p>
+</div>
+<h2 id="define-a-configuration">Define a configuration<a class="headerlink" href="#define-a-configuration" title="Permanent link">&para;</a></h2>
 <p>Once the fleet is created, define a distributed task configuration. Here's an example of such a task.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="fsdp" name="__tabbed_1" type="radio" /><input id="deepseed-zero-3" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="fsdp">FSDP</label><label for="deepseed-zero-3">Deepseed ZeRO-3</label></div>
 <div class="tabbed-content">
