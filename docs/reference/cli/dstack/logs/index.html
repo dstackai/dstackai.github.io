@@ -3863,6 +3863,7 @@ Support dstack with a ⭐ on
 
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>dstack<span class="w"> </span>logs<span class="w"> </span>--help
 Usage:<span class="w"> </span>dstack<span class="w"> </span>logs<span class="w"> </span><span class="o">[</span>-h<span class="o">]</span><span class="w"> </span><span class="o">[</span>--project<span class="w"> </span>NAME<span class="o">]</span><span class="w"> </span><span class="o">[</span>-d<span class="o">]</span><span class="w"> </span><span class="o">[</span>--replica<span class="w"> </span>REPLICA<span class="o">]</span><span class="w"> </span><span class="o">[</span>--job<span class="w"> </span>JOB<span class="o">]</span>
+<span class="w">                   </span><span class="o">[</span>--since<span class="w"> </span>SINCE<span class="o">]</span>
 <span class="w">                   </span>run_name
 
 Positional<span class="w"> </span>Arguments:
@@ -3874,6 +3875,9 @@ Options:
 <span class="w">  </span>-d,<span class="w"> </span>--diagnose<span class="w">     </span>Show<span class="w"> </span>run<span class="w"> </span>diagnostic<span class="w"> </span>logs
 <span class="w">  </span>--replica<span class="w"> </span>REPLICA<span class="w">  </span>The<span class="w"> </span>replica<span class="w"> </span>number.<span class="w"> </span>Defaults<span class="w"> </span>to<span class="w"> </span><span class="m">0</span>.
 <span class="w">  </span>--job<span class="w"> </span>JOB<span class="w">          </span>The<span class="w"> </span>job<span class="w"> </span>number<span class="w"> </span>inside<span class="w"> </span>the<span class="w"> </span>replica.<span class="w"> </span>Defaults<span class="w"> </span>to<span class="w"> </span><span class="m">0</span>.
+<span class="w">  </span>--since<span class="w"> </span>SINCE<span class="w">      </span>Show<span class="w"> </span>only<span class="w"> </span>logs<span class="w"> </span>newer<span class="w"> </span>than<span class="w"> </span>the<span class="w"> </span>specified<span class="w"> </span>date.<span class="w"> </span>Can<span class="w"> </span>be<span class="w"> </span>a
+<span class="w">                     </span>duration<span class="w"> </span><span class="o">(</span>e.g.<span class="w"> </span>10s,<span class="w"> </span>5m,<span class="w"> </span>1d<span class="o">)</span><span class="w"> </span>or<span class="w"> </span>an<span class="w"> </span>RFC<span class="w"> </span><span class="m">3339</span><span class="w"> </span>string<span class="w"> </span><span class="o">(</span>e.g.
+<span class="w">                     </span><span class="m">2023</span>-09-24T15:30:00Z<span class="o">)</span>.
 </code></pre></div>
 
 </div>
