@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../../assets/images/dstack-fav-32.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.23+insiders-4.53.17">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0+insiders-4.53.17">
     
     
       
@@ -4677,6 +4677,11 @@ You can increase the 2MB limit by setting the <code>DSTACK_SERVER_CODE_UPLOAD_LI
 
 </div>
 
+<div class="admonition info">
+<p class="admonition-title">Retry duration</p>
+<p>The duration period is calculated as a run age for <code>no-capacity</code> event
+and as a time passed since the last <code>interruption</code> and <code>error</code> for <code>interruption</code> and <code>error</code> events..</p>
+</div>
 <h3 id="inactivity-duration">Inactivity duration<a class="headerlink" href="#inactivity-duration" title="Permanent link">&para;</a></h3>
 <p>Set <a href="../../reference/dstack.yml/dev-environment/#inactivity_duration"><code>inactivity_duration</code></a>
 to automatically stop the dev environment after a configured period of inactivity.</p>

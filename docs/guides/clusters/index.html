@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../../assets/images/dstack-fav-32.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.23+insiders-4.53.17">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0+insiders-4.53.17">
     
     
       
@@ -4055,8 +4055,8 @@ Support dstack with a ⭐ on
 </blockquote>
 <h3 id="cloud-fleets">Cloud fleets<a class="headerlink" href="#cloud-fleets" title="Permanent link">&para;</a></h3>
 <p><a href="../../concepts/fleets/#cloud">Cloud fleets</a> allow to provision interconnected clusters across supported backends.
-For cloud fleets, fast interconnect is currently supported only on the <code>aws</code>, <code>gcp</code>, and <code>nebius</code> backends.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="aws" name="__tabbed_1" type="radio" /><input id="gcp" name="__tabbed_1" type="radio" /><input id="nebius" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="aws">AWS</label><label for="gcp">GCP</label><label for="nebius">Nebius</label></div>
+For cloud fleets, fast interconnect is currently supported only on the <code>aws</code>, <code>gcp</code>, <code>nebius</code>, and <code>runpod</code> backends.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:4"><input checked="checked" id="aws" name="__tabbed_1" type="radio" /><input id="gcp" name="__tabbed_1" type="radio" /><input id="nebius" name="__tabbed_1" type="radio" /><input id="runpod" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="aws">AWS</label><label for="gcp">GCP</label><label for="nebius">Nebius</label><label for="runpod">Runpod</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>When you create a cloud fleet with AWS, <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/efa.html" target="_blank">Elastic Fabric Adapter <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> networking is automatically configured if it’s supported for the corresponding instance type.</p>
@@ -4078,6 +4078,9 @@ Refer to the <a href="../../../examples/clusters/a4/">A4</a>,
 </div>
 <div class="tabbed-block">
 <p>When you create a cloud fleet with Nebius, <a href="https://docs.nebius.com/compute/clusters/gpu" target="_blank">InfiniBand <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> networking is automatically configured if it’s supported for the corresponding instance type.</p>
+</div>
+<div class="tabbed-block">
+<p>When you run multinode tasks in a cluster cloud fleet with Runpod, <code>dstack</code> provisions <a href="https://docs.runpod.io/instant-clusters">Runpod Instant Clusters</a> with InfiniBand networking configured.</p>
 </div>
 </div>
 </div>

@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../../assets/images/dstack-fav-32.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.23+insiders-4.53.17">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0+insiders-4.53.17">
     
     
       
@@ -3999,6 +3999,7 @@ via <code>dstack server</code> or deployed using Docker.</p>
 <li><code id="DSTACK_SERVER_GCP_LOGGING_PROJECT">DSTACK_SERVER_GCP_LOGGING_PROJECT</code> – The GCP Logging project for storing workloads logs. If not set, the default file-based log storage is used.</li>
 <li><code id="DSTACK_ENABLE_PROMETHEUS_METRICS">DSTACK_ENABLE_PROMETHEUS_METRICS</code> — Enables Prometheus metrics collection and export.</li>
 <li><code id="DSTACK_DEFAULT_SERVICE_CLIENT_MAX_BODY_SIZE">DSTACK_DEFAULT_SERVICE_CLIENT_MAX_BODY_SIZE</code> – Request body size limit for services running with a gateway, in bytes. Defaults to 64 MiB.</li>
+<li><code id="DSTACK_SERVICE_CLIENT_TIMEOUT">DSTACK_SERVICE_CLIENT_TIMEOUT</code> – Timeout in seconds for HTTP requests sent from the in-server proxy and gateways to service replicas. Defaults to 60.</li>
 <li><code id="DSTACK_FORBID_SERVICES_WITHOUT_GATEWAY">DSTACK_FORBID_SERVICES_WITHOUT_GATEWAY</code> – Forbids registering new services without a gateway if set to any value.</li>
 <li><code id="DSTACK_SERVER_CODE_UPLOAD_LIMIT">DSTACK_SERVER_CODE_UPLOAD_LIMIT</code> - The repo size limit when uploading diffs or local repos, in bytes. Set to <code>0</code> to disable size limits. Defaults to <code>2MiB</code>.</li>
 <li><code id="DSTACK_SERVER_S3_BUCKET">DSTACK_SERVER_S3_BUCKET</code> - The bucket that repo diffs will be uploaded to if set. If unset, diffs are uploaded to the database.</li>

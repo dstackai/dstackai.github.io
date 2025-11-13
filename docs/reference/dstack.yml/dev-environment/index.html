@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../../../assets/images/dstack-fav-32.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.23+insiders-4.53.17">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0+insiders-4.53.17">
     
     
       
@@ -4090,7 +4090,7 @@ Support dstack with a ⭐ on
 <h6 class="reference-item" id="tags"><code>tags</code> - (Optional) The custom tags to associate with the resource. The tags are also propagated to the underlying backend resources. If there is a conflict with backend-level tags, does not override them.<a class="headerlink" href="#tags" title="Permanent link">&para;</a></h6>
 <h3 id="retry"><code>retry</code><a class="headerlink" href="#retry" title="Permanent link">&para;</a></h3>
 <h6 class="reference-item" id="on_events"><code>on_events</code> - (Optional) The list of events that should be handled with retry. Supported events are <code>no-capacity</code>, <code>interruption</code>, <code>error</code>. Omit to retry on all events.<a class="headerlink" href="#on_events" title="Permanent link">&para;</a></h6>
-<h6 class="reference-item" id="duration"><code>duration</code> - (Optional) The maximum period of retrying the run, e.g., <code>4h</code> or <code>1d</code>.<a class="headerlink" href="#duration" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="duration"><code>duration</code> - (Optional) The maximum period of retrying the run, e.g., <code>4h</code> or <code>1d</code>. The period is calculated as a run age for <code>no-capacity</code> event and as a time passed since the last <code>interruption</code> and <code>error</code> for <code>interruption</code> and <code>error</code> events..<a class="headerlink" href="#duration" title="Permanent link">&para;</a></h6>
 <h3 id="utilization_policy"><code>utilization_policy</code><a class="headerlink" href="#utilization_policy" title="Permanent link">&para;</a></h3>
 <h6 class="reference-item" id="min_gpu_utilization"><code>min_gpu_utilization</code> -  Minimum required GPU utilization, percent. If any GPU has utilization below specified value during the whole time window, the run is terminated.<a class="headerlink" href="#min_gpu_utilization" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="time_window"><code>time_window</code> -  The time window of metric samples taking into account to measure utilization (e.g., <code>30m</code>, <code>1h</code>). Minimum is <code>5m</code>.<a class="headerlink" href="#time_window" title="Permanent link">&para;</a></h6>
