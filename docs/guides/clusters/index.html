@@ -4049,12 +4049,12 @@ Support dstack with a ⭐ on
 <h2 id="fleets">Fleets<a class="headerlink" href="#fleets" title="Permanent link">&para;</a></h2>
 <p>Ensure a fleet is created before you run any distributed task. This can be either an SSH fleet or a cloud fleet.</p>
 <h3 id="ssh-fleets">SSH fleets<a class="headerlink" href="#ssh-fleets" title="Permanent link">&para;</a></h3>
-<p><a href="../../concepts/fleets/#ssh">SSH fleets</a> can be used to create a fleet out of existing baremetals or VMs, e.g. if they are already pre-provisioned, or set up on-premises.</p>
+<p><a href="../../concepts/fleets/#ssh-fleets">SSH fleets</a> can be used to create a fleet out of existing baremetals or VMs, e.g. if they are already pre-provisioned, or set up on-premises.</p>
 <blockquote>
 <p>For SSH fleets, fast interconnect is supported provided that the hosts are pre-configured with the appropriate interconnect drivers.</p>
 </blockquote>
 <h3 id="cloud-fleets">Cloud fleets<a class="headerlink" href="#cloud-fleets" title="Permanent link">&para;</a></h3>
-<p><a href="../../concepts/fleets/#cloud">Cloud fleets</a> allow to provision interconnected clusters across supported backends.
+<p><a href="../../concepts/fleets/#backend-fleets">Cloud fleets</a> allow to provision interconnected clusters across supported backends.
 For cloud fleets, fast interconnect is currently supported only on the <code>aws</code>, <code>gcp</code>, <code>nebius</code>, and <code>runpod</code> backends.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:4"><input checked="checked" id="aws" name="__tabbed_1" type="radio" /><input id="gcp" name="__tabbed_1" type="radio" /><input id="nebius" name="__tabbed_1" type="radio" /><input id="runpod" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="aws">AWS</label><label for="gcp">GCP</label><label for="nebius">Nebius</label><label for="runpod">Runpod</label></div>
 <div class="tabbed-content">
@@ -4108,14 +4108,14 @@ See the <a href="../../../examples/clusters/nccl-tests/">NCCL</a> or <a href="..
 (for NVIDIA) or <a href="../../../examples/clusters/rccl-tests/">RCCL</a> (for AMD) tests using MPI.</p>
 <h2 id="volumes">Volumes<a class="headerlink" href="#volumes" title="Permanent link">&para;</a></h2>
 <h3 id="instance-volumes">Instance volumes<a class="headerlink" href="#instance-volumes" title="Permanent link">&para;</a></h3>
-<p><a href="../../concepts/volumes/#instance">Instance volumes</a> enable mounting any folder from the host into the container, allowing data persistence during distributed tasks.</p>
+<p><a href="../../concepts/volumes/#instance-volumes">Instance volumes</a> enable mounting any folder from the host into the container, allowing data persistence during distributed tasks.</p>
 <p>Instance volumes can be used to mount:</p>
 <ul>
 <li>Regular folders (data persists only while the fleet exists)</li>
 <li>Folders that are mounts of shared filesystems (e.g., manually mounted shared filesystems).</li>
 </ul>
 <h3 id="network-volumes">Network volumes<a class="headerlink" href="#network-volumes" title="Permanent link">&para;</a></h3>
-<p>Currently, no backend supports multi-attach <a href="../../concepts/volumes/#network">network volumes</a> for distributed tasks. However, single-attach volumes can be used by leveraging volume name <a href="../../concepts/volumes/#distributed-tasks">interpolation syntax</a>. This approach mounts a separate single-attach volume to each node.</p>
+<p>Currently, no backend supports multi-attach <a href="../../concepts/volumes/#network-volumes">network volumes</a> for distributed tasks. However, single-attach volumes can be used by leveraging volume name <a href="../../concepts/volumes/#distributed-tasks">interpolation syntax</a>. This approach mounts a separate single-attach volume to each node.</p>
 <div class="admonition info">
 <p class="admonition-title">What's next?</p>
 <ol>

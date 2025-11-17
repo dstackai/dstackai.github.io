@@ -4445,11 +4445,11 @@ To change the default idle duration, set
 <a href="../../reference/dstack.yml/fleet/#idle_duration"><code>idle_duration</code></a> in the run configuration (e.g., <code>0s</code>, <code>1m</code>, or <code>off</code> for unlimited).</p>
 <h2 id="volumes">Volumes<a class="headerlink" href="#volumes" title="Permanent link">&para;</a></h2>
 <p>To persist data across runs, it is recommended to use volumes.
-<code>dstack</code> supports two types of volumes: <a href="../../concepts/volumes/#network">network</a> 
+<code>dstack</code> supports two types of volumes: <a href="../../concepts/volumes/#network-volumes">network</a> 
 (for persisting data even if the instance is interrupted)
-and <a href="../../concepts/volumes/#instance">instance</a> (useful for persisting cached data across runs while the instance remains active).</p>
+and <a href="../../concepts/volumes/#instance-volumes">instance</a> (useful for persisting cached data across runs while the instance remains active).</p>
 <blockquote>
-<p>If you use <a href="../../concepts/fleets/#ssh">SSH fleets</a>, you can mount network storage (e.g., NFS or SMB) to the hosts and access it in runs via instance volumes.</p>
+<p>If you use <a href="../../concepts/fleets/#ssh-fleets">SSH fleets</a>, you can mount network storage (e.g., NFS or SMB) to the hosts and access it in runs via instance volumes.</p>
 </blockquote>
 <h2 id="environment-variables">Environment variables<a class="headerlink" href="#environment-variables" title="Permanent link">&para;</a></h2>
 <p>If a configuration requires an environment variable that you don't want to hardcode in the YAML, you can define it

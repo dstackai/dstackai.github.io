@@ -1032,6 +1032,51 @@ Support dstack with a ⭐ on
 </li>
       
         <li class="md-nav__item">
+  <a href="#configuration-options" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Configuration options
+        </span>
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuration options">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#backend" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Backend
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#public-ip" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Public IP
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#update-dns-records" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3815,6 +3860,51 @@ Support dstack with a ⭐ on
 </li>
       
         <li class="md-nav__item">
+  <a href="#configuration-options" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Configuration options
+        </span>
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuration options">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#backend" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Backend
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#public-ip" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Public IP
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#update-dns-records" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3964,7 +4054,7 @@ the gateway is already set up for you.</p>
 <h2 id="apply-a-configuration">Apply a configuration<a class="headerlink" href="#apply-a-configuration" title="Permanent link">&para;</a></h2>
 <p>First, define a gateway configuration as a YAML file in your project folder.
 The filename must end with <code>.dstack.yml</code> (e.g. <code>.dstack.yml</code> or <code>gateway.dstack.yml</code> are both acceptable).</p>
-<div editor-title="gateway.dstack.yml"> 
+<div editor-title="gateway.dstack.yml">
 
 <div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gateway</span>
 <span class="c1"># A name of the gateway</span>
@@ -3996,6 +4086,17 @@ Provisioning...
 
 </div>
 
+<h2 id="configuration-options">Configuration options<a class="headerlink" href="#configuration-options" title="Permanent link">&para;</a></h2>
+<h3 id="backend">Backend<a class="headerlink" href="#backend" title="Permanent link">&para;</a></h3>
+<p>You can create gateways with the <code>aws</code>, <code>azure</code>, <code>gcp</code>, or <code>kubernetes</code> backends, but that does not limit where services run. A gateway can use one backend while services run on any other backend supported by dstack, including backends where gateways themselves cannot be created.</p>
+<details class="info">
+<summary>Kubernetes</summary>
+<p>Gateways in <code>kubernetes</code> backend require an external load balancer. Managed Kubernetes solutions usually include a load balancer.
+For self-hosted Kubernetes, you must provide a load balancer by yourself.</p>
+</details>
+<h3 id="public-ip">Public IP<a class="headerlink" href="#public-ip" title="Permanent link">&para;</a></h3>
+<p>If you don't need/want a public IP for the gateway, you can set the <code>public_ip</code> to <code>false</code> (the default value is <code>true</code>), making the gateway private.
+Private gateways are currently supported in <code>aws</code> and <code>gcp</code> backends.</p>
 <div class="admonition info">
 <p class="admonition-title">Reference</p>
 <p>For all gateway configuration options, refer to the <a href="../../reference/dstack.yml/gateway/">reference</a>.</p>

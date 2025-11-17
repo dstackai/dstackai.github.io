@@ -935,7 +935,7 @@ Support dstack with a ⭐ on
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#network" class="md-nav__link">
+  <a href="#network-volumes" class="md-nav__link">
     <span class="md-ellipsis">
       
         <span class="md-typeset">
@@ -1019,7 +1019,7 @@ Support dstack with a ⭐ on
 </li>
       
         <li class="md-nav__item">
-  <a href="#instance" class="md-nav__link">
+  <a href="#instance-volumes" class="md-nav__link">
     <span class="md-ellipsis">
       
         <span class="md-typeset">
@@ -3873,7 +3873,7 @@ Support dstack with a ⭐ on
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#network" class="md-nav__link">
+  <a href="#network-volumes" class="md-nav__link">
     <span class="md-ellipsis">
       
         <span class="md-typeset">
@@ -3957,7 +3957,7 @@ Support dstack with a ⭐ on
 </li>
       
         <li class="md-nav__item">
-  <a href="#instance" class="md-nav__link">
+  <a href="#instance-volumes" class="md-nav__link">
     <span class="md-ellipsis">
       
         <span class="md-typeset">
@@ -4100,12 +4100,12 @@ Support dstack with a ⭐ on
 <p>Volumes enable data persistence between runs of dev environments, tasks, and services. </p>
 <p><code>dstack</code> supports two kinds of volumes: </p>
 <ul>
-<li><a href="#network">Network volumes</a> &mdash; provisioned via backends and mounted to specific container directories.
+<li><a href="#network-volumes">Network volumes</a> &mdash; provisioned via backends and mounted to specific container directories.
   Ideal for persistent storage.</li>
-<li><a href="#instance">Instance volumes</a> &mdash; bind directories on the host instance to container directories.
+<li><a href="#instance-volumes">Instance volumes</a> &mdash; bind directories on the host instance to container directories.
 Useful as a cache for cloud fleets or for persistent storage with SSH fleets.</li>
 </ul>
-<h2 id="network">Network volumes<a class="headerlink" href="#network" title="Permanent link">&para;</a></h2>
+<h2 id="network-volumes">Network volumes<a class="headerlink" href="#network-volumes" title="Permanent link">&para;</a></h2>
 <p>Network volumes are currently supported for the <code>aws</code>, <code>gcp</code>, and <code>runpod</code> backends.</p>
 <h3 id="apply-a-configuration">Apply a configuration<a class="headerlink" href="#apply-a-configuration" title="Permanent link">&para;</a></h3>
 <p>First, define a volume configuration as a YAML file in your project folder.
@@ -4280,7 +4280,7 @@ and specify them for the same mount point as <a href="#attach-network-volume">do
 <summary>Can I attach network volumes to multiple runs or instances?</summary>
 <p>You can mount a volume in multiple runs. This feature is currently supported only by the <code>runpod</code> backend.</p>
 </details>
-<h2 id="instance">Instance volumes<a class="headerlink" href="#instance" title="Permanent link">&para;</a></h2>
+<h2 id="instance-volumes">Instance volumes<a class="headerlink" href="#instance-volumes" title="Permanent link">&para;</a></h2>
 <p>Instance volumes allow mapping any directory on the instance where the run is executed to any path inside the container.
 This means that the data in instance volumes is persisted only if the run is executed on the same instance.</p>
 <h3 id="attach-a-volume">Attach a volume<a class="headerlink" href="#attach-a-volume" title="Permanent link">&para;</a></h3>
@@ -4310,7 +4310,7 @@ specify the <code>instance_path</code> and <code>path</code> in the <code>volume
 volumes only for caching or with directories manually mounted to network storage.</p>
 <div class="admonition info">
 <p class="admonition-title">Backends</p>
-<p>Instance volumes are currently supported for all backends except <code>runpod</code>, <code>vastai</code> and <code>kubernetes</code>, and can also be used with <a href="../fleets/#ssh">SSH fleets</a>.</p>
+<p>Instance volumes are currently supported for all backends except <code>runpod</code>, <code>vastai</code> and <code>kubernetes</code>, and can also be used with <a href="../fleets/#ssh-fleets">SSH fleets</a>.</p>
 </div>
 <details class="info">
 <summary>Optional volumes</summary>
@@ -4342,7 +4342,7 @@ reuse.</p>
 </div>
 
 <h3 id="use-instance-volumes-with-ssh-fleets">Use instance volumes with SSH fleets<a class="headerlink" href="#use-instance-volumes-with-ssh-fleets" title="Permanent link">&para;</a></h3>
-<p>If you control the instances (e.g. they are on-prem servers configured via <a href="../fleets/#ssh">SSH fleets</a>), 
+<p>If you control the instances (e.g. they are on-prem servers configured via <a href="../fleets/#ssh-fleets">SSH fleets</a>), 
 you can mount network storage (e.g., NFS or SMB) and use the mount points as instance volumes.</p>
 <p>For example, if you mount a network storage to <code>/mnt/nfs-storage</code> on all hosts of your SSH fleet,
 you can map this directory via instance volumes and be sure the data is persisted.</p>

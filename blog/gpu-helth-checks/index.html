@@ -3867,7 +3867,7 @@ Support dstack with a ⭐ on
 <p>This release focuses on passive checks using DCGM background health checks. These run continuously and do not interrupt workloads.</p>
 <p>For active checks today, you can run <a href="../../examples/clusters/nccl-tests/">NCCL tests</a> as a <a href="../../docs/concepts/tasks/#distributed-tasks">distributed task</a> to verify GPU-to-GPU communication and bandwidth across a fleet. Active tests like these can reveal network or interconnect issues that passive monitoring might miss. More built-in support for active diagnostics is planned.</p>
 <h2 id="supported-backends">Supported backends<a class="headerlink" href="#supported-backends" title="Permanent link">&para;</a></h2>
-<p>Passive GPU health checks work on AWS (except with custom <code>os_images</code>), Azure (except A10 GPUs), GCP, OCI, and <a href="../../docs/concepts/fleets/#ssh">SSH fleets</a> where DCGM is installed and configured for background checks. </p>
+<p>Passive GPU health checks work on AWS (except with custom <code>os_images</code>), Azure (except A10 GPUs), GCP, OCI, and <a href="../../docs/concepts/fleets/#ssh-fleets">SSH fleets</a> where DCGM is installed and configured for background checks. </p>
 <blockquote>
 <p>Fleets created before version 0.19.22 need to be recreated to enable this feature.</p>
 </blockquote>

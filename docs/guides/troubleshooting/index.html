@@ -4149,7 +4149,7 @@ and <a href="https://github.com/dstackai/dstack/issues/1551" target="_blank">thi
 Below are some of the reasons why this might happen.</p>
 <h4 id="cause-1-no-capacity-providers">Cause 1: No capacity providers<a class="headerlink" href="#cause-1-no-capacity-providers" title="Permanent link">&para;</a></h4>
 <p>Before you can run any workloads, you need to configure a <a href="../../concepts/backends/">backend</a>,
-create an <a href="../../concepts/fleets/#ssh">SSH fleet</a>, or sign up for
+create an <a href="../../concepts/fleets/#ssh-fleets">SSH fleet</a>, or sign up for
 <a href="https://sky.dstack.ai" target="_blank">dstack Sky <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>.
 If you have configured a backend and still can't use it, check the output of <code>dstack server</code>
 for backend configuration errors.</p>
@@ -4193,15 +4193,15 @@ in your configuration.</p>
 <p>If you don't specify the number of GPUs, <code>dstack</code> will only select single-GPU instances.</p>
 </blockquote>
 <h4 id="cause-6-network-volumes">Cause 6: Network volumes<a class="headerlink" href="#cause-6-network-volumes" title="Permanent link">&para;</a></h4>
-<p>If your run configuration uses <a href="../../concepts/volumes/#network">network volumes</a>,
+<p>If your run configuration uses <a href="../../concepts/volumes/#network-volumes">network volumes</a>,
 <code>dstack</code> will only select instances from the same backend and region as the volumes.
 For AWS, the availability zone of the volume and the instance should also match.</p>
 <h4 id="cause-7-feature-support">Cause 7: Feature support<a class="headerlink" href="#cause-7-feature-support" title="Permanent link">&para;</a></h4>
 <p>Some <code>dstack</code> features are not supported by all backends. If your configuration uses
 one of these features, <code>dstack</code> will only select offers from the backends that support it.</p>
 <ul>
-<li><a href="../../concepts/fleets/#cloud">Cloud fleet</a> configurations,
-  <a href="../../concepts/volumes/#instance">Instance volumes</a>,
+<li><a href="../../concepts/fleets/#backend-fleets">Backend fleets</a> configurations,
+  <a href="../../concepts/volumes/#instance-volumes">Instance volumes</a>,
   and <a href="../../reference/dstack.yml/dev-environment/#privileged">Privileged containers</a>
   are supported by all backends except <code>runpod</code>, <code>vastai</code>, and <code>kubernetes</code>.</li>
 <li><a href="../../concepts/fleets/#cloud-placement">Clusters</a>
@@ -4217,7 +4217,7 @@ one of these features, <code>dstack</code> will only select offers from the back
 you will not see marketplace offers until you top up your balance.
 Alternatively, you can configure your own cloud accounts
 on the <a href="../../concepts/projects/#backends">project settings page</a>
-or use <a href="../../concepts/fleets/#ssh">SSH fleets</a>.</p>
+or use <a href="../../concepts/fleets/#ssh-fleets">SSH fleets</a>.</p>
 <h3 id="provisioning-fails">Provisioning fails<a class="headerlink" href="#provisioning-fails" title="Permanent link">&para;</a></h3>
 <p>In certain cases, running <code>dstack apply</code> may show instance offers,
 but then produce the following output:</p>
