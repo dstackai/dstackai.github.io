@@ -1059,6 +1059,19 @@ Support dstack with a ⭐ on
 </li>
         
           <li class="md-nav__item">
+  <a href="#router" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Router
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#public-ip" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3887,6 +3900,19 @@ Support dstack with a ⭐ on
 </li>
         
           <li class="md-nav__item">
+  <a href="#router" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Router
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#public-ip" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -4045,12 +4071,10 @@ Support dstack with a ⭐ on
 
 
 <h1 id="gateways">Gateways<a class="headerlink" href="#gateways" title="Permanent link">&para;</a></h1>
-<p>Gateways manage the ingress traffic of running <a href="../services/">services</a>,
-provide an HTTPS endpoint mapped to your domain, handle auto-scaling and rate limits.</p>
-<blockquote>
-<p>If you're using <a href="https://sky.dstack.ai" target="_blank">dstack Sky <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>,
-the gateway is already set up for you.</p>
-</blockquote>
+<p>Gateways manage ingress traffic for running <a href="../services/">services</a>, handle auto-scaling and rate limits, enable HTTPS, and allow you to configure a custom domain. They also support custom routers, such as the <a href="https://docs.sglang.ai/advanced_features/router.html#" target="_blank">SGLang Model Gateway <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>.</p>
+<!-- > If you're using [dstack Sky :material-arrow-top-right-thin:{ .external }](https://sky.dstack.ai){:target="_blank"},
+> the gateway is already set up for you. -->
+
 <h2 id="apply-a-configuration">Apply a configuration<a class="headerlink" href="#apply-a-configuration" title="Permanent link">&para;</a></h2>
 <p>First, define a gateway configuration as a YAML file in your project folder.
 The filename must end with <code>.dstack.yml</code> (e.g. <code>.dstack.yml</code> or <code>gateway.dstack.yml</code> are both acceptable).</p>
@@ -4094,6 +4118,42 @@ Provisioning...
 <p>Gateways in <code>kubernetes</code> backend require an external load balancer. Managed Kubernetes solutions usually include a load balancer.
 For self-hosted Kubernetes, you must provide a load balancer by yourself.</p>
 </details>
+<h3 id="router">Router<a class="headerlink" href="#router" title="Permanent link">&para;</a></h3>
+<p>By default, the gateway uses its own load balancer to route traffic between replicas. However, you can delegate this responsibility to a specific router by setting the <code>router</code> property. Currently, the only supported external router is <code>sglang</code>.</p>
+<h4 id="sglang">SGLang<a class="headerlink" href="#sglang" title="Permanent link">&para;</a></h4>
+<p>The <code>sglang</code> router delegates routing logic to the <a href="https://docs.sglang.ai/advanced_features/router.html#" target="_blank">SGLang Model Gateway <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>.</p>
+<p>To enable it, set <code>type</code> field under <code>router</code> to <code>sglang</code>:</p>
+<div editor-title="gateway.dstack.yml">
+
+<div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gateway</span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sglang-gateway</span>
+
+<span class="nt">backend</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">aws</span>
+<span class="nt">region</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">eu-west-1</span>
+
+<span class="nt">domain</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">example.com</span>
+
+<span class="nt">router</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sglang</span>
+<span class="w">  </span><span class="nt">policy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cache_aware</span>
+</code></pre></div>
+
+</div>
+
+<div class="admonition info">
+<p class="admonition-title">Policy</p>
+<p>The <code>router</code> property allows you to configure the routing <code>policy</code>:</p>
+<ul>
+<li><code>cache_aware</code> &mdash; Default policy; combines cache locality with load balancing, falling back to shortest queue. </li>
+<li><code>power_of_two</code> &mdash; Samples two workers and picks the lighter one.                                               </li>
+<li><code>random</code> &mdash; Uniform random selection.                                                                    </li>
+<li><code>round_robin</code> &mdash; Cycles through workers in order.                                                             </li>
+</ul>
+</div>
+<blockquote>
+<p>Currently, services using this type of gateway must run standard SGLang workers. See the <a href="../../../examples/inference/sglang/">example</a>.</p>
+<p>Support for prefill/decode disaggregation and auto-scaling based on inter-token latency is coming soon.</p>
+</blockquote>
 <h3 id="public-ip">Public IP<a class="headerlink" href="#public-ip" title="Permanent link">&para;</a></h3>
 <p>If you don't need/want a public IP for the gateway, you can set the <code>public_ip</code> to <code>false</code> (the default value is <code>true</code>), making the gateway private.
 Private gateways are currently supported in <code>aws</code> and <code>gcp</code> backends.</p>
