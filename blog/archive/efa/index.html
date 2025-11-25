@@ -3774,7 +3774,7 @@ Support dstack with a ⭐ on
 
 
 <h1 id="efficient-distributed-training-with-aws-efa">Efficient distributed training with AWS EFA<a class="headerlink" href="#efficient-distributed-training-with-aws-efa" title="Permanent link">&para;</a></h1>
-<p><a href="https://aws.amazon.com/hpc/efa/" target="_blank">Amazon Elastic Fabric Adapter (EFA) <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> is a high-performance network interface designed for AWS EC2 instances, enabling
+<p><a href="https://aws.amazon.com/hpc/efa/">Amazon Elastic Fabric Adapter (EFA)</a> is a high-performance network interface designed for AWS EC2 instances, enabling
 ultra-low latency and high-throughput communication between nodes. This makes it an ideal solution for scaling
 distributed training workloads across multiple GPUs and instances.</p>
 <p>With the latest release of <code>dstack</code>, you can now leverage AWS EFA to supercharge your distributed training tasks.</p>
@@ -3793,7 +3793,7 @@ integration with the <code>nccl</code> library ensures optimal performance for l
 network interfaces, you’ll need to disable public IPs. Note, the <code>dstack</code>
 server in this case should have access to the private subnet of the VPC.</p>
 <p>You’ll also need to specify an AMI that includes the GDRCopy drivers. For example, you can use the 
-<a href="https://aws.amazon.com/releasenotes/aws-deep-learning-base-gpu-ami-ubuntu-22-04/" target="_blank">AWS Deep Learning Base GPU AMI <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>.</p>
+<a href="https://aws.amazon.com/releasenotes/aws-deep-learning-base-gpu-ami-ubuntu-22-04/">AWS Deep Learning Base GPU AMI</a>.</p>
 <p>Here’s an example backend configuration:</p>
 <p><server/.dstack/config.yml example></p>
 <div editor-title="~/.dstack/server/config.yml">
@@ -3904,15 +3904,15 @@ Provisioning...
 EFA.</p>
 <blockquote>
 <p>Have questions? You're welcome to join
-our <a href="https://discord.gg/u8SmfwPpMd" target="_blank">Discord <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> or talk
-directly to <a href="https://calendly.com/dstackai/discovery-call" target="_blank">our team <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>.</p>
+our <a href="https://discord.gg/u8SmfwPpMd">Discord</a> or talk
+directly to <a href="https://calendly.com/dstackai/discovery-call">our team</a>.</p>
 </blockquote>
 <div class="admonition info">
 <p class="admonition-title">What's next?</p>
 <ol>
 <li>Check <a href="../../../docs/concepts/fleets/">fleets</a>, <a href="../../../docs/concepts/tasks/">tasks</a>, and <a href="../../../docs/concepts/volumes/">volumes</a></li>
 <li>Also see <a href="../../../docs/concepts/dev-environments/">dev environments</a> and <a href="../../../docs/concepts/services/">services</a></li>
-<li>Join <a href="https://discord.gg/u8SmfwPpMd" target="_blank">Discord <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a></li>
+<li>Join <a href="https://discord.gg/u8SmfwPpMd">Discord</a></li>
 </ol>
 </div>
 

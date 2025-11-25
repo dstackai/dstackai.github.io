@@ -3882,14 +3882,14 @@ AMD GPUs through <code>dstack</code>, with support for other cloud providers and
 <p>One of the main advantages of the <code>MI300X</code> is its VRAM. For example, with the <code>H100 SXM</code>, you wouldn't be able to fit the FP16
 version of Llama 3.1 405B into a single node with 8 GPUs—you'd have to use FP8 instead. However, with the <code>MI300X</code>, you
 can fit FP16 into a single node with 8 GPUs, and for FP8, you'd only need 4 GPUs.</p>
-<p>With the <a href="https://github.com/dstackai/dstack/releases/0.18.11rc1" target="_blank">latest update <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>,
+<p>With the <a href="https://github.com/dstackai/dstack/releases/0.18.11rc1">latest update</a>,
 you can now specify an AMD GPU under <code>resources</code>. Below are a few examples.</p>
 <h2 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h2>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="service" name="__tabbed_1" type="radio" /><input id="dev-environment" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="service">Service</label><label for="dev-environment">Dev environment</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>Here's an example of a <a href="../../docs/concepts/services/">service</a> that deploys
-Llama 3.1 70B in FP16 using <a href="https://huggingface.co/docs/text-generation-inference/en/installation_amd" target="_blank">TGI <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>.</p>
+Llama 3.1 70B in FP16 using <a href="https://huggingface.co/docs/text-generation-inference/en/installation_amd">TGI</a>.</p>
 <p><div editor-title="examples/inference/tgi/amd/service.dstack.yml"> </p>
 <div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service</span>
 <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">amd-service-tgi</span>
@@ -3917,7 +3917,7 @@ Llama 3.1 70B in FP16 using <a href="https://huggingface.co/docs/text-generation
 </div>
 <div class="tabbed-block">
 <p>Here's an example of a <a href="../../docs/concepts/dev-environments/">dev environment</a> using
-<a href="https://huggingface.co/docs/text-generation-inference/en/installation_amd" target="_blank">TGI <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>'s
+<a href="https://huggingface.co/docs/text-generation-inference/en/installation_amd">TGI</a>'s
 Docker image:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dev-environment</span>
 <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">amd-dev-tgi</span>
@@ -3955,14 +3955,14 @@ an OpenAI-compatible endpoint and allow you to use it for chat via the control p
 <h2 id="whats-next">What's next?<a class="headerlink" href="#whats-next" title="Permanent link">&para;</a></h2>
 <ol>
 <li>The examples above demonstrate the use of
-<a href="https://huggingface.co/docs/text-generation-inference/en/installation_amd" target="_blank">TGI <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>. 
+<a href="https://huggingface.co/docs/text-generation-inference/en/installation_amd">TGI</a>. 
 AMD accelerators can also be used with other frameworks like vLLM, Ollama, etc., and we'll be adding more examples soon.</li>
 <li>RunPod is the first cloud provider where dstack supports AMD. More cloud providers will be supported soon as well.</li>
-<li>Want to give RunPod and <code>dstack</code> a try? Make sure you've signed up for <a href="https://www.runpod.io/" target="_blank">RunPod <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>, 
+<li>Want to give RunPod and <code>dstack</code> a try? Make sure you've signed up for <a href="https://www.runpod.io/">RunPod</a>, 
    then <a href="../../docs/reference/server/config.yml/#runpod">set up</a> the <code>dstack server</code>. </li>
 </ol>
 <blockquote>
-<p>Have questioned or feedback? Join our <a href="https://discord.gg/u8SmfwPpMd" target="_blank">Discord <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> 
+<p>Have questioned or feedback? Join our <a href="https://discord.gg/u8SmfwPpMd">Discord</a> 
 server.</p>
 </blockquote>
 

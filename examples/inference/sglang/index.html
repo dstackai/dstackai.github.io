@@ -3908,7 +3908,7 @@ Support dstack with a ⭐ on
 
 
 <h1 id="sglang">SGLang<a class="headerlink" href="#sglang" title="Permanent link">&para;</a></h1>
-<p>This example shows how to deploy DeepSeek-R1-Distill-Llama 8B and 70B using <a href="https://github.com/sgl-project/sglang" target="_blank">SGLang <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> and <code>dstack</code>.</p>
+<p>This example shows how to deploy DeepSeek-R1-Distill-Llama 8B and 70B using <a href="https://github.com/sgl-project/sglang">SGLang</a> and <code>dstack</code>.</p>
 <h2 id="apply-a-configuration">Apply a configuration<a class="headerlink" href="#apply-a-configuration" title="Permanent link">&para;</a></h2>
 <p>Here's an example of a service that deploys DeepSeek-R1-Distill-Llama 8B and 70B using SgLang.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="nvidia" name="__tabbed_1" type="radio" /><input id="amd" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="nvidia">NVIDIA</label><label for="amd">AMD</label></div>
@@ -4005,14 +4005,14 @@ at <code>&lt;dstack server URL&gt;/proxy/models/&lt;project name&gt;/</code>.</p
 
 <div class="admonition info">
 <p class="admonition-title">SGLang Model Gateway</p>
-<p>If you'd like to use a custom routing policy, e.g. by leveraging the <a href="https://docs.sglang.ai/advanced_features/router.html#" target="_blank">SGLang Model Gateway <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>, create a gateway with <code>router</code> set to <code>sglang</code>. Check out <a href="https://dstack.ai/docs/concepts/gateways#router">gateways</a> for more details.</p>
+<p>If you'd like to use a custom routing policy, e.g. by leveraging the <a href="https://docs.sglang.ai/advanced_features/router.html#">SGLang Model Gateway</a>, create a gateway with <code>router</code> set to <code>sglang</code>. Check out <a href="https://dstack.ai/docs/concepts/gateways#router">gateways</a> for more details.</p>
 </div>
 <blockquote>
 <p>If a <a href="https://dstack.ai/docs/concepts/gateways/">gateway</a> is configured (e.g. to enable auto-scaling or HTTPs, rate-limits, etc), the OpenAI-compatible endpoint is available at <code>https://gateway.&lt;gateway domain&gt;/</code>.</p>
 </blockquote>
 <h2 id="source-code">Source code<a class="headerlink" href="#source-code" title="Permanent link">&para;</a></h2>
 <p>The source-code of this example can be found in
-<a href="https://github.com/dstackai/dstack/blob/master/examples/llms/deepseek/sglang" target="_blank"><code>examples/llms/deepseek/sglang</code> <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>.</p>
+<a href="https://github.com/dstackai/dstack/blob/master/examples/llms/deepseek/sglang"><code>examples/llms/deepseek/sglang</code></a>.</p>
 <h2 id="whats-next">What's next?<a class="headerlink" href="#whats-next" title="Permanent link">&para;</a></h2>
 <ol>
 <li>Read about <a href="https://dstack.ai/docs/concepts/services">services</a> and <a href="https://dstack.ai/docs/concepts/gateways">gateways</a></li>

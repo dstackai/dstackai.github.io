@@ -3825,7 +3825,7 @@ Support dstack with a ⭐ on
 
 
 <h1 id="orchestrating-workloads-on-nvidia-dgx-spark">Orchestrating workloads on NVIDIA DGX Spark<a class="headerlink" href="#orchestrating-workloads-on-nvidia-dgx-spark" title="Permanent link">&para;</a></h1>
-<p>With support from <a href="https://x.com/GraphsignalAI/status/1986565583593197885" target="_blank">Graphsignal <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>, our team gained access to the new <a href="https://www.nvidia.com/en-us/products/workstations/dgx-spark/" target="_blank">NVIDIA DGX Spark <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> and used it to validate how <code>dstack</code> operates on this hardware. This post walks through how to set it up with <code>dstack</code> and use it alongside existing on-prem clusters or GPU cloud environments to run workloads.</p>
+<p>With support from <a href="https://x.com/GraphsignalAI/status/1986565583593197885">Graphsignal</a>, our team gained access to the new <a href="https://www.nvidia.com/en-us/products/workstations/dgx-spark/">NVIDIA DGX Spark</a> and used it to validate how <code>dstack</code> operates on this hardware. This post walks through how to set it up with <code>dstack</code> and use it alongside existing on-prem clusters or GPU cloud environments to run workloads.</p>
 <p><img src="https://dstack.ai/static-assets/static-assets/images/nvidia-dgx-spark.png" width="630"/></p>
 <!-- more -->
 
@@ -3921,16 +3921,16 @@ To<span class="w"> </span>open<span class="w"> </span><span class="k">in</span><
 <p>Running workloads on DGX Spark with <code>dstack</code> works the same way as on any other <a href="../../docs/concepts/backends/">backend</a> (including GPU clouds): you can run <a href="../../docs/concepts/dev-environments/">dev environments</a> for interactive development, <a href="../../docs/concepts/tasks/">tasks</a> for fine tuning, and <a href="../../docs/concepts/services/">services</a> for inference through the unified interface.</p>
 </blockquote>
 <ol>
-<li>Read the <a href="https://lmsys.org/blog/2025-10-13-nvidia-dgx-spark/" target="_blank">NVIDIA DGX Spark in-depth review <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> by the SGLang team.</li>
+<li>Read the <a href="https://lmsys.org/blog/2025-10-13-nvidia-dgx-spark/">NVIDIA DGX Spark in-depth review</a> by the SGLang team.</li>
 <li>Check <a href="../../docs/concepts/dev-environments/">dev environments</a>, 
     <a href="../../docs/concepts/tasks/">tasks</a>, <a href="../../docs/concepts/services/">services</a>, 
     and <a href="../../docs/concepts/fleets/">fleets</a></li>
 <li>Follow <a href="../../docs/quickstart/">Quickstart</a></li>
-<li>Join <a href="https://discord.gg/u8SmfwPpMd" target="_blank">Discord <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a></li>
+<li>Join <a href="https://discord.gg/u8SmfwPpMd">Discord</a></li>
 </ol>
 <div class="admonition info">
 <p class="admonition-title">Aknowledgement</p>
-<p>Thanks to the <a href="https://graphsignal.com/" target="_blank">Graphsignal <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> team for access to DGX Spark and for supporting testing and validation. Graphsignal provides inference observability tooling used to profile CUDA workloads during both training and inference.</p>
+<p>Thanks to the <a href="https://graphsignal.com/">Graphsignal</a> team for access to DGX Spark and for supporting testing and validation. Graphsignal provides inference observability tooling used to profile CUDA workloads during both training and inference.</p>
 </div>
 
 

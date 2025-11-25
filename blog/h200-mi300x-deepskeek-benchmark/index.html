@@ -4045,8 +4045,8 @@ configurations: 8x NVIDIA H200 and 8x AMD MI300X. Our goal is to compare through
 determine the optimal backend and hardware pairing for DeepSeek-R1's demanding requirements.</p>
 <p><img src="https://dstack.ai/static-assets/static-assets/images/h200-mi300x-deepskeek-benchmark-v2.png" width="630"/></p>
 <p>This benchmark was made possible through the generous support of our partners at
-<a href="https://www.vultr.com/" target="_blank">Vultr <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> and 
-<a href="https://lambdalabs.com/" target="_blank">Lambda <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>,
+<a href="https://www.vultr.com/">Vultr</a> and 
+<a href="https://lambdalabs.com/">Lambda</a>,
 who provided access to the necessary hardware.</p>
 <!-- more -->
 
@@ -4068,7 +4068,7 @@ who provided access to the necessary hardware.</p>
 </ol>
 <h3 id="benchmark-methodology">Benchmark methodology<a class="headerlink" href="#benchmark-methodology" title="Permanent link">&para;</a></h3>
 <p><strong>Online inference</strong></p>
-<p>We utilized SGLang's <a href="https://github.com/dstackai/benchmarks/tree/main/Deepseek-R1/bench_serving.py" target="_blank"><code>Deepseek-R1/bench_serving.py</code> <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> 
+<p>We utilized SGLang's <a href="https://github.com/dstackai/benchmarks/tree/main/Deepseek-R1/bench_serving.py"><code>Deepseek-R1/bench_serving.py</code></a> 
 script, modified to incorporate TensorRT-LLM. </p>
 <p>Tests were conducted across multiple request concurrencies and output token lengths, with input token length fixed at 3200.</p>
 <table>
@@ -4099,9 +4099,9 @@ script, modified to incorporate TensorRT-LLM. </p>
 </table>
 <p>To test prefix caching ability, about 62.5% of each ~3200-token prompt (i.e., 2000 out of 3200 tokens) is a repeated prefix across multiple requests.</p>
 <p><strong>Offline inference</strong></p>
-<p>For offline inference, we used vLLM’s <a href="https://github.com/vllm-project/vllm/blob/main/benchmarks/benchmark_throughput.py" target="_blank"><code>benchmark_throughput.py</code> <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>,
+<p>For offline inference, we used vLLM’s <a href="https://github.com/vllm-project/vllm/blob/main/benchmarks/benchmark_throughput.py"><code>benchmark_throughput.py</code></a>,
 modified for SGLang. TensorRT-LLM was tested using a custom 
-<a href="https://github.com/dstackai/benchmarks/blob/deepseek-r1-benchmark/Deepseek-R1/benchmark_throughput_trt.py" target="_blank"><code>benchmark_throughput_trt.py</code> <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>. 
+<a href="https://github.com/dstackai/benchmarks/blob/deepseek-r1-benchmark/Deepseek-R1/benchmark_throughput_trt.py"><code>benchmark_throughput_trt.py</code></a>. 
 The benchmark examined performance across various batch sizes and output token lengths.</p>
 <table>
 <thead>
@@ -4178,7 +4178,7 @@ architectural advantages.</p>
 <p><img src="https://github.com/dstackai/benchmarks/raw/deepseek-r1-benchmark/Deepseek-R1/images/ttft-vs-concurrency.png" /></p>
 <p><strong>AMD MI300X performance</strong></p>
 <p>vLLM achieved the lowest TTFT at concurrency 128. Below 128, vLLM and SGLang had similar TTFT.</p>
-<p>TTFT, being compute-intensive, highlights H200's advantage, aligning with <a href="https://semianalysis.com/2024/12/22/mi300x-vs-h100-vs-h200-benchmark-part-1-training/" target="_blank">SemiAnalysis’s MI300X vs. H200 TFLOPS benchmark <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>.
+<p>TTFT, being compute-intensive, highlights H200's advantage, aligning with <a href="https://semianalysis.com/2024/12/22/mi300x-vs-h100-vs-h200-benchmark-part-1-training/">SemiAnalysis’s MI300X vs. H200 TFLOPS benchmark</a>.
 However, at 128 concurrent requests, MI300X's memory capacity and bandwidth advantages become evident.</p>
 <h3 id="time-per-output-token-tpot">Time Per Output Token (TPOT)<a class="headerlink" href="#time-per-output-token-tpot" title="Permanent link">&para;</a></h3>
 <p><strong>NVIDIA H200 performance</strong></p>
@@ -4227,31 +4227,31 @@ TPOT increased after prefix caching, which requires further investigation.</p>
 <h2 id="limitations">Limitations<a class="headerlink" href="#limitations" title="Permanent link">&para;</a></h2>
 <ol>
 <li>The offline benchmark results for TensorRT-LLM were obtained using the DeepSeek-R1 model engine built from the
-   <a href="https://github.com/NVIDIA/TensorRT-LLM/tree/deepseek" target="_blank"><code>deepseek</code> branch <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>.
+   <a href="https://github.com/NVIDIA/TensorRT-LLM/tree/deepseek"><code>deepseek</code> branch</a>.
    However, the TensorRT-LLM team recommends using the TorchFlow-based approach for deployment.</li>
 <li>The impact of dynamic batching on inference efficiency was not tested.</li>
-<li>vLLM's prefix caching support for MI300X is a work in progress and can be tracked <a href="https://github.com/ROCm/vllm/issues/457" target="_blank">here <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>.</li>
+<li>vLLM's prefix caching support for MI300X is a work in progress and can be tracked <a href="https://github.com/ROCm/vllm/issues/457">here</a>.</li>
 <li>The inference backends are being optimized for the DeepSeek-R1 model. Given these continuous updates, the current
    results reflect only the performance tested at the time of the benchmark. Overall, performance for all backends is
    expected to improve as more optimizations are made by the backend teams.</li>
 </ol>
 <h2 id="source-code">Source code<a class="headerlink" href="#source-code" title="Permanent link">&para;</a></h2>
 <p>All source code and findings are available in
-<a href="https://github.com/dstackai/benchmarks/tree/deepseek-r1-benchmark/Deepseek-R1" target="_blank">our GitHub repo <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>.</p>
+<a href="https://github.com/dstackai/benchmarks/tree/deepseek-r1-benchmark/Deepseek-R1">our GitHub repo</a>.</p>
 <h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">&para;</a></h2>
 <ul>
-<li><a href="https://rocm.blogs.amd.com/artificial-intelligence/DeepSeekR1_Perf/README.html" target="_blank">Unlock DeepSeek-R1 Inference Performance on AMD Instinct MI300X GPU <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a></li>
-<li><a href="https://datacrunch.io/blog/deploy-deepseek-r1-on-8x-nvidia-h200" target="_blank">Deploy DeepSeek-R1 671B on 8x NVIDIA H200 with SGLang <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a></li>
-<li><a href="https://docs.vllm.ai/en/latest/design/automatic_prefix_caching.html#design-automatic-prefix-caching" target="_blank">vLLM Prefix Caching <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a></li>
-<li><a href="https://lmsys.org/blog/2024-01-17-sglang/" target="_blank">SgLang Prefix Caching <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a></li>
+<li><a href="https://rocm.blogs.amd.com/artificial-intelligence/DeepSeekR1_Perf/README.html">Unlock DeepSeek-R1 Inference Performance on AMD Instinct MI300X GPU</a></li>
+<li><a href="https://datacrunch.io/blog/deploy-deepseek-r1-on-8x-nvidia-h200">Deploy DeepSeek-R1 671B on 8x NVIDIA H200 with SGLang</a></li>
+<li><a href="https://docs.vllm.ai/en/latest/design/automatic_prefix_caching.html#design-automatic-prefix-caching">vLLM Prefix Caching</a></li>
+<li><a href="https://lmsys.org/blog/2024-01-17-sglang/">SgLang Prefix Caching</a></li>
 </ul>
 <h2 id="acknowledgments">Acknowledgments<a class="headerlink" href="#acknowledgments" title="Permanent link">&para;</a></h2>
 <h3 id="vultr">Vultr<a class="headerlink" href="#vultr" title="Permanent link">&para;</a></h3>
-<p><a href="https://www.vultr.com/" target="_blank">Vultr <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> provided access to 8x AMD MI300X GPUs. We are truly thankful for their support.</p>
+<p><a href="https://www.vultr.com/">Vultr</a> provided access to 8x AMD MI300X GPUs. We are truly thankful for their support.</p>
 <p>If you're looking for top-tier bare metal compute with AMD GPUs, we highly recommend Vultr. With <code>dstack</code>, provisioning
 and accessing compute via <code>dstack</code> is seamless and straightforward.</p>
 <h3 id="lambda">Lambda<a class="headerlink" href="#lambda" title="Permanent link">&para;</a></h3>
-<p><a href="https://lambdalabs.com/" target="_blank">Lambda <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> provided access to 8x
+<p><a href="https://lambdalabs.com/">Lambda</a> provided access to 8x
 NVIDIA H200 GPUs. We are truly thankful for their support</p>
 <p>Both Vultr and Lambda are natively supported and can be seamlessly integrated with <code>dstack</code>. </p>
 

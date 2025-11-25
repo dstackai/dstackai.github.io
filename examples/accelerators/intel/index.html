@@ -3939,9 +3939,9 @@ Support dstack with a ⭐ on
 <h2 id="deployment">Deployment<a class="headerlink" href="#deployment" title="Permanent link">&para;</a></h2>
 <p>Serving frameworks like vLLM and TGI have Intel Gaudi support. Here's an example of
 a service that deploys
-<a href="https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Llama-70B" target="_blank"><code>DeepSeek-R1-Distill-Llama-70B</code> <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> 
-using <a href="https://github.com/huggingface/tgi-gaudi" target="_blank">TGI on Gaudi <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> 
-and <a href="https://github.com/HabanaAI/vllm-fork" target="_blank">vLLM <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>.</p>
+<a href="https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Llama-70B"><code>DeepSeek-R1-Distill-Llama-70B</code></a> 
+using <a href="https://github.com/huggingface/tgi-gaudi">TGI on Gaudi</a> 
+and <a href="https://github.com/HabanaAI/vllm-fork">vLLM</a>.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="tgi" name="__tabbed_1" type="radio" /><input id="vllm" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="tgi">TGI</label><label for="vllm">vLLM</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -4024,10 +4024,10 @@ and <a href="https://github.com/HabanaAI/vllm-fork" target="_blank">vLLM <span c
 </div>
 </div>
 <h2 id="fine-tuning">Fine-tuning<a class="headerlink" href="#fine-tuning" title="Permanent link">&para;</a></h2>
-<p>Below is an example of LoRA fine-tuning of <a href="https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Qwen-7B" target="_blank"><code>DeepSeek-R1-Distill-Qwen-7B</code> <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>
-using <a href="https://github.com/huggingface/optimum-habana" target="_blank">Optimum for Intel Gaudi <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> 
-and <a href="https://docs.habana.ai/en/latest/PyTorch/DeepSpeed/DeepSpeed_User_Guide/DeepSpeed_User_Guide.html#deepspeed-user-guide" target="_blank">DeepSpeed <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> with 
-the <a href="https://huggingface.co/datasets/lvwerra/stack-exchange-paired" target="_blank"><code>lvwerra/stack-exchange-paired</code> <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> dataset. </p>
+<p>Below is an example of LoRA fine-tuning of <a href="https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Qwen-7B"><code>DeepSeek-R1-Distill-Qwen-7B</code></a>
+using <a href="https://github.com/huggingface/optimum-habana">Optimum for Intel Gaudi</a> 
+and <a href="https://docs.habana.ai/en/latest/PyTorch/DeepSpeed/DeepSpeed_User_Guide/DeepSpeed_User_Guide.html#deepspeed-user-guide">DeepSpeed</a> with 
+the <a href="https://huggingface.co/datasets/lvwerra/stack-exchange-paired"><code>lvwerra/stack-exchange-paired</code></a> dataset. </p>
 <div editor-title="examples/single-node-training/trl/intel/.dstack.yml">
 
 <div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">task</span>
@@ -4098,15 +4098,15 @@ Provisioning...
 
 <h2 id="source-code">Source code<a class="headerlink" href="#source-code" title="Permanent link">&para;</a></h2>
 <p>The source-code of this example can be found in 
-<a href="https://github.com/dstackai/dstack/blob/master/examples/llms/deepseek/tgi/intel" target="_blank"><code>examples/llms/deepseek/tgi/intel</code> <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>,
-<a href="https://github.com/dstackai/dstack/blob/master/examples/llms/deepseek/vllm/intel" target="_blank"><code>examples/llms/deepseek/vllm/intel</code> <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> and
-<a href="https://github.com/dstackai/dstack/blob/master/examples/llms/deepseek/trl/intel" target="_blank"><code>examples/llms/deepseek/trl/intel</code> <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>.</p>
+<a href="https://github.com/dstackai/dstack/blob/master/examples/llms/deepseek/tgi/intel"><code>examples/llms/deepseek/tgi/intel</code></a>,
+<a href="https://github.com/dstackai/dstack/blob/master/examples/llms/deepseek/vllm/intel"><code>examples/llms/deepseek/vllm/intel</code></a> and
+<a href="https://github.com/dstackai/dstack/blob/master/examples/llms/deepseek/trl/intel"><code>examples/llms/deepseek/trl/intel</code></a>.</p>
 <div class="admonition info">
 <p class="admonition-title">What's next?</p>
 <ol>
 <li>Check <a href="https://dstack.ai/docs/dev-environments">dev environments</a>, <a href="https://dstack.ai/docs/tasks">tasks</a>, and <a href="https://dstack.ai/docs/services">services</a>.</li>
-<li>See also <a href="https://docs.habana.ai/en/latest/index.html">Intel Gaudi Documentation <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>, <a href="https://docs.habana.ai/en/latest/PyTorch/Inference_on_PyTorch/vLLM_Inference.html">vLLM Inference with Gaudi</a>
-  and <a href="https://github.com/huggingface/optimum-habana/blob/main/examples/trl/README.md">Optimum for Gaudi examples <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>.</li>
+<li>See also <a href="https://docs.habana.ai/en/latest/index.html">Intel Gaudi Documentation</a>, <a href="https://docs.habana.ai/en/latest/PyTorch/Inference_on_PyTorch/vLLM_Inference.html">vLLM Inference with Gaudi</a>
+  and <a href="https://github.com/huggingface/optimum-habana/blob/main/examples/trl/README.md">Optimum for Gaudi examples</a>.</li>
 </ol>
 </div>
 

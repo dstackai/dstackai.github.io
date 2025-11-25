@@ -4520,7 +4520,7 @@ $<span class="w"> </span>dstack<span class="w"> </span>apply<span class="w"> </s
 <div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">HF_TOKEN</span><span class="o">=</span>...
 </code></pre></div>
 </div>
-<p>If you install <a href="https://direnv.net/" target="_blank"><code>direnv</code> <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>,
+<p>If you install <a href="https://direnv.net/"><code>direnv</code></a>,
 it will automatically apply the environment variables from the <code>.envrc</code> file to the <code>dstack apply</code> command.</p>
 <p>Remember to add <code>.envrc</code> to <code>.gitignore</code> to avoid committing it to the repo.    </p>
 </details>
@@ -4576,7 +4576,7 @@ it will automatically apply the environment variables from the <code>.envrc</cod
 you can switch between them using the <a href="../../reference/cli/dstack/project/"><code>dstack project</code></a> command.</p>
 <details class="info">
 <summary>.envrc</summary>
-<p>Alternatively, you can install <a href="https://direnv.net/" target="_blank"><code>direnv</code> <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a><br />
+<p>Alternatively, you can install <a href="https://direnv.net/"><code>direnv</code></a><br />
 to automatically apply environment variables from the <code>.envrc</code> file in your project directory.</p>
 <p><div editor-title=".envrc"> </p>
 <div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">DSTACK_PROJECT</span><span class="o">=</span>main
@@ -4693,7 +4693,7 @@ The <code>region</code> value can only be used together with <code>backend</code
 corresponding service quotas for each type of instance in each region.</p>
 <details class="info">
 <summary>AWS</summary>
-<p>Check this <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-resource-limits.html" target="_blank">guide  <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> on EC2 service quotas.
+<p>Check this <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-resource-limits.html">guide </a> on EC2 service quotas.
 The relevant service quotas include:</p>
 <ul>
 <li><code>Running On-Demand P instances</code> (on-demand V100, A100 80GB x8)</li>
@@ -4706,7 +4706,7 @@ The relevant service quotas include:</p>
 </details>
 <details class="info">
 <summary>GCP</summary>
-<p>Check this <a href="https://cloud.google.com/compute/resource-usage" target="_blank">guide  <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> on Compute Engine service quotas.
+<p>Check this <a href="https://cloud.google.com/compute/resource-usage">guide </a> on Compute Engine service quotas.
 The relevant service quotas include:</p>
 <ul>
 <li><code>NVIDIA V100 GPUs</code> (on-demand V100)</li>
@@ -4725,7 +4725,7 @@ The relevant service quotas include:</p>
 </details>
 <details class="info">
 <summary>Azure</summary>
-<p>Check this <a href="https://learn.microsoft.com/en-us/azure/quotas/quickstart-increase-quota-portal" target="_blank">guide  <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> on Azure service quotas.
+<p>Check this <a href="https://learn.microsoft.com/en-us/azure/quotas/quickstart-increase-quota-portal">guide </a> on Azure service quotas.
 The relevant service quotas include:</p>
 <ul>
 <li><code>Total Regional Spot vCPUs</code> (any spot instances)</li>
@@ -4740,7 +4740,7 @@ The relevant service quotas include:</p>
 </details>
 <details class="info">
 <summary>OCI</summary>
-<p>Check this <a href="https://docs.oracle.com/en-us/iaas/Content/General/Concepts/servicelimits.htm#Requesti" target="_blank">guide  <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> on requesting OCI service limits increase.
+<p>Check this <a href="https://docs.oracle.com/en-us/iaas/Content/General/Concepts/servicelimits.htm#Requesti">guide </a> on requesting OCI service limits increase.
 The relevant service category is compute. The relevant resources include:</p>
 <ul>
 <li><code>GPUs for GPU.A10 based VM and BM instances</code> (on-demand A10)</li>

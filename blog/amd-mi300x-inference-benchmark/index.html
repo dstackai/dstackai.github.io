@@ -4000,7 +4000,7 @@ Support dstack with a ⭐ on
 <h1 id="benchmarking-llama-31-405b-on-8x-amd-mi300x-gpus">Benchmarking Llama 3.1 405B on 8x AMD MI300X GPUs<a class="headerlink" href="#benchmarking-llama-31-405b-on-8x-amd-mi300x-gpus" title="Permanent link">&para;</a></h1>
 <p>At <code>dstack</code>, we've been adding support for AMD GPUs with <a href="../../docs/concepts/fleets/#ssh-fleets">SSH fleets</a>, 
 so we saw this as a great chance to test our integration by benchmarking AMD GPUs. Our friends at 
-<a href="https://hotaisle.xyz/" target="_blank">Hot Aisle <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>, who build top-tier 
+<a href="https://hotaisle.xyz/">Hot Aisle</a>, who build top-tier 
 bare metal compute for AMD GPUs, kindly provided the hardware for the benchmark.</p>
 <p><img src="https://dstack.ai/static-assets/static-assets/images/dstack-hotaisle-amd-mi300x-prompt-v5.png" width="750" /></p>
 <!-- more -->
@@ -4085,7 +4085,7 @@ CUDA Archs: Not Set; ROCm: Disabled; Neuron: Disabled
 <summary>TGI</summary>
 <p>The <code>ghcr.io/huggingface/text-generation-inference:sha-11d7af7-rocm</code> Docker image was used.</p>
 </details>
-<p>For conducting the tests, we've been using the <a href="https://github.com/vllm-project/vllm/blob/main/benchmarks/benchmark_serving.py" target="_blank"><code>benchmark_serving</code> <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> provided by vLLM. </p>
+<p>For conducting the tests, we've been using the <a href="https://github.com/vllm-project/vllm/blob/main/benchmarks/benchmark_serving.py"><code>benchmark_serving</code></a> provided by vLLM. </p>
 <h2 id="observations">Observations<a class="headerlink" href="#observations" title="Permanent link">&para;</a></h2>
 <h3 id="tokensec-per-batch-size">Token/sec per batch size<a class="headerlink" href="#tokensec-per-batch-size" title="Permanent link">&para;</a></h3>
 <p>TGI consistently exceeds vLLM in token throughput across all batch sizes, with the performance difference growing larger
@@ -4127,7 +4127,7 @@ performance improved notably when the number of requests was below 900.</p>
 <p>When considering VRAM consumption right after loading model weights, TGI allocates approximately 28% less VRAM compared
 to vLLM.</p>
 <p><img src="https://raw.githubusercontent.com/dstackai/benchmarks/refs/heads/main/amd/inference/gpu_vram_tgi_vllm.png" width="750" /></p>
-<p>This difference may be related to how vLLM <a href="https://docs.vllm.ai/en/latest/models/performance.html" target="_blank">pre-allocates GPU cache <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>.</p>
+<p>This difference may be related to how vLLM <a href="https://docs.vllm.ai/en/latest/models/performance.html">pre-allocates GPU cache</a>.</p>
 <h2 id="conclusion">Conclusion<a class="headerlink" href="#conclusion" title="Permanent link">&para;</a></h2>
 <ol>
 <li>For small sequence lengths, starting with a batch size of 64, TGI significantly outperforms vLLM in terms of throughput and TTFT.</li>
@@ -4153,17 +4153,17 @@ like the H100 and H200, as well as possibly Google TPU. </p>
 </blockquote>
 <h3 id="source-code">Source code<a class="headerlink" href="#source-code" title="Permanent link">&para;</a></h3>
 <p>The source code used for this benchmark can be found in our 
-<a href="https://github.com/dstackai/benchmarks/tree/main/amd/inference" target="_blank">GitHub repo <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>.</p>
+<a href="https://github.com/dstackai/benchmarks/tree/main/amd/inference">GitHub repo</a>.</p>
 <p>If you have questions, feedback, or want to help improve the benchmark, please reach out to our team.</p>
 <h2 id="thanks-to-our-friends">Thanks to our friends<a class="headerlink" href="#thanks-to-our-friends" title="Permanent link">&para;</a></h2>
 <h3 id="hot-aisle">Hot Aisle<a class="headerlink" href="#hot-aisle" title="Permanent link">&para;</a></h3>
-<p><a href="https://hotaisle.xyz/" target="_blank">Hot Aisle <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> 
+<p><a href="https://hotaisle.xyz/">Hot Aisle</a> 
 is the primary sponsor of this benchmark, and we are sincerely grateful for their hardware and support.  </p>
 <p>If you'd like to use top-tier bare metal compute with AMD GPUs, we recommend going
 with Hot Aisle. Once you gain access to a cluster, it can be easily accessed via <code>dstack</code>'s <a href="../../docs/concepts/fleets/#ssh-fleets">SSH fleet</a> easily.</p>
 <h3 id="runpod">RunPod<a class="headerlink" href="#runpod" title="Permanent link">&para;</a></h3>
 <p>If you’d like to use on-demand compute with AMD GPUs at affordable prices, you can configure <code>dstack</code> to
-use <a href="https://runpod.io/" target="_blank">RunPod <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>. In
+use <a href="https://runpod.io/">RunPod</a>. In
 this case, <code>dstack</code> will be able to provision fleets automatically when you run dev environments, tasks, and
 services.</p>
 

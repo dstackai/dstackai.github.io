@@ -22,7 +22,7 @@ It streamlines development, training, and inference, and is compatible with any 
 
 #### 1. Set up the server
 
-> Before using `dstack`, ensure you've [installed](installation/index.md) the server, or signed up for [dstack Sky :material-arrow-top-right-thin:{ .external }](https://sky.dstack.ai){:target="_blank"}.
+> Before using `dstack`, ensure you've [installed](installation/index.md) the server, or signed up for [dstack Sky](https://sky.dstack.ai).
 
 #### 2. Define configurations
 
@@ -48,7 +48,7 @@ port-forwarding, ingress, and more.
     1. Proceed to [installation](installation/index.md)
     2. See [quickstart](quickstart.md)
     3. Browse [examples](/examples)
-    4. Join [Discord :material-arrow-top-right-thin:{ .external }](https://discord.gg/u8SmfwPpMd){:target="_blank"}
+    4. Join [Discord](https://discord.gg/u8SmfwPpMd)
 
 
 ## Installation
@@ -57,7 +57,7 @@ port-forwarding, ingress, and more.
 
 <!-- !!! info "dstack Sky"
     If you don't want to host the `dstack` server (or want to access GPU marketplace),
-    skip installation and proceed to [dstack Sky :material-arrow-top-right-thin:{ .external }](https://sky.dstack.ai){:target="_blank"}. -->
+    skip installation and proceed to [dstack Sky](https://sky.dstack.ai). -->
 
 ## Set up the server
 
@@ -165,7 +165,7 @@ Once the server is up, you can access it via the `dstack` CLI.
 
 ??? info "Windows"
     To use the CLI on Windows, ensure you've installed Git and OpenSSH via 
-    [Git for Windows:material-arrow-top-right-thin:{ .external }](https://git-scm.com/download/win){:target="_blank"}. 
+    [Git for Windows:material-arrow-top-right-thin:{ .external }](https://git-scm.com/download/win). 
 
     When installing it, ensure you've checked 
     `Git from the command line and also from 3-rd party software` 
@@ -262,7 +262,7 @@ This configuration is stored in `~/.dstack/config.yml`.
     2. See [Backends](../concepts/backends.md)
     3. Check the [server deployment](../guides/server-deployment.md) guide
     4. Browse [examples](/examples)
-    5. Join the community via [Discord :material-arrow-top-right-thin:{ .external }](https://discord.gg/u8SmfwPpMd)
+    5. Join the community via [Discord](https://discord.gg/u8SmfwPpMd)
 
 
 ## Quickstart
@@ -528,7 +528,7 @@ Alternatively, you can create an [SSH fleet](concepts/fleets#ssh-fleets).
         [rate limits](concepts/services.md#rate-limits),
         or use a custom domain with HTTPS, 
         set up a [gateway](concepts/gateways.md) before running the service.
-        If you're using [dstack Sky :material-arrow-top-right-thin:{ .external }](https://sky.dstack.ai){:target="_blank"},
+        If you're using [dstack Sky](https://sky.dstack.ai),
         a gateway is pre-configured for you.
 
 `dstack apply` automatically provisions instances and runs the workload according to the configuration.
@@ -540,7 +540,7 @@ Something not working? See the [troubleshooting](guides/troubleshooting.md) guid
 !!! info "What's next?"
     1. Read about [backends](concepts/backends.md),  [dev environments](concepts/dev-environments.md), [tasks](concepts/tasks.md), [services](concepts/services.md), and [fleets](concepts/services.md)
     2. Browse [examples](../examples.md)
-    3. Join [Discord :material-arrow-top-right-thin:{ .external }](https://discord.gg/u8SmfwPpMd)
+    3. Join [Discord](https://discord.gg/u8SmfwPpMd)
 
 
 # Concepts
@@ -559,7 +559,7 @@ They can be configured via `~/.dstack/server/config.yml` or through the [project
   * [On-prem](#on-prem) – use `dstack`'s native support for on-prem servers without needing Kubernetes.  
 
 !!! info "dstack Sky"
-    If you're using [dstack Sky :material-arrow-top-right-thin:{ .external }](https://sky.dstack.ai){:target="_blank"}, backend configuration is optional. dstack Sky lets you use pre-configured backends to access GPU marketplace.
+    If you're using [dstack Sky](https://sky.dstack.ai), backend configuration is optional. dstack Sky lets you use pre-configured backends to access GPU marketplace.
 
 See the examples of backend configuration below.
 
@@ -595,7 +595,7 @@ There are two ways to configure AWS: using an access key or using the default cr
 
 === "Access key"
 
-    Create an access key by following the [this guide :material-arrow-top-right-thin:{ .external }](https://docs.aws.amazon.com/cli/latest/userguide/cli-authentication-user.html#cli-authentication-user-get).
+    Create an access key by following the [this guide](https://docs.aws.amazon.com/cli/latest/userguide/cli-authentication-user.html#cli-authentication-user-get).
     Once you've downloaded the `.csv` file with your IAM user's Access key ID and Secret access key, proceed to
     configure the backend.
 
@@ -772,7 +772,7 @@ There are two ways to configure AWS: using an access key or using the default cr
     Additionally, private subnets must have outbound internet connectivity provided by NAT Gateway, Transit Gateway, or other mechanism.
 
 ??? info "OS images"
-    By default, `dstack` uses its own [AMI :material-arrow-top-right-thin:{ .external }](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AMIs.html)
+    By default, `dstack` uses its own [AMI](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AMIs.html)
     optimized for `dstack`.
     To use your own or other third-party images, set the `os_images` property:
 
@@ -831,7 +831,7 @@ There are two ways to configure Azure: using a client secret or using the defaul
 
     </div>
 
-    If you don't know your `subscription_id` and `tenant_id`, use [Azure CLI :material-arrow-top-right-thin:{ .external }](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli):
+    If you don't know your `subscription_id` and `tenant_id`, use [Azure CLI](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli):
 
     ```shell
     az account show --query "{subscription_id: id, tenant_id: tenantId}"
@@ -839,7 +839,7 @@ There are two ways to configure Azure: using a client secret or using the defaul
 
 === "Client secret"
 
-    A client secret can be created using the [Azure CLI :material-arrow-top-right-thin:{ .external }](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli):
+    A client secret can be created using the [Azure CLI](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli):
 
     ```shell
     SUBSCRIPTION_ID=...
@@ -869,7 +869,7 @@ There are two ways to configure Azure: using a client secret or using the defaul
     
     </div>
 
-    If you don't know your `subscription_id`, use [Azure CLI :material-arrow-top-right-thin:{ .external }](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli):
+    If you don't know your `subscription_id`, use [Azure CLI](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli):
     
     ```shell
     az account show --query "{subscription_id: id}"
@@ -989,7 +989,7 @@ There are two ways to configure GCP: using a service account or using the defaul
 
 === "Service account"
 
-    To create a service account, follow [this guide :material-arrow-top-right-thin:{ .external }](https://cloud.google.com/iam/docs/service-accounts-create). After setting up the service account [create a key :material-arrow-top-right-thin:{ .external }](https://cloud.google.com/iam/docs/keys-create-delete) for it and download the corresponding JSON file.
+    To create a service account, follow [this guide](https://cloud.google.com/iam/docs/service-accounts-create). After setting up the service account [create a key](https://cloud.google.com/iam/docs/keys-create-delete) for it and download the corresponding JSON file.
 
     Then go ahead and configure the backend by specifying the downloaded file path.
 
@@ -1037,7 +1037,7 @@ There are two ways to configure GCP: using a service account or using the defaul
 
         </div>
 
-If you don't know your GCP project ID, use [Google Cloud CLI :material-arrow-top-right-thin:{ .external }](https://cloud.google.com/sdk/docs/install-sdk):
+If you don't know your GCP project ID, use [Google Cloud CLI](https://cloud.google.com/sdk/docs/install-sdk):
 
 ```shell
 gcloud projects list --format="json(projectId)"
@@ -1178,7 +1178,7 @@ gcloud projects list --format="json(projectId)"
 
 ### Lambda
 
-Log into your [Lambda Cloud :material-arrow-top-right-thin:{ .external }](https://lambdalabs.com/service/gpu-cloud) account, click API keys in the sidebar, and then click the `Generate API key`
+Log into your [Lambda Cloud](https://lambdalabs.com/service/gpu-cloud) account, click API keys in the sidebar, and then click the `Generate API key`
 button to create a new API key.
 
 Then, go ahead and configure the backend:
@@ -1199,7 +1199,7 @@ projects:
 
 ### Nebius
 
-Log into your [Nebius AI Cloud :material-arrow-top-right-thin:{ .external }](https://console.eu.nebius.com/) account, navigate to Access, and select Service Accounts. Create a service account, add it to the editors group, and upload its authorized key.
+Log into your [Nebius AI Cloud](https://console.eu.nebius.com/) account, navigate to Access, and select Service Accounts. Create a service account, add it to the editors group, and upload its authorized key.
 
 Then configure the backend:
 
@@ -1220,7 +1220,7 @@ projects:
 </div>
 
 ??? info "Credentials file"
-    It's also possible to configure the `nebius` backend using a credentials file [generated :material-arrow-top-right-thin:{ .external }](https://docs.nebius.com/iam/service-accounts/authorized-keys#create){:target="_blank"} by the `nebius` CLI:
+    It's also possible to configure the `nebius` backend using a credentials file [generated](https://docs.nebius.com/iam/service-accounts/authorized-keys#create) by the `nebius` CLI:
 
     <div class="termy">
 
@@ -1292,7 +1292,7 @@ projects:
 
 ### Vultr
 
-Log into your [Vultr :material-arrow-top-right-thin:{ .external }](https://www.vultr.com/) account, click `Account` in the sidebar, select `API`, find the `Personal Access Token` panel and click the `Enable API` button. In the `Access Control` panel, allow API requests from all addresses or from the subnet where your `dstack` server is deployed.
+Log into your [Vultr](https://www.vultr.com/) account, click `Account` in the sidebar, select `API`, find the `Personal Access Token` panel and click the `Enable API` button. In the `Access Control` panel, allow API requests from all addresses or from the subnet where your `dstack` server is deployed.
 
 Then, go ahead and configure the backend:
 
@@ -1312,7 +1312,7 @@ projects:
 
 ### CUDO
 
-Log into your [CUDO Compute :material-arrow-top-right-thin:{ .external }](https://compute.cudo.org/) account, click API keys in the sidebar, and click the `Create an API key` button.
+Log into your [CUDO Compute](https://compute.cudo.org/) account, click API keys in the sidebar, and click the `Create an API key` button.
 
 Ensure you've created a project with CUDO Compute, then proceed to configuring the backend.
 
@@ -1353,7 +1353,7 @@ There are two ways to configure OCI: using client credentials or using the defau
 
 === "Client credentials"
 
-    Log into the [OCI Console :material-arrow-top-right-thin:{ .external }](https://cloud.oracle.com), go to `My profile`, 
+    Log into the [OCI Console](https://cloud.oracle.com), go to `My profile`, 
     select `API keys`, and click `Add API key`.
 
     Once you add a key, you'll see the configuration file. Copy its values to configure the backend as follows:
@@ -1407,7 +1407,7 @@ There are two ways to configure OCI: using client credentials or using the defau
 
 ### DataCrunch
 
-Log into your [DataCrunch :material-arrow-top-right-thin:{ .external }](https://cloud.datacrunch.io/) account, click Keys in the sidebar, find `REST API Credentials` area and then click the `Generate Credentials` button.
+Log into your [DataCrunch](https://cloud.datacrunch.io/) account, click Keys in the sidebar, find `REST API Credentials` area and then click the `Generate Credentials` button.
 
 Then, go ahead and configure the backend:
 
@@ -1427,7 +1427,7 @@ projects:
 </div>
 
 ### AMD Developer Cloud
-Log into your [AMD Developer Cloud :material-arrow-top-right-thin:{ .external }](https://amd.digitalocean.com/login) account. Click `API` in the sidebar and click the button `Generate New Token`. 
+Log into your [AMD Developer Cloud](https://amd.digitalocean.com/login) account. Click `API` in the sidebar and click the button `Generate New Token`. 
 
 Then, go ahead and configure the backend:
 
@@ -1461,7 +1461,7 @@ projects:
 
 
 ### Digital Ocean
-Log into your [Digital Ocean :material-arrow-top-right-thin:{ .external }](https://cloud.digitalocean.com/login) account. Click `API` in the sidebar and click the button `Generate New Token`. 
+Log into your [Digital Ocean](https://cloud.digitalocean.com/login) account. Click `API` in the sidebar and click the button `Generate New Token`. 
 
 Then, go ahead and configure the backend:
 
@@ -1495,7 +1495,7 @@ projects:
 
 ### Hot Aisle
 
-Log in to the SSH TUI as described in the [Hot Aisle Quick Start :material-arrow-top-right-thin:{ .external }](https://hotaisle.xyz/quick-start/).
+Log in to the SSH TUI as described in the [Hot Aisle Quick Start](https://hotaisle.xyz/quick-start/).
 Create a new team and generate an API key for the member in the team.
 
 Then, go ahead and configure the backend:
@@ -1524,7 +1524,7 @@ projects:
 
 ### CloudRift
 
-Log into your [CloudRift :material-arrow-top-right-thin:{ .external }](https://console.cloudrift.ai/) console, click `API Keys` in the sidebar and click the button to create a new API key.
+Log into your [CloudRift](https://console.cloudrift.ai/) console, click `API Keys` in the sidebar and click the button to create a new API key.
 
 Ensure you've created a project with CloudRift.
 
@@ -1587,11 +1587,11 @@ projects:
 
 ??? info "NVIDIA GPU Operator"
     For `dstack` to correctly detect GPUs in your Kubernetes cluster, the cluster must have the
-    [NVIDIA GPU Operator :material-arrow-top-right-thin:{ .external }](https://docs.nvidia.com/datacenter/cloud-native/gpu-operator/latest/index.html){:target="_blank"} pre-installed.
+    [NVIDIA GPU Operator](https://docs.nvidia.com/datacenter/cloud-native/gpu-operator/latest/index.html) pre-installed.
 
 <!-- ??? info "Managed Kubernetes"
     While `dstack` supports both managed and on-prem Kubernetes clusters, it can only run on pre-provisioned nodes.
-    Support for auto-scalable Kubernetes clusters is coming soon—you can track progress in the corresponding [issue :material-arrow-top-right-thin:{ .external }](https://github.com/dstackai/dstack/issues/3126){:target="_blank"}.
+    Support for auto-scalable Kubernetes clusters is coming soon—you can track progress in the corresponding [issue](https://github.com/dstackai/dstack/issues/3126).
     
     If on-demand provisioning is important, we recommend using [VM-based](#vm-based) backends as they already support auto-scaling. -->
 
@@ -1624,7 +1624,7 @@ projects:
 
 ### RunPod
 
-Log into your [RunPod :material-arrow-top-right-thin:{ .external }](https://www.runpod.io/console/) console, click Settings in the sidebar, expand the `API Keys` section, and click
+Log into your [RunPod](https://www.runpod.io/console/) console, click Settings in the sidebar, expand the `API Keys` section, and click
 the button to create a Read & Write key.
 
 Then proceed to configuring the backend.
@@ -1645,7 +1645,7 @@ projects:
 
 ??? info "Community Cloud"
     By default, `dstack` considers instance offers from both the Secure Cloud and the
-    [Community Cloud :material-arrow-top-right-thin:{ .external }](https://docs.runpod.io/references/faq/#secure-cloud-vs-community-cloud).
+    [Community Cloud](https://docs.runpod.io/references/faq/#secure-cloud-vs-community-cloud).
 
     You can tell them apart by their regions.
     Secure Cloud regions contain datacenter IDs such as `CA-MTL-3`.
@@ -1682,7 +1682,7 @@ projects:
 
 ### Vast.ai
 
-Log into your [Vast.ai :material-arrow-top-right-thin:{ .external }](https://cloud.vast.ai/) account, click Account in the sidebar, and copy your
+Log into your [Vast.ai](https://cloud.vast.ai/) account, click Account in the sidebar, and copy your
 API Key.
 
 Then, go ahead and configure the backend:
@@ -1826,14 +1826,14 @@ To ensure instances are interconnected (e.g., for
 This ensures all instances are provisioned with optimal inter-node connectivity.
 
 ??? info "AWS"
-    When you create a fleet with AWS, [Elastic Fabric Adapter networking :material-arrow-top-right-thin:{ .external }](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/efa.html){:target="_blank"} is automatically configured if it’s supported for the corresponding instance type.
+    When you create a fleet with AWS, [Elastic Fabric Adapter networking](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/efa.html) is automatically configured if it’s supported for the corresponding instance type.
     Note, EFA requires the `public_ips` to be set to `false` in the `aws` backend configuration.
     Otherwise, instances are only connected by the default VPC subnet.
 
     Refer to the [EFA](../../examples/clusters/efa/index.md) example for more details.
 
 ??? info "GCP"
-    When you create a fleet with GCP, `dstack` automatically configures [GPUDirect-TCPXO and GPUDirect-TCPX :material-arrow-top-right-thin:{ .external }](https://cloud.google.com/kubernetes-engine/docs/how-to/gpu-bandwidth-gpudirect-tcpx-autopilot){:target="_blank"} networking for the A3 Mega and A3 High instance types, as well as RoCE networking for the A4 instance type.
+    When you create a fleet with GCP, `dstack` automatically configures [GPUDirect-TCPXO and GPUDirect-TCPX](https://cloud.google.com/kubernetes-engine/docs/how-to/gpu-bandwidth-gpudirect-tcpx-autopilot) networking for the A3 Mega and A3 High instance types, as well as RoCE networking for the A4 instance type.
 
     !!! info "Backend configuration"    
         You may need to configure `extra_vpcs` and `roce_vpcs` in the `gcp` backend configuration.
@@ -1842,7 +1842,7 @@ This ensures all instances are provisioned with optimal inter-node connectivity.
         [A3 High](../../examples/clusters/a3high/index.md) examples for more details.
 
 ??? info "Nebius"
-    When you create a fleet with Nebius, [InfiniBand networking :material-arrow-top-right-thin:{ .external }](https://docs.nebius.com/compute/clusters/gpu){:target="_blank"} is automatically configured if it’s supported for the corresponding instance type.
+    When you create a fleet with Nebius, [InfiniBand networking](https://docs.nebius.com/compute/clusters/gpu) is automatically configured if it’s supported for the corresponding instance type.
     Otherwise, instances are only connected by the default VPC subnet.
 
     An InfiniBand fabric for the cluster is selected automatically. If you prefer to use some specific fabrics, configure them in the
@@ -2028,12 +2028,12 @@ Define a fleet configuration as a YAML file in your project directory. The file 
 
     === "NVIDIA"
         2.&nbsp;Hosts with NVIDIA GPUs must also be pre-installed with CUDA 12.1 and
-        [NVIDIA Container Toolkit :material-arrow-top-right-thin:{ .external }](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html).
+        [NVIDIA Container Toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html).
 
     === "AMD"
         2.&nbsp;Hosts with AMD GPUs must also be pre-installed with AMDGPU-DKMS kernel driver (e.g. via
-        [native package manager :material-arrow-top-right-thin:{ .external }](https://rocm.docs.amd.com/projects/install-on-linux/en/latest/install/native-install/index.html)
-        or [AMDGPU installer :material-arrow-top-right-thin:{ .external }](https://rocm.docs.amd.com/projects/install-on-linux/en/latest/install/amdgpu-install.html).)
+        [native package manager](https://rocm.docs.amd.com/projects/install-on-linux/en/latest/install/native-install/index.html)
+        or [AMDGPU installer](https://rocm.docs.amd.com/projects/install-on-linux/en/latest/install/amdgpu-install.html).)
 
     === "Intel Gaudi"
         2.&nbsp;Hosts with Intel Gaudi accelerators must be pre-installed with [Gaudi software and drivers](https://docs.habana.ai/en/latest/Installation_Guide/Driver_Installation.html#driver-installation).
@@ -2300,7 +2300,7 @@ To open in VS Code Desktop, use this link:
 
 ??? info "Windows"
     On Windows, `dstack` works both natively and inside WSL. But, for dev environments, 
-    it's recommended _not to use_ `dstack apply` _inside WSL_ due to a [VS Code issue :material-arrow-top-right-thin:{ .external }](https://github.com/microsoft/vscode-remote-release/issues/937){:target="_blank"}.
+    it's recommended _not to use_ `dstack apply` _inside WSL_ due to a [VS Code issue](https://github.com/microsoft/vscode-remote-release/issues/937).
 
 To open the dev environment in your desktop IDE, use the link from the output 
 (such as `vscode://vscode-remote/ssh-remote+fast-moth-1/workflow`).
@@ -2404,7 +2404,7 @@ If vendor is omitted, `dstack` infers it from the model or defaults to `nvidia`.
 
 #### Default image
 
-If you don't specify `image`, `dstack` uses its [base :material-arrow-top-right-thin:{ .external }](https://github.com/dstackai/dstack/tree/master/docker/base){:target="_blank"} Docker image pre-configured with 
+If you don't specify `image`, `dstack` uses its [base](https://github.com/dstackai/dstack/tree/master/docker/base) Docker image pre-configured with 
     `uv`, `python`, `pip`, essential CUDA drivers, `mpirun`, and NCCL tests (under `/opt/nccl-tests/build`). 
 
 Set the `python` property to pre-install a specific version of Python.
@@ -3119,7 +3119,7 @@ If vendor is omitted, `dstack` infers it from the model or defaults to `nvidia`.
 
 #### Default image
 
-If you don't specify `image`, `dstack` uses its [base :material-arrow-top-right-thin:{ .external }](https://github.com/dstackai/dstack/tree/master/docker/base){:target="_blank"} Docker image pre-configured with 
+If you don't specify `image`, `dstack` uses its [base](https://github.com/dstackai/dstack/tree/master/docker/base) Docker image pre-configured with 
     `uv`, `python`, `pip`, essential CUDA drivers, `mpirun`, and NCCL tests (under `/opt/nccl-tests/build`). 
 
 Set the `python` property to pre-install a specific version of Python.
@@ -3825,12 +3825,12 @@ If [authorization](#authorization) is not disabled, the service endpoint require
     However, you'll need a gateway in the following cases:
 
     * To use auto-scaling or rate limits
-    * To enable a support custom router, e.g. such as the [SGLang Model Gateway :material-arrow-top-right-thin:{ .external }](https://docs.sglang.ai/advanced_features/router.html#){:target="_blank"}
+    * To enable a support custom router, e.g. such as the [SGLang Model Gateway](https://docs.sglang.ai/advanced_features/router.html#)
     * To enable HTTPS for the endpoint and map it to your domain
     * If your service requires WebSockets
     * If your service cannot work with a [path prefix](#path-prefix)
 
-    <!-- Note, if you're using [dstack Sky :material-arrow-top-right-thin:{ .external }](https://sky.dstack.ai){:target="_blank"},
+    <!-- Note, if you're using [dstack Sky](https://sky.dstack.ai),
     a gateway is already pre-configured for you. -->
 
     If a [gateway](gateways.md) is configured, the service endpoint will be accessible at
@@ -4159,7 +4159,7 @@ If vendor is omitted, `dstack` infers it from the model or defaults to `nvidia`.
 
 #### Default image
 
-If you don't specify `image`, `dstack` uses its [base :material-arrow-top-right-thin:{ .external }](https://github.com/dstackai/dstack/tree/master/docker/base){:target="_blank"} Docker image pre-configured with 
+If you don't specify `image`, `dstack` uses its [base](https://github.com/dstackai/dstack/tree/master/docker/base) Docker image pre-configured with 
     `uv`, `python`, `pip`, essential CUDA drivers, `mpirun`, and NCCL tests (under `/opt/nccl-tests/build`). 
 
 Set the `python` property to pre-install a specific version of Python.
@@ -4717,9 +4717,9 @@ The rolling deployment stops when all replicas are updated or when a new deploym
     1. Read about [dev environments](dev-environments.md) and [tasks](tasks.md)
     2. Learn how to manage [fleets](fleets.md)
     3. See how to set up [gateways](gateways.md)
-    4. Check the [TGI :material-arrow-top-right-thin:{ .external }](../../examples/inference/tgi/index.md){:target="_blank"},
-       [vLLM :material-arrow-top-right-thin:{ .external }](../../examples/inference/vllm/index.md){:target="_blank"}, and 
-       [NIM :material-arrow-top-right-thin:{ .external }](../../examples/inference/nim/index.md){:target="_blank"} examples
+    4. Check the [TGI](../../examples/inference/tgi/index.md),
+       [vLLM](../../examples/inference/vllm/index.md), and 
+       [NIM](../../examples/inference/nim/index.md) examples
 
 
 ## Volumes
@@ -5237,9 +5237,9 @@ You can find the command on the project’s settings page:
 
 # Gateways
 
-Gateways manage ingress traffic for running [services](services.md), handle auto-scaling and rate limits, enable HTTPS, and allow you to configure a custom domain. They also support custom routers, such as the [SGLang Model Gateway :material-arrow-top-right-thin:{ .external }](https://docs.sglang.ai/advanced_features/router.html#){:target="_blank"}.
+Gateways manage ingress traffic for running [services](services.md), handle auto-scaling and rate limits, enable HTTPS, and allow you to configure a custom domain. They also support custom routers, such as the [SGLang Model Gateway](https://docs.sglang.ai/advanced_features/router.html#).
 
-<!-- > If you're using [dstack Sky :material-arrow-top-right-thin:{ .external }](https://sky.dstack.ai){:target="_blank"},
+<!-- > If you're using [dstack Sky](https://sky.dstack.ai),
 > the gateway is already set up for you. -->
 
 ## Apply a configuration
@@ -5299,7 +5299,7 @@ By default, the gateway uses its own load balancer to route traffic between repl
 
 #### SGLang
 
-The `sglang` router delegates routing logic to the [SGLang Model Gateway :material-arrow-top-right-thin:{ .external }](https://docs.sglang.ai/advanced_features/router.html#){:target="_blank"}.
+The `sglang` router delegates routing logic to the [SGLang Model Gateway](https://docs.sglang.ai/advanced_features/router.html#).
 
 To enable it, set `type` field under `router` to `sglang`:
 
@@ -5403,14 +5403,14 @@ Ensure a fleet is created before you run any distributed task. This can be eithe
 For cloud fleets, fast interconnect is currently supported only on the `aws`, `gcp`, `nebius`, and `runpod` backends.
 
 === "AWS"
-    When you create a cloud fleet with AWS, [Elastic Fabric Adapter :material-arrow-top-right-thin:{ .external }](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/efa.html){:target="_blank"} networking is automatically configured if it’s supported for the corresponding instance type.
+    When you create a cloud fleet with AWS, [Elastic Fabric Adapter](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/efa.html) networking is automatically configured if it’s supported for the corresponding instance type.
     
     !!! info "Backend configuration"    
         Note, EFA requires the `public_ips` to be set to `false` in the `aws` backend configuration.
         Refer to the [EFA](../../examples/clusters/efa/index.md) example for more details.
 
 === "GCP"
-    When you create a cloud fleet with GCP, `dstack` automatically configures [GPUDirect-TCPXO and GPUDirect-TCPX :material-arrow-top-right-thin:{ .external }](https://cloud.google.com/kubernetes-engine/docs/how-to/gpu-bandwidth-gpudirect-tcpx-autopilot){:target="_blank"} networking for the A3 Mega and A3 High instance types, as well as RoCE networking for the A4 instance type.
+    When you create a cloud fleet with GCP, `dstack` automatically configures [GPUDirect-TCPXO and GPUDirect-TCPX](https://cloud.google.com/kubernetes-engine/docs/how-to/gpu-bandwidth-gpudirect-tcpx-autopilot) networking for the A3 Mega and A3 High instance types, as well as RoCE networking for the A4 instance type.
 
     !!! info "Backend configuration"    
         You may need to configure `extra_vpcs` and `roce_vpcs` in the `gcp` backend configuration.
@@ -5419,13 +5419,13 @@ For cloud fleets, fast interconnect is currently supported only on the `aws`, `g
         [A3 High](../../examples/clusters/a3high/index.md) examples for more details.
 
 === "Nebius"
-    When you create a cloud fleet with Nebius, [InfiniBand :material-arrow-top-right-thin:{ .external }](https://docs.nebius.com/compute/clusters/gpu){:target="_blank"} networking is automatically configured if it’s supported for the corresponding instance type.
+    When you create a cloud fleet with Nebius, [InfiniBand](https://docs.nebius.com/compute/clusters/gpu) networking is automatically configured if it’s supported for the corresponding instance type.
 
 === "Runpod"
     When you run multinode tasks in a cluster cloud fleet with Runpod, `dstack` provisions [Runpod Instant Clusters](https://docs.runpod.io/instant-clusters) with InfiniBand networking configured.
 
 > To request fast interconnect support for other backends,
-file an [issue :material-arrow-top-right-thin:{ .external }](https://github.com/dstackai/dstack/issues){:target="_ blank"}.
+file an [issue](https://github.com/dstackai/dstack/issues){:target="_ blank"}.
 
 ## Distributed tasks
 
@@ -5515,7 +5515,7 @@ No additional setup is required — `dstack` configures and manages the proxy au
 ### NVIDIA GPU Operator
 
 > For `dstack` to correctly detect GPUs in your Kubernetes cluster, the cluster must have the
-[NVIDIA GPU Operator :material-arrow-top-right-thin:{ .external }](https://docs.nvidia.com/datacenter/cloud-native/gpu-operator/latest/index.html){:target="_blank"} pre-installed.
+[NVIDIA GPU Operator](https://docs.nvidia.com/datacenter/cloud-native/gpu-operator/latest/index.html) pre-installed.
 
 After the backend is set up, you interact with `dstack` just as you would with other backends or SSH fleets. You can run dev environments, tasks, and services.
 
@@ -5576,7 +5576,7 @@ For more details on clusters, see the [corresponding guide](clusters.md).
 
 ??? info "Is managed Kubernetes with auto-scaling supported?"
     Managed Kubernetes is supported. However, the `kubernetes` backend can only run on pre-provisioned nodes.  
-    Support for auto-scalable Kubernetes clusters is coming soon—you can track progress in the corresponding [issue :material-arrow-top-right-thin:{ .external }](https://github.com/dstackai/dstack/issues/3126){:target="_blank"}.
+    Support for auto-scalable Kubernetes clusters is coming soon—you can track progress in the corresponding [issue](https://github.com/dstackai/dstack/issues/3126).
 
     If on-demand provisioning is important, we recommend using [VM-based](../concepts/backends.md#vm-based) backends as they already support auto-scaling.
     
@@ -5649,7 +5649,7 @@ The minimum hardware requirements for running the server are 1 CPU and 1GB of RA
 
 ??? info "AWS CloudFormation"
     If you'd like to deploy the server to a private AWS VPC, you can use 
-    our CloudFormation [template :material-arrow-top-right-thin:{ .external }](https://console.aws.amazon.com/cloudformation/home#/stacks/quickcreate?templateURL=https://get-dstack.s3.eu-west-1.amazonaws.com/cloudformation/template.yaml){:target="_blank"}.
+    our CloudFormation [template](https://console.aws.amazon.com/cloudformation/home#/stacks/quickcreate?templateURL=https://get-dstack.s3.eu-west-1.amazonaws.com/cloudformation/template.yaml).
 
     First, ensure you've set up a private VPC with public and private subnets.
 
@@ -5661,7 +5661,7 @@ The minimum hardware requirements for running the server are 1 CPU and 1GB of RA
     To access the server URL, ensure you're connected to the VPC, e.g. via VPN client.
 
     > If you'd like to adjust anything, the source code of the template can be found at
-    [`examples/server-deployment/cloudformation/template.yaml` :material-arrow-top-right-thin:{ .external }](https://github.com/dstackai/dstack/blob/master/examples/server-deployment/cloudformation/template.yaml){:target="_blank"}.
+    [`examples/server-deployment/cloudformation/template.yaml`](https://github.com/dstackai/dstack/blob/master/examples/server-deployment/cloudformation/template.yaml).
 
 ## Backend configuration
 
@@ -5734,7 +5734,7 @@ $ DSTACK_DATABASE_URL=postgresql+asyncpg://user:password@db-host:5432/dstack dst
       export DSTACK_DATABASE_URL="postgresql+asyncpg://..."
       alembic upgrade head
       ```
-    4. Install [pgloader :material-arrow-top-right-thin:{.external }](https://github.com/dimitri/pgloader){:target="_blank"}
+    4. Install [pgloader :material-arrow-top-right-thin:{.external }](https://github.com/dimitri/pgloader)
     5. Pass the path to the `~/.dstack/server/data/sqlite.db` file to `SOURCE_PATH` and 
        set `TARGET_PATH` with the URL of the PostgreSQL database. Example:
        ```bash
@@ -5998,7 +5998,7 @@ When upgrading the `dstack` server, follow these guidelines to ensure a smooth t
 
 ### Before upgrading
 
-1. **Check the changelog**: Review the [release notes :material-arrow-top-right-thin:{ .external }](https://github.com/dstackai/dstack/releases){:target="_blank"} for breaking changes, new features, and migration notes.
+1. **Check the changelog**: Review the [release notes](https://github.com/dstackai/dstack/releases) for breaking changes, new features, and migration notes.
 2. **Review backward compatibility**: Understand the [backward compatibility](#backward-compatibility) policy.
 3. **Back up your data**: Ensure you always create a backup before upgrading.
 
@@ -6032,7 +6032,7 @@ If a deployment is stuck due to a deadlock when applying DB migrations, try scal
 ## Reporting issues
 
 When you encounter a problem, please report it as
-a [GitHub issue :material-arrow-top-right-thin:{ .external }](https://github.com/dstackai/dstack/issues/new/choose){:target="_blank"}.
+a [GitHub issue](https://github.com/dstackai/dstack/issues/new/choose).
 
 If you have a question or need help, feel free to ask it in our [Discord server](https://discord.gg/u8SmfwPpMd).
 
@@ -6052,8 +6052,8 @@ environment variable to `DEBUG`. By default, it is set to `INFO`.
 
 CLI logs are located in `~/.dstack/logs/cli`, and the default log level is `DEBUG`.
 
-> See these examples for well-reported issues: [this :material-arrow-top-right-thin:{ .external }](https://github.com/dstackai/dstack/issues/1640){:target="_blank"}
-and [this :material-arrow-top-right-thin:{ .external }](https://github.com/dstackai/dstack/issues/1551){:target="_blank"}.
+> See these examples for well-reported issues: [this](https://github.com/dstackai/dstack/issues/1640)
+and [this](https://github.com/dstackai/dstack/issues/1551).
 
 ## Typical issues
 
@@ -6068,7 +6068,7 @@ Below are some of the reasons why this might happen.
 
 Before you can run any workloads, you need to configure a [backend](../concepts/backends.md),
 create an [SSH fleet](../concepts/fleets.md#ssh-fleets), or sign up for
-[dstack Sky :material-arrow-top-right-thin:{ .external }](https://sky.dstack.ai){:target="_blank"}.
+[dstack Sky](https://sky.dstack.ai).
 If you have configured a backend and still can't use it, check the output of `dstack server`
 for backend configuration errors.
 
@@ -6145,7 +6145,7 @@ one of these features, `dstack` will only select offers from the backends that s
 #### Cause 8: dstack Sky balance
 
 If you are using
-[dstack Sky :material-arrow-top-right-thin:{ .external }](https://sky.dstack.ai){:target="_blank"},
+[dstack Sky](https://sky.dstack.ai),
 you will not see marketplace offers until you top up your balance.
 Alternatively, you can configure your own cloud accounts
 on the [project settings page](../concepts/projects.md#backends)
@@ -6217,7 +6217,7 @@ If you interrupt the command, the port forwarding will be disconnected. To reatt
 
 #### Cause 2: Windows
 
-If you're using the CLI on Windows, make sure to run it through WSL by following [these instructions:material-arrow-top-right-thin:{ .external }](https://github.com/dstackai/dstack/issues/1644#issuecomment-2321559265){:target="_blank"}. 
+If you're using the CLI on Windows, make sure to run it through WSL by following [these instructions:material-arrow-top-right-thin:{ .external }](https://github.com/dstackai/dstack/issues/1644#issuecomment-2321559265). 
 Native support will be available soon.
 
 ### SSH fleet fails to provision
@@ -6713,7 +6713,7 @@ $ dstack apply -e HF_TOKEN=... -f .dstack.yml
 
     </div>
     
-    If you install [`direnv` :material-arrow-top-right-thin:{ .external }](https://direnv.net/){:target="_blank"},
+    If you install [`direnv`](https://direnv.net/),
     it will automatically apply the environment variables from the `.envrc` file to the `dstack apply` command.
 
     Remember to add `.envrc` to `.gitignore` to avoid committing it to the repo.    
@@ -6790,7 +6790,7 @@ If you're using multiple `dstack` projects (e.g., from different `dstack` server
 you can switch between them using the [`dstack project`](../reference/cli/dstack/project.md) command.
 
 ??? info ".envrc"
-    Alternatively, you can install [`direnv` :material-arrow-top-right-thin:{ .external }](https://direnv.net/){:target="_blank"}  
+    Alternatively, you can install [`direnv`](https://direnv.net/)  
     to automatically apply environment variables from the `.envrc` file in your project directory.
 
     <div editor-title=".envrc"> 
@@ -6930,7 +6930,7 @@ If you're using your own AWS, GCP, Azure, or OCI accounts, before you can use GP
 corresponding service quotas for each type of instance in each region.
 
 ??? info "AWS"
-    Check this [guide  :material-arrow-top-right-thin:{ .external }](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-resource-limits.html){:target="_blank"} on EC2 service quotas.
+    Check this [guide ](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-resource-limits.html) on EC2 service quotas.
     The relevant service quotas include:
 
     - `Running On-Demand P instances` (on-demand V100, A100 80GB x8)
@@ -6941,7 +6941,7 @@ corresponding service quotas for each type of instance in each region.
     - `All P5 Spot Instance Requests` (spot H100)
 
 ??? info "GCP"
-    Check this [guide  :material-arrow-top-right-thin:{ .external }](https://cloud.google.com/compute/resource-usage){:target="_blank"} on Compute Engine service quotas.
+    Check this [guide ](https://cloud.google.com/compute/resource-usage) on Compute Engine service quotas.
     The relevant service quotas include:
 
     - `NVIDIA V100 GPUs` (on-demand V100)
@@ -6958,7 +6958,7 @@ corresponding service quotas for each type of instance in each region.
     - `Preemtible H100 GPUs` (spot H100)
 
 ??? info "Azure"
-    Check this [guide  :material-arrow-top-right-thin:{ .external }](https://learn.microsoft.com/en-us/azure/quotas/quickstart-increase-quota-portal){:target="_blank"} on Azure service quotas.
+    Check this [guide ](https://learn.microsoft.com/en-us/azure/quotas/quickstart-increase-quota-portal) on Azure service quotas.
     The relevant service quotas include:
 
     - `Total Regional Spot vCPUs` (any spot instances)
@@ -6971,7 +6971,7 @@ corresponding service quotas for each type of instance in each region.
     - `Standard NDSH100v5 Family vCPUs` (on-demand H100 x8)
 
 ??? info "OCI"
-    Check this [guide  :material-arrow-top-right-thin:{ .external }](https://docs.oracle.com/en-us/iaas/Content/General/Concepts/servicelimits.htm#Requesti){:target="_blank"} on requesting OCI service limits increase.
+    Check this [guide ](https://docs.oracle.com/en-us/iaas/Content/General/Concepts/servicelimits.htm#Requesti) on requesting OCI service limits increase.
     The relevant service category is compute. The relevant resources include:
 
     - `GPUs for GPU.A10 based VM and BM instances` (on-demand A10)
@@ -6989,7 +6989,7 @@ Note, for AWS, GCP, and Azure, service quota values are measured with the number
 
 # TRL
 
-This example walks you through how to use [TRL :material-arrow-top-right-thin:{ .external }](https://github.com/huggingface/trl){:target="_blank"} to fine-tune `Llama-3.1-8B` with `dstack` using SFT with QLoRA.
+This example walks you through how to use [TRL](https://github.com/huggingface/trl) to fine-tune `Llama-3.1-8B` with `dstack` using SFT with QLoRA.
 
 ## Define a configuration
 
@@ -7095,7 +7095,7 @@ Provisioning...
 ## Source code
 
 The source-code of this example can be found in 
-[`examples/llms/llama31` :material-arrow-top-right-thin:{ .external }](https://github.com/dstackai/dstack/blob/master/examples/llms/llama31){:target="_blank"} and [`examples/single-node-training/trl` :material-arrow-top-right-thin:{ .external }](https://github.com/dstackai/dstack/blob/master/examples/single-node-training/trl){:target="_blank"}.
+[`examples/llms/llama31`](https://github.com/dstackai/dstack/blob/master/examples/llms/llama31) and [`examples/single-node-training/trl`](https://github.com/dstackai/dstack/blob/master/examples/single-node-training/trl).
 
 ## What's next?
 
@@ -7109,7 +7109,7 @@ The source-code of this example can be found in
 
 # Axolotl
 
-This example shows how to use [Axolotl :material-arrow-top-right-thin:{ .external }](https://github.com/OpenAccess-AI-Collective/axolotl){:target="_blank"} with `dstack` to fine-tune 4-bit Quantized `Llama-4-Scout-17B-16E` using SFT with FSDP and QLoRA.
+This example shows how to use [Axolotl](https://github.com/OpenAccess-AI-Collective/axolotl) with `dstack` to fine-tune 4-bit Quantized `Llama-4-Scout-17B-16E` using SFT with FSDP and QLoRA.
 
 ??? info "Prerequisites"
     Once `dstack` is [installed](https://dstack.ai/docs/installation), clone the repo with examples.
@@ -7125,7 +7125,7 @@ This example shows how to use [Axolotl :material-arrow-top-right-thin:{ .externa
 
 ## Define a configuration
 
-Axolotl reads the model, QLoRA, and dataset arguments, as well as trainer configuration from a [`scout-qlora-flexattn-fsdp2.yaml` :material-arrow-top-right-thin:{ .external }](https://github.com/axolotl-ai-cloud/axolotl/blob/main/examples/llama-4/scout-qlora-flexattn-fsdp2.yaml){:target="_blank"} file. The configuration uses 4-bit axolotl quantized version of `meta-llama/Llama-4-Scout-17B-16E`, requiring only ~43GB VRAM/GPU with 4K context length.
+Axolotl reads the model, QLoRA, and dataset arguments, as well as trainer configuration from a [`scout-qlora-flexattn-fsdp2.yaml`](https://github.com/axolotl-ai-cloud/axolotl/blob/main/examples/llama-4/scout-qlora-flexattn-fsdp2.yaml) file. The configuration uses 4-bit axolotl quantized version of `meta-llama/Llama-4-Scout-17B-16E`, requiring only ~43GB VRAM/GPU with 4K context length.
 
 Below is a task configuration that does fine-tuning.
 
@@ -7199,7 +7199,7 @@ Provisioning...
 ## Source code
 
 The source-code of this example can be found in
-[`examples/single-node-training/axolotl` :material-arrow-top-right-thin:{ .external }](https://github.com/dstackai/dstack/blob/master/examples/single-node-training/axolotl){:target="_blank"} and [`examples/distributed-training/axolotl` :material-arrow-top-right-thin:{ .external }](https://github.com/dstackai/dstack/blob/master/examples/distributed-training/axolotl){:target="_blank"}.
+[`examples/single-node-training/axolotl`](https://github.com/dstackai/dstack/blob/master/examples/single-node-training/axolotl) and [`examples/distributed-training/axolotl`](https://github.com/dstackai/dstack/blob/master/examples/distributed-training/axolotl).
 
 ## What's next?
 
@@ -7213,7 +7213,7 @@ The source-code of this example can be found in
 
 # TRL
 
-This example walks you through how to run distributed fine-tune using [TRL :material-arrow-top-right-thin:{ .external }](https://github.com/huggingface/trl){:target="_blank"}, [Accelerate :material-arrow-top-right-thin:{ .external }](https://github.com/huggingface/accelerate){:target="_blank"} and [Deepspeed :material-arrow-top-right-thin:{ .external }](https://github.com/deepspeedai/DeepSpeed){:target="_blank"}.
+This example walks you through how to run distributed fine-tune using [TRL](https://github.com/huggingface/trl), [Accelerate](https://github.com/huggingface/accelerate) and [Deepspeed](https://github.com/deepspeedai/DeepSpeed).
 
 !!! info "Prerequisites"
     Before running a distributed task, make sure to create a fleet with `placement` set to `cluster` (can be a [managed fleet](https://dstack.ai/docs/concepts/fleets#backend-placement) or an [SSH fleet](https://dstack.ai/docs/concepts/fleets#ssh-placement)).
@@ -7365,7 +7365,7 @@ Provisioning...
 ## Source code
 
 The source-code of this example can be found in
-[`examples/distributed-training/trl` :material-arrow-top-right-thin:{ .external }](https://github.com/dstackai/dstack/blob/master/examples/distributed-training/trl){:target="_blank"}.
+[`examples/distributed-training/trl`](https://github.com/dstackai/dstack/blob/master/examples/distributed-training/trl).
 
 !!! info "What's next?"
     1. Read the [clusters](https://dstack.ai/docs/guides/clusters) guide
@@ -7377,7 +7377,7 @@ The source-code of this example can be found in
 
 # Axolotl
 
-This example walks you through how to run distributed fine-tune using [Axolotl :material-arrow-top-right-thin:{ .external }](https://github.com/axolotl-ai-cloud/axolotl){:target="_blank"} and [distributed tasks](https://dstack.ai/docs/concepts/tasks#distributed-tasks).
+This example walks you through how to run distributed fine-tune using [Axolotl](https://github.com/axolotl-ai-cloud/axolotl) and [distributed tasks](https://dstack.ai/docs/concepts/tasks#distributed-tasks).
 
 !!! info "Prerequisites"
     Before running a distributed task, make sure to create a fleet with `placement` set to `cluster` (can be a [managed fleet](https://dstack.ai/docs/concepts/fleets#backend-placement) or an [SSH fleet](https://dstack.ai/docs/concepts/fleets#ssh-placement)).
@@ -7469,7 +7469,7 @@ Provisioning...
 ## Source code
 
 The source-code of this example can be found in
-[`examples/distributed-training/axolotl` :material-arrow-top-right-thin:{ .external }](https://github.com/dstackai/dstack/blob/master/examples/distributed-training/axolotl).
+[`examples/distributed-training/axolotl`](https://github.com/dstackai/dstack/blob/master/examples/distributed-training/axolotl).
 
 !!! info "What's next?"
     1. Read the [clusters](https://dstack.ai/docs/guides/clusters) guide
@@ -7481,10 +7481,10 @@ The source-code of this example can be found in
 
 # Ray + RAGEN
 
-This example shows how use `dstack` and [RAGEN :material-arrow-top-right-thin:{ .external }](https://github.com/RAGEN-AI/RAGEN){:target="_blank"} 
+This example shows how use `dstack` and [RAGEN](https://github.com/RAGEN-AI/RAGEN) 
 to fine-tune an agent on multiple nodes.
 
-Under the hood `RAGEN` uses [verl :material-arrow-top-right-thin:{ .external }](https://github.com/volcengine/verl){:target="_blank"} for Reinforcement Learning and [Ray :material-arrow-top-right-thin:{ .external }](https://docs.ray.io/en/latest/){:target="_blank"} for distributed training.
+Under the hood `RAGEN` uses [verl](https://github.com/volcengine/verl) for Reinforcement Learning and [Ray](https://docs.ray.io/en/latest/) for distributed training.
 
 !!! info "Prerequisites"
     Before running a distributed task, make sure to create a fleet with `placement` set to `cluster` (can be a [managed fleet](https://dstack.ai/docs/concepts/fleets#backend-placement) or an [SSH fleet](https://dstack.ai/docs/concepts/fleets#ssh-placement)).
@@ -7541,7 +7541,7 @@ volumes:
 
 </div>
 
-We are using verl's docker image for vLLM with FSDP. See [Installation :material-arrow-top-right-thin:{ .external }](https://verl.readthedocs.io/en/latest/start/install.html){:target="_blank"} for more.
+We are using verl's docker image for vLLM with FSDP. See [Installation](https://verl.readthedocs.io/en/latest/start/install.html) for more.
 
 The `RAGEN` setup script `scripts/setup_ragen.sh` isolates dependencies within Conda environment.
 
@@ -7608,14 +7608,14 @@ Using Ray via `dstack` is a powerful way to get access to the rich Ray ecosystem
 !!! info "What's next"
     1. Check the [Clusters](https://dstack.ai/docs/guides/clusters) guide
     2. Read about [distributed tasks](https://dstack.ai/docs/concepts/tasks#distributed-tasks) and [fleets](https://dstack.ai/docs/concepts/fleets)
-    3. Browse Ray's [docs :material-arrow-top-right-thin:{ .external }](https://docs.ray.io/en/latest/train/examples.html){:target="_blank"} for other examples.
+    3. Browse Ray's [docs](https://docs.ray.io/en/latest/train/examples.html) for other examples.
 
 
 ## NCCL tests
 
 # NCCL tests
 
-This example shows how to run [NCCL tests :material-arrow-top-right-thin:{ .external }](https://github.com/NVIDIA/nccl-tests){:target="_blank"} on a cluster using [distributed tasks](https://dstack.ai/docs/concepts/tasks#distributed-tasks).
+This example shows how to run [NCCL tests](https://github.com/NVIDIA/nccl-tests) on a cluster using [distributed tasks](https://dstack.ai/docs/concepts/tasks#distributed-tasks).
 
 !!! info "Prerequisites"
     Before running a distributed task, make sure to create a fleet with `placement` set to `cluster` (can be a [managed fleet](https://dstack.ai/docs/concepts/fleets#backend-placement) or an [SSH fleet](https://dstack.ai/docs/concepts/fleets#ssh-placement)).
@@ -7662,7 +7662,7 @@ resources:
 </div>
 
 !!! info "Default image"
-    If you don't specify `image`, `dstack` uses its [base :material-arrow-top-right-thin:{ .external }](https://github.com/dstackai/dstack/tree/master/docker/base){:target="_blank"} Docker image pre-configured with 
+    If you don't specify `image`, `dstack` uses its [base](https://github.com/dstackai/dstack/tree/master/docker/base) Docker image pre-configured with 
     `uv`, `python`, `pip`, essential CUDA drivers, `mpirun`, and NCCL tests (under `/opt/nccl-tests/build`). 
 
 !!! info "Privileged"
@@ -7690,7 +7690,7 @@ Submit the run nccl-tests? [y/n]: y
 ## Source code
 
 The source-code of this example can be found in 
-[`examples/clusters/nccl-tests` :material-arrow-top-right-thin:{ .external }](https://github.com/dstackai/dstack/blob/master/examples/clusters/nccl-tests).
+[`examples/clusters/nccl-tests`](https://github.com/dstackai/dstack/blob/master/examples/clusters/nccl-tests).
 
 ## What's next?
 
@@ -7702,7 +7702,7 @@ The source-code of this example can be found in
 
 # RCCL tests
 
-This example shows how to run distributed [RCCL tests :material-arrow-top-right-thin:{ .external }](https://github.com/ROCm/rccl-tests){:target="_blank"} using [distributed tasks](https://dstack.ai/docs/concepts/tasks#distributed-tasks).
+This example shows how to run distributed [RCCL tests](https://github.com/ROCm/rccl-tests) using [distributed tasks](https://dstack.ai/docs/concepts/tasks#distributed-tasks).
 
 !!! info "Prerequisites"
     Before running a distributed task, make sure to create a fleet with `placement` set to `cluster` (can be a [managed fleet](https://dstack.ai/docs/concepts/fleets#backend-placement) or an [SSH fleet](https://dstack.ai/docs/concepts/fleets#ssh-placement)).
@@ -7770,7 +7770,7 @@ resources:
 
     Other nodes use a `FIFO` pipe to wait for until the MPI run is finished.
 
-    There is an open [issue :material-arrow-top-right-thin:{ .external }](https://github.com/dstackai/dstack/issues/2467){:target="_blank"} to simplify the use of MPI with distributed tasks.
+    There is an open [issue](https://github.com/dstackai/dstack/issues/2467) to simplify the use of MPI with distributed tasks.
 
 !!! info "RoCE library"
     Broadcom RoCE drivers require the `libbnxt_re` userspace library inside the container to be compatible with the host’s Broadcom 
@@ -7818,7 +7818,7 @@ Submit the run rccl-tests? [y/n]: y
 ## Source code
 
 The source-code of this example can be found in 
-[`examples/distributed-training/rccl-tests` :material-arrow-top-right-thin:{ .external }](https://github.com/dstackai/dstack/blob/master/examples/distributed-training/rccl-tests).
+[`examples/distributed-training/rccl-tests`](https://github.com/dstackai/dstack/blob/master/examples/distributed-training/rccl-tests).
 
 ## What's next?
 
@@ -7830,7 +7830,7 @@ The source-code of this example can be found in
 
 # SGLang
 
-This example shows how to deploy DeepSeek-R1-Distill-Llama 8B and 70B using [SGLang :material-arrow-top-right-thin:{ .external }](https://github.com/sgl-project/sglang){:target="_blank"} and `dstack`.
+This example shows how to deploy DeepSeek-R1-Distill-Llama 8B and 70B using [SGLang](https://github.com/sgl-project/sglang) and `dstack`.
 
 ## Apply a configuration
 
@@ -7935,14 +7935,14 @@ curl http://127.0.0.1:3000/proxy/models/main/chat/completions \
 </div>
 
 !!! info "SGLang Model Gateway"
-    If you'd like to use a custom routing policy, e.g. by leveraging the [SGLang Model Gateway :material-arrow-top-right-thin:{ .external }](https://docs.sglang.ai/advanced_features/router.html#){:target="_blank"}, create a gateway with `router` set to `sglang`. Check out [gateways](https://dstack.ai/docs/concepts/gateways#router) for more details.
+    If you'd like to use a custom routing policy, e.g. by leveraging the [SGLang Model Gateway](https://docs.sglang.ai/advanced_features/router.html#), create a gateway with `router` set to `sglang`. Check out [gateways](https://dstack.ai/docs/concepts/gateways#router) for more details.
 
 > If a [gateway](https://dstack.ai/docs/concepts/gateways/) is configured (e.g. to enable auto-scaling or HTTPs, rate-limits, etc), the OpenAI-compatible endpoint is available at `https://gateway.<gateway domain>/`.
 
 ## Source code
 
 The source-code of this example can be found in
-[`examples/llms/deepseek/sglang` :material-arrow-top-right-thin:{ .external }](https://github.com/dstackai/dstack/blob/master/examples/llms/deepseek/sglang){:target="_blank"}.
+[`examples/llms/deepseek/sglang`](https://github.com/dstackai/dstack/blob/master/examples/llms/deepseek/sglang).
 
 ## What's next?
 
@@ -7954,7 +7954,7 @@ The source-code of this example can be found in
 
 # vLLM
 
-This example shows how to deploy Llama 3.1 8B with `dstack` using [vLLM :material-arrow-top-right-thin:{ .external }](https://docs.vllm.ai/en/latest/){:target="_blank"}.
+This example shows how to deploy Llama 3.1 8B with `dstack` using [vLLM](https://docs.vllm.ai/en/latest/).
 
 ??? info "Prerequisites"
     Once `dstack` is [installed](https://dstack.ai/docs/installation), clone the repo with examples.
@@ -8062,7 +8062,7 @@ is available at `https://gateway.<gateway domain>/`.
 ## Source code
 
 The source-code of this example can be found in
-[`examples/inference/vllm` :material-arrow-top-right-thin:{ .external }](https://github.com/dstackai/dstack/blob/master/examples/inference/vllm).
+[`examples/inference/vllm`](https://github.com/dstackai/dstack/blob/master/examples/inference/vllm).
 
 ## What's next?
 
@@ -8077,7 +8077,7 @@ The source-code of this example can be found in
 
 # NVIDIA NIM
 
-This example shows how to deploy DeepSeek-R1-Distill-Llama-8B using [NVIDIA NIM :material-arrow-top-right-thin:{ .external }](https://docs.nvidia.com/nim/large-language-models/latest/getting-started.html){:target="_blank"} and `dstack`.
+This example shows how to deploy DeepSeek-R1-Distill-Llama-8B using [NVIDIA NIM](https://docs.nvidia.com/nim/large-language-models/latest/getting-started.html) and `dstack`.
 
 ??? info "Prerequisites"
     Once `dstack` is [installed](https://dstack.ai/docs/installation), clone the repo with examples.
@@ -8184,7 +8184,7 @@ is available at `https://gateway.<gateway domain>/`.
 ## Source code
 
 The source-code of this example can be found in
-[`examples/inference/nim` :material-arrow-top-right-thin:{ .external }](https://github.com/dstackai/dstack/blob/master/examples/inference/nim){:target="_blank"}.
+[`examples/inference/nim`](https://github.com/dstackai/dstack/blob/master/examples/inference/nim).
 
 ## What's next?
 
@@ -8197,7 +8197,7 @@ The source-code of this example can be found in
 # TensorRT-LLM
 
 This example shows how to deploy both DeepSeek R1 and its distilled version
-using [TensorRT-LLM :material-arrow-top-right-thin:{ .external }](https://github.com/NVIDIA/TensorRT-LLM){:target="_blank"} and `dstack`.
+using [TensorRT-LLM](https://github.com/NVIDIA/TensorRT-LLM) and `dstack`.
 
 ??? info "Prerequisites"
     Once `dstack` is [installed](https://dstack.ai/docs/installation), clone the repo with examples.
@@ -8556,13 +8556,13 @@ is available at `https://gateway.<gateway domain>/`.
 ## Source code
 
 The source-code of this example can be found in
-[`examples/inference/trtllm` :material-arrow-top-right-thin:{ .external }](https://github.com/dstackai/dstack/blob/master/examples/inference/trtllm){:target="_blank"}.
+[`examples/inference/trtllm`](https://github.com/dstackai/dstack/blob/master/examples/inference/trtllm).
 
 ## What's next?
 
 1. Check [services](https://dstack.ai/docs/services)
-2. Browse [Tensorrt-LLM DeepSeek-R1 with PyTorch Backend :material-arrow-top-right-thin:{ .external }](https://github.com/NVIDIA/TensorRT-LLM/tree/main/examples/deepseek_v3){:target="_blank"} and [Prepare the Model Repository :material-arrow-top-right-thin:{ .external }](https://github.com/triton-inference-server/tensorrtllm_backend?tab=readme-ov-file#prepare-the-model-repository){:target="_blank"}
-3. See also [`trtllm-serve` :material-arrow-top-right-thin:{ .external }](https://nvidia.github.io/TensorRT-LLM/commands/trtllm-serve.html#trtllm-serve){:target="_blank"}
+2. Browse [Tensorrt-LLM DeepSeek-R1 with PyTorch Backend](https://github.com/NVIDIA/TensorRT-LLM/tree/main/examples/deepseek_v3) and [Prepare the Model Repository](https://github.com/triton-inference-server/tensorrtllm_backend?tab=readme-ov-file#prepare-the-model-repository)
+3. See also [`trtllm-serve`](https://nvidia.github.io/TensorRT-LLM/commands/trtllm-serve.html#trtllm-serve)
 
 
 # Accelerators
@@ -8578,7 +8578,7 @@ with on-prem AMD GPUs or configuring a backend that offers AMD GPUs such as the 
 ## Deployment
 
 Most serving frameworks including vLLM and TGI have AMD support. Here's an example of a [service](https://dstack.ai/docs/services) that deploys
-Llama 3.1 70B in FP16 using [TGI :material-arrow-top-right-thin:{ .external }](https://huggingface.co/docs/text-generation-inference/en/installation_amd){:target="_blank"} and [vLLM :material-arrow-top-right-thin:{ .external }](https://docs.vllm.ai/en/latest/getting_started/amd-installation.html){:target="_blank"}.
+Llama 3.1 70B in FP16 using [TGI](https://huggingface.co/docs/text-generation-inference/en/installation_amd) and [vLLM](https://docs.vllm.ai/en/latest/getting_started/amd-installation.html).
 
 === "TGI"
 
@@ -8669,7 +8669,7 @@ Llama 3.1 70B in FP16 using [TGI :material-arrow-top-right-thin:{ .external }](h
 
     > To speed up the `vLLM-ROCm` installation, we use a pre-built binary from S3.
     > You can find the task to build and upload the binary in
-    > [`examples/inference/vllm/amd/` :material-arrow-top-right-thin:{ .external }](https://github.com/dstackai/dstack/blob/master/examples/inference/vllm/amd/){:target="_blank"}.
+    > [`examples/inference/vllm/amd/`](https://github.com/dstackai/dstack/blob/master/examples/inference/vllm/amd/).
 
 !!! info "Docker image"
     If you want to use AMD, specifying `image` is currently required. This must be an image that includes
@@ -8681,8 +8681,8 @@ To request multiple GPUs, specify the quantity after the GPU name, separated by 
 
 === "TRL"
 
-    Below is an example of LoRA fine-tuning Llama 3.1 8B using [TRL :material-arrow-top-right-thin:{ .external }](https://rocm.docs.amd.com/en/latest/how-to/llm-fine-tuning-optimization/single-gpu-fine-tuning-and-inference.html){:target="_blank"}
-    and the [`mlabonne/guanaco-llama2-1k` :material-arrow-top-right-thin:{ .external }](https://huggingface.co/datasets/mlabonne/guanaco-llama2-1k){:target="_blank"}
+    Below is an example of LoRA fine-tuning Llama 3.1 8B using [TRL](https://rocm.docs.amd.com/en/latest/how-to/llm-fine-tuning-optimization/single-gpu-fine-tuning-and-inference.html)
+    and the [`mlabonne/guanaco-llama2-1k`](https://huggingface.co/datasets/mlabonne/guanaco-llama2-1k)
     dataset.
 
     <div editor-title="examples/single-node-training/trl/amd/.dstack.yml">
@@ -8727,8 +8727,8 @@ To request multiple GPUs, specify the quantity after the GPU name, separated by 
     </div>
 
 === "Axolotl"
-    Below is an example of fine-tuning Llama 3.1 8B using [Axolotl :material-arrow-top-right-thin:{ .external }](https://rocm.blogs.amd.com/artificial-intelligence/axolotl/README.html){:target="_blank"}
-    and the [tatsu-lab/alpaca :material-arrow-top-right-thin:{ .external }](https://huggingface.co/datasets/tatsu-lab/alpaca){:target="_blank"}
+    Below is an example of fine-tuning Llama 3.1 8B using [Axolotl](https://rocm.blogs.amd.com/artificial-intelligence/axolotl/README.html)
+    and the [tatsu-lab/alpaca](https://huggingface.co/datasets/tatsu-lab/alpaca)
     dataset.
 
     <div editor-title="examples/single-node-training/axolotl/amd/.dstack.yml">
@@ -8783,11 +8783,11 @@ To request multiple GPUs, specify the quantity after the GPU name, separated by 
     ```
     </div>
 
-    Note, to support ROCm, we need to checkout to commit `d4f6c65`. This commit eliminates the need to manually modify the Axolotl source code to make xformers compatible with ROCm, as described in the [xformers workaround :material-arrow-top-right-thin:{ .external }](https://docs.axolotl.ai/docs/amd_hpc.html#apply-xformers-workaround). This installation approach is also followed for building Axolotl ROCm docker image. [(See Dockerfile) :material-arrow-top-right-thin:{ .external }](https://github.com/ROCm/rocm-blogs/blob/release/blogs/artificial-intelligence/axolotl/src/Dockerfile.rocm){:target="_blank"}.
+    Note, to support ROCm, we need to checkout to commit `d4f6c65`. This commit eliminates the need to manually modify the Axolotl source code to make xformers compatible with ROCm, as described in the [xformers workaround](https://docs.axolotl.ai/docs/amd_hpc.html#apply-xformers-workaround). This installation approach is also followed for building Axolotl ROCm docker image. [(See Dockerfile)](https://github.com/ROCm/rocm-blogs/blob/release/blogs/artificial-intelligence/axolotl/src/Dockerfile.rocm).
 
     > To speed up installation of `flash-attention` and `xformers `, we use pre-built binaries uploaded to S3.
     > You can find the tasks that build and upload the binaries
-    > in [`examples/single-node-training/axolotl/amd/` :material-arrow-top-right-thin:{ .external }](https://github.com/dstackai/dstack/blob/master/examples/single-node-training/axolotl/amd/){:target="_blank"}.
+    > in [`examples/single-node-training/axolotl/amd/`](https://github.com/dstackai/dstack/blob/master/examples/single-node-training/axolotl/amd/).
 
 ## Running a configuration
 
@@ -8810,18 +8810,18 @@ $ dstack apply -f examples/inference/vllm/amd/.dstack.yml
 ## Source code
 
 The source-code of this example can be found in
-[`examples/inference/tgi/amd` :material-arrow-top-right-thin:{ .external }](https://github.com/dstackai/dstack/blob/master/examples/inference/tgi/amd){:target="_blank"},
-[`examples/inference/vllm/amd` :material-arrow-top-right-thin:{ .external }](https://github.com/dstackai/dstack/blob/master/examples/inference/vllm/amd){:target="_blank"},
-[`examples/single-node-training/axolotl/amd` :material-arrow-top-right-thin:{ .external }](https://github.com/dstackai/dstack/blob/master/examples/single-node-training/axolotl/amd){:target="_blank"} and
-[`examples/single-node-training/trl/amd` :material-arrow-top-right-thin:{ .external }](https://github.com/dstackai/dstack/blob/master/examples/single-node-training/trl/amd){:target="_blank"}
+[`examples/inference/tgi/amd`](https://github.com/dstackai/dstack/blob/master/examples/inference/tgi/amd),
+[`examples/inference/vllm/amd`](https://github.com/dstackai/dstack/blob/master/examples/inference/vllm/amd),
+[`examples/single-node-training/axolotl/amd`](https://github.com/dstackai/dstack/blob/master/examples/single-node-training/axolotl/amd) and
+[`examples/single-node-training/trl/amd`](https://github.com/dstackai/dstack/blob/master/examples/single-node-training/trl/amd)
 
 ## What's next?
 
-1. Browse [TGI :material-arrow-top-right-thin:{ .external }](https://rocm.docs.amd.com/en/latest/how-to/rocm-for-ai/deploy-your-model.html#serving-using-hugging-face-tgi),
-   [vLLM :material-arrow-top-right-thin:{ .external }](https://docs.vllm.ai/en/latest/getting_started/amd-installation.html#build-from-source-rocm),
-   [Axolotl :material-arrow-top-right-thin:{ .external }](https://github.com/ROCm/rocm-blogs/tree/release/blogs/artificial-intelligence/axolotl),
-   [TRL :material-arrow-top-right-thin:{ .external }](https://rocm.docs.amd.com/en/latest/how-to/llm-fine-tuning-optimization/fine-tuning-and-inference.html) and
-   [ROCm Bitsandbytes :material-arrow-top-right-thin:{ .external }](https://github.com/ROCm/bitsandbytes)
+1. Browse [TGI](https://rocm.docs.amd.com/en/latest/how-to/rocm-for-ai/deploy-your-model.html#serving-using-hugging-face-tgi),
+   [vLLM](https://docs.vllm.ai/en/latest/getting_started/amd-installation.html#build-from-source-rocm),
+   [Axolotl](https://github.com/ROCm/rocm-blogs/tree/release/blogs/artificial-intelligence/axolotl),
+   [TRL](https://rocm.docs.amd.com/en/latest/how-to/llm-fine-tuning-optimization/fine-tuning-and-inference.html) and
+   [ROCm Bitsandbytes](https://github.com/ROCm/bitsandbytes)
 2. Check [dev environments](https://dstack.ai/docs/dev-environments), [tasks](https://dstack.ai/docs/tasks), and
    [services](https://dstack.ai/docs/services).
 
@@ -8849,8 +8849,8 @@ Below are a few examples on using TPUs for deployment and fine-tuning.
 
 Many serving frameworks including vLLM and TGI have TPU support.
 Here's an example of a [service](https://dstack.ai/docs/services) that deploys Llama 3.1 8B using
-[Optimum TPU :material-arrow-top-right-thin:{ .external }](https://github.com/huggingface/optimum-tpu){:target="_blank"}
-and [vLLM :material-arrow-top-right-thin:{ .external }](https://github.com/vllm-project/vllm){:target="_blank"}.
+[Optimum TPU](https://github.com/huggingface/optimum-tpu)
+and [vLLM](https://github.com/vllm-project/vllm).
 
 === "Optimum TPU"
 
@@ -8882,7 +8882,7 @@ and [vLLM :material-arrow-top-right-thin:{ .external }](https://github.com/vllm-
     ??? info "Docker image"
         The official Docker image `huggingface/optimum-tpu:latest` doesn’t support Llama 3.1-8B.
         We’ve created a custom image with the fix: `dstackai/optimum-tpu:llama31`.
-        Once the [pull request :material-arrow-top-right-thin:{ .external }](https://github.com/huggingface/optimum-tpu/pull/92){:target="_blank"} is merged,
+        Once the [pull request](https://github.com/huggingface/optimum-tpu/pull/92) is merged,
         the official Docker image can be used.
 
 === "vLLM"
@@ -8944,7 +8944,7 @@ Note, `v5litepod` is optimized for serving transformer-based models. Each core i
 | Framework | Quantization   | Note                                                                                                                                                                                                                                                                                             |
 |-----------|----------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **TGI**   | bfloat16       | To deploy with TGI, Optimum TPU must be used.                                                                                                                                                                                                                                                    |
-| **vLLM**  | int8, bfloat16 | int8 quantization still requires the same memory because the weights are first moved to the TPU in bfloat16, and then converted to int8. See the [pull request :material-arrow-top-right-thin:{ .external }](https://github.com/vllm-project/vllm/pull/7005){:target="_blank"} for more details. |
+| **vLLM**  | int8, bfloat16 | int8 quantization still requires the same memory because the weights are first moved to the TPU in bfloat16, and then converted to int8. See the [pull request](https://github.com/vllm-project/vllm/pull/7005) for more details. |
 
 ### Running a configuration
 
@@ -8953,8 +8953,8 @@ cloud resources and run the configuration.
 
 ## Fine-tuning with Optimum TPU
 
-Below is an example of fine-tuning Llama 3.1 8B using [Optimum TPU :material-arrow-top-right-thin:{ .external }](https://github.com/huggingface/optimum-tpu){:target="_blank"}
-and the [`Abirate/english_quotes` :material-arrow-top-right-thin:{ .external }](https://huggingface.co/datasets/Abirate/english_quotes){:target="_blank"}
+Below is an example of fine-tuning Llama 3.1 8B using [Optimum TPU](https://github.com/huggingface/optimum-tpu)
+and the [`Abirate/english_quotes`](https://huggingface.co/datasets/Abirate/english_quotes)
 dataset.
 
 <div editor-title="examples/single-node-training/optimum-tpu/llama31/.dstack.yml">
@@ -9012,15 +9012,15 @@ Note, `v5litepod` is optimized for fine-tuning transformer-based models. Each co
 ## Source code
 
 The source-code of this example can be found in
-[`examples/inference/tgi/tpu` :material-arrow-top-right-thin:{ .external }](https://github.com/dstackai/dstack/blob/master/examples/inference/tgi/tpu){:target="_blank"},
-[`examples/inference/vllm/tpu` :material-arrow-top-right-thin:{ .external }](https://github.com/dstackai/dstack/blob/master/examples/inference/vllm/tpu){:target="_blank"},
-and [`examples/single-node-training/optimum-tpu` :material-arrow-top-right-thin:{ .external }](https://github.com/dstackai/dstack/blob/master/examples/single-node-training/trl){:target="_blank"}.
+[`examples/inference/tgi/tpu`](https://github.com/dstackai/dstack/blob/master/examples/inference/tgi/tpu),
+[`examples/inference/vllm/tpu`](https://github.com/dstackai/dstack/blob/master/examples/inference/vllm/tpu),
+and [`examples/single-node-training/optimum-tpu`](https://github.com/dstackai/dstack/blob/master/examples/single-node-training/trl).
 
 ## What's next?
 
-1. Browse [Optimum TPU :material-arrow-top-right-thin:{ .external }](https://github.com/huggingface/optimum-tpu),
-   [Optimum TPU TGI :material-arrow-top-right-thin:{ .external }](https://github.com/huggingface/optimum-tpu/tree/main/text-generation-inference) and
-   [vLLM :material-arrow-top-right-thin:{ .external }](https://docs.vllm.ai/en/latest/getting_started/tpu-installation.html).
+1. Browse [Optimum TPU](https://github.com/huggingface/optimum-tpu),
+   [Optimum TPU TGI](https://github.com/huggingface/optimum-tpu/tree/main/text-generation-inference) and
+   [vLLM](https://docs.vllm.ai/en/latest/getting_started/tpu-installation.html).
 2. Check [dev environments](https://dstack.ai/docs/dev-environments), [tasks](https://dstack.ai/docs/tasks),
    [services](https://dstack.ai/docs/services), and [fleets](https://dstack.ai/docs/concepts/fleets).
 
@@ -9030,7 +9030,7 @@ and [`examples/single-node-training/optimum-tpu` :material-arrow-top-right-thin:
 # Tenstorrent
 
 `dstack` supports running dev environments, tasks, and services on Tenstorrent 
-[Wormwhole :material-arrow-top-right-thin:{ .external }](https://tenstorrent.com/en/hardware/wormhole){:target="_blank"} accelerators via SSH fleets.
+[Wormwhole](https://tenstorrent.com/en/hardware/wormhole) accelerators via SSH fleets.
 
 
 ??? info "SSH fleets"
@@ -9071,8 +9071,8 @@ and [`examples/single-node-training/optimum-tpu` :material-arrow-top-right-thin:
 ## Services
 
 Here's an example of a service that deploys
-[`Llama-3.2-1B-Instruct` :material-arrow-top-right-thin:{ .external }](https://huggingface.co/meta-llama/Llama-3.2-1B){:target="_blank"} 
-using [Tenstorrent Inference Service :material-arrow-top-right-thin:{ .external }](https://github.com/tenstorrent/tt-inference-server){:target="_blank"}.
+[`Llama-3.2-1B-Instruct`](https://huggingface.co/meta-llama/Llama-3.2-1B) 
+using [Tenstorrent Inference Service](https://github.com/tenstorrent/tt-inference-server).
 
 <div editor-title="examples/acceleators/tenstorrent/tt-inference-server.dstack.yml"> 
 
@@ -9218,5 +9218,5 @@ If you run it via `dstack apply`, it will output the URL to access it via your d
 > Dev nevironments support many options, including inactivity and max duration, IDE configuration, etc. To learn more, refer to [Dev environments](https://dstack.ai/docs/concepts/tasks).
 
 ??? info "Feedback"
-    Found a bug, or want to request a feature? File it in the [issue tracker :material-arrow-top-right-thin:{ .external }](https://github.com/dstackai/dstack/issues){:target="_blank"},
-    or share via [Discord :material-arrow-top-right-thin:{ .external }](https://discord.gg/u8SmfwPpMd){:target="_blank"}.
+    Found a bug, or want to request a feature? File it in the [issue tracker](https://github.com/dstackai/dstack/issues),
+    or share via [Discord](https://discord.gg/u8SmfwPpMd).

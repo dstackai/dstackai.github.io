@@ -3960,7 +3960,7 @@ Support dstack with a ⭐ on
 
 
 <h1 id="aws-efa">AWS EFA<a class="headerlink" href="#aws-efa" title="Permanent link">&para;</a></h1>
-<p>In this guide, we’ll walk through how to run high-performance distributed training on AWS using <a href="https://aws.amazon.com/hpc/efa/" target="_blank">Amazon Elastic Fabric Adapter (EFA) <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> with <code>dstack</code>.</p>
+<p>In this guide, we’ll walk through how to run high-performance distributed training on AWS using <a href="https://aws.amazon.com/hpc/efa/">Amazon Elastic Fabric Adapter (EFA)</a> with <code>dstack</code>.</p>
 <h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
 <p>EFA is a network interface for Amazon EC2 that enables low-latency, high-bandwidth inter-node communication — essential for scaling distributed deep learning. With <code>dstack</code>, EFA is automatically enabled when you create fleets with supported instance types.</p>
 <h2 id="prerequisite">Prerequisite<a class="headerlink" href="#prerequisite" title="Permanent link">&para;</a></h2>
@@ -4023,7 +4023,7 @@ Provisioning...
 <details class="info">
 <summary>Instance types</summary>
 <p><code>dstack</code> selects suitable instances automatically, but not
-<a href="https://aws.amazon.com/hpc/efa/" target="_blank">all types support EFA <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>.
+<a href="https://aws.amazon.com/hpc/efa/">all types support EFA</a>.
 To enforce EFA, you can specify <code>instance_types</code> explicitly:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">fleet</span>
 <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my-efa-fleet</span>

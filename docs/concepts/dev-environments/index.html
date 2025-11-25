@@ -4344,7 +4344,7 @@ To<span class="w"> </span>open<span class="w"> </span><span class="k">in</span><
 <details class="info">
 <summary>Windows</summary>
 <p>On Windows, <code>dstack</code> works both natively and inside WSL. But, for dev environments, 
-it's recommended <em>not to use</em> <code>dstack apply</code> <em>inside WSL</em> due to a <a href="https://github.com/microsoft/vscode-remote-release/issues/937" target="_blank">VS Code issue <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>.</p>
+it's recommended <em>not to use</em> <code>dstack apply</code> <em>inside WSL</em> due to a <a href="https://github.com/microsoft/vscode-remote-release/issues/937">VS Code issue</a>.</p>
 </details>
 <p>To open the dev environment in your desktop IDE, use the link from the output 
 (such as <code>vscode://vscode-remote/ssh-remote+fast-moth-1/workflow</code>).</p>
@@ -4431,7 +4431,7 @@ If not set, <code>dstack</code> infers it from the GPU or defaults to <code>x86<
 </blockquote>
 <h3 id="docker">Docker<a class="headerlink" href="#docker" title="Permanent link">&para;</a></h3>
 <h4 id="default-image">Default image<a class="headerlink" href="#default-image" title="Permanent link">&para;</a></h4>
-<p>If you don't specify <code>image</code>, <code>dstack</code> uses its <a href="https://github.com/dstackai/dstack/tree/master/docker/base" target="_blank">base <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> Docker image pre-configured with 
+<p>If you don't specify <code>image</code>, <code>dstack</code> uses its <a href="https://github.com/dstackai/dstack/tree/master/docker/base">base</a> Docker image pre-configured with 
     <code>uv</code>, <code>python</code>, <code>pip</code>, essential CUDA drivers, <code>mpirun</code>, and NCCL tests (under <code>/opt/nccl-tests/build</code>). </p>
 <p>Set the <code>python</code> property to pre-install a specific version of Python.</p>
 <div editor-title=".dstack.yml"> 

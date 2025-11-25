@@ -3965,23 +3965,23 @@ cloud or hardware vendor. </p>
 <h2 id="ecosystem">Ecosystem<a class="headerlink" href="#ecosystem" title="Permanent link">&para;</a></h2>
 <p>While <code>dstack</code> integrates with leading cloud GPU providers, we aim to expand partnerships with more providers 
 sharing our vision of simplifying AI infrastructure orchestration with a lightweight, efficient alternative to Kubernetes.</p>
-<p>This year, we’re excited to welcome our first partners: <a href="https://lambdalabs.com/" target="_blank">Lambda <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>, 
-<a href="https://www.runpod.io/" target="_blank">RunPod <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>, 
-<a href="https://www.cudocompute.com/" target="_blank">CUDO Compute <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>, 
-and <a href="https://hotaisle.xyz/" target="_blank">Hot Aisle <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>.</p>
-<p>We’d also like to thank <a href="https://www.oracle.com/cloud/" target="_blank">Oracle  <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> 
+<p>This year, we’re excited to welcome our first partners: <a href="https://lambdalabs.com/">Lambda</a>, 
+<a href="https://www.runpod.io/">RunPod</a>, 
+<a href="https://www.cudocompute.com/">CUDO Compute</a>, 
+and <a href="https://hotaisle.xyz/">Hot Aisle</a>.</p>
+<p>We’d also like to thank <a href="https://www.oracle.com/cloud/">Oracle </a> 
 for their collaboration, ensuring seamless integration between <code>dstack</code> and OCI.</p>
 <blockquote>
-<p>Special thanks to <a href="https://lambdalabs.com/" target="_blank">Lambda <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> and
-<a href="https://hotaisle.xyz/" target="_blank">Hot Aisle <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> for providing NVIDIA and AMD hardware, enabling us conducting 
+<p>Special thanks to <a href="https://lambdalabs.com/">Lambda</a> and
+<a href="https://hotaisle.xyz/">Hot Aisle</a> for providing NVIDIA and AMD hardware, enabling us conducting 
 <a href="/blog/category/benchmarks/">benchmarks</a>, which
 are essential to advancing open-source inference and training stacks for all accelerator chips.</p>
 </blockquote>
 <h2 id="community">Community<a class="headerlink" href="#community" title="Permanent link">&para;</a></h2>
 <p>Thanks to your support, the project has
-reached <a href="https://github.com/dstackai/dstack" target="_blank">1.6K stars on GitHub <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>,
+reached <a href="https://github.com/dstackai/dstack">1.6K stars on GitHub</a>,
 reflecting the growing interest and trust in its mission.
-Your issues, pull requests, as well as feedback on <a href="https://discord.gg/u8SmfwPpMd" target="_blank">Discord <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>, play a
+Your issues, pull requests, as well as feedback on <a href="https://discord.gg/u8SmfwPpMd">Discord</a>, play a
 critical role in the project's development.</p>
 <h2 id="fleets">Fleets<a class="headerlink" href="#fleets" title="Permanent link">&para;</a></h2>
 <p>A key milestone for <code>dstack</code> this year has been the introduction of <a href="/docs/concepts/fleets/">fleets</a>, 
@@ -4018,7 +4018,7 @@ list them in a YAML configuration file and run <code>dstack apply</code>.</p>
 <p>This turns your on-prem cluster into a <code>dstack</code> fleet, ready to run dev environments, tasks, and services.</p>
 <h3 id="gpu-blocks">GPU blocks<a class="headerlink" href="#gpu-blocks" title="Permanent link">&para;</a></h3>
 <p>At <code>dstack</code>, when running a job on an instance, it uses all available GPUs on that instance. In Q1 2025, we will
-introduce <a href="https://github.com/dstackai/dstack/issues/1780" target="_blank">GPU blocks <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>,
+introduce <a href="https://github.com/dstackai/dstack/issues/1780">GPU blocks</a>,
 allowing the allocation of instance GPUs into discrete blocks that can be reused by concurrent jobs.</p>
 <p>This will enable more cost-efficient utilization of expensive instances.</p>
 <h2 id="volumes">Volumes<a class="headerlink" href="#volumes" title="Permanent link">&para;</a></h2>
@@ -4033,15 +4033,15 @@ for model deployment, and we continue to enhance support for the rest of NVIDIA'
 <h3 id="amd">AMD<a class="headerlink" href="#amd" title="Permanent link">&para;</a></h3>
 <p>This year, we’re particularly proud of our newly added integration with AMD.</p>
 <p><code>dstack</code> works seamlessly with any on-prem AMD clusters. For example, you can rent such servers through our partner 
-<a href="https://hotaisle.xyz/" target="_blank">Hot Aisle <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>.</p>
+<a href="https://hotaisle.xyz/">Hot Aisle</a>.</p>
 <blockquote>
-<p>Among cloud providers, <a href="https://www.amd.com/en/products/accelerators/instinct.html" target="_blank">AMD <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> is supported only through RunPod. In Q1 2025, we plan to extend it to
-<a href="https://www.nscale.com/" target="_blank">Nscale <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>,
-<a href="https://hotaisle.xyz/" target="_blank">Hot Aisle <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>, and potentially other providers open to collaboration.</p>
+<p>Among cloud providers, <a href="https://www.amd.com/en/products/accelerators/instinct.html">AMD</a> is supported only through RunPod. In Q1 2025, we plan to extend it to
+<a href="https://www.nscale.com/">Nscale</a>,
+<a href="https://hotaisle.xyz/">Hot Aisle</a>, and potentially other providers open to collaboration.</p>
 </blockquote>
 <h3 id="intel">Intel<a class="headerlink" href="#intel" title="Permanent link">&para;</a></h3>
 <p>In Q1 2025, our roadmap includes added integration with 
-<a href="https://www.intel.com/content/www/us/en/products/details/processors/ai-accelerators/gaudi-overview.html" target="_blank">Intel Gaudi <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>
+<a href="https://www.intel.com/content/www/us/en/products/details/processors/ai-accelerators/gaudi-overview.html">Intel Gaudi</a>
 among other accelerator chips.</p>
 <h2 id="join-the-community">Join the community<a class="headerlink" href="#join-the-community" title="Permanent link">&para;</a></h2>
 <p>If you're interested in simplifying AI infrastructure, both in the cloud and on-prem, consider getting involved as a 

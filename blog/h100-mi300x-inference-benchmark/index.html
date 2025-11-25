@@ -4051,8 +4051,8 @@ replica on 4xMI300x and 8xMI300x</p>
 <p>Finally, we extrapolate performance projections for upcoming GPUs like NVIDIA H200, B200, and AMD MI325x, MI350x.</p>
 <p><img src="https://dstack.ai/static-assets/static-assets/images/h100-mi300x-inference-benchmark-v2.png" width="630"/></p>
 <p>This benchmark is made possible through the generous support of our friends at
-<a href="https://hotaisle.xyz/" target="_blank">Hot Aisle <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> and 
-<a href="https://lambdalabs.com/" target="_blank">Lambda <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>,
+<a href="https://hotaisle.xyz/">Hot Aisle</a> and 
+<a href="https://lambdalabs.com/">Lambda</a>,
 who provided high-end hardware.</p>
 <!-- more -->
 
@@ -4074,7 +4074,7 @@ who provided high-end hardware.</p>
 <h3 id="benchmark-modes">Benchmark modes<a class="headerlink" href="#benchmark-modes" title="Permanent link">&para;</a></h3>
 <ol>
 <li><strong>Online inference</strong>: Benchmarked across QPS 16, 32, and 1000 using
-   the <a href="https://huggingface.co/datasets/anon8231489123/ShareGPT_Vicuna_unfiltered" target="_blank">ShareGPT <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> dataset. Execution used
+   the <a href="https://huggingface.co/datasets/anon8231489123/ShareGPT_Vicuna_unfiltered">ShareGPT</a> dataset. Execution used
    vLLM’s <a href="https://github.com/vllm-project/vllm/blob/main/benchmarks/benchmark_serving.py">benchmark_serving</a>.</li>
 <li><strong>Offline inference</strong>: Benchmarked with varying input/output lengths across different batch sizes, using vLLM’s <a href="https://github.com/vllm-project/vllm/blob/main/benchmarks/benchmark_throughput.py">benchmark_throughput.py</a>.</li>
 </ol>
@@ -4120,7 +4120,7 @@ contrast, the 1 FP8 8xMI300x configuration is the most cost-efficient for large 
 <p>With large prompts and batch sizes, two replicas on 4xMI300x GPUs hit memory saturation when total tokens (prompt
 length x batch size) exceed the available memory for the KV cache. This forces the inference engine to compute KV
 tensors on-the-fly or offload them to CPU memory, degrading throughput.</p>
-<p>In <a href="https://lambdalabs.com/blog/partner-spotlight-evaluating-nvidia-h200-gpus-for-ai-inference-with-baseten" target="_blank">Lambda <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>’
+<p>In <a href="https://lambdalabs.com/blog/partner-spotlight-evaluating-nvidia-h200-gpus-for-ai-inference-with-baseten">Lambda</a>’
 benchmark, an 8xH200 setup processed 3.4 times more tokens per second than an 8xH100. Extrapolating to our
 setup, an 8xH200 would process around 2,186 tokens per second (3.4 × 643), though still lower than 8xMI300x.</p>
 <table>
@@ -4173,7 +4173,7 @@ processed in parallel, the 8xH100 configuration distributes the load more effect
 <p><img src="https://dstack.ai/static-assets/static-assets/images/h100-mi300x-inference-benchmark-time-1-request.png" width="750"></p>
 <p>Processing a single large prompt request with 8xMI300x takes around 11.25 seconds. This latency is mainly due to
 computational demands during the prefill phase, where KV tensors are computed.</p>
-<p>Optimizations like <a href="https://docs.vllm.ai/en/latest/automatic_prefix_caching/apc.html" target="_blank">automatic prefix caching <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>
+<p>Optimizations like <a href="https://docs.vllm.ai/en/latest/automatic_prefix_caching/apc.html">automatic prefix caching</a>
 could help reduce this time, but are outside the scope of this benchmark.</p>
 <h2 id="benchmark-notes">Benchmark notes<a class="headerlink" href="#benchmark-notes" title="Permanent link">&para;</a></h2>
 <h3 id="benchmark-setup_1">Benchmark setup<a class="headerlink" href="#benchmark-setup_1" title="Permanent link">&para;</a></h3>
@@ -4183,7 +4183,7 @@ online inference would provide more accurate insights.</p>
 <p>We compared throughput at batch size 16 for 8xH100 and batch size 64 for 8xMI300x. The 8xH100 setup begins to struggle
 with batch size 16 due to memory saturation, resulting in slower generation times.</p>
 <h3 id="model-checkpoints">Model checkpoints<a class="headerlink" href="#model-checkpoints" title="Permanent link">&para;</a></h3>
-<p>For AMD MI300x, we used <a href="https://huggingface.co/amd/Llama-3.1-405B-Instruct-FP8-KV" target="_blank"><code>amd/Llama-3.1-405B-Instruct-FP8-KV</code> <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>
+<p>For AMD MI300x, we used <a href="https://huggingface.co/amd/Llama-3.1-405B-Instruct-FP8-KV"><code>amd/Llama-3.1-405B-Instruct-FP8-KV</code></a>
 to achieve optimal performance, relying on AMD for quantization.</p>
 <h3 id="vllm-configuration">vLLM configuration<a class="headerlink" href="#vllm-configuration" title="Permanent link">&para;</a></h3>
 <p>To maximize inference results on AMD MI300x, we adjusted specific arguments:</p>
@@ -4260,14 +4260,14 @@ cost-efficiency.</p>
 </table>
 <h2 id="source-code">Source code<a class="headerlink" href="#source-code" title="Permanent link">&para;</a></h2>
 <p>All the source code and findings to help you replicate the results are available in 
-<a href="https://github.com/dstackai/benchmarks/tree/main/comparison/h100sxm5_vs_mi300x" target="_blank">our GitHub repo <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>.</p>
+<a href="https://github.com/dstackai/benchmarks/tree/main/comparison/h100sxm5_vs_mi300x">our GitHub repo</a>.</p>
 <h2 id="thanks-to-our-friends">Thanks to our friends<a class="headerlink" href="#thanks-to-our-friends" title="Permanent link">&para;</a></h2>
 <h3 id="hot-aisle">Hot Aisle<a class="headerlink" href="#hot-aisle" title="Permanent link">&para;</a></h3>
-<p><a href="https://hotaisle.xyz/" target="_blank">Hot Aisle <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> sponsored this benchmark by providing access to 8x MI300x hardware. We’re deeply grateful for their support.</p>
+<p><a href="https://hotaisle.xyz/">Hot Aisle</a> sponsored this benchmark by providing access to 8x MI300x hardware. We’re deeply grateful for their support.</p>
 <p>If you're looking for top-tier bare metal compute with AMD GPUs, we highly recommend Hot Aisle. With <code>dstack</code>, accessing
 your cluster via SSH is seamless and straightforward.</p>
 <h3 id="lambda">Lambda<a class="headerlink" href="#lambda" title="Permanent link">&para;</a></h3>
-<p><a href="https://lambdalabs.com/" target="_blank">Lambda <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> sponsored this benchmark with credits for on-demand 8x H100 instances. 
+<p><a href="https://lambdalabs.com/">Lambda</a> sponsored this benchmark with credits for on-demand 8x H100 instances. 
 We’re truly thankful for their support.</p>
 <p>For top-tier cloud compute with NVIDIA GPUs, Lambda is an excellent choice. Once set up, you can easily provision
 compute, manage clusters, and orchestrate your AI workloads using <code>dstack</code>.</p>

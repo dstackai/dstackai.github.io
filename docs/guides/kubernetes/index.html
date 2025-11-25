@@ -4055,7 +4055,7 @@ This configuration is defined in the <code>~/.dstack/server/config.yml</code> fi
 <h3 id="nvidia-gpu-operator">NVIDIA GPU Operator<a class="headerlink" href="#nvidia-gpu-operator" title="Permanent link">&para;</a></h3>
 <blockquote>
 <p>For <code>dstack</code> to correctly detect GPUs in your Kubernetes cluster, the cluster must have the
-<a href="https://docs.nvidia.com/datacenter/cloud-native/gpu-operator/latest/index.html" target="_blank">NVIDIA GPU Operator <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> pre-installed.</p>
+<a href="https://docs.nvidia.com/datacenter/cloud-native/gpu-operator/latest/index.html">NVIDIA GPU Operator</a> pre-installed.</p>
 </blockquote>
 <p>After the backend is set up, you interact with <code>dstack</code> just as you would with other backends or SSH fleets. You can run dev environments, tasks, and services.</p>
 <h2 id="fleets">Fleets<a class="headerlink" href="#fleets" title="Permanent link">&para;</a></h2>
@@ -4109,7 +4109,7 @@ Since Kubernetes clusters are interconnected by default, you can always set <cod
 <details class="info">
 <summary>Is managed Kubernetes with auto-scaling supported?</summary>
 <p>Managed Kubernetes is supported. However, the <code>kubernetes</code> backend can only run on pre-provisioned nodes.<br />
-Support for auto-scalable Kubernetes clusters is coming soon—you can track progress in the corresponding <a href="https://github.com/dstackai/dstack/issues/3126" target="_blank">issue <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>.</p>
+Support for auto-scalable Kubernetes clusters is coming soon—you can track progress in the corresponding <a href="https://github.com/dstackai/dstack/issues/3126">issue</a>.</p>
 <p>If on-demand provisioning is important, we recommend using <a href="../../concepts/backends/#vm-based">VM-based</a> backends as they already support auto-scaling.</p>
 </details>
 <details class="info">

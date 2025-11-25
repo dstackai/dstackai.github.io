@@ -3867,8 +3867,8 @@ $<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>dstac
 <h2 id="deployment">Deployment<a class="headerlink" href="#deployment" title="Permanent link">&para;</a></h2>
 <h3 id="amd">AMD<a class="headerlink" href="#amd" title="Permanent link">&para;</a></h3>
 <p>Here's an example of a service that deploys
-<a href="https://huggingface.co/meta-llama/Llama-4-Scout-17B-16E-Instruct" target="_blank"><code>Llama-4-Scout-17B-16E-Instruct</code> <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>
-using <a href="https://github.com/vllm-project/vllm" target="_blank">vLLM <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>
+<a href="https://huggingface.co/meta-llama/Llama-4-Scout-17B-16E-Instruct"><code>Llama-4-Scout-17B-16E-Instruct</code></a>
+using <a href="https://github.com/vllm-project/vllm">vLLM</a>
 with AMD <code>MI300X</code> GPUs.</p>
 <div editor-title="examples/llms/llama/vllm/amd/.dstack.yml">
 
@@ -3906,8 +3906,8 @@ with AMD <code>MI300X</code> GPUs.</p>
 
 <h3 id="nvidia">NVIDIA<a class="headerlink" href="#nvidia" title="Permanent link">&para;</a></h3>
 <p>Here's an example of a service that deploys
-<a href="https://huggingface.co/meta-llama/Llama-4-Scout-17B-16E-Instruct" target="_blank"><code>Llama-4-Scout-17B-16E-Instruct</code> <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>
-using <a href="https://github.com/sgl-project/sglang" target="_blank">SGLang <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> and <a href="https://github.com/vllm-project/vllm" target="_blank">vLLM <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>
+<a href="https://huggingface.co/meta-llama/Llama-4-Scout-17B-16E-Instruct"><code>Llama-4-Scout-17B-16E-Instruct</code></a>
+using <a href="https://github.com/sgl-project/sglang">SGLang</a> and <a href="https://github.com/vllm-project/vllm">vLLM</a>
 with NVIDIA <code>H200</code> GPUs.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="sglang" name="__tabbed_1" type="radio" /><input id="vllm" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="sglang">SGLang</label><label for="vllm">vLLM</label></div>
 <div class="tabbed-content">
@@ -3973,7 +3973,7 @@ with NVIDIA <code>H200</code> GPUs.</p>
 <div class="admonition info">
 <p class="admonition-title">NOTE:</p>
 <p>With vLLM, add <code>--override-generation-config='{"attn_temperature_tuning": true}'</code> to
-improve accuracy for <a href="https://blog.vllm.ai/2025/04/05/llama4.html" target="_blank">contexts longer than 32K tokens <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>.</p>
+improve accuracy for <a href="https://blog.vllm.ai/2025/04/05/llama4.html">contexts longer than 32K tokens</a>.</p>
 </div>
 <h3 id="memory-requirements">Memory requirements<a class="headerlink" href="#memory-requirements" title="Permanent link">&para;</a></h3>
 <p>Below are the approximate memory requirements for loading the model.
@@ -4062,7 +4062,7 @@ at <code>&lt;dstack server URL&gt;/proxy/services/&lt;project name&gt;/&lt;run n
 <p>When a <a href="https://dstack.ai/docs/concepts/gateways/">gateway</a> is configured, the service endpoint
 is available at <code>https://&lt;run name&gt;.&lt;gateway domain&gt;/</code>.</p>
 <h2 id="fine-tuning">Fine-tuning<a class="headerlink" href="#fine-tuning" title="Permanent link">&para;</a></h2>
-<p>Here's and example of FSDP and QLoRA fine-tuning of 4-bit Quantized <a href="https://huggingface.co/axolotl-quants/Llama-4-Scout-17B-16E-Linearized-bnb-nf4-bf16">Llama-4-Scout-17B-16E <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> on 2xH100 NVIDIA GPUs using <a href="https://github.com/OpenAccess-AI-Collective/axolotl" target="_blank">Axolotl <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a></p>
+<p>Here's and example of FSDP and QLoRA fine-tuning of 4-bit Quantized <a href="https://huggingface.co/axolotl-quants/Llama-4-Scout-17B-16E-Linearized-bnb-nf4-bf16">Llama-4-Scout-17B-16E</a> on 2xH100 NVIDIA GPUs using <a href="https://github.com/OpenAccess-AI-Collective/axolotl">Axolotl</a></p>
 <div editor-title="examples/single-node-training/axolotl/.dstack.yml">
 
 <div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">task</span>
@@ -4174,12 +4174,12 @@ $<span class="w"> </span>dstack<span class="w"> </span>apply<span class="w"> </s
 
 <h2 id="source-code">Source code<a class="headerlink" href="#source-code" title="Permanent link">&para;</a></h2>
 <p>The source-code for deployment examples can be found in
-<a href="https://github.com/dstackai/dstack/blob/master/examples/llms/llama"><code>examples/llms/llama</code> <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> and the source-code for the finetuning example can be found in <a href="https://github.com/dstackai/dstack/blob/master/examples/single-node-training/axolotl" target="_blank"><code>examples/single-node-training/axolotl</code> <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>.</p>
+<a href="https://github.com/dstackai/dstack/blob/master/examples/llms/llama"><code>examples/llms/llama</code></a> and the source-code for the finetuning example can be found in <a href="https://github.com/dstackai/dstack/blob/master/examples/single-node-training/axolotl"><code>examples/single-node-training/axolotl</code></a>.</p>
 <h2 id="whats-next">What's next?<a class="headerlink" href="#whats-next" title="Permanent link">&para;</a></h2>
 <ol>
 <li>Check <a href="https://dstack.ai/docs/dev-environments">dev environments</a>, <a href="https://dstack.ai/docs/tasks">tasks</a>,
    <a href="https://dstack.ai/docs/services">services</a>, and <a href="https://dstack.ai/docs/protips">protips</a>.</li>
-<li>Browse <a href="https://github.com/sgl-project/sglang/blob/main/docs/references/llama4.md">Llama 4 with SGLang <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>, <a href="https://blog.vllm.ai/2025/04/05/llama4.html">Llama 4 with vLLM <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>, <a href="https://rocm.blogs.amd.com/artificial-intelligence/llama4-day-0-support/README.html">Llama 4 with AMD <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> and <a href="https://github.com/OpenAccess-AI-Collective/axolotl" target="_blank">Axolotl <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>.</li>
+<li>Browse <a href="https://github.com/sgl-project/sglang/blob/main/docs/references/llama4.md">Llama 4 with SGLang</a>, <a href="https://blog.vllm.ai/2025/04/05/llama4.html">Llama 4 with vLLM</a>, <a href="https://rocm.blogs.amd.com/artificial-intelligence/llama4-day-0-support/README.html">Llama 4 with AMD</a> and <a href="https://github.com/OpenAccess-AI-Collective/axolotl">Axolotl</a>.</li>
 </ol>
 
 

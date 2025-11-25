@@ -3972,7 +3972,7 @@ Support dstack with a ⭐ on
 
 
 <h1 id="rccl-tests">RCCL tests<a class="headerlink" href="#rccl-tests" title="Permanent link">&para;</a></h1>
-<p>This example shows how to run distributed <a href="https://github.com/ROCm/rccl-tests" target="_blank">RCCL tests <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> using <a href="https://dstack.ai/docs/concepts/tasks#distributed-tasks">distributed tasks</a>.</p>
+<p>This example shows how to run distributed <a href="https://github.com/ROCm/rccl-tests">RCCL tests</a> using <a href="https://dstack.ai/docs/concepts/tasks#distributed-tasks">distributed tasks</a>.</p>
 <div class="admonition info">
 <p class="admonition-title">Prerequisites</p>
 <p>Before running a distributed task, make sure to create a fleet with <code>placement</code> set to <code>cluster</code> (can be a <a href="https://dstack.ai/docs/concepts/fleets#backend-placement">managed fleet</a> or an <a href="https://dstack.ai/docs/concepts/fleets#ssh-placement">SSH fleet</a>).</p>
@@ -4035,7 +4035,7 @@ Support dstack with a ⭐ on
 and waits until other nodes are accessible via MPI. 
 Then, it executes <code>/rccl-tests/build/all_reduce_perf</code> across all GPUs.</p>
 <p>Other nodes use a <code>FIFO</code> pipe to wait for until the MPI run is finished.</p>
-<p>There is an open <a href="https://github.com/dstackai/dstack/issues/2467" target="_blank">issue <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> to simplify the use of MPI with distributed tasks.</p>
+<p>There is an open <a href="https://github.com/dstackai/dstack/issues/2467">issue</a> to simplify the use of MPI with distributed tasks.</p>
 </div>
 <div class="admonition info">
 <p class="admonition-title">RoCE library</p>
@@ -4076,7 +4076,7 @@ Submit<span class="w"> </span>the<span class="w"> </span>run<span class="w"> </s
 
 <h2 id="source-code">Source code<a class="headerlink" href="#source-code" title="Permanent link">&para;</a></h2>
 <p>The source-code of this example can be found in 
-<a href="https://github.com/dstackai/dstack/blob/master/examples/distributed-training/rccl-tests"><code>examples/distributed-training/rccl-tests</code> <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>.</p>
+<a href="https://github.com/dstackai/dstack/blob/master/examples/distributed-training/rccl-tests"><code>examples/distributed-training/rccl-tests</code></a>.</p>
 <h2 id="whats-next">What's next?<a class="headerlink" href="#whats-next" title="Permanent link">&para;</a></h2>
 <ol>
 <li>Check <a href="https://dstack.ai/docs/dev-environments">dev environments</a>, <a href="https://dstack.ai/docs/tasks">tasks</a>, 

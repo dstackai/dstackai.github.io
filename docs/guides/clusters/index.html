@@ -4087,7 +4087,7 @@ For cloud fleets, fast interconnect is currently supported only on the <code>aws
 <div class="tabbed-set tabbed-alternate" data-tabs="1:4"><input checked="checked" id="aws" name="__tabbed_1" type="radio" /><input id="gcp" name="__tabbed_1" type="radio" /><input id="nebius" name="__tabbed_1" type="radio" /><input id="runpod" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="aws">AWS</label><label for="gcp">GCP</label><label for="nebius">Nebius</label><label for="runpod">Runpod</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p>When you create a cloud fleet with AWS, <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/efa.html" target="_blank">Elastic Fabric Adapter <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> networking is automatically configured if it’s supported for the corresponding instance type.</p>
+<p>When you create a cloud fleet with AWS, <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/efa.html">Elastic Fabric Adapter</a> networking is automatically configured if it’s supported for the corresponding instance type.</p>
 <div class="admonition info">
 <p class="admonition-title">Backend configuration</p>
 <p>Note, EFA requires the <code>public_ips</code> to be set to <code>false</code> in the <code>aws</code> backend configuration.
@@ -4095,7 +4095,7 @@ Refer to the <a href="../../../examples/clusters/efa/">EFA</a> example for more 
 </div>
 </div>
 <div class="tabbed-block">
-<p>When you create a cloud fleet with GCP, <code>dstack</code> automatically configures <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/gpu-bandwidth-gpudirect-tcpx-autopilot" target="_blank">GPUDirect-TCPXO and GPUDirect-TCPX <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> networking for the A3 Mega and A3 High instance types, as well as RoCE networking for the A4 instance type.</p>
+<p>When you create a cloud fleet with GCP, <code>dstack</code> automatically configures <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/gpu-bandwidth-gpudirect-tcpx-autopilot">GPUDirect-TCPXO and GPUDirect-TCPX</a> networking for the A3 Mega and A3 High instance types, as well as RoCE networking for the A4 instance type.</p>
 <div class="admonition info">
 <p class="admonition-title">Backend configuration</p>
 <p>You may need to configure <code>extra_vpcs</code> and <code>roce_vpcs</code> in the <code>gcp</code> backend configuration.
@@ -4105,7 +4105,7 @@ Refer to the <a href="../../../examples/clusters/a4/">A4</a>,
 </div>
 </div>
 <div class="tabbed-block">
-<p>When you create a cloud fleet with Nebius, <a href="https://docs.nebius.com/compute/clusters/gpu" target="_blank">InfiniBand <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> networking is automatically configured if it’s supported for the corresponding instance type.</p>
+<p>When you create a cloud fleet with Nebius, <a href="https://docs.nebius.com/compute/clusters/gpu">InfiniBand</a> networking is automatically configured if it’s supported for the corresponding instance type.</p>
 </div>
 <div class="tabbed-block">
 <p>When you run multinode tasks in a cluster cloud fleet with Runpod, <code>dstack</code> provisions <a href="https://docs.runpod.io/instant-clusters">Runpod Instant Clusters</a> with InfiniBand networking configured.</p>
@@ -4114,7 +4114,7 @@ Refer to the <a href="../../../examples/clusters/a4/">A4</a>,
 </div>
 <blockquote>
 <p>To request fast interconnect support for other backends,
-file an <a href="https://github.com/dstackai/dstack/issues" target="_ blank">issue <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>.</p>
+file an <a href="https://github.com/dstackai/dstack/issues" target="_ blank">issue</a>.</p>
 </blockquote>
 <h2 id="distributed-tasks">Distributed tasks<a class="headerlink" href="#distributed-tasks" title="Permanent link">&para;</a></h2>
 <p>A distributed task is a task with <code>nodes</code> set to a value greater than <code>2</code>. In this case, <code>dstack</code> first ensures a 

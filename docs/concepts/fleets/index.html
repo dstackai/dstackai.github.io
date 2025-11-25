@@ -4196,14 +4196,14 @@ or via <a href="../../reference/cli/dstack/apply/#fleet"><code>--fleet</code></a
 This ensures all instances are provisioned with optimal inter-node connectivity.</p>
 <details class="info">
 <summary>AWS</summary>
-<p>When you create a fleet with AWS, <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/efa.html" target="_blank">Elastic Fabric Adapter networking <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> is automatically configured if it’s supported for the corresponding instance type.
+<p>When you create a fleet with AWS, <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/efa.html">Elastic Fabric Adapter networking</a> is automatically configured if it’s supported for the corresponding instance type.
 Note, EFA requires the <code>public_ips</code> to be set to <code>false</code> in the <code>aws</code> backend configuration.
 Otherwise, instances are only connected by the default VPC subnet.</p>
 <p>Refer to the <a href="../../../examples/clusters/efa/">EFA</a> example for more details.</p>
 </details>
 <details class="info">
 <summary>GCP</summary>
-<p>When you create a fleet with GCP, <code>dstack</code> automatically configures <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/gpu-bandwidth-gpudirect-tcpx-autopilot" target="_blank">GPUDirect-TCPXO and GPUDirect-TCPX <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> networking for the A3 Mega and A3 High instance types, as well as RoCE networking for the A4 instance type.</p>
+<p>When you create a fleet with GCP, <code>dstack</code> automatically configures <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/gpu-bandwidth-gpudirect-tcpx-autopilot">GPUDirect-TCPXO and GPUDirect-TCPX</a> networking for the A3 Mega and A3 High instance types, as well as RoCE networking for the A4 instance type.</p>
 <div class="admonition info">
 <p class="admonition-title">Backend configuration</p>
 <p>You may need to configure <code>extra_vpcs</code> and <code>roce_vpcs</code> in the <code>gcp</code> backend configuration.
@@ -4214,7 +4214,7 @@ Refer to the <a href="../../../examples/clusters/a4/">A4</a>,
 </details>
 <details class="info">
 <summary>Nebius</summary>
-<p>When you create a fleet with Nebius, <a href="https://docs.nebius.com/compute/clusters/gpu" target="_blank">InfiniBand networking <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> is automatically configured if it’s supported for the corresponding instance type.
+<p>When you create a fleet with Nebius, <a href="https://docs.nebius.com/compute/clusters/gpu">InfiniBand networking</a> is automatically configured if it’s supported for the corresponding instance type.
 Otherwise, instances are only connected by the default VPC subnet.</p>
 <p>An InfiniBand fabric for the cluster is selected automatically. If you prefer to use some specific fabrics, configure them in the
 <a href="../../reference/server/config.yml/#nebius">backend settings</a>.</p>
@@ -4379,12 +4379,12 @@ among <a href="../../reference/dstack.yml/fleet/">others</a>.</p>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>2.&nbsp;Hosts with NVIDIA GPUs must also be pre-installed with CUDA 12.1 and
-<a href="https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html">NVIDIA Container Toolkit <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>.</p>
+<a href="https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html">NVIDIA Container Toolkit</a>.</p>
 </div>
 <div class="tabbed-block">
 <p>2.&nbsp;Hosts with AMD GPUs must also be pre-installed with AMDGPU-DKMS kernel driver (e.g. via
-<a href="https://rocm.docs.amd.com/projects/install-on-linux/en/latest/install/native-install/index.html">native package manager <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>
-or <a href="https://rocm.docs.amd.com/projects/install-on-linux/en/latest/install/amdgpu-install.html">AMDGPU installer <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>.)</p>
+<a href="https://rocm.docs.amd.com/projects/install-on-linux/en/latest/install/native-install/index.html">native package manager</a>
+or <a href="https://rocm.docs.amd.com/projects/install-on-linux/en/latest/install/amdgpu-install.html">AMDGPU installer</a>.)</p>
 </div>
 <div class="tabbed-block">
 <p>2.&nbsp;Hosts with Intel Gaudi accelerators must be pre-installed with <a href="https://docs.habana.ai/en/latest/Installation_Guide/Driver_Installation.html#driver-installation">Gaudi software and drivers</a>.

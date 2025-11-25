@@ -4407,7 +4407,7 @@ They can be configured via <code>~/.dstack/server/config.yml</code> or through t
 </ul>
 <div class="admonition info">
 <p class="admonition-title">dstack Sky</p>
-<p>If you're using <a href="https://sky.dstack.ai" target="_blank">dstack Sky <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>, backend configuration is optional. dstack Sky lets you use pre-configured backends to access GPU marketplace.</p>
+<p>If you're using <a href="https://sky.dstack.ai">dstack Sky</a>, backend configuration is optional. dstack Sky lets you use pre-configured backends to access GPU marketplace.</p>
 </div>
 <p>See the examples of backend configuration below.</p>
 <h2 id="vm-based">VM-based<a class="headerlink" href="#vm-based" title="Permanent link">&para;</a></h2>
@@ -4433,7 +4433,7 @@ Under the hood, <code>dstack</code> uses native integrations with these provider
 </div>
 </div>
 <div class="tabbed-block">
-<p>Create an access key by following the <a href="https://docs.aws.amazon.com/cli/latest/userguide/cli-authentication-user.html#cli-authentication-user-get">this guide <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>.
+<p>Create an access key by following the <a href="https://docs.aws.amazon.com/cli/latest/userguide/cli-authentication-user.html#cli-authentication-user-get">this guide</a>.
 Once you've downloaded the <code>.csv</code> file with your IAM user's Access key ID and Secret access key, proceed to
 configure the backend.</p>
 <div editor-title="~/.dstack/server/config.yml">
@@ -4602,7 +4602,7 @@ Additionally, private subnets must have outbound internet connectivity provided 
 </details>
 <details class="info">
 <summary>OS images</summary>
-<p>By default, <code>dstack</code> uses its own <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AMIs.html">AMI <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>
+<p>By default, <code>dstack</code> uses its own <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AMIs.html">AMI</a>
 optimized for <code>dstack</code>.
 To use your own or other third-party images, set the <code>os_images</code> property:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">projects</span><span class="p">:</span>
@@ -4654,12 +4654,12 @@ The <code>user</code> specifies an OS user for instance provisioning.</p>
 <span class="w">          </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">default</span>
 </code></pre></div>
 </div>
-<p>If you don't know your <code>subscription_id</code> and <code>tenant_id</code>, use <a href="https://learn.microsoft.com/en-us/cli/azure/install-azure-cli">Azure CLI <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>:</p>
+<p>If you don't know your <code>subscription_id</code> and <code>tenant_id</code>, use <a href="https://learn.microsoft.com/en-us/cli/azure/install-azure-cli">Azure CLI</a>:</p>
 <div class="highlight"><pre><span></span><code>az<span class="w"> </span>account<span class="w"> </span>show<span class="w"> </span>--query<span class="w"> </span><span class="s2">&quot;{subscription_id: id, tenant_id: tenantId}&quot;</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<p>A client secret can be created using the <a href="https://learn.microsoft.com/en-us/cli/azure/install-azure-cli">Azure CLI <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>:</p>
+<p>A client secret can be created using the <a href="https://learn.microsoft.com/en-us/cli/azure/install-azure-cli">Azure CLI</a>:</p>
 <div class="highlight"><pre><span></span><code><span class="nv">SUBSCRIPTION_ID</span><span class="o">=</span>...
 az<span class="w"> </span>ad<span class="w"> </span>sp<span class="w"> </span>create-for-rbac
 <span class="w">    </span>--name<span class="w"> </span>dstack-app<span class="w"> </span><span class="se">\</span>
@@ -4681,7 +4681,7 @@ az<span class="w"> </span>ad<span class="w"> </span>sp<span class="w"> </span>cr
 <span class="w">      </span><span class="nt">client_secret</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1Kb8Q~o3Q2hdEvrul9yaj5DJDFkuL3RG7lger2VQ</span>
 </code></pre></div>
 </div>
-<p>If you don't know your <code>subscription_id</code>, use <a href="https://learn.microsoft.com/en-us/cli/azure/install-azure-cli">Azure CLI <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>:</p>
+<p>If you don't know your <code>subscription_id</code>, use <a href="https://learn.microsoft.com/en-us/cli/azure/install-azure-cli">Azure CLI</a>:</p>
 <div class="highlight"><pre><span></span><code>az<span class="w"> </span>account<span class="w"> </span>show<span class="w"> </span>--query<span class="w"> </span><span class="s2">&quot;{subscription_id: id}&quot;</span>
 </code></pre></div>
 </div>
@@ -4786,7 +4786,7 @@ Additionally, private subnets must have outbound internet connectivity provided 
 </div>
 </div>
 <div class="tabbed-block">
-<p>To create a service account, follow <a href="https://cloud.google.com/iam/docs/service-accounts-create">this guide <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>. After setting up the service account <a href="https://cloud.google.com/iam/docs/keys-create-delete">create a key <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> for it and download the corresponding JSON file.</p>
+<p>To create a service account, follow <a href="https://cloud.google.com/iam/docs/service-accounts-create">this guide</a>. After setting up the service account <a href="https://cloud.google.com/iam/docs/keys-create-delete">create a key</a> for it and download the corresponding JSON file.</p>
 <p>Then go ahead and configure the backend by specifying the downloaded file path.</p>
 <div editor-title="~/.dstack/server/config.yml">
 <div class="highlight"><pre><span></span><code><span class="nt">projects</span><span class="p">:</span>
@@ -4828,7 +4828,7 @@ specify the contents of the JSON file in <code>data</code>:</p>
 </div>
 </div>
 </div>
-<p>If you don't know your GCP project ID, use <a href="https://cloud.google.com/sdk/docs/install-sdk">Google Cloud CLI <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>:</p>
+<p>If you don't know your GCP project ID, use <a href="https://cloud.google.com/sdk/docs/install-sdk">Google Cloud CLI</a>:</p>
 <div class="highlight"><pre><span></span><code>gcloud<span class="w"> </span>projects<span class="w"> </span>list<span class="w"> </span>--format<span class="o">=</span><span class="s2">&quot;json(projectId)&quot;</span>
 </code></pre></div>
 <details class="info">
@@ -4949,7 +4949,7 @@ If you want <code>dstack</code> to use private subnets and provision instances w
 Additionally, <a href="https://cloud.google.com/nat/docs/overview">Cloud NAT</a> must be configured to provide access to external resources for provisioned instances.</p>
 </details>
 <h3 id="lambda">Lambda<a class="headerlink" href="#lambda" title="Permanent link">&para;</a></h3>
-<p>Log into your <a href="https://lambdalabs.com/service/gpu-cloud">Lambda Cloud <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> account, click API keys in the sidebar, and then click the <code>Generate API key</code>
+<p>Log into your <a href="https://lambdalabs.com/service/gpu-cloud">Lambda Cloud</a> account, click API keys in the sidebar, and then click the <code>Generate API key</code>
 button to create a new API key.</p>
 <p>Then, go ahead and configure the backend:</p>
 <div editor-title="~/.dstack/server/config.yml">
@@ -4966,7 +4966,7 @@ button to create a new API key.</p>
 </div>
 
 <h3 id="nebius">Nebius<a class="headerlink" href="#nebius" title="Permanent link">&para;</a></h3>
-<p>Log into your <a href="https://console.eu.nebius.com/">Nebius AI Cloud <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> account, navigate to Access, and select Service Accounts. Create a service account, add it to the editors group, and upload its authorized key.</p>
+<p>Log into your <a href="https://console.eu.nebius.com/">Nebius AI Cloud</a> account, navigate to Access, and select Service Accounts. Create a service account, add it to the editors group, and upload its authorized key.</p>
 <p>Then configure the backend:</p>
 <div editor-title="~/.dstack/server/config.yml">
 
@@ -4985,7 +4985,7 @@ button to create a new API key.</p>
 
 <details class="info">
 <summary>Credentials file</summary>
-<p>It's also possible to configure the <code>nebius</code> backend using a credentials file <a href="https://docs.nebius.com/iam/service-accounts/authorized-keys#create" target="_blank">generated <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> by the <code>nebius</code> CLI:</p>
+<p>It's also possible to configure the <code>nebius</code> backend using a credentials file <a href="https://docs.nebius.com/iam/service-accounts/authorized-keys#create">generated</a> by the <code>nebius</code> CLI:</p>
 <div class="termy">
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>nebius<span class="w"> </span>iam<span class="w"> </span>auth-public-key<span class="w"> </span>generate<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--service-account-id<span class="w"> </span>&lt;service<span class="w"> </span>account<span class="w"> </span>ID&gt;<span class="w"> </span><span class="se">\</span>
@@ -5043,7 +5043,7 @@ specify the contents of the private key file in <code>private_key_content</code>
 <p>Nebius is only supported if <code>dstack server</code> is running on Python 3.10 or higher.</p>
 </div>
 <h3 id="vultr">Vultr<a class="headerlink" href="#vultr" title="Permanent link">&para;</a></h3>
-<p>Log into your <a href="https://www.vultr.com/">Vultr <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> account, click <code>Account</code> in the sidebar, select <code>API</code>, find the <code>Personal Access Token</code> panel and click the <code>Enable API</code> button. In the <code>Access Control</code> panel, allow API requests from all addresses or from the subnet where your <code>dstack</code> server is deployed.</p>
+<p>Log into your <a href="https://www.vultr.com/">Vultr</a> account, click <code>Account</code> in the sidebar, select <code>API</code>, find the <code>Personal Access Token</code> panel and click the <code>Enable API</code> button. In the <code>Access Control</code> panel, allow API requests from all addresses or from the subnet where your <code>dstack</code> server is deployed.</p>
 <p>Then, go ahead and configure the backend:</p>
 <div editor-title="~/.dstack/server/config.yml">
 
@@ -5059,7 +5059,7 @@ specify the contents of the private key file in <code>private_key_content</code>
 </div>
 
 <h3 id="cudo">CUDO<a class="headerlink" href="#cudo" title="Permanent link">&para;</a></h3>
-<p>Log into your <a href="https://compute.cudo.org/">CUDO Compute <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> account, click API keys in the sidebar, and click the <code>Create an API key</code> button.</p>
+<p>Log into your <a href="https://compute.cudo.org/">CUDO Compute</a> account, click API keys in the sidebar, and click the <code>Create an API key</code> button.</p>
 <p>Ensure you've created a project with CUDO Compute, then proceed to configuring the backend.</p>
 <div editor-title="~/.dstack/server/config.yml">
 
@@ -5092,7 +5092,7 @@ specify the contents of the private key file in <code>private_key_content</code>
 </div>
 </div>
 <div class="tabbed-block">
-<p>Log into the <a href="https://cloud.oracle.com">OCI Console <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>, go to <code>My profile</code>, 
+<p>Log into the <a href="https://cloud.oracle.com">OCI Console</a>, go to <code>My profile</code>, 
 select <code>API keys</code>, and click <code>Add API key</code>.</p>
 <p>Once you add a key, you'll see the configuration file. Copy its values to configure the backend as follows:</p>
 <div editor-title="~/.dstack/server/config.yml">
@@ -5136,7 +5136,7 @@ Allow group &lt;dstack-users&gt; to manage virtual-network-family in compartment
 </code></pre></div>
 </details>
 <h3 id="datacrunch">DataCrunch<a class="headerlink" href="#datacrunch" title="Permanent link">&para;</a></h3>
-<p>Log into your <a href="https://cloud.datacrunch.io/">DataCrunch <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> account, click Keys in the sidebar, find <code>REST API Credentials</code> area and then click the <code>Generate Credentials</code> button.</p>
+<p>Log into your <a href="https://cloud.datacrunch.io/">DataCrunch</a> account, click Keys in the sidebar, find <code>REST API Credentials</code> area and then click the <code>Generate Credentials</code> button.</p>
 <p>Then, go ahead and configure the backend:</p>
 <div editor-title="~/.dstack/server/config.yml">
 
@@ -5153,7 +5153,7 @@ Allow group &lt;dstack-users&gt; to manage virtual-network-family in compartment
 </div>
 
 <h3 id="amd-developer-cloud">AMD Developer Cloud<a class="headerlink" href="#amd-developer-cloud" title="Permanent link">&para;</a></h3>
-<p>Log into your <a href="https://amd.digitalocean.com/login">AMD Developer Cloud <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> account. Click <code>API</code> in the sidebar and click the button <code>Generate New Token</code>. </p>
+<p>Log into your <a href="https://amd.digitalocean.com/login">AMD Developer Cloud</a> account. Click <code>API</code> in the sidebar and click the button <code>Generate New Token</code>. </p>
 <p>Then, go ahead and configure the backend:</p>
 <div editor-title="~/.dstack/server/config.yml">
 
@@ -5186,7 +5186,7 @@ Allow group &lt;dstack-users&gt; to manage virtual-network-family in compartment
 </ul>
 </details>
 <h3 id="digital-ocean">Digital Ocean<a class="headerlink" href="#digital-ocean" title="Permanent link">&para;</a></h3>
-<p>Log into your <a href="https://cloud.digitalocean.com/login">Digital Ocean <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> account. Click <code>API</code> in the sidebar and click the button <code>Generate New Token</code>. </p>
+<p>Log into your <a href="https://cloud.digitalocean.com/login">Digital Ocean</a> account. Click <code>API</code> in the sidebar and click the button <code>Generate New Token</code>. </p>
 <p>Then, go ahead and configure the backend:</p>
 <div editor-title="~/.dstack/server/config.yml">
 
@@ -5219,7 +5219,7 @@ Allow group &lt;dstack-users&gt; to manage virtual-network-family in compartment
 </ul>
 </details>
 <h3 id="hot-aisle">Hot Aisle<a class="headerlink" href="#hot-aisle" title="Permanent link">&para;</a></h3>
-<p>Log in to the SSH TUI as described in the <a href="https://hotaisle.xyz/quick-start/">Hot Aisle Quick Start <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>.
+<p>Log in to the SSH TUI as described in the <a href="https://hotaisle.xyz/quick-start/">Hot Aisle Quick Start</a>.
 Create a new team and generate an API key for the member in the team.</p>
 <p>Then, go ahead and configure the backend:</p>
 <div editor-title="~/.dstack/server/config.yml">
@@ -5245,7 +5245,7 @@ Create a new team and generate an API key for the member in the team.</p>
 </ul>
 </details>
 <h3 id="cloudrift">CloudRift<a class="headerlink" href="#cloudrift" title="Permanent link">&para;</a></h3>
-<p>Log into your <a href="https://console.cloudrift.ai/">CloudRift <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> console, click <code>API Keys</code> in the sidebar and click the button to create a new API key.</p>
+<p>Log into your <a href="https://console.cloudrift.ai/">CloudRift</a> console, click <code>API Keys</code> in the sidebar and click the button to create a new API key.</p>
 <p>Ensure you've created a project with CloudRift.</p>
 <p>Then proceed to configuring the backend.</p>
 <div editor-title="~/.dstack/server/config.yml">
@@ -5298,11 +5298,11 @@ In this case, <code>dstack</code> delegates provisioning to the cloud provider o
 <details class="info">
 <summary>NVIDIA GPU Operator</summary>
 <p>For <code>dstack</code> to correctly detect GPUs in your Kubernetes cluster, the cluster must have the
-<a href="https://docs.nvidia.com/datacenter/cloud-native/gpu-operator/latest/index.html" target="_blank">NVIDIA GPU Operator <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> pre-installed.</p>
+<a href="https://docs.nvidia.com/datacenter/cloud-native/gpu-operator/latest/index.html">NVIDIA GPU Operator</a> pre-installed.</p>
 </details>
 <!-- ??? info "Managed Kubernetes"
     While `dstack` supports both managed and on-prem Kubernetes clusters, it can only run on pre-provisioned nodes.
-    Support for auto-scalable Kubernetes clusters is coming soon—you can track progress in the corresponding [issue :material-arrow-top-right-thin:{ .external }](https://github.com/dstackai/dstack/issues/3126){:target="_blank"}.
+    Support for auto-scalable Kubernetes clusters is coming soon—you can track progress in the corresponding [issue](https://github.com/dstackai/dstack/issues/3126).
 
     If on-demand provisioning is important, we recommend using [VM-based](#vm-based) backends as they already support auto-scaling. -->
 
@@ -5333,7 +5333,7 @@ In this case, <code>dstack</code> delegates provisioning to the cloud provider o
 <p>To learn more, see the <a href="../../guides/kubernetes/">Kubernetes</a> guide.</p>
 </blockquote>
 <h3 id="runpod">RunPod<a class="headerlink" href="#runpod" title="Permanent link">&para;</a></h3>
-<p>Log into your <a href="https://www.runpod.io/console/">RunPod <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> console, click Settings in the sidebar, expand the <code>API Keys</code> section, and click
+<p>Log into your <a href="https://www.runpod.io/console/">RunPod</a> console, click Settings in the sidebar, expand the <code>API Keys</code> section, and click
 the button to create a Read &amp; Write key.</p>
 <p>Then proceed to configuring the backend.</p>
 <div editor-title="~/.dstack/server/config.yml">
@@ -5352,7 +5352,7 @@ the button to create a Read &amp; Write key.</p>
 <details class="info">
 <summary>Community Cloud</summary>
 <p>By default, <code>dstack</code> considers instance offers from both the Secure Cloud and the
-<a href="https://docs.runpod.io/references/faq/#secure-cloud-vs-community-cloud">Community Cloud <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>.</p>
+<a href="https://docs.runpod.io/references/faq/#secure-cloud-vs-community-cloud">Community Cloud</a>.</p>
 <p>You can tell them apart by their regions.
 Secure Cloud regions contain datacenter IDs such as <code>CA-MTL-3</code>.
 Community Cloud regions contain country codes such as <code>CA</code>.</p>
@@ -5378,7 +5378,7 @@ Community Cloud regions contain country codes such as <code>CA</code>.</p>
 </div>
 </details>
 <h3 id="vastai">Vast.ai<a class="headerlink" href="#vastai" title="Permanent link">&para;</a></h3>
-<p>Log into your <a href="https://cloud.vast.ai/">Vast.ai <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> account, click Account in the sidebar, and copy your
+<p>Log into your <a href="https://cloud.vast.ai/">Vast.ai</a> account, click Account in the sidebar, and copy your
 API Key.</p>
 <p>Then, go ahead and configure the backend:</p>
 <div editor-title="~/.dstack/server/config.yml">

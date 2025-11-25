@@ -3934,7 +3934,7 @@ Support dstack with a ⭐ on
 
 
 <h1 id="axolotl">Axolotl<a class="headerlink" href="#axolotl" title="Permanent link">&para;</a></h1>
-<p>This example shows how to use <a href="https://github.com/OpenAccess-AI-Collective/axolotl" target="_blank">Axolotl <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> with <code>dstack</code> to fine-tune 4-bit Quantized <code>Llama-4-Scout-17B-16E</code> using SFT with FSDP and QLoRA.</p>
+<p>This example shows how to use <a href="https://github.com/OpenAccess-AI-Collective/axolotl">Axolotl</a> with <code>dstack</code> to fine-tune 4-bit Quantized <code>Llama-4-Scout-17B-16E</code> using SFT with FSDP and QLoRA.</p>
 <details class="info">
 <summary>Prerequisites</summary>
 <p>Once <code>dstack</code> is <a href="https://dstack.ai/docs/installation">installed</a>, clone the repo with examples.</p>
@@ -3945,7 +3945,7 @@ $<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>dstac
 </div>
 </details>
 <h2 id="define-a-configuration">Define a configuration<a class="headerlink" href="#define-a-configuration" title="Permanent link">&para;</a></h2>
-<p>Axolotl reads the model, QLoRA, and dataset arguments, as well as trainer configuration from a <a href="https://github.com/axolotl-ai-cloud/axolotl/blob/main/examples/llama-4/scout-qlora-flexattn-fsdp2.yaml" target="_blank"><code>scout-qlora-flexattn-fsdp2.yaml</code> <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> file. The configuration uses 4-bit axolotl quantized version of <code>meta-llama/Llama-4-Scout-17B-16E</code>, requiring only ~43GB VRAM/GPU with 4K context length.</p>
+<p>Axolotl reads the model, QLoRA, and dataset arguments, as well as trainer configuration from a <a href="https://github.com/axolotl-ai-cloud/axolotl/blob/main/examples/llama-4/scout-qlora-flexattn-fsdp2.yaml"><code>scout-qlora-flexattn-fsdp2.yaml</code></a> file. The configuration uses 4-bit axolotl quantized version of <code>meta-llama/Llama-4-Scout-17B-16E</code>, requiring only ~43GB VRAM/GPU with 4K context length.</p>
 <p>Below is a task configuration that does fine-tuning.</p>
 <div editor-title="examples/single-node-training/axolotl/.dstack.yml">
 
@@ -4012,7 +4012,7 @@ Provisioning...
 
 <h2 id="source-code">Source code<a class="headerlink" href="#source-code" title="Permanent link">&para;</a></h2>
 <p>The source-code of this example can be found in
-<a href="https://github.com/dstackai/dstack/blob/master/examples/single-node-training/axolotl" target="_blank"><code>examples/single-node-training/axolotl</code> <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> and <a href="https://github.com/dstackai/dstack/blob/master/examples/distributed-training/axolotl" target="_blank"><code>examples/distributed-training/axolotl</code> <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>.</p>
+<a href="https://github.com/dstackai/dstack/blob/master/examples/single-node-training/axolotl"><code>examples/single-node-training/axolotl</code></a> and <a href="https://github.com/dstackai/dstack/blob/master/examples/distributed-training/axolotl"><code>examples/distributed-training/axolotl</code></a>.</p>
 <h2 id="whats-next">What's next?<a class="headerlink" href="#whats-next" title="Permanent link">&para;</a></h2>
 <ol>
 <li>Browse the <a href="https://dstack.ai/docs/examples/distributed-training/axolotl">Axolotl distributed training</a> example</li>

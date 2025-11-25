@@ -4003,7 +4003,7 @@ Support dstack with a ⭐ on
 <!-- more -->
 
 <p>Our findings reveal that for single-GPU LLM training and inference, both setups deliver comparable performance. The subtle differences we observed highlight how virtualization overhead can influence performance under specific conditions, but for most practical purposes, the performance is nearly identical.</p>
-<p>This benchmark was supported by <a href="https://hotaisle.xyz/" target="_blank">Hot Aisle <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>,
+<p>This benchmark was supported by <a href="https://hotaisle.xyz/">Hot Aisle</a>,
 a provider of AMD GPU bare-metal and VM infrastructure.</p>
 <h2 id="benchmark-1-inference">Benchmark 1: Inference<a class="headerlink" href="#benchmark-1-inference" title="Permanent link">&para;</a></h2>
 <h3 id="finding-1-identical-performance-at-moderate-concurrency-levels-and-slightly-worse-otherwise">Finding 1: Identical performance at moderate concurrency levels and slightly worse otherwise<a class="headerlink" href="#finding-1-identical-performance-at-moderate-concurrency-levels-and-slightly-worse-otherwise" title="Permanent link">&para;</a></h3>
@@ -4142,16 +4142,16 @@ pip<span class="w"> </span>install<span class="w"> </span>.
 <span class="w">    </span>--lora_alpha<span class="w"> </span><span class="m">16</span>
 </code></pre></div>
 <h2 id="source-code">Source code<a class="headerlink" href="#source-code" title="Permanent link">&para;</a></h2>
-<p>All source code and findings are available in our <a href="https://github.com/dstackai/benchmarks/tree/main/amd/single_gpu_vm_vs_bare-metal" target="_blank">GitHub repo <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>.</p>
+<p>All source code and findings are available in our <a href="https://github.com/dstackai/benchmarks/tree/main/amd/single_gpu_vm_vs_bare-metal">GitHub repo</a>.</p>
 <h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">&para;</a></h2>
 <ul>
-<li><a href="https://rocm.blogs.amd.com/software-tools-optimization/vllmv1-rocm-llm/README.html" target="_blank">vLLM V1 Meets AMD Instinct GPUs: A New Era for LLM Inference Performance <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a></li>
+<li><a href="https://rocm.blogs.amd.com/software-tools-optimization/vllmv1-rocm-llm/README.html">vLLM V1 Meets AMD Instinct GPUs: A New Era for LLM Inference Performance</a></li>
 </ul>
 <h2 id="whats-next">What's next?<a class="headerlink" href="#whats-next" title="Permanent link">&para;</a></h2>
 <p>Our next steps are to benchmark VM vs. bare-metal performance in multi-GPU and multi-node setups, covering tensor-parallel inference and distributed training scenarios.</p>
 <h2 id="acknowledgments">Acknowledgments<a class="headerlink" href="#acknowledgments" title="Permanent link">&para;</a></h2>
 <h4 id="hot-aisle">Hot Aisle<a class="headerlink" href="#hot-aisle" title="Permanent link">&para;</a></h4>
-<p>Big thanks to <a href="https://hotaisle.xyz/" target="_blank">Hot Aisle <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> for providing the compute power behind these benchmarks. 
+<p>Big thanks to <a href="https://hotaisle.xyz/">Hot Aisle</a> for providing the compute power behind these benchmarks. 
 If you’re looking for fast AMD GPU bare-metal or VM instances, they’re definitely worth checking out.</p>
 
 

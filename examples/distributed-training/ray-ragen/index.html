@@ -3882,9 +3882,9 @@ Support dstack with a ⭐ on
 
 
 <h1 id="ray-ragen">Ray + RAGEN<a class="headerlink" href="#ray-ragen" title="Permanent link">&para;</a></h1>
-<p>This example shows how use <code>dstack</code> and <a href="https://github.com/RAGEN-AI/RAGEN" target="_blank">RAGEN <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> 
+<p>This example shows how use <code>dstack</code> and <a href="https://github.com/RAGEN-AI/RAGEN">RAGEN</a> 
 to fine-tune an agent on multiple nodes.</p>
-<p>Under the hood <code>RAGEN</code> uses <a href="https://github.com/volcengine/verl" target="_blank">verl <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> for Reinforcement Learning and <a href="https://docs.ray.io/en/latest/" target="_blank">Ray <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> for distributed training.</p>
+<p>Under the hood <code>RAGEN</code> uses <a href="https://github.com/volcengine/verl">verl</a> for Reinforcement Learning and <a href="https://docs.ray.io/en/latest/">Ray</a> for distributed training.</p>
 <div class="admonition info">
 <p class="admonition-title">Prerequisites</p>
 <p>Before running a distributed task, make sure to create a fleet with <code>placement</code> set to <code>cluster</code> (can be a <a href="https://dstack.ai/docs/concepts/fleets#backend-placement">managed fleet</a> or an <a href="https://dstack.ai/docs/concepts/fleets#ssh-placement">SSH fleet</a>).</p>
@@ -3937,7 +3937,7 @@ to fine-tune an agent on multiple nodes.</p>
 
 </div>
 
-<p>We are using verl's docker image for vLLM with FSDP. See <a href="https://verl.readthedocs.io/en/latest/start/install.html" target="_blank">Installation <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> for more.</p>
+<p>We are using verl's docker image for vLLM with FSDP. See <a href="https://verl.readthedocs.io/en/latest/start/install.html">Installation</a> for more.</p>
 <p>The <code>RAGEN</code> setup script <code>scripts/setup_ragen.sh</code> isolates dependencies within Conda environment.</p>
 <p>Note that the Ray setup in the RAGEN environment is missing the dashboard, so we reinstall it using <code>ray[default]</code>.</p>
 <p>Now, if you run this task via <code>dstack apply</code>, it will automatically forward the Ray's dashboard port to <code>localhost:8265</code>.</p>
@@ -3997,7 +3997,7 @@ $<span class="w"> </span>ray<span class="w"> </span>job<span class="w"> </span>s
 <ol>
 <li>Check the <a href="https://dstack.ai/docs/guides/clusters">Clusters</a> guide</li>
 <li>Read about <a href="https://dstack.ai/docs/concepts/tasks#distributed-tasks">distributed tasks</a> and <a href="https://dstack.ai/docs/concepts/fleets">fleets</a></li>
-<li>Browse Ray's <a href="https://docs.ray.io/en/latest/train/examples.html" target="_blank">docs <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> for other examples.</li>
+<li>Browse Ray's <a href="https://docs.ray.io/en/latest/train/examples.html">docs</a> for other examples.</li>
 </ol>
 </div>
         <div id="llms-copy-button" style="position: fixed; z-index: 1100; top: 80px; right: 20px;">

@@ -4407,7 +4407,7 @@ The<span class="w"> </span>server<span class="w"> </span>is<span class="w"> </sp
 <details class="info">
 <summary>AWS CloudFormation</summary>
 <p>If you'd like to deploy the server to a private AWS VPC, you can use 
-our CloudFormation <a href="https://console.aws.amazon.com/cloudformation/home#/stacks/quickcreate?templateURL=https://get-dstack.s3.eu-west-1.amazonaws.com/cloudformation/template.yaml" target="_blank">template <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>.</p>
+our CloudFormation <a href="https://console.aws.amazon.com/cloudformation/home#/stacks/quickcreate?templateURL=https://get-dstack.s3.eu-west-1.amazonaws.com/cloudformation/template.yaml">template</a>.</p>
 <p>First, ensure you've set up a private VPC with public and private subnets.</p>
 <p><img alt="" src="https://dstack.ai/static-assets/static-assets/images/dstack-aws-private-vpc-example-v2.png" /></p>
 <p>Create a stack using the template, and specify the VPC and private subnets.
@@ -4415,7 +4415,7 @@ Once, the stack is created, go to <code>Outputs</code> for the server URL and ad
 <p>To access the server URL, ensure you're connected to the VPC, e.g. via VPN client.</p>
 <blockquote>
 <p>If you'd like to adjust anything, the source code of the template can be found at
-<a href="https://github.com/dstackai/dstack/blob/master/examples/server-deployment/cloudformation/template.yaml" target="_blank"><code>examples/server-deployment/cloudformation/template.yaml</code> <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>.</p>
+<a href="https://github.com/dstackai/dstack/blob/master/examples/server-deployment/cloudformation/template.yaml"><code>examples/server-deployment/cloudformation/template.yaml</code></a>.</p>
 </blockquote>
 </details>
 <h2 id="backend-configuration">Backend configuration<a class="headerlink" href="#backend-configuration" title="Permanent link">&para;</a></h2>
@@ -4477,7 +4477,7 @@ This allows persisting the server state across re-deployments when using SQLite.
 <span class="nb">export</span><span class="w"> </span><span class="nv">DSTACK_DATABASE_URL</span><span class="o">=</span><span class="s2">&quot;postgresql+asyncpg://...&quot;</span>
 alembic<span class="w"> </span>upgrade<span class="w"> </span>head
 </code></pre></div></li>
-<li>Install <a href="https://github.com/dimitri/pgloader" target="_blank">pgloader <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a></li>
+<li>Install <a href="https://github.com/dimitri/pgloader">pgloader <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a></li>
 <li>Pass the path to the <code>~/.dstack/server/data/sqlite.db</code> file to <code>SOURCE_PATH</code> and 
    set <code>TARGET_PATH</code> with the URL of the PostgreSQL database. Example:
    <div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>scripts/
@@ -4694,7 +4694,7 @@ configuring <a href="https://www.postgresql.org/docs/current/runtime-config-conn
 <p>When upgrading the <code>dstack</code> server, follow these guidelines to ensure a smooth transition and minimize downtime.</p>
 <h3 id="before-upgrading">Before upgrading<a class="headerlink" href="#before-upgrading" title="Permanent link">&para;</a></h3>
 <ol>
-<li><strong>Check the changelog</strong>: Review the <a href="https://github.com/dstackai/dstack/releases" target="_blank">release notes <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> for breaking changes, new features, and migration notes.</li>
+<li><strong>Check the changelog</strong>: Review the <a href="https://github.com/dstackai/dstack/releases">release notes</a> for breaking changes, new features, and migration notes.</li>
 <li><strong>Review backward compatibility</strong>: Understand the <a href="#backward-compatibility">backward compatibility</a> policy.</li>
 <li><strong>Back up your data</strong>: Ensure you always create a backup before upgrading.</li>
 </ol>
