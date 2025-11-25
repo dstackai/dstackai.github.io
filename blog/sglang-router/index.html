@@ -12,13 +12,11 @@
         <meta name="author" content="dstack GmbH">
       
       
-        <link rel="canonical" href="https://dstack.ai/blog/nvidia-dgx-spark/">
+        <link rel="canonical" href="https://dstack.ai/blog/sglang-router/">
       
       
-        <link rel="prev" href="../kubernetes-beta/">
+        <link rel="prev" href="../nvidia-dgx-spark/">
       
-      
-        <link rel="next" href="../sglang-router/">
       
       
         
@@ -29,7 +27,7 @@
     
     
       
-        <title>Orchestrating workloads on NVIDIA DGX Spark - dstack</title>
+        <title>SGLang router integration and disaggregated inference roadmap - dstack</title>
       
     
     
@@ -89,19 +87,19 @@
     
   
 <meta property="og:type" content="website" />
-<meta property="og:title" content="Orchestrating workloads on NVIDIA DGX Spark - dstack" />
+<meta property="og:title" content="SGLang router integration and disaggregated inference roadmap - dstack" />
 <meta property="og:description" content="TBA" />
 <meta property="og:image" content="
-  https://dstack.ai/static-assets/static-assets/images/nvidia-dgx-spark.png" />
+  https://dstack.ai/static-assets/static-assets/images/dstack-sglang-router.png" />
 <meta property="og:image:type" content="image/png" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
-<meta property="og:url" content="https://dstack.ai/blog/nvidia-dgx-spark/" />
+<meta property="og:url" content="https://dstack.ai/blog/sglang-router/" />
 <meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter.title" content="Orchestrating workloads on NVIDIA DGX Spark - dstack" />
+<meta property="twitter.title" content="SGLang router integration and disaggregated inference roadmap - dstack" />
 <meta property="twitter:description" content="TBA" />
 <meta property="twitter:image" content="
-  https://dstack.ai/static-assets/static-assets/images/nvidia-dgx-spark.png" />
+  https://dstack.ai/static-assets/static-assets/images/dstack-sglang-router.png" />
 </head>
   
   
@@ -121,7 +119,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#orchestrating-workloads-on-nvidia-dgx-spark" class="md-skip">
+        <a href="#sglang-router-integration-and-disaggregated-inference-roadmap" class="md-skip">
           Skip to content
         </a>
       
@@ -172,7 +170,7 @@ Support dstack with a ⭐ on
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Orchestrating workloads on NVIDIA DGX Spark
+              SGLang router integration and disaggregated inference roadmap
             
           </span>
         </div>
@@ -3707,11 +3705,11 @@ Support dstack with a ⭐ on
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#creating-an-ssh-fleet" class="md-nav__link">
+  <a href="#services" class="md-nav__link">
     <span class="md-ellipsis">
       
         <span class="md-typeset">
-          Creating an SSH fleet
+          Services
         </span>
       
     </span>
@@ -3720,11 +3718,43 @@ Support dstack with a ⭐ on
 </li>
       
         <li class="md-nav__item">
-  <a href="#running-a-dev-environment" class="md-nav__link">
+  <a href="#gateways" class="md-nav__link">
     <span class="md-ellipsis">
       
         <span class="md-typeset">
-          Running a dev environment
+          Gateways
+        </span>
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Gateways">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#router" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Router
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#limitations-and-roadmap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Limitations and roadmap
         </span>
       
     </span>
@@ -3782,10 +3812,20 @@ Support dstack with a ⭐ on
                     <li class="md-nav__item">
                       <div class="md-nav__link">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 19H5V8h14m-3-7v2H8V1H6v2H5c-1.11 0-2 .89-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-1V1m-1 11h-5v5h5z"/></svg>
-                        <time datetime="2025-11-14 00:00:00+00:00" class="md-ellipsis">November 14, 2025</time>
+                        <time datetime="2025-11-25 00:00:00+00:00" class="md-ellipsis">November 25, 2025</time>
                       </div>
                     </li>
                     
+                    
+                      <li class="md-nav__item">
+                        <div class="md-nav__link">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 3v15h3V3zm3 2 4 13 3-1-4-13zM5 5v13h3V5zM3 19v2h18v-2z"/></svg>
+                          <span class="md-ellipsis">
+                            in
+                            
+                              <a href="../changelog/">Changelog</a></span>
+                        </div>
+                      </li>
                     
                     
                       
@@ -3818,7 +3858,7 @@ Support dstack with a ⭐ on
 
 
   
-    <a href="https://github.com/dstackai/dstack/edit/master/docs/blog/posts/nvidia-dgx-spark.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+    <a href="https://github.com/dstackai/dstack/edit/master/docs/blog/posts/sglang-router.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
     </a>
@@ -3826,114 +3866,144 @@ Support dstack with a ⭐ on
   
 
 
-<h1 id="orchestrating-workloads-on-nvidia-dgx-spark">Orchestrating workloads on NVIDIA DGX Spark<a class="headerlink" href="#orchestrating-workloads-on-nvidia-dgx-spark" title="Permanent link">&para;</a></h1>
-<p>With support from <a href="https://x.com/GraphsignalAI/status/1986565583593197885">Graphsignal</a>, our team gained access to the new <a href="https://www.nvidia.com/en-us/products/workstations/dgx-spark/">NVIDIA DGX Spark</a> and used it to validate how <code>dstack</code> operates on this hardware. This post walks through how to set it up with <code>dstack</code> and use it alongside existing on-prem clusters or GPU cloud environments to run workloads.</p>
-<p><img src="https://dstack.ai/static-assets/static-assets/images/nvidia-dgx-spark.png" width="630"/></p>
+<h1 id="sglang-router-integration-and-disaggregated-inference-roadmap">SGLang router integration and disaggregated inference roadmap<a class="headerlink" href="#sglang-router-integration-and-disaggregated-inference-roadmap" title="Permanent link">&para;</a></h1>
+<p><a href="https://github.com/dstackai/dstack/">dstack</a> provides a streamlined way to handle GPU provisioning and workload orchestration across GPU clouds, Kubernetes clusters, or on-prem environments. Built for interoperability, dstack bridges diverse hardware and open-source tooling.</p>
+<p><img src="https://dstack.ai/static-assets/static-assets/images/dstack-sglang-router.png" width="630"/></p>
+<p>As disaggregated, low-latency inference emerges, we aim to ensure this new stack runs natively on <code>dstack</code>. To move this forward, we’re introducing native integration between dstack and <a href="https://docs.sglang.ai/advanced_features/router.html">SGLang’s Model Gateway</a> (formerly known as the SGLang Router).</p>
 <!-- more -->
 
-<p>If DGX Spark is new to you, here is a quick breakdown of the key specs.</p>
-<ul>
-<li>Built on the NVIDIA GB10 Grace Blackwell Superchip with Arm CPUs.</li>
-<li>Capable of up to 1 petaflop of AI compute at FP4 precision, roughly comparable to RTX 5070 performance.</li>
-<li>Features 128GB of unified CPU and GPU memory enabled by the Grace Blackwell architecture.</li>
-<li>Ships with NVIDIA DGX OS (a tuned Ubuntu build) and NVIDIA Container Toolkit.</li>
-</ul>
-<p>These characteristics make DGX Spark a fitting extension for local development and smaller-scale model training or inference, including workloads up to the GPT-OSS 120B range.</p>
-<h2 id="creating-an-ssh-fleet">Creating an SSH fleet<a class="headerlink" href="#creating-an-ssh-fleet" title="Permanent link">&para;</a></h2>
-<p>Because DGX Spark supports SSH and containers, integrating it with dstack is straightforward. Start by configuring an <a href="../../docs/concepts/fleets/#ssh-fleets">SSH fleet</a>. The file needs the hosts and access credentials.</p>
-<div editor-title="fleet.dstack.yml">
+<p>Although <code>dstack</code> can run on Kubernetes, it differs by offering higher-level abstractions that cover the core AI use cases: <a href="../../docs/concepts/dev-environments/">dev environments</a> for development, <a href="../../docs/concepts/tasks/">tasks</a> for training, and <a href="../../docs/concepts/services/">services</a> for inference.</p>
+<h2 id="services">Services<a class="headerlink" href="#services" title="Permanent link">&para;</a></h2>
+<p>Here’s an example of a service:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="nvidia" name="__tabbed_1" type="radio" /><input id="amd" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="nvidia">NVIDIA</label><label for="amd">AMD</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div editor-title="qwen.dstack.yml">
+<div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service</span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">qwen</span>
 
-<div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">fleet</span>
-<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">spark</span>
-
-<span class="nt">ssh_config</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">user</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">devops</span>
-<span class="w">  </span><span class="nt">identity_file</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">~/.ssh/id_rsa</span>
-<span class="w">  </span><span class="nt">hosts</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">spark-e3a4</span>
-</code></pre></div>
-
-</div>
-
-<p>The <code>user</code> must have <code>sudo</code> privileges.</p>
-<p>Apply the configuration:</p>
-<div class="termy">
-
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>dstack<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>fleet.dstack.yml
-
-Provisioning...
----&gt;<span class="w"> </span><span class="m">100</span>%
-
-<span class="w"> </span>FLEET<span class="w">  </span>INSTANCE<span class="w">  </span>GPU<span class="w">     </span>PRICE<span class="w">  </span>STATUS<span class="w">  </span>CREATED<span class="w"> </span>
-<span class="w"> </span>spark<span class="w">  </span><span class="m">0</span><span class="w">         </span>GB10:1<span class="w">  </span><span class="nv">$0</span><span class="w">     </span>idle<span class="w">    </span><span class="m">3</span><span class="w"> </span>mins<span class="w"> </span>ago<span class="w">      </span>
-</code></pre></div>
-
-</div>
-
-<p>Once active, the system detects hardware and marks the instance as <code>idle</code>. From here, you can run
-<a href="../../docs/concepts/dev-environments/">dev environments</a>, <a href="../../docs/concepts/tasks/">tasks</a>, 
-and <a href="../../docs/concepts/services/">services</a> on the DGX Spark fleet, the same way you would with other on-prem or cloud GPU backends.</p>
-<h2 id="running-a-dev-environment">Running a dev environment<a class="headerlink" href="#running-a-dev-environment" title="Permanent link">&para;</a></h2>
-<p>Example configuration:</p>
-<div editor-title=".dstack.yml">
-
-<div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dev-environment</span>
-<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cursor</span>
-
-<span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">lmsysorg/sglang:spark</span>
-
-<span class="nt">ide</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cursor</span>
+<span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">lmsysorg/sglang:latest</span>
+<span class="nt">env</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HF_TOKEN</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MODEL_ID=qwen/qwen2.5-0.5b-instruct</span>
+<span class="nt">commands</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">    </span><span class="no">python3 -m sglang.launch_server \</span>
+<span class="w">    </span><span class="no">--model-path $MODEL_ID \</span>
+<span class="w">    </span><span class="no">--port 8000 \</span>
+<span class="w">    </span><span class="no">--trust-remote-code</span>
+<span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8000</span>
+<span class="nt">model</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">qwen/qwen2.5-0.5b-instruct</span>
 
 <span class="nt">resources</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">GB10</span>
-
-<span class="nt">volumes</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/root/.cache/huggingface:/root/.cache/huggingface</span>
-
-<span class="nt">fleets</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">spark</span><span class="p p-Indicator">]</span>
+<span class="w">  </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8GB..24GB:1</span>
 </code></pre></div>
-
 </div>
+</div>
+<div class="tabbed-block">
+<div editor-title="qwen.dstack.yml">
+<div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service</span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">qwen</span>
 
-<p>We use an <a href="../../docs/concepts/volumes/#instance-volumes">instance volume</a> to keep model downloads cached across runs. The <code>lmsysorg/sglang:spark</code> image is tuned for inference on DGX Spark. Any Arm-compatible image with proper driver support will work if customization is needed.</p>
-<p>Run the environment:</p>
+<span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">lmsysorg/sglang:v0.5.5.post3-rocm700-mi30x</span>
+<span class="nt">env</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HF_TOKEN</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MODEL_ID=qwen/qwen2.5-0.5b-instruct</span>
+<span class="nt">commands</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">    </span><span class="no">python3 -m sglang.launch_server \</span>
+<span class="w">    </span><span class="no">--model-path $MODEL_ID \</span>
+<span class="w">    </span><span class="no">--port 8000 \</span>
+<span class="w">    </span><span class="no">--trust-remote-code</span>
+<span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8000</span>
+<span class="nt">model</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">qwen/qwen2.5-0.5b-instruct</span>
+
+<span class="nt">resources</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MI300X:1</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+</div>
+<p>This service can be deployed via the following command:</p>
 <div class="termy">
 
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>dstack<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>.dstack.yml
-
-<span class="w"> </span>BACKEND<span class="w">       </span>GPU<span class="w">     </span>INSTANCE<span class="w"> </span>TYPE<span class="w">  </span>PRICE<span class="w">  </span>
-<span class="w"> </span>ssh<span class="w"> </span><span class="o">(</span>remtoe<span class="o">)</span><span class="w">  </span>GB10:1<span class="w">  </span>instance<span class="w">       </span><span class="nv">$0</span><span class="w">     </span>idle
-
-Submit<span class="w"> </span>the<span class="w"> </span>run<span class="w"> </span>cursor?<span class="w"> </span><span class="o">[</span>y/n<span class="o">]</span>:<span class="w"> </span>y
-
-<span class="w"> </span><span class="c1">#  NAME    BACKEND       GPU     PRICE  STATUS   SUMBITTED</span>
-<span class="w"> </span><span class="m">1</span><span class="w">  </span>cursor<span class="w">  </span>ssh<span class="w"> </span><span class="o">(</span>remote<span class="o">)</span><span class="w">  </span>GB10:1<span class="w">  </span><span class="nv">$0</span><span class="w">     </span>running<span class="w">  </span><span class="m">12</span>:24
-
-Launching<span class="w"> </span><span class="sb">`</span>cursor<span class="sb">`</span>...
----&gt;<span class="w"> </span><span class="m">100</span>%
-
-To<span class="w"> </span>open<span class="w"> </span><span class="k">in</span><span class="w"> </span>VS<span class="w"> </span>Code<span class="w"> </span>Desktop,<span class="w"> </span>use<span class="w"> </span>this<span class="w"> </span>link:
-<span class="w">  </span>vscode://vscode-remote/ssh-remote+cursor/workflow
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nv">HF_TOKEN</span><span class="o">=</span>...
+$<span class="w"> </span>dstack<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>qwen.dstack.yml
 </code></pre></div>
 
 </div>
 
+<p>This deploys the service as an OpenAI-compatible endpoint and manages provisioning and replicas automatically.</p>
+<h2 id="gateways">Gateways<a class="headerlink" href="#gateways" title="Permanent link">&para;</a></h2>
+<p>If you'd like to enable auto-scaling, HTTPS, or use a custom domain, create a gateway:</p>
+<div editor-title="gateway.dstack.yml">
+
+    <div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gateway</span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my-gateway</span>
+
+<span class="nt">backend</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">aws</span>
+<span class="nt">region</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">eu-west-1</span>
+
+<span class="c1"># Specify your custom domain</span>
+<span class="nt">domain</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">example.com</span>
+</code></pre></div>
+
+</div>
+
+<p>This gateway can be created via the following command:</p>
+<div class="termy">
+
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>dstack<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>gateway.dstack.yml
+</code></pre></div>
+
+</div>
+
+<p>Once the gateway has a hostname, update your domain’s DNS settings by adding a record for <code>*.&lt;gateway domain&gt;</code>.</p>
+<p>After that, if you configure <a href="../../docs/concepts/services/#replicas-and-scaling">replicas and scaling</a>, the gateway will automatically scale the number of replicas and route traffic across them.</p>
+<h3 id="router">Router<a class="headerlink" href="#router" title="Permanent link">&para;</a></h3>
+<p>By default, the gateway uses its built-in load balancer to route traffic across replicas. With the latest release, you can instead delegate traffic routing to the <a href="https://docs.sglang.ai/advanced_features/router.html">SGLang Model Gateway</a> by setting the <code>router</code> property to <code>sglang</code>:</p>
+<div editor-title="gateway.dstack.yml">
+
+    <div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gateway</span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my-gateway</span>
+
+<span class="nt">backend</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">aws</span>
+<span class="nt">region</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">eu-west-1</span>
+
+<span class="c1"># Specify your custom domain</span>
+<span class="nt">domain</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">example.com</span>
+
+<span class="nt">router</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sglang</span>
+<span class="w">  </span><span class="nt">policy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cache_aware</span>
+</code></pre></div>
+
+</div>
+
+<p>The <code>policy</code> property allows you to configure the routing policy:</p>
+<ul>
+<li><code>cache_aware</code> &mdash; Default policy; combines cache locality with load balancing, falling back to shortest queue. </li>
+<li><code>power_of_two</code> &mdash; Samples two workers and picks the lighter one.                                               </li>
+<li><code>random</code> &mdash; Uniform random selection.                                                                    </li>
+<li><code>round_robin</code> &mdash; Cycles through workers in order.                                                             </li>
+</ul>
+<p>With this integration, K/V cache reuse across replicas becomes possible — a key step toward low-latency inference. It also sets the path for full disaggregated inference and native auto-scaling. And fundamentally, it reflects our commitment to collaborating with the open-source ecosystem instead of reinventing its core components.</p>
+<h2 id="limitations-and-roadmap">Limitations and roadmap<a class="headerlink" href="#limitations-and-roadmap" title="Permanent link">&para;</a></h2>
+<p>Looking ahead, this integration also shapes our roadmap. Over the coming releases, we plan to expand support in several key areas:</p>
+<ul>
+<li>Enabling prefill and decode worker separation for full disaggregation (today, only standard workers are supported).</li>
+<li>Introducing auto-scaling based on TTFT (Time to First Token) and ITL (Inter-Token Latency), complementing the current requests-per-second scaling metric.</li>
+<li>Extending native support to more emerging inference stacks.</li>
+</ul>
 <h2 id="whats-next">What's next?<a class="headerlink" href="#whats-next" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Running workloads on DGX Spark with <code>dstack</code> works the same way as on any other <a href="../../docs/concepts/backends/">backend</a> (including GPU clouds): you can run <a href="../../docs/concepts/dev-environments/">dev environments</a> for interactive development, <a href="../../docs/concepts/tasks/">tasks</a> for fine tuning, and <a href="../../docs/concepts/services/">services</a> for inference through the unified interface.</p>
-</blockquote>
 <ol>
-<li>Read the <a href="https://lmsys.org/blog/2025-10-13-nvidia-dgx-spark/">NVIDIA DGX Spark in-depth review</a> by the SGLang team.</li>
 <li>Check <a href="../../docs/concepts/dev-environments/">dev environments</a>, 
     <a href="../../docs/concepts/tasks/">tasks</a>, <a href="../../docs/concepts/services/">services</a>, 
-    and <a href="../../docs/concepts/fleets/">fleets</a></li>
+    and <a href="../../docs/concepts/gateways/">gateways</a></li>
 <li>Follow <a href="../../docs/quickstart/">Quickstart</a></li>
 <li>Join <a href="https://discord.gg/u8SmfwPpMd">Discord</a></li>
 </ol>
-<div class="admonition info">
-<p class="admonition-title">Aknowledgement</p>
-<p>Thanks to the <a href="https://graphsignal.com/">Graphsignal</a> team for access to DGX Spark and for supporting testing and validation. Graphsignal provides inference observability tooling used to profile CUDA workloads during both training and inference.</p>
-</div>
 
 
 

@@ -3574,6 +3574,17 @@ Support dstack with a ⭐ on
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#built-in-ui-for-monitoring-essential-gpu-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Built-in UI for monitoring essential GPU metrics
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#supporting-mpi-and-ncclrccl-tests" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3666,17 +3677,6 @@ Support dstack with a ⭐ on
     <span class="md-ellipsis">
       
         Monitoring essential GPU metrics via CLI
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#using-tpus-for-fine-tuning-and-deploying-llms" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Using TPUs for fine-tuning and deploying LLMs
       
     </span>
   </a>
@@ -3860,6 +3860,17 @@ Support dstack with a ⭐ on
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#built-in-ui-for-monitoring-essential-gpu-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Built-in UI for monitoring essential GPU metrics
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#supporting-mpi-and-ncclrccl-tests" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3958,17 +3969,6 @@ Support dstack with a ⭐ on
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#using-tpus-for-fine-tuning-and-deploying-llms" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Using TPUs for fine-tuning and deploying LLMs
-      
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -3983,6 +3983,54 @@ Support dstack with a ⭐ on
       <header class="md-typeset">
         <h1 id="changelog">Changelog<a class="headerlink" href="#changelog" title="Permanent link">&para;</a></h1>
       </header>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2025-04-03 00:00:00+00:00">April 3, 2025</time></li>
+        
+          <li class="md-meta__item">
+            in
+            
+              <a href="../../" class="md-meta__link">Changelog</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              2 min read
+            
+          </li>
+        
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="built-in-ui-for-monitoring-essential-gpu-metrics"><a class="toclink" href="../../../metrics-ui/">Built-in UI for monitoring essential GPU metrics</a></h2>
+<p>AI workloads generate vast amounts of metrics, making it essential to have efficient monitoring tools. While our recent
+update introduced the ability to export available metrics to Prometheus for maximum flexibility, there are times when
+users need to quickly access essential metrics without the need to switch to an external tool.</p>
+<p><img src="https://dstack.ai/static-assets/static-assets/images/dstack-metrics-ui-v3-min.png" width="630"/></p>
+<p>Previously, we introduced a <a href="../../../dstack-metrics/">CLI command</a> that allows users to view essential GPU metrics for both NVIDIA
+and AMD hardware. Now, with this latest update, we’re excited to announce the addition of a built-in dashboard within
+the <code>dstack</code> control plane.</p>
+
+    
+      <nav class="md-post__action">
+        <a href="../../../metrics-ui/">
+            <span>Continue reading</span>
+            <span class="icon"><svg viewBox="0 0 13 10" xmlns="http://www.w3.org/2000/svg"><path d="M12.823 4.164L8.954.182a.592.592 0 0 0-.854 0 .635.635 0 0 0 0 .88l2.836 2.92H.604A.614.614 0 0 0 0 4.604c0 .344.27.622.604.622h10.332L8.1 8.146a.635.635 0 0 0 0 .88.594.594 0 0 0 .854 0l3.869-3.982a.635.635 0 0 0 0-.88z" fill-rule="nonzero" fill="currentColor" class="fill-main"></path></svg></span>
+        </a>
+      </nav>
+    
+    
+  </div>
+</article>
       
         <article class="md-post md-post--excerpt">
   <header class="md-post__header">
@@ -4431,53 +4479,6 @@ for monitoring container metrics, including GPU usage for <code>NVIDIA</code>, <
     
       <nav class="md-post__action">
         <a href="../../../dstack-metrics/">
-            <span>Continue reading</span>
-            <span class="icon"><svg viewBox="0 0 13 10" xmlns="http://www.w3.org/2000/svg"><path d="M12.823 4.164L8.954.182a.592.592 0 0 0-.854 0 .635.635 0 0 0 0 .88l2.836 2.92H.604A.614.614 0 0 0 0 4.604c0 .344.27.622.604.622h10.332L8.1 8.146a.635.635 0 0 0 0 .88.594.594 0 0 0 .854 0l3.869-3.982a.635.635 0 0 0 0-.88z" fill-rule="nonzero" fill="currentColor" class="fill-main"></path></svg></span>
-        </a>
-      </nav>
-    
-    
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2024-09-10 00:00:00+00:00">September 10, 2024</time></li>
-        
-          <li class="md-meta__item">
-            in
-            
-              <a href="../../" class="md-meta__link">Changelog</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              4 min read
-            
-          </li>
-        
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="using-tpus-for-fine-tuning-and-deploying-llms"><a class="toclink" href="../../../tpu-on-gcp/">Using TPUs for fine-tuning and deploying LLMs</a></h2>
-<p>If you’re using or planning to use TPUs with Google Cloud, you can now do so via <code>dstack</code>. Just specify the TPU version and the number of cores 
-(separated by a dash), in the <code>gpu</code> property under <code>resources</code>. </p>
-<p>Read below to find out how to use TPUs with <code>dstack</code> for fine-tuning and deploying
-LLMs, leveraging open-source tools like Hugging Face’s 
-<a href="https://github.com/huggingface/optimum-tpu">Optimum TPU</a> 
-and <a href="https://docs.vllm.ai/en/latest/getting_started/tpu-installation.html">vLLM</a>.</p>
-
-    
-      <nav class="md-post__action">
-        <a href="../../../tpu-on-gcp/">
             <span>Continue reading</span>
             <span class="icon"><svg viewBox="0 0 13 10" xmlns="http://www.w3.org/2000/svg"><path d="M12.823 4.164L8.954.182a.592.592 0 0 0-.854 0 .635.635 0 0 0 0 .88l2.836 2.92H.604A.614.614 0 0 0 0 4.604c0 .344.27.622.604.622h10.332L8.1 8.146a.635.635 0 0 0 0 .88.594.594 0 0 0 .854 0l3.869-3.982a.635.635 0 0 0 0-.88z" fill-rule="nonzero" fill="currentColor" class="fill-main"></path></svg></span>
         </a>
