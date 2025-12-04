@@ -1040,38 +1040,6 @@ Support dstack with a ⭐ on
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#on-prem" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        <span class="md-typeset">
-          On-prem
-        </span>
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="On-prem">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#ssh-fleets" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        <span class="md-typeset">
-          SSH fleets
-        </span>
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -4282,38 +4250,6 @@ Support dstack with a ⭐ on
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#on-prem" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        <span class="md-typeset">
-          On-prem
-        </span>
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="On-prem">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#ssh-fleets" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        <span class="md-typeset">
-          SSH fleets
-        </span>
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -4397,19 +4333,17 @@ Support dstack with a ⭐ on
 
 
 <h1 id="backends">Backends<a class="headerlink" href="#backends" title="Permanent link">&para;</a></h1>
-<p>Backends allow <code>dstack</code> to manage compute across various environments.
-They can be configured via <code>~/.dstack/server/config.yml</code> or through the <a href="../projects/#backends">project settings page</a> in the UI.</p>
-<p><code>dstack</code> supports three types of backends: </p>
+<p>Backends allow <code>dstack</code> to provision fleets across cloud providers or Kubernetes clusters.</p>
+<p><code>dstack</code> supports two types of backends: </p>
 <ul>
 <li><a href="#vm-based">VM-based</a> – use <code>dstack</code>'s native integration with cloud providers to provision VMs, manage clusters, and orchestrate container-based runs.  </li>
 <li><a href="#container-based">Container-based</a> – use either <code>dstack</code>'s native integration with cloud providers or Kubernetes to orchestrate container-based runs; provisioning in this case is delegated to the cloud provider or Kubernetes.  </li>
-<li><a href="#on-prem">On-prem</a> – use <code>dstack</code>'s native support for on-prem servers without needing Kubernetes.  </li>
 </ul>
-<div class="admonition info">
-<p class="admonition-title">dstack Sky</p>
-<p>If you're using <a href="https://sky.dstack.ai">dstack Sky</a>, backend configuration is optional. dstack Sky lets you use pre-configured backends to access GPU marketplace.</p>
-</div>
-<p>See the examples of backend configuration below.</p>
+<details class="info">
+<summary>SSH fleets</summary>
+<p>When using <code>dstack</code> with on-prem servers, backend configuration isn’t required. Simply create <a href="../fleets/#ssh-fleets">SSH fleets</a> once the server is up.</p>
+</details>
+<p>Backends can be configured via <code>~/.dstack/server/config.yml</code> or through the <a href="../projects/#backends">project settings page</a> in the UI. See the examples of backend configuration below.</p>
 <h2 id="vm-based">VM-based<a class="headerlink" href="#vm-based" title="Permanent link">&para;</a></h2>
 <p>VM-based backends allow <code>dstack</code> users to manage clusters and orchestrate container-based runs across a wide range of cloud providers.<br />
 Under the hood, <code>dstack</code> uses native integrations with these providers to provision clusters on demand.  </p>
@@ -5395,12 +5329,6 @@ API Key.</p>
 </div>
 
 <p>Also, the <code>vastai</code> backend supports on-demand instances only. Spot instance support coming soon.</p>
-<h2 id="on-prem">On-prem<a class="headerlink" href="#on-prem" title="Permanent link">&para;</a></h2>
-<p>In on-prem environments, the <a href="#kubernetes">Kubernetes</a> backend can be used if a Kubernetes cluster is already set up and configured.<br />
-However, often <a href="../fleets/#ssh-fleets">SSH fleets</a> are a simpler and lighter alternative.</p>
-<h3 id="ssh-fleets">SSH fleets<a class="headerlink" href="#ssh-fleets" title="Permanent link">&para;</a></h3>
-<p>SSH fleets require no backend configuration. 
-All you need to do is <a href="../fleets/#ssh-fleets">provide hostnames and SSH credentials</a>, and <code>dstack</code> sets up a fleet that can orchestrate container-based runs on your servers.</p>
 <p>SSH fleets support the same features as <a href="#vm-based">VM-based</a> backends.</p>
 <div class="admonition info">
 <p class="admonition-title">What's next</p>

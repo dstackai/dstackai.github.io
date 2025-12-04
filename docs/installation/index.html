@@ -3963,9 +3963,7 @@ Support dstack with a ⭐ on
 
 <h2 id="set-up-the-server">Set up the server<a class="headerlink" href="#set-up-the-server" title="Permanent link">&para;</a></h2>
 <h3 id="configure-backends">Configure backends<a class="headerlink" href="#configure-backends" title="Permanent link">&para;</a></h3>
-<p>To orchestrate compute across cloud providers or existing Kubernetes clusters, you need to configure backends.</p>
-<p>Backends can be set up in <code>~/.dstack/server/config.yml</code> or through the <a href="../concepts/projects/#backends">project settings page</a> in the UI.</p>
-<p>For more details, see <a href="../concepts/backends/">Backends</a>.</p>
+<p>To orchestrate compute across cloud providers or Kubernetes clusters, you need to configure <a href="../concepts/backends/">backends</a>.</p>
 <details class="info">
 <summary>SSH fleets</summary>
 <p>When using <code>dstack</code> with on-prem servers, backend configuration isn’t required. Simply create <a href="../concepts/fleets/#ssh-fleets">SSH fleets</a> once the server is up.</p>
@@ -4024,8 +4022,7 @@ The<span class="w"> </span>server<span class="w"> </span>is<span class="w"> </sp
 <p>To verify that backends are properly configured, use the <a href="../reference/cli/dstack/offer/#list-gpu-offers"><code>dstack offer</code></a> command to list available GPU offers.</p>
 <div class="admonition info">
 <p class="admonition-title">Server deployment</p>
-<p>For more details on server deployment options, see the
-<a href="../guides/server-deployment/">Server deployment</a> guide.</p>
+<p>For more details on server deployment options, see the <a href="../guides/server-deployment/">Server deployment</a> guide.</p>
 </div>
 <h2 id="set-up-the-cli">Set up the CLI<a class="headerlink" href="#set-up-the-cli" title="Permanent link">&para;</a></h2>
 <p>Once the server is up, you can access it via the <code>dstack</code> CLI. </p>
@@ -4124,7 +4121,7 @@ $<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><sp
 <li>Follow <a href="../quickstart/">Quickstart</a></li>
 <li>See <a href="../concepts/backends/">Backends</a></li>
 <li>Check the <a href="../guides/server-deployment/">server deployment</a> guide</li>
-<li>Browse <a href="/examples">examples</a></li>
+<li>Browse <a href="../../examples/">examples</a></li>
 <li>Join the community via <a href="https://discord.gg/u8SmfwPpMd">Discord</a></li>
 </ol>
 </div>

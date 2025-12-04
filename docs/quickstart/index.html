@@ -704,19 +704,6 @@ Support dstack with a ⭐ on
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#set-up-a-directory" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        <span class="md-typeset">
-          Set up a directory
-        </span>
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#create-a-fleet" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3811,19 +3798,6 @@ Support dstack with a ⭐ on
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#set-up-a-directory" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        <span class="md-typeset">
-          Set up a directory
-        </span>
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#create-a-fleet" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3945,25 +3919,17 @@ Support dstack with a ⭐ on
 
 
 <h1 id="quickstart">Quickstart<a class="headerlink" href="#quickstart" title="Permanent link">&para;</a></h1>
-<blockquote>
-<p>Before using <code>dstack</code>, ensure you've <a href="../installation/">installed</a> the server.</p>
-</blockquote>
-<h2 id="set-up-a-directory">Set up a directory<a class="headerlink" href="#set-up-a-directory" title="Permanent link">&para;</a></h2>
-<p>Set up a directory where you'll store you project files and <code>dstack</code> configurations.</p>
-<div class="termy">
-
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>mkdir<span class="w"> </span>quickstart<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>quickstart
-</code></pre></div>
-
-</div>
-
+<details class="info">
+<summary>Prerequsites</summary>
+<p>Before using <code>dstack</code>, ensure you've <a href="../installation/">installed</a> the server and the CLI.</p>
+</details>
 <h2 id="create-a-fleet">Create a fleet<a class="headerlink" href="#create-a-fleet" title="Permanent link">&para;</a></h2>
-<p>If <a href="../concepts/backends/">backends</a> are configured, <code>dstack</code> can create a new <a href="../concepts/fleets/#backend-fleets">backend fleet</a> on the fly. However, it’s recommended to create them explicitly.</p>
-<h3>Define a configuration</h3>
-
-<p>Create the following fleet configuration inside your project folder:</p>
-<div editor-title="fleet.dstack.yml"> 
-
+<p>Before you can submit your first run, you have to create a <a href="../concepts/fleets/">fleet</a>. </p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="backend-fleet" name="__tabbed_1" type="radio" /><input id="ssh-fleet" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="backend-fleet">Backend fleet</label><label for="ssh-fleet">SSH fleet</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>If you're using cloud providers or Kubernetes clusters and have configured the corresponding <a href="../concepts/backends/">backends</a>, create a fleet as follows:</p>
+<p><div editor-title="fleet.dstack.yml"> </p>
 <div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">fleet</span>
 <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">default</span>
 
@@ -3977,38 +3943,68 @@ Support dstack with a ⭐ on
 <span class="w">  </span><span class="c1"># Allow to provision up to 8 GPUs</span>
 <span class="w">  </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0..8</span>
 </code></pre></div>
-
 </div>
-
-<h3>Apply the configuration</h3>
-
-<p>Apply the configuration via <a href="../reference/cli/dstack/apply/"><code>dstack apply</code></a>:</p>
+<p>Pass the fleet configuration to <code>dstack apply</code>:</p>
 <div class="termy">
-
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>dstack<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>fleet.dstack.yml
 
-<span class="w">     </span><span class="c1">#  BACKEND  REGION           RESOURCES                 SPOT  PRICE</span>
-<span class="w">     </span><span class="m">1</span><span class="w">  </span>gcp<span class="w">      </span>us-west4<span class="w">         </span>2xCPU,<span class="w"> </span>8GB,<span class="w"> </span>100GB<span class="w"> </span><span class="o">(</span>disk<span class="o">)</span><span class="w">  </span>yes<span class="w">   </span><span class="nv">$0</span>.010052
-<span class="w">     </span><span class="m">2</span><span class="w">  </span>azure<span class="w">    </span>westeurope<span class="w">       </span>2xCPU,<span class="w"> </span>8GB,<span class="w"> </span>100GB<span class="w"> </span><span class="o">(</span>disk<span class="o">)</span><span class="w">  </span>yes<span class="w">   </span><span class="nv">$0</span>.0132
-<span class="w">     </span><span class="m">3</span><span class="w">  </span>gcp<span class="w">      </span>europe-central2<span class="w">  </span>2xCPU,<span class="w"> </span>8GB,<span class="w"> </span>100GB<span class="w"> </span><span class="o">(</span>disk<span class="o">)</span><span class="w">  </span>yes<span class="w">   </span><span class="nv">$0</span>.013248
+<span class="w">  </span><span class="c1">#  BACKEND  REGION           RESOURCES                 SPOT  PRICE</span>
+<span class="w">  </span><span class="m">1</span><span class="w">  </span>gcp<span class="w">      </span>us-west4<span class="w">         </span>2xCPU,<span class="w"> </span>8GB,<span class="w"> </span>100GB<span class="w"> </span><span class="o">(</span>disk<span class="o">)</span><span class="w">  </span>yes<span class="w">   </span><span class="nv">$0</span>.010052
+<span class="w">  </span><span class="m">2</span><span class="w">  </span>azure<span class="w">    </span>westeurope<span class="w">       </span>2xCPU,<span class="w"> </span>8GB,<span class="w"> </span>100GB<span class="w"> </span><span class="o">(</span>disk<span class="o">)</span><span class="w">  </span>yes<span class="w">   </span><span class="nv">$0</span>.0132
+<span class="w">  </span><span class="m">3</span><span class="w">  </span>gcp<span class="w">      </span>europe-central2<span class="w">  </span>2xCPU,<span class="w"> </span>8GB,<span class="w"> </span>100GB<span class="w"> </span><span class="o">(</span>disk<span class="o">)</span><span class="w">  </span>yes<span class="w">   </span><span class="nv">$0</span>.013248
 
-Fleet<span class="w"> </span>cloud-fleet<span class="w"> </span>does<span class="w"> </span>not<span class="w"> </span>exist<span class="w"> </span>yet.
 Create<span class="w"> </span>the<span class="w"> </span>fleet?<span class="w"> </span><span class="o">[</span>y/n<span class="o">]</span>:<span class="w"> </span>y
-<span class="w"> </span>FLEET<span class="w">          </span>INSTANCE<span class="w">  </span>BACKEND<span class="w">  </span>RESOURCES<span class="w">  </span>PRICE<span class="w">  </span>STATUS<span class="w">  </span>CREATED<span class="w"> </span>
-<span class="w"> </span>defalut-fleet<span class="w">  </span>-<span class="w">         </span>-<span class="w">        </span>-<span class="w">          </span>-<span class="w">      </span>-<span class="w">       </span><span class="m">10</span>:36
+
+<span class="w">  </span>FLEET<span class="w">    </span>INSTANCE<span class="w">  </span>BACKEND<span class="w">  </span>RESOURCES<span class="w">  </span>PRICE<span class="w">  </span>STATUS<span class="w">  </span>CREATED<span class="w"> </span>
+<span class="w">  </span>defalut<span class="w">  </span>-<span class="w">         </span>-<span class="w">        </span>-<span class="w">          </span>-<span class="w">      </span>-<span class="w">       </span><span class="m">10</span>:36
 </code></pre></div>
-
 </div>
+<p>If <code>nodes</code> is a range that starts above <code>0</code>, <code>dstack</code> pre-creates the initial number of instances up front, while any additional ones are created on demand. </p>
+<blockquote>
+<p>Setting the <code>nodes</code> range to start above <code>0</code> is supported only for <a href="../concepts/backends/#vm-based">VM-based backends</a>.</p>
+</blockquote>
+<p>If the fleet needs to be a cluster, the <a href="../concepts/fleets/#backend-placement">placement</a> property must be set to <code>cluster</code>. </p>
+</div>
+<div class="tabbed-block">
+<p>If you have a group of on-prem servers accessible via SSH, you can create an SSH fleet as follows:</p>
+<p><div editor-title="fleets.dstack.yml"> </p>
+<div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">fleet</span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my-fleet</span>
 
-<p>Alternatively, you can create an <a href="concepts/fleets#ssh-fleets">SSH fleet</a>.</p>
+<span class="nt">ssh_config</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">user</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu</span>
+<span class="w">  </span><span class="nt">identity_file</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">~/.ssh/id_rsa</span>
+<span class="w">  </span><span class="nt">hosts</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.255.177.51</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.255.177.52</span>
+</code></pre></div>
+</div>
+<p>Pass the fleet configuration to <code>dstack apply</code>:</p>
+<div class="termy">
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>dstack<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>fleet.dstack.yml
+
+Provisioning...
+---&gt;<span class="w"> </span><span class="m">100</span>%
+
+<span class="w">  </span>FLEET<span class="w">     </span>INSTANCE<span class="w">  </span>GPU<span class="w">             </span>PRICE<span class="w">  </span>STATUS<span class="w">  </span>CREATED<span class="w"> </span>
+<span class="w">  </span>my-fleet<span class="w">  </span><span class="m">0</span><span class="w">         </span>L4:24GB<span class="w"> </span><span class="o">(</span>spot<span class="o">)</span><span class="w">  </span><span class="nv">$0</span><span class="w">     </span>idle<span class="w">    </span><span class="m">3</span><span class="w"> </span>mins<span class="w"> </span>ago<span class="w">      </span>
+<span class="w">            </span><span class="m">1</span><span class="w">         </span>L4:24GB<span class="w"> </span><span class="o">(</span>spot<span class="o">)</span><span class="w">  </span><span class="nv">$0</span><span class="w">     </span>idle<span class="w">    </span><span class="m">3</span><span class="w"> </span>mins<span class="w"> </span>ago<span class="w">    </span>
+</code></pre></div>
+</div>
+<blockquote>
+<p>Hosts must have Docker and GPU drivers installed and meet the other <a href="../concepts/fleets/#ssh-fleets">requirements</a>.</p>
+</blockquote>
+<p>If the fleet needs to be a cluster, the <a href="../concepts/fleets/#ssh-placement">placement</a> property must be set to <code>cluster</code>.</p>
+</div>
+</div>
+</div>
 <h2 id="submit-your-first-run">Submit your first run<a class="headerlink" href="#submit-your-first-run" title="Permanent link">&para;</a></h2>
 <p><code>dstack</code> supports three types of run configurations.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="dev-environment" name="__tabbed_1" type="radio" /><input id="task" name="__tabbed_1" type="radio" /><input id="service" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="dev-environment">Dev environment</label><label for="task">Task</label><label for="service">Service</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:3"><input checked="checked" id="dev-environment" name="__tabbed_2" type="radio" /><input id="task" name="__tabbed_2" type="radio" /><input id="service" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="dev-environment">Dev environment</label><label for="task">Task</label><label for="service">Service</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>A <a href="../concepts/dev-environments/">dev environment</a> lets you provision an instance and access it with your desktop IDE.</p>
-<p><h3>Define a configuration</h3></p>
-<p>Create the following run configuration inside your project folder:</p>
+<p>Create the following run configuration:</p>
 <p><div editor-title=".dstack.yml"> </p>
 <div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dev-environment</span>
 <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vscode</span>
@@ -4024,8 +4020,7 @@ Create<span class="w"> </span>the<span class="w"> </span>fleet?<span class="w"> 
 <span class="c1">#  gpu: 24GB</span>
 </code></pre></div>
 </div>
-<p><h3>Apply the configuration</h3></p>
-<p>Apply the configuration via <a href="../reference/cli/dstack/apply/"><code>dstack apply</code></a>:</p>
+<p>Apply the configuration via <code>dstack apply</code>:</p>
 <div class="termy">
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>dstack<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>.dstack.yml
 
@@ -4043,13 +4038,11 @@ To<span class="w"> </span>open<span class="w"> </span><span class="k">in</span><
 <span class="w">  </span>vscode://vscode-remote/ssh-remote+vscode/workflow
 </code></pre></div>
 </div>
-<p>Open the link to access the dev environment using your desktop IDE.</p>
-<p>Alternatively, you can access it via <code>ssh &lt;run name&gt;</code>.</p>
+<p>Open the link to access the dev environment using your desktop IDE. Alternatively, you can access it via <code>ssh &lt;run name&gt;</code>.</p>
 </div>
 <div class="tabbed-block">
 <p>A <a href="../concepts/tasks/">task</a> allows you to schedule a job or run a web app. Tasks can be distributed and can forward ports.</p>
-<p><h3>Define a configuration</h3></p>
-<p>Create the following run configuration inside your project folder:</p>
+<p>Create the following run configuration:</p>
 <p><div editor-title="task.dstack.yml"> </p>
 <div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">task</span>
 <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">streamlit</span>
@@ -4073,8 +4066,7 @@ To<span class="w"> </span>open<span class="w"> </span><span class="k">in</span><
 </div>
 <p>By default, tasks run on a single instance. To run a distributed task, specify 
 <a href="../concepts/tasks/#distributed-tasks"><code>nodes</code></a>, and <code>dstack</code> will run it on a cluster.</p>
-<p><h3>Apply the configuration</h3></p>
-<p>Run the configuration via <a href="../reference/cli/dstack/apply/"><code>dstack apply</code></a>:</p>
+<p>Run the configuration via <code>dstack apply</code>:</p>
 <div class="termy">
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>dstack<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>task.dstack.yml
 
@@ -4097,8 +4089,7 @@ Provisioning<span class="w"> </span><span class="sb">`</span>streamlit<span clas
 </div>
 <div class="tabbed-block">
 <p>A <a href="../concepts/services/">service</a> allows you to deploy a model or any web app as an endpoint.</p>
-<p><h3>Define a configuration</h3></p>
-<p>Create the following run configuration inside your project folder:</p>
+<p>Create the following run configuration:</p>
 <p><div editor-title="service.dstack.yml"> </p>
 <div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service</span>
 <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">llama31-service</span>
@@ -4124,8 +4115,7 @@ Provisioning<span class="w"> </span><span class="sb">`</span>streamlit<span clas
 <span class="w">  </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">24GB</span>
 </code></pre></div>
 </div>
-<p><h3>Apply the configuration</h3></p>
-<p>Run the configuration via <a href="../reference/cli/dstack/apply/"><code>dstack apply</code></a>:</p>
+<p>Run the configuration via <code>dstack apply</code>:</p>
 <div class="termy">
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nv">HF_TOKEN</span><span class="o">=</span>...
 $<span class="w"> </span>dstack<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>service.dstack.yml
@@ -4146,19 +4136,13 @@ Model<span class="w"> </span>meta-llama/Meta-Llama-3.1-8B-Instruct<span class="w
 <span class="w">  </span>http://localhost:3000/proxy/models/main/
 </code></pre></div>
 </div>
-<div class="admonition info">
-<p class="admonition-title">Gateway</p>
-<p>To enable <a href="../concepts/services/#replicas-and-scaling">auto-scaling</a>,
-<a href="../concepts/services/#rate-limits">rate limits</a>,
-or use a custom domain with HTTPS, 
-set up a <a href="../concepts/gateways/">gateway</a> before running the service.
-If you're using <a href="https://sky.dstack.ai">dstack Sky</a>,
-a gateway is pre-configured for you.</p>
+<blockquote>
+<p>To enable auto-scaling rate limits, or use a custom domain with HTTPS, set up a <a href="../concepts/gateways/">gateway</a> before running the service.</p>
+</blockquote>
 </div>
 </div>
 </div>
-</div>
-<p><code>dstack apply</code> automatically provisions instances and runs the workload according to the configuration.</p>
+<p><code>dstack apply</code> automatically provisions instances with created fleets and runs the workload according to the configuration.</p>
 <h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h2>
 <p>Something not working? See the <a href="../guides/troubleshooting/">troubleshooting</a> guide.</p>
 <div class="admonition info">

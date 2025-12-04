@@ -837,11 +837,11 @@ Support dstack with a ⭐ on
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#apply-a-configuration" class="md-nav__link">
+  <a href="#apply-the-configuration" class="md-nav__link">
     <span class="md-ellipsis">
       
         <span class="md-typeset">
-          Apply a configuration
+          Apply the configuration
         </span>
       
     </span>
@@ -882,7 +882,7 @@ Support dstack with a ⭐ on
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#apply-a-configuration_1" class="md-nav__link">
+  <a href="#apply-a-configuration" class="md-nav__link">
     <span class="md-ellipsis">
       
         <span class="md-typeset">
@@ -3908,11 +3908,11 @@ Support dstack with a ⭐ on
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#apply-a-configuration" class="md-nav__link">
+  <a href="#apply-the-configuration" class="md-nav__link">
     <span class="md-ellipsis">
       
         <span class="md-typeset">
-          Apply a configuration
+          Apply the configuration
         </span>
       
     </span>
@@ -3953,7 +3953,7 @@ Support dstack with a ⭐ on
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#apply-a-configuration_1" class="md-nav__link">
+  <a href="#apply-a-configuration" class="md-nav__link">
     <span class="md-ellipsis">
       
         <span class="md-typeset">
@@ -4114,21 +4114,27 @@ Support dstack with a ⭐ on
 <p>Fleets act both as pools of instances and as templates for how those instances are provisioned.</p>
 <p><code>dstack</code> supports two kinds of fleets: </p>
 <ul>
-<li><a href="#backend-fleets">Backend fleets</a> – dynamically provisioned through configured backends; they are supported with any type of backends: <a href="../backends/#vm-based">VM-based</a> and <a href="../backends/#container-based">container-based</a> (incl. <a href="../backends/#kubernetes"><code>kubernetes</code></a>)</li>
+<li><a href="#backend-fleets">Backend fleets</a> – dynamically provisioned through configured backends; they are supported with any type of backends: <a href="../backends/#vm-based">VM-based</a> and <a href="../backends/#container-based">container-based</a> (incl. <a href="../backends/#kubernetes">Kubernetes</a>)</li>
 <li><a href="#ssh-fleets">SSH fleets</a> – created using on-prem servers; do not require backends</li>
 </ul>
-<p>When you run <code>dstack apply</code> to start a dev environment, task, or service, <code>dstack</code> will reuse idle instances from an existing fleet whenever available.</p>
+<p>When you submit a dev environment, task, or service, <code>dstack</code> reuses idle instances or provisions new ones based on the fleet configuration. </p>
+<blockquote>
+<p>You must create a fleet before submitting runs.</p>
+</blockquote>
 <h2 id="backend-fleets">Backend fleets<a class="headerlink" href="#backend-fleets" title="Permanent link">&para;</a></h2>
-<p>If you configured <a href="../backends/">backends</a>, <code>dstack</code> can provision fleets on the fly.
-However, it’s recommended to define fleets explicitly.</p>
-<h3 id="apply-a-configuration">Apply a configuration<a class="headerlink" href="#apply-a-configuration" title="Permanent link">&para;</a></h3>
-<p>To create a backend fleet, define a configuration as a YAML file in your project directory. The file must have a
+<p>Backend fleets allow provisioning compute across cloud providers or Kubernetes clusters. </p>
+<details class="info">
+<summary>Prerequisites</summary>
+<p>Before creating a backend fleet, make sure to configure the corresponding <a href="../backends/">backends</a>.</p>
+</details>
+<h3 id="apply-the-configuration">Apply the configuration<a class="headerlink" href="#apply-the-configuration" title="Permanent link">&para;</a></h3>
+<p>To create a backend fleet, define a configuration as a YAML file. The file must have a
 <code>.dstack.yml</code> extension (e.g. <code>.dstack.yml</code> or <code>fleet.dstack.yml</code>).</p>
-<div editor-title="examples/misc/fleets/.dstack.yml">
+<div editor-title="fleet.dstack.yml">
 
     <div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">fleet</span>
 <span class="c1"># The name is optional, if not specified, generated randomly</span>
-<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">default-fleet</span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">default</span>
 
 <span class="c1"># Can be a range or a fixed number</span>
 <span class="c1"># Allow to provision of up to 2 instances</span>
@@ -4150,7 +4156,7 @@ However, it’s recommended to define fleets explicitly.</p>
 <p>To create or update the fleet, pass the fleet configuration to <a href="../../reference/cli/dstack/apply/"><code>dstack apply</code></a>:</p>
 <div class="termy">
 
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>dstack<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>examples/misc/fleets/.dstack.yml
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>dstack<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>fleet.dstack.yml
 
 Provisioning...
 ---&gt;<span class="w"> </span><span class="m">100</span>%
@@ -4161,16 +4167,14 @@ Provisioning...
 
 </div>
 
-<p><code>dstack</code> always keeps the minimum number of nodes provisioned. Additional instances, up to the maximum limit, are provisioned on demand.</p>
-<div class="admonition info">
-<p class="admonition-title">Container-based backends</p>
-<p>For <a href="../backends/#container-based">container-based</a> backends  (such as <code>kubernetes</code>, <code>runpod</code>, etc), <code>nodes</code> must be defined as a range starting with <code>0</code>. In these cases, instances are provisioned on demand as needed.</p>
-<!-- TODO: Ensure the user sees the error or warning otherwise -->
-</div>
+<p>If <code>nodes</code> is a range that starts above <code>0</code>, <code>dstack</code> pre-creates the initial number of instances up front, while any additional ones are created on demand. </p>
+<blockquote>
+<p>Setting the <code>nodes</code> range to start above <code>0</code> is supported only for <a href="../backends/#vm-based">VM-based backends</a>.</p>
+</blockquote>
 <details class="info">
 <summary>Target number of nodes</summary>
 <p>If <code>nodes</code> is defined as a range, you can start with more than the minimum number of instances by using the <code>target</code> parameter when creating the fleet.</p>
-<p><div editor-title=".dstack.yml"> </p>
+<p><div editor-title="fleet.dstack.yml"> </p>
 <div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">fleet</span>
 
 <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my-fleet</span>
@@ -4349,7 +4353,7 @@ among <a href="../../reference/dstack.yml/fleet/">others</a>.</p>
 </div>
 <h2 id="ssh-fleets">SSH fleets<a class="headerlink" href="#ssh-fleets" title="Permanent link">&para;</a></h2>
 <p>If you have a group of on-prem servers accessible via SSH, you can create an SSH fleet.</p>
-<h3 id="apply-a-configuration_1">Apply a configuration<a class="headerlink" href="#apply-a-configuration_1" title="Permanent link">&para;</a></h3>
+<h3 id="apply-a-configuration">Apply a configuration<a class="headerlink" href="#apply-a-configuration" title="Permanent link">&para;</a></h3>
 <p>Define a fleet configuration as a YAML file in your project directory. The file must have a
 <code>.dstack.yml</code> extension (e.g. <code>.dstack.yml</code> or <code>fleet.dstack.yml</code>).</p>
 <div editor-title="examples/misc/fleets/.dstack.yml"> 

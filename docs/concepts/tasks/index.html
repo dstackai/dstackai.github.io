@@ -4321,10 +4321,13 @@ Support dstack with a ⭐ on
 
 
 <h1 id="tasks">Tasks<a class="headerlink" href="#tasks" title="Permanent link">&para;</a></h1>
-<p>A task allows you to run arbitrary commands on one or more nodes.
-They are best suited for jobs like training or batch processing.</p>
+<p>A task allows you to run arbitrary commands on one or more nodes. They are best suited for jobs like training or batch processing.</p>
+<details class="info">
+<summary>Prerequisites</summary>
+<p>Before running a task, make sure you’ve <a href="../../installation/">installed</a> the server and CLI, and created a <a href="../fleets/">fleet</a>.</p>
+</details>
 <h2 id="apply-a-configuration">Apply a configuration<a class="headerlink" href="#apply-a-configuration" title="Permanent link">&para;</a></h2>
-<p>First, define a task configuration as a YAML file in your project folder.
+<p>First, define a task configuration as a YAML file.
 The filename must end with <code>.dstack.yml</code> (e.g. <code>.dstack.yml</code> or <code>dev.dstack.yml</code> are both acceptable).</p>
 <div editor-title=".dstack.yml"> 
 
