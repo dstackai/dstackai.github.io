@@ -4547,7 +4547,7 @@ $<span class="w"> </span>gcloud<span class="w"> </span>logging<span class="w"> <
 <h2 id="file-storage">File storage<a class="headerlink" href="#file-storage" title="Permanent link">&para;</a></h2>
 <p>When using  <a href="../../concepts/dev-environments/#files">files</a> or <a href="../../concepts/dev-environments/#repos">repos</a>, <code>dstack</code> uploads local files and diffs to the server so that you can have access to them within runs. By default, the files are stored in the DB and each upload is limited to 2MB. You can configure an object storage to be used for uploads and increase the default limit by setting the <code>DSTACK_SERVER_CODE_UPLOAD_LIMIT</code> environment variable</p>
 <h3 id="s3">S3<a class="headerlink" href="#s3" title="Permanent link">&para;</a></h3>
-<p>To use S3 for storing uploaded files, set the <code>DSTACK_SERVER_S3_BUCKET</code> and <code>DSTACK_SERVER_BUCKET_REGION</code> environment variables.
+<p>To use S3 for storing uploaded files, set the <code>DSTACK_SERVER_S3_BUCKET</code> and <code>DSTACK_SERVER_S3_BUCKET_REGION</code> environment variables.
 The bucket must be created beforehand. <code>dstack</code> won't try to create it.</p>
 <details class="info">
 <summary>Required permissions</summary>

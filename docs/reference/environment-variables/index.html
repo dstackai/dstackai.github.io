@@ -4044,6 +4044,12 @@ via <code>dstack server</code> or deployed using Docker.</p>
 <li><code id="DSTACK_SERVER_INSTANCE_HEALTH_TTL_SECONDS">DSTACK_SERVER_INSTANCE_HEALTH_TTL_SECONDS</code> – Maximum age of instance health checks.</li>
 <li><code id="DSTACK_SERVER_INSTANCE_HEALTH_MIN_COLLECT_INTERVAL_SECONDS">DSTACK_SERVER_INSTANCE_HEALTH_MIN_COLLECT_INTERVAL_SECONDS</code> – Minimum time interval between consecutive health checks of the same instance.</li>
 </ul>
+<!--
+TODO: uncomment after dropping DSTACK_FF_EVENTS
+
+- `DSTACK_SERVER_EVENTS_TTL_SECONDS` { #DSTACK_SERVER_EVENTS_TTL_SECONDS } - Maximum age of event records. Set to `0` to disable event storage. Defaults to 30 days.
+-->
+
 <details class="info">
 <summary>Internal environment variables</summary>
 <p>The following environment variables are intended for development purposes:</p>

@@ -4179,7 +4179,7 @@ Support dstack with a ⭐ on
 <h6 class="reference-item" id="user"><code>user</code> - (Optional) The user inside the container, <code>user_name_or_id[:group_name_or_id]</code> (e.g., <code>ubuntu</code>, <code>1000:1000</code>). Defaults to the default user from the <code>image</code>.<a class="headerlink" href="#user" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="privileged"><code>privileged</code> - (Optional) Run the container in privileged mode.<a class="headerlink" href="#privileged" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="entrypoint"><code>entrypoint</code> - (Optional) The Docker entrypoint.<a class="headerlink" href="#entrypoint" title="Permanent link">&para;</a></h6>
-<h6 class="reference-item" id="working_dir"><code>working_dir</code> - (Optional) The absolute path to the working directory inside the container. Defaults to <code>/workflow</code>.<a class="headerlink" href="#working_dir" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="working_dir"><code>working_dir</code> - (Optional) The absolute path to the working directory inside the container. Defaults to the <code>image</code>'s default working directory.<a class="headerlink" href="#working_dir" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="_registry_auth"><a href="#registry_auth"><code>registry_auth</code></a> - (Optional) Credentials for pulling a private Docker image.<a class="headerlink" href="#_registry_auth" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="python"><code>python</code> - (Optional) The major version of Python. Mutually exclusive with <code>image</code> and <code>docker</code>.<a class="headerlink" href="#python" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="nvcc"><code>nvcc</code> - (Optional) Use image with NVIDIA CUDA Compiler (NVCC) included. Mutually exclusive with <code>image</code> and <code>docker</code>.<a class="headerlink" href="#nvcc" title="Permanent link">&para;</a></h6>
@@ -4362,7 +4362,19 @@ from the model's repository. If it is not present there, manual configuration is
 <h6 class="reference-item" id="url"><code>url</code> - (Optional) The Git repo URL. Mutually exclusive with <code>local_path</code>.<a class="headerlink" href="#url" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="branch"><code>branch</code> - (Optional) The repo branch. Defaults to the active branch for local paths and the default branch for URLs.<a class="headerlink" href="#branch" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="hash"><code>hash</code> - (Optional) The commit hash.<a class="headerlink" href="#hash" title="Permanent link">&para;</a></h6>
-<h6 class="reference-item" id="path"><code>path</code> - (Optional) The repo path inside the run container. Relative paths are resolved relative to the working directory. Defaults to <code>/workflow</code>.<a class="headerlink" href="#path" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="path"><code>path</code> - (Optional) The repo path inside the run container. Relative paths are resolved relative to the working directory. Defaults to <code>.</code>.<a class="headerlink" href="#path" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="if_exists"><code>if_exists</code> - (Optional) The action to be taken if <code>path</code> exists and is not empty. One of: <code>error</code>, <code>skip</code>. Defaults to <code>error</code>.<a class="headerlink" href="#if_exists" title="Permanent link">&para;</a></h6>
+<details class="info">
+<summary><code>if_exists</code> action</summary>
+<p>If the <code>path</code> already exists and is a non-empty directory, by default the run is terminated with an error.
+This can be changed with the <code>if_exists</code> option:</p>
+<ul>
+<li><code>error</code> – do not try to check out, terminate the run with an error (the default action since <code>0.20.0</code>)</li>
+<li><code>skip</code> – do not try to check out, skip the repo (the only action available before <code>0.20.0</code>)</li>
+</ul>
+<p>Note, if the <code>path</code> exists and is <em>not</em> a directory (e.g., a regular file), this is always an error that
+cannot be ignored with the <code>skip</code> action.</p>
+</details>
 <details class="info">
 <summary>Short syntax</summary>
 <p>The short syntax for repos is a colon-separated string in the form of <code>local_path_or_url:path</code>.</p>
