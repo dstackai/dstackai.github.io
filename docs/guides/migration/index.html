@@ -6,37 +6,37 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="HTTP readiness probes for services, inspired by Kubernetes—safer rollouts and clear runtime visibility.">
+        <meta name="description" content="dstack is an open-source control plane for running development, training, and inference jobs on GPUs - across hyperscalers, neoclouds, or on-prem.">
       
       
         <meta name="author" content="dstack GmbH">
       
       
-        <link rel="canonical" href="https://dstack.ai/blog/probes/">
+        <link rel="canonical" href="https://dstack.ai/docs/guides/migration/">
       
       
-        <link rel="prev" href="../gpu-helth-checks/">
+        <link rel="prev" href="../protips/">
       
       
-        <link rel="next" href="../digitalocean-and-amd-dev-cloud/">
+        <link rel="next" href="../../reference/dstack.yml/dev-environment/">
       
       
         
       
       
-      <link rel="icon" href="../../assets/images/dstack-fav-32.ico">
+      <link rel="icon" href="../../../assets/images/dstack-fav-32.ico">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
     
     
       
-        <title>Introducing service probes - dstack</title>
+        <title>Migration - dstack</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.618322db.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.618322db.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -61,17 +61,17 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/_mkdocstrings.css">
+      <link rel="stylesheet" href="../../../assets/_mkdocstrings.css">
     
-      <link rel="stylesheet" href="../../assets/stylesheets/extra.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/extra.css">
     
-      <link rel="stylesheet" href="../../assets/stylesheets/termynal.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/termynal.css">
     
-      <link rel="stylesheet" href="../../assets/stylesheets/landing.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/landing.css">
     
-      <link rel="stylesheet" href="../../assets/stylesheets/pricing.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/pricing.css">
     
-    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
   
@@ -89,19 +89,17 @@
     
   
 <meta property="og:type" content="website" />
-<meta property="og:title" content="Introducing service probes - dstack" />
-<meta property="og:description" content="HTTP readiness probes for services, inspired by Kubernetes—safer rollouts and clear runtime visibility." />
-<meta property="og:image" content="
-  https://dstack.ai/static-assets/static-assets/images/dstack-service-probes.png" />
+<meta property="og:title" content="Migration - dstack" />
+<meta property="og:description" content="dstack is an open-source control plane for running development, training, and inference jobs on GPUs - across hyperscalers, neoclouds, or on-prem." />
+<meta property="og:image" content="https://dstack.ai/assets/images/social/docs/guides/migration.png" />
 <meta property="og:image:type" content="image/png" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
-<meta property="og:url" content="https://dstack.ai/blog/probes/" />
+<meta property="og:url" content="https://dstack.ai/docs/guides/migration/" />
 <meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter.title" content="Introducing service probes - dstack" />
-<meta property="twitter:description" content="HTTP readiness probes for services, inspired by Kubernetes—safer rollouts and clear runtime visibility." />
-<meta property="twitter:image" content="
-  https://dstack.ai/static-assets/static-assets/images/dstack-service-probes.png" />
+<meta property="twitter.title" content="Migration - dstack" />
+<meta property="twitter:description" content="dstack is an open-source control plane for running development, training, and inference jobs on GPUs - across hyperscalers, neoclouds, or on-prem." />
+<meta property="twitter:image" content="https://dstack.ai/assets/images/social/docs/guides/migration.png" />
 </head>
   
   
@@ -121,7 +119,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#introducing-service-probes" class="md-skip">
+        <a href="#migration-guide" class="md-skip">
           Skip to content
         </a>
       
@@ -155,7 +153,7 @@ Support dstack with a ⭐ on
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href="/" title="dstack" class="md-header__button md-logo" aria-label="dstack" data-md-component="logo">
       
-  <img src="../../assets/images/dstack-logo-notext.svg" alt="logo">
+  <img src="../../../assets/images/dstack-logo-notext.svg" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -172,7 +170,7 @@ Support dstack with a ⭐ on
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Introducing service probes
+              Migration
             
           </span>
         </div>
@@ -273,7 +271,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-tabs__item">
-      <a href="../.." class="md-tabs__link">
+      <a href="../../.." class="md-tabs__link">
         
   
   
@@ -290,6 +288,8 @@ Support dstack with a ⭐ on
   
   
   
+    
+  
   
     
     
@@ -297,11 +297,13 @@ Support dstack with a ⭐ on
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../../docs/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../" class="md-tabs__link">
           
   
   
@@ -324,7 +326,7 @@ Support dstack with a ⭐ on
     
     
       <li class="md-tabs__item">
-        <a href="../../examples/" class="md-tabs__link">
+        <a href="../../../examples/" class="md-tabs__link">
           
   
   
@@ -340,13 +342,11 @@ Support dstack with a ⭐ on
   
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="../" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../../../blog/" class="md-tabs__link">
           
   
   
@@ -364,7 +364,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-tabs__item">
-      <a href="../case-studies/" class="md-tabs__link">
+      <a href="../../../blog/case-studies/" class="md-tabs__link">
         
   
   
@@ -383,7 +383,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-tabs__item">
-      <a href="../benchmarks/" class="md-tabs__link">
+      <a href="../../../blog/benchmarks/" class="md-tabs__link">
         
   
   
@@ -407,9 +407,7 @@ Support dstack with a ⭐ on
           
     
       
-        
-      
-      <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" hidden>
+      <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
         <div class="md-sidebar__scrollwrap">
           <div class="md-sidebar__inner">
             
@@ -422,7 +420,7 @@ Support dstack with a ⭐ on
   <label class="md-nav__title" for="__drawer">
     <a href="/" title="dstack" class="md-nav__button md-logo" aria-label="dstack" data-md-component="logo">
       
-  <img src="../../assets/images/dstack-logo-notext.svg" alt="logo">
+  <img src="../../../assets/images/dstack-logo-notext.svg" alt="logo">
 
     </a>
     dstack
@@ -449,7 +447,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../.." class="md-nav__link">
+      <a href="../../.." class="md-nav__link">
         
   
   
@@ -473,26 +471,31 @@ Support dstack with a ⭐ on
       
   
   
+    
   
   
+  
     
     
     
     
+      
+        
+        
       
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
-          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
             
   
   
@@ -510,7 +513,7 @@ Support dstack with a ⭐ on
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             
@@ -534,17 +537,20 @@ Support dstack with a ⭐ on
       
       
         
+          
+          
+        
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
         
           
-          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="">
             
   
   
@@ -580,7 +586,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../docs/" class="md-nav__link">
+      <a href="../../" class="md-nav__link">
         
   
   
@@ -608,7 +614,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../docs/installation/" class="md-nav__link">
+      <a href="../../installation/" class="md-nav__link">
         
   
   
@@ -636,7 +642,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../docs/quickstart/" class="md-nav__link">
+      <a href="../../quickstart/" class="md-nav__link">
         
   
   
@@ -678,17 +684,20 @@ Support dstack with a ⭐ on
       
       
         
+          
+          
+        
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
         
           
-          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="">
             
   
   
@@ -724,7 +733,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../docs/concepts/backends/" class="md-nav__link">
+      <a href="../../concepts/backends/" class="md-nav__link">
         
   
   
@@ -752,7 +761,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../docs/concepts/fleets/" class="md-nav__link">
+      <a href="../../concepts/fleets/" class="md-nav__link">
         
   
   
@@ -780,7 +789,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../docs/concepts/dev-environments/" class="md-nav__link">
+      <a href="../../concepts/dev-environments/" class="md-nav__link">
         
   
   
@@ -808,7 +817,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../docs/concepts/tasks/" class="md-nav__link">
+      <a href="../../concepts/tasks/" class="md-nav__link">
         
   
   
@@ -836,7 +845,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../docs/concepts/services/" class="md-nav__link">
+      <a href="../../concepts/services/" class="md-nav__link">
         
   
   
@@ -864,7 +873,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../docs/concepts/volumes/" class="md-nav__link">
+      <a href="../../concepts/volumes/" class="md-nav__link">
         
   
   
@@ -892,7 +901,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../docs/concepts/secrets/" class="md-nav__link">
+      <a href="../../concepts/secrets/" class="md-nav__link">
         
   
   
@@ -920,7 +929,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../docs/concepts/projects/" class="md-nav__link">
+      <a href="../../concepts/projects/" class="md-nav__link">
         
   
   
@@ -948,7 +957,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../docs/concepts/gateways/" class="md-nav__link">
+      <a href="../../concepts/gateways/" class="md-nav__link">
         
   
   
@@ -981,26 +990,31 @@ Support dstack with a ⭐ on
                 
   
   
+    
   
   
+  
     
     
     
     
       
       
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
         
           
-          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="">
             
   
   
@@ -1018,7 +1032,7 @@ Support dstack with a ⭐ on
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2_3">
             <span class="md-nav__icon md-icon"></span>
             
@@ -1036,7 +1050,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../docs/guides/clusters/" class="md-nav__link">
+      <a href="../clusters/" class="md-nav__link">
         
   
   
@@ -1064,7 +1078,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../docs/guides/kubernetes/" class="md-nav__link">
+      <a href="../kubernetes/" class="md-nav__link">
         
   
   
@@ -1092,7 +1106,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../docs/guides/server-deployment/" class="md-nav__link">
+      <a href="../server-deployment/" class="md-nav__link">
         
   
   
@@ -1120,7 +1134,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../docs/guides/troubleshooting/" class="md-nav__link">
+      <a href="../troubleshooting/" class="md-nav__link">
         
   
   
@@ -1148,7 +1162,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../docs/guides/metrics/" class="md-nav__link">
+      <a href="../metrics/" class="md-nav__link">
         
   
   
@@ -1176,7 +1190,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../docs/guides/protips/" class="md-nav__link">
+      <a href="../protips/" class="md-nav__link">
         
   
   
@@ -1201,10 +1215,37 @@ Support dstack with a ⭐ on
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../docs/guides/migration/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Migration
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -1220,6 +1261,110 @@ Support dstack with a ⭐ on
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#0_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          0.20.*
+        </span>
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0.20.*">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cli-compatibility" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          CLI compatibility
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fleets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Fleets
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#working-directory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Working directory
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#repo-directory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Repo directory
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deprecated-feature-removal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Deprecated feature removal
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1246,17 +1391,20 @@ Support dstack with a ⭐ on
       
       
         
+          
+          
+        
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" >
         
           
-          <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="">
             
   
   
@@ -1344,7 +1492,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../docs/reference/dstack.yml/dev-environment/" class="md-nav__link">
+      <a href="../../reference/dstack.yml/dev-environment/" class="md-nav__link">
         
   
   
@@ -1372,7 +1520,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../docs/reference/dstack.yml/task/" class="md-nav__link">
+      <a href="../../reference/dstack.yml/task/" class="md-nav__link">
         
   
   
@@ -1400,7 +1548,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../docs/reference/dstack.yml/service/" class="md-nav__link">
+      <a href="../../reference/dstack.yml/service/" class="md-nav__link">
         
   
   
@@ -1428,7 +1576,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../docs/reference/dstack.yml/fleet/" class="md-nav__link">
+      <a href="../../reference/dstack.yml/fleet/" class="md-nav__link">
         
   
   
@@ -1456,7 +1604,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../docs/reference/dstack.yml/gateway/" class="md-nav__link">
+      <a href="../../reference/dstack.yml/gateway/" class="md-nav__link">
         
   
   
@@ -1484,7 +1632,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../docs/reference/dstack.yml/volume/" class="md-nav__link">
+      <a href="../../reference/dstack.yml/volume/" class="md-nav__link">
         
   
   
@@ -1520,7 +1668,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../docs/reference/server/config.yml/" class="md-nav__link">
+      <a href="../../reference/server/config.yml/" class="md-nav__link">
         
   
   
@@ -1600,7 +1748,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../docs/reference/cli/dstack/server/" class="md-nav__link">
+      <a href="../../reference/cli/dstack/server/" class="md-nav__link">
         
   
   
@@ -1628,7 +1776,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../docs/reference/cli/dstack/init/" class="md-nav__link">
+      <a href="../../reference/cli/dstack/init/" class="md-nav__link">
         
   
   
@@ -1656,7 +1804,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../docs/reference/cli/dstack/apply/" class="md-nav__link">
+      <a href="../../reference/cli/dstack/apply/" class="md-nav__link">
         
   
   
@@ -1684,7 +1832,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../docs/reference/cli/dstack/delete/" class="md-nav__link">
+      <a href="../../reference/cli/dstack/delete/" class="md-nav__link">
         
   
   
@@ -1712,7 +1860,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../docs/reference/cli/dstack/ps/" class="md-nav__link">
+      <a href="../../reference/cli/dstack/ps/" class="md-nav__link">
         
   
   
@@ -1740,7 +1888,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../docs/reference/cli/dstack/stop/" class="md-nav__link">
+      <a href="../../reference/cli/dstack/stop/" class="md-nav__link">
         
   
   
@@ -1768,7 +1916,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../docs/reference/cli/dstack/attach/" class="md-nav__link">
+      <a href="../../reference/cli/dstack/attach/" class="md-nav__link">
         
   
   
@@ -1796,7 +1944,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../docs/reference/cli/dstack/logs/" class="md-nav__link">
+      <a href="../../reference/cli/dstack/logs/" class="md-nav__link">
         
   
   
@@ -1824,7 +1972,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../docs/reference/cli/dstack/metrics/" class="md-nav__link">
+      <a href="../../reference/cli/dstack/metrics/" class="md-nav__link">
         
   
   
@@ -1852,7 +2000,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../docs/reference/cli/dstack/project/" class="md-nav__link">
+      <a href="../../reference/cli/dstack/project/" class="md-nav__link">
         
   
   
@@ -1880,7 +2028,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../docs/reference/cli/dstack/fleet/" class="md-nav__link">
+      <a href="../../reference/cli/dstack/fleet/" class="md-nav__link">
         
   
   
@@ -1908,7 +2056,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../docs/reference/cli/dstack/offer/" class="md-nav__link">
+      <a href="../../reference/cli/dstack/offer/" class="md-nav__link">
         
   
   
@@ -1936,7 +2084,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../docs/reference/cli/dstack/volume/" class="md-nav__link">
+      <a href="../../reference/cli/dstack/volume/" class="md-nav__link">
         
   
   
@@ -1964,7 +2112,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../docs/reference/cli/dstack/gateway/" class="md-nav__link">
+      <a href="../../reference/cli/dstack/gateway/" class="md-nav__link">
         
   
   
@@ -1992,7 +2140,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../docs/reference/cli/dstack/secret/" class="md-nav__link">
+      <a href="../../reference/cli/dstack/secret/" class="md-nav__link">
         
   
   
@@ -2080,7 +2228,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../docs/reference/api/python/" class="md-nav__link">
+      <a href="../../reference/api/python/" class="md-nav__link">
         
   
   
@@ -2108,7 +2256,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../docs/reference/api/rest/" class="md-nav__link">
+      <a href="../../reference/api/rest/" class="md-nav__link">
         
   
   
@@ -2144,7 +2292,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../docs/reference/environment-variables/" class="md-nav__link">
+      <a href="../../reference/environment-variables/" class="md-nav__link">
         
   
   
@@ -2172,7 +2320,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../docs/reference/profiles.yml/" class="md-nav__link">
+      <a href="../../reference/profiles.yml/" class="md-nav__link">
         
   
   
@@ -2252,7 +2400,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../docs/reference/plugins/python/" class="md-nav__link">
+      <a href="../../reference/plugins/python/" class="md-nav__link">
         
   
   
@@ -2280,7 +2428,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../docs/reference/plugins/rest/" class="md-nav__link">
+      <a href="../../reference/plugins/rest/" class="md-nav__link">
         
   
   
@@ -2411,7 +2559,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../examples/" class="md-nav__link">
+      <a href="../../../examples/" class="md-nav__link">
         
   
   
@@ -2491,7 +2639,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../examples/single-node-training/trl/" class="md-nav__link">
+      <a href="../../../examples/single-node-training/trl/" class="md-nav__link">
         
   
   
@@ -2519,7 +2667,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../examples/single-node-training/axolotl/" class="md-nav__link">
+      <a href="../../../examples/single-node-training/axolotl/" class="md-nav__link">
         
   
   
@@ -2607,7 +2755,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../examples/distributed-training/trl/" class="md-nav__link">
+      <a href="../../../examples/distributed-training/trl/" class="md-nav__link">
         
   
   
@@ -2635,7 +2783,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../examples/distributed-training/axolotl/" class="md-nav__link">
+      <a href="../../../examples/distributed-training/axolotl/" class="md-nav__link">
         
   
   
@@ -2663,7 +2811,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../examples/distributed-training/ray-ragen/" class="md-nav__link">
+      <a href="../../../examples/distributed-training/ray-ragen/" class="md-nav__link">
         
   
   
@@ -2751,7 +2899,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../examples/clusters/nccl-tests/" class="md-nav__link">
+      <a href="../../../examples/clusters/nccl-tests/" class="md-nav__link">
         
   
   
@@ -2779,7 +2927,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../examples/clusters/rccl-tests/" class="md-nav__link">
+      <a href="../../../examples/clusters/rccl-tests/" class="md-nav__link">
         
   
   
@@ -2807,7 +2955,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../examples/clusters/a4/" class="md-nav__link">
+      <a href="../../../examples/clusters/a4/" class="md-nav__link">
         
   
   
@@ -2835,7 +2983,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../examples/clusters/a3mega/" class="md-nav__link">
+      <a href="../../../examples/clusters/a3mega/" class="md-nav__link">
         
   
   
@@ -2863,7 +3011,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../examples/clusters/a3high/" class="md-nav__link">
+      <a href="../../../examples/clusters/a3high/" class="md-nav__link">
         
   
   
@@ -2891,7 +3039,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../examples/clusters/efa/" class="md-nav__link">
+      <a href="../../../examples/clusters/efa/" class="md-nav__link">
         
   
   
@@ -2979,7 +3127,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../examples/inference/sglang/" class="md-nav__link">
+      <a href="../../../examples/inference/sglang/" class="md-nav__link">
         
   
   
@@ -3007,7 +3155,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../examples/inference/vllm/" class="md-nav__link">
+      <a href="../../../examples/inference/vllm/" class="md-nav__link">
         
   
   
@@ -3035,7 +3183,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../examples/inference/tgi/" class="md-nav__link">
+      <a href="../../../examples/inference/tgi/" class="md-nav__link">
         
   
   
@@ -3063,7 +3211,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../examples/inference/nim/" class="md-nav__link">
+      <a href="../../../examples/inference/nim/" class="md-nav__link">
         
   
   
@@ -3091,7 +3239,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../examples/inference/trtllm/" class="md-nav__link">
+      <a href="../../../examples/inference/trtllm/" class="md-nav__link">
         
   
   
@@ -3179,7 +3327,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../examples/accelerators/amd/" class="md-nav__link">
+      <a href="../../../examples/accelerators/amd/" class="md-nav__link">
         
   
   
@@ -3207,7 +3355,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../examples/accelerators/tpu/" class="md-nav__link">
+      <a href="../../../examples/accelerators/tpu/" class="md-nav__link">
         
   
   
@@ -3235,7 +3383,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../examples/accelerators/intel/" class="md-nav__link">
+      <a href="../../../examples/accelerators/intel/" class="md-nav__link">
         
   
   
@@ -3263,7 +3411,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../examples/accelerators/tenstorrent/" class="md-nav__link">
+      <a href="../../../examples/accelerators/tenstorrent/" class="md-nav__link">
         
   
   
@@ -3351,7 +3499,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../examples/models/wan22/" class="md-nav__link">
+      <a href="../../../examples/models/wan22/" class="md-nav__link">
         
   
   
@@ -3391,31 +3539,26 @@ Support dstack with a ⭐ on
       
   
   
-    
   
   
-  
     
     
     
     
-      
-        
-        
       
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
         
           
-          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
             
   
   
@@ -3433,7 +3576,7 @@ Support dstack with a ⭐ on
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
             
@@ -3448,14 +3591,12 @@ Support dstack with a ⭐ on
                 
   
   
-    
-  
   
     
   
   
-    <li class="md-nav__item md-nav__item--active">
-      <a href="../" class="md-nav__link">
+    <li class="md-nav__item">
+      <a href="../../../blog/" class="md-nav__link">
         
   
   
@@ -3491,20 +3632,17 @@ Support dstack with a ⭐ on
       
       
         
-          
-          
-        
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
         
           
-          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="">
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
             
   
   
@@ -3542,7 +3680,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../changelog/" class="md-nav__link">
+      <a href="../../../blog/changelog/" class="md-nav__link">
         
   
   
@@ -3574,7 +3712,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../case-studies/" class="md-nav__link">
+      <a href="../../../blog/case-studies/" class="md-nav__link">
         
   
   
@@ -3606,7 +3744,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../benchmarks/" class="md-nav__link">
+      <a href="../../../blog/benchmarks/" class="md-nav__link">
         
   
   
@@ -3653,7 +3791,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../case-studies/" class="md-nav__link">
+      <a href="../../../blog/case-studies/" class="md-nav__link">
         
   
   
@@ -3684,7 +3822,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../benchmarks/" class="md-nav__link">
+      <a href="../../../blog/benchmarks/" class="md-nav__link">
         
   
   
@@ -3714,8 +3852,6 @@ Support dstack with a ⭐ on
     
     
       
-        
-      
       <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
         <div class="md-sidebar__scrollwrap">
           <div class="md-sidebar__inner">
@@ -3735,54 +3871,86 @@ Support dstack with a ⭐ on
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#configuration" class="md-nav__link">
+  <a href="#0_20" class="md-nav__link">
     <span class="md-ellipsis">
       
         <span class="md-typeset">
-          Configuration
+          0.20.*
+        </span>
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0.20.*">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cli-compatibility" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          CLI compatibility
         </span>
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#probe-status" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#fleets" class="md-nav__link">
     <span class="md-ellipsis">
       
         <span class="md-typeset">
-          Probe status
+          Fleets
         </span>
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#advanced-configuration" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#working-directory" class="md-nav__link">
     <span class="md-ellipsis">
       
         <span class="md-typeset">
-          Advanced configuration
+          Working directory
         </span>
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#rolling-deployments" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#repo-directory" class="md-nav__link">
     <span class="md-ellipsis">
       
         <span class="md-typeset">
-          Rolling deployments
+          Repo directory
         </span>
       
     </span>
   </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deprecated-feature-removal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Deprecated feature removal
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -3795,81 +3963,72 @@ Support dstack with a ⭐ on
     
 
           
-  <div class="md-content md-content--post" data-md-component="content">
-    <div class="md-sidebar md-sidebar--post" data-md-component="sidebar" data-md-type="navigation">
-      <div class="md-sidebar__scrollwrap">
-        <div class="md-sidebar__inner md-post">
-          <nav class="md-nav md-nav--primary">
-            <div class="md-post__back">
-              <div class="md-nav__title md-nav__container">
-                <a href="../" class="md-nav__link">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
-                  <span class="md-ellipsis">
-                    Back to index
-                  </span>
-                </a>
-              </div>
-            </div>
-            
-            <ul class="md-post__meta md-nav__list">
-              <li class="md-nav__item md-nav__item--section">
-                <div class="md-post__title">
-                  <span class="md-ellipsis">
-                    Metadata
-                  </span>
-                </div>
-                <nav class="md-nav">
-                  <ul class="md-nav__list">
-                    <li class="md-nav__item">
-                      <div class="md-nav__link">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 19H5V8h14m-3-7v2H8V1H6v2H5c-1.11 0-2 .89-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-1V1m-1 11h-5v5h5z"/></svg>
-                        <time datetime="2025-08-14 00:00:00+00:00" class="md-ellipsis">August 14, 2025</time>
-                      </div>
-                    </li>
-                    
-                    
-                      <li class="md-nav__item">
-                        <div class="md-nav__link">
-                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 3v15h3V3zm3 2 4 13 3-1-4-13zM5 5v13h3V5zM3 19v2h18v-2z"/></svg>
-                          <span class="md-ellipsis">
-                            in
-                            
-                              <a href="../changelog/">Changelog</a></span>
-                        </div>
-                      </li>
-                    
-                    
-                      
-                      <li class="md-nav__item">
-                        <div class="md-nav__link">
-                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20a8 8 0 0 0 8-8 8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8m0-18a10 10 0 0 1 10 10 10 10 0 0 1-10 10C6.47 22 2 17.5 2 12A10 10 0 0 1 12 2m.5 5v5.25l4.5 2.67-.75 1.23L11 13V7z"/></svg>
-                          <span class="md-ellipsis">
-                            
-                              2 min read
-                            
-                          </span>
-                        </div>
-                      </li>
-                    
-                  </ul>
-                </nav>
-              </li>
-            </ul>
-            
-          </nav>
-          
-        </div>
-      </div>
-    </div>
-    <article class="md-content__inner md-typeset">
+<div class="md-content" data-md-component="content">
+  
+    
+
+
+
+  
+
+
+
+
+  <nav class="md-path" aria-label="Navigation" >
+    <ol class="md-path__list">
       
         
   
+    
+    
+      
+  
+    
+    
+      <li class="md-path__item">
+<!--        <a href="../../" class="md-path__link">-->
+        
+  <span class="md-ellipsis">
+    Docs
+  </span>
 
+<!--        </a>-->
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+    
+    
+      <li class="md-path__item">
+<!--        <a href="../clusters/" class="md-path__link">-->
+        
+  <span class="md-ellipsis">
+    Guides
+  </span>
+
+<!--        </a>-->
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+  
+  <article class="md-content__inner md-typeset">
+    
+      
 
 
   
-    <a href="https://github.com/dstackai/dstack/edit/master/docs/blog/posts/probes.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+    <a href="https://github.com/dstackai/dstack/edit/master/docs/docs/guides/migration.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
     </a>
@@ -3877,89 +4036,60 @@ Support dstack with a ⭐ on
   
 
 
-<h1 id="introducing-service-probes">Introducing service probes<a class="headerlink" href="#introducing-service-probes" title="Permanent link">&para;</a></h1>
-<p><code>dstack</code> services are long-running workloads—most often inference endpoints and sometimes web apps—that run continuously on GPU or CPU instances. They can scale across replicas and support rolling deployments.</p>
-<p>This release adds HTTP probes inspired by Kubernetes readiness probes. Probes periodically call an endpoint on each replica (for example, <code>/health</code>) to confirm it responds as expected. The result gives clear visibility into startup progress and, during rolling deployments, ensures traffic only shifts to a replacement replica after all configured probes have proven ready.</p>
-<p><img src="https://dstack.ai/static-assets/static-assets/images/dstack-service-probes.png" width="630"/></p>
-<!-- more -->
+<h1 id="migration-guide">Migration guide<a class="headerlink" href="#migration-guide" title="Permanent link">&para;</a></h1>
+<!-- TODO: Add general sections on how to migrate to newer releases and how major and minor versions compatibility  and deprecation policy is handled -->
 
-<p>When a service starts, replicas may need time to load models and initialize dependencies. Without probes, a replica is considered ready as soon as the container starts. With probes, readiness is based on real responses.</p>
-<p>Each probe sends an HTTP request to a configured endpoint at a set interval. A <code>2xx</code> response counts as success.</p>
-<h2 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h2>
-<p>Probes can be set via the <code>probes</code> property in a service configuration:</p>
-<div editor-title="service.dstack.yml">
+<h2 id="0_20">0.20.*<a class="headerlink" href="#0_20" title="Permanent link">&para;</a></h2>
+<h3 id="cli-compatibility">CLI compatibility<a class="headerlink" href="#cli-compatibility" title="Permanent link">&para;</a></h3>
+<ul>
+<li>CLI versions <code>0.19.*</code> and earlier remain backward compatible with the <code>0.20.*</code> <code>dstack</code> server.</li>
+<li>CLI versions <code>0.20.</code> are not compatible with server versions prior to <code>0.20.*</code>.</li>
+</ul>
+<blockquote>
+<p>Do not upgrade the CLI to <code>0.20.*</code> until the server has been upgraded.</p>
+</blockquote>
+<h3 id="fleets">Fleets<a class="headerlink" href="#fleets" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Prior to <code>0.20</code>, <code>dstack</code> automatically provisioned a fleet if one did not exist at run time.<br />
+  Beginning with <code>0.20</code>, <code>dstack</code> will only use existing fleets.</li>
+</ul>
+<blockquote>
+<p>Create fleets before submitting runs. To enable on-demand instance provisioning, configure <code>nodes</code> as a range in the <a href="../../concepts/fleets/#backend-fleets">backend fleet</a> configuration.  </p>
+</blockquote>
+<h3 id="working-directory">Working directory<a class="headerlink" href="#working-directory" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Previously, when <code>working_dir</code> was not specified, <code>dstack</code> defaulted to <code>/workflow</code>. As of <code>0.20</code>, <code>dstack</code> uses the working directory defined in the Docker image. If the image does not define a working directory, <code>dstack</code> falls back to <code>/</code>.</li>
+<li>The default image introduced in <code>0.20</code> uses <code>/dstack/run</code> as its default working directory.</li>
+</ul>
+<blockquote>
+<p>To override the directory defined in the Docker image, specify <a href="../../concepts/dev-environments/#working-directory"><code>working_dir</code></a> explicitly.</p>
+</blockquote>
+<h3 id="repo-directory">Repo directory<a class="headerlink" href="#repo-directory" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Previously, if no <a href="../../concepts/dev-environments/#repos">repo directory</a> was specified, <code>dstack</code> cloned the repository into <code>/workflow</code>. With <code>0.20</code>, the working directory becomes the default repo directory.</li>
+<li>In earlier versions, cloning was skipped if the repo directory was non-empty. Starting with <code>0.20</code>, this results in a <code>runner error</code> unless <code>if_exists</code> is set to <code>skip</code> in the repo configuration.</li>
+</ul>
+<blockquote>
+<p>Ensure repo directories are empty, or explicitly set <code>if_exists</code> to <code>skip</code>.</p>
+</blockquote>
+<h3 id="deprecated-feature-removal">Deprecated feature removal<a class="headerlink" href="#deprecated-feature-removal" title="Permanent link">&para;</a></h3>
+<p>The following deprecated commands have been removed in <strong>0.20</strong>:</p>
+<ul>
+<li><code>dstack config</code></li>
+<li><code>dstack stats</code></li>
+<li><code>dstack gateway create</code></li>
+</ul>
+<p>Use the corresponding replacements:</p>
+<ul>
+<li><code>dstack project</code></li>
+<li><code>dstack metrics</code></li>
+<li><code>dstack apply</code></li>
+</ul>
+<blockquote>
+<p>For more details on the changes, see the <a href="https://github.com/dstackai/dstack/releases">release notes</a>.</p>
+</blockquote>
 
-<div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service</span>
-<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">llama31</span>
 
-<span class="nt">python</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.12</span>
-<span class="nt">env</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HF_TOKEN</span>
-<span class="nt">commands</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uv pip install vllm</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
-<span class="w">    </span><span class="no">vllm serve meta-llama/Meta-Llama-3.1-8B-Instruct \</span>
-<span class="w">      </span><span class="no">--max-model-len 4096 \</span>
-<span class="w">      </span><span class="no">--tensor-parallel-size $DSTACK_GPUS_NUM</span>
-<span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8000</span>
-<span class="nt">model</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">meta-llama/Meta-Llama-3.1-8B-Instruct</span>
-
-<span class="nt">probes</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http</span>
-<span class="w">    </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/health</span>
-<span class="w">    </span><span class="nt">interval</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">15s</span>
-
-<span class="nt">replicas</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
-
-<span class="nt">resources</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">24GB..48GB</span>
-</code></pre></div>
-</div>
-
-<p>In this example, <code>dstack</code> sends a GET <code>/health</code> request every 15 seconds to each replica.</p>
-<h2 id="probe-status">Probe status<a class="headerlink" href="#probe-status" title="Permanent link">&para;</a></h2>
-<div class="termy">
-
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>dstack<span class="w"> </span>ps<span class="w"> </span>--verbose
-
-<span class="w"> </span>NAME<span class="w">                            </span>BACKEND<span class="w">          </span>STATUS<span class="w">   </span>PROBES<span class="w">  </span>SUBMITTED
-<span class="w"> </span>llama31<span class="w"> </span><span class="nv">deployment</span><span class="o">=</span><span class="m">1</span><span class="w">                             </span>running<span class="w">          </span><span class="m">11</span><span class="w"> </span>mins<span class="w"> </span>ago
-<span class="w">   </span><span class="nv">replica</span><span class="o">=</span><span class="m">0</span><span class="w"> </span><span class="nv">job</span><span class="o">=</span><span class="m">0</span><span class="w"> </span><span class="nv">deployment</span><span class="o">=</span><span class="m">0</span><span class="w">  </span>aws<span class="w"> </span><span class="o">(</span>us-west-2<span class="o">)</span><span class="w">  </span>running<span class="w">  </span>✓<span class="w">       </span><span class="m">11</span><span class="w"> </span>mins<span class="w"> </span>ago
-<span class="w">   </span><span class="nv">replica</span><span class="o">=</span><span class="m">1</span><span class="w"> </span><span class="nv">job</span><span class="o">=</span><span class="m">0</span><span class="w"> </span><span class="nv">deployment</span><span class="o">=</span><span class="m">1</span><span class="w">  </span>aws<span class="w"> </span><span class="o">(</span>us-west-2<span class="o">)</span><span class="w">  </span>running<span class="w">  </span>×<span class="w">       </span><span class="m">1</span><span class="w"> </span>min<span class="w"> </span>ago
-</code></pre></div>
-
-</div>
-
-<p>In <code>dstack ps --verbose</code>, a replica shows <code>×</code> if the last probe failed, <code>~</code> while probes are succeeding but the <a href="../../docs/reference/dstack.yml/service/#ready_after"><code>ready_after</code></a> threshold is not yet reached, and <code>✓</code> once the last <code>ready_after</code> checks have succeeded. Probes run for each replica while it is <code>running</code>.</p>
-<h2 id="advanced-configuration">Advanced configuration<a class="headerlink" href="#advanced-configuration" title="Permanent link">&para;</a></h2>
-<p>Probes support custom HTTP methods, headers (with environment variable interpolation), request bodies, timeouts, and multiple checks in sequence. For example:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">env</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PROBES_API_KEY</span>
-<span class="nt">probes</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http</span>
-<span class="w">    </span><span class="nt">method</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">post</span>
-<span class="w">    </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/check-health</span>
-<span class="w">    </span><span class="nt">headers</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">X-API-Key</span>
-<span class="w">        </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ env.PROBES_API_KEY }}</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Content-Type</span>
-<span class="w">        </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">application/json</span>
-<span class="w">    </span><span class="nt">body</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;{&quot;level&quot;:</span><span class="nv"> </span><span class="s">2}&#39;</span>
-<span class="w">    </span><span class="nt">timeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">20s</span>
-</code></pre></div>
-<p>Note: request bodies are not allowed with <code>GET</code> or <code>HEAD</code> methods.</p>
-<h2 id="rolling-deployments">Rolling deployments<a class="headerlink" href="#rolling-deployments" title="Permanent link">&para;</a></h2>
-<p>During a rolling deployment, <code>dstack</code> starts a replacement replica, waits for it to be <code>running</code> and to pass its probes, then retires the old replica. This preserves availability while large models warm up.</p>
-<p>Probes give you visibility about health of each replica. During rolling updates they gate traffic so new replicas receive requests after their checks pass.</p>
-<p>See <a href="../../docs/concepts/services/#probes">services</a> and the <a href="../../docs/reference/dstack.yml/service/#probes">reference</a> for all options.</p>
-<div class="admonition info">
-<p class="admonition-title">What's next?</p>
-<ol>
-<li>Check <a href="../../docs/quickstart/">Quickstart</a></li>
-<li>Learn about <a href="../../docs/concepts/services/">services</a></li>
-<li>Join <a href="https://discord.gg/u8SmfwPpMd">Discord</a></li>
-</ol>
-</div>
 
 
 
@@ -3968,20 +4098,53 @@ Support dstack with a ⭐ on
 
 
   
-  
 
 
-
-  
-
-
-  
 
 
 
       
-    </article>
-  </div>
+          
+          <nav class="md-footer__inner md-grid" aria-label="Footer" >
+            
+              
+              <a href="../protips/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Protips">
+                <div class="md-footer__button md-icon">
+                  
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+                </div>
+                <div class="md-footer__title">
+                  <span class="md-footer__direction">
+                    Previous
+                  </span>
+                  <div class="md-ellipsis">
+                    Protips
+                  </div>
+                </div>
+              </a>
+            
+            
+              
+              <a href="../../reference/dstack.yml/dev-environment/" class="md-footer__link md-footer__link--next" aria-label="Next: dev-environment">
+                <div class="md-footer__title">
+                  <span class="md-footer__direction">
+                    Next
+                  </span>
+                  <div class="md-ellipsis">
+                    dev-environment
+                  </div>
+                </div>
+                <div class="md-footer__button md-icon">
+                  
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+                </div>
+              </a>
+            
+          </nav>
+        
+    
+  </article>
+</div>
 
           
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
@@ -4110,17 +4273,17 @@ Support dstack with a ⭐ on
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.tooltips", "navigation.path", "content.code.copy", "content.action.edit", "navigation.tabs", "navigation.sections", "navigation.top", "announce.dismiss", "navigation.tracking", "navigation.footer"], "search": "../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["content.tooltips", "navigation.path", "content.code.copy", "content.action.edit", "navigation.tabs", "navigation.sections", "navigation.top", "announce.dismiss", "navigation.tracking", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
 <script src="/assets/javascripts/termynal.js" data-termynal-container="#termynal"></script>
 <script async src="https://tally.so/widgets/embed.js"></script>
 
-      <script src="../../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.e71a0d61.min.js"></script>
       
-        <script src="../../assets/javascripts/extra.js"></script>
+        <script src="../../../assets/javascripts/extra.js"></script>
       
-        <script src="../../assets/javascripts/pricing.js"></script>
+        <script src="../../../assets/javascripts/pricing.js"></script>
       
     
 <script src="https://widget.kapa.ai/kapa-widget.bundle.js"

@@ -1209,6 +1209,34 @@ Support dstack with a ⭐ on
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guides/migration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Migration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -2270,17 +2298,6 @@ Support dstack with a ⭐ on
     <span class="md-ellipsis">
       
         Disk
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#dstack.api.LocalRepo" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        LocalRepo
       
     </span>
   </a>
@@ -4124,17 +4141,6 @@ Support dstack with a ⭐ on
 </li>
         
           <li class="md-nav__item">
-  <a href="#dstack.api.LocalRepo" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        LocalRepo
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#dstack.api.RemoteRepo" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -4303,7 +4309,7 @@ Support dstack with a ⭐ on
 <span class="n">client</span> <span class="o">=</span> <span class="n">Client</span><span class="o">.</span><span class="n">from_config</span><span class="p">()</span>
 
 <span class="n">task</span> <span class="o">=</span> <span class="n">Task</span><span class="p">(</span>
-    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;my-awesome-run&quot;</span><span class="p">,</span>  <span class="c1"># If not specified, a random name is assigned </span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;my-awesome-run&quot;</span><span class="p">,</span>  <span class="c1"># If not specified, a random name is assigned</span>
     <span class="n">image</span><span class="o">=</span><span class="s2">&quot;ghcr.io/huggingface/text-generation-inference:latest&quot;</span><span class="p">,</span>
     <span class="n">env</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;MODEL_ID&quot;</span><span class="p">:</span> <span class="s2">&quot;TheBloke/Llama-2-13B-chat-GPTQ&quot;</span><span class="p">},</span>
     <span class="n">commands</span><span class="o">=</span><span class="p">[</span>
@@ -4332,9 +4338,9 @@ Support dstack with a ⭐ on
 <div class="admonition info">
 <p class="admonition-title">NOTE:</p>
 <ol>
-<li>The <code>configuration</code> argument in the <code>apply_configuration</code> method can be either <code>dstack.api.Task</code>, <code>dstack.api.Service</code>, or <code>dstack.api.DevEnvironment</code>. </li>
+<li>The <code>configuration</code> argument in the <code>apply_configuration</code> method can be either <code>dstack.api.Task</code>, <code>dstack.api.Service</code>, or <code>dstack.api.DevEnvironment</code>.</li>
 <li>When you create <code>dstack.api.Task</code>, <code>dstack.api.Service</code>, or <code>dstack.api.DevEnvironment</code>, you can specify the <code>image</code> argument. If <code>image</code> isn't specified, the default image will be used. For a private Docker registry, ensure you also pass the <code>registry_auth</code> argument.</li>
-<li>The <code>repo</code> argument in the <code>apply_configuration</code> method allows the mounting of a local folder, a remote repo, or a
+<li>The <code>repo</code> argument in the <code>apply_configuration</code> method allows the mounting of a remote repo or a
    programmatically created repo. In this case, the <code>commands</code> argument can refer to the files within this repo.</li>
 <li>The <code>attach</code> method waits for the run to start and, for <code>dstack.api.Task</code> sets up an SSH tunnel and forwards
 configured <code>ports</code> to <code>localhost</code>.</li>
@@ -4625,7 +4631,7 @@ Use this method to apply configurations without getting a run plan first.</p>
                 <code>configuration</code>
             </td>
             <td>
-                  <code><span title="Union">Union</span>[<span title="dstack.api.Task">Task</span>, <span title="dstack.api.Service">Service</span>, <span title="dstack.api.DevEnvironment">DevEnvironment</span>]</code>
+                  <code><span title="typing.Union">Union</span>[<span title="dstack.api.Task">Task</span>, <span title="dstack.api.Service">Service</span>, <span title="dstack.api.DevEnvironment">DevEnvironment</span>]</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -4641,7 +4647,7 @@ Use this method to apply configurations without getting a run plan first.</p>
                 <code>repo</code>
             </td>
             <td>
-                  <code><span title="Union">Union</span>[<span title="dstack._internal.core.models.repos.local.LocalRepo">LocalRepo</span>, <span title="dstack._internal.core.models.repos.remote.RemoteRepo">RemoteRepo</span>, <span title="dstack._internal.core.models.repos.virtual.VirtualRepo">VirtualRepo</span>, None]</code>
+                  <code><span title="typing.Union">Union</span>[<span title="dstack._internal.core.models.repos.remote.RemoteRepo">RemoteRepo</span>, <span title="dstack._internal.core.models.repos.virtual.VirtualRepo">VirtualRepo</span>, None]</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -4698,6 +4704,25 @@ Use this method to apply configurations without getting a run plan first.</p>
             </td>
             <td>
                   <code>True</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>ssh_identity_file</code>
+            </td>
+            <td>
+                  <code><span title="typing.Optional">Optional</span>[<span title="dstack._internal.utils.path.PathLike">PathLike</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Path to the private SSH key file. The corresponding public key
+(<code>.pub</code> file) is read and included in the run plan, allowing SSH access to the instances.
+If the <code>.pub</code> file does not exist, it is generated automatically.
+If ssh_identity_file is not specified, the user key is used.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
             </td>
           </tr>
       </tbody>
@@ -4778,7 +4803,7 @@ Use this method to apply run plans returned by <code>get_run_plan</code>.</p>
                 <code>repo</code>
             </td>
             <td>
-                  <code><span title="Union">Union</span>[<span title="dstack._internal.core.models.repos.local.LocalRepo">LocalRepo</span>, <span title="dstack._internal.core.models.repos.remote.RemoteRepo">RemoteRepo</span>, <span title="dstack._internal.core.models.repos.virtual.VirtualRepo">VirtualRepo</span>, None]</code>
+                  <code><span title="typing.Union">Union</span>[<span title="dstack._internal.core.models.repos.remote.RemoteRepo">RemoteRepo</span>, <span title="dstack._internal.core.models.repos.virtual.VirtualRepo">VirtualRepo</span>, None]</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -4912,7 +4937,7 @@ Use this method to apply run plans returned by <code>get_run_plan</code>.</p>
 
 
 <h4 id="dstack.api.RunCollection.get_run_plan" class="doc doc-heading">
-<code class="doc-symbol doc-symbol-heading doc-symbol-method"></code>            <code class="highlight language-python"><span class="n">get_run_plan</span><span class="p">(</span><span class="n">configuration</span><span class="p">,</span> <span class="n">repo</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">profile</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">configuration_path</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">repo_dir</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">ssh_identity_file</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+<code class="doc-symbol doc-symbol-heading doc-symbol-method"></code>            <code class="highlight language-python"><span class="n">get_run_plan</span><span class="p">(</span><span class="n">configuration</span><span class="p">,</span> <span class="n">repo</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">profile</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">configuration_path</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">repo_dir</span><span class="o">=</span><span class="n">Deprecated</span><span class="o">.</span><span class="n">PLACEHOLDER</span><span class="p">,</span> <span class="n">ssh_identity_file</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
 
 <a href="#dstack.api.RunCollection.get_run_plan" class="headerlink" title="Permanent link">&para;</a></h4>
 
@@ -4939,7 +4964,7 @@ Use this method to see the run plan before applying the configuration.</p>
                 <code>configuration</code>
             </td>
             <td>
-                  <code><span title="Union">Union</span>[<span title="dstack.api.Task">Task</span>, <span title="dstack.api.Service">Service</span>, <span title="dstack.api.DevEnvironment">DevEnvironment</span>]</code>
+                  <code><span title="typing.Union">Union</span>[<span title="dstack.api.Task">Task</span>, <span title="dstack.api.Service">Service</span>, <span title="dstack.api.DevEnvironment">DevEnvironment</span>]</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -4955,7 +4980,7 @@ Use this method to see the run plan before applying the configuration.</p>
                 <code>repo</code>
             </td>
             <td>
-                  <code><span title="Union">Union</span>[<span title="dstack._internal.core.models.repos.local.LocalRepo">LocalRepo</span>, <span title="dstack._internal.core.models.repos.remote.RemoteRepo">RemoteRepo</span>, <span title="dstack._internal.core.models.repos.virtual.VirtualRepo">VirtualRepo</span>, None]</code>
+                  <code><span title="typing.Union">Union</span>[<span title="dstack._internal.core.models.repos.remote.RemoteRepo">RemoteRepo</span>, <span title="dstack._internal.core.models.repos.virtual.VirtualRepo">VirtualRepo</span>, None]</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -5001,16 +5026,17 @@ is not loaded from a file.</p>
           </tr>
           <tr class="doc-section-item">
             <td>
-                <code>repo_dir</code>
+                <code>ssh_identity_file</code>
             </td>
             <td>
-                  <code><span title="typing.Optional">Optional</span>[<span title="str">str</span>]</code>
+                  <code><span title="typing.Optional">Optional</span>[<span title="dstack._internal.utils.path.PathLike">PathLike</span>]</code>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>The path of the cloned repo inside the run container. If not set,
-defaults first to the <code>repos[0].path</code> property of the configuration (for remote
-repos only).</p>
+                <p>Path to the private SSH key file. The corresponding public key
+(<code>.pub</code> file) is read and included in the run plan, allowing SSH access to the instances.
+If the <code>.pub</code> file does not exist, it is generated automatically.
+If ssh_identity_file is not specified, the user key is used.</p>
               </div>
             </td>
             <td>
@@ -5287,7 +5313,7 @@ repos only).</p>
         <p>Initializes the repo and configures its credentials in the project.
 Must be invoked before mounting the repo to a run.</p>
 <p>Example:</p>
-<div class="highlight"><pre><span></span><code><span class="n">repo</span><span class="o">=</span><span class="n">RemoteRepo</span><span class="o">.</span><span class="n">from_url</span><span class="p">(</span>
+<div class="highlight"><pre><span></span><code><span class="n">repo</span> <span class="o">=</span> <span class="n">RemoteRepo</span><span class="o">.</span><span class="n">from_url</span><span class="p">(</span>
     <span class="n">repo_url</span><span class="o">=</span><span class="s2">&quot;https://github.com/dstackai/dstack-examples&quot;</span><span class="p">,</span>
     <span class="n">repo_branch</span><span class="o">=</span><span class="s2">&quot;main&quot;</span><span class="p">,</span>
 <span class="p">)</span>
@@ -5319,7 +5345,7 @@ You can override these credentials via the <code>git_identity_file</code> or <co
                 <code>repo</code>
             </td>
             <td>
-                  <code><span title="dstack._internal.core.models.repos.base.Repo">Repo</span></code>
+                  <code><span title="dstack._internal.core.models.repos.Repo">Repo</span></code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -5417,7 +5443,7 @@ and <code>oauth_token</code> are ignored.</p>
                 <code>repo</code>
             </td>
             <td>
-                  <code><span title="dstack._internal.core.models.repos.base.Repo">Repo</span></code>
+                  <code><span title="dstack._internal.core.models.repos.Repo">Repo</span></code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -5465,165 +5491,6 @@ the user's credentials. Ignored for other repo types.</p>
             <td>
               <div class="doc-md-description">
                 <p>Whether the repo is initialized or not.</p>
-              </div>
-            </td>
-          </tr>
-      </tbody>
-    </table>
-
-
-    </div>
-
-</div>
-
-<div class="doc doc-object doc-function">
-
-
-<h4 id="dstack.api.RepoCollection.load" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">load</span><span class="p">(</span><span class="n">repo_dir</span><span class="p">,</span> <span class="n">local</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">init</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">git_identity_file</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">oauth_token</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
-
-<a href="#dstack.api.RepoCollection.load" class="headerlink" title="Permanent link">&para;</a></h4>
-
-
-    <div class="doc doc-contents ">
-
-        <p>Loads the repo from the local directory using global config</p>
-
-
-<p><span class="doc-section-title">Parameters:</span></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Type</th>
-          <th>Description</th>
-          <th>Default</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td>
-                <code>repo_dir</code>
-            </td>
-            <td>
-                  <code><span title="dstack._internal.utils.path.PathLike">PathLike</span></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>Repo root directory.</p>
-              </div>
-            </td>
-            <td>
-                <em>required</em>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                <code>local</code>
-            </td>
-            <td>
-                  <code><span title="bool">bool</span></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>Do not try to load <code>RemoteRepo</code> first.</p>
-              </div>
-            </td>
-            <td>
-                  <code>False</code>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                <code>init</code>
-            </td>
-            <td>
-                  <code><span title="bool">bool</span></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>Initialize the repo if it's not initialized.</p>
-              </div>
-            </td>
-            <td>
-                  <code>False</code>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                <code>git_identity_file</code>
-            </td>
-            <td>
-                  <code><span title="typing.Optional">Optional</span>[<span title="dstack._internal.utils.path.PathLike">PathLike</span>]</code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>Path to an SSH private key to access the remote repo.</p>
-              </div>
-            </td>
-            <td>
-                  <code>None</code>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                <code>oauth_token</code>
-            </td>
-            <td>
-                  <code><span title="typing.Optional">Optional</span>[<span title="str">str</span>]</code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>GitHub OAuth token to access the remote repo.</p>
-              </div>
-            </td>
-            <td>
-                  <code>None</code>
-            </td>
-          </tr>
-      </tbody>
-    </table>
-
-
-<p><span class="doc-section-title">Raises:</span></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Type</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td>
-                  <code><span title="dstack._internal.core.errors.ConfigurationError">ConfigurationError</span></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>If the repo is not initialized and <code>init</code> is <code>False</code>.</p>
-              </div>
-            </td>
-          </tr>
-      </tbody>
-    </table>
-
-
-    <p><span class="doc-section-title">Returns:</span></p>
-    <table>
-      <thead>
-        <tr>
-<th>Name</th>          <th>Type</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-<td><code>repo</code></td>            <td>
-                  <code><span title="typing.Union">Union</span>[<span title="dstack._internal.core.models.repos.RemoteRepo">RemoteRepo</span>, <span title="dstack._internal.core.models.repos.LocalRepo">LocalRepo</span>]</code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>Initialized repo.</p>
               </div>
             </td>
           </tr>
@@ -6159,130 +6026,7 @@ the user's credentials. Ignored for other repo types.</p>
 <h6 class="reference-item" id="compute_capability"><code>compute_capability</code> - (Optional) The minimum compute capability of the GPU (e.g., <code>7.5</code>).<a class="headerlink" href="#compute_capability" title="Permanent link">&para;</a></h6>
 <h3 id="dstack.api.Disk"><code>dstack.api.Disk</code><a class="headerlink" href="#dstack.api.Disk" title="Permanent link">&para;</a></h3>
 <h6 class="reference-item" id="size"><code>size</code> -  Disk size.<a class="headerlink" href="#size" title="Permanent link">&para;</a></h6>
-<h3 id="dstack.api.LocalRepo"><code>dstack.api.LocalRepo</code><a class="headerlink" href="#dstack.api.LocalRepo" title="Permanent link">&para;</a></h3>
-
-
-<div class="doc doc-object doc-class">
-
-
-
-
-    <div class="doc doc-contents first">
-
-
-
-        <p>Creates an instance of a local repo from a local path.</p>
-<p>Example:</p>
-<div class="highlight"><pre><span></span><code><span class="n">run</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">runs</span><span class="o">.</span><span class="n">apply_configuration</span><span class="p">(</span>
-    <span class="n">configuration</span><span class="o">=...</span><span class="p">,</span>
-    <span class="n">repo</span><span class="o">=</span><span class="n">LocalRepo</span><span class="o">.</span><span class="n">from_dir</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">),</span> <span class="c1"># Mount the current folder to the run</span>
-<span class="p">)</span>
-</code></pre></div>
-
-
-
-
-
-
-
-
-
-
-
-<div class="doc doc-children">
-
-
-
-
-
-
-
-
-
-
-<div class="doc doc-object doc-function">
-
-
-<h4 id="dstack.api.LocalRepo.from_dir" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">from_dir</span><span class="p">(</span><span class="n">repo_dir</span><span class="p">)</span></code>
-
-  <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-staticmethod"><code>staticmethod</code></small>
-  </span>
-
-<a href="#dstack.api.LocalRepo.from_dir" class="headerlink" title="Permanent link">&para;</a></h4>
-
-
-    <div class="doc doc-contents ">
-
-        <p>Creates an instance of a local repo from a local path.</p>
-
-
-<p><span class="doc-section-title">Parameters:</span></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Type</th>
-          <th>Description</th>
-          <th>Default</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td>
-                <code>repo_dir</code>
-            </td>
-            <td>
-                  <code><span title="dstack._internal.utils.path.PathLike">PathLike</span></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>The path to a local folder.</p>
-              </div>
-            </td>
-            <td>
-                <em>required</em>
-            </td>
-          </tr>
-      </tbody>
-    </table>
-
-
-    <p><span class="doc-section-title">Returns:</span></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Type</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td>
-                  <code><span title="dstack._internal.core.models.repos.local.LocalRepo">LocalRepo</span></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>A local repo instance.</p>
-              </div>
-            </td>
-          </tr>
-      </tbody>
-    </table>
-
-
-    </div>
-
-</div>
-
-
-
-  </div>
-
-    </div>
-
-</div><h3 id="dstack.api.RemoteRepo"><code>dstack.api.RemoteRepo</code><a class="headerlink" href="#dstack.api.RemoteRepo" title="Permanent link">&para;</a></h3>
+<h3 id="dstack.api.RemoteRepo"><code>dstack.api.RemoteRepo</code><a class="headerlink" href="#dstack.api.RemoteRepo" title="Permanent link">&para;</a></h3>
 
 
 <div class="doc doc-object doc-class">
@@ -6299,7 +6043,7 @@ the user's credentials. Ignored for other repo types.</p>
 <div class="highlight"><pre><span></span><code><span class="n">repo</span><span class="o">=</span><span class="n">RemoteRepo</span><span class="o">.</span><span class="n">from_dir</span><span class="p">(</span><span class="n">repo_dir</span><span class="o">=</span><span class="s2">&quot;.&quot;</span><span class="p">)</span>
 </code></pre></div>
 <p>Using a remote Git repo by a URL:</p>
-<div class="highlight"><pre><span></span><code><span class="n">repo</span><span class="o">=</span><span class="n">RemoteRepo</span><span class="o">.</span><span class="n">from_url</span><span class="p">(</span>
+<div class="highlight"><pre><span></span><code><span class="n">repo</span> <span class="o">=</span> <span class="n">RemoteRepo</span><span class="o">.</span><span class="n">from_url</span><span class="p">(</span>
     <span class="n">repo_url</span><span class="o">=</span><span class="s2">&quot;https://github.com/dstackai/dstack-examples&quot;</span><span class="p">,</span>
     <span class="n">repo_branch</span><span class="o">=</span><span class="s2">&quot;main&quot;</span>
 <span class="p">)</span>
@@ -6804,7 +6548,7 @@ You can override these credentials via the <code>git_identity_file</code> or <co
             </td>
             <td>
               <div class="doc-md-description">
-                <p>DataCrunch</p>
+                <p>DataCrunch (for backward compatibility)</p>
               </div>
             </td>
           </tr>
@@ -6926,6 +6670,17 @@ You can override these credentials via the <code>git_identity_file</code> or <co
             <td>
               <div class="doc-md-description">
                 <p>Vast.ai Marketplace</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><span title="dstack.api.BackendType.VERDA">VERDA</span></code></td>
+            <td>
+                  <code><span title="dstack._internal.core.models.backends.base.BackendType">BackendType</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Verda Cloud</p>
               </div>
             </td>
           </tr>
