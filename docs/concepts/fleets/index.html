@@ -3006,14 +3006,14 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../../examples/clusters/a4/" class="md-nav__link">
+      <a href="../../../examples/clusters/gcp/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    GCP A4
+    GCP
   
 
     
@@ -3034,14 +3034,14 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../../examples/clusters/a3mega/" class="md-nav__link">
+      <a href="../../../examples/clusters/aws/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    GCP A3 Mega
+    AWS
   
 
     
@@ -3062,42 +3062,14 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../../examples/clusters/a3high/" class="md-nav__link">
+      <a href="../../../examples/clusters/crusoe/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    GCP A3 High
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../examples/clusters/efa/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    AWS EFA
+    Crusoe
   
 
     
@@ -4231,7 +4203,7 @@ This ensures all instances are provisioned with optimal inter-node connectivity.
 <p>When you create a fleet with AWS, <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/efa.html">Elastic Fabric Adapter networking</a> is automatically configured if it’s supported for the corresponding instance type.
 Note, EFA requires the <code>public_ips</code> to be set to <code>false</code> in the <code>aws</code> backend configuration.
 Otherwise, instances are only connected by the default VPC subnet.</p>
-<p>Refer to the <a href="../../../examples/clusters/efa/">EFA</a> example for more details.</p>
+<p>Refer to the <a href="../../../examples/clusters/aws/">AWS</a> example for more details.</p>
 </details>
 <details class="info">
 <summary>GCP</summary>
@@ -4239,9 +4211,7 @@ Otherwise, instances are only connected by the default VPC subnet.</p>
 <div class="admonition info">
 <p class="admonition-title">Backend configuration</p>
 <p>You may need to configure <code>extra_vpcs</code> and <code>roce_vpcs</code> in the <code>gcp</code> backend configuration.
-Refer to the <a href="../../../examples/clusters/a4/">A4</a>,
-<a href="../../../examples/clusters/a3mega/">A3 Mega</a>, and 
-<a href="../../../examples/clusters/a3high/">A3 High</a> examples for more details.</p>
+Refer to the <a href="../../../examples/clusters/gcp/">GCP</a> examples for more details.</p>
 </div>
 </details>
 <details class="info">

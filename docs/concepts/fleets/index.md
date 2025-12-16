@@ -107,16 +107,14 @@ This ensures all instances are provisioned with optimal inter-node connectivity.
     Note, EFA requires the `public_ips` to be set to `false` in the `aws` backend configuration.
     Otherwise, instances are only connected by the default VPC subnet.
 
-    Refer to the [EFA](../../examples/clusters/efa/index.md) example for more details.
+    Refer to the [AWS](../../examples/clusters/aws/index.md) example for more details.
 
 ??? info "GCP"
     When you create a fleet with GCP, `dstack` automatically configures [GPUDirect-TCPXO and GPUDirect-TCPX](https://cloud.google.com/kubernetes-engine/docs/how-to/gpu-bandwidth-gpudirect-tcpx-autopilot) networking for the A3 Mega and A3 High instance types, as well as RoCE networking for the A4 instance type.
 
     !!! info "Backend configuration"    
         You may need to configure `extra_vpcs` and `roce_vpcs` in the `gcp` backend configuration.
-        Refer to the [A4](../../examples/clusters/a4/index.md),
-        [A3 Mega](../../examples/clusters/a3mega/index.md), and 
-        [A3 High](../../examples/clusters/a3high/index.md) examples for more details.
+        Refer to the [GCP](../../examples/clusters/gcp/index.md) examples for more details.
 
 ??? info "Nebius"
     When you create a fleet with Nebius, [InfiniBand networking](https://docs.nebius.com/compute/clusters/gpu) is automatically configured if it’s supported for the corresponding instance type.

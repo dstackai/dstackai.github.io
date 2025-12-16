@@ -1059,6 +1059,19 @@ Support dstack with a ⭐ on
 </li>
         
           <li class="md-nav__item">
+  <a href="#instance-type" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Instance type
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#router" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3000,14 +3013,14 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../../examples/clusters/a4/" class="md-nav__link">
+      <a href="../../../examples/clusters/gcp/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    GCP A4
+    GCP
   
 
     
@@ -3028,14 +3041,14 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../../examples/clusters/a3mega/" class="md-nav__link">
+      <a href="../../../examples/clusters/aws/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    GCP A3 Mega
+    AWS
   
 
     
@@ -3056,42 +3069,14 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../../examples/clusters/a3high/" class="md-nav__link">
+      <a href="../../../examples/clusters/crusoe/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    GCP A3 High
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../examples/clusters/efa/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    AWS EFA
+    Crusoe
   
 
     
@@ -3956,6 +3941,19 @@ Support dstack with a ⭐ on
 </li>
         
           <li class="md-nav__item">
+  <a href="#instance-type" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Instance type
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#router" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -4174,6 +4172,24 @@ Provisioning...
 <p>Gateways in <code>kubernetes</code> backend require an external load balancer. Managed Kubernetes solutions usually include a load balancer.
 For self-hosted Kubernetes, you must provide a load balancer by yourself.</p>
 </details>
+<h3 id="instance-type">Instance type<a class="headerlink" href="#instance-type" title="Permanent link">&para;</a></h3>
+<p>By default, <code>dstack</code> provisions a small, low-cost instance for the gateway. If you expect to run high-traffic services, you can configure a larger instance type using the <code>instance_type</code> property.</p>
+<div editor-title="gateway.dstack.yml">
+
+<div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gateway</span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">example-gateway</span>
+
+<span class="nt">backend</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">aws</span>
+<span class="nt">region</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">eu-west-1</span>
+
+<span class="c1"># (Optional) Override the gateway instance type</span>
+<span class="nt">instance_type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">t3.large</span>
+
+<span class="nt">domain</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">example.com</span>
+</code></pre></div>
+
+</div>
+
 <h3 id="router">Router<a class="headerlink" href="#router" title="Permanent link">&para;</a></h3>
 <p>By default, the gateway uses its own load balancer to route traffic between replicas. However, you can delegate this responsibility to a specific router by setting the <code>router</code> property. Currently, the only supported external router is <code>sglang</code>.</p>
 <h4 id="sglang">SGLang<a class="headerlink" href="#sglang" title="Permanent link">&para;</a></h4>

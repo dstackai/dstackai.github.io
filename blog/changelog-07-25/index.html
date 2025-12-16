@@ -2807,14 +2807,14 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../examples/clusters/a4/" class="md-nav__link">
+      <a href="../../examples/clusters/gcp/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    GCP A4
+    GCP
   
 
     
@@ -2835,14 +2835,14 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../examples/clusters/a3mega/" class="md-nav__link">
+      <a href="../../examples/clusters/aws/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    GCP A3 Mega
+    AWS
   
 
     
@@ -2863,42 +2863,14 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../examples/clusters/a3high/" class="md-nav__link">
+      <a href="../../examples/clusters/crusoe/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    GCP A3 High
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../examples/clusters/efa/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    AWS EFA
+    Crusoe
   
 
     
@@ -3933,7 +3905,7 @@ Update<span class="w"> </span>the<span class="w"> </span>run?<span class="w"> </
 </div>
 
 <h4 id="aws-efa">AWS EFA<a class="headerlink" href="#aws-efa" title="Permanent link">&para;</a></h4>
-<p>EFA is a network interface for EC2 that enables low-latency, high-bandwidth communication between nodes—crucial for scaling distributed deep learning. With <code>dstack</code>, EFA is automatically enabled when using supported instance types in fleets. Check out our <a href="../../examples/clusters/efa/">example</a></p>
+<p>EFA is a network interface for EC2 that enables low-latency, high-bandwidth communication between nodes—crucial for scaling distributed deep learning. With <code>dstack</code>, EFA is automatically enabled when using supported instance types in fleets. Check out our <a href="../../examples/clusters/aws/">example</a></p>
 <h4 id="default-docker-images">Default Docker images<a class="headerlink" href="#default-docker-images" title="Permanent link">&para;</a></h4>
 <p>If no <code>image</code> is specified, <code>dstack</code> uses a base Docker image that now comes pre-configured with <code>uv</code>, <code>python</code>, <code>pip</code>, essential CUDA drivers, InfiniBand, and NCCL tests (located at <code>/opt/nccl-tests/build</code>).  </p>
 <div editor-title="examples/clusters/nccl-tests/.dstack.yml">
