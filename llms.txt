@@ -36,8 +36,7 @@
 - [TRL](https://dstack.ai/examples/distributed-training/trl/index.md): TRL
 - [Axolotl](https://dstack.ai/examples/distributed-training/axolotl/index.md): Axolotl
 - [Ray+RAGEN](https://dstack.ai/examples/distributed-training/ray-ragen/index.md): Ray+RAGEN
-- [NCCL tests](https://dstack.ai/examples/clusters/nccl-tests/index.md): NCCL tests
-- [RCCL tests](https://dstack.ai/examples/clusters/rccl-tests/index.md): RCCL tests
+- [NCCL/RCCL tests](https://dstack.ai/examples/clusters/nccl-rccl-tests/index.md): NCCL/RCCL tests
 - [SGLang](https://dstack.ai/examples/inference/sglang/index.md): SGLang
 - [vLLM](https://dstack.ai/examples/inference/vllm/index.md): vLLM
 - [NIM](https://dstack.ai/examples/inference/nim/index.md): NIM
