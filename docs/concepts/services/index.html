@@ -2208,6 +2208,34 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
+      <a href="../../reference/cli/dstack/event/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    dstack event
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../reference/cli/dstack/project/" class="md-nav__link">
         
   
@@ -4943,14 +4971,9 @@ If you need <code>nvcc</code>, set the <a href="../../reference/dstack.yml/dev-e
 <!-- TODO: Ellaborate on using environment variables in `registry_auth` -->
 
 <h3 id="working-directory">Working directory<a class="headerlink" href="#working-directory" title="Permanent link">&para;</a></h3>
-<p>If <code>working_dir</code> is not specified, it defaults to <code>/workflow</code>.</p>
-<div class="admonition info">
-<p class="admonition-title">No commands</p>
-<p>If you’re using a custom <code>image</code> without <code>commands</code>, then <code>working_dir</code> is taken from <code>image</code>.</p>
-</div>
+<p>If <code>working_dir</code> is not specified, it defaults to the working directory set in the Docker image. For example, the <a href="#default-image">default image</a> uses <code>/dstack/run</code> as its working directory.</p>
+<p>If the Docker image does not have a working directory set, <code>dstack</code> uses <code>/</code> as the <code>working_dir</code>.</p>
 <p>The <code>working_dir</code> must be an absolute path. The tilde (<code>~</code>) is supported (e.g., <code>~/my-working-dir</code>).</p>
-<!-- TODO: In a future version, the default working directory will be taken from `image`. -->
-
 <!-- TODO: Elaborate on `entrypoint` -->
 
 <h3 id="files">Files<a class="headerlink" href="#files" title="Permanent link">&para;</a></h3>
@@ -4963,7 +4986,7 @@ If you need <code>nvcc</code>, set the <a href="../../reference/dstack.yml/dev-e
 <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">llama-2-7b-service</span>
 
 <span class="nt">files</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">.:examples</span><span class="w">  </span><span class="c1"># Maps the directory where `.dstack.yml` to `/workflow/examples`</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">.:examples</span><span class="w">  </span><span class="c1"># Maps the directory with `.dstack.yml` to `&lt;working dir&gt;/examples`</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">~/.ssh/id_rsa:/root/.ssh/id_rsa</span><span class="w">  </span><span class="c1"># Maps `~/.ssh/id_rsa` to `/root/.ssh/id_rsa`</span>
 
 <span class="nt">python</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.12</span>
@@ -4982,9 +5005,9 @@ If you need <code>nvcc</code>, set the <a href="../../reference/dstack.yml/dev-e
 
 </div>
 
-<p>Each entry maps a local directory or file to a path inside the container. Both local and container paths can be relative or absolute.</p>
-<p>If the local path is relative, it’s resolved relative to the configuration file. If the container path is relative, it’s resolved relative to <code>/workflow</code>.</p>
-<p>The container path is optional. If not specified, it will be automatically calculated.</p>
+<p>If the local path is relative, it’s resolved relative to the configuration file.
+If the container path is relative, it’s resolved relative to the <a href="#working-directory">working directory</a>.</p>
+<p>The container path is optional. If not specified, it will be automatically calculated:</p>
 <!-- TODO: Add a more relevant example -->
 
 <div editor-title="examples/.dstack.yml"> 
@@ -4993,7 +5016,7 @@ If you need <code>nvcc</code>, set the <a href="../../reference/dstack.yml/dev-e
 <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">llama-2-7b-service</span>
 
 <span class="nt">files</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">../examples</span><span class="w">  </span><span class="c1"># Maps `examples` (the parent directory of `.dstack.yml`) to `/workflow/examples`</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">../examples</span><span class="w">  </span><span class="c1"># Maps the parent directory of `.dstack.yml` to `&lt;working dir&gt;/../examples`</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">~/.ssh/id_rsa</span><span class="w">  </span><span class="c1"># Maps `~/.ssh/id_rsa` to `/root/.ssh/id_rsa`</span>
 
 <span class="nt">python</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.12</span>
@@ -5019,8 +5042,8 @@ by listing it via <code>.gitignore</code> or <code>.dstackignore</code>.
 The 2MB upload limit can be increased by setting the <code>DSTACK_SERVER_CODE_UPLOAD_LIMIT</code> environment variable.</p>
 </details>
 <h3 id="repos">Repos<a class="headerlink" href="#repos" title="Permanent link">&para;</a></h3>
-<p>Sometimes, you may want to mount an entire Git repo inside the container.</p>
-<p>Imagine you have a cloned Git repo containing an <code>examples</code> subdirectory with a <code>.dstack.yml</code> file:</p>
+<p>Sometimes, you may want to clone an entire Git repo inside the container.</p>
+<p>Imagine you have a Git repo (clonned locally) containing an <code>examples</code> subdirectory with a <code>.dstack.yml</code> file:</p>
 <!-- TODO: Add a more relevant example -->
 
 <div editor-title="examples/.dstack.yml"> 
@@ -5029,8 +5052,7 @@ The 2MB upload limit can be increased by setting the <code>DSTACK_SERVER_CODE_UP
 <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">llama-2-7b-service</span>
 
 <span class="nt">repos</span><span class="p">:</span>
-<span class="w">  </span><span class="c1"># Mounts the parent directory of `examples` (must be a Git repo)</span>
-<span class="w">  </span><span class="c1">#   to `/workflow` (the default working directory)</span>
+<span class="w">  </span><span class="c1"># Clones the repo from the parent directory (`examples/..`) to `&lt;working dir&gt;`</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">..</span>
 
 <span class="nt">python</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.12</span>
@@ -5049,11 +5071,11 @@ The 2MB upload limit can be increased by setting the <code>DSTACK_SERVER_CODE_UP
 
 </div>
 
-<p>When you run it, <code>dstack</code> fetches the repo on the instance, applies your local changes, and mounts it—so the container matches your local repo.</p>
+<p>When you run it, <code>dstack</code> clones the repo on the instance, applies your local changes, and mounts it—so the container matches your local repo.</p>
 <p>The local path can be either relative to the configuration file or absolute.</p>
 <details class="info">
 <summary>Repo directory</summary>
-<p>By default, <code>dstack</code> mounts the repo to <code>/workflow</code> (the default working directory).</p>
+<p>By default, <code>dstack</code> clones the repo to the <a href="#working-directory">working directory</a>.</p>
 <!-- TODO: In a future version, the default working directory will come from the image, so this should be revisited. -->
 <p>You can override the repo directory using either a relative or an absolute path:</p>
 <p><div editor-title="examples/.dstack.yml"> </p>
@@ -5061,8 +5083,7 @@ The 2MB upload limit can be increased by setting the <code>DSTACK_SERVER_CODE_UP
 <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">llama-2-7b-service</span>
 
 <span class="nt">repos</span><span class="p">:</span>
-<span class="w">  </span><span class="c1"># Mounts the parent directory of `examples` (must be a Git repo)</span>
-<span class="w">  </span><span class="c1">#   to `/my-repo`</span>
+<span class="w">  </span><span class="c1"># Clones the repo in the parent directory (`examples/..`) to `/my-repo`</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">..:/my-repo</span>
 
 <span class="nt">python</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.12</span>
@@ -5079,7 +5100,32 @@ The 2MB upload limit can be increased by setting the <code>DSTACK_SERVER_CODE_UP
 <span class="w">  </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">24GB</span>
 </code></pre></div>
 </div>
-<p>If the path is relative, it is resolved against <code>working_dir</code>.</p>
+<blockquote>
+<p>If the repo directory is relative, it is resolved against <a href="#working-directory">working directory</a>.</p>
+</blockquote>
+<p>If the repo directory is not empty, the run will fail with a runner error.<br />
+To override this behavior, you can set <code>if_exists</code> to <code>skip</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service</span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">llama-2-7b-service</span><span class="w">   </span>
+
+<span class="nt">repos</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">local_path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">..</span>
+<span class="w">    </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/my-repo</span>
+<span class="w">    </span><span class="nt">if_exists</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">skip</span>
+
+<span class="nt">python</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.12</span>
+
+<span class="nt">env</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HF_TOKEN</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MODEL=NousResearch/Llama-2-7b-chat-hf</span>
+<span class="nt">commands</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uv pip install vllm</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python -m vllm.entrypoints.openai.api_server --model $MODEL --port 8000</span>
+<span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8000</span>
+
+<span class="nt">resources</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">24GB</span>
+</code></pre></div>
 </details>
 <details class="info">
 <summary>Repo size</summary>
@@ -5089,14 +5135,14 @@ You can increase the 2MB limit by setting the <code>DSTACK_SERVER_CODE_UPLOAD_LI
 </details>
 <details class="info">
 <summary>Repo URL</summary>
-<p>Sometimes you may want to mount a Git repo without cloning it locally. In this case, simply provide a URL in <code>repos</code>:</p>
+<p>Sometimes you may want to clone a Git repo within the container without cloning it locally. In this case, simply provide a URL in <code>repos</code>:</p>
 <!-- TODO: Add a more relevant example -->
 <p><div editor-title="examples/.dstack.yml"> </p>
 <div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service</span>
 <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">llama-2-7b-service</span>
 
 <span class="nt">repos</span><span class="p">:</span>
-<span class="w">  </span><span class="c1"># Clone the specified repo to `/workflow` (the default working directory)</span>
+<span class="w">  </span><span class="c1"># Clone the repo to `&lt;working dir&gt;`</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://github.com/dstackai/dstack</span>
 
 <span class="nt">python</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.12</span>
@@ -5118,11 +5164,11 @@ You can increase the 2MB limit by setting the <code>DSTACK_SERVER_CODE_UPLOAD_LI
 <summary>Private repos</summary>
 <p>If a Git repo is private, <code>dstack</code> will automatically try to use your default Git credentials (from
 <code>~/.ssh/config</code> or <code>~/.config/gh/hosts.yml</code>).</p>
-<p>If you want to use custom credentials, you can provide them with <a href="../../reference/cli/dstack/init/"><code>dstack init</code></a>.</p>
-</details>
 <blockquote>
-<p>Currently, you can configure up to one repo per run configuration.</p>
+<p>If you want to use custom credentials, you can provide them with <a href="../../reference/cli/dstack/init/"><code>dstack init</code></a>.</p>
 </blockquote>
+</details>
+<p>Currently, you can configure up to one repo per run configuration.</p>
 <h3 id="retry-policy">Retry policy<a class="headerlink" href="#retry-policy" title="Permanent link">&para;</a></h3>
 <p>By default, if <code>dstack</code> can't find capacity, or the service exits with an error, or the instance is interrupted, the run will fail.</p>
 <p>If you'd like <code>dstack</code> to automatically retry, configure the 
