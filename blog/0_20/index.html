@@ -3979,7 +3979,7 @@ Support dstack with a ⭐ on
 <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">default</span>
 
 <span class="c1"># Can be a range or a fixed number</span>
-<span class="c1"># Allow to provision of up to 2 instances</span>
+<span class="c1"># Allow to provision up to 2 instances</span>
 <span class="nt">nodes</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0..2</span>
 
 <span class="c1"># Uncomment to ensure instances are inter-connected</span>
@@ -4011,7 +4011,7 @@ Support dstack with a ⭐ on
 <p>This release updates several defaults related to run configuration. The goal is to reduce implicit assumptions and make it more convenient.</p>
 <h3 id="working-directory">Working directory<a class="headerlink" href="#working-directory" title="Permanent link">&para;</a></h3>
 <p>Previously, the <code>working_dir</code> property defaulted to <code>/workflow</code>. Now, the default working directory is always taken from the Docker image.</p>
-<p>The working directory in the default Docker images (if you don't specify image) is now set to <code>/dstack/run</code>.</p>
+<p>The working directory in the default Docker images (if you don't specify <code>image</code>) is now set to <code>/dstack/run</code>.</p>
 <h3 id="repo-directory">Repo directory<a class="headerlink" href="#repo-directory" title="Permanent link">&para;</a></h3>
 <p>Previously, if you didn't specify a repo path, the repo was cloned to <code>/workflow</code>. Now, in that case the repo will be cloned to the working directory.</p>
 <div editor-title="examples/.dstack.yml"> 
