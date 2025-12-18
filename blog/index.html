@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../assets/images/dstack-fav-32.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
     
     
       
@@ -33,7 +33,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.618322db.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -3487,6 +3487,17 @@ Support dstack with a ⭐ on
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#dstack-020-ga-fleet-first-ux-and-other-important-changes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        dstack 0.20 GA: Fleet-first UX and other important changes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#how-toffee-streamlines-inference-and-cut-gpu-costs-with-dstack" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3579,17 +3590,6 @@ Support dstack with a ⭐ on
     <span class="md-ellipsis">
       
         Introducing service probes
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#introducing-passive-gpu-health-checks" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Introducing passive GPU health checks
       
     </span>
   </a>
@@ -3860,6 +3860,17 @@ Support dstack with a ⭐ on
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#dstack-020-ga-fleet-first-ux-and-other-important-changes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        dstack 0.20 GA: Fleet-first UX and other important changes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#how-toffee-streamlines-inference-and-cut-gpu-costs-with-dstack" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3958,17 +3969,6 @@ Support dstack with a ⭐ on
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#introducing-passive-gpu-health-checks" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Introducing passive GPU health checks
-      
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -3989,6 +3989,51 @@ Support dstack with a ⭐ on
 
 <h1 id="blog">Blog<a class="headerlink" href="#blog" title="Permanent link">&para;</a></h1>
       </header>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2025-12-18 00:00:00+00:00">December 18, 2025</time></li>
+        
+          <li class="md-meta__item">
+            in
+            
+              <a href="changelog/" class="md-meta__link">Changelog</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              4 min read
+            
+          </li>
+        
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="dstack-020-ga-fleet-first-ux-and-other-important-changes"><a class="toclink" href="0_20/">dstack 0.20 GA: Fleet-first UX and other important changes</a></h2>
+<p>We’re releasing <code>dstack</code> 0.20.0, a major update that improves how teams orchestrate GPU workloads for development, training, and inference. Most <code>dstack</code> updates are incremental and backward compatible, but this version introduces a few major changes to how you work with <code>dstack</code>.</p>
+<p>In <code>dstack</code> 0.20.0, fleets are now a first-class concept, giving you more explicit control over how GPU capacity is provisioned and managed. We’ve also added <em>Events</em>, which record important system activity—such as scheduling decisions, run status changes, and resource lifecycle updates—so it’s easier to understand what’s happening without digging through server logs.</p>
+<p><img src="https://dstack.ai/static-assets/static-assets/images/dstack-0_20.png" width="630" /></p>
+<p>This post goes through the changes in detail and explains how to upgrade and migrate your existing setup.</p>
+
+    
+      <nav class="md-post__action">
+        <a href="0_20/">
+            <span>Continue reading</span>
+            <span class="icon"><svg viewBox="0 0 13 10" xmlns="http://www.w3.org/2000/svg"><path d="M12.823 4.164L8.954.182a.592.592 0 0 0-.854 0 .635.635 0 0 0 0 .88l2.836 2.92H.604A.614.614 0 0 0 0 4.604c0 .344.27.622.604.622h10.332L8.1 8.146a.635.635 0 0 0 0 .88.594.594 0 0 0 .854 0l3.869-3.982a.635.635 0 0 0 0-.88z" fill-rule="nonzero" fill="currentColor" class="fill-main"></path></svg></span>
+        </a>
+      </nav>
+    
+    
+  </div>
+</article>
       
         <article class="md-post md-post--excerpt">
   <header class="md-post__header">
@@ -4375,50 +4420,6 @@ to offer on-demand and spot GPUs, including clusters.</p>
   </div>
 </article>
       
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2025-08-12 00:00:00+00:00">August 12, 2025</time></li>
-        
-          <li class="md-meta__item">
-            in
-            
-              <a href="changelog/" class="md-meta__link">Changelog</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              3 min read
-            
-          </li>
-        
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="introducing-passive-gpu-health-checks"><a class="toclink" href="gpu-helth-checks/">Introducing passive GPU health checks</a></h2>
-<p>In large-scale training, a single bad GPU can derail progress. Sometimes the failure is obvious — jobs crash outright. Other times it’s subtle: correctable memory errors, intermittent instability, or thermal throttling that quietly drags down throughput. In big experiments, these issues can go unnoticed for hours or days, wasting compute and delaying results.</p>
-<p><code>dstack</code> already supports GPU telemetry monitoring through NVIDIA DCGM <a href="../docs/guides/metrics/">metrics</a>, covering utilization, memory, and temperature. This release extends that capability with passive hardware health checks powered by DCGM <a href="https://docs.nvidia.com/datacenter/dcgm/latest/user-guide/feature-overview.html#background-health-checks">background health checks</a>. With these, <code>dstack</code> continuously evaluates fleet GPUs for hardware reliability and displays their status before scheduling workloads.</p>
-<p><img src="https://dstack.ai/static-assets/static-assets/images/gpu-health-checks.png" width="630"/></p>
-
-    
-      <nav class="md-post__action">
-        <a href="gpu-helth-checks/">
-            <span>Continue reading</span>
-            <span class="icon"><svg viewBox="0 0 13 10" xmlns="http://www.w3.org/2000/svg"><path d="M12.823 4.164L8.954.182a.592.592 0 0 0-.854 0 .635.635 0 0 0 0 .88l2.836 2.92H.604A.614.614 0 0 0 0 4.604c0 .344.27.622.604.622h10.332L8.1 8.146a.635.635 0 0 0 0 .88.594.594 0 0 0 .854 0l3.869-3.982a.635.635 0 0 0 0-.88z" fill-rule="nonzero" fill="currentColor" class="fill-main"></path></svg></span>
-        </a>
-      </nav>
-    
-    
-  </div>
-</article>
-      
       
         
           
@@ -4560,13 +4561,13 @@ to offer on-demand and spot GPUs, including clusters.</p>
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["content.tooltips", "navigation.path", "content.code.copy", "content.action.edit", "navigation.tabs", "navigation.sections", "navigation.top", "announce.dismiss", "navigation.tracking", "navigation.footer"], "search": "../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["content.tooltips", "navigation.path", "content.code.copy", "content.action.edit", "navigation.tabs", "navigation.sections", "navigation.top", "announce.dismiss", "navigation.tracking", "navigation.footer"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
 <script src="/assets/javascripts/termynal.js" data-termynal-container="#termynal"></script>
 <script async src="https://tally.so/widgets/embed.js"></script>
 
-      <script src="../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
       
         <script src="../assets/javascripts/extra.js"></script>
       
