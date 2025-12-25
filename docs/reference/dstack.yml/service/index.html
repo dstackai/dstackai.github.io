@@ -2013,6 +2013,34 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
+      <a href="../../cli/dstack/login/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    dstack login
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../cli/dstack/logs/" class="md-nav__link">
         
   
@@ -4192,7 +4220,7 @@ Support dstack with a ⭐ on
 <p>The <code>service</code> configuration type allows running <a href="../../../concepts/services/">services</a>.</p>
 <h2 id="root-reference">Root reference<a class="headerlink" href="#root-reference" title="Permanent link">&para;</a></h2>
 <h6 class="reference-item" id="port"><code>port</code> -  The port the application listens on.<a class="headerlink" href="#port" title="Permanent link">&para;</a></h6>
-<h6 class="reference-item" id="gateway"><code>gateway</code> - (Optional) The name of the gateway. Specify boolean <code>false</code> to run without a gateway. Omit to run with the default gateway.<a class="headerlink" href="#gateway" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="gateway"><code>gateway</code> - (Optional) The name of the gateway. Specify boolean <code>false</code> to run without a gateway. Specify boolean <code>true</code> to run with the default gateway. Omit to run with the default gateway if there is one, or without a gateway otherwise.<a class="headerlink" href="#gateway" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="strip_prefix"><code>strip_prefix</code> - (Optional) Strip the <code>/proxy/services/&lt;project name&gt;/&lt;run name&gt;/</code> path prefix when forwarding requests to the service. Only takes effect when running the service without a gateway. Defaults to <code>True</code>.<a class="headerlink" href="#strip_prefix" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="model"><code>model</code> - (Optional) Mapping of the model for the OpenAI-compatible endpoint provided by <code>dstack</code>. Can be a full model format definition or just a model name. If it's a name, the service is expected to expose an OpenAI-compatible API at the <code>/v1</code> path.<a class="headerlink" href="#model" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="https"><code>https</code> - (Optional) Enable HTTPS if running with a gateway. Defaults to <code>True</code>.<a class="headerlink" href="#https" title="Permanent link">&para;</a></h6>
