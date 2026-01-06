@@ -1240,6 +1240,19 @@ Support dstack with a ⭐ on
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#no-fleets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          No fleets
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#no-offers" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -4016,6 +4029,19 @@ Support dstack with a ⭐ on
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#no-fleets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          No fleets
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#no-offers" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -4227,6 +4253,22 @@ environment variable to <code>DEBUG</code>. By default, it is set to <code>INFO<
 and <a href="https://github.com/dstackai/dstack/issues/1551">this</a>.</p>
 </blockquote>
 <h2 id="typical-issues">Typical issues<a class="headerlink" href="#typical-issues" title="Permanent link">&para;</a></h2>
+<h3 id="no-fleets">No fleets<a class="headerlink" href="#no-fleets" title="Permanent link">&para;</a></h3>
+<p>If you run <code>dstack apply</code> and see <code>No fleets</code> status it can mean two things:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="the-project-has-no-fleets" name="__tabbed_1" type="radio" /><input id="no-matching-fleet-found" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="the-project-has-no-fleets">The project has no fleets</label><label for="no-matching-fleet-found">No matching fleet found</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>In this case, ensure you've created one before submitting runs. This can be either a <a href="../../concepts/fleets/#backend-fleets">backend fleet</a> (if you are using cloud or Kubernetes) or an <a href="../../concepts/fleets/#ssh-fleets">SSH fleet</a> (if you're using on-prem clusters).</p>
+<div class="admonition info">
+<p class="admonition-title">Backend fleets</p>
+<p>Note that creating <a href="../../concepts/fleets/#backend-fleets">backend fleet</a> doesn't necessarily require provisioning instances upfront. If you set <code>nodes</code> to a range, <code>dstack</code> will be able to provision instances as required. See <a href="../../concepts/fleets/#backend-fleets">backend fleet</a> for examples.</p>
+</div>
+</div>
+<div class="tabbed-block">
+<p>This means fleets exist but run requirements do not match the configuration of the fleet. Review your fleets, and ensure that both run and fleet configuration are correct.</p>
+</div>
+</div>
+</div>
 <h3 id="no-offers">No offers<a class="headerlink" href="#no-offers" title="Permanent link">&para;</a></h3>
 <p>If you run <code>dstack apply</code> and don't see any instance offers, it means that
 <code>dstack</code> could not find instances that match the requirements in your configuration.
@@ -4234,15 +4276,13 @@ Below are some of the reasons why this might happen.</p>
 <blockquote>
 <p>Feel free to use <code>dstack offer</code> to view available offers.</p>
 </blockquote>
-<h4 id="cause-1-no-fleets">Cause 1: No fleets<a class="headerlink" href="#cause-1-no-fleets" title="Permanent link">&para;</a></h4>
-<p>Make sure you've created a <a href="../../concepts/fleets/">fleet</a> before submitting any runs.</p>
-<h4 id="cause-2-no-backends">Cause 2: No backends<a class="headerlink" href="#cause-2-no-backends" title="Permanent link">&para;</a></h4>
+<h4 id="cause-1-no-backends">Cause 1: No backends<a class="headerlink" href="#cause-1-no-backends" title="Permanent link">&para;</a></h4>
 <p>If you are not using <a href="../../concepts/fleets/#ssh-fleets">SSH fleets</a>, make sure you have configured at least one <a href="../../concepts/backends/">backends</a>.</p>
 <p>If you have configured a backend but still cannot use it, check the output of <code>dstack server</code> for backend configuration errors.</p>
 <blockquote>
 <p>You can find a list of successfully configured backends on the <a href="../../concepts/projects/#backends">project settings page</a> in the UI.</p>
 </blockquote>
-<h4 id="cause-3-requirements-mismatch">Cause 3: Requirements mismatch<a class="headerlink" href="#cause-3-requirements-mismatch" title="Permanent link">&para;</a></h4>
+<h4 id="cause-2-requirements-mismatch">Cause 2: Requirements mismatch<a class="headerlink" href="#cause-2-requirements-mismatch" title="Permanent link">&para;</a></h4>
 <p>When you apply a configuration, <code>dstack</code> tries to find instances that match the
 <a href="../../reference/dstack.yml/task/#resources"><code>resources</code></a>,
 <a href="../../reference/dstack.yml/task/#backends"><code>backends</code></a>,
@@ -4256,19 +4296,19 @@ properties from the configuration.</p>
 Make sure your configuration doesn't set any conflicting requirements, such as
 <code>regions</code> that don't exist in the specified <code>backends</code>, or <code>instance_types</code> that
 don't match the specified <code>resources</code>.</p>
-<h4 id="cause-4-too-specific-resources">Cause 4: Too specific resources<a class="headerlink" href="#cause-4-too-specific-resources" title="Permanent link">&para;</a></h4>
+<h4 id="cause-3-too-specific-resources">Cause 3: Too specific resources<a class="headerlink" href="#cause-3-too-specific-resources" title="Permanent link">&para;</a></h4>
 <p>If you set a resource requirement to an exact value, <code>dstack</code> will only select instances
 that have exactly that amount of resources. For example, <code>cpu: 5</code> and <code>memory: 10GB</code> will only
 match instances that have exactly 5 CPUs and exactly 10GB of memory.</p>
 <p>Typically, you will want to set resource ranges to match more instances.
 For example, <code>cpu: 4..8</code> and <code>memory: 10GB..</code> will match instances with 4 to 8 CPUs
 and at least 10GB of memory.</p>
-<h4 id="cause-5-default-resources">Cause 5: Default resources<a class="headerlink" href="#cause-5-default-resources" title="Permanent link">&para;</a></h4>
+<h4 id="cause-4-default-resources">Cause 4: Default resources<a class="headerlink" href="#cause-4-default-resources" title="Permanent link">&para;</a></h4>
 <p>By default, <code>dstack</code> uses these resource requirements:
 <code>cpu: 2..</code>, <code>memory: 8GB..</code>, <code>disk: 100GB..</code>.
 If you want to use smaller instances, override the <code>cpu</code>, <code>memory</code>, or <code>disk</code>
 properties in your configuration.</p>
-<h4 id="cause-6-gpu-requirements">Cause 6: GPU requirements<a class="headerlink" href="#cause-6-gpu-requirements" title="Permanent link">&para;</a></h4>
+<h4 id="cause-5-gpu-requirements">Cause 5: GPU requirements<a class="headerlink" href="#cause-5-gpu-requirements" title="Permanent link">&para;</a></h4>
 <p>By default, <code>dstack</code> only selects instances with no GPUs or a single NVIDIA GPU.
 If you want to use non-NVIDIA GPUs or multi-GPU instances, set the <code>gpu</code> property
 in your configuration.</p>
@@ -4277,11 +4317,11 @@ in your configuration.</p>
 <blockquote>
 <p>If you don't specify the number of GPUs, <code>dstack</code> will only select single-GPU instances.</p>
 </blockquote>
-<h4 id="cause-7-network-volumes">Cause 7: Network volumes<a class="headerlink" href="#cause-7-network-volumes" title="Permanent link">&para;</a></h4>
+<h4 id="cause-6-network-volumes">Cause 6: Network volumes<a class="headerlink" href="#cause-6-network-volumes" title="Permanent link">&para;</a></h4>
 <p>If your run configuration uses <a href="../../concepts/volumes/#network-volumes">network volumes</a>,
 <code>dstack</code> will only select instances from the same backend and region as the volumes.
 For AWS, the availability zone of the volume and the instance should also match.</p>
-<h4 id="cause-8-feature-support">Cause 8: Feature support<a class="headerlink" href="#cause-8-feature-support" title="Permanent link">&para;</a></h4>
+<h4 id="cause-7-feature-support">Cause 7: Feature support<a class="headerlink" href="#cause-7-feature-support" title="Permanent link">&para;</a></h4>
 <p>Some <code>dstack</code> features are not supported by all backends. If your configuration uses
 one of these features, <code>dstack</code> will only select offers from the backends that support it.</p>
 <ul>
@@ -4296,7 +4336,7 @@ one of these features, <code>dstack</code> will only select offers from the back
 <li><a href="../../reference/dstack.yml/fleet/#reservation">Reservations</a>
   are only supported by the <code>aws</code> and <code>gcp</code> backends.</li>
 </ul>
-<h4 id="cause-9-dstack-sky-balance">Cause 9: dstack Sky balance<a class="headerlink" href="#cause-9-dstack-sky-balance" title="Permanent link">&para;</a></h4>
+<h4 id="cause-8-dstack-sky-balance">Cause 8: dstack Sky balance<a class="headerlink" href="#cause-8-dstack-sky-balance" title="Permanent link">&para;</a></h4>
 <p>If you are using
 <a href="https://sky.dstack.ai">dstack Sky</a>,
 you will not see marketplace offers until you top up your balance.

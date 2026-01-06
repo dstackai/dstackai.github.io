@@ -2967,13 +2967,13 @@ Support dstack with a ⭐ on
     <span class="md-ellipsis">
       
         <span class="md-typeset">
-          Kubernetes
+          Crusoe Managed Kubernetes
         </span>
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Kubernetes">
+    <nav class="md-nav" aria-label="Crusoe Managed Kubernetes">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -3926,13 +3926,13 @@ Support dstack with a ⭐ on
     <span class="md-ellipsis">
       
         <span class="md-typeset">
-          Kubernetes
+          Crusoe Managed Kubernetes
         </span>
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Kubernetes">
+    <nav class="md-nav" aria-label="Crusoe Managed Kubernetes">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -4094,11 +4094,11 @@ Support dstack with a ⭐ on
 <h1 id="crusoe">Crusoe<a class="headerlink" href="#crusoe" title="Permanent link">&para;</a></h1>
 <p>Crusoe offers two ways to use clusters with fast interconnect:</p>
 <ul>
-<li><a href="#kubernetes">Kubernetes</a> – Lets you interact with clusters through the Kubernetes API and includes support for NVIDIA GPU operators and related tools.</li>
-<li><a href="#vms">Virtual Machines (VMs)</a> – Gives you direct access to clusters in the form of virtual machines.</li>
+<li><a href="#kubernetes">Crusoe Managed Kubernetes</a> – Lets you interact with clusters through the Kubernetes API and includes support for NVIDIA and AMD GPU operators and related tools.</li>
+<li><a href="#vms">Virtual Machines (VMs)</a> – Gives you direct access to clusters in the form of virtual machines with NVIDIA and AMD GPUs.</li>
 </ul>
 <p>Both options use the same underlying networking infrastructure. This example walks you through how to set up Crusoe clusters to use with <code>dstack</code>.</p>
-<h2 id="kubernetes">Kubernetes<a class="headerlink" href="#kubernetes" title="Permanent link">&para;</a></h2>
+<h2 id="kubernetes">Crusoe Managed Kubernetes<a class="headerlink" href="#kubernetes" title="Permanent link">&para;</a></h2>
 <div class="admonition info">
 <p class="admonition-title">Prerequsisites</p>
 <ol>
@@ -4109,7 +4109,7 @@ Support dstack with a ⭐ on
 </ol>
 </div>
 <h3 id="configure-the-backend">Configure the backend<a class="headerlink" href="#configure-the-backend" title="Permanent link">&para;</a></h3>
-<p>Follow the standard instructions for setting up a <a href="https://dstack.ai/docs/concepts/backends/#kubernetes">Kubernetes</a> backend:</p>
+<p>Follow the standard instructions for setting up a <a href="https://dstack.ai/docs/concepts/backends/#kubernetes"><code>kubernetes</code></a> backend:</p>
 <div editor-title="~/.dstack/server/config.yml">
 
 <div class="highlight"><pre><span></span><code><span class="nt">projects</span><span class="p">:</span>
@@ -4125,7 +4125,7 @@ Support dstack with a ⭐ on
 </div>
 
 <h3 id="create-a-fleet">Create a fleet<a class="headerlink" href="#create-a-fleet" title="Permanent link">&para;</a></h3>
-<p>Once the Kubernetes cluster and the <code>dstack</code> server are running, you can create a fleet:</p>
+<p>Once the Crusoe Managed Kubernetes cluster and the <code>dstack</code> server are running, you can create a fleet:</p>
 <div editor-title="crusoe-fleet.dstack.yml">
 
 <div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">fleet</span>
@@ -4191,10 +4191,10 @@ Support dstack with a ⭐ on
 <p>Once the fleet is created, you can run <a href="https://dstack.ai/docs/concepts/dev-environments">dev environments</a>, <a href="https://dstack.ai/docs/concepts/tasks">tasks</a>, and <a href="https://dstack.ai/docs/concepts/services">services</a>.</p>
 <h2 id="run-nccl-tests">Run NCCL tests<a class="headerlink" href="#run-nccl-tests" title="Permanent link">&para;</a></h2>
 <p>Use a <a href="https://dstack.ai/docs/concepts/tasks#distributed-task">distributed task</a> that runs NCCL tests to validate cluster network bandwidth.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="kubernetes_1" name="__tabbed_1" type="radio" /><input id="ssh-fleets" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="kubernetes_1">Kubernetes</label><label for="ssh-fleets">SSH fleets</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="crusoe-managed-kubernetes" name="__tabbed_1" type="radio" /><input id="vms_1" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="crusoe-managed-kubernetes">Crusoe Managed Kubernetes</label><label for="vms_1">VMs</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p>If you’re running on Crusoe’s Kubernetes, make sure to install HPC-X and provide an up-to-date topology file. </p>
+<p>If you’re running on Crusoe Managed Kubernetes, make sure to install HPC-X and provide an up-to-date topology file. </p>
 <div editor-title="crusoe-nccl-tests.dstack.yml">
 <div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">task</span>
 <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nccl-tests</span>
@@ -4256,7 +4256,7 @@ Support dstack with a ⭐ on
 </blockquote>
 <details class="info">
 <summary>Privileged</summary>
-<p>When running on Kubernetes, set <code>privileged</code> to <code>true</code> to ensure access to InfiniBand.</p>
+<p>When running on Crusoe Managed Kubernetes, set <code>privileged</code> to <code>true</code> to ensure access to InfiniBand.</p>
 </details>
 </div>
 <div class="tabbed-block"></div>
@@ -4362,7 +4362,7 @@ nccl-tests<span class="w"> </span>provisioning<span class="w"> </span>completed<
 <ol>
 <li>Learn about <a href="https://dstack.ai/docs/concepts/dev-environments">dev environments</a>, <a href="https://dstack.ai/docs/concepts/tasks">tasks</a>, <a href="https://dstack.ai/docs/concepts/services">services</a></li>
 <li>Read the <a href="https://dstack.ai/docs/guides/kubernetes">Kuberentes</a>, and <a href="https://dstack.ai/docs/guides/clusters">Clusters</a> guides</li>
-<li>Check Crusoe's docs on <a href="https://docs.crusoecloud.com/networking/infiniband/">networking</a> and <a href="https://docs.crusoecloud.com/orchestration/cmk/index.html">Kubernetes</a></li>
+<li>Check the docs on <a href="https://docs.crusoecloud.com/networking/infiniband/">Crusoe's networking</a> and <a href="https://docs.crusoecloud.com/orchestration/cmk/index.html">"Crusoe Managed" Kubernetes</a></li>
 </ol>
 
 
