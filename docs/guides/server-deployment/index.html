@@ -1246,6 +1246,19 @@ Support dstack with a ⭐ on
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#fluent-bit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Fluent-bit
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -4242,6 +4255,19 @@ Support dstack with a ⭐ on
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#fluent-bit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Fluent-bit
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -4639,7 +4665,7 @@ pgloader<span class="w"> </span>sqlite_to_psql.load
 <h2 id="logs-storage">Logs storage<a class="headerlink" href="#logs-storage" title="Permanent link">&para;</a></h2>
 <p>By default, <code>dstack</code> stores workload logs locally in <code>~/.dstack/server/projects/&lt;project_name&gt;/logs</code>.
 For multi-replica server deployments, it's required to store logs externally.
-<code>dstack</code> supports storing logs using AWS CloudWatch or GCP Logging.</p>
+<code>dstack</code> supports storing logs using AWS CloudWatch, GCP Logging, or Fluent-bit with Elasticsearch / Opensearch.</p>
 <h3 id="aws-cloudwatch">AWS CloudWatch<a class="headerlink" href="#aws-cloudwatch" title="Permanent link">&para;</a></h3>
 <p>To store logs in AWS CloudWatch, set the <code>DSTACK_SERVER_CLOUDWATCH_LOG_GROUP</code> and
 the <code>DSTACK_SERVER_CLOUDWATCH_LOG_REGION</code> environment variables. </p>
@@ -4691,6 +4717,74 @@ $<span class="w"> </span>gcloud<span class="w"> </span>logging<span class="w"> <
 </code></pre></div>
 </div>
 </details>
+<h3 id="fluent-bit">Fluent-bit<a class="headerlink" href="#fluent-bit" title="Permanent link">&para;</a></h3>
+<p>To store logs using Fluent-bit, set the <code>DSTACK_SERVER_FLUENTBIT_HOST</code> environment variable.
+Fluent-bit supports two modes depending on how you want to access logs.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="full-mode" name="__tabbed_2" type="radio" /><input id="ship-only-mode" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="full-mode">Full mode</label><label for="ship-only-mode">Ship-only mode</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Logs are shipped to Fluent-bit and can be read back through the <code>dstack</code> UI and CLI via Elasticsearch or OpenSearch.
+Use this mode when you want a complete integration with log viewing in <code>dstack</code>:</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nv">DSTACK_SERVER_FLUENTBIT_HOST</span><span class="o">=</span>fluentbit.example.com<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="nv">DSTACK_SERVER_ELASTICSEARCH_HOST</span><span class="o">=</span>https://elasticsearch.example.com:9200<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>dstack<span class="w"> </span>server
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<p>Logs are forwarded to Fluent-bit but cannot be read through <code>dstack</code>. 
+The dstack UI/CLI will show empty logs. Use this mode when:</p>
+<ul>
+<li>You have an existing logging infrastructure (Kibana, Grafana, Datadog, etc.)</li>
+<li>You only need to forward logs without reading them back through <code>dstack</code></li>
+<li>You want to reduce operational complexity by not running Elasticsearch/OpenSearch</li>
+</ul>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nv">DSTACK_SERVER_FLUENTBIT_HOST</span><span class="o">=</span>fluentbit.example.com<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>dstack<span class="w"> </span>server
+</code></pre></div>
+</div>
+</div>
+</div>
+<details class="info">
+<summary>Additional configuration</summary>
+<p>The following optional environment variables can be used to customize the Fluent-bit integration:</p>
+<p><strong>Fluent-bit settings:</strong></p>
+<ul>
+<li><code>DSTACK_SERVER_FLUENTBIT_PORT</code> – The Fluent-bit port. Defaults to <code>24224</code>.</li>
+<li><code>DSTACK_SERVER_FLUENTBIT_PROTOCOL</code> – The protocol to use: <code>forward</code> or <code>http</code>. Defaults to <code>forward</code>.</li>
+<li><code>DSTACK_SERVER_FLUENTBIT_TAG_PREFIX</code> – The tag prefix for logs. Defaults to <code>dstack</code>.</li>
+</ul>
+<p><strong>Elasticsearch/OpenSearch settings (for full mode only):</strong></p>
+<ul>
+<li><code>DSTACK_SERVER_ELASTICSEARCH_HOST</code> – The Elasticsearch/OpenSearch host for reading logs. If not set, runs in ship-only mode.</li>
+<li><code>DSTACK_SERVER_ELASTICSEARCH_INDEX</code> – The Elasticsearch/OpenSearch index pattern. Defaults to <code>dstack-logs</code>.</li>
+<li><code>DSTACK_SERVER_ELASTICSEARCH_API_KEY</code> – The Elasticsearch/OpenSearch API key for authentication.</li>
+</ul>
+</details>
+<details class="info">
+<summary>Fluent-bit configuration</summary>
+<p>Configure Fluent-bit to receive logs and forward them to Elasticsearch or OpenSearch. Example configuration:</p>
+<div class="highlight"><pre><span></span><code><span class="k">[INPUT]</span>
+<span class="w">    </span><span class="na">Name        forward</span>
+<span class="w">    </span><span class="na">Listen      0.0.0.0</span>
+<span class="w">    </span><span class="na">Port        24224</span>
+
+<span class="k">[OUTPUT]</span>
+<span class="w">    </span><span class="na">Name            es</span>
+<span class="w">    </span><span class="na">Match           dstack.*</span>
+<span class="w">    </span><span class="na">Host            elasticsearch.example.com</span>
+<span class="w">    </span><span class="na">Port            9200</span>
+<span class="w">    </span><span class="na">Index           dstack-logs</span>
+<span class="w">    </span><span class="na">Suppress_Type_Name On</span>
+</code></pre></div>
+</details>
+<details class="info">
+<summary>Required dependencies</summary>
+<p>To use Fluent-bit log storage, install the <code>fluentbit</code> extras:</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span><span class="s2">&quot;dstack[all]&quot;</span><span class="w"> </span>-U
+<span class="c1"># or</span>
+$<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span><span class="s2">&quot;dstack[fluentbit]&quot;</span><span class="w"> </span>-U
+</code></pre></div>
+</details>
 <h2 id="file-storage">File storage<a class="headerlink" href="#file-storage" title="Permanent link">&para;</a></h2>
 <p>When using  <a href="../../concepts/dev-environments/#files">files</a> or <a href="../../concepts/dev-environments/#repos">repos</a>, <code>dstack</code> uploads local files and diffs to the server so that you can have access to them within runs. By default, the files are stored in the DB and each upload is limited to 2MB. You can configure an object storage to be used for uploads and increase the default limit by setting the <code>DSTACK_SERVER_CODE_UPLOAD_LIMIT</code> environment variable</p>
 <h3 id="s3">S3<a class="headerlink" href="#s3" title="Permanent link">&para;</a></h3>
@@ -4738,7 +4832,7 @@ storage.objects.update
 specify one or more encryption keys.</p>
 <p><code>dstack</code> currently supports AES and identity (plaintext) encryption keys.
 Support for external providers like HashiCorp Vault and AWS KMS is planned.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="aes" name="__tabbed_2" type="radio" /><input id="identity" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="aes">AES</label><label for="identity">Identity</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="aes" name="__tabbed_3" type="radio" /><input id="identity" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="aes">AES</label><label for="identity">Identity</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>The <code>aes</code> encryption key encrypts data using <a href="https://en.wikipedia.org/wiki/Advanced_Encryption_Standard">AES-256</a> in GCM mode.
@@ -4857,11 +4951,13 @@ configuring <a href="https://www.postgresql.org/docs/current/runtime-config-conn
 <h2 id="faqs">FAQs<a class="headerlink" href="#faqs" title="Permanent link">&para;</a></h2>
 <details class="info">
 <summary>Can I run multiple replicas of dstack server?</summary>
-<p>Yes, you can if you configure <code>dstack</code> to use <a href="#postgresql">PostgreSQL</a> and <a href="#aws-cloudwatch">AWS CloudWatch</a>.</p>
+<p>Yes, you can if you configure <code>dstack</code> to use <a href="#postgresql">PostgreSQL</a> and an external log storage
+such as <a href="#aws-cloudwatch">AWS CloudWatch</a>, <a href="#gcp-logging">GCP Logging</a>, or <a href="#fluent-bit">Fluent-bit</a>.</p>
 </details>
 <details class="info">
 <summary>Does dstack server support blue-green or rolling deployments?</summary>
-<p>Yes, it does if you configure <code>dstack</code> to use <a href="#postgresql">PostgreSQL</a> and <a href="#aws-cloudwatch">AWS CloudWatch</a>.</p>
+<p>Yes, it does if you configure <code>dstack</code> to use <a href="#postgresql">PostgreSQL</a> and an external log storage
+such as <a href="#aws-cloudwatch">AWS CloudWatch</a>, <a href="#gcp-logging">GCP Logging</a>, or <a href="#fluent-bit">Fluent-bit</a>.</p>
 </details>
 
 

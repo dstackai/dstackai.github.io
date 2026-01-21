@@ -4172,6 +4172,13 @@ via <code>dstack server</code> or deployed using Docker.</p>
 <li><code id="DSTACK_SERVER_CLOUDWATCH_LOG_GROUP">DSTACK_SERVER_CLOUDWATCH_LOG_GROUP</code> – The CloudWatch Logs group for storing workloads logs. If not set, the default file-based log storage is used.</li>
 <li><code id="DSTACK_SERVER_CLOUDWATCH_LOG_REGION">DSTACK_SERVER_CLOUDWATCH_LOG_REGION</code> – The CloudWatch Logs region. Defaults to <code>None</code>.</li>
 <li><code id="DSTACK_SERVER_GCP_LOGGING_PROJECT">DSTACK_SERVER_GCP_LOGGING_PROJECT</code> – The GCP Logging project for storing workloads logs. If not set, the default file-based log storage is used.</li>
+<li><code id="DSTACK_SERVER_FLUENTBIT_HOST">DSTACK_SERVER_FLUENTBIT_HOST</code> – The Fluent-bit host for log forwarding. If set, enables Fluent-bit log storage.</li>
+<li><code id="DSTACK_SERVER_FLUENTBIT_PORT">DSTACK_SERVER_FLUENTBIT_PORT</code> – The Fluent-bit port. Defaults to <code>24224</code>.</li>
+<li><code id="DSTACK_SERVER_FLUENTBIT_PROTOCOL">DSTACK_SERVER_FLUENTBIT_PROTOCOL</code> – The protocol to use: <code>forward</code> or <code>http</code>. Defaults to <code>forward</code>.</li>
+<li><code id="DSTACK_SERVER_FLUENTBIT_TAG_PREFIX">DSTACK_SERVER_FLUENTBIT_TAG_PREFIX</code> – The tag prefix for logs. Defaults to <code>dstack</code>.</li>
+<li><code id="DSTACK_SERVER_ELASTICSEARCH_HOST">DSTACK_SERVER_ELASTICSEARCH_HOST</code> – The Elasticsearch/OpenSearch host for reading logs back through dstack. Optional; if not set, Fluent-bit runs in ship-only mode (logs are forwarded but not readable through dstack UI/CLI).</li>
+<li><code id="DSTACK_SERVER_ELASTICSEARCH_INDEX">DSTACK_SERVER_ELASTICSEARCH_INDEX</code> – The Elasticsearch/OpenSearch index pattern. Defaults to <code>dstack-logs</code>.</li>
+<li><code id="DSTACK_SERVER_ELASTICSEARCH_API_KEY">DSTACK_SERVER_ELASTICSEARCH_API_KEY</code> – The Elasticsearch/OpenSearch API key for authentication.</li>
 <li><code id="DSTACK_ENABLE_PROMETHEUS_METRICS">DSTACK_ENABLE_PROMETHEUS_METRICS</code> — Enables Prometheus metrics collection and export.</li>
 <li><code id="DSTACK_DEFAULT_SERVICE_CLIENT_MAX_BODY_SIZE">DSTACK_DEFAULT_SERVICE_CLIENT_MAX_BODY_SIZE</code> – Request body size limit for services running with a gateway, in bytes. Defaults to 64 MiB.</li>
 <li><code id="DSTACK_SERVICE_CLIENT_TIMEOUT">DSTACK_SERVICE_CLIENT_TIMEOUT</code> – Timeout in seconds for HTTP requests sent from the in-server proxy and gateways to service replicas. Defaults to 60.</li>
