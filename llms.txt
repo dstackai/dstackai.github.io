@@ -16,17 +16,15 @@
 - [Tasks](https://dstack.ai/docs/concepts/tasks/index.md): How to run tasks - for training or fine-tuning, including distributed tasks
 - [Services](https://dstack.ai/docs/concepts/services/index.md): How to deploy services - for model inference or web apps
 - [Volumes](https://dstack.ai/docs/concepts/volumes/index.md): How to manage volumes - for persistent storage or caching
+- [Gateways](https://dstack.ai/docs/concepts/gateways/index.md): How to manage gateways - enabling auto-scaling, rate limits, and custom domains
 - [Secrets](https://dstack.ai/docs/concepts/secrets/index.md): How to manage secrets - for API keys or other sensitive data
 - [Projects](https://dstack.ai/docs/concepts/projects/index.md): How to manage projects - for managing separate teams
-- [Gateways](https://dstack.ai/docs/concepts/gateways/index.md): How to manage gateways - enabling auto-scaling, rate limits, and custom domains
+- [Metrics](https://dstack.ai/docs/concepts/metrics/index.md): How to manage gateways - enabling auto-scaling, rate limits, and custom domains
 
 ## Guides
 
-- [Clusters](https://dstack.ai/docs/guides/clusters/index.md): How to work with clusters - for distributed tasks
-- [Kubernetes](https://dstack.ai/docs/guides/kubernetes/index.md): How to work with Kubernetes
 - [Server deployment](https://dstack.ai/docs/guides/server-deployment/index.md): Detailed guide on how to deploy the dstack server
 - [Troubleshooting](https://dstack.ai/docs/guides/troubleshooting/index.md): Common issues and how to troubleshoot them
-- [Metrics](https://dstack.ai/docs/guides/metrics/index.md): How to monitor metrics
 - [Protips](https://dstack.ai/docs/guides/protips/index.md): Pro tips - tips and tricks to use dstack more efficiently
 
 ## Examples

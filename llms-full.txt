@@ -12,9 +12,8 @@
 
 It streamlines development, training, and inference, and is compatible with any hardware, open-source tools, and frameworks.
 
-#### Hardware
-
-`dstack` supports `NVIDIA`, `AMD`, `TPU`, `Intel Gaudi`, and `Tenstorrent` accelerators out of the box.
+!!! info "Accelerators"
+    `dstack` supports `NVIDIA`, `AMD`, `TPU`, `Intel Gaudi`, and `Tenstorrent` accelerators out of the box.
 
 ## How does it work?
 
@@ -28,12 +27,11 @@ It streamlines development, training, and inference, and is compatible with any 
 
 `dstack` supports the following configurations:
    
+* [Fleets](concepts/fleets.md) &mdash; for managing cloud and on-prem clusters
 * [Dev environments](concepts/dev-environments.md) &mdash; for interactive development using a desktop IDE
 * [Tasks](concepts/tasks.md) &mdash; for scheduling jobs, incl. distributed ones (or running web apps)
 * [Services](concepts/services.md) &mdash; for deploying models (or web apps)
-* [Fleets](concepts/fleets.md) &mdash; for managing cloud and on-prem clusters
 * [Volumes](concepts/volumes.md) &mdash; for managing network volumes (to persist data)
-* [Gateways](concepts/gateways.md) &mdash; for publishing services with a custom domain and HTTPS
 
 Configuration can be defined as YAML files within your repo.
 
@@ -60,15 +58,6 @@ port-forwarding, ingress, and more.
     skip installation and proceed to [dstack Sky](https://sky.dstack.ai). -->
 
 ## Set up the server
-
-### Configure backends
-
-To orchestrate compute across cloud providers or Kubernetes clusters, you need to configure [backends](../concepts/backends.md).
-
-??? info "SSH fleets"
-    When using `dstack` with on-prem servers, backend configuration isn’t required. Simply create [SSH fleets](../concepts/fleets.md#ssh-fleets) once the server is up.
-
-### Start the server
 
 The server can run on your laptop or any environment with access to the cloud and on-prem clusters you plan to use.
 
@@ -127,16 +116,17 @@ The server can run on your laptop or any environment with access to the cloud an
         
     </div>
 
-To verify that backends are properly configured, use the [`dstack offer`](../reference/cli/dstack/offer.md#list-gpu-offers) command to list available GPU offers.
+For more details on server deployment options, see the [Server deployment](../guides/server-deployment.md) guide.
 
-!!! info "Server deployment"
-    For more details on server deployment options, see the [Server deployment](../guides/server-deployment.md) guide.
+### Configure backends
+
+> To orchestrate compute across GPU clouds or Kubernetes clusters, you need to configure [backends](../concepts/backends.md).
 
 ## Set up the CLI
 
 Once the server is up, you can access it via the `dstack` CLI. 
 
-> The CLI can be set up via `pip` or `uv` on Linux, macOS, and Windows. It requires Git and OpenSSH.
+> The CLI can be used on Linux, macOS, and Windows. It requires Git and OpenSSH.
 
 === "uv"
 
@@ -160,12 +150,14 @@ Once the server is up, you can access it via the `dstack` CLI.
 
 ??? info "Windows"
     To use the CLI on Windows, ensure you've installed Git and OpenSSH via 
-    [Git for Windows:material-arrow-top-right-thin:{ .external }](https://git-scm.com/download/win). 
+    [Git for Windows](https://git-scm.com/download/win). 
 
     When installing it, ensure you've checked 
     `Git from the command line and also from 3-rd party software` 
     (or `Use Git and optional Unix tools from the Command Prompt`), and 
     `Use bundled OpenSSH`.
+
+### Configure the default project
 
 To point the CLI to the `dstack` server, configure it
 with the server address, user token, and project name:
@@ -184,6 +176,10 @@ Configuration is updated at ~/.dstack/config.yml
 </div>
 
 This configuration is stored in `~/.dstack/config.yml`.
+
+### Check offers
+
+To verify that both the server and CLI are properly configured, use the [`dstack offer`](../reference/cli/dstack/offer.md#list-gpu-offers) command to list available GPU offers. If you don't see valid offers, ensure you've set up [backends](../concepts/backends.md).
 
 ??? info "Shell autocompletion"
 
@@ -250,11 +246,10 @@ This configuration is stored in `~/.dstack/config.yml`.
 
         > If you get an error similar to `2: command not found: compdef`, then add the following line to the beginning of your `~/.zshrc` file:
         > `autoload -Uz compinit && compinit`.
-    
 
 !!! info "What's next?"
-    1. Follow [Quickstart](../quickstart.md)
-    2. See [Backends](../concepts/backends.md)
+    1. See [Backends](../concepts/backends.md)
+    2. Follow [Quickstart](../quickstart.md)
     3. Check the [server deployment](../guides/server-deployment.md) guide
     4. Browse [examples](../../examples.md)
     5. Join the community via [Discord](https://discord.gg/u8SmfwPpMd)
@@ -264,12 +259,12 @@ This configuration is stored in `~/.dstack/config.yml`.
 
 # Quickstart
 
-??? info "Prerequsites"
+!!! info "Prerequsites"
     Before using `dstack`, ensure you've [installed](installation/index.md) the server and the CLI.
 
 ## Create a fleet
 
-Before you can submit your first run, you have to create a [fleet](concepts/fleets.md). 
+> Before submitting runs, you must create a [fleet](concepts/fleets.md).
 
 === "Backend fleet"
     If you're using cloud providers or Kubernetes clusters and have configured the corresponding [backends](concepts/backends.md), create a fleet as follows:
@@ -313,11 +308,9 @@ Before you can submit your first run, you have to create a [fleet](concepts/flee
 
     </div>
 
-    If `nodes` is a range that starts above `0`, `dstack` pre-creates the initial number of instances up front, while any additional ones are created on demand. 
-    
-    > Setting the `nodes` range to start above `0` is supported only for [VM-based backends](concepts/backends.md#vm-based).
+    If the `nodes` range starts with `0`, `dstack apply` creates only a template. Instances are provisioned only when you submit runs.
 
-    If the fleet needs to be a cluster, the [placement](concepts/fleets.md#backend-placement) property must be set to `cluster`. 
+    If the fleet needs to be a cluster, the [placement](concepts/fleets.md#cluster-placement) property must be set to `cluster`.
     
 === "SSH fleet"
     If you have a group of on-prem servers accessible via SSH, you can create an SSH fleet as follows:
@@ -551,22 +544,23 @@ Something not working? See the [troubleshooting](guides/troubleshooting.md) guid
 
 # Backends
 
-Backends allow `dstack` to provision fleets across cloud providers or Kubernetes clusters.
+Backends allow `dstack` to provision fleets across GPU clouds or Kubernetes clusters.
 
 `dstack` supports two types of backends: 
 
   * [VM-based](#vm-based) – use `dstack`'s native integration with cloud providers to provision VMs, manage clusters, and orchestrate container-based runs.  
   * [Container-based](#container-based) – use either `dstack`'s native integration with cloud providers or Kubernetes to orchestrate container-based runs; provisioning in this case is delegated to the cloud provider or Kubernetes.  
 
-??? info "SSH fleets"
+!!! info "SSH fleets"
     When using `dstack` with on-prem servers, backend configuration isn’t required. Simply create [SSH fleets](../concepts/fleets.md#ssh-fleets) once the server is up.
 
 Backends can be configured via `~/.dstack/server/config.yml` or through the [project settings page](../concepts/projects.md#backends) in the UI. See the examples of backend configuration below.
 
+> If you update `~/.dstack/server/config.yml`, you have to restart the server.
+
 ## VM-based
 
-VM-based backends allow `dstack` users to manage clusters and orchestrate container-based runs across a wide range of cloud providers.  
-Under the hood, `dstack` uses native integrations with these providers to provision clusters on demand.  
+VM-based backends allow `dstack` users to manage clusters and orchestrate container-based runs across a wide range of cloud providers. Under the hood, `dstack` uses native integrations with these providers to provision clusters on demand.  
 
 Compared to [container-based](#container-based) backends, this approach offers finer-grained, simpler control over cluster provisioning and eliminates the dependency on a Kubernetes layer.
 
@@ -1566,13 +1560,13 @@ To use the `kubernetes` backend with `dstack`, you need to configure it with the
 ```yaml
 projects:
 - name: main
-    backends:
-    - type: kubernetes
-      kubeconfig:
-        filename: ~/.kube/config
-      proxy_jump:
-        hostname: 204.12.171.137
-        port: 32000
+  backends:
+  - type: kubernetes
+    kubeconfig:
+      filename: ~/.kube/config
+    proxy_jump:
+      hostname: 204.12.171.137
+      port: 32000
 ```
 
 </div>
@@ -1587,9 +1581,13 @@ projects:
 
     No additional setup is required — `dstack` configures and manages the proxy automatically.
 
-??? info "NVIDIA GPU Operator"
-    For `dstack` to correctly detect GPUs in your Kubernetes cluster, the cluster must have the
-    [NVIDIA GPU Operator](https://docs.nvidia.com/datacenter/cloud-native/gpu-operator/latest/index.html) pre-installed.
+??? info "Required operators"
+    === "NVIDIA"
+        For `dstack` to correctly detect GPUs in your Kubernetes cluster, the cluster must have the
+        [NVIDIA GPU Operator](https://docs.nvidia.com/datacenter/cloud-native/gpu-operator/latest/index.html) pre-installed.
+    === "AMD"
+        For `dstack` to correctly detect GPUs in your Kubernetes cluster, the cluster must have the
+        [AMD GPU Operator](https://github.com/ROCm/gpu-operator) pre-installed.
 
 <!-- ??? info "Managed Kubernetes"
     While `dstack` supports both managed and on-prem Kubernetes clusters, it can only run on pre-provisioned nodes.
@@ -1622,7 +1620,7 @@ projects:
     
     Ensure you've created a ClusterRoleBinding to grant the role to the user or the service account you're using.
 
-> To learn more, see the [Kubernetes](../guides/kubernetes.md) guide.
+> To learn more, see the [Lambda](../../examples/clusters/lambda/#kubernetes) and [Lambda](../../examples/clusters/crusoe/#kubernetes) examples.
 
 ### RunPod
 
@@ -1716,37 +1714,23 @@ SSH fleets support the same features as [VM-based](#vm-based) backends.
 
 # Fleets
 
-Fleets act both as pools of instances and as templates for how those instances are provisioned.
+Before submitting runs, you must create a fleet. Fleets act as both pools of instances and templates for how those instances are provisioned.
 
-`dstack` supports two kinds of fleets: 
+> `dstack` supports two fleet types: [backend fleets](#backend-fleet) (which are provisioned dynamically in the cloud or on Kubernetes), and [SSH fleets](#ssh-fleet) (which use existing on-prem servers).
 
-* [Backend fleets](#backend-fleets) – dynamically provisioned through configured backends; they are supported with any type of backends: [VM-based](backends.md#vm-based) and [container-based](backends.md#container-based) (incl. [Kubernetes](backends.md#kubernetes))
-* [SSH fleets](#ssh-fleets) – created using on-prem servers; do not require backends
+## Apply a configuration
 
-When you submit a dev environment, task, or service, `dstack` reuses idle instances or provisions new ones based on the fleet configuration. 
+To create a fleet, define its configuration in a YAML file. The filename must end with `.dstack.yml` (e.g. `.dstack.yml` or `fleet.dstack.yml`), regardless of fleet type.
 
-> You must create a fleet before submitting runs.
+=== "Backend fleets"
+    If you're using cloud providers or Kubernetes clusters and have configured the corresponding [backends](backends.md), create a backend fleet as follows:
 
-## Backend fleets
+    <div editor-title="fleet.dstack.yml"> 
 
-Backend fleets allow provisioning compute across cloud providers or Kubernetes clusters. 
-
-??? info "Prerequisites"
-    Before creating a backend fleet, make sure to configure the corresponding [backends](backends.md).
-
-### Apply the configuration
-
-To create a backend fleet, define a configuration as a YAML file. The file must have a
-`.dstack.yml` extension (e.g. `.dstack.yml` or `fleet.dstack.yml`).
-
-<div editor-title="fleet.dstack.yml">
-    
     ```yaml
     type: fleet
-    # The name is optional, if not specified, generated randomly
-    name: default
-    
-    # Can be a range or a fixed number
+    name: my-fleet
+
     # Allow to provision of up to 2 instances
     nodes: 0..2
 
@@ -1755,255 +1739,49 @@ To create a backend fleet, define a configuration as a YAML file. The file must 
 
     # Deprovision instances above the minimum if they remain idle
     idle_duration: 1h
-    
+
     resources:
       # Allow to provision up to 8 GPUs
       gpu: 0..8
     ```
-    
-</div>
 
-To create or update the fleet, pass the fleet configuration to [`dstack apply`](../reference/cli/dstack/apply.md):
+    </div>
 
-<div class="termy">
+    Pass the fleet configuration to `dstack apply`:
 
-```shell
-$ dstack apply -f fleet.dstack.yml
+    <div class="termy">
 
-Provisioning...
----> 100%
+    ```shell
+    $ dstack apply -f fleet.dstack.yml
+        
+      #  BACKEND  REGION           RESOURCES                 SPOT  PRICE
+      1  gcp      us-west4         2xCPU, 8GB, 100GB (disk)  yes   $0.010052
+      2  azure    westeurope       2xCPU, 8GB, 100GB (disk)  yes   $0.0132
+      3  gcp      europe-central2  2xCPU, 8GB, 100GB (disk)  yes   $0.013248
 
- FLEET     INSTANCE  BACKEND  GPU  PRICE  STATUS  CREATED 
- my-fleet  -         -        -    -      -       -
-```
+    Create the fleet? [y/n]: y
 
-</div>
-
-If `nodes` is a range that starts above `0`, `dstack` pre-creates the initial number of instances up front, while any additional ones are created on demand. 
-
-> Setting the `nodes` range to start above `0` is supported only for [VM-based backends](backends.md#vm-based).
-
-??? info "Target number of nodes"
-
-    If `nodes` is defined as a range, you can start with more than the minimum number of instances by using the `target` parameter when creating the fleet.
-
-    <div editor-title="fleet.dstack.yml"> 
-
-    ```yaml
-    type: fleet
-
-    name: my-fleet
-
-    nodes:
-      min: 0
-      max: 2
-
-      # Provision 2 instances initially
-      target: 2
-
-    # Deprovision instances above the minimum if they remain idle
-    idle_duration: 1h
+      FLEET     INSTANCE  BACKEND              GPU             PRICE    STATUS  CREATED 
+      my-fleet  0         gcp (europe-west-1)  L4:24GB (spot)  $0.1624  idle    3 mins ago      
+                1         gcp (europe-west-1)  L4:24GB (spot)  $0.1624  idle    3 mins ago    
     ```
 
     </div>
 
-By default, when you submit a [dev environment](dev-environments.md), [task](tasks.md), or [service](services.md), `dstack` tries all available fleets. However, you can explicitly specify the [`fleets`](../reference/dstack.yml/dev-environment.md#fleets) in your run configuration
-or via [`--fleet`](../reference/cli/dstack/apply.md#fleet) with `dstack apply`.
+    If the `nodes` range starts with `0`, `dstack apply` creates only a template. Instances are provisioned only when you submit runs.
 
-### Configuration options
+=== "SSH fleets"
+    If you have a group of on-prem servers accessible via SSH, you can create an SSH fleet as follows:
 
-#### Placement { #backend-placement }
-
-To ensure instances are interconnected (e.g., for
-[distributed tasks](tasks.md#distributed-tasks)), set `placement` to `cluster`. 
-This ensures all instances are provisioned with optimal inter-node connectivity.
-
-??? info "AWS"
-    When you create a fleet with AWS, [Elastic Fabric Adapter networking](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/efa.html) is automatically configured if it’s supported for the corresponding instance type.
-    Note, EFA requires the `public_ips` to be set to `false` in the `aws` backend configuration.
-    Otherwise, instances are only connected by the default VPC subnet.
-
-    Refer to the [AWS](../../examples/clusters/aws/index.md) example for more details.
-
-??? info "GCP"
-    When you create a fleet with GCP, `dstack` automatically configures [GPUDirect-TCPXO and GPUDirect-TCPX](https://cloud.google.com/kubernetes-engine/docs/how-to/gpu-bandwidth-gpudirect-tcpx-autopilot) networking for the A3 Mega and A3 High instance types, as well as RoCE networking for the A4 instance type.
-
-    !!! info "Backend configuration"    
-        You may need to configure `extra_vpcs` and `roce_vpcs` in the `gcp` backend configuration.
-        Refer to the [GCP](../../examples/clusters/gcp/index.md) examples for more details.
-
-??? info "Nebius"
-    When you create a fleet with Nebius, [InfiniBand networking](https://docs.nebius.com/compute/clusters/gpu) is automatically configured if it’s supported for the corresponding instance type.
-    Otherwise, instances are only connected by the default VPC subnet.
-
-    An InfiniBand fabric for the cluster is selected automatically. If you prefer to use some specific fabrics, configure them in the
-    [backend settings](../reference/server/config.yml.md#nebius).
-
-The `cluster` placement is supported for `aws`, `azure`, `gcp`, `nebius`, `oci`, and `vultr`
-backends.
-
-> For more details on optimal inter-node connectivity, read the [Clusters](../guides/clusters.md) guide.
-
-<!-- TODO: Give a link to the Kubernetes guide -->
-
-#### Resources
-
-When you specify a resource value like `cpu` or `memory`,
-you can either use an exact value (e.g. `24GB`) or a 
-range (e.g. `24GB..`, or `24GB..80GB`, or `..80GB`).
-
-<div editor-title=".dstack.yml"> 
-
-```yaml
-type: fleet
-# The name is optional, if not specified, generated randomly
-name: my-fleet
-
-nodes: 2
-
-resources:
-  # 200GB or more RAM
-  memory: 200GB..
-  # 4 GPUs from 40GB to 80GB
-  gpu: 40GB..80GB:4
-  # Disk size
-  disk: 500GB
-```
-
-</div>
-
-The `gpu` property allows specifying not only memory size but also GPU vendor, names
-and their quantity. Examples: `nvidia` (one NVIDIA GPU), `A100` (one A100), `A10G,A100` (either A10G or A100),
-`A100:80GB` (one A100 of 80GB), `A100:2` (two A100), `24GB..40GB:2` (two GPUs between 24GB and 40GB),
-`A100:40GB:2` (two A100 GPUs of 40GB).
-
-??? info "Google Cloud TPU"
-    To use TPUs, specify its architecture via the `gpu` property.
-
-    ```yaml
-    type: fleet
-    # The name is optional, if not specified, generated randomly
-    name: my-fleet
-    
-    nodes: 2
-
-    resources:
-      gpu: v2-8
-    ```
-
-    Currently, only 8 TPU cores can be specified, supporting single TPU device workloads. Multi-TPU support is coming soon.
-
-> If you’re unsure which offers (hardware configurations) are available from the configured backends, use the
-> [`dstack offer`](../reference/cli/dstack/offer.md#list-gpu-offers) command to list them.
-
-#### Blocks { #backend-blocks }
-
-For backend fleets, `blocks` function the same way as in SSH fleets. 
-See the [`Blocks`](#ssh-blocks) section under SSH fleets for details on the blocks concept.
-
-<div editor-title=".dstack.yml">
-
-```yaml
-type: fleet
-
-name: my-fleet
-
-resources:
-  gpu: NVIDIA:80GB:8
-
-# Split into 4 blocks, each with 2 GPUs
-blocks: 4
-```
-
-</div>
-
-#### Idle duration
-
-By default, fleet instances stay `idle` for 3 days and can be reused within that time.
-If an instance is not reused within this period, it is automatically terminated.
-
-To change the default idle duration, set
-[`idle_duration`](../reference/dstack.yml/fleet.md#idle_duration) in the fleet configuration (e.g., `0s`, `1m`, or `off` for
-unlimited).
-
-<div editor-title="examples/misc/fleets/.dstack.yml">
+    <div editor-title="fleet.dstack.yml"> 
     
     ```yaml
     type: fleet
-    # The name is optional, if not specified, generated randomly
     name: my-fleet
     
-    nodes: 2
-
-    # Terminate instances idle for more than 1 hour
-    idle_duration: 1h
-    
-    resources:
-      gpu: 24GB
-    ```
-    
-</div>
-
-#### Spot policy
-
-By default, `dstack` uses on-demand instances. However, you can change that
-via the [`spot_policy`](../reference/dstack.yml/fleet.md#spot_policy) property. It accepts `spot`, `on-demand`, and `auto`.
-
-#### Retry policy
-
-By default, if `dstack` fails to provision an instance or an instance is interrupted, no retry is attempted.
-
-If you'd like `dstack` to do it, configure the 
-[retry](../reference/dstack.yml/fleet.md#retry) property accordingly:
-
-<div editor-title=".dstack.yml">
-
-```yaml
-type: fleet
-# The name is optional, if not specified, generated randomly
-name: my-fleet
-
-nodes: 1
-
-resources:
-  gpu: 24GB
-
-retry:
-  # Retry on specific events
-  on_events: [no-capacity, interruption]
-  # Retry for up to 1 hour
-  duration: 1h
-```
-
-</div>
-
-!!! info "Reference"
-    Backend fleets support many more configuration options,
-    incl. [`backends`](../reference/dstack.yml/fleet.md#backends), 
-    [`regions`](../reference/dstack.yml/fleet.md#regions), 
-    [`max_price`](../reference/dstack.yml/fleet.md#max_price), and
-    among [others](../reference/dstack.yml/fleet.md).
-
-## SSH fleets
-
-If you have a group of on-prem servers accessible via SSH, you can create an SSH fleet.
-
-### Apply a configuration
-
-Define a fleet configuration as a YAML file in your project directory. The file must have a
-`.dstack.yml` extension (e.g. `.dstack.yml` or `fleet.dstack.yml`).
-
-<div editor-title="examples/misc/fleets/.dstack.yml"> 
-    
-    ```yaml
-    type: fleet
-    # The name is optional, if not specified, generated randomly
-    name: my-fleet
-
     # Uncomment if instances are interconnected
     #placement: cluster
 
-    # SSH credentials for the on-prem servers
     ssh_config:
       user: ubuntu
       identity_file: ~/.ssh/id_rsa
@@ -2011,78 +1789,268 @@ Define a fleet configuration as a YAML file in your project directory. The file 
         - 3.255.177.51
         - 3.255.177.52
     ```
+      
+    </div>
+
+    Pass the fleet configuration to `dstack apply`:
+
+    <div class="termy">
+
+    ```shell
+    $ dstack apply -f fleet.dstack.yml
+        
+    Provisioning...
+    ---> 100%
+
+      FLEET     INSTANCE  BACKEND       GPU      PRICE  STATUS  CREATED 
+      my-fleet  0         ssh (remote)  L4:24GB  $0     idle    3 mins ago      
+                1         ssh (remote)  L4:24GB  $0     idle    3 mins ago    
+    ```
+
+    </div>
+
+    `dstack apply` automatically connects to on-prem servers, installs the required dependencies, and adds them to the created fleet.
+
+    ??? info "Host requirements"
+        1.&nbsp;Hosts must be pre-installed with Docker.
+
+        === "NVIDIA"
+            2.&nbsp;Hosts with NVIDIA GPUs must also be pre-installed with CUDA 12.1 and
+            [NVIDIA Container Toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html).
+
+        === "AMD"
+            2.&nbsp;Hosts with AMD GPUs must also be pre-installed with AMDGPU-DKMS kernel driver (e.g. via
+            [native package manager](https://rocm.docs.amd.com/projects/install-on-linux/en/latest/install/native-install/index.html)
+            or [AMDGPU installer](https://rocm.docs.amd.com/projects/install-on-linux/en/latest/install/amdgpu-install.html).)
+
+        === "Intel Gaudi"
+            2.&nbsp;Hosts with Intel Gaudi accelerators must be pre-installed with [Gaudi software and drivers](https://docs.habana.ai/en/latest/Installation_Guide/Driver_Installation.html#driver-installation).
+            This must include the drivers, `hl-smi`, and Habana Container Runtime.
+
+        === "Tenstorrent"
+            2.&nbsp;Hosts with Tenstorrent accelerators must be pre-installed with [Tenstorrent software](https://docs.tenstorrent.com/getting-started/README.html#software-installation).
+            This must include the drivers, `tt-smi`, and HugePages.
+
+        3.&nbsp;The user specified must have passwordless `sudo` access.
+
+        4.&nbsp;The SSH server must be running and configured with `AllowTcpForwarding yes` in `/etc/ssh/sshd_config`.
+
+        5.&nbsp;The firewall must allow SSH and should forbid any other connections from external networks. For `placement: cluster` fleets, it should also allow any communication between fleet nodes.
+
+> Once the fleet is created, you can run [dev environments](dev-environments.md), [tasks](tasks.md), and [services](services.md).
+
+## Configuration options
+
+Backend fleets support [many options](../reference/dstack.yml/fleet.md); see some major configuration examples below.
+
+### Cluster placement
+
+Both [backend fleets](#backend-fleet) and [SSH fleets](#ssh-fleet) allow the `placement` property to be set to `cluster`. 
+
+This property ensures that instances are interconnected. This is required for running [distributed tasks](tasks.md#distributed-tasks).
+
+=== "Backend fleets"
+    Backend fleets allow to provision interconnected clusters across supported backends.
+
+    <div editor-title="fleet.dstack.yml">
+        
+    ```yaml
+    type: fleet
+    name: my-fleet
     
-</div>
+    nodes: 2
+    placement: cluster
+    
+    resources:
+      gpu: H100:8
+    ```
+        
+    </div>
 
-??? info "Requirements" 
-    1.&nbsp;Hosts must be pre-installed with Docker.
+    #### Backends
 
-    === "NVIDIA"
-        2.&nbsp;Hosts with NVIDIA GPUs must also be pre-installed with CUDA 12.1 and
-        [NVIDIA Container Toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html).
+    Fast interconnect is supported on the `aws`, `gcp`, `nebius`, `kubernetes`, and `runpod` backends. Some backends may require additional configuration.
 
-    === "AMD"
-        2.&nbsp;Hosts with AMD GPUs must also be pre-installed with AMDGPU-DKMS kernel driver (e.g. via
-        [native package manager](https://rocm.docs.amd.com/projects/install-on-linux/en/latest/install/native-install/index.html)
-        or [AMDGPU installer](https://rocm.docs.amd.com/projects/install-on-linux/en/latest/install/amdgpu-install.html).)
+    === "AWS"
+        On AWS, `dstack` requires `public_ips` to be set to `false` in the backend configuration.
+        Refer to the [AWS](../../examples/clusters/aws/index.md) example for more details.
 
-    === "Intel Gaudi"
-        2.&nbsp;Hosts with Intel Gaudi accelerators must be pre-installed with [Gaudi software and drivers](https://docs.habana.ai/en/latest/Installation_Guide/Driver_Installation.html#driver-installation).
-        This must include the drivers, `hl-smi`, and Habana Container Runtime.
+    === "GCP"
+        On GCP, you may need to configure `extra_vpcs` and `roce_vpcs` in the `gcp` backend configuration.
+        Refer to the [GCP](../../examples/clusters/gcp/index.md) examples for more details.
 
-    === "Tenstorrent"
-        2.&nbsp;Hosts with Tenstorrent accelerators must be pre-installed with [Tenstorrent software](https://docs.tenstorrent.com/getting-started/README.html#software-installation).
-        This must include the drivers, `tt-smi`, and HugePages.
+    === "Nebius"
+        On [Nebius](https://docs.nebius.com/compute/clusters/gpu), `dstack` automatically configures InfiniBand networking if it is supported by the selected instance type.
 
-    3.&nbsp;The user specified must have passwordless `sudo` access.
+    === "Kubernetes"
+        If the Kubernetes cluster has interconnect configured, `dstack` can use it without additional setup.
+        See the [Lambda](../../examples/clusters/lambda/index.md#kubernetes) or [Crusoe](../../examples/clusters/crusoe/index.md#kubernetes) examples.
+    
+    === "Runpod"
+        On [Runpod](https://docs.runpod.io/instant-clusters), `dstack` automatically configures InfiniBand networking if it is supported by the selected instance type.
+    
+    > See the [Clusters](../../examples.md#clusters) examples.
 
-    4.&nbsp;The SSH server must be running and configured with `AllowTcpForwarding yes` in `/etc/ssh/sshd_config`.
+=== "SSH fleets"
+    If the hosts in the SSH fleet have interconnect configured, you only need to set `placement` to `cluster`.
 
-    5.&nbsp;The firewall must allow SSH and should forbid any other connections from external networks. For `placement: cluster` fleets, it should also allow any communication between fleet nodes.
+    <div editor-title="fleet.dstack.yml"> 
+        
+    ```yaml
+    type: fleet
+    name: my-fleet
 
-To create or update the fleet, pass the fleet configuration to [`dstack apply`](../reference/cli/dstack/apply.md):
+    placement: cluster
 
-<div class="termy">
+    ssh_config:
+      user: ubuntu
+      identity_file: ~/.ssh/id_rsa
+      hosts:
+        - 3.255.177.51
+        - 3.255.177.52
+    ```
+      
+    </div>
 
-```shell
-$ dstack apply -f examples/misc/fleets/.dstack.yml
+    !!! info "Network"
+        By default, `dstack` automatically detects the network shared by the hosts. However, it's possible to configure it explicitly via the [`network`](../reference/dstack.yml/fleet.md#network) property.
 
-Provisioning...
----> 100%
+        <!-- TODO: Add network configuration example -->
 
- FLEET     INSTANCE  GPU             PRICE  STATUS  CREATED 
- my-fleet  0         L4:24GB (spot)  $0     idle    3 mins ago      
-           1         L4:24GB (spot)  $0     idle    3 mins ago    
+### Nodes
+
+The `nodes` property is supported only by backend fleets and specifies how many nodes `dstack` must or can provision.
+
+<div editor-title="fleet.dstack.yml"> 
+
+```yaml
+type: fleet
+name: my-fleet
+
+# Allow to provision of up to 2 instances
+nodes: 0..2
+
+# Uncomment to ensure instances are inter-connected
+#placement: cluster
+
+# Deprovision instances above the minimum if they remain idle
+idle_duration: 1h
+
+resources:
+  # Allow to provision up to 8 GPUs
+  gpu: 0..8
 ```
 
 </div>
 
-When you apply, `dstack` connects to the specified hosts using the provided SSH credentials, 
-installs the dependencies, and configures these hosts as a fleet.
+#### Pre-provisioning
 
-Once the status of instances changes to `idle`, they can be used by dev environments, tasks, and services.
+If the `nodes` range starts with `0`, `dstack apply` creates only a template, and instances are provisioned when you submit runs.
 
-### Configuration options
+To provision instances up front, set the `nodes` range to start above `0`. This pre-creates the initial number of instances; additional instances (if any) are provisioned on demand.
 
-#### Placement { #ssh-placement }
 
-If the hosts are interconnected (i.e. share the same network), set `placement` to `cluster`. 
-This is required if you'd like to use the fleet for [distributed tasks](tasks.md#distributed-tasks).
+<div editor-title="fleet.dstack.yml">
+        
+    ```yaml
+    type: fleet
+    name: my-fleet
+    
+    nodes: 2..10
 
-??? info "Network"  
-    By default, `dstack` automatically detects the network shared by the hosts. 
-    However, it's possible to configure it explicitly via 
-    the [`network`](../reference/dstack.yml/fleet.md#network) property.
+    # Uncomment to ensure instances are inter-connected
+    #placement: cluster
+    
+    resources:
+      gpu: H100:8
+    ```
+        
+    </div>
 
-    [//]: # (TODO: Provide an example and more detail)
+Pre-provisioning is supported only for [VM-based backends](backends.md#vm-based).
 
-> For more details on optimal inter-node connectivity, read the [Clusters](../guides/clusters.md) guide.
+??? info "Target number"
+    To pre-provision more than the minimum number of instances, set the `target` parameter.
 
-#### Blocks { #ssh-blocks }
+    <div editor-title="fleet.dstack.yml"> 
+
+    ```yaml
+    type: fleet
+    name: my-fleet
+
+    nodes:
+      min: 2
+      max: 10
+      target: 6
+
+    # Deprovision instances above the minimum if they remain idle
+    idle_duration: 1h
+    ```
+
+    </div>
+
+    `dstack apply` pre-provisions up to `target` and scales back to `min` after `idle_duration`.
+
+### Resources
+
+Backend fleets allow you to specify the resource requirements for the instances to be provisioned. The `resources` property syntax is the same as for [run configurations](dev-environments.md#resources).
+
+> Not directly related, but in addition to `resources`, you can specify [`spot_policy`](../reference/dstack.yml/fleet.md#instance_types), [`instance_types`](../reference/dstack.yml/fleet.md#instance_types), [`max_price`](../reference/dstack.yml/fleet.md#max_price), [`region`](../reference/dstack.yml/fleet.md#max_price), and other [options](../reference/dstack.yml/fleet.md#).
+
+<!-- TODO: add dedicated spot policy example -->
+
+### Backends
+
+### Idle duration
+
+By default, instances of a backend fleet stay `idle` for 3 days and can be reused within that time.
+If an instance is not reused within this period, it is automatically terminated.
+
+To change the default idle duration, set
+[`idle_duration`](../reference/dstack.yml/fleet.md#idle_duration) in the fleet configuration (e.g., `0s`, `1m`, or `off` for
+unlimited).
+
+<div editor-title="fleet.dstack.yml">
+    
+```yaml
+type: fleet
+name: my-fleet
+
+nodes: 2
+
+# Terminate instances idle for more than 1 hour
+idle_duration: 1h
+
+resources:
+  gpu: 24GB
+```
+
+</div>
+
+### Blocks
 
 By default, a job uses the entire instance—e.g., all 8 GPUs. To allow multiple jobs on the same instance, set the `blocks` property to divide the instance. Each job can then use one or more blocks, up to the full instance.
 
-<div editor-title=".dstack.yml">
+=== "Backend fleets"
+    <div editor-title=".dstack.yml">
+
+    ```yaml
+    type: fleet
+    name: my-fleet
+
+    nodes: 0..2
+
+    resources:
+      gpu: H100:8
+
+    # Split into 4 blocks, each with 2 GPUs
+    blocks: 4
+    ```
+
+    </div>
+
+=== "SSH fleets"
+    <div editor-title=".dstack.yml">
 
     ```yaml
     type: fleet
@@ -2102,7 +2070,7 @@ By default, a job uses the entire instance—e.g., all 8 GPUs. To allow multiple
           blocks: 1
     ```
 
-</div>
+    </div>
 
 All resources (GPU, CPU, memory) are split evenly across blocks, while disk is shared.
 
@@ -2112,12 +2080,51 @@ Set `blocks` to `auto` to match the number of blocks to the number of GPUs.
 
 !!! info "Distributed tasks"
     Distributed tasks require exclusive access to all host resources and therefore must use all blocks on each node.
-    
-#### Environment variables
 
-If needed, you can specify environment variables that will be used by `dstack-shim` and passed to containers.
+### SSH config
 
-[//]: # (TODO: Explain what dstack-shim is)
+<!-- TODO: add more detail -->
+
+#### Proxy jump
+
+If hosts are behind a head node (aka "login node"), configure [`proxy_jump`](../reference/dstack.yml/fleet.md#proxy_jump):
+
+<div editor-title="fleet.dstack.yml">
+
+    ```yaml
+    type: fleet
+    name: my-fleet
+
+    ssh_config:
+      user: ubuntu
+      identity_file: ~/.ssh/worker_node_key
+      hosts:
+        - 3.255.177.51
+        - 3.255.177.52
+      proxy_jump:
+        hostname: 3.255.177.50
+        user: ubuntu
+        identity_file: ~/.ssh/head_node_key
+    ```
+
+</div>
+
+To be able to attach to runs, both explicitly with `dstack attach` and implicitly with `dstack apply`, you must either add a front node key (`~/.ssh/head_node_key`) to an SSH agent or configure a key path in `~/.ssh/config`:
+
+<div editor-title="~/.ssh/config">
+
+    ```
+    Host 3.255.177.50
+        IdentityFile ~/.ssh/head_node_key
+    ```
+
+</div>
+
+where `Host` must match `ssh_config.proxy_jump.hostname` or `ssh_config.hosts[n].proxy_jump.hostname` if you configure head nodes on a per-worker basis.
+
+### Environment variables
+
+If needed, you can specify environment variables that will be automatically passed to any jobs running on this fleet.
 
 For example, these variables can be used to configure a proxy:
 
@@ -2138,58 +2145,8 @@ ssh_config:
     - 3.255.177.52
 ```
 
-#### Proxy jump
-
-If fleet hosts are behind a head node (aka "login node"), configure [`proxy_jump`](../reference/dstack.yml/fleet.md#proxy_jump):
-
-<div editor-title="examples/misc/fleets/.dstack.yml">
-
-    ```yaml
-    type: fleet
-    name: my-fleet
-
-    ssh_config:
-      user: ubuntu
-      identity_file: ~/.ssh/worker_node_key
-      hosts:
-        - 3.255.177.51
-        - 3.255.177.52
-      proxy_jump:
-        hostname: 3.255.177.50
-        user: ubuntu
-        identity_file: ~/.ssh/head_node_key
-    ```
-
-</div>
-
-To be able to attach to runs, both explicitly with `dstack attach` and implicitly with `dstack apply`, you must either
-add a front node key (`~/.ssh/head_node_key`) to an SSH agent or configure a key path in `~/.ssh/config`:
-
-<div editor-title="~/.ssh/config">
-
-    ```
-    Host 3.255.177.50
-        IdentityFile ~/.ssh/head_node_key
-    ```
-
-</div>
-
-where `Host` must match `ssh_config.proxy_jump.hostname` or `ssh_config.hosts[n].proxy_jump.hostname` if you configure head nodes
-on a per-worker basis.
-
 !!! info "Reference"
-    For all SSH fleet configuration options, refer to the [reference](../reference/dstack.yml/fleet.md).
-
-#### Troubleshooting
-
-!!! info "Resources"
-    Once the fleet is created, double-check that the GPU, memory, and disk are detected correctly.
-
-If the status does not change to `idle` after a few minutes or the resources are not displayed correctly, ensure that
-all host requirements are satisfied.
-
-If the requirements are met but the fleet still fails to be created correctly, check the logs at
-`/root/.dstack/shim.log` on the hosts for error details.
+    The fleet configuration file supports many more options. See the [reference](../reference/dstack.yml/fleet.md).
 
 ## Manage fleets
 
@@ -2229,7 +2186,9 @@ To terminate and delete specific instances from a fleet, pass `-i INSTANCE_NUM`.
 !!! info "What's next?"
     1. Check [dev environments](dev-environments.md), [tasks](tasks.md), and
     [services](services.md)
-    2. Read the [Clusters](../guides/clusters.md) guide
+    2. Read about [Backends](backends.md) guide
+    3. Explore the [`.dstack.yml` reference](../reference/dstack.yml/fleet.md)
+    4. See the [Clusters](../../examples.md#clusters) example
 
 
 ## Dev environments
@@ -3006,18 +2965,18 @@ resources:
 
 </div>
 
-Nodes can communicate using their private IP addresses.
-Use `DSTACK_MASTER_NODE_IP`, `DSTACK_NODES_IPS`, `DSTACK_NODE_RANK`, and other
-[System environment variables](#system-environment-variables) for inter-node communication.
+!!! info "Cluster placement"
+    To submit a distributed task, you must create at least one fleet with a [cluster placement](fleets.md#cluster-placement).
+    <!-- TODO: Update the link once fleets.md is refactored. -->
+
+Jobs on each node communicate using their private IP addresses. Use `DSTACK_MASTER_NODE_IP`, `DSTACK_NODES_IPS`, `DSTACK_NODE_RANK`, and other [system environment variables](#system-environment-variables) for inter-node communication.
+
+<!-- TODO: explain `startup_order` and `stop_criteria` / MPI -->
 
 `dstack` is easy to use with `accelerate`, `torchrun`, Ray, Spark, and any other distributed frameworks.
-
-
-!!! info "MPI"
-    If want to use MPI, you can set `startup_order` to `workers-first` and `stop_criteria` to `master-done`, and use `DSTACK_MPI_HOSTFILE`.
-    See the [NCCL/RCCL tests](../../examples/clusters/nccl-rccl-tests/index.md) examples.
-
-> For detailed examples, see [distributed training](../../examples.md#distributed-training) examples.
+    
+> For detailed examples, see the [distributed training](../../examples.md#distributed-training) 
+  and [clusters](../../examples.md#clusters) examples.
 
 ??? info "Network interface"
     Distributed frameworks usually detect the correct network interface automatically,
@@ -3042,11 +3001,6 @@ Use `DSTACK_MASTER_NODE_IP`, `DSTACK_NODES_IPS`, `DSTACK_NODE_RANK`, and other
     You can log in to any node from any node via SSH on port 10022 using the `~/.ssh/dstack_job` private key.
     For convenience, `~/.ssh/config` is preconfigured with these options, so a simple `ssh <node_ip>` is enough.
     For a list of nodes IPs check the `DSTACK_NODES_IPS` environment variable.
-
-!!! info "Cluster fleets"
-    To run distributed tasks, you need to create a fleet with [`placement: cluster`](fleets.md#cloud-placement).
-
-> See the [Clusters](../guides/clusters.md) guide for more details on how to use `dstack` on clusters.
 
 ### Resources
 
@@ -5093,6 +5047,172 @@ volumes:
 </div>
 
 
+## Gateways
+
+# Gateways
+
+Gateways manage ingress traffic for running [services](services.md), handle auto-scaling and rate limits, enable HTTPS, and allow you to configure a custom domain. They also support custom routers, such as the [SGLang Model Gateway](https://docs.sglang.ai/advanced_features/router.html#).
+
+<!-- > If you're using [dstack Sky](https://sky.dstack.ai),
+> the gateway is already set up for you. -->
+
+## Apply a configuration
+
+First, define a gateway configuration as a YAML file in your project folder.
+The filename must end with `.dstack.yml` (e.g. `.dstack.yml` or `gateway.dstack.yml` are both acceptable).
+
+<div editor-title="gateway.dstack.yml">
+
+```yaml
+type: gateway
+# A name of the gateway
+name: example-gateway
+
+# Gateways are bound to a specific backend and region
+backend: aws
+region: eu-west-1
+
+# This domain will be used to access the endpoint
+domain: example.com
+```
+
+</div>
+
+A domain name is required to create a gateway.
+
+To create or update the gateway, simply call the [`dstack apply`](../reference/cli/dstack/apply.md) command:
+
+<div class="termy">
+
+```shell
+$ dstack apply -f gateway.dstack.yml
+The example-gateway doesn't exist. Create it? [y/n]: y
+
+Provisioning...
+---> 100%
+
+ BACKEND  REGION     NAME             HOSTNAME  DOMAIN       DEFAULT  STATUS
+ aws      eu-west-1  example-gateway            example.com  ✓        submitted
+```
+
+</div>
+
+## Configuration options
+
+### Backend
+
+You can create gateways with the `aws`, `azure`, `gcp`, or `kubernetes` backends, but that does not limit where services run. A gateway can use one backend while services run on any other backend supported by dstack, including backends where gateways themselves cannot be created.
+
+??? info "Kubernetes"
+    Gateways in `kubernetes` backend require an external load balancer. Managed Kubernetes solutions usually include a load balancer.
+    For self-hosted Kubernetes, you must provide a load balancer by yourself.
+
+### Instance type
+
+By default, `dstack` provisions a small, low-cost instance for the gateway. If you expect to run high-traffic services, you can configure a larger instance type using the `instance_type` property.
+
+<div editor-title="gateway.dstack.yml">
+
+```yaml
+type: gateway
+name: example-gateway
+
+backend: aws
+region: eu-west-1
+
+# (Optional) Override the gateway instance type
+instance_type: t3.large
+
+domain: example.com
+```
+
+</div>
+
+### Router
+
+By default, the gateway uses its own load balancer to route traffic between replicas. However, you can delegate this responsibility to a specific router by setting the `router` property. Currently, the only supported external router is `sglang`.
+
+#### SGLang
+
+The `sglang` router delegates routing logic to the [SGLang Model Gateway](https://docs.sglang.ai/advanced_features/router.html#).
+
+To enable it, set `type` field under `router` to `sglang`:
+
+<div editor-title="gateway.dstack.yml">
+
+```yaml
+type: gateway
+name: sglang-gateway
+
+backend: aws
+region: eu-west-1
+
+domain: example.com
+
+router:
+  type: sglang
+  policy: cache_aware
+```
+
+</div>
+
+!!! info "Policy"
+    The `policy` property allows you to configure the routing policy:
+
+    * `cache_aware` &mdash; Default policy; combines cache locality with load balancing, falling back to shortest queue. 
+    * `power_of_two` &mdash; Samples two workers and picks the lighter one.                                               
+    * `random` &mdash; Uniform random selection.                                                                    
+    * `round_robin` &mdash; Cycles through workers in order.                                                             
+
+
+> Currently, services using this type of gateway must run standard SGLang workers. See the [example](../../examples/inference/sglang/index.md).
+>
+> Support for prefill/decode disaggregation and auto-scaling based on inter-token latency is coming soon.
+
+### Public IP
+
+If you don't need/want a public IP for the gateway, you can set the `public_ip` to `false` (the default value is `true`), making the gateway private.
+Private gateways are currently supported in `aws` and `gcp` backends.
+
+!!! info "Reference"
+    For all gateway configuration options, refer to the [reference](../reference/dstack.yml/gateway.md).
+
+## Update DNS records
+
+Once the gateway is assigned a hostname, go to your domain's DNS settings
+and add a DNS record for `*.<gateway domain>`, e.g. `*.example.com`.
+The record should point to the gateway's hostname shown in `dstack`
+and should be of type `A` if the hostname is an IP address (most cases),
+or of type `CNAME` if the hostname is another domain (some private gateways and Kubernetes).
+
+## Manage gateways
+
+### List gateways
+
+The [`dstack gateway list`](../reference/cli/dstack/gateway.md#dstack-gateway-list) command lists existing gateways and their status.
+
+### Delete a gateway
+
+To delete a gateway, pass the gateway configuration to [`dstack delete`](../reference/cli/dstack/delete.md):
+
+<div class="termy">
+
+```shell
+$ dstack delete -f examples/inference/gateway.dstack.yml
+```
+
+</div>
+
+Alternatively, you can delete a gateway by passing the gateway name  to `dstack gateway delete`.
+
+[//]: # (TODO: Elaborate on default)
+
+[//]: # (TODO: ## Accessing endpoints)
+
+!!! info "What's next?"
+    1. See [services](services.md) on how to run services
+
+
 ## Secrets
 
 # Secrets
@@ -5285,377 +5405,213 @@ You can find the command on the project’s settings page:
     In addition to the UI, managing projects, users, and user permissions can also be done via the [REST API](../reference/api/rest/index.md).
 
 
-## Gateways
+## Metrics
 
-# Gateways
+# Metrics
 
-Gateways manage ingress traffic for running [services](services.md), handle auto-scaling and rate limits, enable HTTPS, and allow you to configure a custom domain. They also support custom routers, such as the [SGLang Model Gateway](https://docs.sglang.ai/advanced_features/router.html#).
+`dstack` automatically tracks essential metrics, which you can access via the CLI and UI.
+You can also configure the `dstack` server to export metrics to Prometheus—this is required to access advanced metrics such as those from DCGM.
 
-<!-- > If you're using [dstack Sky](https://sky.dstack.ai),
-> the gateway is already set up for you. -->
+## UI
 
-## Apply a configuration
+To access metrics via the UI, open the page of the corresponding run or job and switch to the `Metrics` tab:
 
-First, define a gateway configuration as a YAML file in your project folder.
-The filename must end with `.dstack.yml` (e.g. `.dstack.yml` or `gateway.dstack.yml` are both acceptable).
+![](https://dstack.ai/static-assets/static-assets/images/dstack-newsletter-metrics.png){ width=800 }
 
-<div editor-title="gateway.dstack.yml">
+This tab displays key CPU, memory, and GPU metrics collected during the last hour of the run or job.
 
-```yaml
-type: gateway
-# A name of the gateway
-name: example-gateway
+## CLI
 
-# Gateways are bound to a specific backend and region
-backend: aws
-region: eu-west-1
-
-# This domain will be used to access the endpoint
-domain: example.com
-```
-
-</div>
-
-A domain name is required to create a gateway.
-
-To create or update the gateway, simply call the [`dstack apply`](../reference/cli/dstack/apply.md) command:
+As an alternative to the UI, you can track real-time essential metrics via the CLI.
+The `dstack metrics` command displays the most recently tracked CPU, memory, and GPU metrics.
 
 <div class="termy">
 
 ```shell
-$ dstack apply -f gateway.dstack.yml
-The example-gateway doesn't exist. Create it? [y/n]: y
+dstack metrics gentle-mayfly-1
 
-Provisioning...
----> 100%
-
- BACKEND  REGION     NAME             HOSTNAME  DOMAIN       DEFAULT  STATUS
- aws      eu-west-1  example-gateway            example.com  ✓        submitted
+ NAME             STATUS  CPU  MEMORY          GPU
+ gentle-mayfly-1  done    0%   16.27GB/2000GB  gpu=0 mem=72.48GB/80GB util=0%
+                                               gpu=1 mem=64.99GB/80GB util=0%
+                                               gpu=2 mem=580MB/80GB util=0%
+                                               gpu=3 mem=4MB/80GB util=0%
+                                               gpu=4 mem=4MB/80GB util=0%
+                                               gpu=5 mem=4MB/80GB util=0%
+                                               gpu=6 mem=4MB/80GB util=0%
+                                               gpu=7 mem=292MB/80GB util=0%
 ```
 
 </div>
 
-## Configuration options
+## Prometheus
 
-### Backend
+To enable exporting metrics to Prometheus, set the
+`DSTACK_ENABLE_PROMETHEUS_METRICS` environment variable and configure Prometheus to scrape metrics from
+`<dstack server URL>/metrics`.
 
-You can create gateways with the `aws`, `azure`, `gcp`, or `kubernetes` backends, but that does not limit where services run. A gateway can use one backend while services run on any other backend supported by dstack, including backends where gateways themselves cannot be created.
+In addition to the essential metrics available via the CLI and UI, `dstack` exports additional metrics to Prometheus, including data on fleets, runs, jobs, and DCGM metrics.
 
-??? info "Kubernetes"
-    Gateways in `kubernetes` backend require an external load balancer. Managed Kubernetes solutions usually include a load balancer.
-    For self-hosted Kubernetes, you must provide a load balancer by yourself.
+??? info "NVIDIA DCGM"
+    NVIDIA DCGM metrics are automatically collected for `aws`, `azure`, `gcp`, and `oci` backends,
+    as well as for [SSH fleets](../concepts/fleets.md#ssh-fleets).
 
-### Instance type
+    To ensure NVIDIA DCGM metrics are collected from SSH fleets, ensure the `datacenter-gpu-manager-4-core`,
+    `datacenter-gpu-manager-4-proprietary`, and `datacenter-gpu-manager-exporter` packages are installed on the hosts.
 
-By default, `dstack` provisions a small, low-cost instance for the gateway. If you expect to run high-traffic services, you can configure a larger instance type using the `instance_type` property.
+### Fleets
 
-<div editor-title="gateway.dstack.yml">
+Fleet metrics include metrics for each instance within a fleet. This includes information such as the instance's running
+time, price, GPU name, and more.
 
-```yaml
-type: gateway
-name: example-gateway
+=== "Metrics"
+    | Name                                     | Type      | Description                       | Examples     |
+    |------------------------------------------|-----------|-----------------------------------|--------------|
+    | `dstack_instance_duration_seconds_total` | *counter* | Total instance runtime in seconds | `1123763.22` |
+    | `dstack_instance_price_dollars_per_hour` | *gauge*   | Instance price, USD/hour          | `16.0`       |
+    | `dstack_instance_gpu_count`              | *gauge*   | Instance GPU count                | `4.0`, `0.0` |
 
-backend: aws
-region: eu-west-1
+=== "Labels"
+    | Name                   | Type      | Description   | Examples                               |
+    |------------------------|-----------|:--------------|----------------------------------------|
+    | `dstack_project_name`  | *string*  | Project name  | `main`                                 |
+    | `dstack_fleet_name`    | *string?* | Fleet name    | `my-fleet`                             |
+    | `dstack_fleet_id`      | *string?* | Fleet ID      | `51e837bf-fae9-4a37-ac9c-85c005606c22` |
+    | `dstack_instance_name` | *string*  | Instance name | `my-fleet-0`                           |
+    | `dstack_instance_id`   | *string*  | Instance ID   | `8c28c52c-2f94-4a19-8c06-12f1dfee4dd2` |
+    | `dstack_instance_type` | *string?* | Instance type | `g4dn.xlarge`                          |
+    | `dstack_backend`       | *string?* | Backend       | `aws`, `runpod`                        |
+    | `dstack_gpu`           | *string?* | GPU name      | `H100`                                 |
 
-# (Optional) Override the gateway instance type
-instance_type: t3.large
+### Runs
 
-domain: example.com
-```
+Run metrics include run counters for each user in each project.
 
-</div>
+=== "Metrics"
+    | Name                                | Type      | Description                   | Examples |
+    |-------------------------------------|-----------|-------------------------------|----------|
+    | `dstack_run_count_total`            | *counter* | The total number of runs      | `537`    |
+    | `dstack_run_count_terminated_total` | *counter* | The number of terminated runs | `118`    |
+    | `dstack_run_count_failed_total`     | *counter* | The number of failed runs     | `27`     |
+    | `dstack_run_count_done_total`       | *counter* | The number of successful runs | `218`    |
 
-### Router
+=== "Labels"
 
-By default, the gateway uses its own load balancer to route traffic between replicas. However, you can delegate this responsibility to a specific router by setting the `router` property. Currently, the only supported external router is `sglang`.
+    | Name                  | Type      | Description   | Examples    |
+    |-----------------------|-----------|:--------------|-------------|
+    | `dstack_project_name` | *string*  | Project name  | `main`      |
+    | `dstack_user_name`    | *string*  | User name     | `alice`     |
 
-#### SGLang
+### Jobs
 
-The `sglang` router delegates routing logic to the [SGLang Model Gateway](https://docs.sglang.ai/advanced_features/router.html#).
+A run consists of one or more jobs, each mapped to an individual container.
+For distributed workloads or auto-scalable services, a run spans multiple jobs.
 
-To enable it, set `type` field under `router` to `sglang`:
+Job metrics provide detailed insights into each job within a run, including execution time, cost, GPU model, DCGM
+telemetry, and more.
 
-<div editor-title="gateway.dstack.yml">
+=== "Metrics"
 
-```yaml
-type: gateway
-name: sglang-gateway
+    | Name                                            | Type      | Description                                                                                | Examples       |
+    |-------------------------------------------------|-----------|--------------------------------------------------------------------------------------------|----------------|
+    | `dstack_job_duration_seconds_total`             | *counter* | Total job runtime in seconds                                                               | `520.37`       |
+    | `dstack_job_price_dollars_per_hour`             | *gauge*   | Job instance price, USD/hour                                                               | `8.0`          |
+    | `dstack_job_gpu_count`                          | *gauge*   | Job GPU count                                                                              | `2.0`, `0.0`   |
+    | `dstack_job_cpu_count`                          | *gauge*   | Job CPU count                                                                              | `32.0`         |
+    | `dstack_job_cpu_time_seconds_total`             | *counter* | Total CPU time consumed by the job, seconds                                                | `11.727975`    |
+    | `dstack_job_memory_total_bytes`                 | *gauge*   | Total memory allocated for the job, bytes                                                  | `4009754624.0` |
+    | `dstack_job_memory_usage_bytes`                 | *gauge*   | Memory used by the job (including cache), bytes                                            | `339017728.0`  |
+    | `dstack_job_memory_working_set_bytes`           | *gauge*   | Memory used by the job (not including cache), bytes                                        | `147251200.0`  |
+    | `dstack_job_gpu_usage_ratio`                    | *gauge*   | Job GPU usage, percent (as 0.0-1.0)                                                        | `0.93`         |
+    | `dstack_job_gpu_memory_total_bytes`             | *gauge*   | Total GPU memory allocated for the job, bytes                                              | `8589934592.0` |
+    | `dstack_job_gpu_memory_usage_bytes`             | *gauge*   | GPU memory used by the job, bytes                                                          | `1048576.0`    |
+    | `DCGM_FI_DEV_GPU_UTIL`                          | *gauge*   | GPU utilization (in %)                                                                     |                |
+    | `DCGM_FI_DEV_MEM_COPY_UTIL`                     | *gauge*   | Memory utilization (in %)                                                                  |                |
+    | `DCGM_FI_DEV_ENC_UTIL`                          | *gauge*   | Encoder utilization (in %)                                                                 |                |
+    | `DCGM_FI_DEV_DEC_UTIL`                          | *gauge*   | Decoder utilization (in %)                                                                 |                |
+    | `DCGM_FI_DEV_FB_FREE`                           | *gauge*   | Framebuffer memory free (in MiB)                                                           |                |
+    | `DCGM_FI_DEV_FB_USED`                           | *gauge*   | Framebuffer memory used (in MiB)                                                           |                |
+    | `DCGM_FI_PROF_GR_ENGINE_ACTIVE`                 | *gauge*   | The ratio of cycles during which a graphics engine or compute engine remains active        |                |
+    | `DCGM_FI_PROF_SM_ACTIVE`                        | *gauge*   | The ratio of cycles an SM has at least 1 warp assigned                                     |                |
+    | `DCGM_FI_PROF_SM_OCCUPANCY`                     | *gauge*   | The ratio of number of warps resident on an SM                                             |                |
+    | `DCGM_FI_PROF_PIPE_TENSOR_ACTIVE`               | *gauge*   | Ratio of cycles the tensor (HMMA) pipe is active                                           |                |
+    | `DCGM_FI_PROF_PIPE_FP64_ACTIVE`                 | *gauge*   | Ratio of cycles the fp64 pipes are active                                                  |                |
+    | `DCGM_FI_PROF_PIPE_FP32_ACTIVE`                 | *gauge*   | Ratio of cycles the fp32 pipes are active                                                  |                |
+    | `DCGM_FI_PROF_PIPE_FP16_ACTIVE`                 | *gauge*   | Ratio of cycles the fp16 pipes are active                                                  |                |
+    | `DCGM_FI_PROF_PIPE_INT_ACTIVE`                  | *gauge*   | Ratio of cycles the integer pipe is active                                                 |                |
+    | `DCGM_FI_PROF_DRAM_ACTIVE`                      | *gauge*   | Ratio of cycles the device memory interface is active sending or receiving data            |                |
+    | `DCGM_FI_PROF_PCIE_TX_BYTES`                    | *counter* | The number of bytes of active PCIe tx (transmit) data including both header and payload    |                |
+    | `DCGM_FI_PROF_PCIE_RX_BYTES`                    | *counter* | The number of bytes of active PCIe rx (read) data including both header and payload        |                |
+    | `DCGM_FI_DEV_SM_CLOCK`                          | *gauge*   | SM clock frequency (in MHz)                                                                |                |
+    | `DCGM_FI_DEV_MEM_CLOCK`                         | *gauge*   | Memory clock frequency (in MHz)                                                            |                |
+    | `DCGM_FI_DEV_MEMORY_TEMP`                       | *gauge*   | Memory temperature (in C)                                                                  |                |
+    | `DCGM_FI_DEV_GPU_TEMP`                          | *gauge*   | GPU temperature (in C)                                                                     |                |
+    | `DCGM_FI_DEV_POWER_USAGE`                       | *gauge*   | Power draw (in W)                                                                          |                |
+    | `DCGM_FI_DEV_TOTAL_ENERGY_CONSUMPTION`          | *counter* | Total energy consumption since boot (in mJ)                                                |                |
+    | `DCGM_FI_DEV_PCIE_REPLAY_COUNTER`               | *counter* | Total number of PCIe retries                                                               |                |
+    | `DCGM_FI_DEV_XID_ERRORS`                        | *gauge*   | Value of the last XID error encountered                                                    |                |
+    | `DCGM_FI_DEV_POWER_VIOLATION`                   | *counter* | Throttling duration due to power constraints (in us)                                       |                |
+    | `DCGM_FI_DEV_THERMAL_VIOLATION`                 | *counter* | Throttling duration due to thermal constraints (in us)                                     |                |
+    | `DCGM_FI_DEV_SYNC_BOOST_VIOLATION`              | *counter* | Throttling duration due to sync-boost constraints (in us)                                  |                |
+    | `DCGM_FI_DEV_BOARD_LIMIT_VIOLATION`             | *counter* | Throttling duration due to board limit constraints (in us)                                 |                |
+    | `DCGM_FI_DEV_LOW_UTIL_VIOLATION`                | *counter* | Throttling duration due to low utilization (in us)                                         |                |
+    | `DCGM_FI_DEV_RELIABILITY_VIOLATION`             | *counter* | Throttling duration due to reliability constraints (in us)                                 |                |
+    | `DCGM_FI_DEV_ECC_SBE_VOL_TOTAL`                 | *counter* | Total number of single-bit volatile ECC errors                                             |                |
+    | `DCGM_FI_DEV_ECC_DBE_VOL_TOTAL`                 | *counter* | Total number of double-bit volatile ECC errors                                             |                |
+    | `DCGM_FI_DEV_ECC_SBE_AGG_TOTAL`                 | *counter* | Total number of single-bit persistent ECC errors                                           |                |
+    | `DCGM_FI_DEV_ECC_DBE_AGG_TOTAL`                 | *counter* | Total number of double-bit persistent ECC errors                                           |                |
+    | `DCGM_FI_DEV_RETIRED_SBE`                       | *counter* | Total number of retired pages due to single-bit errors                                     |                |
+    | `DCGM_FI_DEV_RETIRED_DBE`                       | *counter* | Total number of retired pages due to double-bit errors                                     |                |
+    | `DCGM_FI_DEV_RETIRED_PENDING`                   | *counter* | Total number of pages pending retirement                                                   |                |
+    | `DCGM_FI_DEV_UNCORRECTABLE_REMAPPED_ROWS`       | *counter* | Number of remapped rows for uncorrectable errors                                           |                |
+    | `DCGM_FI_DEV_CORRECTABLE_REMAPPED_ROWS`         | *counter* | Number of remapped rows for correctable errors                                             |                |
+    | `DCGM_FI_DEV_ROW_REMAP_FAILURE`                 | *gauge*   | Whether remapping of rows has failed                                                       |                |
+    | `DCGM_FI_DEV_NVLINK_CRC_FLIT_ERROR_COUNT_TOTAL` | *counter* | Total number of NVLink flow-control CRC errors                                             |                |
+    | `DCGM_FI_DEV_NVLINK_CRC_DATA_ERROR_COUNT_TOTAL` | *counter* | Total number of NVLink data CRC errors                                                     |                |
+    | `DCGM_FI_DEV_NVLINK_REPLAY_ERROR_COUNT_TOTAL`   | *counter* | Total number of NVLink retries                                                             |                |
+    | `DCGM_FI_DEV_NVLINK_RECOVERY_ERROR_COUNT_TOTAL` | *counter* | Total number of NVLink recovery errors                                                     |                |
+    | `DCGM_FI_DEV_NVLINK_BANDWIDTH_TOTAL`            | *counter* | Total number of NVLink bandwidth counters for all lanes                                    |                |
+    | `DCGM_FI_DEV_NVLINK_BANDWIDTH_L0`               | *counter* | The number of bytes of active NVLink rx or tx data including both header and payload       |                |
+    | `DCGM_FI_PROF_NVLINK_RX_BYTES`                  | *counter* | The number of bytes of active PCIe rx (read) data including both header and payload        |                |
+    | `DCGM_FI_PROF_NVLINK_TX_BYTES`                  | *counter* | The number of bytes of active NvLink tx (transmit) data including both header and payload  |                |
 
-backend: aws
-region: eu-west-1
+=== "Labels"
+    | Label                 | Type      | Description            | Examples                               |
+    |-----------------------|-----------|:-----------------------|----------------------------------------|
+    | `dstack_project_name` | *string*  | Project name           | `main`                                 |
+    | `dstack_user_name`    | *string*  | User name              | `alice`                                |
+    | `dstack_run_name`     | *string*  | Run name               | `nccl-tests`                           |
+    | `dstack_run_id`       | *string*  | Run ID                 | `51e837bf-fae9-4a37-ac9c-85c005606c22` |
+    | `dstack_job_name`     | *string*  | Job name               | `nccl-tests-0-0`                       |
+    | `dstack_job_id`       | *string*  | Job ID                 | `8c28c52c-2f94-4a19-8c06-12f1dfee4dd2` |
+    | `dstack_job_num`      | *integer* | Job number             | `0`                                    |
+    | `dstack_replica_num`  | *integer* | Replica number         | `0`                                    |
+    | `dstack_run_type`     | *string*  | Run configuration type | `task`, `dev-environment`              |
+    | `dstack_backend`      | *string*  | Backend                | `aws`, `runpod`                        |
+    | `dstack_gpu`          | *string?* | GPU name               | `H100`                                 |
+    | `dstack_gpu_num`[^1]  | *integer* | GPU number (0-based)   | `0`                                    |
 
-domain: example.com
+    [^1]: For `dstack_gpu_*` metrics only.
 
-router:
-  type: sglang
-  policy: cache_aware
-```
+### Server health metrics
 
-</div>
+These are operational metrics to monitor the health of the dstack server. For now, these only include HTTP metrics, but more will be added later.
 
-!!! info "Policy"
-    The `policy` property allows you to configure the routing policy:
+=== "Metrics"
+    | Name                                     | Type      | Description                       | Examples     |
+    |------------------------------------------|-----------|-----------------------------------|--------------|
+    | `dstack_server_requests_total` | *counter* | Total number of HTTP requests | `100.0` |
+    | `dstack_server_request_duration_seconds` | *histogram*   | HTTP request duration in seconds  | `1.0`|
 
-    * `cache_aware` &mdash; Default policy; combines cache locality with load balancing, falling back to shortest queue. 
-    * `power_of_two` &mdash; Samples two workers and picks the lighter one.                                               
-    * `random` &mdash; Uniform random selection.                                                                    
-    * `round_robin` &mdash; Cycles through workers in order.                                                             
-
-
-> Currently, services using this type of gateway must run standard SGLang workers. See the [example](../../examples/inference/sglang/index.md).
->
-> Support for prefill/decode disaggregation and auto-scaling based on inter-token latency is coming soon.
-
-### Public IP
-
-If you don't need/want a public IP for the gateway, you can set the `public_ip` to `false` (the default value is `true`), making the gateway private.
-Private gateways are currently supported in `aws` and `gcp` backends.
-
-!!! info "Reference"
-    For all gateway configuration options, refer to the [reference](../reference/dstack.yml/gateway.md).
-
-## Update DNS records
-
-Once the gateway is assigned a hostname, go to your domain's DNS settings
-and add a DNS record for `*.<gateway domain>`, e.g. `*.example.com`.
-The record should point to the gateway's hostname shown in `dstack`
-and should be of type `A` if the hostname is an IP address (most cases),
-or of type `CNAME` if the hostname is another domain (some private gateways and Kubernetes).
-
-## Manage gateways
-
-### List gateways
-
-The [`dstack gateway list`](../reference/cli/dstack/gateway.md#dstack-gateway-list) command lists existing gateways and their status.
-
-### Delete a gateway
-
-To delete a gateway, pass the gateway configuration to [`dstack delete`](../reference/cli/dstack/delete.md):
-
-<div class="termy">
-
-```shell
-$ dstack delete -f examples/inference/gateway.dstack.yml
-```
-
-</div>
-
-Alternatively, you can delete a gateway by passing the gateway name  to `dstack gateway delete`.
-
-[//]: # (TODO: Elaborate on default)
-
-[//]: # (TODO: ## Accessing endpoints)
-
-!!! info "What's next?"
-    1. See [services](services.md) on how to run services
+=== "Labels"
+    | Name                   | Type      | Description   | Examples                               |
+    |------------------------|-----------|:--------------|----------------------------------------|
+    | `method`  | *string*  | HTTP method  | `POST`                                 |
+    | `endpoint`    | *string* | Endpoint path    | `/api/project/main/repos/get`                             |
+    | `http_status`      | *string* | HTTP status code      | `200` |
+    | `project_name` | *string?*  | Project name  | `main`                           |
 
 
 # Guides
-
-## Clusters
-
-# Clusters
-
-A cluster is a [fleet](../concepts/fleets.md) with its `placement` set to `cluster`. This configuration ensures that the instances within the fleet are interconnected, enabling fast inter-node communication—crucial for tasks such as efficient distributed training.
-
-## Fleets
-
-Ensure a fleet is created before you run any distributed task. This can be either an SSH fleet or a cloud fleet.
-
-### SSH fleets
-
-[SSH fleets](../concepts/fleets.md#ssh-fleets) can be used to create a fleet out of existing baremetals or VMs, e.g. if they are already pre-provisioned, or set up on-premises.
-
-> For SSH fleets, fast interconnect is supported provided that the hosts are pre-configured with the appropriate interconnect drivers.
-
-### Cloud fleets
-
-[Cloud fleets](../concepts/fleets.md#backend-fleets) allow to provision interconnected clusters across supported backends.
-For cloud fleets, fast interconnect is currently supported only on the `aws`, `gcp`, `nebius`, and `runpod` backends.
-
-=== "AWS"
-    When you create a cloud fleet with AWS, [Elastic Fabric Adapter](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/efa.html) networking is automatically configured if it’s supported for the corresponding instance type.
-    
-    !!! info "Backend configuration"    
-        Note, EFA requires the `public_ips` to be set to `false` in the `aws` backend configuration.
-        Refer to the [AWS](../../examples/clusters/aws/index.md) example for more details.
-
-=== "GCP"
-    When you create a cloud fleet with GCP, `dstack` automatically configures [GPUDirect-TCPXO and GPUDirect-TCPX](https://cloud.google.com/kubernetes-engine/docs/how-to/gpu-bandwidth-gpudirect-tcpx-autopilot) networking for the A3 Mega and A3 High instance types, as well as RoCE networking for the A4 instance type.
-
-    !!! info "Backend configuration"    
-        You may need to configure `extra_vpcs` and `roce_vpcs` in the `gcp` backend configuration.
-        Refer to the [GCP](../../examples/clusters/gcp/index.md) examples for more details.
-
-=== "Nebius"
-    When you create a cloud fleet with Nebius, [InfiniBand](https://docs.nebius.com/compute/clusters/gpu) networking is automatically configured if it’s supported for the corresponding instance type.
-
-=== "Runpod"
-    When you run multinode tasks in a cluster cloud fleet with Runpod, `dstack` provisions [Runpod Instant Clusters](https://docs.runpod.io/instant-clusters) with InfiniBand networking configured.
-
-> To request fast interconnect support for other backends,
-file an [issue](https://github.com/dstackai/dstack/issues){:target="_ blank"}.
-
-## Distributed tasks
-
-A distributed task is a task with `nodes` set to a value greater than `2`. In this case, `dstack` first ensures a 
-suitable fleet is available, then selects the master node (to obtain its IP) and finally runs jobs on each node.
-
-Within the task's `commands`, it's possible to use `DSTACK_MASTER_NODE_IP`, `DSTACK_NODES_IPS`, `DSTACK_NODE_RANK`, and other
-[system environment variables](../concepts/tasks.md#system-environment-variables) for inter-node communication.
-
-??? info "MPI"
-    If want to use MPI, you can set `startup_order` to `workers-first` and `stop_criteria` to `master-done`, and use `DSTACK_MPI_HOSTFILE`.
-    See the [NCCL/RCCL tests](../../examples/clusters/nccl-rccl-tests/index.md) examples.
-
-!!! info "Retry policy"
-    By default, if any of the nodes fails, `dstack` terminates the entire run. Configure a [retry policy](../concepts/tasks.md#retry-policy) to  restart the run if any node fails.
-
-Refer to [distributed tasks](../concepts/tasks.md#distributed-tasks) for an example.
-
-## NCCL/RCCL tests
-
-To test the interconnect of a created fleet, ensure you run [NCCL/RCCL tests](../../examples/clusters/nccl-rccl-tests/index.md) tests using MPI.
-
-## Volumes
-
-### Instance volumes
-
-[Instance volumes](../concepts/volumes.md#instance-volumes) enable mounting any folder from the host into the container, allowing data persistence during distributed tasks.
-
-Instance volumes can be used to mount:
-
-* Regular folders (data persists only while the fleet exists)
-* Folders that are mounts of shared filesystems (e.g., manually mounted shared filesystems).
-
-### Network volumes
-    
-Currently, no backend supports multi-attach [network volumes](../concepts/volumes.md#network-volumes) for distributed tasks. However, single-attach volumes can be used by leveraging volume name [interpolation syntax](../concepts/volumes.md#distributed-tasks). This approach mounts a separate single-attach volume to each node.
-
-!!! info "What's next?"
-    1. Read about [distributed tasks](../concepts/tasks.md#distributed-tasks), [fleets](../concepts/fleets.md), and [volumes](../concepts/volumes.md)
-    2. Browse the [Clusters](../../examples.md#clusters) and [Distributed training](../../examples.md#distributed-training) examples
-    
-
-
-## Kubernetes
-
-# Kubernetes
-
-The [kubernetes](../concepts/backends.md#kubernetes) backend enables `dstack` to run [dev environments](/docs/concepts/dev-environments), [tasks](/docs/concepts/tasks), and [services](/docs/concepts/services) directly on existing Kubernetes clusters.
-
-If your GPUs are already deployed on Kubernetes and your team relies on its ecosystem and tooling, use this backend to integrate `dstack` with your clusters.
-
-> If Kubernetes is not required, you can run `dstack` on clouds or on-prem clusters without Kubernetes by using [VM-based](../concepts/backends.md#vm-based), [container-based](../concepts/backends.md#container-based), or [on-prem](../concepts/backends.md#on-prem) backends.
-
-## Setting up the backend
-
-To use the `kubernetes` backend with `dstack`, you need to configure it with the path to the kubeconfig file, the IP address of any node in the cluster, and the port that `dstack` will use for proxying SSH traffic. 
-This configuration is defined in the `~/.dstack/server/config.yml` file:
-
-<div editor-title="~/.dstack/server/config.yml">
-
-```yaml
-projects:
-- name: main
-    backends:
-    - type: kubernetes
-      kubeconfig:
-        filename: ~/.kube/config
-      proxy_jump:
-        hostname: 204.12.171.137
-        port: 32000
-```
-
-</div>
-
-### Proxy jump
-
-To allow the `dstack` server and CLI to access runs via SSH, `dstack` requires a node that acts as a jump host to proxy SSH traffic into containers.  
-
-To configure this node, specify `hostname` and `port` under the `proxy_jump` property:  
-
-- `hostname` — the IP address of any cluster node selected as the jump host. Both the `dstack` server and CLI must be able to reach it. This node can be either a GPU node or a CPU-only node — it makes no difference.  
-- `port` — any accessible port on that node, which `dstack` uses to forward SSH traffic.  
-
-No additional setup is required — `dstack` configures and manages the proxy automatically.
-
-### NVIDIA GPU Operator
-
-> For `dstack` to correctly detect GPUs in your Kubernetes cluster, the cluster must have the
-[NVIDIA GPU Operator](https://docs.nvidia.com/datacenter/cloud-native/gpu-operator/latest/index.html) pre-installed.
-
-After the backend is set up, you interact with `dstack` just as you would with other backends or SSH fleets. You can run dev environments, tasks, and services.
-
-## Fleets
-
-### Clusters
-
-If you’d like to run [distributed tasks](../concepts/tasks.md#distributed-tasks) with the `kubernetes` backend, you first need to create a fleet with `placement` set to `cluster`:
-
-<div editor-title="examples/misc/fleets/.dstack.yml">
-    
-    ```yaml
-    type: fleet
-    # The name is optional; if not specified, one is generated automatically
-    name: my-k8s-fleet
-    
-    # For `kubernetes`, `min` should be set to `0` since it can't pre-provision VMs.
-    # Optionally, you can set the maximum number of nodes to limit scaling.
-    nodes: 0..
-
-    placement: cluster
-    
-    backends: [kubernetes]
-    
-    resources:
-      # Specify requirements to filter nodes
-      gpu: 1..8
-    ```
-    
-</div>
-
-Then, create the fleet using the `dstack apply` command:
-
-<div class="termy">
-
-```shell
-$ dstack apply -f examples/misc/fleets/.dstack.yml
-
-Provisioning...
----> 100%
-
- FLEET     INSTANCE  BACKEND              GPU             PRICE    STATUS  CREATED 
-```
-
-</div>
-
-Once the fleet is created, you can run [distributed tasks](../concepts/tasks.md#distributed-tasks). `dstack` takes care of orchestration automatically.
-
-For more details on clusters, see the [corresponding guide](clusters.md).
-
-> Fleets with `placement` set to `cluster` can be used not only for distributed tasks, but also for dev environments, single-node tasks, and services.
-> Since Kubernetes clusters are interconnected by default, you can always set `placement` to `cluster`.
-
-!!! info "Fleets"
-    It’s generally recommended to create [fleets](../concepts/fleets.md) even if you don’t plan to run distributed tasks.  
-
-## FAQ
-
-??? info "Is managed Kubernetes with auto-scaling supported?"
-    Managed Kubernetes is supported. However, the `kubernetes` backend can only run on pre-provisioned nodes.  
-    Support for auto-scalable Kubernetes clusters is coming soon—you can track progress in the corresponding [issue](https://github.com/dstackai/dstack/issues/3126).
-
-    If on-demand provisioning is important, we recommend using [VM-based](../concepts/backends.md#vm-based) backends as they already support auto-scaling.
-    
-??? info "When should I use the Kubernetes backend?"
-    Choose the `kubernetes` backend if your GPUs already run on Kubernetes and your team depends on its ecosystem and tooling. 
-
-    If your priority is orchestrating cloud GPUs and Kubernetes isn’t a must, [VM-based](../concepts/backends.md#vm-based) backends are a better fit thanks to their native cloud integration.
-
-    For on-prem GPUs where Kubernetes is optional, [SSH fleets](../concepts/fleets.md#ssh-fleets) provide a simpler and more lightweight alternative.
-
 
 ## Server deployment
 
@@ -6291,7 +6247,7 @@ one of these features, `dstack` will only select offers from the backends that s
   [Instance volumes](../concepts/volumes.md#instance-volumes),
   and [Privileged containers](../reference/dstack.yml/dev-environment.md#privileged)
   are supported by all backends except `runpod`, `vastai`, and `kubernetes`.
-- [Clusters](../concepts/fleets.md#cloud-placement)
+- [Clusters](../concepts/fleets.md#cluster-placement)
   and [distributed tasks](../concepts/tasks.md#distributed-tasks)
   are only supported by the `aws`, `azure`, `gcp`, `nebius`, `oci`, and `vultr` backends,
   as well as SSH fleets.
@@ -6384,212 +6340,6 @@ Also, review the  `/root/.dstack/shim.log` file on each host used to create the 
 ## Community
 
 If you have a question, please feel free to ask it in our [Discord server](https://discord.gg/u8SmfwPpMd).
-
-
-## Metrics
-
-# Metrics
-
-`dstack` automatically tracks essential metrics, which you can access via the CLI and UI.
-You can also configure the `dstack` server to export metrics to Prometheus—this is required to access advanced metrics such as those from DCGM.
-
-## UI
-
-To access metrics via the UI, open the page of the corresponding run or job and switch to the `Metrics` tab:
-
-![](https://dstack.ai/static-assets/static-assets/images/dstack-newsletter-metrics.png){ width=800 }
-
-This tab displays key CPU, memory, and GPU metrics collected during the last hour of the run or job.
-
-## CLI
-
-As an alternative to the UI, you can track real-time essential metrics via the CLI.
-The `dstack metrics` command displays the most recently tracked CPU, memory, and GPU metrics.
-
-<div class="termy">
-
-```shell
-dstack metrics gentle-mayfly-1
-
- NAME             STATUS  CPU  MEMORY          GPU
- gentle-mayfly-1  done    0%   16.27GB/2000GB  gpu=0 mem=72.48GB/80GB util=0%
-                                               gpu=1 mem=64.99GB/80GB util=0%
-                                               gpu=2 mem=580MB/80GB util=0%
-                                               gpu=3 mem=4MB/80GB util=0%
-                                               gpu=4 mem=4MB/80GB util=0%
-                                               gpu=5 mem=4MB/80GB util=0%
-                                               gpu=6 mem=4MB/80GB util=0%
-                                               gpu=7 mem=292MB/80GB util=0%
-```
-
-</div>
-
-## Prometheus
-
-To enable exporting metrics to Prometheus, set the
-`DSTACK_ENABLE_PROMETHEUS_METRICS` environment variable and configure Prometheus to scrape metrics from
-`<dstack server URL>/metrics`.
-
-In addition to the essential metrics available via the CLI and UI, `dstack` exports additional metrics to Prometheus, including data on fleets, runs, jobs, and DCGM metrics.
-
-??? info "NVIDIA DCGM"
-    NVIDIA DCGM metrics are automatically collected for `aws`, `azure`, `gcp`, and `oci` backends,
-    as well as for [SSH fleets](../concepts/fleets.md#ssh-fleets).
-
-    To ensure NVIDIA DCGM metrics are collected from SSH fleets, ensure the `datacenter-gpu-manager-4-core`,
-    `datacenter-gpu-manager-4-proprietary`, and `datacenter-gpu-manager-exporter` packages are installed on the hosts.
-
-### Fleets
-
-Fleet metrics include metrics for each instance within a fleet. This includes information such as the instance's running
-time, price, GPU name, and more.
-
-=== "Metrics"
-    | Name                                     | Type      | Description                       | Examples     |
-    |------------------------------------------|-----------|-----------------------------------|--------------|
-    | `dstack_instance_duration_seconds_total` | *counter* | Total instance runtime in seconds | `1123763.22` |
-    | `dstack_instance_price_dollars_per_hour` | *gauge*   | Instance price, USD/hour          | `16.0`       |
-    | `dstack_instance_gpu_count`              | *gauge*   | Instance GPU count                | `4.0`, `0.0` |
-
-=== "Labels"
-    | Name                   | Type      | Description   | Examples                               |
-    |------------------------|-----------|:--------------|----------------------------------------|
-    | `dstack_project_name`  | *string*  | Project name  | `main`                                 |
-    | `dstack_fleet_name`    | *string?* | Fleet name    | `my-fleet`                             |
-    | `dstack_fleet_id`      | *string?* | Fleet ID      | `51e837bf-fae9-4a37-ac9c-85c005606c22` |
-    | `dstack_instance_name` | *string*  | Instance name | `my-fleet-0`                           |
-    | `dstack_instance_id`   | *string*  | Instance ID   | `8c28c52c-2f94-4a19-8c06-12f1dfee4dd2` |
-    | `dstack_instance_type` | *string?* | Instance type | `g4dn.xlarge`                          |
-    | `dstack_backend`       | *string?* | Backend       | `aws`, `runpod`                        |
-    | `dstack_gpu`           | *string?* | GPU name      | `H100`                                 |
-
-### Runs
-
-Run metrics include run counters for each user in each project.
-
-=== "Metrics"
-    | Name                                | Type      | Description                   | Examples |
-    |-------------------------------------|-----------|-------------------------------|----------|
-    | `dstack_run_count_total`            | *counter* | The total number of runs      | `537`    |
-    | `dstack_run_count_terminated_total` | *counter* | The number of terminated runs | `118`    |
-    | `dstack_run_count_failed_total`     | *counter* | The number of failed runs     | `27`     |
-    | `dstack_run_count_done_total`       | *counter* | The number of successful runs | `218`    |
-
-=== "Labels"
-
-    | Name                  | Type      | Description   | Examples    |
-    |-----------------------|-----------|:--------------|-------------|
-    | `dstack_project_name` | *string*  | Project name  | `main`      |
-    | `dstack_user_name`    | *string*  | User name     | `alice`     |
-
-### Jobs
-
-A run consists of one or more jobs, each mapped to an individual container.
-For distributed workloads or auto-scalable services, a run spans multiple jobs.
-
-Job metrics provide detailed insights into each job within a run, including execution time, cost, GPU model, DCGM
-telemetry, and more.
-
-=== "Metrics"
-
-    | Name                                            | Type      | Description                                                                                | Examples       |
-    |-------------------------------------------------|-----------|--------------------------------------------------------------------------------------------|----------------|
-    | `dstack_job_duration_seconds_total`             | *counter* | Total job runtime in seconds                                                               | `520.37`       |
-    | `dstack_job_price_dollars_per_hour`             | *gauge*   | Job instance price, USD/hour                                                               | `8.0`          |
-    | `dstack_job_gpu_count`                          | *gauge*   | Job GPU count                                                                              | `2.0`, `0.0`   |
-    | `dstack_job_cpu_count`                          | *gauge*   | Job CPU count                                                                              | `32.0`         |
-    | `dstack_job_cpu_time_seconds_total`             | *counter* | Total CPU time consumed by the job, seconds                                                | `11.727975`    |
-    | `dstack_job_memory_total_bytes`                 | *gauge*   | Total memory allocated for the job, bytes                                                  | `4009754624.0` |
-    | `dstack_job_memory_usage_bytes`                 | *gauge*   | Memory used by the job (including cache), bytes                                            | `339017728.0`  |
-    | `dstack_job_memory_working_set_bytes`           | *gauge*   | Memory used by the job (not including cache), bytes                                        | `147251200.0`  |
-    | `dstack_job_gpu_usage_ratio`                    | *gauge*   | Job GPU usage, percent (as 0.0-1.0)                                                        | `0.93`         |
-    | `dstack_job_gpu_memory_total_bytes`             | *gauge*   | Total GPU memory allocated for the job, bytes                                              | `8589934592.0` |
-    | `dstack_job_gpu_memory_usage_bytes`             | *gauge*   | GPU memory used by the job, bytes                                                          | `1048576.0`    |
-    | `DCGM_FI_DEV_GPU_UTIL`                          | *gauge*   | GPU utilization (in %)                                                                     |                |
-    | `DCGM_FI_DEV_MEM_COPY_UTIL`                     | *gauge*   | Memory utilization (in %)                                                                  |                |
-    | `DCGM_FI_DEV_ENC_UTIL`                          | *gauge*   | Encoder utilization (in %)                                                                 |                |
-    | `DCGM_FI_DEV_DEC_UTIL`                          | *gauge*   | Decoder utilization (in %)                                                                 |                |
-    | `DCGM_FI_DEV_FB_FREE`                           | *gauge*   | Framebuffer memory free (in MiB)                                                           |                |
-    | `DCGM_FI_DEV_FB_USED`                           | *gauge*   | Framebuffer memory used (in MiB)                                                           |                |
-    | `DCGM_FI_PROF_GR_ENGINE_ACTIVE`                 | *gauge*   | The ratio of cycles during which a graphics engine or compute engine remains active        |                |
-    | `DCGM_FI_PROF_SM_ACTIVE`                        | *gauge*   | The ratio of cycles an SM has at least 1 warp assigned                                     |                |
-    | `DCGM_FI_PROF_SM_OCCUPANCY`                     | *gauge*   | The ratio of number of warps resident on an SM                                             |                |
-    | `DCGM_FI_PROF_PIPE_TENSOR_ACTIVE`               | *gauge*   | Ratio of cycles the tensor (HMMA) pipe is active                                           |                |
-    | `DCGM_FI_PROF_PIPE_FP64_ACTIVE`                 | *gauge*   | Ratio of cycles the fp64 pipes are active                                                  |                |
-    | `DCGM_FI_PROF_PIPE_FP32_ACTIVE`                 | *gauge*   | Ratio of cycles the fp32 pipes are active                                                  |                |
-    | `DCGM_FI_PROF_PIPE_FP16_ACTIVE`                 | *gauge*   | Ratio of cycles the fp16 pipes are active                                                  |                |
-    | `DCGM_FI_PROF_PIPE_INT_ACTIVE`                  | *gauge*   | Ratio of cycles the integer pipe is active                                                 |                |
-    | `DCGM_FI_PROF_DRAM_ACTIVE`                      | *gauge*   | Ratio of cycles the device memory interface is active sending or receiving data            |                |
-    | `DCGM_FI_PROF_PCIE_TX_BYTES`                    | *counter* | The number of bytes of active PCIe tx (transmit) data including both header and payload    |                |
-    | `DCGM_FI_PROF_PCIE_RX_BYTES`                    | *counter* | The number of bytes of active PCIe rx (read) data including both header and payload        |                |
-    | `DCGM_FI_DEV_SM_CLOCK`                          | *gauge*   | SM clock frequency (in MHz)                                                                |                |
-    | `DCGM_FI_DEV_MEM_CLOCK`                         | *gauge*   | Memory clock frequency (in MHz)                                                            |                |
-    | `DCGM_FI_DEV_MEMORY_TEMP`                       | *gauge*   | Memory temperature (in C)                                                                  |                |
-    | `DCGM_FI_DEV_GPU_TEMP`                          | *gauge*   | GPU temperature (in C)                                                                     |                |
-    | `DCGM_FI_DEV_POWER_USAGE`                       | *gauge*   | Power draw (in W)                                                                          |                |
-    | `DCGM_FI_DEV_TOTAL_ENERGY_CONSUMPTION`          | *counter* | Total energy consumption since boot (in mJ)                                                |                |
-    | `DCGM_FI_DEV_PCIE_REPLAY_COUNTER`               | *counter* | Total number of PCIe retries                                                               |                |
-    | `DCGM_FI_DEV_XID_ERRORS`                        | *gauge*   | Value of the last XID error encountered                                                    |                |
-    | `DCGM_FI_DEV_POWER_VIOLATION`                   | *counter* | Throttling duration due to power constraints (in us)                                       |                |
-    | `DCGM_FI_DEV_THERMAL_VIOLATION`                 | *counter* | Throttling duration due to thermal constraints (in us)                                     |                |
-    | `DCGM_FI_DEV_SYNC_BOOST_VIOLATION`              | *counter* | Throttling duration due to sync-boost constraints (in us)                                  |                |
-    | `DCGM_FI_DEV_BOARD_LIMIT_VIOLATION`             | *counter* | Throttling duration due to board limit constraints (in us)                                 |                |
-    | `DCGM_FI_DEV_LOW_UTIL_VIOLATION`                | *counter* | Throttling duration due to low utilization (in us)                                         |                |
-    | `DCGM_FI_DEV_RELIABILITY_VIOLATION`             | *counter* | Throttling duration due to reliability constraints (in us)                                 |                |
-    | `DCGM_FI_DEV_ECC_SBE_VOL_TOTAL`                 | *counter* | Total number of single-bit volatile ECC errors                                             |                |
-    | `DCGM_FI_DEV_ECC_DBE_VOL_TOTAL`                 | *counter* | Total number of double-bit volatile ECC errors                                             |                |
-    | `DCGM_FI_DEV_ECC_SBE_AGG_TOTAL`                 | *counter* | Total number of single-bit persistent ECC errors                                           |                |
-    | `DCGM_FI_DEV_ECC_DBE_AGG_TOTAL`                 | *counter* | Total number of double-bit persistent ECC errors                                           |                |
-    | `DCGM_FI_DEV_RETIRED_SBE`                       | *counter* | Total number of retired pages due to single-bit errors                                     |                |
-    | `DCGM_FI_DEV_RETIRED_DBE`                       | *counter* | Total number of retired pages due to double-bit errors                                     |                |
-    | `DCGM_FI_DEV_RETIRED_PENDING`                   | *counter* | Total number of pages pending retirement                                                   |                |
-    | `DCGM_FI_DEV_UNCORRECTABLE_REMAPPED_ROWS`       | *counter* | Number of remapped rows for uncorrectable errors                                           |                |
-    | `DCGM_FI_DEV_CORRECTABLE_REMAPPED_ROWS`         | *counter* | Number of remapped rows for correctable errors                                             |                |
-    | `DCGM_FI_DEV_ROW_REMAP_FAILURE`                 | *gauge*   | Whether remapping of rows has failed                                                       |                |
-    | `DCGM_FI_DEV_NVLINK_CRC_FLIT_ERROR_COUNT_TOTAL` | *counter* | Total number of NVLink flow-control CRC errors                                             |                |
-    | `DCGM_FI_DEV_NVLINK_CRC_DATA_ERROR_COUNT_TOTAL` | *counter* | Total number of NVLink data CRC errors                                                     |                |
-    | `DCGM_FI_DEV_NVLINK_REPLAY_ERROR_COUNT_TOTAL`   | *counter* | Total number of NVLink retries                                                             |                |
-    | `DCGM_FI_DEV_NVLINK_RECOVERY_ERROR_COUNT_TOTAL` | *counter* | Total number of NVLink recovery errors                                                     |                |
-    | `DCGM_FI_DEV_NVLINK_BANDWIDTH_TOTAL`            | *counter* | Total number of NVLink bandwidth counters for all lanes                                    |                |
-    | `DCGM_FI_DEV_NVLINK_BANDWIDTH_L0`               | *counter* | The number of bytes of active NVLink rx or tx data including both header and payload       |                |
-    | `DCGM_FI_PROF_NVLINK_RX_BYTES`                  | *counter* | The number of bytes of active PCIe rx (read) data including both header and payload        |                |
-    | `DCGM_FI_PROF_NVLINK_TX_BYTES`                  | *counter* | The number of bytes of active NvLink tx (transmit) data including both header and payload  |                |
-
-=== "Labels"
-    | Label                 | Type      | Description            | Examples                               |
-    |-----------------------|-----------|:-----------------------|----------------------------------------|
-    | `dstack_project_name` | *string*  | Project name           | `main`                                 |
-    | `dstack_user_name`    | *string*  | User name              | `alice`                                |
-    | `dstack_run_name`     | *string*  | Run name               | `nccl-tests`                           |
-    | `dstack_run_id`       | *string*  | Run ID                 | `51e837bf-fae9-4a37-ac9c-85c005606c22` |
-    | `dstack_job_name`     | *string*  | Job name               | `nccl-tests-0-0`                       |
-    | `dstack_job_id`       | *string*  | Job ID                 | `8c28c52c-2f94-4a19-8c06-12f1dfee4dd2` |
-    | `dstack_job_num`      | *integer* | Job number             | `0`                                    |
-    | `dstack_replica_num`  | *integer* | Replica number         | `0`                                    |
-    | `dstack_run_type`     | *string*  | Run configuration type | `task`, `dev-environment`              |
-    | `dstack_backend`      | *string*  | Backend                | `aws`, `runpod`                        |
-    | `dstack_gpu`          | *string?* | GPU name               | `H100`                                 |
-    | `dstack_gpu_num`[^1]  | *integer* | GPU number (0-based)   | `0`                                    |
-
-    [^1]: For `dstack_gpu_*` metrics only.
-
-### Server health metrics
-
-These are operational metrics to monitor the health of the dstack server. For now, these only include HTTP metrics, but more will be added later.
-
-=== "Metrics"
-    | Name                                     | Type      | Description                       | Examples     |
-    |------------------------------------------|-----------|-----------------------------------|--------------|
-    | `dstack_server_requests_total` | *counter* | Total number of HTTP requests | `100.0` |
-    | `dstack_server_request_duration_seconds` | *histogram*   | HTTP request duration in seconds  | `1.0`|
-
-=== "Labels"
-    | Name                   | Type      | Description   | Examples                               |
-    |------------------------|-----------|:--------------|----------------------------------------|
-    | `method`  | *string*  | HTTP method  | `POST`                                 |
-    | `endpoint`    | *string* | Endpoint path    | `/api/project/main/repos/get`                             |
-    | `http_status`      | *string* | HTTP status code      | `200` |
-    | `project_name` | *string?*  | Project name  | `main`                           |
 
 
 ## Protips
@@ -7078,7 +6828,7 @@ The `offer` command allows you to filter and group offers with various [advanced
 
 ## Metrics
 
-`dstack` tracks essential metrics accessible via the CLI and UI. To access advanced metrics like DCGM, configure the server to export metrics to Prometheus. See [Metrics](metrics.md) for details.
+`dstack` tracks essential metrics accessible via the CLI and UI. To access advanced metrics like DCGM, configure the server to export metrics to Prometheus. See [Metrics](../concepts/metrics.md) for details.
 
 ## Service quotas
 
@@ -7372,7 +7122,7 @@ The source-code of this example can be found in
 This example walks you through how to run distributed fine-tune using [TRL](https://github.com/huggingface/trl), [Accelerate](https://github.com/huggingface/accelerate) and [Deepspeed](https://github.com/deepspeedai/DeepSpeed).
 
 !!! info "Prerequisites"
-    Before running a distributed task, make sure to create a fleet with `placement` set to `cluster` (can be a [managed fleet](https://dstack.ai/docs/concepts/fleets#backend-placement) or an [SSH fleet](https://dstack.ai/docs/concepts/fleets#ssh-placement)).
+    Before running a distributed task, make sure to create a fleet with `placement` set to `cluster` (can be a [managed fleet](https://dstack.ai/docs/concepts/fleets#cluster-placement) or an [SSH fleet](https://dstack.ai/docs/concepts/fleets#ssh-placement)).
 
 ## Define a configuration
 
@@ -7536,7 +7286,7 @@ The source-code of this example can be found in
 This example walks you through how to run distributed fine-tune using [Axolotl](https://github.com/axolotl-ai-cloud/axolotl) and [distributed tasks](https://dstack.ai/docs/concepts/tasks#distributed-tasks).
 
 !!! info "Prerequisites"
-    Before running a distributed task, make sure to create a fleet with `placement` set to `cluster` (can be a [managed fleet](https://dstack.ai/docs/concepts/fleets#backend-placement) or an [SSH fleet](https://dstack.ai/docs/concepts/fleets#ssh-placement)).
+    Before running a distributed task, make sure to create a fleet with `placement` set to `cluster` (can be a [managed fleet](https://dstack.ai/docs/concepts/fleets#cluster-placement) or an [SSH fleet](https://dstack.ai/docs/concepts/fleets#ssh-placement)).
 
 ## Define a configuration
 
@@ -7643,7 +7393,7 @@ to fine-tune an agent on multiple nodes.
 Under the hood `RAGEN` uses [verl](https://github.com/volcengine/verl) for Reinforcement Learning and [Ray](https://docs.ray.io/en/latest/) for distributed training.
 
 !!! info "Prerequisites"
-    Before running a distributed task, make sure to create a fleet with `placement` set to `cluster` (can be a [managed fleet](https://dstack.ai/docs/concepts/fleets#backend-placement) or an [SSH fleet](https://dstack.ai/docs/concepts/fleets#ssh-placement)).
+    Before running a distributed task, make sure to create a fleet with `placement` set to `cluster` (can be a [managed fleet](https://dstack.ai/docs/concepts/fleets#cluster-placement) or an [SSH fleet](https://dstack.ai/docs/concepts/fleets#ssh-placement)).
 
 ## Run a Ray cluster
 
@@ -7774,7 +7524,7 @@ Using Ray via `dstack` is a powerful way to get access to the rich Ray ecosystem
 This example shows how to run [NCCL](https://github.com/NVIDIA/nccl-tests) or [RCCL](https://github.com/ROCm/rccl-tests) tests on a cluster using [distributed tasks](https://dstack.ai/docs/concepts/tasks#distributed-tasks).
 
 !!! info "Prerequisites"
-    Before running a distributed task, make sure to create a fleet with `placement` set to `cluster` (can be a [managed fleet](https://dstack.ai/docs/concepts/fleets#backend-placement) or an [SSH fleet](https://dstack.ai/docs/concepts/fleets#ssh-placement)).
+    Before running a distributed task, make sure to create a fleet with `placement` set to `cluster` (can be a [managed fleet](https://dstack.ai/docs/concepts/fleets#cluster-placement) or an [SSH fleet](https://dstack.ai/docs/concepts/fleets#ssh-placement)).
 
 ## Running as a task
 
