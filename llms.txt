@@ -19,7 +19,8 @@
 - [Gateways](https://dstack.ai/docs/concepts/gateways/index.md): How to manage gateways - enabling auto-scaling, rate limits, and custom domains
 - [Secrets](https://dstack.ai/docs/concepts/secrets/index.md): How to manage secrets - for API keys or other sensitive data
 - [Projects](https://dstack.ai/docs/concepts/projects/index.md): How to manage projects - for managing separate teams
-- [Metrics](https://dstack.ai/docs/concepts/metrics/index.md): How to manage gateways - enabling auto-scaling, rate limits, and custom domains
+- [Metrics](https://dstack.ai/docs/concepts/metrics/index.md): How to access metrics - for monitoring of runs/jobs/fleets, hardware usage (e.g. GPU util), etc
+- [Events](https://dstack.ai/docs/concepts/events/index.md): How to access events - aka audit log - for tracking state changes, resource creation/deletion, etc
 
 ## Guides
 

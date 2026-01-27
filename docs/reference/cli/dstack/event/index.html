@@ -1058,6 +1058,34 @@ Support dstack with a ⭐ on
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../concepts/events/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Events
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -4033,15 +4061,14 @@ Support dstack with a ⭐ on
 
 
 <h1 id="dstack-event">dstack event<a class="headerlink" href="#dstack-event" title="Permanent link">&para;</a></h1>
-<p>The <code>dstack event</code> command (an alias for <code>dstack event list</code>) allows you to view events.</p>
-<!-- TODO: hyperlink to concepts/events.md -->
-
+<p>The <code>dstack event</code> command, an alias for <code>dstack event list</code>, allows you to view events.</p>
+<p>For more details, see <a href="../../../../concepts/events/">Events</a>.</p>
 <h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
 <div class="termy">
 
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>dstack<span class="w"> </span>event<span class="w"> </span>--help
 Usage:<span class="w"> </span>dstack<span class="w"> </span>event<span class="w"> </span><span class="o">[</span>-h<span class="o">]</span><span class="w"> </span><span class="o">[</span>--project<span class="w"> </span>NAME<span class="o">]</span><span class="w"> </span><span class="o">[</span>--since<span class="w"> </span>SINCE<span class="o">]</span>
-<span class="w">                    </span><span class="o">[</span>--target-fleet<span class="w"> </span>NAME<span class="w"> </span><span class="p">|</span><span class="w"> </span>--target-run<span class="w"> </span>NAME<span class="w"> </span><span class="p">|</span><span class="w"> </span>--target-volume<span class="w"> </span>NAME<span class="w"> </span><span class="p">|</span><span class="w"> </span>--target-gateway<span class="w"> </span>NAME<span class="o">]</span>
+<span class="w">                    </span><span class="o">[</span>--target-fleet<span class="w"> </span>NAME<span class="w"> </span><span class="p">|</span><span class="w"> </span>--target-run<span class="w"> </span>NAME<span class="w"> </span><span class="p">|</span><span class="w"> </span>--target-volume<span class="w"> </span>NAME<span class="w"> </span><span class="p">|</span><span class="w"> </span>--target-gateway<span class="w"> </span>NAME<span class="w"> </span><span class="p">|</span><span class="w"> </span>--target-secret<span class="w"> </span>NAME<span class="o">]</span>
 <span class="w">                    </span><span class="o">[</span>--within-fleet<span class="w"> </span>NAME<span class="w"> </span><span class="p">|</span><span class="w"> </span>--within-run<span class="w"> </span>NAME<span class="o">]</span>
 <span class="w">                    </span><span class="o">[</span>--include-target-type<span class="w"> </span>TYPE<span class="o">]</span>
 <span class="w">                    </span><span class="o">{</span>list<span class="o">}</span><span class="w"> </span>...
@@ -4062,6 +4089,7 @@ Options:
 <span class="w">  </span>--target-volume<span class="w"> </span>NAME<span class="w">  </span>Only<span class="w"> </span>show<span class="w"> </span>events<span class="w"> </span>that<span class="w"> </span>target<span class="w"> </span>the<span class="w"> </span>specified<span class="w"> </span>volumes
 <span class="w">  </span>--target-gateway<span class="w"> </span>NAME
 <span class="w">                        </span>Only<span class="w"> </span>show<span class="w"> </span>events<span class="w"> </span>that<span class="w"> </span>target<span class="w"> </span>the<span class="w"> </span>specified<span class="w"> </span>gateways
+<span class="w">  </span>--target-secret<span class="w"> </span>NAME<span class="w">  </span>Only<span class="w"> </span>show<span class="w"> </span>events<span class="w"> </span>that<span class="w"> </span>target<span class="w"> </span>the<span class="w"> </span>specified<span class="w"> </span>secrets
 <span class="w">  </span>--within-fleet<span class="w"> </span>NAME<span class="w">   </span>Only<span class="w"> </span>show<span class="w"> </span>events<span class="w"> </span>that<span class="w"> </span>target<span class="w"> </span>the<span class="w"> </span>specified<span class="w"> </span>fleets<span class="w"> </span>or
 <span class="w">                        </span>instances<span class="w"> </span>within<span class="w"> </span>those<span class="w"> </span>fleets
 <span class="w">  </span>--within-run<span class="w"> </span>NAME<span class="w">     </span>Only<span class="w"> </span>show<span class="w"> </span>events<span class="w"> </span>that<span class="w"> </span>target<span class="w"> </span>the<span class="w"> </span>specified<span class="w"> </span>runs<span class="w"> </span>or

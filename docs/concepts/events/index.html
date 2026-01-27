@@ -12,31 +12,31 @@
         <meta name="author" content="dstack GmbH">
       
       
-        <link rel="canonical" href="https://dstack.ai/docs/reference/cli/dstack/secret/">
+        <link rel="canonical" href="https://dstack.ai/docs/concepts/events/">
       
       
-        <link rel="prev" href="../gateway/">
+        <link rel="prev" href="../metrics/">
       
       
-        <link rel="next" href="../../../api/python/">
+        <link rel="next" href="../../guides/server-deployment/">
       
       
         
       
       
-      <link rel="icon" href="../../../../../assets/images/dstack-fav-32.ico">
+      <link rel="icon" href="../../../assets/images/dstack-fav-32.ico">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
     
     
       
-        <title>dstack secret - dstack</title>
+        <title>Events - dstack</title>
       
     
     
-      <link rel="stylesheet" href="../../../../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
       
         
-        <link rel="stylesheet" href="../../../../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -61,17 +61,17 @@
       
     
     
-      <link rel="stylesheet" href="../../../../../assets/_mkdocstrings.css">
+      <link rel="stylesheet" href="../../../assets/_mkdocstrings.css">
     
-      <link rel="stylesheet" href="../../../../../assets/stylesheets/extra.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/extra.css">
     
-      <link rel="stylesheet" href="../../../../../assets/stylesheets/termynal.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/termynal.css">
     
-      <link rel="stylesheet" href="../../../../../assets/stylesheets/landing.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/landing.css">
     
-      <link rel="stylesheet" href="../../../../../assets/stylesheets/pricing.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/pricing.css">
     
-    <script>__md_scope=new URL("../../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
   
@@ -89,17 +89,17 @@
     
   
 <meta property="og:type" content="website" />
-<meta property="og:title" content="dstack secret - dstack" />
+<meta property="og:title" content="Events - dstack" />
 <meta property="og:description" content="dstack is an open-source control plane for GPU provisioning and orchestration across GPU clouds, Kubernetes, and on-prem clusters." />
-<meta property="og:image" content="https://dstack.ai/assets/images/social/docs/reference/cli/dstack/secret.png" />
+<meta property="og:image" content="https://dstack.ai/assets/images/social/docs/concepts/events.png" />
 <meta property="og:image:type" content="image/png" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
-<meta property="og:url" content="https://dstack.ai/docs/reference/cli/dstack/secret/" />
+<meta property="og:url" content="https://dstack.ai/docs/concepts/events/" />
 <meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter.title" content="dstack secret - dstack" />
+<meta property="twitter.title" content="Events - dstack" />
 <meta property="twitter:description" content="dstack is an open-source control plane for GPU provisioning and orchestration across GPU clouds, Kubernetes, and on-prem clusters." />
-<meta property="twitter:image" content="https://dstack.ai/assets/images/social/docs/reference/cli/dstack/secret.png" />
+<meta property="twitter:image" content="https://dstack.ai/assets/images/social/docs/concepts/events.png" />
 </head>
   
   
@@ -119,7 +119,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#dstack-secret" class="md-skip">
+        <a href="#events" class="md-skip">
           Skip to content
         </a>
       
@@ -153,7 +153,7 @@ Support dstack with a ⭐ on
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href="/" title="dstack" class="md-header__button md-logo" aria-label="dstack" data-md-component="logo">
       
-  <img src="../../../../../assets/images/dstack-logo-notext.svg" alt="logo">
+  <img src="../../../assets/images/dstack-logo-notext.svg" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -170,7 +170,7 @@ Support dstack with a ⭐ on
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              dstack secret
+              Events
             
           </span>
         </div>
@@ -271,7 +271,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-tabs__item">
-      <a href="../../../../.." class="md-tabs__link">
+      <a href="../../.." class="md-tabs__link">
         
   
   
@@ -303,7 +303,7 @@ Support dstack with a ⭐ on
     
     
       <li class="md-tabs__item md-tabs__item--active">
-        <a href="../../../../" class="md-tabs__link">
+        <a href="../../" class="md-tabs__link">
           
   
   
@@ -326,7 +326,7 @@ Support dstack with a ⭐ on
     
     
       <li class="md-tabs__item">
-        <a href="../../../../../examples/" class="md-tabs__link">
+        <a href="../../../examples/" class="md-tabs__link">
           
   
   
@@ -346,7 +346,7 @@ Support dstack with a ⭐ on
     
     
       <li class="md-tabs__item">
-        <a href="../../../../../blog/" class="md-tabs__link">
+        <a href="../../../blog/" class="md-tabs__link">
           
   
   
@@ -364,7 +364,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-tabs__item">
-      <a href="../../../../../blog/case-studies/" class="md-tabs__link">
+      <a href="../../../blog/case-studies/" class="md-tabs__link">
         
   
   
@@ -383,7 +383,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-tabs__item">
-      <a href="../../../../../blog/benchmarks/" class="md-tabs__link">
+      <a href="../../../blog/benchmarks/" class="md-tabs__link">
         
   
   
@@ -420,7 +420,7 @@ Support dstack with a ⭐ on
   <label class="md-nav__title" for="__drawer">
     <a href="/" title="dstack" class="md-nav__button md-logo" aria-label="dstack" data-md-component="logo">
       
-  <img src="../../../../../assets/images/dstack-logo-notext.svg" alt="logo">
+  <img src="../../../assets/images/dstack-logo-notext.svg" alt="logo">
 
     </a>
     dstack
@@ -447,7 +447,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../../../.." class="md-nav__link">
+      <a href="../../.." class="md-nav__link">
         
   
   
@@ -586,7 +586,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../../../" class="md-nav__link">
+      <a href="../../" class="md-nav__link">
         
   
   
@@ -614,7 +614,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../../../installation/" class="md-nav__link">
+      <a href="../../installation/" class="md-nav__link">
         
   
   
@@ -642,7 +642,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../../../quickstart/" class="md-nav__link">
+      <a href="../../quickstart/" class="md-nav__link">
         
   
   
@@ -675,6 +675,8 @@ Support dstack with a ⭐ on
                 
   
   
+    
+  
   
   
     
@@ -690,11 +692,11 @@ Support dstack with a ⭐ on
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" checked>
         
           
           <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="">
@@ -715,7 +717,7 @@ Support dstack with a ⭐ on
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2_2">
             <span class="md-nav__icon md-icon"></span>
             
@@ -733,7 +735,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../../../concepts/backends/" class="md-nav__link">
+      <a href="../backends/" class="md-nav__link">
         
   
   
@@ -761,7 +763,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../../../concepts/fleets/" class="md-nav__link">
+      <a href="../fleets/" class="md-nav__link">
         
   
   
@@ -789,7 +791,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../../../concepts/dev-environments/" class="md-nav__link">
+      <a href="../dev-environments/" class="md-nav__link">
         
   
   
@@ -817,7 +819,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../../../concepts/tasks/" class="md-nav__link">
+      <a href="../tasks/" class="md-nav__link">
         
   
   
@@ -845,7 +847,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../../../concepts/services/" class="md-nav__link">
+      <a href="../services/" class="md-nav__link">
         
   
   
@@ -873,7 +875,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../../../concepts/volumes/" class="md-nav__link">
+      <a href="../volumes/" class="md-nav__link">
         
   
   
@@ -898,8 +900,10 @@ Support dstack with a ⭐ on
                 
   
   
+    
   
   
+  
     
     
     
@@ -910,11 +914,11 @@ Support dstack with a ⭐ on
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2_7" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2_7" checked>
         
           
           <label class="md-nav__link" for="__nav_2_2_7" id="__nav_2_2_7_label" tabindex="0">
@@ -935,7 +939,7 @@ Support dstack with a ⭐ on
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_7_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_7_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2_2_7">
             <span class="md-nav__icon md-icon"></span>
             
@@ -953,7 +957,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../../../concepts/gateways/" class="md-nav__link">
+      <a href="../gateways/" class="md-nav__link">
         
   
   
@@ -981,7 +985,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../../../concepts/secrets/" class="md-nav__link">
+      <a href="../secrets/" class="md-nav__link">
         
   
   
@@ -1009,7 +1013,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../../../concepts/projects/" class="md-nav__link">
+      <a href="../projects/" class="md-nav__link">
         
   
   
@@ -1037,7 +1041,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../../../concepts/metrics/" class="md-nav__link">
+      <a href="../metrics/" class="md-nav__link">
         
   
   
@@ -1062,10 +1066,37 @@ Support dstack with a ⭐ on
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../../../concepts/events/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Events
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -1081,6 +1112,97 @@ Support dstack with a ⭐ on
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#ui" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          UI
+        </span>
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="UI">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#global-page" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Global page
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resource-page" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Resource page
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cli" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          CLI
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ttl" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          TTL
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1164,7 +1286,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../../../guides/server-deployment/" class="md-nav__link">
+      <a href="../../guides/server-deployment/" class="md-nav__link">
         
   
   
@@ -1192,7 +1314,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../../../guides/troubleshooting/" class="md-nav__link">
+      <a href="../../guides/troubleshooting/" class="md-nav__link">
         
   
   
@@ -1220,7 +1342,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../../../guides/protips/" class="md-nav__link">
+      <a href="../../guides/protips/" class="md-nav__link">
         
   
   
@@ -1248,7 +1370,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../../../guides/upgrade/" class="md-nav__link">
+      <a href="../../guides/upgrade/" class="md-nav__link">
         
   
   
@@ -1328,7 +1450,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../../../guides/migration/slurm/" class="md-nav__link">
+      <a href="../../guides/migration/slurm/" class="md-nav__link">
         
   
   
@@ -1369,8 +1491,6 @@ Support dstack with a ⭐ on
                 
   
   
-    
-  
   
   
     
@@ -1386,11 +1506,11 @@ Support dstack with a ⭐ on
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" >
         
           
           <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="">
@@ -1411,7 +1531,7 @@ Support dstack with a ⭐ on
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2_4">
             <span class="md-nav__icon md-icon"></span>
             
@@ -1481,7 +1601,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../../dstack.yml/dev-environment/" class="md-nav__link">
+      <a href="../../reference/dstack.yml/dev-environment/" class="md-nav__link">
         
   
   
@@ -1509,7 +1629,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../../dstack.yml/task/" class="md-nav__link">
+      <a href="../../reference/dstack.yml/task/" class="md-nav__link">
         
   
   
@@ -1537,7 +1657,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../../dstack.yml/service/" class="md-nav__link">
+      <a href="../../reference/dstack.yml/service/" class="md-nav__link">
         
   
   
@@ -1565,7 +1685,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../../dstack.yml/fleet/" class="md-nav__link">
+      <a href="../../reference/dstack.yml/fleet/" class="md-nav__link">
         
   
   
@@ -1593,7 +1713,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../../dstack.yml/gateway/" class="md-nav__link">
+      <a href="../../reference/dstack.yml/gateway/" class="md-nav__link">
         
   
   
@@ -1621,7 +1741,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../../dstack.yml/volume/" class="md-nav__link">
+      <a href="../../reference/dstack.yml/volume/" class="md-nav__link">
         
   
   
@@ -1657,7 +1777,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../../server/config.yml/" class="md-nav__link">
+      <a href="../../reference/server/config.yml/" class="md-nav__link">
         
   
   
@@ -1682,8 +1802,6 @@ Support dstack with a ⭐ on
                 
   
   
-    
-  
   
   
     
@@ -1696,11 +1814,11 @@ Support dstack with a ⭐ on
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4_3" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4_3" >
         
           
           <label class="md-nav__link" for="__nav_2_4_3" id="__nav_2_4_3_label" tabindex="0">
@@ -1721,7 +1839,7 @@ Support dstack with a ⭐ on
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_4_3_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_4_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2_4_3">
             <span class="md-nav__icon md-icon"></span>
             
@@ -1739,7 +1857,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../server/" class="md-nav__link">
+      <a href="../../reference/cli/dstack/server/" class="md-nav__link">
         
   
   
@@ -1767,7 +1885,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../init/" class="md-nav__link">
+      <a href="../../reference/cli/dstack/init/" class="md-nav__link">
         
   
   
@@ -1795,7 +1913,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../apply/" class="md-nav__link">
+      <a href="../../reference/cli/dstack/apply/" class="md-nav__link">
         
   
   
@@ -1823,7 +1941,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../delete/" class="md-nav__link">
+      <a href="../../reference/cli/dstack/delete/" class="md-nav__link">
         
   
   
@@ -1851,7 +1969,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../ps/" class="md-nav__link">
+      <a href="../../reference/cli/dstack/ps/" class="md-nav__link">
         
   
   
@@ -1879,7 +1997,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../stop/" class="md-nav__link">
+      <a href="../../reference/cli/dstack/stop/" class="md-nav__link">
         
   
   
@@ -1907,7 +2025,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../attach/" class="md-nav__link">
+      <a href="../../reference/cli/dstack/attach/" class="md-nav__link">
         
   
   
@@ -1935,7 +2053,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../login/" class="md-nav__link">
+      <a href="../../reference/cli/dstack/login/" class="md-nav__link">
         
   
   
@@ -1963,7 +2081,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../logs/" class="md-nav__link">
+      <a href="../../reference/cli/dstack/logs/" class="md-nav__link">
         
   
   
@@ -1991,7 +2109,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../metrics/" class="md-nav__link">
+      <a href="../../reference/cli/dstack/metrics/" class="md-nav__link">
         
   
   
@@ -2019,7 +2137,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../event/" class="md-nav__link">
+      <a href="../../reference/cli/dstack/event/" class="md-nav__link">
         
   
   
@@ -2047,7 +2165,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../project/" class="md-nav__link">
+      <a href="../../reference/cli/dstack/project/" class="md-nav__link">
         
   
   
@@ -2075,7 +2193,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../fleet/" class="md-nav__link">
+      <a href="../../reference/cli/dstack/fleet/" class="md-nav__link">
         
   
   
@@ -2103,7 +2221,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../offer/" class="md-nav__link">
+      <a href="../../reference/cli/dstack/offer/" class="md-nav__link">
         
   
   
@@ -2131,7 +2249,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../volume/" class="md-nav__link">
+      <a href="../../reference/cli/dstack/volume/" class="md-nav__link">
         
   
   
@@ -2159,7 +2277,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../gateway/" class="md-nav__link">
+      <a href="../../reference/cli/dstack/gateway/" class="md-nav__link">
         
   
   
@@ -2184,37 +2302,10 @@ Support dstack with a ⭐ on
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    dstack secret
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../reference/cli/dstack/secret/" class="md-nav__link">
         
   
   
@@ -2230,78 +2321,6 @@ Support dstack with a ⭐ on
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#dstack-secret-set" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        <span class="md-typeset">
-          dstack secret set
-        </span>
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#dstack-secret-list" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        <span class="md-typeset">
-          dstack secret list
-        </span>
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#dstack-secret-get" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        <span class="md-typeset">
-          dstack secret get
-        </span>
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#dstack-secret-delete" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        <span class="md-typeset">
-          dstack secret delete
-        </span>
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -2374,7 +2393,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../../api/python/" class="md-nav__link">
+      <a href="../../reference/api/python/" class="md-nav__link">
         
   
   
@@ -2402,7 +2421,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../../api/rest/" class="md-nav__link">
+      <a href="../../reference/api/rest/" class="md-nav__link">
         
   
   
@@ -2438,7 +2457,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../../environment-variables/" class="md-nav__link">
+      <a href="../../reference/environment-variables/" class="md-nav__link">
         
   
   
@@ -2466,7 +2485,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../../profiles.yml/" class="md-nav__link">
+      <a href="../../reference/profiles.yml/" class="md-nav__link">
         
   
   
@@ -2546,7 +2565,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../../plugins/python/" class="md-nav__link">
+      <a href="../../reference/plugins/python/" class="md-nav__link">
         
   
   
@@ -2574,7 +2593,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../../plugins/rest/" class="md-nav__link">
+      <a href="../../reference/plugins/rest/" class="md-nav__link">
         
   
   
@@ -2705,7 +2724,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../../../../examples/" class="md-nav__link">
+      <a href="../../../examples/" class="md-nav__link">
         
   
   
@@ -2785,7 +2804,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../../../../examples/single-node-training/trl/" class="md-nav__link">
+      <a href="../../../examples/single-node-training/trl/" class="md-nav__link">
         
   
   
@@ -2813,7 +2832,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../../../../examples/single-node-training/axolotl/" class="md-nav__link">
+      <a href="../../../examples/single-node-training/axolotl/" class="md-nav__link">
         
   
   
@@ -2901,7 +2920,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../../../../examples/distributed-training/trl/" class="md-nav__link">
+      <a href="../../../examples/distributed-training/trl/" class="md-nav__link">
         
   
   
@@ -2929,7 +2948,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../../../../examples/distributed-training/axolotl/" class="md-nav__link">
+      <a href="../../../examples/distributed-training/axolotl/" class="md-nav__link">
         
   
   
@@ -2957,7 +2976,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../../../../examples/distributed-training/ray-ragen/" class="md-nav__link">
+      <a href="../../../examples/distributed-training/ray-ragen/" class="md-nav__link">
         
   
   
@@ -3045,7 +3064,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../../../../examples/clusters/aws/" class="md-nav__link">
+      <a href="../../../examples/clusters/aws/" class="md-nav__link">
         
   
   
@@ -3073,7 +3092,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../../../../examples/clusters/gcp/" class="md-nav__link">
+      <a href="../../../examples/clusters/gcp/" class="md-nav__link">
         
   
   
@@ -3101,7 +3120,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../../../../examples/clusters/lambda/" class="md-nav__link">
+      <a href="../../../examples/clusters/lambda/" class="md-nav__link">
         
   
   
@@ -3129,7 +3148,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../../../../examples/clusters/crusoe/" class="md-nav__link">
+      <a href="../../../examples/clusters/crusoe/" class="md-nav__link">
         
   
   
@@ -3157,7 +3176,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../../../../examples/clusters/nccl-rccl-tests/" class="md-nav__link">
+      <a href="../../../examples/clusters/nccl-rccl-tests/" class="md-nav__link">
         
   
   
@@ -3245,7 +3264,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../../../../examples/inference/sglang/" class="md-nav__link">
+      <a href="../../../examples/inference/sglang/" class="md-nav__link">
         
   
   
@@ -3273,7 +3292,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../../../../examples/inference/vllm/" class="md-nav__link">
+      <a href="../../../examples/inference/vllm/" class="md-nav__link">
         
   
   
@@ -3301,7 +3320,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../../../../examples/inference/tgi/" class="md-nav__link">
+      <a href="../../../examples/inference/tgi/" class="md-nav__link">
         
   
   
@@ -3329,7 +3348,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../../../../examples/inference/nim/" class="md-nav__link">
+      <a href="../../../examples/inference/nim/" class="md-nav__link">
         
   
   
@@ -3357,7 +3376,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../../../../examples/inference/trtllm/" class="md-nav__link">
+      <a href="../../../examples/inference/trtllm/" class="md-nav__link">
         
   
   
@@ -3445,7 +3464,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../../../../examples/accelerators/amd/" class="md-nav__link">
+      <a href="../../../examples/accelerators/amd/" class="md-nav__link">
         
   
   
@@ -3473,7 +3492,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../../../../examples/accelerators/tpu/" class="md-nav__link">
+      <a href="../../../examples/accelerators/tpu/" class="md-nav__link">
         
   
   
@@ -3501,7 +3520,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../../../../examples/accelerators/intel/" class="md-nav__link">
+      <a href="../../../examples/accelerators/intel/" class="md-nav__link">
         
   
   
@@ -3529,7 +3548,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../../../../examples/accelerators/tenstorrent/" class="md-nav__link">
+      <a href="../../../examples/accelerators/tenstorrent/" class="md-nav__link">
         
   
   
@@ -3617,7 +3636,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../../../../examples/models/wan22/" class="md-nav__link">
+      <a href="../../../examples/models/wan22/" class="md-nav__link">
         
   
   
@@ -3714,7 +3733,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../../../../blog/" class="md-nav__link">
+      <a href="../../../blog/" class="md-nav__link">
         
   
   
@@ -3798,7 +3817,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../../../../blog/changelog/" class="md-nav__link">
+      <a href="../../../blog/changelog/" class="md-nav__link">
         
   
   
@@ -3830,7 +3849,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../../../../blog/case-studies/" class="md-nav__link">
+      <a href="../../../blog/case-studies/" class="md-nav__link">
         
   
   
@@ -3862,7 +3881,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../../../../blog/benchmarks/" class="md-nav__link">
+      <a href="../../../blog/benchmarks/" class="md-nav__link">
         
   
   
@@ -3909,7 +3928,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../../../../blog/case-studies/" class="md-nav__link">
+      <a href="../../../blog/case-studies/" class="md-nav__link">
         
   
   
@@ -3940,7 +3959,7 @@ Support dstack with a ⭐ on
   
   
     <li class="md-nav__item">
-      <a href="../../../../../blog/benchmarks/" class="md-nav__link">
+      <a href="../../../blog/benchmarks/" class="md-nav__link">
         
   
   
@@ -3989,11 +4008,56 @@ Support dstack with a ⭐ on
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#dstack-secret-set" class="md-nav__link">
+  <a href="#ui" class="md-nav__link">
     <span class="md-ellipsis">
       
         <span class="md-typeset">
-          dstack secret set
+          UI
+        </span>
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="UI">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#global-page" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Global page
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resource-page" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Resource page
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cli" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          CLI
         </span>
       
     </span>
@@ -4002,37 +4066,11 @@ Support dstack with a ⭐ on
 </li>
       
         <li class="md-nav__item">
-  <a href="#dstack-secret-list" class="md-nav__link">
+  <a href="#ttl" class="md-nav__link">
     <span class="md-ellipsis">
       
         <span class="md-typeset">
-          dstack secret list
-        </span>
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#dstack-secret-get" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        <span class="md-typeset">
-          dstack secret get
-        </span>
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#dstack-secret-delete" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        <span class="md-typeset">
-          dstack secret delete
+          TTL
         </span>
       
     </span>
@@ -4072,7 +4110,7 @@ Support dstack with a ⭐ on
     
     
       <li class="md-path__item">
-<!--        <a href="../../../../" class="md-path__link">-->
+<!--        <a href="../../" class="md-path__link">-->
         
   <span class="md-ellipsis">
     Docs
@@ -4091,15 +4129,11 @@ Support dstack with a ⭐ on
   
     
     
-      
-  
-    
-    
       <li class="md-path__item">
-<!--        <a href="../../../dstack.yml/dev-environment/" class="md-path__link">-->
+<!--        <a href="../backends/" class="md-path__link">-->
         
   <span class="md-ellipsis">
-    Reference
+    Concepts
   </span>
 
 <!--        </a>-->
@@ -4107,19 +4141,16 @@ Support dstack with a ⭐ on
     
   
 
-    
-  
-
       
         
   
     
     
       <li class="md-path__item">
-<!--        <a href="../server/" class="md-path__link">-->
+<!--        <a href="../gateways/" class="md-path__link">-->
         
   <span class="md-ellipsis">
-    CLI
+    More
   </span>
 
 <!--        </a>-->
@@ -4137,75 +4168,83 @@ Support dstack with a ⭐ on
       
 
 
+  
+    <a href="https://github.com/dstackai/dstack/edit/master/docs/docs/concepts/events.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
+    </a>
+  
+  
 
-<h1 id="dstack-secret">dstack secret<a class="headerlink" href="#dstack-secret" title="Permanent link">&para;</a></h1>
-<p>The <code>dstack secret</code> commands allow managing <a href="../../../../concepts/secrets/">Secrets</a>.</p>
-<h2 id="dstack-secret-set">dstack secret set<a class="headerlink" href="#dstack-secret-set" title="Permanent link">&para;</a></h2>
-<p>The <code>dstack secret set</code> command creates a new secret or updates an existing one.</p>
-<h5 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h5>
+
+<h1 id="events">Events<a class="headerlink" href="#events" title="Permanent link">&para;</a></h1>
+<p>Events provide a chronological record of notable state changes and operations affecting <code>dstack</code> resources. They are designed for auditing, debugging, and understanding the lifecycle of runs, jobs, fleets, and other resources.</p>
+<p>Each event includes the following fields:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Timestamp</td>
+<td>When the event occurred</td>
+</tr>
+<tr>
+<td>Actor</td>
+<td>The user or system that initiated the change, if applicable</td>
+</tr>
+<tr>
+<td>Targets</td>
+<td>The resources affected by the event</td>
+</tr>
+<tr>
+<td>Message</td>
+<td>A description of the change or additional event details</td>
+</tr>
+</tbody>
+</table>
+<p>Events can be queried by targeting a specific resource or within a group of related resources. For example, you can query events targeting a particular job, or query events within a run, including the run itself and all of its jobs.</p>
+<p>Events are accessible through the UI, CLI, and API.</p>
+<h2 id="ui">UI<a class="headerlink" href="#ui" title="Permanent link">&para;</a></h2>
+<p>The UI allows you to query events either globally on the dedicated <code>Events</code> page or within a specific group on the page of a run, job, fleet, and other resources.</p>
+<h3 id="global-page">Global page<a class="headerlink" href="#global-page" title="Permanent link">&para;</a></h3>
+<p>The global page shows events from all projects that the user has access to and allows filtering by many fields.</p>
+<p><img alt="" src="https://dstack.ai/static-assets/static-assets/images/dstack-ui-events-global.png" width="800" /></p>
+<p>This page allows you to query events targeting a specific resource or within a particular group.</p>
+<h3 id="resource-page">Resource page<a class="headerlink" href="#resource-page" title="Permanent link">&para;</a></h3>
+<p>The resource page shows events within that specific group. For example, if you open a run and switch to the <code>Events</code> tab, you will see all events about that run and its jobs.</p>
+<p><img alt="" src="https://dstack.ai/static-assets/static-assets/images/dstack-ui-events-run.png" width="800" /></p>
+<h2 id="cli">CLI<a class="headerlink" href="#cli" title="Permanent link">&para;</a></h2>
+<p>To query events via the CLI, use the <code>dstack event</code> command. This command provides several arguments that allow filtering by target and within scopes.</p>
+<p>Here is an example of querying all events within a particular run:</p>
 <div class="termy">
 
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>dstack<span class="w"> </span>secret<span class="w"> </span><span class="nb">set</span><span class="w"> </span>--help
-Usage:<span class="w"> </span>dstack<span class="w"> </span>secret<span class="w"> </span><span class="nb">set</span><span class="w"> </span><span class="o">[</span>-h<span class="o">]</span><span class="w"> </span>name<span class="w"> </span>value
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>dstack<span class="w"> </span>event<span class="w"> </span>--within-run<span class="w"> </span>cursor
 
-Positional<span class="w"> </span>Arguments:
-<span class="w">  </span>name<span class="w">        </span>The<span class="w"> </span>name<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>secret
-<span class="w">  </span>value<span class="w">       </span>The<span class="w"> </span>value<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>secret
-
-Options:
-<span class="w">  </span>-h,<span class="w"> </span>--help<span class="w">  </span>show<span class="w"> </span>this<span class="w"> </span><span class="nb">help</span><span class="w"> </span>message<span class="w"> </span>and<span class="w"> </span><span class="nb">exit</span>
+<span class="o">[</span><span class="m">2026</span>-01-21<span class="w"> </span><span class="m">13</span>:09:37<span class="o">]</span><span class="w"> </span><span class="o">[</span>👤admin<span class="o">]</span><span class="w"> </span><span class="o">[</span>run<span class="w"> </span>cursor<span class="o">]</span><span class="w"> </span>Run<span class="w"> </span>submitted.<span class="w"> </span>Status:<span class="w"> </span>SUBMITTED
+<span class="o">[</span><span class="m">2026</span>-01-21<span class="w"> </span><span class="m">13</span>:09:37<span class="o">]</span><span class="w"> </span><span class="o">[</span>job<span class="w"> </span>cursor-0-0<span class="o">]</span><span class="w"> </span>Job<span class="w"> </span>created<span class="w"> </span>on<span class="w"> </span>run<span class="w"> </span>submission.<span class="w"> </span>Status:<span class="w"> </span>SUBMITTED
+<span class="o">[</span><span class="m">2026</span>-01-21<span class="w"> </span><span class="m">13</span>:09:57<span class="o">]</span><span class="w"> </span><span class="o">[</span>job<span class="w"> </span>cursor-0-0<span class="o">]</span><span class="w"> </span>Job<span class="w"> </span>status<span class="w"> </span>changed<span class="w"> </span>SUBMITTED<span class="w"> </span>-&gt;<span class="w"> </span>PROVISIONING
+<span class="o">[</span><span class="m">2026</span>-01-21<span class="w"> </span><span class="m">13</span>:09:58<span class="o">]</span><span class="w"> </span><span class="o">[</span>job<span class="w"> </span>cursor-0-0,<span class="w"> </span>instance<span class="w"> </span>some-fleet-0<span class="o">]</span><span class="w"> </span>Instance<span class="w"> </span>created<span class="w"> </span><span class="k">for</span><span class="w"> </span>job.<span class="w"> </span>Instance<span class="w"> </span>status:<span class="w"> </span>PROVISIONING
+<span class="o">[</span><span class="m">2026</span>-01-21<span class="w"> </span><span class="m">13</span>:09:59<span class="o">]</span><span class="w"> </span><span class="o">[</span>run<span class="w"> </span>cursor<span class="o">]</span><span class="w"> </span>Run<span class="w"> </span>status<span class="w"> </span>changed<span class="w"> </span>SUBMITTED<span class="w"> </span>-&gt;<span class="w"> </span>PROVISIONING
+<span class="o">[</span><span class="m">2026</span>-01-21<span class="w"> </span><span class="m">13</span>:11:22<span class="o">]</span><span class="w"> </span><span class="o">[</span>job<span class="w"> </span>cursor-0-0<span class="o">]</span><span class="w"> </span>Job<span class="w"> </span>status<span class="w"> </span>changed<span class="w"> </span>PROVISIONING<span class="w"> </span>-&gt;<span class="w"> </span>PULLING
+<span class="o">[</span><span class="m">2026</span>-01-21<span class="w"> </span><span class="m">13</span>:11:49<span class="o">]</span><span class="w"> </span><span class="o">[</span>job<span class="w"> </span>cursor-0-0<span class="o">]</span><span class="w"> </span>Job<span class="w"> </span>status<span class="w"> </span>changed<span class="w"> </span>PULLING<span class="w"> </span>-&gt;<span class="w"> </span>RUNNING
+<span class="o">[</span><span class="m">2026</span>-01-21<span class="w"> </span><span class="m">13</span>:11:51<span class="o">]</span><span class="w"> </span><span class="o">[</span>run<span class="w"> </span>cursor<span class="o">]</span><span class="w"> </span>Run<span class="w"> </span>status<span class="w"> </span>changed<span class="w"> </span>PROVISIONING<span class="w"> </span>-&gt;<span class="w"> </span>RUNNING
+<span class="o">[</span><span class="m">2026</span>-01-21<span class="w"> </span><span class="m">13</span>:18:41<span class="o">]</span><span class="w"> </span><span class="o">[</span>👤admin<span class="o">]</span><span class="w"> </span><span class="o">[</span>run<span class="w"> </span>cursor<span class="o">]</span><span class="w"> </span>Run<span class="w"> </span>status<span class="w"> </span>changed<span class="w"> </span>RUNNING<span class="w"> </span>-&gt;<span class="w"> </span>TERMINATING.<span class="w"> </span>Termination<span class="w"> </span>reason:<span class="w"> </span>STOPPED_BY_USER
+<span class="o">[</span><span class="m">2026</span>-01-21<span class="w"> </span><span class="m">13</span>:18:48<span class="o">]</span><span class="w"> </span><span class="o">[</span>job<span class="w"> </span>cursor-0-0<span class="o">]</span><span class="w"> </span>Job<span class="w"> </span>status<span class="w"> </span>changed<span class="w"> </span>RUNNING<span class="w"> </span>-&gt;<span class="w"> </span>TERMINATING.<span class="w"> </span>Termination<span class="w"> </span>reason:<span class="w"> </span>TERMINATED_BY_USER
+<span class="o">[</span><span class="m">2026</span>-01-21<span class="w"> </span><span class="m">13</span>:19:05<span class="o">]</span><span class="w"> </span><span class="o">[</span>instance<span class="w"> </span>some-fleet-0,<span class="w"> </span>job<span class="w"> </span>cursor-0-0<span class="o">]</span><span class="w"> </span>Job<span class="w"> </span>unassigned<span class="w"> </span>from<span class="w"> </span>instance.<span class="w"> </span>Instance<span class="w"> </span>blocks:<span class="w"> </span><span class="m">0</span>/1<span class="w"> </span>busy
+<span class="o">[</span><span class="m">2026</span>-01-21<span class="w"> </span><span class="m">13</span>:19:05<span class="o">]</span><span class="w"> </span><span class="o">[</span>job<span class="w"> </span>cursor-0-0<span class="o">]</span><span class="w"> </span>Job<span class="w"> </span>status<span class="w"> </span>changed<span class="w"> </span>TERMINATING<span class="w"> </span>-&gt;<span class="w"> </span>TERMINATED
+<span class="o">[</span><span class="m">2026</span>-01-21<span class="w"> </span><span class="m">13</span>:19:07<span class="o">]</span><span class="w"> </span><span class="o">[</span>run<span class="w"> </span>cursor<span class="o">]</span><span class="w"> </span>Run<span class="w"> </span>status<span class="w"> </span>changed<span class="w"> </span>TERMINATING<span class="w"> </span>-&gt;<span class="w"> </span>TERMINATED
 </code></pre></div>
 
 </div>
 
-<h2 id="dstack-secret-list">dstack secret list<a class="headerlink" href="#dstack-secret-list" title="Permanent link">&para;</a></h2>
-<p>The <code>dstack secret list</code> command lists all secrets set in a project.</p>
-<h5 id="usage_1">Usage<a class="headerlink" href="#usage_1" title="Permanent link">&para;</a></h5>
-<div class="termy">
-
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>dstack<span class="w"> </span>secret<span class="w"> </span>list<span class="w"> </span>--help
-Usage:<span class="w"> </span>dstack<span class="w"> </span>secret<span class="w"> </span>list<span class="w"> </span><span class="o">[</span>-h<span class="o">]</span>
-
-Options:
-<span class="w">  </span>-h,<span class="w"> </span>--help<span class="w">  </span>show<span class="w"> </span>this<span class="w"> </span><span class="nb">help</span><span class="w"> </span>message<span class="w"> </span>and<span class="w"> </span><span class="nb">exit</span>
-</code></pre></div>
-
-</div>
-
-<h2 id="dstack-secret-get">dstack secret get<a class="headerlink" href="#dstack-secret-get" title="Permanent link">&para;</a></h2>
-<p>The <code>dstack secret get</code> command show the value of a specified secret.</p>
-<h5 id="usage_2">Usage<a class="headerlink" href="#usage_2" title="Permanent link">&para;</a></h5>
-<div class="termy">
-
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>dstack<span class="w"> </span>secret<span class="w"> </span>get<span class="w"> </span>--help
-Usage:<span class="w"> </span>dstack<span class="w"> </span>secret<span class="w"> </span>get<span class="w"> </span><span class="o">[</span>-h<span class="o">]</span><span class="w"> </span>name
-
-Positional<span class="w"> </span>Arguments:
-<span class="w">  </span>name<span class="w">        </span>The<span class="w"> </span>name<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>secret
-
-Options:
-<span class="w">  </span>-h,<span class="w"> </span>--help<span class="w">  </span>show<span class="w"> </span>this<span class="w"> </span><span class="nb">help</span><span class="w"> </span>message<span class="w"> </span>and<span class="w"> </span><span class="nb">exit</span>
-</code></pre></div>
-
-</div>
-
-<h2 id="dstack-secret-delete">dstack secret delete<a class="headerlink" href="#dstack-secret-delete" title="Permanent link">&para;</a></h2>
-<p>The <code>dstack secret delete</code> command deletes the specified secret.</p>
-<h5 id="usage_3">Usage<a class="headerlink" href="#usage_3" title="Permanent link">&para;</a></h5>
-<div class="termy">
-
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>dstack<span class="w"> </span>secret<span class="w"> </span>delete<span class="w"> </span>--help
-Usage:<span class="w"> </span>dstack<span class="w"> </span>secret<span class="w"> </span>delete<span class="w"> </span><span class="o">[</span>-h<span class="o">]</span><span class="w"> </span><span class="o">[</span>-y<span class="o">]</span><span class="w"> </span>name
-
-Positional<span class="w"> </span>Arguments:
-<span class="w">  </span>name<span class="w">        </span>The<span class="w"> </span>name<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>secret
-
-Options:
-<span class="w">  </span>-h,<span class="w"> </span>--help<span class="w">  </span>show<span class="w"> </span>this<span class="w"> </span><span class="nb">help</span><span class="w"> </span>message<span class="w"> </span>and<span class="w"> </span><span class="nb">exit</span>
-<span class="w">  </span>-y,<span class="w"> </span>--yes<span class="w">   </span>Don<span class="err">&#39;</span>t<span class="w"> </span>ask<span class="w"> </span><span class="k">for</span><span class="w"> </span>confirmation
-</code></pre></div>
-
-</div>
+<p>To see all supported arguments, check the <a href="../../reference/cli/dstack/event/">reference</a>.</p>
+<p>If you invoke the command without arguments, it will include all events targeting resources in the project.</p>
+<h2 id="ttl">TTL<a class="headerlink" href="#ttl" title="Permanent link">&para;</a></h2>
+<p>By default, <code>dstack</code> stores each event for 30 days and then deletes it. This can be overridden by server administrators using the <code>DSTACK_SERVER_EVENTS_TTL_SECONDS</code> environment variable.</p>
 
 
 
@@ -4226,7 +4265,7 @@ Options:
           <nav class="md-footer__inner md-grid" aria-label="Footer" >
             
               
-              <a href="../gateway/" class="md-footer__link md-footer__link--prev" aria-label="Previous: dstack gateway">
+              <a href="../metrics/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Metrics">
                 <div class="md-footer__button md-icon">
                   
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -4236,20 +4275,20 @@ Options:
                     Previous
                   </span>
                   <div class="md-ellipsis">
-                    dstack gateway
+                    Metrics
                   </div>
                 </div>
               </a>
             
             
               
-              <a href="../../../api/python/" class="md-footer__link md-footer__link--next" aria-label="Next: Python API">
+              <a href="../../guides/server-deployment/" class="md-footer__link md-footer__link--next" aria-label="Next: Server deployment">
                 <div class="md-footer__title">
                   <span class="md-footer__direction">
                     Next
                   </span>
                   <div class="md-ellipsis">
-                    Python API
+                    Server deployment
                   </div>
                 </div>
                 <div class="md-footer__button md-icon">
@@ -4391,17 +4430,17 @@ Options:
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../../../..", "features": ["content.tooltips", "navigation.path", "content.code.copy", "content.action.edit", "navigation.tabs", "navigation.sections", "navigation.top", "announce.dismiss", "navigation.tracking", "navigation.footer"], "search": "../../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["content.tooltips", "navigation.path", "content.code.copy", "content.action.edit", "navigation.tabs", "navigation.sections", "navigation.top", "announce.dismiss", "navigation.tracking", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
 <script src="/assets/javascripts/termynal.js" data-termynal-container="#termynal"></script>
 <script async src="https://tally.so/widgets/embed.js"></script>
 
-      <script src="../../../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
-        <script src="../../../../../assets/javascripts/extra.js"></script>
+        <script src="../../../assets/javascripts/extra.js"></script>
       
-        <script src="../../../../../assets/javascripts/pricing.js"></script>
+        <script src="../../../assets/javascripts/pricing.js"></script>
       
     
 <script src="https://widget.kapa.ai/kapa-widget.bundle.js"
