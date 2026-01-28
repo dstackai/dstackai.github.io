@@ -4748,6 +4748,56 @@ case <code>dstack</code> adjusts the number of replicas (scales up or down) auto
 <blockquote>
 <p>The <code>scaling</code> property requires creating a <a href="../gateways/">gateway</a>.</p>
 </blockquote>
+<details class="info">
+<summary>Replica groups</summary>
+<p>A service can include multiple replica groups. Each group can define its own <code>commands</code>, <code>resources</code> requirements, and <code>scaling</code> rules.</p>
+<p><div editor-title="service.dstack.yml"> </p>
+<div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service</span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">llama-8b-service</span>
+
+<span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">lmsysorg/sglang:latest</span>
+<span class="nt">env</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MODEL_ID=deepseek-ai/DeepSeek-R1-Distill-Llama-8B</span>
+
+<span class="nt">replicas</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">count</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1..2</span>
+<span class="w">    </span><span class="nt">scaling</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">metric</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rps</span>
+<span class="w">      </span><span class="nt">target</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span>
+<span class="w">    </span><span class="nt">commands</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">        </span><span class="no">python -m sglang.launch_server \</span>
+<span class="w">          </span><span class="no">--model-path $MODEL_ID \</span>
+<span class="w">          </span><span class="no">--port 8000 \</span>
+<span class="w">          </span><span class="no">--trust-remote-code</span>
+<span class="w">    </span><span class="nt">resources</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">48GB</span>
+
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">count</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1..4</span>
+<span class="w">    </span><span class="nt">scaling</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">metric</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rps</span>
+<span class="w">      </span><span class="nt">target</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span>
+<span class="w">    </span><span class="nt">commands</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">        </span><span class="no">python -m sglang.launch_server \</span>
+<span class="w">          </span><span class="no">--model-path $MODEL_ID \</span>
+<span class="w">          </span><span class="no">--port 8000 \</span>
+<span class="w">          </span><span class="no">--trust-remote-code</span>
+<span class="w">    </span><span class="nt">resources</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">24GB</span>
+
+<span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8000</span>
+<span class="nt">model</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">deepseek-ai/DeepSeek-R1-Distill-Llama-8B</span>
+</code></pre></div>
+</div>
+<blockquote>
+<p>Properties such as <code>regions</code>, <code>port</code>, <code>image</code>, <code>env</code> and some other cannot be configured per replica group. This support is coming soon.</p>
+</blockquote>
+</details>
+<details class="info">
+<summary>Disaggregated serving</summary>
+<p>Native support for disaggregated prefill and decode, allowing both worker types to run within a single service, is coming soon.</p>
+</details>
 <h3 id="model">Model<a class="headerlink" href="#model" title="Permanent link">&para;</a></h3>
 <p>If the service is running a chat model with an OpenAI-compatible interface,
 set the <a href="#model"><code>model</code></a> property to make the model accessible via <code>dstack</code>'s 
