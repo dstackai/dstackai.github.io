@@ -889,6 +889,19 @@ Support dstack with a ⭐ on
 </li>
         
           <li class="md-nav__item">
+  <a href="#spot-policy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Spot policy
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#backends_1" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -4182,6 +4195,19 @@ Support dstack with a ⭐ on
 </li>
         
           <li class="md-nav__item">
+  <a href="#spot-policy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Spot policy
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#backends_1" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -4624,12 +4650,32 @@ See the <a href="../../../examples/clusters/lambda/#kubernetes">Lambda</a> or <a
 </details>
 <h3 id="resources">Resources<a class="headerlink" href="#resources" title="Permanent link">&para;</a></h3>
 <p>Backend fleets allow you to specify the resource requirements for the instances to be provisioned. The <code>resources</code> property syntax is the same as for <a href="../dev-environments/#resources">run configurations</a>.</p>
-<blockquote>
-<p>Not directly related, but in addition to <code>resources</code>, you can specify <a href="../../reference/dstack.yml/fleet/#instance_types"><code>spot_policy</code></a>, <a href="../../reference/dstack.yml/fleet/#instance_types"><code>instance_types</code></a>, <a href="../../reference/dstack.yml/fleet/#max_price"><code>max_price</code></a>, <a href="../../reference/dstack.yml/fleet/#max_price"><code>region</code></a>, and other <a href="../../reference/dstack.yml/fleet/">options</a>.</p>
-</blockquote>
-<!-- TODO: add dedicated spot policy example -->
+<h3 id="spot-policy">Spot policy<a class="headerlink" href="#spot-policy" title="Permanent link">&para;</a></h3>
+<p>Backend fleets allow you to specify a <code>spot policy</code>. By default, it is set to <code>on-demand</code>. If you want to use spot instances, you must set it to <code>auto</code> if you plan to use both on-demand and spot instances, or to <code>spot</code> if only spot instances are allowed.</p>
+<div editor-title="fleet.dstack.yml"> 
 
+<div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">fleet</span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my-fleet</span>
+
+<span class="nt">nodes</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0..2</span>
+
+<span class="c1"># Uncomment to ensure instances are inter-connected</span>
+<span class="c1">#placement: cluster</span>
+
+<span class="c1"># Allows both on-demand and spot</span>
+<span class="nt">spot_policy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">auto</span>
+
+<span class="nt">idle_duration</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1h</span>
+
+<span class="nt">resources</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0..8</span>
+</code></pre></div>
+
+</div>
+
+<p>Note that run configurations must specify their own <code>spot policy</code> which is also set to <code>on-demand</code> by default.</p>
 <h3 id="backends_1">Backends<a class="headerlink" href="#backends_1" title="Permanent link">&para;</a></h3>
+<p>Backend fleets allow you to set <code>backends</code> to specify which backends are allowed to be used.</p>
 <h3 id="idle-duration">Idle duration<a class="headerlink" href="#idle-duration" title="Permanent link">&para;</a></h3>
 <p>By default, instances of a backend fleet stay <code>idle</code> for 3 days and can be reused within that time.
 If an instance is not reused within this period, it is automatically terminated.</p>
@@ -4754,7 +4800,7 @@ unlimited).</p>
 </code></pre></div>
 <div class="admonition info">
 <p class="admonition-title">Reference</p>
-<p>The fleet configuration file supports many more options. See the <a href="../../reference/dstack.yml/fleet/">reference</a>.</p>
+<p>The fleet configuration file supports additional options, including <a href="../../reference/dstack.yml/fleet/#instance_types"><code>instance_types</code></a>, <a href="../../reference/dstack.yml/fleet/#max_price"><code>max_price</code></a>, <a href="../../reference/dstack.yml/fleet/#max_price"><code>regions</code></a>, among others. For the complete list, see the <a href="../../reference/dstack.yml/fleet/">reference</a>.</p>
 </div>
 <h2 id="manage-fleets">Manage fleets<a class="headerlink" href="#manage-fleets" title="Permanent link">&para;</a></h2>
 <h3 id="list-fleets">List fleets<a class="headerlink" href="#list-fleets" title="Permanent link">&para;</a></h3>
