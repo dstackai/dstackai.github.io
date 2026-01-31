@@ -4128,7 +4128,7 @@ Support dstack with a ⭐ on
 <div class="tabbed-block">
 <div editor-title="examples/inference/sglang/nvidia/.dstack.yml">
 <p><div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service</span>
-<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">deepseek-r1-nvidia</span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">deepseek-r1</span>
 
 <span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">lmsysorg/sglang:latest</span>
 <span class="nt">env</span><span class="p">:</span>
@@ -4151,7 +4151,7 @@ Support dstack with a ⭐ on
 <div class="tabbed-block">
 <div editor-title="examples/inference/sglang/amd/.dstack.yml">
 <p><div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service</span>
-<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">deepseek-r1-amd</span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">deepseek-r1</span>
 
 <span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">lmsysorg/sglang:v0.4.1.post4-rocm620</span>
 <span class="nt">env</span><span class="p">:</span>
@@ -4182,18 +4182,17 @@ Support dstack with a ⭐ on
 <span class="w"> </span><span class="c1">#  BACKEND  REGION     RESOURCES                         SPOT  PRICE</span>
 <span class="w"> </span><span class="m">1</span><span class="w">  </span>runpod<span class="w">   </span>EU-RO-1<span class="w">   </span>24xCPU,<span class="w"> </span>283GB,<span class="w"> </span>1xMI300X<span class="w"> </span><span class="o">(</span>192GB<span class="o">)</span><span class="w">    </span>no<span class="w">    </span><span class="nv">$2</span>.49
 
-Submit<span class="w"> </span>the<span class="w"> </span>run<span class="w"> </span>deepseek-r1-amd?<span class="w"> </span><span class="o">[</span>y/n<span class="o">]</span>:<span class="w"> </span>y
+Submit<span class="w"> </span>the<span class="w"> </span>run<span class="w"> </span>deepseek-r1?<span class="w"> </span><span class="o">[</span>y/n<span class="o">]</span>:<span class="w"> </span>y
 
 Provisioning...
 ---&gt;<span class="w"> </span><span class="m">100</span>%
 </code></pre></div>
 </div>
 
-<p>Once the service is up, the model will be available via the OpenAI-compatible endpoint
-at <code>&lt;dstack server URL&gt;/proxy/models/&lt;project name&gt;/</code>.</p>
+<p>If no gateway is created, the service endpoint will be available at <code>&lt;dstack server URL&gt;/proxy/services/&lt;project name&gt;/&lt;run name&gt;/</code>.</p>
 <div class="termy">
 
-<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>http://127.0.0.1:3000/proxy/models/main/chat/completions<span class="w"> </span><span class="se">\</span>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>http://127.0.0.1:3000/proxy/services/main/deepseek-r1/v1/chat/completions<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-X<span class="w"> </span>POST<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-H<span class="w"> </span><span class="s1">&#39;Authorization: Bearer &amp;lt;dstack token&amp;gt;&#39;</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-H<span class="w"> </span><span class="s1">&#39;Content-Type: application/json&#39;</span><span class="w"> </span><span class="se">\</span>
@@ -4220,7 +4219,7 @@ at <code>&lt;dstack server URL&gt;/proxy/models/&lt;project name&gt;/</code>.</p
 <p>If you'd like to use a custom routing policy, e.g. by leveraging the <a href="https://docs.sglang.ai/advanced_features/router.html#">SGLang Model Gateway</a>, create a gateway with <code>router</code> set to <code>sglang</code>. Check out <a href="https://dstack.ai/docs/concepts/gateways#router">gateways</a> for more details.</p>
 </div>
 <blockquote>
-<p>If a <a href="https://dstack.ai/docs/concepts/gateways/">gateway</a> is configured (e.g. to enable auto-scaling or HTTPs, rate-limits, etc), the OpenAI-compatible endpoint is available at <code>https://gateway.&lt;gateway domain&gt;/</code>.</p>
+<p>If a <a href="https://dstack.ai/docs/concepts/gateways/">gateway</a> is configured (e.g. to enable auto-scaling or HTTPs, rate-limits, etc), the service endpoint will be available at <code>https://deepseek-r1.&lt;gateway domain&gt;/</code>.</p>
 </blockquote>
 <h2 id="source-code">Source code<a class="headerlink" href="#source-code" title="Permanent link">&para;</a></h2>
 <p>The source-code of this example can be found in

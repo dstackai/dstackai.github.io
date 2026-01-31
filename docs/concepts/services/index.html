@@ -934,11 +934,11 @@ Support dstack with a ⭐ on
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#replicas-and-scaling" class="md-nav__link">
+  <a href="#gateway" class="md-nav__link">
     <span class="md-ellipsis">
       
         <span class="md-typeset">
-          Replicas and scaling
+          Gateway
         </span>
       
     </span>
@@ -947,11 +947,11 @@ Support dstack with a ⭐ on
 </li>
         
           <li class="md-nav__item">
-  <a href="#model" class="md-nav__link">
+  <a href="#replicas-and-scaling" class="md-nav__link">
     <span class="md-ellipsis">
       
         <span class="md-typeset">
-          Model
+          Replicas and scaling
         </span>
       
     </span>
@@ -1004,6 +1004,19 @@ Support dstack with a ⭐ on
       
         <span class="md-typeset">
           Rate limits
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Model
         </span>
       
     </span>
@@ -4282,11 +4295,11 @@ Support dstack with a ⭐ on
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#replicas-and-scaling" class="md-nav__link">
+  <a href="#gateway" class="md-nav__link">
     <span class="md-ellipsis">
       
         <span class="md-typeset">
-          Replicas and scaling
+          Gateway
         </span>
       
     </span>
@@ -4295,11 +4308,11 @@ Support dstack with a ⭐ on
 </li>
         
           <li class="md-nav__item">
-  <a href="#model" class="md-nav__link">
+  <a href="#replicas-and-scaling" class="md-nav__link">
     <span class="md-ellipsis">
       
         <span class="md-typeset">
-          Model
+          Replicas and scaling
         </span>
       
     </span>
@@ -4352,6 +4365,19 @@ Support dstack with a ⭐ on
       
         <span class="md-typeset">
           Rate limits
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Model
         </span>
       
     </span>
@@ -4691,7 +4717,7 @@ Model<span class="w"> </span>meta-llama/Meta-Llama-3.1-8B-Instruct<span class="w
 </div>
 
 <p><code>dstack apply</code> automatically provisions instances and runs the service.</p>
-<p>If a <a href="../gateways/">gateway</a> is not configured, the service’s endpoint will be accessible at
+<p>If you do not have a <a href="../gateways/">gateway</a> created, the service endpoint will be accessible at
 <code>&lt;dstack server URL&gt;/proxy/services/&lt;project name&gt;/&lt;run name&gt;/</code>.</p>
 <div class="termy">
 
@@ -4711,34 +4737,44 @@ Model<span class="w"> </span>meta-llama/Meta-Llama-3.1-8B-Instruct<span class="w
 
 </div>
 
-<p>If the service defines the <a href="#model"><code>model</code></a> property, the model can be accessed with
-the global OpenAI-compatible endpoint at <code>&lt;dstack server URL&gt;/proxy/models/&lt;project name&gt;/</code>,
-or via <code>dstack</code> UI.</p>
-<p>If <a href="#authorization">authorization</a> is not disabled, the service endpoint requires the <code>Authorization</code> header with
-<code>Bearer &lt;dstack token&gt;</code>.</p>
-<details class="info">
-<summary>Gateway</summary>
-<p>Running services for development purposes doesn’t require setting up a <a href="../gateways/">gateway</a>.</p>
-<p>However, you'll need a gateway in the following cases:</p>
+<p>If <a href="#authorization">authorization</a> is not disabled, the service endpoint requires the <code>Authorization</code> header with <code>Bearer &lt;dstack token&gt;</code>.</p>
+<h2 id="configuration-options">Configuration options<a class="headerlink" href="#configuration-options" title="Permanent link">&para;</a></h2>
+<!-- !!! info "No commands"
+    If `commands` are not specified, `dstack` runs `image`’s entrypoint (or fails if none is set). -->
+
+<h3 id="gateway">Gateway<a class="headerlink" href="#gateway" title="Permanent link">&para;</a></h3>
+<p>Here are cases where a service may need a <a href="../gateways/">gateway</a>:</p>
 <ul>
-<li>To use auto-scaling or rate limits</li>
+<li>To use <a href="#replicas-and-scaling">auto-scaling</a> or <a href="#rate-limits">rate limits</a></li>
 <li>To enable a support custom router, e.g. such as the <a href="https://docs.sglang.ai/advanced_features/router.html#">SGLang Model Gateway</a></li>
 <li>To enable HTTPS for the endpoint and map it to your domain</li>
 <li>If your service requires WebSockets</li>
 <li>If your service cannot work with a <a href="#path-prefix">path prefix</a></li>
 </ul>
-<!-- Note, if you're using <a href="https://sky.dstack.ai">dstack Sky</a>,
+<!-- Note, if you're using [dstack Sky](https://sky.dstack.ai),
 a gateway is already pre-configured for you. -->
-<p>If a <a href="../gateways/">gateway</a> is configured, the service endpoint will be accessible at
-<code>https://&lt;run name&gt;.&lt;gateway domain&gt;/</code>.</p>
-<p>If the service defines the <code>model</code> property, the model will be available via the global OpenAI-compatible endpoint 
-at <code>https://gateway.&lt;gateway domain&gt;/</code>.</p>
-</details>
-<h2 id="configuration-options">Configuration options<a class="headerlink" href="#configuration-options" title="Permanent link">&para;</a></h2>
-<div class="admonition info">
-<p class="admonition-title">No commands</p>
-<p>If <code>commands</code> are not specified, <code>dstack</code> runs <code>image</code>’s entrypoint (or fails if none is set).</p>
+
+<p>If you want <code>dstack</code> to explicitly validate that a gateway is used, you can set the <a href="../../reference/dstack.yml/service/#gateway"><code>gateway</code></a> property in the service configuration to <code>true</code>. In this case, <code>dstack</code> will raise an error during <code>dstack apply</code> if a default gateway is not created.</p>
+<p>You can also set the <code>gateway</code> property to the name of a specific gateway, if required.</p>
+<p>If you have a <a href="../gateways/">gateway</a> created, the service endpoint will be accessible at <code>https://&lt;run name&gt;.&lt;gateway domain&gt;/</code>:</p>
+<div class="termy">
+
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>curl<span class="w"> </span>https://llama31.example.com/v1/chat/completions<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-H<span class="w"> </span><span class="s1">&#39;Content-Type: application/json&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-H<span class="w"> </span><span class="s1">&#39;Authorization: Bearer &amp;lt;dstack token&amp;gt;&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-d<span class="w"> </span><span class="s1">&#39;{</span>
+<span class="s1">        &quot;model&quot;: &quot;meta-llama/Meta-Llama-3.1-8B-Instruct&quot;,</span>
+<span class="s1">        &quot;messages&quot;: [</span>
+<span class="s1">            {</span>
+<span class="s1">                &quot;role&quot;: &quot;user&quot;,</span>
+<span class="s1">                &quot;content&quot;: &quot;Compose a poem that explains the concept of recursion in programming.&quot;</span>
+<span class="s1">            }</span>
+<span class="s1">        ]</span>
+<span class="s1">    }&#39;</span>
+</code></pre></div>
+
 </div>
+
 <h3 id="replicas-and-scaling">Replicas and scaling<a class="headerlink" href="#replicas-and-scaling" title="Permanent link">&para;</a></h3>
 <p>By default, <code>dstack</code> runs a single replica of the service.
 You can configure the number of replicas as well as the auto-scaling rules.</p>
@@ -4826,10 +4862,6 @@ case <code>dstack</code> adjusts the number of replicas (scales up or down) auto
 <summary>Disaggregated serving</summary>
 <p>Native support for disaggregated prefill and decode, allowing both worker types to run within a single service, is coming soon.</p>
 </details>
-<h3 id="model">Model<a class="headerlink" href="#model" title="Permanent link">&para;</a></h3>
-<p>If the service is running a chat model with an OpenAI-compatible interface,
-set the <a href="#model"><code>model</code></a> property to make the model accessible via <code>dstack</code>'s 
-global OpenAI-compatible endpoint, and also accessible via <code>dstack</code>'s UI.</p>
 <h3 id="authorization">Authorization<a class="headerlink" href="#authorization" title="Permanent link">&para;</a></h3>
 <p>By default, the service enables authorization, meaning the service endpoint requires a <code>dstack</code> user token.
 This can be disabled by setting <code>auth</code> to <code>false</code>.</p>
@@ -4992,6 +5024,9 @@ you can choose to partition by the value of a header.</p>
 </code></pre></div>
 </div>
 </details>
+<h3 id="model">Model<a class="headerlink" href="#model" title="Permanent link">&para;</a></h3>
+<p>If the service runs a model with an OpenAI-compatible interface, you can set the <a href="#model"><code>model</code></a> property to make the model accessible through <code>dstack</code>'s chat UI on the <code>Models</code> page. 
+In this case, <code>dstack</code> will use the service's <code>/v1/chat/completions</code> service.</p>
 <h3 id="resources">Resources<a class="headerlink" href="#resources" title="Permanent link">&para;</a></h3>
 <p>If you specify memory size, you can either specify an explicit size (e.g. <code>24GB</code>) or a 
 range (e.g. <code>24GB..</code>, or <code>24GB..80GB</code>, or <code>..80GB</code>).</p>

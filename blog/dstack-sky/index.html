@@ -4133,13 +4133,12 @@ for you.</p>
 </code></pre></div>
 </div>
 
-<p>If it has a <code>model</code> mapping, the model will be accessible
-at <code>https://gateway.&lt;project name&gt;.sky.dstack.ai</code> via the OpenAI compatible interface.</p>
+<p>The service endpoint will be accessible at <code>https://&lt;run name&gt;.&lt;project name&gt;.sky.dstack.ai</code> via the OpenAI compatible interface.</p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">openai</span><span class="w"> </span><span class="kn">import</span> <span class="n">OpenAI</span>
 
 
 <span class="n">client</span> <span class="o">=</span> <span class="n">OpenAI</span><span class="p">(</span>
-  <span class="n">base_url</span><span class="o">=</span><span class="s2">&quot;https://gateway.&lt;project name&gt;.sky.dstack.ai&quot;</span><span class="p">,</span>
+  <span class="n">base_url</span><span class="o">=</span><span class="s2">&quot;https://&lt;run name&gt;.&lt;project name&gt;.sky.dstack.ai/v1&quot;</span><span class="p">,</span>
   <span class="n">api_key</span><span class="o">=</span><span class="s2">&quot;&lt;dstack token&gt;&quot;</span>
 <span class="p">)</span>
 

@@ -4225,11 +4225,10 @@ Provisioning...
 </code></pre></div>
 </div>
 
-<p>If no gateway is created, the model will be available via the OpenAI-compatible endpoint
-at <code>&lt;dstack server URL&gt;/proxy/models/&lt;project name&gt;/</code>.</p>
+<p>If no gateway is created, the service endpoint will be available at <code>&lt;dstack server URL&gt;/proxy/services/&lt;project name&gt;/&lt;run name&gt;/</code>.</p>
 <div class="termy">
 
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>curl<span class="w"> </span>http://127.0.0.1:3000/proxy/models/main/chat/completions<span class="w"> </span><span class="se">\</span>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>curl<span class="w"> </span>http://127.0.0.1:3000/proxy/services/main/llama4-scout/v1/chat/completions<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-X<span class="w"> </span>POST<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-H<span class="w"> </span><span class="s1">&#39;Authorization: Bearer &amp;lt;dstack token&amp;gt;&#39;</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-H<span class="w"> </span><span class="s1">&#39;Content-Type: application/json&#39;</span><span class="w"> </span><span class="se">\</span>
@@ -4251,8 +4250,7 @@ at <code>&lt;dstack server URL&gt;/proxy/models/&lt;project name&gt;/</code>.</p
 
 </div>
 
-<p>When a <a href="https://dstack.ai/docs/concepts/gateways/">gateway</a> is configured, the OpenAI-compatible endpoint
-is available at <code>https://gateway.&lt;gateway domain&gt;/</code>.</p>
+<p>When a <a href="https://dstack.ai/docs/concepts/gateways/">gateway</a> is configured, the service endpoint will be available at <code>https://llama4-scout.&lt;gateway domain&gt;/</code>.</p>
 <h2 id="source-code">Source code<a class="headerlink" href="#source-code" title="Permanent link">&para;</a></h2>
 <p>The source-code of this example can be found in
 <a href="https://github.com/dstackai/dstack/blob/master/examples/inference/tgi"><code>examples/inference/tgi</code></a>.</p>
