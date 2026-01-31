@@ -4,45 +4,76 @@
 
 ## Getting started
 
-- [Overview](https://dstack.ai/docs/index.md): What dstack is
-- [Installation](https://dstack.ai/docs/index.md): How to set up the dstack server and the dstack CLI
-- [Quickstart](https://dstack.ai/docs/quickstart.md): How to get started and submit your first run
+- [Overview](https://dstack.ai/docs/index.md): Introduction to dstack and how it works
+- [Installation](https://dstack.ai/docs/installation.md): How to install the dstack server and CLI
+- [Quickstart](https://dstack.ai/docs/quickstart.md): Quick guide to creating fleets and submitting runs
 
 ## Concepts
 
-- [Backends](https://dstack.ai/docs/concepts/backends.md): How to configure backends - to connect dstack to cloud providers, Kubernetes clusters, etc
-- [Fleets](https://dstack.ai/docs/concepts/fleets.md): How to create and manage fleets - required before submitting runs
-- [Dev environments](https://dstack.ai/docs/concepts/dev-environments.md): How to create dev environments - for interactive development using a desktop IDE
-- [Tasks](https://dstack.ai/docs/concepts/tasks.md): How to run tasks - for training or fine-tuning, including distributed tasks
-- [Services](https://dstack.ai/docs/concepts/services.md): How to deploy services - for model inference or web apps
-- [Volumes](https://dstack.ai/docs/concepts/volumes.md): How to manage volumes - for persistent storage or caching
-- [Gateways](https://dstack.ai/docs/concepts/gateways.md): How to manage gateways - enabling auto-scaling, rate limits, and custom domains
-- [Secrets](https://dstack.ai/docs/concepts/secrets.md): How to manage secrets - for API keys or other sensitive data
-- [Projects](https://dstack.ai/docs/concepts/projects.md): How to manage projects - for managing separate teams
-- [Metrics](https://dstack.ai/docs/concepts/metrics.md): How to access metrics - for monitoring of runs/jobs/fleets, hardware usage (e.g. GPU util), etc
-- [Events](https://dstack.ai/docs/concepts/events.md): How to access events - aka audit log - for tracking state changes, resource creation/deletion, etc
+- [Backends](https://dstack.ai/docs/concepts/backends.md): Configuring cloud providers and Kubernetes clusters
+- [Fleets](https://dstack.ai/docs/concepts/fleets.md): Managing pools of compute instances
+- [Dev environments](https://dstack.ai/docs/concepts/dev-environments.md): Provisioning remote instances for cloud-based development
+- [Tasks](https://dstack.ai/docs/concepts/tasks.md): Running commands for training and batch processing
+- [Services](https://dstack.ai/docs/concepts/services.md): Deploying models and web apps as endpoints
+- [Volumes](https://dstack.ai/docs/concepts/volumes.md): Managing persistent data storage
+
+### More
+
+- [Gateways](https://dstack.ai/docs/concepts/gateways.md): Managing ingress traffic and endpoints for services
+- [Secrets](https://dstack.ai/docs/concepts/secrets.md): Managing sensitive values and credentials
+- [Projects](https://dstack.ai/docs/concepts/projects.md): Organizing teams and isolating resources
+- [Metrics](https://dstack.ai/docs/concepts/metrics.md): Tracking and monitoring system metrics
+- [Events](https://dstack.ai/docs/concepts/events.md): Auditing resource state changes and operations
 
 ## Guides
 
-- [Server deployment](https://dstack.ai/docs/guides/server-deployment.md): Detailed guide on how to deploy the dstack server
-- [Troubleshooting](https://dstack.ai/docs/guides/troubleshooting.md): Common issues and how to troubleshoot them
-- [Protips](https://dstack.ai/docs/guides/protips.md): Pro tips - tips and tricks to use dstack more efficiently
+- [Server deployment](https://dstack.ai/docs/guides/server-deployment.md): Deploying the dstack server
+- [Troubleshooting](https://dstack.ai/docs/guides/troubleshooting.md): Common issues and how to resolve them
+- [Protips](https://dstack.ai/docs/guides/protips.md): Tips and tricks for using dstack efficiently
+- [Upgrade](https://dstack.ai/docs/guides/upgrade.md): Upgrading to newer versions of dstack
+
+### Migration
+
+- [Slurm](https://dstack.ai/docs/guides/migration/slurm.md): This guide compares Slurm and dstack, and shows how to orchestrate equivalent GPU-based workloads using dstack.
 
 ## Examples
 
-- [TRL](https://dstack.ai/examples/single-node-training/trl.md): TRL
-- [Axolotl](https://dstack.ai/examples/single-node-training/axolotl.md): Axolotl
-- [TRL](https://dstack.ai/examples/distributed-training/trl.md): TRL
-- [Axolotl](https://dstack.ai/examples/distributed-training/axolotl.md): Axolotl
-- [Ray+RAGEN](https://dstack.ai/examples/distributed-training/ray-ragen.md): Ray+RAGEN
-- [NCCL/RCCL tests](https://dstack.ai/examples/clusters/nccl-rccl-tests.md): NCCL/RCCL tests
-- [SGLang](https://dstack.ai/examples/inference/sglang.md): SGLang
-- [vLLM](https://dstack.ai/examples/inference/vllm.md): vLLM
-- [NIM](https://dstack.ai/examples/inference/nim.md): NIM
-- [TensorRT-LLM](https://dstack.ai/examples/inference/trtllm.md): TensorRT-LLM
+- [Examples](https://dstack.ai/examples.md): Collection of examples for training, inference, and clusters
 
-## Accelerators
+### Single-node training
 
-- [AMD](https://dstack.ai/examples/accelerators/amd.md): AMD
-- [TPU](https://dstack.ai/examples/accelerators/tpu.md): TPU
-- [Tenstorrent](https://dstack.ai/examples/accelerators/tenstorrent.md): Tenstorrent
+- [TRL](https://dstack.ai/examples/single-node-training/trl/index.md): Fine-tuning Llama with TRL using SFT and QLoRA
+- [Axolotl](https://dstack.ai/examples/single-node-training/axolotl/index.md): Fine-tuning models with Axolotl using FSDP and QLoRA
+
+### Distributed training
+
+- [TRL](https://dstack.ai/examples/distributed-training/trl/index.md): Distributed fine-tuning with TRL, Accelerate, and DeepSpeed
+- [Axolotl](https://dstack.ai/examples/distributed-training/axolotl/index.md): Distributed fine-tuning with Axolotl and FSDP across multiple nodes
+- [Ray+RAGEN](https://dstack.ai/examples/distributed-training/ray-ragen/index.md): Multi-node agent fine-tuning using RAGEN with Ray and verl for reinforcement learning
+
+### Clusters
+
+- [AWS](https://dstack.ai/examples/clusters/aws/index.md): High-performance distributed training on AWS using Elastic Fabric Adapter (EFA)
+- [GCP](https://dstack.ai/examples/clusters/gcp/index.md): Creating and using GPU clusters on GCP with GPUDirect-TCPX and RoCE support
+- [Lambda](https://dstack.ai/examples/clusters/lambda/index.md): Setting up Lambda clusters using Kubernetes or 1-Click Clusters with fast interconnect
+- [Crusoe](https://dstack.ai/examples/clusters/crusoe/index.md): Setting up Crusoe clusters using Managed Kubernetes or VMs with InfiniBand support
+- [NCCL/RCCL tests](https://dstack.ai/examples/clusters/nccl-rccl-tests/index.md): Running NCCL and RCCL tests to validate cluster network bandwidth
+
+### Inference
+
+- [SGLang](https://dstack.ai/examples/inference/sglang/index.md): Deploying DeepSeek-R1-Distill-Llama models using SGLang on NVIDIA and AMD GPUs
+- [vLLM](https://dstack.ai/examples/inference/vllm/index.md): Deploying Llama 3.1 8B using vLLM with OpenAI-compatible API
+- [TGI](https://dstack.ai/examples/inference/tgi/index.md): Deploying Llama 4 Scout using HuggingFace Text Generation Inference
+- [NIM](https://dstack.ai/examples/inference/nim/index.md): Deploying DeepSeek-R1-Distill-Llama-8B using NVIDIA NIM
+- [TensorRT-LLM](https://dstack.ai/examples/inference/trtllm/index.md): Deploying DeepSeek R1 and distilled models using NVIDIA TensorRT-LLM with Triton
+
+### Accelerators
+
+- [AMD](https://dstack.ai/examples/accelerators/amd/index.md): Deploying and fine-tuning models on AMD MI300X GPUs using TGI, vLLM, and Axolotl
+- [TPU](https://dstack.ai/examples/accelerators/tpu/index.md): Deploying and fine-tuning models on Google Cloud TPUs using Optimum TPU and vLLM
+- [Intel Gaudi](https://dstack.ai/examples/accelerators/intel/index.md): Deploying and fine-tuning models on Intel Gaudi accelerators using TGI, vLLM, and Optimum
+- [Tenstorrent](https://dstack.ai/examples/accelerators/tenstorrent/index.md): Running dev environments, tasks, and services on Tenstorrent Wormhole accelerators
+
+### Models
+
+- [Wan2.2](https://dstack.ai/examples/models/wan22/index.md): Text-to-video generation using the Wan2.2 T2V-A14B foundational video model

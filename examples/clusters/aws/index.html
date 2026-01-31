@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="dstack is an open-source control plane for GPU provisioning and orchestration across GPU clouds, Kubernetes, and on-prem clusters.">
+        <meta name="description" content="High-performance distributed training on AWS using Elastic Fabric Adapter (EFA)">
       
       
         <meta name="author" content="dstack GmbH">
@@ -90,7 +90,7 @@
   
 <meta property="og:type" content="website" />
 <meta property="og:title" content="AWS - dstack" />
-<meta property="og:description" content="dstack is an open-source control plane for GPU provisioning and orchestration across GPU clouds, Kubernetes, and on-prem clusters." />
+<meta property="og:description" content="High-performance distributed training on AWS using Elastic Fabric Adapter (EFA)" />
 <meta property="og:image" content="https://dstack.ai/assets/images/social/examples/clusters/aws/index.png" />
 <meta property="og:image:type" content="image/png" />
 <meta property="og:image:width" content="1200" />
@@ -98,7 +98,7 @@
 <meta property="og:url" content="https://dstack.ai/examples/clusters/aws/" />
 <meta property="twitter:card" content="summary_large_image" />
 <meta property="twitter.title" content="AWS - dstack" />
-<meta property="twitter:description" content="dstack is an open-source control plane for GPU provisioning and orchestration across GPU clouds, Kubernetes, and on-prem clusters." />
+<meta property="twitter:description" content="High-performance distributed training on AWS using Elastic Fabric Adapter (EFA)" />
 <meta property="twitter:image" content="https://dstack.ai/assets/images/social/examples/clusters/aws/index.png" />
 </head>
   
@@ -4172,7 +4172,7 @@ Support dstack with a ⭐ on
 
 
 <h1 id="aws">AWS<a class="headerlink" href="#aws" title="Permanent link">&para;</a></h1>
-<p>In this guide, we’ll walk through how to run high-performance distributed training on AWS using <a href="https://aws.amazon.com/hpc/efa/">Amazon Elastic Fabric Adapter (EFA)</a> with <code>dstack</code>.</p>
+<p>In this guide, we'll walk through how to run high-performance distributed training on AWS using <a href="https://aws.amazon.com/hpc/efa/">Amazon Elastic Fabric Adapter (EFA)</a> with <code>dstack</code>.</p>
 <h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
 <p>EFA is a network interface for Amazon EC2 that enables low-latency, high-bandwidth inter-node communication — essential for scaling distributed deep learning. With <code>dstack</code>, EFA is automatically enabled when you create fleets with supported instance types.</p>
 <h2 id="prerequisite">Prerequisite<a class="headerlink" href="#prerequisite" title="Permanent link">&para;</a></h2>
@@ -4358,6 +4358,9 @@ Provisioning...
 
 
 
+
+  
+  
 
 
 
