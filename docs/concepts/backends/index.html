@@ -5502,20 +5502,10 @@ the button to create a Read &amp; Write key.</p>
 
 <details class="info">
 <summary>Community Cloud</summary>
-<p>By default, <code>dstack</code> considers instance offers from both the Secure Cloud and the
-<a href="https://docs.runpod.io/references/faq/#secure-cloud-vs-community-cloud">Community Cloud</a>.</p>
-<p>You can tell them apart by their regions.
-Secure Cloud regions contain datacenter IDs such as <code>CA-MTL-3</code>.
-Community Cloud regions contain country codes such as <code>CA</code>.</p>
-<div class="termy">
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>dstack<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>.dstack.yml<span class="w"> </span>-b<span class="w"> </span>runpod
-
-<span class="w"> </span><span class="c1">#  BACKEND  REGION    INSTANCE               SPOT  PRICE</span>
-<span class="w"> </span><span class="m">1</span><span class="w">  </span>runpod<span class="w">   </span>CA<span class="w">        </span>NVIDIA<span class="w"> </span>A100<span class="w"> </span>80GB<span class="w"> </span>PCIe<span class="w">  </span>yes<span class="w">   </span><span class="nv">$0</span>.6
-<span class="w"> </span><span class="m">2</span><span class="w">  </span>runpod<span class="w">   </span>CA-MTL-3<span class="w">  </span>NVIDIA<span class="w"> </span>A100<span class="w"> </span>80GB<span class="w"> </span>PCIe<span class="w">  </span>yes<span class="w">   </span><span class="nv">$0</span>.82
-</code></pre></div>
-</div>
-<p>If you don't want to use the Community Cloud, set <code>community_cloud: false</code> in the backend settings.</p>
+<p>By default, <code>dstack</code> considers instance offers only from the Secure Cloud.
+To also include the
+<a href="https://docs.runpod.io/references/faq/#secure-cloud-vs-community-cloud">Community Cloud</a>,
+set <code>community_cloud: true</code> in the backend settings.</p>
 <div editor-title="~/.dstack/server/config.yml">
 <div class="highlight"><pre><span></span><code><span class="nt">projects</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">main</span>
@@ -5524,7 +5514,18 @@ Community Cloud regions contain country codes such as <code>CA</code>.</p>
 <span class="w">        </span><span class="nt">creds</span><span class="p">:</span>
 <span class="w">          </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">api_key</span>
 <span class="w">          </span><span class="nt">api_key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">US9XTPDIV8AR42MMINY8TCKRB8S4E7LNRQ6CAUQ9</span>
-<span class="w">        </span><span class="nt">community_cloud</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">        </span><span class="nt">community_cloud</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</code></pre></div>
+</div>
+<p>You can tell Secure Cloud and Community Cloud apart by their regions.
+Secure Cloud regions contain datacenter IDs such as <code>CA-MTL-3</code>.
+Community Cloud regions contain country codes such as <code>CA</code>.</p>
+<div class="termy">
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>dstack<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>.dstack.yml<span class="w"> </span>-b<span class="w"> </span>runpod
+
+<span class="w"> </span><span class="c1">#  BACKEND  REGION    INSTANCE               SPOT  PRICE</span>
+<span class="w"> </span><span class="m">1</span><span class="w">  </span>runpod<span class="w">   </span>CA<span class="w">        </span>NVIDIA<span class="w"> </span>A100<span class="w"> </span>80GB<span class="w"> </span>PCIe<span class="w">  </span>yes<span class="w">   </span><span class="nv">$0</span>.6
+<span class="w"> </span><span class="m">2</span><span class="w">  </span>runpod<span class="w">   </span>CA-MTL-3<span class="w">  </span>NVIDIA<span class="w"> </span>A100<span class="w"> </span>80GB<span class="w"> </span>PCIe<span class="w">  </span>yes<span class="w">   </span><span class="nv">$0</span>.82
 </code></pre></div>
 </div>
 </details>

@@ -4912,7 +4912,7 @@ This can be disabled by setting <code>auth</code> to <code>false</code>.</p>
 </div>
 
 <details class="info">
-<summary>Probe statuses</summary>
+<summary>Status</summary>
 <p>The following symbols are used for probe statuses:</p>
 <ul>
 <li><code>×</code> &mdash; the last probe execution failed.</li>
@@ -4945,6 +4945,12 @@ This can be disabled by setting <code>auth</code> to <code>false</code>.</p>
 <span class="w">  </span><span class="nt">timeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">20s</span>
 </code></pre></div>
 </div>
+</details>
+<details class="info">
+<summary>Model</summary>
+<p>If you set the <a href="#model"><code>model</code></a> property but don't explicitly configure <code>probes</code>, 
+<code>dstack</code> automatically configures a default probe that tests the model using the <code>/v1/chat/completions</code> API.
+To disable probes entirely when <code>model</code> is set, explicitly set <code>probes</code> to an empty list.</p>
 </details>
 <p>See the <a href="../../reference/dstack.yml/service/#probes">reference</a> for more probe configuration options.</p>
 <h3 id="path-prefix">Path prefix<a class="headerlink" href="#path-prefix" title="Permanent link">&para;</a></h3>
@@ -5027,6 +5033,8 @@ you can choose to partition by the value of a header.</p>
 <h3 id="model">Model<a class="headerlink" href="#model" title="Permanent link">&para;</a></h3>
 <p>If the service runs a model with an OpenAI-compatible interface, you can set the <a href="#model"><code>model</code></a> property to make the model accessible through <code>dstack</code>'s chat UI on the <code>Models</code> page. 
 In this case, <code>dstack</code> will use the service's <code>/v1/chat/completions</code> service.</p>
+<p>When <code>model</code> is set, <code>dstack</code> automatically configures <a href="#probes"><code>probes</code></a> to verify model health.
+To customize or disable this, set <code>probes</code> explicitly.</p>
 <h3 id="resources">Resources<a class="headerlink" href="#resources" title="Permanent link">&para;</a></h3>
 <p>If you specify memory size, you can either specify an explicit size (e.g. <code>24GB</code>) or a 
 range (e.g. <code>24GB..</code>, or <code>24GB..80GB</code>, or <code>..80GB</code>).</p>

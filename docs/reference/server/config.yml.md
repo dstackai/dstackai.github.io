@@ -164,7 +164,7 @@ to configure [backends](../../concepts/backends.md) and other [server-level sett
 ##### `projects[n].backends[type=runpod]` { #runpod data-toc-label="runpod" }
 
 ###### `regions` - (Optional) The list of RunPod regions. Omit to use all regions.  { #regions data-toc-label='regions' class='reference-item' }
-###### `community_cloud` - (Optional) Whether Community Cloud offers can be suggested in addition to Secure Cloud. Defaults to `true`.  { #community_cloud data-toc-label='community_cloud' class='reference-item' }
+###### `community_cloud` - (Optional) Whether Community Cloud offers can be suggested in addition to Secure Cloud. Defaults to `false`.  { #community_cloud data-toc-label='community_cloud' class='reference-item' }
 ###### [`creds`](#runpod-creds) -  The credentials.  { #_creds data-toc-label='creds' class='reference-item' }
 
 

@@ -1646,7 +1646,7 @@ Support dstack with a ⭐ on
 </li>
         
           <li class="md-nav__item">
-  <a href="#probes" class="md-nav__link">
+  <a href="#probes_1" class="md-nav__link">
     <span class="md-ellipsis">
       
         probes
@@ -4163,7 +4163,7 @@ Support dstack with a ⭐ on
 </li>
         
           <li class="md-nav__item">
-  <a href="#probes" class="md-nav__link">
+  <a href="#probes_1" class="md-nav__link">
     <span class="md-ellipsis">
       
         probes
@@ -4383,7 +4383,7 @@ Support dstack with a ⭐ on
 <h6 class="reference-item" id="auth"><code>auth</code> - (Optional) Enable the authorization. Defaults to <code>True</code>.<a class="headerlink" href="#auth" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="_scaling"><a href="#scaling"><code>scaling</code></a> - (Optional) The auto-scaling rules. Required if <code>replicas</code> is set to a range.<a class="headerlink" href="#_scaling" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="_rate_limits"><a href="#rate_limits"><code>rate_limits</code></a> - (Optional) Rate limiting rules.<a class="headerlink" href="#_rate_limits" title="Permanent link">&para;</a></h6>
-<h6 class="reference-item" id="_probes"><a href="#probes"><code>probes</code></a> - (Optional) List of probes used to determine job health.<a class="headerlink" href="#_probes" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="probes"><code>probes</code> - (Optional) The list of probes to determine service health. If <code>model</code> is set, defaults to a <code>/v1/chat/completions</code> probe. Set explicitly to override.<a class="headerlink" href="#probes" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="replicas"><code>replicas</code> - (Optional) The number of replicas or a list of replica groups. Can be an integer (e.g., <code>2</code>), a range (e.g., <code>0..4</code>), or a list of replica groups. Each replica group defines replicas with shared configuration (commands, resources, scaling). When <code>replicas</code> is a list of replica groups, top-level <code>scaling</code>, <code>commands</code>, and <code>resources</code> are not allowed and must be specified in each replica group instead. .<a class="headerlink" href="#replicas" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="commands"><code>commands</code> - (Optional) The shell commands to run.<a class="headerlink" href="#commands" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="name"><code>name</code> - (Optional) The run name. If not specified, a random name is generated.<a class="headerlink" href="#name" title="Permanent link">&para;</a></h6>
@@ -4501,7 +4501,7 @@ from the model's repository. If it is not present there, manual configuration is
 </div>
 </div>
 </div>
-<h3 id="probes"><code>probes</code><a class="headerlink" href="#probes" title="Permanent link">&para;</a></h3>
+<h3 id="probes_1"><code>probes</code><a class="headerlink" href="#probes_1" title="Permanent link">&para;</a></h3>
 <h4 id="probesn"><code>probes[n]</code><a class="headerlink" href="#probesn" title="Permanent link">&para;</a></h4>
 <h6 class="reference-item" id="url"><code>url</code> - (Optional) The URL to request. Defaults to <code>/</code>.<a class="headerlink" href="#url" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="method"><code>method</code> - (Optional) The HTTP method to use for the probe (e.g., <code>get</code>, <code>post</code>, etc.). Defaults to <code>get</code>.<a class="headerlink" href="#method" title="Permanent link">&para;</a></h6>

@@ -734,6 +734,19 @@ Support dstack with a ⭐ on
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#install-agent-skills" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Install agent skills
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -4085,6 +4098,19 @@ Support dstack with a ⭐ on
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#install-agent-skills" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Install agent skills
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -4263,26 +4289,6 @@ The<span class="w"> </span>server<span class="w"> </span>is<span class="w"> </sp
 (or <code>Use Git and optional Unix tools from the Command Prompt</code>), and 
 <code>Use bundled OpenSSH</code>.</p>
 </details>
-<h3 id="configure-the-default-project">Configure the default project<a class="headerlink" href="#configure-the-default-project" title="Permanent link">&para;</a></h3>
-<p>To point the CLI to the <code>dstack</code> server, configure it
-with the server address, user token, and project name:</p>
-<div class="termy">
-
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>dstack<span class="w"> </span>project<span class="w"> </span>add<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--name<span class="w"> </span>main<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--url<span class="w"> </span>http://127.0.0.1:3000<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--token<span class="w"> </span>bbae0f28-d3dd-4820-bf61-8f4bb40815da
-
-Configuration<span class="w"> </span>is<span class="w"> </span>updated<span class="w"> </span>at<span class="w"> </span>~/.dstack/config.yml
-</code></pre></div>
-
-</div>
-
-<p>This configuration is stored in <code>~/.dstack/config.yml</code>.</p>
-<!-- ### Check offers -->
-
-<!-- To verify that both the server and CLI are properly configured, use the [`dstack offer`](reference/cli/dstack/offer.md#list-gpu-offers) command to list available GPU offers. If you don't see valid offers, ensure you've set up [backends](concepts/backends.md). -->
-
 <details class="info">
 <summary>Shell autocompletion</summary>
 <p><code>dstack</code> supports shell autocompletion for <code>bash</code> and <code>zsh</code>.</p>
@@ -4329,14 +4335,38 @@ $<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><sp
 </div>
 </div>
 </details>
+<h3 id="configure-the-default-project">Configure the default project<a class="headerlink" href="#configure-the-default-project" title="Permanent link">&para;</a></h3>
+<p>To point the CLI to the <code>dstack</code> server, configure it
+with the server address, user token, and project name:</p>
+<div class="termy">
+
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>dstack<span class="w"> </span>project<span class="w"> </span>add<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--name<span class="w"> </span>main<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--url<span class="w"> </span>http://127.0.0.1:3000<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--token<span class="w"> </span>bbae0f28-d3dd-4820-bf61-8f4bb40815da
+
+Configuration<span class="w"> </span>is<span class="w"> </span>updated<span class="w"> </span>at<span class="w"> </span>~/.dstack/config.yml
+</code></pre></div>
+
+</div>
+
+<p>This configuration is stored in <code>~/.dstack/config.yml</code>.</p>
+<h3 id="install-agent-skills">Install agent skills<a class="headerlink" href="#install-agent-skills" title="Permanent link">&para;</a></h3>
+<p>Install <a href="https://skills.sh/dstackai/dstack/dstack">skills</a> to help AI agents use the <code>dstack</code> CLI and edit configuration files.</p>
+<div class="termy">
+
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>npx<span class="w"> </span>skills<span class="w"> </span>add<span class="w"> </span>dstackai/dstack
+</code></pre></div>
+
+</div>
+
+<p>Agent skills are experimental. Share your feedback via <a href="https://github.com/dstackai/dstack/issues">GitHub issues</a>.</p>
 <div class="admonition info">
 <p class="admonition-title">What's next?</p>
 <ol>
 <li>See <a href="../concepts/backends/">Backends</a></li>
 <li>Follow <a href="../quickstart/">Quickstart</a></li>
 <li>Check the <a href="../guides/server-deployment/">server deployment</a> guide</li>
-<li>Browse <a href="../../examples/">examples</a></li>
-<li>Join the community via <a href="https://discord.gg/u8SmfwPpMd">Discord</a></li>
 </ol>
 </div>
 

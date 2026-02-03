@@ -12,7 +12,7 @@ The `service` configuration type allows running [services](../../concepts/servic
 ###### `auth` - (Optional) Enable the authorization. Defaults to `True`. { #auth data-toc-label='auth' class='reference-item' }
 ###### [`scaling`](#scaling) - (Optional) The auto-scaling rules. Required if `replicas` is set to a range.  { #_scaling data-toc-label='scaling' class='reference-item' }
 ###### [`rate_limits`](#rate_limits) - (Optional) Rate limiting rules.  { #_rate_limits data-toc-label='rate_limits' class='reference-item' }
-###### [`probes`](#probes) - (Optional) List of probes used to determine job health.  { #_probes data-toc-label='probes' class='reference-item' }
+###### `probes` - (Optional) The list of probes to determine service health. If `model` is set, defaults to a `/v1/chat/completions` probe. Set explicitly to override.  { #probes data-toc-label='probes' class='reference-item' }
 ###### `replicas` - (Optional) The number of replicas or a list of replica groups. Can be an integer (e.g., `2`), a range (e.g., `0..4`), or a list of replica groups. Each replica group defines replicas with shared configuration (commands, resources, scaling). When `replicas` is a list of replica groups, top-level `scaling`, `commands`, and `resources` are not allowed and must be specified in each replica group instead. .  { #replicas data-toc-label='replicas' class='reference-item' }
 ###### `commands` - (Optional) The shell commands to run.  { #commands data-toc-label='commands' class='reference-item' }
 ###### `name` - (Optional) The run name. If not specified, a random name is generated.  { #name data-toc-label='name' class='reference-item' }
