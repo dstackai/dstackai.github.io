@@ -1075,19 +1075,6 @@ Support dstack with a ⭐ on
 </li>
         
           <li class="md-nav__item">
-  <a href="#creation-policy" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        <span class="md-typeset">
-          Creation policy
-        </span>
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#idle-duration" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -4399,19 +4386,6 @@ Support dstack with a ⭐ on
 </li>
         
           <li class="md-nav__item">
-  <a href="#creation-policy" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        <span class="md-typeset">
-          Creation policy
-        </span>
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#idle-duration" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -5355,20 +5329,6 @@ it does not block other runs with lower priority from scheduling.</p>
 <h3 id="spot-policy">Spot policy<a class="headerlink" href="#spot-policy" title="Permanent link">&para;</a></h3>
 <p>By default, <code>dstack</code> uses on-demand instances. However, you can change that
 via the <a href="../../reference/dstack.yml/task/#spot_policy"><code>spot_policy</code></a> property. It accepts <code>spot</code>, <code>on-demand</code>, and <code>auto</code>.</p>
-<h3 id="creation-policy">Creation policy<a class="headerlink" href="#creation-policy" title="Permanent link">&para;</a></h3>
-<p>By default, when you run <code>dstack apply</code> with a dev environment, task, or service,
-if no <code>idle</code> instances from the available fleets meet the requirements, <code>dstack</code> provisions a new instance
-using configured backends.</p>
-<p>To ensure <code>dstack apply</code> doesn't provision a new instance but reuses an existing one,
-pass <code>-R</code> (or <code>--reuse</code>) to <code>dstack apply</code>.</p>
-<div class="termy">
-
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>dstack<span class="w"> </span>apply<span class="w"> </span>-R<span class="w"> </span>-f<span class="w"> </span>examples/.dstack.yml
-</code></pre></div>
-
-</div>
-
-<p>Or, set <a href="../../reference/dstack.yml/dev-environment/#creation_policy"><code>creation_policy</code></a> to <code>reuse</code> in the run configuration.</p>
 <h3 id="idle-duration">Idle duration<a class="headerlink" href="#idle-duration" title="Permanent link">&para;</a></h3>
 <p>If a run provisions a new instance, the instance stays <code>idle</code> for 5 minutes by default and can be reused within that time.
 If the instance is not reused within this period, it is automatically terminated.

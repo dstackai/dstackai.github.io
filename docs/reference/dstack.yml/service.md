@@ -156,6 +156,7 @@ The `service` configuration type allows running [services](../../concepts/servic
 ###### `timeout` - (Optional) Maximum amount of time the HTTP request is allowed to take. Defaults to `10s`.  { #timeout data-toc-label='timeout' class='reference-item' }
 ###### `interval` - (Optional) Minimum amount of time between the end of one probe execution and the start of the next. Defaults to `15s`.  { #interval data-toc-label='interval' class='reference-item' }
 ###### `ready_after` - (Optional) The number of consecutive successful probe executions required for the replica to be considered ready. Used during rolling deployments. Defaults to `1`.  { #ready_after data-toc-label='ready_after' class='reference-item' }
+###### `until_ready` - (Optional) If `true`, the probe will stop being executed as soon as it reaches the `ready_after` threshold of successful executions. Defaults to `false`.  { #until_ready data-toc-label='until_ready' class='reference-item' }
 
 
 ##### `probes[n].headers`

@@ -231,20 +231,6 @@ to configure [backends](../../concepts/backends.md) and other [server-level sett
     ###### `profile` - (Optional) Profile to load from the config file. Defaults to `DEFAULT`. { #profile data-toc-label='profile' class='reference-item' }
 
 
-##### `projects[n].backends[type=cudo]` { #cudo data-toc-label="cudo" }
-
-###### `type` -  The type of backend. Must be `cudo`. { #type data-toc-label='type' class='reference-item' }
-###### `regions` - (Optional) The list of Cudo regions. Omit to use all regions.  { #regions data-toc-label='regions' class='reference-item' }
-###### `project_id` -  The project ID.  { #project_id data-toc-label='project_id' class='reference-item' }
-###### [`creds`](#cudo-creds) -  The credentials.  { #_creds data-toc-label='creds' class='reference-item' }
-
-
-###### `projects[n].backends[type=cudo].creds` { #cudo-creds data-toc-label="creds" }
-
-###### `type` -  The type of credentials. Must be `api_key`. { #type data-toc-label='type' class='reference-item' }
-###### `api_key` -  The API key.  { #api_key data-toc-label='api_key' class='reference-item' }
-
-
 ##### `projects[n].backends[type=verda]` { #verda data-toc-label="verda" }
 
 ###### `type` -  The type of backend.  { #type data-toc-label='type' class='reference-item' }
