@@ -4155,22 +4155,22 @@ Support dstack with a ⭐ on
 <h1 id="gateway"><code>gateway</code><a class="headerlink" href="#gateway" title="Permanent link">&para;</a></h1>
 <p>The <code>gateway</code> configuration type allows creating and updating <a href="../../../concepts/gateways/">gateways</a>.</p>
 <h2 id="root-reference">Root reference<a class="headerlink" href="#root-reference" title="Permanent link">&para;</a></h2>
-<h6 class="reference-item" id="name"><code>name</code> - (Optional) The gateway name.<a class="headerlink" href="#name" title="Permanent link">&para;</a></h6>
-<h6 class="reference-item" id="default"><code>default</code> - (Optional) Make the gateway default.<a class="headerlink" href="#default" title="Permanent link">&para;</a></h6>
-<h6 class="reference-item" id="backend"><code>backend</code> -  The gateway backend.<a class="headerlink" href="#backend" title="Permanent link">&para;</a></h6>
-<h6 class="reference-item" id="region"><code>region</code> -  The gateway region.<a class="headerlink" href="#region" title="Permanent link">&para;</a></h6>
-<h6 class="reference-item" id="instance_type"><code>instance_type</code> - (Optional) Backend-specific instance type to use for the gateway instance. Omit to use the backend's default, which is typically a small non-GPU instance.<a class="headerlink" href="#instance_type" title="Permanent link">&para;</a></h6>
-<h6 class="reference-item" id="_router"><a href="#router"><code>router</code></a> - (Optional) The router configuration.<a class="headerlink" href="#_router" title="Permanent link">&para;</a></h6>
-<h6 class="reference-item" id="domain"><code>domain</code> - (Optional) The gateway domain, e.g. <code>example.com</code>.<a class="headerlink" href="#domain" title="Permanent link">&para;</a></h6>
-<h6 class="reference-item" id="public_ip"><code>public_ip</code> - (Optional) Allocate public IP for the gateway. Defaults to <code>True</code>.<a class="headerlink" href="#public_ip" title="Permanent link">&para;</a></h6>
-<h6 class="reference-item" id="_certificate"><a href="#certificate"><code>certificate</code></a> - (Optional) The SSL certificate configuration. Defaults to <code>type: lets-encrypt</code>.<a class="headerlink" href="#_certificate" title="Permanent link">&para;</a></h6>
-<h6 class="reference-item" id="tags"><code>tags</code> - (Optional) The custom tags to associate with the gateway. The tags are also propagated to the underlying backend resources. If there is a conflict with backend-level tags, does not override them.<a class="headerlink" href="#tags" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="name"><code>name</code> - (Optional) <code>str</code> The gateway name.<a class="headerlink" href="#name" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="default"><code>default</code> - (Optional) <code>bool</code> Make the gateway default.<a class="headerlink" href="#default" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="backend"><code>backend</code> - (Required) <code>"amddevcloud" | "aws" | "azure" | "cloudrift" | "cudo" | "datacrunch" | "digitalocean" | "dstack" | "gcp" | "hotaisle" | "kubernetes" | "lambda" | "local" | "remote" | "nebius" | "oci" | "runpod" | "tensordock" | "vastai" | "verda" | "vultr"</code> The gateway backend.<a class="headerlink" href="#backend" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="region"><code>region</code> - (Required) <code>str</code> The gateway region.<a class="headerlink" href="#region" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="instance_type"><code>instance_type</code> - (Optional) <code>str</code> Backend-specific instance type to use for the gateway instance. Omit to use the backend's default, which is typically a small non-GPU instance.<a class="headerlink" href="#instance_type" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="_router"><a href="#router"><code>router</code></a> - (Optional) <code>object</code> The router configuration.<a class="headerlink" href="#_router" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="domain"><code>domain</code> - (Optional) <code>str</code> The gateway domain, e.g. <code>example.com</code>.<a class="headerlink" href="#domain" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="public_ip"><code>public_ip</code> - (Optional) <code>bool</code> Allocate public IP for the gateway. Defaults to <code>True</code>.<a class="headerlink" href="#public_ip" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="_certificate"><a href="#certificate"><code>certificate</code></a> - (Optional) <code>object</code> The SSL certificate configuration. Defaults to <code>type: lets-encrypt</code>.<a class="headerlink" href="#_certificate" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="tags"><code>tags</code> - (Optional) <code>dict</code> The custom tags to associate with the gateway. The tags are also propagated to the underlying backend resources. If there is a conflict with backend-level tags, does not override them.<a class="headerlink" href="#tags" title="Permanent link">&para;</a></h6>
 <h3 id="router"><code>router</code><a class="headerlink" href="#router" title="Permanent link">&para;</a></h3>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:1"><input checked="checked" id="sglang-model-gateway" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="sglang-model-gateway">SGLang Model Gateway</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<h6 class="reference-item" id="type"><code>type</code> -  The router type. Must be <code>sglang</code>.<a class="headerlink" href="#type" title="Permanent link">&para;</a></h6>
-<h6 class="reference-item" id="policy"><code>policy</code> - (Optional) The routing policy. Options: <code>random</code>, <code>round_robin</code>, <code>cache_aware</code>, <code>power_of_two</code>. Defaults to <code>cache_aware</code>.<a class="headerlink" href="#policy" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="type"><code>type</code> - (Required) <code>enum</code> The router type. Must be <code>sglang</code>.<a class="headerlink" href="#type" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="policy"><code>policy</code> - (Optional) <code>enum</code> The routing policy. Options: <code>random</code>, <code>round_robin</code>, <code>cache_aware</code>, <code>power_of_two</code>. Defaults to <code>cache_aware</code>.<a class="headerlink" href="#policy" title="Permanent link">&para;</a></h6>
 </div>
 </div>
 </div>
@@ -4178,11 +4178,11 @@ Support dstack with a ⭐ on
 <div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="lets-encrypt" name="__tabbed_2" type="radio" /><input id="acm" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="lets-encrypt">Let's encrypt</label><label for="acm">ACM</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<h6 class="reference-item" id="type"><code>type</code> -  Automatic certificates by Let's Encrypt. Must be <code>lets-encrypt</code>.<a class="headerlink" href="#type" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="type"><code>type</code> - (Required) <code>enum</code> Automatic certificates by Let's Encrypt. Must be <code>lets-encrypt</code>.<a class="headerlink" href="#type" title="Permanent link">&para;</a></h6>
 </div>
 <div class="tabbed-block">
-<h6 class="reference-item" id="type"><code>type</code> -  Certificates by AWS Certificate Manager (ACM). Must be <code>acm</code>.<a class="headerlink" href="#type" title="Permanent link">&para;</a></h6>
-<h6 class="reference-item" id="arn"><code>arn</code> -  The ARN of the wildcard ACM certificate for the domain.<a class="headerlink" href="#arn" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="type"><code>type</code> - (Required) <code>enum</code> Certificates by AWS Certificate Manager (ACM). Must be <code>acm</code>.<a class="headerlink" href="#type" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="arn"><code>arn</code> - (Required) <code>str</code> The ARN of the wildcard ACM certificate for the domain.<a class="headerlink" href="#arn" title="Permanent link">&para;</a></h6>
 </div>
 </div>
 </div>

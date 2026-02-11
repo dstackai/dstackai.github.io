@@ -4099,14 +4099,14 @@ Support dstack with a ⭐ on
 <h1 id="volume"><code>volume</code><a class="headerlink" href="#volume" title="Permanent link">&para;</a></h1>
 <p>The <code>volume</code> configuration type allows creating, registering, and updating <a href="../../../concepts/volumes/">volumes</a>.</p>
 <h2 id="root-reference">Root reference<a class="headerlink" href="#root-reference" title="Permanent link">&para;</a></h2>
-<h6 class="reference-item" id="name"><code>name</code> - (Optional) The volume name.<a class="headerlink" href="#name" title="Permanent link">&para;</a></h6>
-<h6 class="reference-item" id="backend"><code>backend</code> -  The volume backend.<a class="headerlink" href="#backend" title="Permanent link">&para;</a></h6>
-<h6 class="reference-item" id="region"><code>region</code> -  The volume region.<a class="headerlink" href="#region" title="Permanent link">&para;</a></h6>
-<h6 class="reference-item" id="availability_zone"><code>availability_zone</code> - (Optional) The volume availability zone.<a class="headerlink" href="#availability_zone" title="Permanent link">&para;</a></h6>
-<h6 class="reference-item" id="size"><code>size</code> - (Optional) The volume size. Must be specified when creating new volumes.<a class="headerlink" href="#size" title="Permanent link">&para;</a></h6>
-<h6 class="reference-item" id="volume_id"><code>volume_id</code> - (Optional) The volume ID. Must be specified when registering external volumes.<a class="headerlink" href="#volume_id" title="Permanent link">&para;</a></h6>
-<h6 class="reference-item" id="auto_cleanup_duration"><code>auto_cleanup_duration</code> - (Optional) Time to wait after volume is no longer used by any job before deleting it. Defaults to keep the volume indefinitely. Use the value 'off' or -1 to disable auto-cleanup..<a class="headerlink" href="#auto_cleanup_duration" title="Permanent link">&para;</a></h6>
-<h6 class="reference-item" id="tags"><code>tags</code> - (Optional) The custom tags to associate with the volume. The tags are also propagated to the underlying backend resources. If there is a conflict with backend-level tags, does not override them.<a class="headerlink" href="#tags" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="name"><code>name</code> - (Optional) <code>str</code> The volume name.<a class="headerlink" href="#name" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="backend"><code>backend</code> - (Required) <code>"amddevcloud" | "aws" | "azure" | "cloudrift" | "cudo" | "datacrunch" | "digitalocean" | "dstack" | "gcp" | "hotaisle" | "kubernetes" | "lambda" | "local" | "remote" | "nebius" | "oci" | "runpod" | "tensordock" | "vastai" | "verda" | "vultr"</code> The volume backend.<a class="headerlink" href="#backend" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="region"><code>region</code> - (Required) <code>str</code> The volume region.<a class="headerlink" href="#region" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="availability_zone"><code>availability_zone</code> - (Optional) <code>str</code> The volume availability zone.<a class="headerlink" href="#availability_zone" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="size"><code>size</code> - (Optional) <code>str</code> The volume size. Must be specified when creating new volumes.<a class="headerlink" href="#size" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="volume_id"><code>volume_id</code> - (Optional) <code>str</code> The volume ID. Must be specified when registering external volumes.<a class="headerlink" href="#volume_id" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="auto_cleanup_duration"><code>auto_cleanup_duration</code> - (Optional) <code>int | str</code> Time to wait after volume is no longer used by any job before deleting it. Defaults to keep the volume indefinitely. Use the value 'off' or -1 to disable auto-cleanup..<a class="headerlink" href="#auto_cleanup_duration" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="tags"><code>tags</code> - (Optional) <code>dict</code> The custom tags to associate with the volume. The tags are also propagated to the underlying backend resources. If there is a conflict with backend-level tags, does not override them.<a class="headerlink" href="#tags" title="Permanent link">&para;</a></h6>
 
 
 
