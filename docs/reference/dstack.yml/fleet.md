@@ -11,7 +11,7 @@ The `fleet` configuration type allows creating and updating fleets.
 ###### `placement` - (Optional) `"any" | "cluster"` The placement of instances: `any` or `cluster`. { #placement data-toc-label='placement' class='reference-item' }
 ###### `reservation` - (Optional) `str` The existing reservation to use for instance provisioning. Supports AWS Capacity Reservations, AWS Capacity Blocks, and GCP reservations. { #reservation data-toc-label='reservation' class='reference-item' }
 ###### [`resources`](#resources) - (Optional) `object` The resources requirements. { #_resources data-toc-label='resources' class='reference-item' }
-###### `blocks` - (Optional) `int | str` The amount of blocks to split the instance into, a number or `auto`. `auto` means as many as possible. The number of GPUs and CPUs must be divisible by the number of blocks. Defaults to `1`, i.e. do not split. Defaults to `1`. { #blocks data-toc-label='blocks' class='reference-item' }
+###### `blocks` - (Optional) `int | "auto"` The amount of blocks to split the instance into, a number or `auto`. `auto` means as many as possible. The number of GPUs and CPUs must be divisible by the number of blocks. Defaults to `1`, i.e. do not split. Defaults to `1`. { #blocks data-toc-label='blocks' class='reference-item' }
 ###### `backends` - (Optional) `list["amddevcloud" | "aws" | "azure" | "cloudrift" | "cudo" | "datacrunch" | "digitalocean" | "dstack" | "gcp" | "hotaisle" | "kubernetes" | "lambda" | "local" | "remote" | "nebius" | "oci" | "runpod" | "tensordock" | "vastai" | "verda" | "vultr"]` The backends to consider for provisioning (e.g., `[aws, gcp]`). { #backends data-toc-label='backends' class='reference-item' }
 ###### `regions` - (Optional) `list[str]` The regions to consider for provisioning (e.g., `[eu-west-1, us-west4, westeurope]`). { #regions data-toc-label='regions' class='reference-item' }
 ###### `availability_zones` - (Optional) `list[str]` The availability zones to consider for provisioning (e.g., `[eu-west-1a, us-west4-a]`). { #availability_zones data-toc-label='availability_zones' class='reference-item' }
@@ -49,7 +49,7 @@ The `fleet` configuration type allows creating and updating fleets.
 ###### `identity_file` - (Optional) `str` The private key to use for this host. { #identity_file data-toc-label='identity_file' class='reference-item' }
 ###### [`proxy_jump`](#proxy_jump) - (Optional) `object` The SSH proxy configuration for this host. { #_proxy_jump data-toc-label='proxy_jump' class='reference-item' }
 ###### `internal_ip` - (Optional) `str` The internal IP of the host used for communication inside the cluster. If not specified, `dstack` will use the IP address from `network` or from the first found internal network.. { #internal_ip data-toc-label='internal_ip' class='reference-item' }
-###### `blocks` - (Optional) `int | str` The amount of blocks to split the instance into, a number or `auto`. `auto` means as many as possible. The number of GPUs and CPUs must be divisible by the number of blocks. Defaults to `1`, i.e. do not split. Defaults to `1`. { #blocks data-toc-label='blocks' class='reference-item' }
+###### `blocks` - (Optional) `int | "auto"` The amount of blocks to split the instance into, a number or `auto`. `auto` means as many as possible. The number of GPUs and CPUs must be divisible by the number of blocks. Defaults to `1`, i.e. do not split. Defaults to `1`. { #blocks data-toc-label='blocks' class='reference-item' }
 
 
 ##### `ssh_config.hosts[n].proxy_jump` { #proxy_jump data-toc-label="hosts[n].proxy_jump" }

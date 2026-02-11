@@ -4433,8 +4433,8 @@ Support dstack with a ⭐ on
 <h6 class="reference-item" id="reservation"><code>reservation</code> - (Optional) <code>str</code> The existing reservation to use for instance provisioning. Supports AWS Capacity Reservations, AWS Capacity Blocks, and GCP reservations.<a class="headerlink" href="#reservation" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="spot_policy"><code>spot_policy</code> - (Optional) <code>"auto" | "on-demand" | "spot"</code> The policy for provisioning spot or on-demand instances: <code>spot</code>, <code>on-demand</code>, <code>auto</code>. Defaults to <code>on-demand</code>.<a class="headerlink" href="#spot_policy" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="_retry"><a href="#retry"><code>retry</code></a> - (Optional) <code>bool | object</code> The policy for resubmitting the run. Defaults to <code>false</code>.<a class="headerlink" href="#_retry" title="Permanent link">&para;</a></h6>
-<h6 class="reference-item" id="max_duration"><code>max_duration</code> - (Optional) <code>int | str</code> The maximum duration of a run (e.g., <code>2h</code>, <code>1d</code>, etc) in a running state, excluding provisioning and pulling. After it elapses, the run is automatically stopped. Use <code>off</code> for unlimited duration. Defaults to <code>off</code>.<a class="headerlink" href="#max_duration" title="Permanent link">&para;</a></h6>
-<h6 class="reference-item" id="stop_duration"><code>stop_duration</code> - (Optional) <code>int | str</code> The maximum duration of a run graceful stopping. After it elapses, the run is automatically forced stopped. This includes force detaching volumes used by the run. Use <code>off</code> for unlimited duration. Defaults to <code>5m</code>.<a class="headerlink" href="#stop_duration" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="max_duration"><code>max_duration</code> - (Optional) <code>int | str | "off"</code> The maximum duration of a run (e.g., <code>2h</code>, <code>1d</code>, etc) in a running state, excluding provisioning and pulling. After it elapses, the run is automatically stopped. Use <code>off</code> for unlimited duration. Defaults to <code>off</code>.<a class="headerlink" href="#max_duration" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="stop_duration"><code>stop_duration</code> - (Optional) <code>int | str | "off"</code> The maximum duration of a run graceful stopping. After it elapses, the run is automatically forced stopped. This includes force detaching volumes used by the run. Use <code>off</code> for unlimited duration. Defaults to <code>5m</code>.<a class="headerlink" href="#stop_duration" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="max_price"><code>max_price</code> - (Optional) <code>float</code> The maximum instance price per hour, in dollars.<a class="headerlink" href="#max_price" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="creation_policy"><code>creation_policy</code> - (Optional) <code>"reuse" | "reuse-or-create"</code> The policy for using instances from fleets: <code>reuse</code>, <code>reuse-or-create</code>. Defaults to <code>reuse-or-create</code>.<a class="headerlink" href="#creation_policy" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="idle_duration"><code>idle_duration</code> - (Optional) <code>int | str</code> Time to wait before terminating idle instances. Instances are not terminated if the fleet is already at <code>nodes.min</code>. Defaults to <code>5m</code> for runs and <code>3d</code> for fleets. Use <code>off</code> for unlimited duration.<a class="headerlink" href="#idle_duration" title="Permanent link">&para;</a></h6>
@@ -4448,9 +4448,9 @@ Support dstack with a ⭐ on
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="openai" name="__tabbed_1" type="radio" /><input id="tgi" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="openai">OpenAI</label><label for="tgi">TGI</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<h6 class="reference-item" id="type"><code>type</code> - (Required) <code>enum</code> The type of the model. Must be <code>chat</code>.<a class="headerlink" href="#type" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="type"><code>type</code> - (Required) <code>"chat"</code> The type of the model. Must be <code>chat</code>.<a class="headerlink" href="#type" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="name"><code>name</code> - (Required) <code>str</code> The name of the model.<a class="headerlink" href="#name" title="Permanent link">&para;</a></h6>
-<h6 class="reference-item" id="format"><code>format</code> - (Required) <code>enum</code> The serving format. Must be set to <code>openai</code>.<a class="headerlink" href="#format" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="format"><code>format</code> - (Required) <code>"openai"</code> The serving format. Must be set to <code>openai</code>.<a class="headerlink" href="#format" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="prefix"><code>prefix</code> - (Optional) <code>str</code> The <code>base_url</code> prefix (after hostname). Defaults to <code>/v1</code>.<a class="headerlink" href="#prefix" title="Permanent link">&para;</a></h6>
 </div>
 <div class="tabbed-block">
@@ -4458,9 +4458,9 @@ Support dstack with a ⭐ on
 <p>TGI provides an OpenAI-compatible API starting with version 1.4.0,
 so models served by TGI can be defined with <code>format: openai</code> too.</p>
 </blockquote>
-<h6 class="reference-item" id="type"><code>type</code> - (Required) <code>enum</code> The type of the model. Must be <code>chat</code>.<a class="headerlink" href="#type" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="type"><code>type</code> - (Required) <code>"chat"</code> The type of the model. Must be <code>chat</code>.<a class="headerlink" href="#type" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="name"><code>name</code> - (Required) <code>str</code> The name of the model.<a class="headerlink" href="#name" title="Permanent link">&para;</a></h6>
-<h6 class="reference-item" id="format"><code>format</code> - (Required) <code>enum</code> The serving format. Must be set to <code>tgi</code>.<a class="headerlink" href="#format" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="format"><code>format</code> - (Required) <code>"tgi"</code> The serving format. Must be set to <code>tgi</code>.<a class="headerlink" href="#format" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="chat_template"><code>chat_template</code> - (Optional) <code>str</code> The custom prompt template for the model. If not specified, the default prompt template from the HuggingFace Hub configuration will be used.<a class="headerlink" href="#chat_template" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="eos_token"><code>eos_token</code> - (Optional) <code>str</code> The custom end of sentence token. If not specified, the default end of sentence token from the HuggingFace Hub configuration will be used.<a class="headerlink" href="#eos_token" title="Permanent link">&para;</a></h6>
 <details class="info">
@@ -4499,7 +4499,7 @@ from the model's repository. If it is not present there, manual configuration is
 </div>
 </div>
 <h3 id="scaling"><code>scaling</code><a class="headerlink" href="#scaling" title="Permanent link">&para;</a></h3>
-<h6 class="reference-item" id="metric"><code>metric</code> - (Required) <code>enum</code> The target metric to track. Currently, the only supported value is <code>rps</code> (meaning requests per second).<a class="headerlink" href="#metric" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="metric"><code>metric</code> - (Required) <code>"rps"</code> The target metric to track. Currently, the only supported value is <code>rps</code> (meaning requests per second).<a class="headerlink" href="#metric" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="target"><code>target</code> - (Required) <code>float</code> The target value of the metric. The number of replicas is calculated based on this number and automatically adjusts (scales up or down) as this metric changes.<a class="headerlink" href="#target" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="scale_up_delay"><code>scale_up_delay</code> - (Optional) <code>int | str</code> The delay in seconds before scaling up. Defaults to <code>300</code>.<a class="headerlink" href="#scale_up_delay" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="scale_down_delay"><code>scale_down_delay</code> - (Optional) <code>int | str</code> The delay in seconds before scaling down. Defaults to <code>600</code>.<a class="headerlink" href="#scale_down_delay" title="Permanent link">&para;</a></h6>
@@ -4514,20 +4514,20 @@ from the model's repository. If it is not present there, manual configuration is
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>Partition requests by client IP address.</p>
-<h6 class="reference-item" id="type"><code>type</code> - (Required) <code>enum</code> Partitioning type. Must be <code>ip_address</code>.<a class="headerlink" href="#type" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="type"><code>type</code> - (Required) <code>"ip_address"</code> Partitioning type. Must be <code>ip_address</code>.<a class="headerlink" href="#type" title="Permanent link">&para;</a></h6>
 </div>
 <div class="tabbed-block">
 <p>Partition requests by the value of a header.</p>
-<h6 class="reference-item" id="type"><code>type</code> - (Required) <code>enum</code> Partitioning type. Must be <code>header</code>.<a class="headerlink" href="#type" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="type"><code>type</code> - (Required) <code>"header"</code> Partitioning type. Must be <code>header</code>.<a class="headerlink" href="#type" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="header"><code>header</code> - (Required) <code>str</code> Name of the header to use for partitioning.<a class="headerlink" href="#header" title="Permanent link">&para;</a></h6>
 </div>
 </div>
 </div>
 <h3 id="probes"><code>probes</code><a class="headerlink" href="#probes" title="Permanent link">&para;</a></h3>
 <h4 id="probesn"><code>probes[n]</code><a class="headerlink" href="#probesn" title="Permanent link">&para;</a></h4>
-<h6 class="reference-item" id="type"><code>type</code> - (Required) <code>enum</code> The probe type. Must be <code>http</code>.<a class="headerlink" href="#type" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="type"><code>type</code> - (Required) <code>"http"</code> The probe type. Must be <code>http</code>.<a class="headerlink" href="#type" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="url"><code>url</code> - (Optional) <code>str</code> The URL to request. Defaults to <code>/</code>.<a class="headerlink" href="#url" title="Permanent link">&para;</a></h6>
-<h6 class="reference-item" id="method"><code>method</code> - (Optional) <code>enum</code> The HTTP method to use for the probe (e.g., <code>get</code>, <code>post</code>, etc.). Defaults to <code>get</code>.<a class="headerlink" href="#method" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="method"><code>method</code> - (Optional) <code>"delete" | "get" | "head" | "patch" | "post" | "put"</code> The HTTP method to use for the probe (e.g., <code>get</code>, <code>post</code>, etc.). Defaults to <code>get</code>.<a class="headerlink" href="#method" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="headers"><code>headers</code> - (Optional) <code>list</code> A list of HTTP headers to include in the request.<a class="headerlink" href="#headers" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="body"><code>body</code> - (Optional) <code>str</code> The HTTP request body to send with the probe.<a class="headerlink" href="#body" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="timeout"><code>timeout</code> - (Optional) <code>int | str</code> Maximum amount of time the HTTP request is allowed to take. Defaults to <code>10s</code>.<a class="headerlink" href="#timeout" title="Permanent link">&para;</a></h6>

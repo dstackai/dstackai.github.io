@@ -4168,7 +4168,7 @@ to configure <a href="../../../concepts/backends/">backends</a> and other <a hre
 <h6 class="reference-item" id="_backends"><a href="#backends"><code>backends</code></a> - (Optional) <code>list[object]</code> The list of backends.<a class="headerlink" href="#_backends" title="Permanent link">&para;</a></h6>
 <h4 id="backends"><code>projects[n].backends</code><a class="headerlink" href="#backends" title="Permanent link">&para;</a></h4>
 <h5 id="aws"><code>projects[n].backends[type=aws]</code><a class="headerlink" href="#aws" title="Permanent link">&para;</a></h5>
-<h6 class="reference-item" id="type"><code>type</code> - (Required) <code>enum</code> The type of the backend. Must be <code>aws</code>.<a class="headerlink" href="#type" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="type"><code>type</code> - (Required) <code>"aws"</code> The type of the backend. Must be <code>aws</code>.<a class="headerlink" href="#type" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="regions"><code>regions</code> - (Optional) <code>list[str]</code> The list of AWS regions. Omit to use all regions.<a class="headerlink" href="#regions" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="vpc_name"><code>vpc_name</code> - (Optional) <code>str</code> The name of custom VPCs. All configured regions must have a VPC with this name. If your custom VPCs don't have names or have different names in different regions, use <code>vpc_ids</code> instead..<a class="headerlink" href="#vpc_name" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="vpc_ids"><code>vpc_ids</code> - (Optional) <code>dict</code> The mapping from AWS regions to VPC IDs. If <code>default_vpcs: true</code>, omitted regions will use default VPCs.<a class="headerlink" href="#vpc_ids" title="Permanent link">&para;</a></h6>
@@ -4182,12 +4182,12 @@ to configure <a href="../../../concepts/backends/">backends</a> and other <a hre
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="access-key" name="__tabbed_1" type="radio" /><input id="default" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="access-key">Access key</label><label for="default">Default</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<h6 class="reference-item" id="type"><code>type</code> - (Required) <code>enum</code> The type of credentials. Must be <code>access_key</code>.<a class="headerlink" href="#type" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="type"><code>type</code> - (Required) <code>"access_key"</code> The type of credentials. Must be <code>access_key</code>.<a class="headerlink" href="#type" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="access_key"><code>access_key</code> - (Required) <code>str</code> The access key.<a class="headerlink" href="#access_key" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="secret_key"><code>secret_key</code> - (Required) <code>str</code> The secret key.<a class="headerlink" href="#secret_key" title="Permanent link">&para;</a></h6>
 </div>
 <div class="tabbed-block">
-<h6 class="reference-item" id="type"><code>type</code> - (Required) <code>enum</code> The type of credentials. Must be <code>default</code>.<a class="headerlink" href="#type" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="type"><code>type</code> - (Required) <code>"default"</code> The type of credentials. Must be <code>default</code>.<a class="headerlink" href="#type" title="Permanent link">&para;</a></h6>
 </div>
 </div>
 </div>
@@ -4203,7 +4203,7 @@ to configure <a href="../../../concepts/backends/">backends</a> and other <a hre
 <h6 class="reference-item" id="owner"><code>owner</code> - (Optional) <code>str</code> The AMI owner, account ID or <code>self</code>. Defaults to <code>self</code>.<a class="headerlink" href="#owner" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="user"><code>user</code> - (Required) <code>str</code> The OS user for provisioning.<a class="headerlink" href="#user" title="Permanent link">&para;</a></h6>
 <h5 id="azure"><code>projects[n].backends[type=azure]</code><a class="headerlink" href="#azure" title="Permanent link">&para;</a></h5>
-<h6 class="reference-item" id="type"><code>type</code> - (Required) <code>enum</code> The type of the backend. Must be <code>azure</code>.<a class="headerlink" href="#type" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="type"><code>type</code> - (Required) <code>"azure"</code> The type of the backend. Must be <code>azure</code>.<a class="headerlink" href="#type" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="tenant_id"><code>tenant_id</code> - (Required) <code>str</code> The tenant ID.<a class="headerlink" href="#tenant_id" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="subscription_id"><code>subscription_id</code> - (Required) <code>str</code> The subscription ID.<a class="headerlink" href="#subscription_id" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="resource_group"><code>resource_group</code> - (Optional) <code>str</code> The resource group for resources created by <code>dstack</code>. If not specified, <code>dstack</code> will create a new resource group.<a class="headerlink" href="#resource_group" title="Permanent link">&para;</a></h6>
@@ -4217,17 +4217,17 @@ to configure <a href="../../../concepts/backends/">backends</a> and other <a hre
 <div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="client" name="__tabbed_2" type="radio" /><input id="default_1" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="client">Client</label><label for="default_1">Default</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<h6 class="reference-item" id="type"><code>type</code> - (Required) <code>enum</code> The type of credentials. Must be <code>client</code>.<a class="headerlink" href="#type" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="type"><code>type</code> - (Required) <code>"client"</code> The type of credentials. Must be <code>client</code>.<a class="headerlink" href="#type" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="client_id"><code>client_id</code> - (Required) <code>str</code> The client ID.<a class="headerlink" href="#client_id" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="client_secret"><code>client_secret</code> - (Required) <code>str</code> The client secret.<a class="headerlink" href="#client_secret" title="Permanent link">&para;</a></h6>
 </div>
 <div class="tabbed-block">
-<h6 class="reference-item" id="type"><code>type</code> - (Required) <code>enum</code> The type of credentials. Must be <code>default</code>.<a class="headerlink" href="#type" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="type"><code>type</code> - (Required) <code>"default"</code> The type of credentials. Must be <code>default</code>.<a class="headerlink" href="#type" title="Permanent link">&para;</a></h6>
 </div>
 </div>
 </div>
 <h5 id="gcp"><code>projects[n].backends[type=gcp]</code><a class="headerlink" href="#gcp" title="Permanent link">&para;</a></h5>
-<h6 class="reference-item" id="type"><code>type</code> - (Required) <code>enum</code> The type of backend. Must be <code>gcp</code>.<a class="headerlink" href="#type" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="type"><code>type</code> - (Required) <code>"gcp"</code> The type of backend. Must be <code>gcp</code>.<a class="headerlink" href="#type" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="project_id"><code>project_id</code> - (Required) <code>str</code> The project ID.<a class="headerlink" href="#project_id" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="regions"><code>regions</code> - (Optional) <code>list[str]</code> The list of GCP regions. Omit to use all regions.<a class="headerlink" href="#regions" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="vpc_name"><code>vpc_name</code> - (Optional) <code>str</code> The name of a custom VPC. If not specified, the default VPC is used.<a class="headerlink" href="#vpc_name" title="Permanent link">&para;</a></h6>
@@ -4244,7 +4244,7 @@ to configure <a href="../../../concepts/backends/">backends</a> and other <a hre
 <div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="service-account" name="__tabbed_3" type="radio" /><input id="default_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="service-account">Service account</label><label for="default_2">Default</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<h6 class="reference-item" id="type"><code>type</code> - (Required) <code>enum</code> The type of credentials. Must be <code>service_account</code>.<a class="headerlink" href="#type" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="type"><code>type</code> - (Required) <code>"service_account"</code> The type of credentials. Must be <code>service_account</code>.<a class="headerlink" href="#type" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="filename"><code>filename</code> - (Required) <code>str</code> The path to the service account file.<a class="headerlink" href="#filename" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="data"><code>data</code> - (Optional) <code>str</code> The contents of the service account file. When configuring via <code>server/config.yml</code>, it's automatically filled from <code>filename</code>. When configuring via UI, it has to be specified explicitly.<a class="headerlink" href="#data" title="Permanent link">&para;</a></h6>
 <details class="info">
@@ -4258,21 +4258,21 @@ to configure <a href="../../../concepts/backends/">backends</a> and other <a hre
 </div>
 </div>
 <h5 id="lambda"><code>projects[n].backends[type=lambda]</code><a class="headerlink" href="#lambda" title="Permanent link">&para;</a></h5>
-<h6 class="reference-item" id="type"><code>type</code> - (Required) <code>enum</code> The type of backend. Must be <code>lambda</code>.<a class="headerlink" href="#type" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="type"><code>type</code> - (Required) <code>"lambda"</code> The type of backend. Must be <code>lambda</code>.<a class="headerlink" href="#type" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="regions"><code>regions</code> - (Optional) <code>list[str]</code> The list of Lambda regions. Omit to use all regions.<a class="headerlink" href="#regions" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="_creds"><a href="#lambda-creds"><code>creds</code></a> - (Required) <code>object</code> The credentials.<a class="headerlink" href="#_creds" title="Permanent link">&para;</a></h6>
 <h6 id="lambda-creds"><code>projects[n].backends[type=lambda].creds</code><a class="headerlink" href="#lambda-creds" title="Permanent link">&para;</a></h6>
-<h6 class="reference-item" id="type"><code>type</code> - (Required) <code>enum</code> The type of credentials. Must be <code>api_key</code>.<a class="headerlink" href="#type" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="type"><code>type</code> - (Required) <code>"api_key"</code> The type of credentials. Must be <code>api_key</code>.<a class="headerlink" href="#type" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="api_key"><code>api_key</code> - (Required) <code>str</code> The API key.<a class="headerlink" href="#api_key" title="Permanent link">&para;</a></h6>
 <h5 id="nebius"><code>projects[n].backends[type=nebius]</code><a class="headerlink" href="#nebius" title="Permanent link">&para;</a></h5>
-<h6 class="reference-item" id="type"><code>type</code> - (Required) <code>enum</code> The type of backend. Must be <code>nebius</code>.<a class="headerlink" href="#type" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="type"><code>type</code> - (Required) <code>"nebius"</code> The type of backend. Must be <code>nebius</code>.<a class="headerlink" href="#type" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="projects"><code>projects</code> - (Optional) <code>list[str]</code> The list of allowed Nebius project IDs. Omit to use the default project in each region. The project is considered default if it is the only project in the region or if its name starts with <code>default</code>.<a class="headerlink" href="#projects" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="regions"><code>regions</code> - (Optional) <code>list[str]</code> The list of allowed Nebius regions. Omit to allow all regions.<a class="headerlink" href="#regions" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="fabrics"><code>fabrics</code> - (Optional) <code>list[str]</code> The list of allowed fabrics for InfiniBand clusters. Omit to allow all fabrics.<a class="headerlink" href="#fabrics" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="tags"><code>tags</code> - (Optional) <code>dict</code> The tags (labels) that will be assigned to resources created by <code>dstack</code>.<a class="headerlink" href="#tags" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="creds"><code>creds</code> - (Required) <code>object</code> The credentials.<a class="headerlink" href="#creds" title="Permanent link">&para;</a></h6>
 <h6 id="nebius-creds"><code>projects[n].backends[type=nebius].creds</code><a class="headerlink" href="#nebius-creds" title="Permanent link">&para;</a></h6>
-<h6 class="reference-item" id="type"><code>type</code> - (Required) <code>enum</code> The type of credentials. Must be <code>service_account</code>.<a class="headerlink" href="#type" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="type"><code>type</code> - (Required) <code>"service_account"</code> The type of credentials. Must be <code>service_account</code>.<a class="headerlink" href="#type" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="service_account_id"><code>service_account_id</code> - (Optional) <code>str</code> Service account ID. Set automatically if <code>filename</code> is specified. When configuring via the UI, it must be specified explicitly.<a class="headerlink" href="#service_account_id" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="public_key_id"><code>public_key_id</code> - (Optional) <code>str</code> ID of the service account public key. Set automatically if <code>filename</code> is specified. When configuring via the UI, it must be specified explicitly.<a class="headerlink" href="#public_key_id" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="private_key_file"><code>private_key_file</code> - (Optional) <code>str</code> Path to the service account private key. Set automatically if <code>filename</code> or <code>private_key_content</code> is specified. When configuring via the UI, it must be specified explicitly.<a class="headerlink" href="#private_key_file" title="Permanent link">&para;</a></h6>
@@ -4285,24 +4285,24 @@ to configure <a href="../../../concepts/backends/">backends</a> and other <a hre
 <h6 id="runpod-creds"><code>projects[n].backends[type=runpod].creds</code><a class="headerlink" href="#runpod-creds" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="api_key"><code>api_key</code> - (Required) <code>str</code> The API key.<a class="headerlink" href="#api_key" title="Permanent link">&para;</a></h6>
 <h5 id="vastai"><code>projects[n].backends[type=vastai]</code><a class="headerlink" href="#vastai" title="Permanent link">&para;</a></h5>
-<h6 class="reference-item" id="type"><code>type</code> - (Required) <code>enum</code> The type of backend. Must be <code>vastai</code>.<a class="headerlink" href="#type" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="type"><code>type</code> - (Required) <code>"vastai"</code> The type of backend. Must be <code>vastai</code>.<a class="headerlink" href="#type" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="regions"><code>regions</code> - (Optional) <code>list[str]</code> The list of VastAI regions. Omit to use all regions.<a class="headerlink" href="#regions" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="_creds"><a href="#vastai-creds"><code>creds</code></a> - (Required) <code>object</code> The credentials.<a class="headerlink" href="#_creds" title="Permanent link">&para;</a></h6>
 <h6 id="vastai-creds"><code>projects[n].backends[type=vastai].creds</code><a class="headerlink" href="#vastai-creds" title="Permanent link">&para;</a></h6>
-<h6 class="reference-item" id="type"><code>type</code> - (Required) <code>enum</code> The type of credentials. Must be <code>api_key</code>.<a class="headerlink" href="#type" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="type"><code>type</code> - (Required) <code>"api_key"</code> The type of credentials. Must be <code>api_key</code>.<a class="headerlink" href="#type" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="api_key"><code>api_key</code> - (Required) <code>str</code> The API key.<a class="headerlink" href="#api_key" title="Permanent link">&para;</a></h6>
 <!--
 
 ##### `projects[n].backends[type=tensordock]` { #tensordock data-toc-label="tensordock" }
 
-###### `type` - (Required) `enum` The type of backend. Must be `tensordock`. { #type data-toc-label='type' class='reference-item' }
+###### `type` - (Required) `"tensordock"` The type of backend. Must be `tensordock`. { #type data-toc-label='type' class='reference-item' }
 ###### `regions` - (Optional) `list[str]` The list of TensorDock regions. Omit to use all regions. { #regions data-toc-label='regions' class='reference-item' }
 ###### [`creds`](#tensordock-creds) - (Required) `object` The credentials. { #_creds data-toc-label='creds' class='reference-item' }
 
 
 ###### `projects[n].backends[type=tensordock].creds` { #tensordock-creds data-toc-label="creds" }
 
-###### `type` - (Required) `enum` The type of credentials. Must be `api_key`. { #type data-toc-label='type' class='reference-item' }
+###### `type` - (Required) `"api_key"` The type of credentials. Must be `api_key`. { #type data-toc-label='type' class='reference-item' }
 ###### `api_key` - (Required) `str` The API key. { #api_key data-toc-label='api_key' class='reference-item' }
 ###### `api_token` - (Required) `str` The API token. { #api_token data-toc-label='api_token' class='reference-item' }
 
@@ -4310,7 +4310,7 @@ to configure <a href="../../../concepts/backends/">backends</a> and other <a hre
 -->
 
 <h5 id="oci"><code>projects[n].backends[type=oci]</code><a class="headerlink" href="#oci" title="Permanent link">&para;</a></h5>
-<h6 class="reference-item" id="type"><code>type</code> - (Required) <code>enum</code> The type of backend. Must be <code>oci</code>.<a class="headerlink" href="#type" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="type"><code>type</code> - (Required) <code>"oci"</code> The type of backend. Must be <code>oci</code>.<a class="headerlink" href="#type" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="regions"><code>regions</code> - (Optional) <code>list[str]</code> The list of OCI regions. Omit to use all regions.<a class="headerlink" href="#regions" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="compartment_id"><code>compartment_id</code> - (Optional) <code>str</code> Compartment where <code>dstack</code> will create all resources. Omit to instruct <code>dstack</code> to create a new compartment.<a class="headerlink" href="#compartment_id" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="_creds"><a href="#oci-creds"><code>creds</code></a> - (Required) <code>object</code> The credentials.<a class="headerlink" href="#_creds" title="Permanent link">&para;</a></h6>
@@ -4318,7 +4318,7 @@ to configure <a href="../../../concepts/backends/">backends</a> and other <a hre
 <div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="client_1" name="__tabbed_4" type="radio" /><input id="default_3" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="client_1">Client</label><label for="default_3">Default</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<h6 class="reference-item" id="type"><code>type</code> - (Required) <code>enum</code> The type of credentials. Must be <code>client</code>.<a class="headerlink" href="#type" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="type"><code>type</code> - (Required) <code>"client"</code> The type of credentials. Must be <code>client</code>.<a class="headerlink" href="#type" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="user"><code>user</code> - (Required) <code>str</code> User OCID.<a class="headerlink" href="#user" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="tenancy"><code>tenancy</code> - (Required) <code>str</code> Tenancy OCID.<a class="headerlink" href="#tenancy" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="key_file"><code>key_file</code> - (Optional) <code>str</code> Path to the user's private PEM key. Either this or <code>key_content</code> should be set.<a class="headerlink" href="#key_file" title="Permanent link">&para;</a></h6>
@@ -4328,22 +4328,22 @@ to configure <a href="../../../concepts/backends/">backends</a> and other <a hre
 <h6 class="reference-item" id="region"><code>region</code> - (Required) <code>str</code> Name or key of any region the tenancy is subscribed to.<a class="headerlink" href="#region" title="Permanent link">&para;</a></h6>
 </div>
 <div class="tabbed-block">
-<h6 class="reference-item" id="type"><code>type</code> - (Required) <code>enum</code> The type of credentials. Must be <code>default</code>.<a class="headerlink" href="#type" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="type"><code>type</code> - (Required) <code>"default"</code> The type of credentials. Must be <code>default</code>.<a class="headerlink" href="#type" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="file"><code>file</code> - (Optional) <code>str</code> Path to the OCI CLI-compatible config file. Defaults to <code>~/.oci/config</code>.<a class="headerlink" href="#file" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="profile"><code>profile</code> - (Optional) <code>str</code> Profile to load from the config file. Defaults to <code>DEFAULT</code>.<a class="headerlink" href="#profile" title="Permanent link">&para;</a></h6>
 </div>
 </div>
 </div>
 <h5 id="verda"><code>projects[n].backends[type=verda]</code><a class="headerlink" href="#verda" title="Permanent link">&para;</a></h5>
-<h6 class="reference-item" id="type"><code>type</code> - (Required) <code>enum</code> The type of backend.<a class="headerlink" href="#type" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="type"><code>type</code> - (Required) <code>"verda" | "datacrunch"</code> The type of backend.<a class="headerlink" href="#type" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="regions"><code>regions</code> - (Optional) <code>list[str]</code> The list of Verda regions. Omit to use all regions.<a class="headerlink" href="#regions" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="_creds"><a href="#verda-creds"><code>creds</code></a> - (Required) <code>object</code> The credentials.<a class="headerlink" href="#_creds" title="Permanent link">&para;</a></h6>
 <h6 id="verda-creds"><code>projects[n].backends[type=verda].creds</code><a class="headerlink" href="#verda-creds" title="Permanent link">&para;</a></h6>
-<h6 class="reference-item" id="type"><code>type</code> - (Required) <code>enum</code> The type of credentials. Must be <code>api_key</code>.<a class="headerlink" href="#type" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="type"><code>type</code> - (Required) <code>"api_key"</code> The type of credentials. Must be <code>api_key</code>.<a class="headerlink" href="#type" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="client_id"><code>client_id</code> - (Required) <code>str</code> The client ID.<a class="headerlink" href="#client_id" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="client_secret"><code>client_secret</code> - (Required) <code>str</code> The client secret.<a class="headerlink" href="#client_secret" title="Permanent link">&para;</a></h6>
 <h5 id="kubernetes"><code>projects[n].backends[type=kubernetes]</code><a class="headerlink" href="#kubernetes" title="Permanent link">&para;</a></h5>
-<h6 class="reference-item" id="type"><code>type</code> - (Required) <code>enum</code> The type of backend. Must be <code>kubernetes</code>.<a class="headerlink" href="#type" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="type"><code>type</code> - (Required) <code>"kubernetes"</code> The type of backend. Must be <code>kubernetes</code>.<a class="headerlink" href="#type" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="_proxy_jump"><a href="#kubernetes-proxy_jump"><code>proxy_jump</code></a> - (Optional) <code>object</code> The SSH proxy jump configuration.<a class="headerlink" href="#_proxy_jump" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="namespace"><code>namespace</code> - (Optional) <code>str</code> The namespace for resources managed by <code>dstack</code>. Defaults to <code>default</code>.<a class="headerlink" href="#namespace" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="_kubeconfig"><a href="#kubernetes-kubeconfig"><code>kubeconfig</code></a> - (Required) <code>object</code> The kubeconfig configuration.<a class="headerlink" href="#_kubeconfig" title="Permanent link">&para;</a></h6>
@@ -4360,50 +4360,50 @@ to configure <a href="../../../concepts/backends/">backends</a> and other <a hre
 <h6 class="reference-item" id="hostname"><code>hostname</code> - (Optional) <code>str</code> The external IP address or hostname of any node.<a class="headerlink" href="#hostname" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="port"><code>port</code> - (Optional) <code>int</code> Any port accessible outside of the cluster.<a class="headerlink" href="#port" title="Permanent link">&para;</a></h6>
 <h5 id="vultr"><code>projects[n].backends[type=vultr]</code><a class="headerlink" href="#vultr" title="Permanent link">&para;</a></h5>
-<h6 class="reference-item" id="type"><code>type</code> - (Required) <code>enum</code> The type of backend. Must be <code>vultr</code>.<a class="headerlink" href="#type" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="type"><code>type</code> - (Required) <code>"vultr"</code> The type of backend. Must be <code>vultr</code>.<a class="headerlink" href="#type" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="regions"><code>regions</code> - (Optional) <code>list[str]</code> The list of Vultr regions. Omit to use all regions.<a class="headerlink" href="#regions" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="_creds"><a href="#vultr-creds"><code>creds</code></a> - (Required) <code>object</code> The credentials.<a class="headerlink" href="#_creds" title="Permanent link">&para;</a></h6>
 <h6 id="vultr-creds"><code>projects[n].backends[type=vultr].creds</code><a class="headerlink" href="#vultr-creds" title="Permanent link">&para;</a></h6>
-<h6 class="reference-item" id="type"><code>type</code> - (Required) <code>enum</code> The type of credentials. Must be <code>api_key</code>.<a class="headerlink" href="#type" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="type"><code>type</code> - (Required) <code>"api_key"</code> The type of credentials. Must be <code>api_key</code>.<a class="headerlink" href="#type" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="api_key"><code>api_key</code> - (Required) <code>str</code> The API key.<a class="headerlink" href="#api_key" title="Permanent link">&para;</a></h6>
 <h5 id="amddevcloud"><code>projects[n].backends[type=amddevcloud]</code><a class="headerlink" href="#amddevcloud" title="Permanent link">&para;</a></h5>
-<h6 class="reference-item" id="type"><code>type</code> - (Required) <code>enum</code> The type of backend.<a class="headerlink" href="#type" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="type"><code>type</code> - (Required) <code>"amddevcloud" | "digitalocean"</code> The type of backend.<a class="headerlink" href="#type" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="project_name"><code>project_name</code> - (Optional) <code>str</code> The name of the project.<a class="headerlink" href="#project_name" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="regions"><code>regions</code> - (Optional) <code>list[str]</code> The list of regions. Omit to use all regions.<a class="headerlink" href="#regions" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="_creds"><a href="#amddevcloud-creds"><code>creds</code></a> - (Required) <code>object</code> The credentials.<a class="headerlink" href="#_creds" title="Permanent link">&para;</a></h6>
 <h6 id="amddevcloud-creds"><code>projects[n].backends[type=amddevcloud].creds</code><a class="headerlink" href="#amddevcloud-creds" title="Permanent link">&para;</a></h6>
-<h6 class="reference-item" id="type"><code>type</code> - (Required) <code>enum</code> The type of credentials. Must be <code>api_key</code>.<a class="headerlink" href="#type" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="type"><code>type</code> - (Required) <code>"api_key"</code> The type of credentials. Must be <code>api_key</code>.<a class="headerlink" href="#type" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="api_key"><code>api_key</code> - (Required) <code>str</code> The API key.<a class="headerlink" href="#api_key" title="Permanent link">&para;</a></h6>
 <h5 id="digitalocean"><code>projects[n].backends[type=digitalocean]</code><a class="headerlink" href="#digitalocean" title="Permanent link">&para;</a></h5>
-<h6 class="reference-item" id="type"><code>type</code> - (Required) <code>enum</code> The type of backend.<a class="headerlink" href="#type" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="type"><code>type</code> - (Required) <code>"amddevcloud" | "digitalocean"</code> The type of backend.<a class="headerlink" href="#type" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="project_name"><code>project_name</code> - (Optional) <code>str</code> The name of the project.<a class="headerlink" href="#project_name" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="regions"><code>regions</code> - (Optional) <code>list[str]</code> The list of regions. Omit to use all regions.<a class="headerlink" href="#regions" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="_creds"><a href="#digitalocean-creds"><code>creds</code></a> - (Required) <code>object</code> The credentials.<a class="headerlink" href="#_creds" title="Permanent link">&para;</a></h6>
 <h6 id="digitalocean-creds"><code>projects[n].backends[type=digitalocean].creds</code><a class="headerlink" href="#digitalocean-creds" title="Permanent link">&para;</a></h6>
-<h6 class="reference-item" id="type"><code>type</code> - (Required) <code>enum</code> The type of credentials. Must be <code>api_key</code>.<a class="headerlink" href="#type" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="type"><code>type</code> - (Required) <code>"api_key"</code> The type of credentials. Must be <code>api_key</code>.<a class="headerlink" href="#type" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="api_key"><code>api_key</code> - (Required) <code>str</code> The API key.<a class="headerlink" href="#api_key" title="Permanent link">&para;</a></h6>
 <h5 id="hotaisle"><code>projects[n].backends[type=hotaisle]</code><a class="headerlink" href="#hotaisle" title="Permanent link">&para;</a></h5>
-<h6 class="reference-item" id="type"><code>type</code> - (Required) <code>enum</code> The type of backend. Must be <code>hotaisle</code>.<a class="headerlink" href="#type" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="type"><code>type</code> - (Required) <code>"hotaisle"</code> The type of backend. Must be <code>hotaisle</code>.<a class="headerlink" href="#type" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="team_handle"><code>team_handle</code> - (Required) <code>str</code> The Hot Aisle team handle.<a class="headerlink" href="#team_handle" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="regions"><code>regions</code> - (Optional) <code>list[str]</code> The list of Hot Aisle regions. Omit to use all regions.<a class="headerlink" href="#regions" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="_creds"><a href="#hotaisle-creds"><code>creds</code></a> - (Required) <code>object</code> The credentials.<a class="headerlink" href="#_creds" title="Permanent link">&para;</a></h6>
 <h6 id="hotaisle-creds"><code>projects[n].backends[type=hotaisle].creds</code><a class="headerlink" href="#hotaisle-creds" title="Permanent link">&para;</a></h6>
-<h6 class="reference-item" id="type"><code>type</code> - (Required) <code>enum</code> The type of credentials. Must be <code>api_key</code>.<a class="headerlink" href="#type" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="type"><code>type</code> - (Required) <code>"api_key"</code> The type of credentials. Must be <code>api_key</code>.<a class="headerlink" href="#type" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="api_key"><code>api_key</code> - (Required) <code>str</code> The Hot Aisle API key.<a class="headerlink" href="#api_key" title="Permanent link">&para;</a></h6>
 <h5 id="cloudrift"><code>projects[n].backends[type=cloudrift]</code><a class="headerlink" href="#cloudrift" title="Permanent link">&para;</a></h5>
-<h6 class="reference-item" id="type"><code>type</code> - (Required) <code>enum</code> The type of backend. Must be <code>cloudrift</code>.<a class="headerlink" href="#type" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="type"><code>type</code> - (Required) <code>"cloudrift"</code> The type of backend. Must be <code>cloudrift</code>.<a class="headerlink" href="#type" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="regions"><code>regions</code> - (Optional) <code>list[str]</code> The list of CloudRift regions. Omit to use all regions.<a class="headerlink" href="#regions" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="_creds"><a href="#cloudrift-creds"><code>creds</code></a> - (Required) <code>object</code> The credentials.<a class="headerlink" href="#_creds" title="Permanent link">&para;</a></h6>
 <h6 id="cloudrift-creds"><code>projects[n].backends[type=cloudrift].creds</code><a class="headerlink" href="#cloudrift-creds" title="Permanent link">&para;</a></h6>
-<h6 class="reference-item" id="type"><code>type</code> - (Required) <code>enum</code> The type of credentials. Must be <code>api_key</code>.<a class="headerlink" href="#type" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="type"><code>type</code> - (Required) <code>"api_key"</code> The type of credentials. Must be <code>api_key</code>.<a class="headerlink" href="#type" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="api_key"><code>api_key</code> - (Required) <code>str</code> The API key.<a class="headerlink" href="#api_key" title="Permanent link">&para;</a></h6>
 <h3 id="encryption"><code>encryption</code><a class="headerlink" href="#encryption" title="Permanent link">&para;</a></h3>
 <h6 class="reference-item" id="_keys"><a href="#keys"><code>keys</code></a> - (Required) <code>list[object]</code> The encryption keys.<a class="headerlink" href="#_keys" title="Permanent link">&para;</a></h6>
 <h4 id="encryption-keys"><code>encryption.keys</code><a class="headerlink" href="#encryption-keys" title="Permanent link">&para;</a></h4>
 <h5 id="encryption-keys-identity"><code>encryption.keys[n][type=identity]</code><a class="headerlink" href="#encryption-keys-identity" title="Permanent link">&para;</a></h5>
-<h6 class="reference-item" id="type"><code>type</code> - (Required) <code>enum</code> The type of the key. Must be <code>identity</code>.<a class="headerlink" href="#type" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="type"><code>type</code> - (Required) <code>"identity"</code> The type of the key. Must be <code>identity</code>.<a class="headerlink" href="#type" title="Permanent link">&para;</a></h6>
 <h5 id="encryption-keys-aes"><code>encryption.keys[n][type=aes]</code><a class="headerlink" href="#encryption-keys-aes" title="Permanent link">&para;</a></h5>
-<h6 class="reference-item" id="type"><code>type</code> - (Required) <code>enum</code> The type of the key. Must be <code>aes</code>.<a class="headerlink" href="#type" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="type"><code>type</code> - (Required) <code>"aes"</code> The type of the key. Must be <code>aes</code>.<a class="headerlink" href="#type" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="name"><code>name</code> - (Required) <code>str</code> The key name for key identification.<a class="headerlink" href="#name" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="secret"><code>secret</code> - (Required) <code>str</code> Base64-encoded AES-256 key.<a class="headerlink" href="#secret" title="Permanent link">&para;</a></h6>
 <h3 id="default_permissions"><code>default_permissions</code><a class="headerlink" href="#default_permissions" title="Permanent link">&para;</a></h3>

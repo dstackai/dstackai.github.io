@@ -40,8 +40,8 @@ The `service` configuration type allows running [services](../../concepts/servic
 ###### `reservation` - (Optional) `str` The existing reservation to use for instance provisioning. Supports AWS Capacity Reservations, AWS Capacity Blocks, and GCP reservations. { #reservation data-toc-label='reservation' class='reference-item' }
 ###### `spot_policy` - (Optional) `"auto" | "on-demand" | "spot"` The policy for provisioning spot or on-demand instances: `spot`, `on-demand`, `auto`. Defaults to `on-demand`. { #spot_policy data-toc-label='spot_policy' class='reference-item' }
 ###### [`retry`](#retry) - (Optional) `bool | object` The policy for resubmitting the run. Defaults to `false`. { #_retry data-toc-label='retry' class='reference-item' }
-###### `max_duration` - (Optional) `int | str` The maximum duration of a run (e.g., `2h`, `1d`, etc) in a running state, excluding provisioning and pulling. After it elapses, the run is automatically stopped. Use `off` for unlimited duration. Defaults to `off`. { #max_duration data-toc-label='max_duration' class='reference-item' }
-###### `stop_duration` - (Optional) `int | str` The maximum duration of a run graceful stopping. After it elapses, the run is automatically forced stopped. This includes force detaching volumes used by the run. Use `off` for unlimited duration. Defaults to `5m`. { #stop_duration data-toc-label='stop_duration' class='reference-item' }
+###### `max_duration` - (Optional) `int | str | "off"` The maximum duration of a run (e.g., `2h`, `1d`, etc) in a running state, excluding provisioning and pulling. After it elapses, the run is automatically stopped. Use `off` for unlimited duration. Defaults to `off`. { #max_duration data-toc-label='max_duration' class='reference-item' }
+###### `stop_duration` - (Optional) `int | str | "off"` The maximum duration of a run graceful stopping. After it elapses, the run is automatically forced stopped. This includes force detaching volumes used by the run. Use `off` for unlimited duration. Defaults to `5m`. { #stop_duration data-toc-label='stop_duration' class='reference-item' }
 ###### `max_price` - (Optional) `float` The maximum instance price per hour, in dollars. { #max_price data-toc-label='max_price' class='reference-item' }
 ###### `creation_policy` - (Optional) `"reuse" | "reuse-or-create"` The policy for using instances from fleets: `reuse`, `reuse-or-create`. Defaults to `reuse-or-create`. { #creation_policy data-toc-label='creation_policy' class='reference-item' }
 ###### `idle_duration` - (Optional) `int | str` Time to wait before terminating idle instances. Instances are not terminated if the fleet is already at `nodes.min`. Defaults to `5m` for runs and `3d` for fleets. Use `off` for unlimited duration. { #idle_duration data-toc-label='idle_duration' class='reference-item' }
@@ -57,9 +57,9 @@ The `service` configuration type allows running [services](../../concepts/servic
 
 === "OpenAI"
 
-    ###### `type` - (Required) `enum` The type of the model. Must be `chat`. { #type data-toc-label='type' class='reference-item' }
+    ###### `type` - (Required) `"chat"` The type of the model. Must be `chat`. { #type data-toc-label='type' class='reference-item' }
     ###### `name` - (Required) `str` The name of the model. { #name data-toc-label='name' class='reference-item' }
-    ###### `format` - (Required) `enum` The serving format. Must be set to `openai`. { #format data-toc-label='format' class='reference-item' }
+    ###### `format` - (Required) `"openai"` The serving format. Must be set to `openai`. { #format data-toc-label='format' class='reference-item' }
     ###### `prefix` - (Optional) `str` The `base_url` prefix (after hostname). Defaults to `/v1`. { #prefix data-toc-label='prefix' class='reference-item' }
 
 
@@ -68,9 +68,9 @@ The `service` configuration type allows running [services](../../concepts/servic
     > TGI provides an OpenAI-compatible API starting with version 1.4.0,
     so models served by TGI can be defined with `format: openai` too.
 
-    ###### `type` - (Required) `enum` The type of the model. Must be `chat`. { #type data-toc-label='type' class='reference-item' }
+    ###### `type` - (Required) `"chat"` The type of the model. Must be `chat`. { #type data-toc-label='type' class='reference-item' }
     ###### `name` - (Required) `str` The name of the model. { #name data-toc-label='name' class='reference-item' }
-    ###### `format` - (Required) `enum` The serving format. Must be set to `tgi`. { #format data-toc-label='format' class='reference-item' }
+    ###### `format` - (Required) `"tgi"` The serving format. Must be set to `tgi`. { #format data-toc-label='format' class='reference-item' }
     ###### `chat_template` - (Optional) `str` The custom prompt template for the model. If not specified, the default prompt template from the HuggingFace Hub configuration will be used. { #chat_template data-toc-label='chat_template' class='reference-item' }
     ###### `eos_token` - (Optional) `str` The custom end of sentence token. If not specified, the default end of sentence token from the HuggingFace Hub configuration will be used. { #eos_token data-toc-label='eos_token' class='reference-item' }
 
@@ -112,7 +112,7 @@ The `service` configuration type allows running [services](../../concepts/servic
 
 ### `scaling`
 
-###### `metric` - (Required) `enum` The target metric to track. Currently, the only supported value is `rps` (meaning requests per second). { #metric data-toc-label='metric' class='reference-item' }
+###### `metric` - (Required) `"rps"` The target metric to track. Currently, the only supported value is `rps` (meaning requests per second). { #metric data-toc-label='metric' class='reference-item' }
 ###### `target` - (Required) `float` The target value of the metric. The number of replicas is calculated based on this number and automatically adjusts (scales up or down) as this metric changes. { #target data-toc-label='target' class='reference-item' }
 ###### `scale_up_delay` - (Optional) `int | str` The delay in seconds before scaling up. Defaults to `300`. { #scale_up_delay data-toc-label='scale_up_delay' class='reference-item' }
 ###### `scale_down_delay` - (Optional) `int | str` The delay in seconds before scaling down. Defaults to `600`. { #scale_down_delay data-toc-label='scale_down_delay' class='reference-item' }
@@ -134,14 +134,14 @@ The `service` configuration type allows running [services](../../concepts/servic
 
     Partition requests by client IP address.
 
-    ###### `type` - (Required) `enum` Partitioning type. Must be `ip_address`. { #type data-toc-label='type' class='reference-item' }
+    ###### `type` - (Required) `"ip_address"` Partitioning type. Must be `ip_address`. { #type data-toc-label='type' class='reference-item' }
 
 
 === "Header"
 
     Partition requests by the value of a header.
 
-    ###### `type` - (Required) `enum` Partitioning type. Must be `header`. { #type data-toc-label='type' class='reference-item' }
+    ###### `type` - (Required) `"header"` Partitioning type. Must be `header`. { #type data-toc-label='type' class='reference-item' }
     ###### `header` - (Required) `str` Name of the header to use for partitioning. { #header data-toc-label='header' class='reference-item' }
 
 
@@ -149,9 +149,9 @@ The `service` configuration type allows running [services](../../concepts/servic
 
 #### `probes[n]`
 
-###### `type` - (Required) `enum` The probe type. Must be `http`. { #type data-toc-label='type' class='reference-item' }
+###### `type` - (Required) `"http"` The probe type. Must be `http`. { #type data-toc-label='type' class='reference-item' }
 ###### `url` - (Optional) `str` The URL to request. Defaults to `/`. { #url data-toc-label='url' class='reference-item' }
-###### `method` - (Optional) `enum` The HTTP method to use for the probe (e.g., `get`, `post`, etc.). Defaults to `get`. { #method data-toc-label='method' class='reference-item' }
+###### `method` - (Optional) `"delete" | "get" | "head" | "patch" | "post" | "put"` The HTTP method to use for the probe (e.g., `get`, `post`, etc.). Defaults to `get`. { #method data-toc-label='method' class='reference-item' }
 ###### `headers` - (Optional) `list` A list of HTTP headers to include in the request. { #headers data-toc-label='headers' class='reference-item' }
 ###### `body` - (Optional) `str` The HTTP request body to send with the probe. { #body data-toc-label='body' class='reference-item' }
 ###### `timeout` - (Optional) `int | str` Maximum amount of time the HTTP request is allowed to take. Defaults to `10s`. { #timeout data-toc-label='timeout' class='reference-item' }

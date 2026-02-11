@@ -4169,8 +4169,8 @@ Support dstack with a ⭐ on
 <div class="tabbed-set tabbed-alternate" data-tabs="1:1"><input checked="checked" id="sglang-model-gateway" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="sglang-model-gateway">SGLang Model Gateway</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<h6 class="reference-item" id="type"><code>type</code> - (Required) <code>enum</code> The router type. Must be <code>sglang</code>.<a class="headerlink" href="#type" title="Permanent link">&para;</a></h6>
-<h6 class="reference-item" id="policy"><code>policy</code> - (Optional) <code>enum</code> The routing policy. Options: <code>random</code>, <code>round_robin</code>, <code>cache_aware</code>, <code>power_of_two</code>. Defaults to <code>cache_aware</code>.<a class="headerlink" href="#policy" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="type"><code>type</code> - (Required) <code>"sglang"</code> The router type. Must be <code>sglang</code>.<a class="headerlink" href="#type" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="policy"><code>policy</code> - (Optional) <code>"random" | "round_robin" | "cache_aware" | "power_of_two"</code> The routing policy. Options: <code>random</code>, <code>round_robin</code>, <code>cache_aware</code>, <code>power_of_two</code>. Defaults to <code>cache_aware</code>.<a class="headerlink" href="#policy" title="Permanent link">&para;</a></h6>
 </div>
 </div>
 </div>
@@ -4178,10 +4178,10 @@ Support dstack with a ⭐ on
 <div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="lets-encrypt" name="__tabbed_2" type="radio" /><input id="acm" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="lets-encrypt">Let's encrypt</label><label for="acm">ACM</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<h6 class="reference-item" id="type"><code>type</code> - (Required) <code>enum</code> Automatic certificates by Let's Encrypt. Must be <code>lets-encrypt</code>.<a class="headerlink" href="#type" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="type"><code>type</code> - (Required) <code>"lets-encrypt"</code> Automatic certificates by Let's Encrypt. Must be <code>lets-encrypt</code>.<a class="headerlink" href="#type" title="Permanent link">&para;</a></h6>
 </div>
 <div class="tabbed-block">
-<h6 class="reference-item" id="type"><code>type</code> - (Required) <code>enum</code> Certificates by AWS Certificate Manager (ACM). Must be <code>acm</code>.<a class="headerlink" href="#type" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="type"><code>type</code> - (Required) <code>"acm"</code> Certificates by AWS Certificate Manager (ACM). Must be <code>acm</code>.<a class="headerlink" href="#type" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="arn"><code>arn</code> - (Required) <code>str</code> The ARN of the wildcard ACM certificate for the domain.<a class="headerlink" href="#arn" title="Permanent link">&para;</a></h6>
 </div>
 </div>

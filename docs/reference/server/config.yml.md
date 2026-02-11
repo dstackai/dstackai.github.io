@@ -21,7 +21,7 @@ to configure [backends](../../concepts/backends.md) and other [server-level sett
 
 ##### `projects[n].backends[type=aws]` { #aws data-toc-label="aws" }
 
-###### `type` - (Required) `enum` The type of the backend. Must be `aws`. { #type data-toc-label='type' class='reference-item' }
+###### `type` - (Required) `"aws"` The type of the backend. Must be `aws`. { #type data-toc-label='type' class='reference-item' }
 ###### `regions` - (Optional) `list[str]` The list of AWS regions. Omit to use all regions. { #regions data-toc-label='regions' class='reference-item' }
 ###### `vpc_name` - (Optional) `str` The name of custom VPCs. All configured regions must have a VPC with this name. If your custom VPCs don't have names or have different names in different regions, use `vpc_ids` instead.. { #vpc_name data-toc-label='vpc_name' class='reference-item' }
 ###### `vpc_ids` - (Optional) `dict` The mapping from AWS regions to VPC IDs. If `default_vpcs: true`, omitted regions will use default VPCs. { #vpc_ids data-toc-label='vpc_ids' class='reference-item' }
@@ -36,13 +36,13 @@ to configure [backends](../../concepts/backends.md) and other [server-level sett
 ###### `projects[n].backends[type=aws].creds` { #aws-creds data-toc-label="creds" }
 
 === "Access key"
-    ###### `type` - (Required) `enum` The type of credentials. Must be `access_key`. { #type data-toc-label='type' class='reference-item' }
+    ###### `type` - (Required) `"access_key"` The type of credentials. Must be `access_key`. { #type data-toc-label='type' class='reference-item' }
     ###### `access_key` - (Required) `str` The access key. { #access_key data-toc-label='access_key' class='reference-item' }
     ###### `secret_key` - (Required) `str` The secret key. { #secret_key data-toc-label='secret_key' class='reference-item' }
 
 
 === "Default"
-    ###### `type` - (Required) `enum` The type of credentials. Must be `default`. { #type data-toc-label='type' class='reference-item' }
+    ###### `type` - (Required) `"default"` The type of credentials. Must be `default`. { #type data-toc-label='type' class='reference-item' }
 
 
 ###### `projects[n].backends[type=aws].os_images` { #aws-os_images data-toc-label="os_images" }
@@ -67,7 +67,7 @@ to configure [backends](../../concepts/backends.md) and other [server-level sett
 
 ##### `projects[n].backends[type=azure]` { #azure data-toc-label="azure" }
 
-###### `type` - (Required) `enum` The type of the backend. Must be `azure`. { #type data-toc-label='type' class='reference-item' }
+###### `type` - (Required) `"azure"` The type of the backend. Must be `azure`. { #type data-toc-label='type' class='reference-item' }
 ###### `tenant_id` - (Required) `str` The tenant ID. { #tenant_id data-toc-label='tenant_id' class='reference-item' }
 ###### `subscription_id` - (Required) `str` The subscription ID. { #subscription_id data-toc-label='subscription_id' class='reference-item' }
 ###### `resource_group` - (Optional) `str` The resource group for resources created by `dstack`. If not specified, `dstack` will create a new resource group. { #resource_group data-toc-label='resource_group' class='reference-item' }
@@ -82,18 +82,18 @@ to configure [backends](../../concepts/backends.md) and other [server-level sett
 ###### `projects[n].backends[type=azure].creds` { #azure-creds data-toc-label="creds" }
 
 === "Client"
-    ###### `type` - (Required) `enum` The type of credentials. Must be `client`. { #type data-toc-label='type' class='reference-item' }
+    ###### `type` - (Required) `"client"` The type of credentials. Must be `client`. { #type data-toc-label='type' class='reference-item' }
     ###### `client_id` - (Required) `str` The client ID. { #client_id data-toc-label='client_id' class='reference-item' }
     ###### `client_secret` - (Required) `str` The client secret. { #client_secret data-toc-label='client_secret' class='reference-item' }
 
 
 === "Default"
-    ###### `type` - (Required) `enum` The type of credentials. Must be `default`. { #type data-toc-label='type' class='reference-item' }
+    ###### `type` - (Required) `"default"` The type of credentials. Must be `default`. { #type data-toc-label='type' class='reference-item' }
 
 
 ##### `projects[n].backends[type=gcp]` { #gcp data-toc-label="gcp" }
 
-###### `type` - (Required) `enum` The type of backend. Must be `gcp`. { #type data-toc-label='type' class='reference-item' }
+###### `type` - (Required) `"gcp"` The type of backend. Must be `gcp`. { #type data-toc-label='type' class='reference-item' }
 ###### `project_id` - (Required) `str` The project ID. { #project_id data-toc-label='project_id' class='reference-item' }
 ###### `regions` - (Optional) `list[str]` The list of GCP regions. Omit to use all regions. { #regions data-toc-label='regions' class='reference-item' }
 ###### `vpc_name` - (Optional) `str` The name of a custom VPC. If not specified, the default VPC is used. { #vpc_name data-toc-label='vpc_name' class='reference-item' }
@@ -111,7 +111,7 @@ to configure [backends](../../concepts/backends.md) and other [server-level sett
 ###### `projects[n].backends[type=gcp].creds` { #gcp-creds data-toc-label="creds" }
 
 === "Service account"
-    ###### `type` - (Required) `enum` The type of credentials. Must be `service_account`. { #type data-toc-label='type' class='reference-item' }
+    ###### `type` - (Required) `"service_account"` The type of credentials. Must be `service_account`. { #type data-toc-label='type' class='reference-item' }
     ###### `filename` - (Required) `str` The path to the service account file. { #filename data-toc-label='filename' class='reference-item' }
     ###### `data` - (Optional) `str` The contents of the service account file. When configuring via `server/config.yml`, it's automatically filled from `filename`. When configuring via UI, it has to be specified explicitly. { #data data-toc-label='data' class='reference-item' }
 
@@ -130,20 +130,20 @@ to configure [backends](../../concepts/backends.md) and other [server-level sett
 
 ##### `projects[n].backends[type=lambda]` { #lambda data-toc-label="lambda" }
 
-###### `type` - (Required) `enum` The type of backend. Must be `lambda`. { #type data-toc-label='type' class='reference-item' }
+###### `type` - (Required) `"lambda"` The type of backend. Must be `lambda`. { #type data-toc-label='type' class='reference-item' }
 ###### `regions` - (Optional) `list[str]` The list of Lambda regions. Omit to use all regions. { #regions data-toc-label='regions' class='reference-item' }
 ###### [`creds`](#lambda-creds) - (Required) `object` The credentials. { #_creds data-toc-label='creds' class='reference-item' }
 
 
 ###### `projects[n].backends[type=lambda].creds` { #lambda-creds data-toc-label="creds" }
 
-###### `type` - (Required) `enum` The type of credentials. Must be `api_key`. { #type data-toc-label='type' class='reference-item' }
+###### `type` - (Required) `"api_key"` The type of credentials. Must be `api_key`. { #type data-toc-label='type' class='reference-item' }
 ###### `api_key` - (Required) `str` The API key. { #api_key data-toc-label='api_key' class='reference-item' }
 
 
 ##### `projects[n].backends[type=nebius]` { #nebius data-toc-label="nebius" }
 
-###### `type` - (Required) `enum` The type of backend. Must be `nebius`. { #type data-toc-label='type' class='reference-item' }
+###### `type` - (Required) `"nebius"` The type of backend. Must be `nebius`. { #type data-toc-label='type' class='reference-item' }
 ###### `projects` - (Optional) `list[str]` The list of allowed Nebius project IDs. Omit to use the default project in each region. The project is considered default if it is the only project in the region or if its name starts with `default`. { #projects data-toc-label='projects' class='reference-item' }
 ###### `regions` - (Optional) `list[str]` The list of allowed Nebius regions. Omit to allow all regions. { #regions data-toc-label='regions' class='reference-item' }
 ###### `fabrics` - (Optional) `list[str]` The list of allowed fabrics for InfiniBand clusters. Omit to allow all fabrics. { #fabrics data-toc-label='fabrics' class='reference-item' }
@@ -153,7 +153,7 @@ to configure [backends](../../concepts/backends.md) and other [server-level sett
 
 ###### `projects[n].backends[type=nebius].creds` { #nebius-creds data-toc-label="creds" }
 
-###### `type` - (Required) `enum` The type of credentials. Must be `service_account`. { #type data-toc-label='type' class='reference-item' }
+###### `type` - (Required) `"service_account"` The type of credentials. Must be `service_account`. { #type data-toc-label='type' class='reference-item' }
 ###### `service_account_id` - (Optional) `str` Service account ID. Set automatically if `filename` is specified. When configuring via the UI, it must be specified explicitly. { #service_account_id data-toc-label='service_account_id' class='reference-item' }
 ###### `public_key_id` - (Optional) `str` ID of the service account public key. Set automatically if `filename` is specified. When configuring via the UI, it must be specified explicitly. { #public_key_id data-toc-label='public_key_id' class='reference-item' }
 ###### `private_key_file` - (Optional) `str` Path to the service account private key. Set automatically if `filename` or `private_key_content` is specified. When configuring via the UI, it must be specified explicitly. { #private_key_file data-toc-label='private_key_file' class='reference-item' }
@@ -175,14 +175,14 @@ to configure [backends](../../concepts/backends.md) and other [server-level sett
 
 ##### `projects[n].backends[type=vastai]` { #vastai data-toc-label="vastai" }
 
-###### `type` - (Required) `enum` The type of backend. Must be `vastai`. { #type data-toc-label='type' class='reference-item' }
+###### `type` - (Required) `"vastai"` The type of backend. Must be `vastai`. { #type data-toc-label='type' class='reference-item' }
 ###### `regions` - (Optional) `list[str]` The list of VastAI regions. Omit to use all regions. { #regions data-toc-label='regions' class='reference-item' }
 ###### [`creds`](#vastai-creds) - (Required) `object` The credentials. { #_creds data-toc-label='creds' class='reference-item' }
 
 
 ###### `projects[n].backends[type=vastai].creds` { #vastai-creds data-toc-label="creds" }
 
-###### `type` - (Required) `enum` The type of credentials. Must be `api_key`. { #type data-toc-label='type' class='reference-item' }
+###### `type` - (Required) `"api_key"` The type of credentials. Must be `api_key`. { #type data-toc-label='type' class='reference-item' }
 ###### `api_key` - (Required) `str` The API key. { #api_key data-toc-label='api_key' class='reference-item' }
 
 
@@ -190,14 +190,14 @@ to configure [backends](../../concepts/backends.md) and other [server-level sett
 
 ##### `projects[n].backends[type=tensordock]` { #tensordock data-toc-label="tensordock" }
 
-###### `type` - (Required) `enum` The type of backend. Must be `tensordock`. { #type data-toc-label='type' class='reference-item' }
+###### `type` - (Required) `"tensordock"` The type of backend. Must be `tensordock`. { #type data-toc-label='type' class='reference-item' }
 ###### `regions` - (Optional) `list[str]` The list of TensorDock regions. Omit to use all regions. { #regions data-toc-label='regions' class='reference-item' }
 ###### [`creds`](#tensordock-creds) - (Required) `object` The credentials. { #_creds data-toc-label='creds' class='reference-item' }
 
 
 ###### `projects[n].backends[type=tensordock].creds` { #tensordock-creds data-toc-label="creds" }
 
-###### `type` - (Required) `enum` The type of credentials. Must be `api_key`. { #type data-toc-label='type' class='reference-item' }
+###### `type` - (Required) `"api_key"` The type of credentials. Must be `api_key`. { #type data-toc-label='type' class='reference-item' }
 ###### `api_key` - (Required) `str` The API key. { #api_key data-toc-label='api_key' class='reference-item' }
 ###### `api_token` - (Required) `str` The API token. { #api_token data-toc-label='api_token' class='reference-item' }
 
@@ -206,7 +206,7 @@ to configure [backends](../../concepts/backends.md) and other [server-level sett
 
 ##### `projects[n].backends[type=oci]` { #oci data-toc-label="oci" }
 
-###### `type` - (Required) `enum` The type of backend. Must be `oci`. { #type data-toc-label='type' class='reference-item' }
+###### `type` - (Required) `"oci"` The type of backend. Must be `oci`. { #type data-toc-label='type' class='reference-item' }
 ###### `regions` - (Optional) `list[str]` The list of OCI regions. Omit to use all regions. { #regions data-toc-label='regions' class='reference-item' }
 ###### `compartment_id` - (Optional) `str` Compartment where `dstack` will create all resources. Omit to instruct `dstack` to create a new compartment. { #compartment_id data-toc-label='compartment_id' class='reference-item' }
 ###### [`creds`](#oci-creds) - (Required) `object` The credentials. { #_creds data-toc-label='creds' class='reference-item' }
@@ -215,7 +215,7 @@ to configure [backends](../../concepts/backends.md) and other [server-level sett
 ###### `projects[n].backends[type=oci].creds` { #oci-creds data-toc-label="creds" }
 
 === "Client"
-    ###### `type` - (Required) `enum` The type of credentials. Must be `client`. { #type data-toc-label='type' class='reference-item' }
+    ###### `type` - (Required) `"client"` The type of credentials. Must be `client`. { #type data-toc-label='type' class='reference-item' }
     ###### `user` - (Required) `str` User OCID. { #user data-toc-label='user' class='reference-item' }
     ###### `tenancy` - (Required) `str` Tenancy OCID. { #tenancy data-toc-label='tenancy' class='reference-item' }
     ###### `key_file` - (Optional) `str` Path to the user's private PEM key. Either this or `key_content` should be set. { #key_file data-toc-label='key_file' class='reference-item' }
@@ -226,28 +226,28 @@ to configure [backends](../../concepts/backends.md) and other [server-level sett
 
 
 === "Default"
-    ###### `type` - (Required) `enum` The type of credentials. Must be `default`. { #type data-toc-label='type' class='reference-item' }
+    ###### `type` - (Required) `"default"` The type of credentials. Must be `default`. { #type data-toc-label='type' class='reference-item' }
     ###### `file` - (Optional) `str` Path to the OCI CLI-compatible config file. Defaults to `~/.oci/config`. { #file data-toc-label='file' class='reference-item' }
     ###### `profile` - (Optional) `str` Profile to load from the config file. Defaults to `DEFAULT`. { #profile data-toc-label='profile' class='reference-item' }
 
 
 ##### `projects[n].backends[type=verda]` { #verda data-toc-label="verda" }
 
-###### `type` - (Required) `enum` The type of backend. { #type data-toc-label='type' class='reference-item' }
+###### `type` - (Required) `"verda" | "datacrunch"` The type of backend. { #type data-toc-label='type' class='reference-item' }
 ###### `regions` - (Optional) `list[str]` The list of Verda regions. Omit to use all regions. { #regions data-toc-label='regions' class='reference-item' }
 ###### [`creds`](#verda-creds) - (Required) `object` The credentials. { #_creds data-toc-label='creds' class='reference-item' }
 
 
 ###### `projects[n].backends[type=verda].creds` { #verda-creds data-toc-label="creds" }
 
-###### `type` - (Required) `enum` The type of credentials. Must be `api_key`. { #type data-toc-label='type' class='reference-item' }
+###### `type` - (Required) `"api_key"` The type of credentials. Must be `api_key`. { #type data-toc-label='type' class='reference-item' }
 ###### `client_id` - (Required) `str` The client ID. { #client_id data-toc-label='client_id' class='reference-item' }
 ###### `client_secret` - (Required) `str` The client secret. { #client_secret data-toc-label='client_secret' class='reference-item' }
 
 
 ##### `projects[n].backends[type=kubernetes]` { #kubernetes data-toc-label="kubernetes" }
 
-###### `type` - (Required) `enum` The type of backend. Must be `kubernetes`. { #type data-toc-label='type' class='reference-item' }
+###### `type` - (Required) `"kubernetes"` The type of backend. Must be `kubernetes`. { #type data-toc-label='type' class='reference-item' }
 ###### [`proxy_jump`](#kubernetes-proxy_jump) - (Optional) `object` The SSH proxy jump configuration. { #_proxy_jump data-toc-label='proxy_jump' class='reference-item' }
 ###### `namespace` - (Optional) `str` The namespace for resources managed by `dstack`. Defaults to `default`. { #namespace data-toc-label='namespace' class='reference-item' }
 ###### [`kubeconfig`](#kubernetes-kubeconfig) - (Required) `object` The kubeconfig configuration. { #_kubeconfig data-toc-label='kubeconfig' class='reference-item' }
@@ -274,20 +274,20 @@ to configure [backends](../../concepts/backends.md) and other [server-level sett
 
 ##### `projects[n].backends[type=vultr]` { #vultr data-toc-label="vultr" }
 
-###### `type` - (Required) `enum` The type of backend. Must be `vultr`. { #type data-toc-label='type' class='reference-item' }
+###### `type` - (Required) `"vultr"` The type of backend. Must be `vultr`. { #type data-toc-label='type' class='reference-item' }
 ###### `regions` - (Optional) `list[str]` The list of Vultr regions. Omit to use all regions. { #regions data-toc-label='regions' class='reference-item' }
 ###### [`creds`](#vultr-creds) - (Required) `object` The credentials. { #_creds data-toc-label='creds' class='reference-item' }
 
 
 ###### `projects[n].backends[type=vultr].creds` { #vultr-creds data-toc-label="creds" }
 
-###### `type` - (Required) `enum` The type of credentials. Must be `api_key`. { #type data-toc-label='type' class='reference-item' }
+###### `type` - (Required) `"api_key"` The type of credentials. Must be `api_key`. { #type data-toc-label='type' class='reference-item' }
 ###### `api_key` - (Required) `str` The API key. { #api_key data-toc-label='api_key' class='reference-item' }
 
 
 ##### `projects[n].backends[type=amddevcloud]` { #amddevcloud data-toc-label="amddevcloud" }
 
-###### `type` - (Required) `enum` The type of backend. { #type data-toc-label='type' class='reference-item' }
+###### `type` - (Required) `"amddevcloud" | "digitalocean"` The type of backend. { #type data-toc-label='type' class='reference-item' }
 ###### `project_name` - (Optional) `str` The name of the project. { #project_name data-toc-label='project_name' class='reference-item' }
 ###### `regions` - (Optional) `list[str]` The list of regions. Omit to use all regions. { #regions data-toc-label='regions' class='reference-item' }
 ###### [`creds`](#amddevcloud-creds) - (Required) `object` The credentials. { #_creds data-toc-label='creds' class='reference-item' }
@@ -295,13 +295,13 @@ to configure [backends](../../concepts/backends.md) and other [server-level sett
 
 ###### `projects[n].backends[type=amddevcloud].creds` { #amddevcloud-creds data-toc-label="creds" }
 
-###### `type` - (Required) `enum` The type of credentials. Must be `api_key`. { #type data-toc-label='type' class='reference-item' }
+###### `type` - (Required) `"api_key"` The type of credentials. Must be `api_key`. { #type data-toc-label='type' class='reference-item' }
 ###### `api_key` - (Required) `str` The API key. { #api_key data-toc-label='api_key' class='reference-item' }
 
 
 ##### `projects[n].backends[type=digitalocean]` { #digitalocean data-toc-label="digitalocean" }
 
-###### `type` - (Required) `enum` The type of backend. { #type data-toc-label='type' class='reference-item' }
+###### `type` - (Required) `"amddevcloud" | "digitalocean"` The type of backend. { #type data-toc-label='type' class='reference-item' }
 ###### `project_name` - (Optional) `str` The name of the project. { #project_name data-toc-label='project_name' class='reference-item' }
 ###### `regions` - (Optional) `list[str]` The list of regions. Omit to use all regions. { #regions data-toc-label='regions' class='reference-item' }
 ###### [`creds`](#digitalocean-creds) - (Required) `object` The credentials. { #_creds data-toc-label='creds' class='reference-item' }
@@ -309,13 +309,13 @@ to configure [backends](../../concepts/backends.md) and other [server-level sett
 
 ###### `projects[n].backends[type=digitalocean].creds` { #digitalocean-creds data-toc-label="creds" }
 
-###### `type` - (Required) `enum` The type of credentials. Must be `api_key`. { #type data-toc-label='type' class='reference-item' }
+###### `type` - (Required) `"api_key"` The type of credentials. Must be `api_key`. { #type data-toc-label='type' class='reference-item' }
 ###### `api_key` - (Required) `str` The API key. { #api_key data-toc-label='api_key' class='reference-item' }
 
 
 ##### `projects[n].backends[type=hotaisle]` { #hotaisle data-toc-label="hotaisle" }
 
-###### `type` - (Required) `enum` The type of backend. Must be `hotaisle`. { #type data-toc-label='type' class='reference-item' }
+###### `type` - (Required) `"hotaisle"` The type of backend. Must be `hotaisle`. { #type data-toc-label='type' class='reference-item' }
 ###### `team_handle` - (Required) `str` The Hot Aisle team handle. { #team_handle data-toc-label='team_handle' class='reference-item' }
 ###### `regions` - (Optional) `list[str]` The list of Hot Aisle regions. Omit to use all regions. { #regions data-toc-label='regions' class='reference-item' }
 ###### [`creds`](#hotaisle-creds) - (Required) `object` The credentials. { #_creds data-toc-label='creds' class='reference-item' }
@@ -323,20 +323,20 @@ to configure [backends](../../concepts/backends.md) and other [server-level sett
 
 ###### `projects[n].backends[type=hotaisle].creds` { #hotaisle-creds data-toc-label="creds" }
 
-###### `type` - (Required) `enum` The type of credentials. Must be `api_key`. { #type data-toc-label='type' class='reference-item' }
+###### `type` - (Required) `"api_key"` The type of credentials. Must be `api_key`. { #type data-toc-label='type' class='reference-item' }
 ###### `api_key` - (Required) `str` The Hot Aisle API key. { #api_key data-toc-label='api_key' class='reference-item' }
 
 
 ##### `projects[n].backends[type=cloudrift]` { #cloudrift data-toc-label="cloudrift" }
 
-###### `type` - (Required) `enum` The type of backend. Must be `cloudrift`. { #type data-toc-label='type' class='reference-item' }
+###### `type` - (Required) `"cloudrift"` The type of backend. Must be `cloudrift`. { #type data-toc-label='type' class='reference-item' }
 ###### `regions` - (Optional) `list[str]` The list of CloudRift regions. Omit to use all regions. { #regions data-toc-label='regions' class='reference-item' }
 ###### [`creds`](#cloudrift-creds) - (Required) `object` The credentials. { #_creds data-toc-label='creds' class='reference-item' }
 
 
 ###### `projects[n].backends[type=cloudrift].creds` { #cloudrift-creds data-toc-label="creds" }
 
-###### `type` - (Required) `enum` The type of credentials. Must be `api_key`. { #type data-toc-label='type' class='reference-item' }
+###### `type` - (Required) `"api_key"` The type of credentials. Must be `api_key`. { #type data-toc-label='type' class='reference-item' }
 ###### `api_key` - (Required) `str` The API key. { #api_key data-toc-label='api_key' class='reference-item' }
 
 
@@ -349,12 +349,12 @@ to configure [backends](../../concepts/backends.md) and other [server-level sett
 
 ##### `encryption.keys[n][type=identity]` { #encryption-keys-identity data-toc-label="identity" }
 
-###### `type` - (Required) `enum` The type of the key. Must be `identity`. { #type data-toc-label='type' class='reference-item' }
+###### `type` - (Required) `"identity"` The type of the key. Must be `identity`. { #type data-toc-label='type' class='reference-item' }
 
 
 ##### `encryption.keys[n][type=aes]` { #encryption-keys-aes data-toc-label="aes" }
 
-###### `type` - (Required) `enum` The type of the key. Must be `aes`. { #type data-toc-label='type' class='reference-item' }
+###### `type` - (Required) `"aes"` The type of the key. Must be `aes`. { #type data-toc-label='type' class='reference-item' }
 ###### `name` - (Required) `str` The key name for key identification. { #name data-toc-label='name' class='reference-item' }
 ###### `secret` - (Required) `str` Base64-encoded AES-256 key. { #secret data-toc-label='secret' class='reference-item' }
 

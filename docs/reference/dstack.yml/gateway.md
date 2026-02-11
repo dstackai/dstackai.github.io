@@ -20,19 +20,19 @@ The `gateway` configuration type allows creating and updating [gateways](../../c
 
 === "SGLang Model Gateway"
 
-    ###### `type` - (Required) `enum` The router type. Must be `sglang`. { #type data-toc-label='type' class='reference-item' }
-    ###### `policy` - (Optional) `enum` The routing policy. Options: `random`, `round_robin`, `cache_aware`, `power_of_two`. Defaults to `cache_aware`. { #policy data-toc-label='policy' class='reference-item' }
+    ###### `type` - (Required) `"sglang"` The router type. Must be `sglang`. { #type data-toc-label='type' class='reference-item' }
+    ###### `policy` - (Optional) `"random" | "round_robin" | "cache_aware" | "power_of_two"` The routing policy. Options: `random`, `round_robin`, `cache_aware`, `power_of_two`. Defaults to `cache_aware`. { #policy data-toc-label='policy' class='reference-item' }
 
 
 ### `certificate`
 
 === "Let's encrypt"
 
-    ###### `type` - (Required) `enum` Automatic certificates by Let's Encrypt. Must be `lets-encrypt`. { #type data-toc-label='type' class='reference-item' }
+    ###### `type` - (Required) `"lets-encrypt"` Automatic certificates by Let's Encrypt. Must be `lets-encrypt`. { #type data-toc-label='type' class='reference-item' }
 
 
 === "ACM" 
 
-    ###### `type` - (Required) `enum` Certificates by AWS Certificate Manager (ACM). Must be `acm`. { #type data-toc-label='type' class='reference-item' }
+    ###### `type` - (Required) `"acm"` Certificates by AWS Certificate Manager (ACM). Must be `acm`. { #type data-toc-label='type' class='reference-item' }
     ###### `arn` - (Required) `str` The ARN of the wildcard ACM certificate for the domain. { #arn data-toc-label='arn' class='reference-item' }
 
