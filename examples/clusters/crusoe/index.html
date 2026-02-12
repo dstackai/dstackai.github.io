@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Setting up Crusoe clusters using Managed Kubernetes or VMs with InfiniBand support">
+        <meta name="description" content="Using Crusoe clusters with InfiniBand support via Kubernetes or VMs">
       
       
         <meta name="author" content="dstack GmbH">
@@ -18,7 +18,7 @@
         <link rel="prev" href="../lambda/">
       
       
-        <link rel="next" href="../nccl-rccl-tests/">
+        <link rel="next" href="../nebius/">
       
       
         
@@ -90,7 +90,7 @@
   
 <meta property="og:type" content="website" />
 <meta property="og:title" content="Crusoe - dstack" />
-<meta property="og:description" content="Setting up Crusoe clusters using Managed Kubernetes or VMs with InfiniBand support" />
+<meta property="og:description" content="Using Crusoe clusters with InfiniBand support via Kubernetes or VMs" />
 <meta property="og:image" content="https://dstack.ai/assets/images/social/examples/clusters/crusoe/index.png" />
 <meta property="og:image:type" content="image/png" />
 <meta property="og:image:width" content="1200" />
@@ -98,7 +98,7 @@
 <meta property="og:url" content="https://dstack.ai/examples/clusters/crusoe/" />
 <meta property="twitter:card" content="summary_large_image" />
 <meta property="twitter.title" content="Crusoe - dstack" />
-<meta property="twitter:description" content="Setting up Crusoe clusters using Managed Kubernetes or VMs with InfiniBand support" />
+<meta property="twitter:description" content="Using Crusoe clusters with InfiniBand support via Kubernetes or VMs" />
 <meta property="twitter:image" content="https://dstack.ai/assets/images/social/examples/clusters/crusoe/index.png" />
 </head>
   
@@ -3115,14 +3115,27 @@ Support dstack with a ⭐ on
     <span class="md-ellipsis">
       
         <span class="md-typeset">
-          Crusoe Managed Kubernetes
+          Kubernetes
         </span>
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Crusoe Managed Kubernetes">
+    <nav class="md-nav" aria-label="Kubernetes">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-a-cluster" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Create a cluster
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#configure-the-backend" class="md-nav__link">
@@ -3170,11 +3183,24 @@ Support dstack with a ⭐ on
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#create-a-fleet_1" class="md-nav__link">
+  <a href="#create-instances" class="md-nav__link">
     <span class="md-ellipsis">
       
         <span class="md-typeset">
-          Create a fleet
+          Create instances
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-a-dstack-fleet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Create a <code>dstack</code> fleet
         </span>
       
     </span>
@@ -3188,11 +3214,11 @@ Support dstack with a ⭐ on
 </li>
       
         <li class="md-nav__item">
-  <a href="#run-nccl-tests" class="md-nav__link">
+  <a href="#nccl-tests" class="md-nav__link">
     <span class="md-ellipsis">
       
         <span class="md-typeset">
-          Run NCCL tests
+          NCCL tests
         </span>
       
     </span>
@@ -3217,6 +3243,34 @@ Support dstack with a ⭐ on
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nebius/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Nebius
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -4074,14 +4128,27 @@ Support dstack with a ⭐ on
     <span class="md-ellipsis">
       
         <span class="md-typeset">
-          Crusoe Managed Kubernetes
+          Kubernetes
         </span>
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Crusoe Managed Kubernetes">
+    <nav class="md-nav" aria-label="Kubernetes">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-a-cluster" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Create a cluster
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#configure-the-backend" class="md-nav__link">
@@ -4129,11 +4196,24 @@ Support dstack with a ⭐ on
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#create-a-fleet_1" class="md-nav__link">
+  <a href="#create-instances" class="md-nav__link">
     <span class="md-ellipsis">
       
         <span class="md-typeset">
-          Create a fleet
+          Create instances
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-a-dstack-fleet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Create a <code>dstack</code> fleet
         </span>
       
     </span>
@@ -4147,11 +4227,11 @@ Support dstack with a ⭐ on
 </li>
       
         <li class="md-nav__item">
-  <a href="#run-nccl-tests" class="md-nav__link">
+  <a href="#nccl-tests" class="md-nav__link">
     <span class="md-ellipsis">
       
         <span class="md-typeset">
-          Run NCCL tests
+          NCCL tests
         </span>
       
     </span>
@@ -4248,22 +4328,22 @@ Support dstack with a ⭐ on
 
 
 <h1 id="crusoe">Crusoe<a class="headerlink" href="#crusoe" title="Permanent link">&para;</a></h1>
-<p>Crusoe offers two ways to use clusters with fast interconnect:</p>
+<p><code>dstack</code> allows using Crusoe clusters with fast interconnect via two ways:</p>
 <ul>
-<li><a href="#kubernetes">Crusoe Managed Kubernetes</a> – Lets you interact with clusters through the Kubernetes API and includes support for NVIDIA and AMD GPU operators and related tools.</li>
-<li><a href="#vms">Virtual Machines (VMs)</a> – Gives you direct access to clusters in the form of virtual machines with NVIDIA and AMD GPUs.</li>
+<li><a href="#kubernetes">Kubernetes</a> – If you create a Kubernetes cluster on Crusoe and configure a <code>kubernetes</code> backend and create a backend fleet in <code>dstack</code>, <code>dstack</code> lets you fully use this cluster through <code>dstack</code>.</li>
+<li><a href="#vms">VMs</a> – If you create a VM cluster on Crusoe and create an SSH fleet in <code>dstack</code>, <code>dstack</code> lets you fully use this cluster through <code>dstack</code>.</li>
 </ul>
-<p>Both options use the same underlying networking infrastructure. This example walks you through how to set up Crusoe clusters to use with <code>dstack</code>.</p>
-<h2 id="kubernetes">Crusoe Managed Kubernetes<a class="headerlink" href="#kubernetes" title="Permanent link">&para;</a></h2>
-<div class="admonition info">
-<p class="admonition-title">Prerequsisites</p>
+<h2 id="kubernetes">Kubernetes<a class="headerlink" href="#kubernetes" title="Permanent link">&para;</a></h2>
+<h3 id="create-a-cluster">Create a cluster<a class="headerlink" href="#create-a-cluster" title="Permanent link">&para;</a></h3>
 <ol>
 <li>Go <code>Networking</code> → <code>Firewall Rules</code>, click <code>Create Firewall Rule</code>, and allow ingress traffic on port <code>30022</code>. This port will be used by the <code>dstack</code> server to access the jump host.</li>
 <li>Go to <code>Orchestration</code> and click <code>Create Cluster</code>. Make sure to enable the <code>NVIDIA GPU Operator</code> add-on.</li>
-<li>Go the the cluster, and click <code>Create Node Pool</code>. Select the right type of the instance. If you intend to auto-scale the cluster, make sure to set <code>Desired Number of Nodes</code> at least to <code>1</code>, since <code>dstack</code> doesn't currently support clusters that scale down to <code>0</code> nodes.</li>
-<li>Wait until at least one node is running.</li>
+<li>Go the the cluster, and click <code>Create Node Pool</code>. Select the right type of the instance, and  <code>Desired Number of Nodes</code>.</li>
+<li>Wait until nodes are provisioned.</li>
 </ol>
-</div>
+<blockquote>
+<p>Even if you enable <code>autoscaling</code>, <code>dstack</code> can use only the nodes that are already provisioned.</p>
+</blockquote>
 <h3 id="configure-the-backend">Configure the backend<a class="headerlink" href="#configure-the-backend" title="Permanent link">&para;</a></h3>
 <p>Follow the standard instructions for setting up a <a href="https://dstack.ai/docs/concepts/backends/#kubernetes"><code>kubernetes</code></a> backend:</p>
 <div editor-title="~/.dstack/server/config.yml">
@@ -4294,7 +4374,7 @@ Support dstack with a ⭐ on
 
 <span class="nt">resources</span><span class="p">:</span>
 <span class="w">  </span><span class="c1"># Specify requirements to filter nodes</span>
-<span class="w">  </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1..8</span>
+<span class="w">  </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8</span>
 </code></pre></div>
 
 </div>
@@ -4309,14 +4389,12 @@ Support dstack with a ⭐ on
 
 <p>Once the fleet is created, you can run <a href="https://dstack.ai/docs/concepts/dev-environments">dev environments</a>, <a href="https://dstack.ai/docs/concepts/tasks">tasks</a>, and <a href="https://dstack.ai/docs/concepts/services">services</a>.</p>
 <h2 id="vms">VMs<a class="headerlink" href="#vms" title="Permanent link">&para;</a></h2>
-<p>Another way to work with Crusoe clusters is through VMs. While <code>dstack</code> typically supports VM-based compute providers via <a href="https://dstack.ai/docs/concepts/backends#vm-based">dedicated backends</a> that automate provisioning, Crusoe does not yet have <a href="https://github.com/dstackai/dstack/issues/3378">such a backend</a>. As a result, to use a VM-based Crusoe cluster with <code>dstack</code>, you should use <a href="https://dstack.ai/docs/concepts/fleets">SSH fleets</a>.</p>
-<div class="admonition info">
-<p class="admonition-title">Prerequsisites</p>
+<p>Another way to work with Crusoe clusters is through VMs. While <code>dstack</code> typically supports VM-based compute providers via <a href="https://dstack.ai/docs/concepts/backends#vm-based">dedicated backends</a> that automate provisioning, Crusoe does not yet have <a href="https://github.com/dstackai/dstack/issues/3378">such a backend</a>. As a result, to use a VM-based Crusoe cluster with <code>dstack</code>, you should use <a href="https://dstack.ai/docs/concepts/fleets#ssh-fleets">SSH fleets</a>.</p>
+<h3 id="create-instances">Create instances<a class="headerlink" href="#create-instances" title="Permanent link">&para;</a></h3>
 <ol>
 <li>Go to <code>Compute</code>, then <code>Instances</code>, and click <code>Create Instance</code>. Make sure to select the right instance type and VM image (that <a href="https://docs.crusoecloud.com/networking/infiniband/managing-infiniband-networks/index.html">support interconnect</a>). Make sure to create as many instances as needed.</li>
 </ol>
-</div>
-<h3 id="create-a-fleet_1">Create a fleet<a class="headerlink" href="#create-a-fleet_1" title="Permanent link">&para;</a></h3>
+<h3 id="create-a-dstack-fleet">Create a <code>dstack</code> fleet<a class="headerlink" href="#create-a-dstack-fleet" title="Permanent link">&para;</a></h3>
 <p>Follow the standard instructions for setting up an <a href="https://dstack.ai/docs/concepts/fleets/#ssh-fleets">SSH fleet</a>:</p>
 <div editor-title="crusoe-fleet.dstack.yml"> 
 
@@ -4345,8 +4423,8 @@ Support dstack with a ⭐ on
 </div>
 
 <p>Once the fleet is created, you can run <a href="https://dstack.ai/docs/concepts/dev-environments">dev environments</a>, <a href="https://dstack.ai/docs/concepts/tasks">tasks</a>, and <a href="https://dstack.ai/docs/concepts/services">services</a>.</p>
-<h2 id="run-nccl-tests">Run NCCL tests<a class="headerlink" href="#run-nccl-tests" title="Permanent link">&para;</a></h2>
-<p>Use a <a href="https://dstack.ai/docs/concepts/tasks#distributed-task">distributed task</a> that runs NCCL tests to validate cluster network bandwidth.</p>
+<h2 id="nccl-tests">NCCL tests<a class="headerlink" href="#nccl-tests" title="Permanent link">&para;</a></h2>
+<p>Use a <a href="https://dstack.ai/docs/concepts/tasks#distributed-tasks">distributed task</a> that runs NCCL tests to validate cluster network bandwidth.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="crusoe-managed-kubernetes" name="__tabbed_1" type="radio" /><input id="vms_1" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="crusoe-managed-kubernetes">Crusoe Managed Kubernetes</label><label for="vms_1">VMs</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -4476,9 +4554,9 @@ Provisioning...
 
 nccl-tests<span class="w"> </span>provisioning<span class="w"> </span>completed<span class="w"> </span><span class="o">(</span>running<span class="o">)</span>
 
-<span class="c1">#                                                              out-of-place                       in-place</span>
-<span class="c1">#       size         count      type   redop    root     time   algbw   busbw  #wrong     time   algbw   busbw  #wrong</span>
-<span class="c1">#        (B)    (elements)                               (us)  (GB/s)  (GB/s)             (us)  (GB/s)  (GB/s)</span>
+out-of-place<span class="w">                       </span><span class="k">in</span>-place
+<span class="w">        </span>size<span class="w">         </span>count<span class="w">      </span><span class="nb">type</span><span class="w">   </span>redop<span class="w">    </span>root<span class="w">     </span><span class="nb">time</span><span class="w">   </span>algbw<span class="w">   </span>busbw<span class="w">  </span><span class="c1">#wrong     time   algbw   busbw  #wrong</span>
+<span class="w">         </span><span class="o">(</span>B<span class="o">)</span><span class="w">    </span><span class="o">(</span>elements<span class="o">)</span><span class="w">                               </span><span class="o">(</span>us<span class="o">)</span><span class="w">  </span><span class="o">(</span>GB/s<span class="o">)</span><span class="w">  </span><span class="o">(</span>GB/s<span class="o">)</span><span class="w">             </span><span class="o">(</span>us<span class="o">)</span><span class="w">  </span><span class="o">(</span>GB/s<span class="o">)</span><span class="w">  </span><span class="o">(</span>GB/s<span class="o">)</span>
 <span class="w">           </span><span class="m">8</span><span class="w">             </span><span class="m">2</span><span class="w">     </span>float<span class="w">     </span>sum<span class="w">      </span>-1<span class="w">    </span><span class="m">27</span>.70<span class="w">    </span><span class="m">0</span>.00<span class="w">    </span><span class="m">0</span>.00<span class="w">       </span><span class="m">0</span><span class="w">    </span><span class="m">29</span>.82<span class="w">    </span><span class="m">0</span>.00<span class="w">    </span><span class="m">0</span>.00<span class="w">       </span><span class="m">0</span>
 <span class="w">          </span><span class="m">16</span><span class="w">             </span><span class="m">4</span><span class="w">     </span>float<span class="w">     </span>sum<span class="w">      </span>-1<span class="w">    </span><span class="m">28</span>.78<span class="w">    </span><span class="m">0</span>.00<span class="w">    </span><span class="m">0</span>.00<span class="w">       </span><span class="m">0</span><span class="w">    </span><span class="m">28</span>.99<span class="w">    </span><span class="m">0</span>.00<span class="w">    </span><span class="m">0</span>.00<span class="w">       </span><span class="m">0</span>
 <span class="w">          </span><span class="m">32</span><span class="w">             </span><span class="m">8</span><span class="w">     </span>float<span class="w">     </span>sum<span class="w">      </span>-1<span class="w">    </span><span class="m">28</span>.49<span class="w">    </span><span class="m">0</span>.00<span class="w">    </span><span class="m">0</span>.00<span class="w">       </span><span class="m">0</span><span class="w">    </span><span class="m">28</span>.16<span class="w">    </span><span class="m">0</span>.00<span class="w">    </span><span class="m">0</span>.00<span class="w">       </span><span class="m">0</span>
@@ -4508,8 +4586,8 @@ nccl-tests<span class="w"> </span>provisioning<span class="w"> </span>completed<
 <span class="w">   </span><span class="m">536870912</span><span class="w">     </span><span class="m">134217728</span><span class="w">     </span>float<span class="w">     </span>sum<span class="w">      </span>-1<span class="w">  </span><span class="m">5300</span>.49<span class="w">  </span><span class="m">101</span>.29<span class="w">  </span><span class="m">189</span>.91<span class="w">       </span><span class="m">0</span><span class="w">  </span><span class="m">5314</span>.91<span class="w">  </span><span class="m">101</span>.01<span class="w">  </span><span class="m">189</span>.40<span class="w">       </span><span class="m">0</span>
 <span class="w">  </span><span class="m">1073741824</span><span class="w">     </span><span class="m">268435456</span><span class="w">     </span>float<span class="w">     </span>sum<span class="w">      </span>-1<span class="w">  </span><span class="m">10472</span>.2<span class="w">  </span><span class="m">102</span>.53<span class="w">  </span><span class="m">192</span>.25<span class="w">       </span><span class="m">0</span><span class="w">  </span><span class="m">10485</span>.6<span class="w">  </span><span class="m">102</span>.40<span class="w">  </span><span class="m">192</span>.00<span class="w">       </span><span class="m">0</span>
 <span class="w">  </span><span class="m">2147483648</span><span class="w">     </span><span class="m">536870912</span><span class="w">     </span>float<span class="w">     </span>sum<span class="w">      </span>-1<span class="w">  </span><span class="m">20749</span>.1<span class="w">  </span><span class="m">103</span>.50<span class="w">  </span><span class="m">194</span>.06<span class="w">       </span><span class="m">0</span><span class="w">  </span><span class="m">20745</span>.7<span class="w">  </span><span class="m">103</span>.51<span class="w">  </span><span class="m">194</span>.09<span class="w">       </span><span class="m">0</span>
-<span class="c1"># Out of bounds values : 0 OK</span>
-<span class="c1"># Avg bus bandwidth    : 53.7387</span>
+<span class="w">  </span>Out<span class="w"> </span>of<span class="w"> </span>bounds<span class="w"> </span>values<span class="w"> </span>:<span class="w"> </span><span class="m">0</span><span class="w"> </span>OK
+<span class="w">  </span>Avg<span class="w"> </span>bus<span class="w"> </span>bandwidth<span class="w">    </span>:<span class="w"> </span><span class="m">53</span>.7387
 </code></pre></div>
 
 </div>
@@ -4560,13 +4638,13 @@ nccl-tests<span class="w"> </span>provisioning<span class="w"> </span>completed<
             
             
               
-              <a href="../nccl-rccl-tests/" class="md-footer__link md-footer__link--next" aria-label="Next: NCCL/RCCL tests">
+              <a href="../nebius/" class="md-footer__link md-footer__link--next" aria-label="Next: Nebius">
                 <div class="md-footer__title">
                   <span class="md-footer__direction">
                     Next
                   </span>
                   <div class="md-ellipsis">
-                    NCCL/RCCL tests
+                    Nebius
                   </div>
                 </div>
                 <div class="md-footer__button md-icon">

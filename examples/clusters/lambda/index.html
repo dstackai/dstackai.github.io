@@ -3097,6 +3097,19 @@ Support dstack with a ⭐ on
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#prerequsisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Prerequsisites
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#configure-the-backend" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3140,6 +3153,19 @@ Support dstack with a ⭐ on
   
     <nav class="md-nav" aria-label="1-Click Clusters">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prerequsisites_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Prerequsisites
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#create-a-fleet_1" class="md-nav__link">
@@ -3228,6 +3254,34 @@ Support dstack with a ⭐ on
     
   
     Crusoe
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nebius/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Nebius
   
 
     
@@ -4103,6 +4157,19 @@ Support dstack with a ⭐ on
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#prerequsisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Prerequsisites
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#configure-the-backend" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -4146,6 +4213,19 @@ Support dstack with a ⭐ on
   
     <nav class="md-nav" aria-label="1-Click Clusters">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prerequsisites_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Prerequsisites
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#create-a-fleet_1" class="md-nav__link">
@@ -4286,20 +4366,17 @@ Support dstack with a ⭐ on
 
 
 <h1 id="lambda">Lambda<a class="headerlink" href="#lambda" title="Permanent link">&para;</a></h1>
-<p><a href="https://lambda.ai/">Lambda</a> offers two ways to use clusters with a fast interconnect:</p>
+<p><code>dstack</code> allows using Lambda clusters with fast interconnect via two ways:</p>
 <ul>
-<li><a href="#kubernetes">Kubernetes</a> – Lets you interact with clusters through the Kubernetes API and includes support for NVIDIA GPU operators and related tools.</li>
-<li><a href="#1-click-clusters">1-Click Clusters (1CC)</a> – Gives you direct access to clusters in the form of bare-metal nodes.</li>
+<li><a href="#kubernetes">Kubernetes</a> – If you create a Kubernetes cluster on Lambda and configure a <code>kubernetes</code> backend and create a backend fleet in <code>dstack</code>, <code>dstack</code> lets you fully use this cluster through <code>dstack</code>.</li>
+<li><a href="#vms">VMs</a> – If you create a 1CC cluster on Lambda and create an SSH fleet in <code>dstack</code>, <code>dstack</code> lets you fully use this cluster through <code>dstack</code>.</li>
 </ul>
-<p>Both options use the same underlying networking infrastructure. This example walks you through how to set up Lambda clusters to use with <code>dstack</code>.</p>
 <h2 id="kubernetes">Kubernetes<a class="headerlink" href="#kubernetes" title="Permanent link">&para;</a></h2>
-<div class="admonition info">
-<p class="admonition-title">Prerequsisites</p>
+<h3 id="prerequsisites">Prerequsisites<a class="headerlink" href="#prerequsisites" title="Permanent link">&para;</a></h3>
 <ol>
 <li>Follow the instructions in <a href="https://docs.lambda.ai/public-cloud/1-click-clusters/managed-kubernetes/#accessing-mk8s">Lambda's guide</a> on accessing MK8s.</li>
 <li>Go to <code>Firewall</code> → <code>Edit rules</code>, click <code>Add rule</code>, and allow ingress traffic on port <code>30022</code>. This port will be used by the <code>dstack</code> server to access the jump host.</li>
 </ol>
-</div>
 <h3 id="configure-the-backend">Configure the backend<a class="headerlink" href="#configure-the-backend" title="Permanent link">&para;</a></h3>
 <p>Follow the standard instructions for setting up a <a href="https://dstack.ai/docs/concepts/backends/#kubernetes">Kubernetes</a> backend:</p>
 <div editor-title="~/.dstack/server/config.yml">
@@ -4346,12 +4423,10 @@ Support dstack with a ⭐ on
 <p>Once the fleet is created, you can run <a href="https://dstack.ai/docs/concepts/dev-environments">dev environments</a>, <a href="https://dstack.ai/docs/concepts/tasks">tasks</a>, and <a href="https://dstack.ai/docs/concepts/services">services</a>.</p>
 <h2 id="1-click-clusters">1-Click Clusters<a class="headerlink" href="#1-click-clusters" title="Permanent link">&para;</a></h2>
 <p>Another way to work with Lambda clusters is through <a href="https://lambda.ai/1-click-clusters">1CC</a>. While <code>dstack</code> supports automated cluster provisioning via <a href="https://dstack.ai/docs/concepts/backends#vm-based">VM-based backends</a>, there is currently no programmatic way to provision Lambda 1CCs. As a result, to use a 1CC cluster with <code>dstack</code>, you must use <a href="https://dstack.ai/docs/concepts/fleets">SSH fleets</a>.</p>
-<div class="admonition info">
-<p class="admonition-title">Prerequsisites</p>
+<h3 id="prerequsisites_1">Prerequsisites<a class="headerlink" href="#prerequsisites_1" title="Permanent link">&para;</a></h3>
 <ol>
 <li>Follow the instructions in <a href="https://docs.lambda.ai/public-cloud/1-click-clusters/">Lambda's guide</a> on working with 1-Click Clusters</li>
 </ol>
-</div>
 <h3 id="create-a-fleet_1">Create a fleet<a class="headerlink" href="#create-a-fleet_1" title="Permanent link">&para;</a></h3>
 <p>Follow the standard instructions for setting up an <a href="https://dstack.ai/docs/concepts/fleets/#ssh-fleets">SSH fleet</a>:</p>
 <div editor-title="lambda-fleet.dstack.yml"> 
@@ -4433,11 +4508,11 @@ Support dstack with a ⭐ on
 Provisioning...
 ---&gt;<span class="w"> </span><span class="m">100</span>%
 
-<span class="c1"># nccl-tests version 2.17.6 nccl-headers=22602 nccl-library=22602</span>
-<span class="c1"># Collective test starting: all_reduce_perf</span>
-<span class="c1">#</span>
-<span class="c1">#       size         count      type   redop    root     time   algbw   busbw  #wrong     time   algbw   busbw  #wrong</span>
-<span class="c1">#        (B)    (elements)                               (us)  (GB/s)  (GB/s)             (us)  (GB/s)  (GB/s)</span>
+<span class="w">  </span>nccl-tests<span class="w"> </span>version<span class="w"> </span><span class="m">2</span>.17.6<span class="w"> </span>nccl-headers<span class="o">=</span><span class="m">22602</span><span class="w"> </span>nccl-library<span class="o">=</span><span class="m">22602</span>
+<span class="w">  </span>Collective<span class="w"> </span><span class="nb">test</span><span class="w"> </span>starting:<span class="w"> </span>all_reduce_perf
+
+<span class="w">        </span>size<span class="w">         </span>count<span class="w">      </span><span class="nb">type</span><span class="w">   </span>redop<span class="w">    </span>root<span class="w">     </span><span class="nb">time</span><span class="w">   </span>algbw<span class="w">   </span>busbw<span class="w">  </span><span class="c1">#wrong     time   algbw   busbw  #wrong</span>
+<span class="w">         </span><span class="o">(</span>B<span class="o">)</span><span class="w">    </span><span class="o">(</span>elements<span class="o">)</span><span class="w">                               </span><span class="o">(</span>us<span class="o">)</span><span class="w">  </span><span class="o">(</span>GB/s<span class="o">)</span><span class="w">  </span><span class="o">(</span>GB/s<span class="o">)</span><span class="w">             </span><span class="o">(</span>us<span class="o">)</span><span class="w">  </span><span class="o">(</span>GB/s<span class="o">)</span><span class="w">  </span><span class="o">(</span>GB/s<span class="o">)</span>
 <span class="w">           </span><span class="m">8</span><span class="w">             </span><span class="m">2</span><span class="w">     </span>float<span class="w">     </span>sum<span class="w">      </span>-1<span class="w">    </span><span class="m">36</span>.50<span class="w">    </span><span class="m">0</span>.00<span class="w">    </span><span class="m">0</span>.00<span class="w">       </span><span class="m">0</span><span class="w">    </span><span class="m">36</span>.16<span class="w">    </span><span class="m">0</span>.00<span class="w">    </span><span class="m">0</span>.00<span class="w">       </span><span class="m">0</span>
 <span class="w">          </span><span class="m">16</span><span class="w">             </span><span class="m">4</span><span class="w">     </span>float<span class="w">     </span>sum<span class="w">      </span>-1<span class="w">    </span><span class="m">35</span>.55<span class="w">    </span><span class="m">0</span>.00<span class="w">    </span><span class="m">0</span>.00<span class="w">       </span><span class="m">0</span><span class="w">    </span><span class="m">35</span>.49<span class="w">    </span><span class="m">0</span>.00<span class="w">    </span><span class="m">0</span>.00<span class="w">       </span><span class="m">0</span>
 <span class="w">          </span><span class="m">32</span><span class="w">             </span><span class="m">8</span><span class="w">     </span>float<span class="w">     </span>sum<span class="w">      </span>-1<span class="w">    </span><span class="m">35</span>.49<span class="w">    </span><span class="m">0</span>.00<span class="w">    </span><span class="m">0</span>.00<span class="w">       </span><span class="m">0</span><span class="w">    </span><span class="m">36</span>.28<span class="w">    </span><span class="m">0</span>.00<span class="w">    </span><span class="m">0</span>.00<span class="w">       </span><span class="m">0</span>
@@ -4467,8 +4542,8 @@ Provisioning...
 <span class="w">   </span><span class="m">536870912</span><span class="w">     </span><span class="m">134217728</span><span class="w">     </span>float<span class="w">     </span>sum<span class="w">      </span>-1<span class="w">  </span><span class="m">1625</span>.63<span class="w">  </span><span class="m">330</span>.25<span class="w">  </span><span class="m">619</span>.23<span class="w">       </span><span class="m">0</span><span class="w">  </span><span class="m">1687</span>.31<span class="w">  </span><span class="m">318</span>.18<span class="w">  </span><span class="m">596</span>.59<span class="w">       </span><span class="m">0</span>
 <span class="w">  </span><span class="m">1073741824</span><span class="w">     </span><span class="m">268435456</span><span class="w">     </span>float<span class="w">     </span>sum<span class="w">      </span>-1<span class="w">  </span><span class="m">2972</span>.25<span class="w">  </span><span class="m">361</span>.26<span class="w">  </span><span class="m">677</span>.35<span class="w">       </span><span class="m">0</span><span class="w">  </span><span class="m">2971</span>.33<span class="w">  </span><span class="m">361</span>.37<span class="w">  </span><span class="m">677</span>.56<span class="w">       </span><span class="m">0</span>
 <span class="w">  </span><span class="m">2147483648</span><span class="w">     </span><span class="m">536870912</span><span class="w">     </span>float<span class="w">     </span>sum<span class="w">      </span>-1<span class="w">  </span><span class="m">5784</span>.75<span class="w">  </span><span class="m">371</span>.23<span class="w">  </span><span class="m">696</span>.06<span class="w">       </span><span class="m">0</span><span class="w">  </span><span class="m">5728</span>.40<span class="w">  </span><span class="m">374</span>.88<span class="w">  </span><span class="m">702</span>.91<span class="w">       </span><span class="m">0</span>
-<span class="c1"># Out of bounds values : 0 OK</span>
-<span class="c1"># Avg bus bandwidth    : 137.179</span>
+<span class="w">  </span>Out<span class="w"> </span>of<span class="w"> </span>bounds<span class="w"> </span>values<span class="w"> </span>:<span class="w"> </span><span class="m">0</span><span class="w"> </span>OK
+<span class="w">  </span>Avg<span class="w"> </span>bus<span class="w"> </span>bandwidth<span class="w">    </span>:<span class="w"> </span><span class="m">137</span>.179
 </code></pre></div>
 
 </div>
