@@ -87,6 +87,9 @@
 
     
     
+<link rel="preload" href="../../../assets/fonts/GeistPixel-Square.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../../../assets/fonts/GeistPixel-Circle.woff2" as="font" type="font/woff2" crossorigin>
+
   
 <meta property="og:type" content="website" />
 <meta property="og:title" content="Dev environments - dstack" />
@@ -5069,10 +5072,14 @@ The latter determines how soon the underlying cloud instance will be terminated
 <p>By default, <code>dstack</code> uses on-demand instances. However, you can change that
 via the <a href="../../reference/dstack.yml/dev-environment/#spot_policy"><code>spot_policy</code></a> property. It accepts <code>spot</code>, <code>on-demand</code>, and <code>auto</code>.</p>
 <h3 id="idle-duration">Idle duration<a class="headerlink" href="#idle-duration" title="Permanent link">&para;</a></h3>
-<p>If a run provisions a new instance, the instance stays <code>idle</code> for 5 minutes by default and can be reused within that time.
-If the instance is not reused within this period, it is automatically terminated.
-To change the default idle duration, set
-<a href="../../reference/dstack.yml/fleet/#idle_duration"><code>idle_duration</code></a> in the run configuration (e.g., <code>0s</code>, <code>1m</code>, or <code>off</code> for unlimited).</p>
+<p>If the run is submitted to a fleet with <code>nodes</code> set to a range and a new instance is provisioned,
+the shorter of the fleet's and run's <code>idle_duration</code> is used.
+If the run reuses an existing fleet instance, only the fleet's
+<a href="../../reference/dstack.yml/fleet/#idle_duration"><code>idle_duration</code></a> applies.</p>
+<p>If an instance remains <code>idle</code>, it is automatically terminated after <code>idle_duration</code>.</p>
+<blockquote>
+<p>Not applied for container-based backends (Kubernetes, Vast.ai, RunPod).</p>
+</blockquote>
 <div class="admonition info">
 <p class="admonition-title">Reference</p>
 <p>Dev environments support many more configuration options,

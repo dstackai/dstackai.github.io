@@ -87,6 +87,9 @@
 
     
     
+<link rel="preload" href="../../../../../assets/fonts/GeistPixel-Square.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../../../../../assets/fonts/GeistPixel-Circle.woff2" as="font" type="font/woff2" crossorigin>
+
   
 <meta property="og:type" content="website" />
 <meta property="og:title" content="dstack apply - dstack" />
@@ -4152,6 +4155,7 @@ or specify a repo to work with via <code>-P</code> (or <code>--repo</code>), or 
 
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>dstack<span class="w"> </span>apply<span class="w"> </span>--help
 Usage:<span class="w"> </span>dstack<span class="w"> </span>apply<span class="w"> </span><span class="o">[</span>--project<span class="w"> </span>NAME<span class="o">]</span><span class="w"> </span><span class="o">[</span>-h<span class="w"> </span><span class="o">[</span>TYPE<span class="o">]]</span><span class="w"> </span><span class="o">[</span>-f<span class="w"> </span>FILE<span class="o">]</span><span class="w"> </span><span class="o">[</span>-y<span class="o">]</span><span class="w"> </span><span class="o">[</span>--force<span class="o">]</span><span class="w"> </span><span class="o">[</span>-d<span class="o">]</span>
+<span class="w">                    </span><span class="o">[</span>-v<span class="o">]</span>
 
 Options:
 <span class="w">  </span>--project<span class="w"> </span>NAME<span class="w">        </span>The<span class="w"> </span>name<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>project.<span class="w"> </span>Defaults<span class="w"> </span>to<span class="w"> </span><span class="nv">$DSTACK_PROJECT</span>
@@ -4161,6 +4165,8 @@ Options:
 <span class="w">  </span>-y,<span class="w"> </span>--yes<span class="w">             </span>Do<span class="w"> </span>not<span class="w"> </span>ask<span class="w"> </span><span class="k">for</span><span class="w"> </span>confirmation
 <span class="w">  </span>--force<span class="w">               </span>Force<span class="w"> </span>apply<span class="w"> </span>when<span class="w"> </span>no<span class="w"> </span>changes<span class="w"> </span>detected
 <span class="w">  </span>-d,<span class="w"> </span>--detach<span class="w">          </span>Exit<span class="w"> </span>immediately<span class="w"> </span>after<span class="w"> </span>submitting<span class="w"> </span>configuration
+<span class="w">  </span>-v,<span class="w"> </span>--verbose<span class="w">         </span>Show<span class="w"> </span>all<span class="w"> </span>plan<span class="w"> </span>properties<span class="w"> </span>including<span class="w"> </span>those<span class="w"> </span>with<span class="w"> </span>default
+<span class="w">                        </span>values
 
 Type<span class="w"> </span><span class="sb">`</span>dstack<span class="w"> </span>apply<span class="w"> </span>-h<span class="w"> </span>CONFIGURATION_TYPE<span class="sb">`</span><span class="w"> </span>to<span class="w"> </span>see<span class="w"> </span>configuration-specific<span class="w"> </span>options.
 </code></pre></div>
