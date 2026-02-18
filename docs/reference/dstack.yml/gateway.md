@@ -9,7 +9,7 @@ The `gateway` configuration type allows creating and updating [gateways](../../c
 ###### `backend` - (Required) `"amddevcloud" | "aws" | "azure" | "cloudrift" | "cudo" | "datacrunch" | "digitalocean" | "dstack" | "gcp" | "hotaisle" | "kubernetes" | "lambda" | "local" | "remote" | "nebius" | "oci" | "runpod" | "tensordock" | "vastai" | "verda" | "vultr"` The gateway backend. { #backend data-toc-label='backend' class='reference-item' }
 ###### `region` - (Required) `str` The gateway region. { #region data-toc-label='region' class='reference-item' }
 ###### `instance_type` - (Optional) `str` Backend-specific instance type to use for the gateway instance. Omit to use the backend's default, which is typically a small non-GPU instance. { #instance_type data-toc-label='instance_type' class='reference-item' }
-###### [`router`](#router) - (Optional) `object` The router configuration. { #_router data-toc-label='router' class='reference-item' }
+###### [`router`](#router) - (Optional) `object` The router configuration for this gateway. E.g. `{ type: sglang, policy: round_robin }`.. { #_router data-toc-label='router' class='reference-item' }
 ###### `domain` - (Optional) `str` The gateway domain, e.g. `example.com`. { #domain data-toc-label='domain' class='reference-item' }
 ###### `public_ip` - (Optional) `bool` Allocate public IP for the gateway. Defaults to `True`. { #public_ip data-toc-label='public_ip' class='reference-item' }
 ###### [`certificate`](#certificate) - (Optional) `object` The SSL certificate configuration. Defaults to `type: lets-encrypt`. { #_certificate data-toc-label='certificate' class='reference-item' }
@@ -20,8 +20,8 @@ The `gateway` configuration type allows creating and updating [gateways](../../c
 
 === "SGLang Model Gateway"
 
-    ###### `type` - (Required) `"sglang"` The router type. Must be `sglang`. { #type data-toc-label='type' class='reference-item' }
-    ###### `policy` - (Optional) `"random" | "round_robin" | "cache_aware" | "power_of_two"` The routing policy. Options: `random`, `round_robin`, `cache_aware`, `power_of_two`. Defaults to `cache_aware`. { #policy data-toc-label='policy' class='reference-item' }
+    ###### `type` - (Required) `"sglang"` The router type enabled on this gateway.. Must be `sglang`. { #type data-toc-label='type' class='reference-item' }
+    ###### `policy` - (Optional) `"random" | "round_robin" | "cache_aware" | "power_of_two"` The routing policy. Deprecated: prefer setting policy in the service's router config. Options: `random`, `round_robin`, `cache_aware`, `power_of_two`. Defaults to `cache_aware`. { #policy data-toc-label='policy' class='reference-item' }
 
 
 ### `certificate`

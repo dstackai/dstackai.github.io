@@ -140,6 +140,7 @@ finally:
 ###### [`rate_limits`](#rate_limits) - (Optional) `list[object]` Rate limiting rules. { #_rate_limits data-toc-label='rate_limits' class='reference-item' }
 ###### [`probes`](#probes) - (Optional) `list[object]` The list of probes to determine service health. If `model` is set, defaults to a `/v1/chat/completions` probe. Set explicitly to override. { #_probes data-toc-label='probes' class='reference-item' }
 ###### [`replicas`](#replicas) - (Optional) `int | str | list[object]` The number of replicas or a list of replica groups. Can be an integer (e.g., `2`), a range (e.g., `0..4`), or a list of replica groups. Each replica group defines replicas with shared configuration (commands, resources, scaling). When `replicas` is a list of replica groups, top-level `scaling`, `commands`, and `resources` are not allowed and must be specified in each replica group instead. . { #_replicas data-toc-label='replicas' class='reference-item' }
+###### [`router`](#router) - (Optional) `object` Router configuration for the service. Requires a gateway with matching router enabled. . { #_router data-toc-label='router' class='reference-item' }
 ###### `commands` - (Optional) `list[str]` The shell commands to run. { #commands data-toc-label='commands' class='reference-item' }
 ###### `name` - (Optional) `str` The run name. If not specified, a random name is generated. { #name data-toc-label='name' class='reference-item' }
 ###### `image` - (Optional) `str` The name of the Docker image to run. { #image data-toc-label='image' class='reference-item' }

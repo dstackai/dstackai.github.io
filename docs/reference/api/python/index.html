@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../../../assets/images/dstack-fav-32.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.2">
     
     
       
@@ -87,6 +87,8 @@
 
     
     
+<link rel="preload" href="../../../../assets/fonts/Geist-Variable.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../../../../assets/fonts/GeistMono-Variable.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../../../../assets/fonts/GeistPixel-Square.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../../../../assets/fonts/GeistPixel-Circle.woff2" as="font" type="font/woff2" crossorigin>
 
@@ -5774,6 +5776,7 @@ the user's credentials. Ignored for other repo types.</p>
 <h6 class="reference-item" id="_rate_limits"><a href="#rate_limits"><code>rate_limits</code></a> - (Optional) <code>list[object]</code> Rate limiting rules.<a class="headerlink" href="#_rate_limits" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="_probes"><a href="#probes"><code>probes</code></a> - (Optional) <code>list[object]</code> The list of probes to determine service health. If <code>model</code> is set, defaults to a <code>/v1/chat/completions</code> probe. Set explicitly to override.<a class="headerlink" href="#_probes" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="_replicas"><a href="#replicas"><code>replicas</code></a> - (Optional) <code>int | str | list[object]</code> The number of replicas or a list of replica groups. Can be an integer (e.g., <code>2</code>), a range (e.g., <code>0..4</code>), or a list of replica groups. Each replica group defines replicas with shared configuration (commands, resources, scaling). When <code>replicas</code> is a list of replica groups, top-level <code>scaling</code>, <code>commands</code>, and <code>resources</code> are not allowed and must be specified in each replica group instead. .<a class="headerlink" href="#_replicas" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="_router"><a href="#router"><code>router</code></a> - (Optional) <code>object</code> Router configuration for the service. Requires a gateway with matching router enabled. .<a class="headerlink" href="#_router" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="commands"><code>commands</code> - (Optional) <code>list[str]</code> The shell commands to run.<a class="headerlink" href="#commands" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="name"><code>name</code> - (Optional) <code>str</code> The run name. If not specified, a random name is generated.<a class="headerlink" href="#name" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="image"><code>image</code> - (Optional) <code>str</code> The name of the Docker image to run.<a class="headerlink" href="#image" title="Permanent link">&para;</a></h6>
