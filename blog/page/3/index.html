@@ -3722,6 +3722,17 @@ Support dstack with a ⭐ on
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#supporting-mpi-and-ncclrccl-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Supporting MPI and NCCL/RCCL tests
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#exporting-gpu-cost-and-other-metrics-to-prometheus" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3814,17 +3825,6 @@ Support dstack with a ⭐ on
     <span class="md-ellipsis">
       
         Beyond Kubernetes: 2024 recap and what's ahead for AI infra
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#exploring-inference-memory-saturation-effect-h100-vs-mi300x" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Exploring inference memory saturation effect: H100 vs MI300x
       
     </span>
   </a>
@@ -4095,6 +4095,17 @@ Support dstack with a ⭐ on
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#supporting-mpi-and-ncclrccl-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Supporting MPI and NCCL/RCCL tests
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#exporting-gpu-cost-and-other-metrics-to-prometheus" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -4193,17 +4204,6 @@ Support dstack with a ⭐ on
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#exploring-inference-memory-saturation-effect-h100-vs-mi300x" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Exploring inference memory saturation effect: H100 vs MI300x
-      
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -4218,6 +4218,59 @@ Support dstack with a ⭐ on
       <header class="md-typeset">
         <h1 id="blog">Blog<a class="headerlink" href="#blog" title="Permanent link">&para;</a></h1>
       </header>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2025-04-02 00:00:00+00:00">April 2, 2025</time></li>
+        
+          <li class="md-meta__item">
+            in
+            
+              <a href="../../changelog/" class="md-meta__link">Changelog</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              2 min read
+            
+          </li>
+        
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="supporting-mpi-and-ncclrccl-tests"><a class="toclink" href="../../mpi/">Supporting MPI and NCCL/RCCL tests</a></h2>
+<p>As AI models grow in complexity, efficient orchestration tools become increasingly important. 
+<a href="../../../docs/concepts/fleets/">Fleets</a> introduced by <code>dstack</code> last year streamline 
+<a href="../../../docs/concepts/tasks/">task execution</a> on both cloud and 
+on-prem clusters, whether it's pre-training, fine-tuning, or batch processing.</p>
+<p>The strength of <code>dstack</code> lies in its flexibility. Users can leverage distributed framework like
+<code>torchrun</code>, <code>accelerate</code>, or others. <code>dstack</code> handles node provisioning, job execution, and automatically propagates
+system environment variables—such as <code>DSTACK_NODE_RANK</code>, <code>DSTACK_MASTER_NODE_IP</code>,
+<code>DSTACK_GPUS_PER_NODE</code> and <a href="../../../docs/concepts/tasks/#system-environment-variables">others</a>—to containers.</p>
+<p><img src="https://dstack.ai/static-assets/static-assets/images/dstack-mpi-v2.png" width="630"/></p>
+<p>One use case <code>dstack</code> hasn’t supported until now is MPI, as it requires a scheduled environment or
+direct SSH connections between containers. Since <code>mpirun</code> is essential for running NCCL/RCCL tests—crucial for large-scale
+cluster usage—we’ve added support for it.</p>
+
+    
+      <nav class="md-post__action">
+        <a href="../../mpi/">
+            <span>Continue reading</span>
+            <span class="icon"><svg viewBox="0 0 13 10" xmlns="http://www.w3.org/2000/svg"><path d="M12.823 4.164L8.954.182a.592.592 0 0 0-.854 0 .635.635 0 0 0 0 .88l2.836 2.92H.604A.614.614 0 0 0 0 4.604c0 .344.27.622.604.622h10.332L8.1 8.146a.635.635 0 0 0 0 .88.594.594 0 0 0 .854 0l3.869-3.982a.635.635 0 0 0 0-.88z" fill-rule="nonzero" fill="currentColor" class="fill-main"></path></svg></span>
+        </a>
+      </nav>
+    
+    
+  </div>
+</article>
       
         <article class="md-post md-post--excerpt">
   <header class="md-post__header">
@@ -4634,58 +4687,6 @@ cloud or hardware vendor. </p>
     
       <nav class="md-post__action">
         <a href="../../beyond-kubernetes-2024-recap-and-whats-ahead/">
-            <span>Continue reading</span>
-            <span class="icon"><svg viewBox="0 0 13 10" xmlns="http://www.w3.org/2000/svg"><path d="M12.823 4.164L8.954.182a.592.592 0 0 0-.854 0 .635.635 0 0 0 0 .88l2.836 2.92H.604A.614.614 0 0 0 0 4.604c0 .344.27.622.604.622h10.332L8.1 8.146a.635.635 0 0 0 0 .88.594.594 0 0 0 .854 0l3.869-3.982a.635.635 0 0 0 0-.88z" fill-rule="nonzero" fill="currentColor" class="fill-main"></path></svg></span>
-        </a>
-      </nav>
-    
-    
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2024-12-05 00:00:00+00:00">December 5, 2024</time></li>
-        
-          <li class="md-meta__item">
-            in
-            
-              <a href="../../benchmarks/" class="md-meta__link">Benchmarks</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              6 min read
-            
-          </li>
-        
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="exploring-inference-memory-saturation-effect-h100-vs-mi300x"><a class="toclink" href="../../h100-mi300x-inference-benchmark/">Exploring inference memory saturation effect: H100 vs MI300x</a></h2>
-<p>GPU memory plays a critical role in LLM inference, affecting both performance and cost. This benchmark evaluates memory
-saturation’s impact on inference using NVIDIA's H100 and AMD's MI300x with Llama 3.1 405B FP8.</p>
-<p>We examine the effect of limited parallel computational resources on throughput and Time to First Token (TTFT).
-Additionally, we compare deployment strategies: running two Llama 3.1 405B FP8 replicas on 4xMI300x versus a single
-replica on 4xMI300x and 8xMI300x</p>
-<p>Finally, we extrapolate performance projections for upcoming GPUs like NVIDIA H200, B200, and AMD MI325x, MI350x.</p>
-<p><img src="https://dstack.ai/static-assets/static-assets/images/h100-mi300x-inference-benchmark-v2.png" width="630"/></p>
-<p>This benchmark is made possible through the generous support of our friends at
-<a href="https://hotaisle.xyz/">Hot Aisle</a> and 
-<a href="https://lambdalabs.com/">Lambda</a>,
-who provided high-end hardware.</p>
-
-    
-      <nav class="md-post__action">
-        <a href="../../h100-mi300x-inference-benchmark/">
             <span>Continue reading</span>
             <span class="icon"><svg viewBox="0 0 13 10" xmlns="http://www.w3.org/2000/svg"><path d="M12.823 4.164L8.954.182a.592.592 0 0 0-.854 0 .635.635 0 0 0 0 .88l2.836 2.92H.604A.614.614 0 0 0 0 4.604c0 .344.27.622.604.622h10.332L8.1 8.146a.635.635 0 0 0 0 .88.594.594 0 0 0 .854 0l3.869-3.982a.635.635 0 0 0 0-.88z" fill-rule="nonzero" fill="currentColor" class="fill-main"></path></svg></span>
         </a>

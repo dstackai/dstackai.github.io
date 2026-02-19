@@ -3813,6 +3813,17 @@ Support dstack with a ⭐ on
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#model-inference-with-prefill-decode-disaggregation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Model inference with Prefill-Decode disaggregation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#dstack-020-ga-fleet-first-ux-and-other-important-changes" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3905,17 +3916,6 @@ Support dstack with a ⭐ on
     <span class="md-ellipsis">
       
         Rolling deployment, Secrets, Files, Tenstorrent, and more
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#supporting-arm-and-nvidia-gh200-on-lambda" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Supporting ARM and NVIDIA GH200 on Lambda
       
     </span>
   </a>
@@ -4099,6 +4099,17 @@ Support dstack with a ⭐ on
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#model-inference-with-prefill-decode-disaggregation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Model inference with Prefill-Decode disaggregation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#dstack-020-ga-fleet-first-ux-and-other-important-changes" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -4197,17 +4208,6 @@ Support dstack with a ⭐ on
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#supporting-arm-and-nvidia-gh200-on-lambda" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Supporting ARM and NVIDIA GH200 on Lambda
-      
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -4222,6 +4222,50 @@ Support dstack with a ⭐ on
       <header class="md-typeset">
         <h1 id="changelog">Changelog<a class="headerlink" href="#changelog" title="Permanent link">&para;</a></h1>
       </header>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2026-02-19 00:00:00+00:00">February 19, 2026</time></li>
+        
+          <li class="md-meta__item">
+            in
+            
+              <a href="./" class="md-meta__link">Changelog</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              2 min read
+            
+          </li>
+        
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="model-inference-with-prefill-decode-disaggregation"><a class="toclink" href="../pd-disaggregation/">Model inference with Prefill-Decode disaggregation</a></h2>
+<p>While <code>dstack</code> started as a GPU-native orchestrator for development and training, over the last year it has increasingly brought inference to the forefront — making serving a first-class citizen.</p>
+<p><img src="https://dstack.ai/static-assets/static-assets/images/dstack-pd-disaggregation.png" width="630"/></p>
+<p>At the end of last year, we introduced <a href="../sglang-router/">SGLang router</a> integration — bringing cache-aware routing to <a href="../../docs/concepts/services/">services</a>. Today, building on that integration, we’re adding native Prefill–Decode (PD) disaggregation.</p>
+
+    
+      <nav class="md-post__action">
+        <a href="../pd-disaggregation/">
+            <span>Continue reading</span>
+            <span class="icon"><svg viewBox="0 0 13 10" xmlns="http://www.w3.org/2000/svg"><path d="M12.823 4.164L8.954.182a.592.592 0 0 0-.854 0 .635.635 0 0 0 0 .88l2.836 2.92H.604A.614.614 0 0 0 0 4.604c0 .344.27.622.604.622h10.332L8.1 8.146a.635.635 0 0 0 0 .88.594.594 0 0 0 .854 0l3.869-3.982a.635.635 0 0 0 0-.88z" fill-rule="nonzero" fill="currentColor" class="fill-main"></path></svg></span>
+        </a>
+      </nav>
+    
+    
+  </div>
+</article>
       
         <article class="md-post md-post--excerpt">
   <header class="md-post__header">
@@ -4637,50 +4681,6 @@ Update<span class="w"> </span>the<span class="w"> </span>run?<span class="w"> </
     
       <nav class="md-post__action">
         <a href="../changelog-07-25/">
-            <span>Continue reading</span>
-            <span class="icon"><svg viewBox="0 0 13 10" xmlns="http://www.w3.org/2000/svg"><path d="M12.823 4.164L8.954.182a.592.592 0 0 0-.854 0 .635.635 0 0 0 0 .88l2.836 2.92H.604A.614.614 0 0 0 0 4.604c0 .344.27.622.604.622h10.332L8.1 8.146a.635.635 0 0 0 0 .88.594.594 0 0 0 .854 0l3.869-3.982a.635.635 0 0 0 0-.88z" fill-rule="nonzero" fill="currentColor" class="fill-main"></path></svg></span>
-        </a>
-      </nav>
-    
-    
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2025-05-12 00:00:00+00:00">May 12, 2025</time></li>
-        
-          <li class="md-meta__item">
-            in
-            
-              <a href="./" class="md-meta__link">Changelog</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              3 min read
-            
-          </li>
-        
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="supporting-arm-and-nvidia-gh200-on-lambda"><a class="toclink" href="../gh200-on-lambda/">Supporting ARM and NVIDIA GH200 on Lambda</a></h2>
-<p>The latest update to <code>dstack</code> introduces support for NVIDIA GH200 instances on <a href="../../docs/concepts/backends/#lambda">Lambda</a>
-and enables ARM-powered hosts, including GH200 and GB200, with <a href="../../docs/concepts/fleets/#ssh-fleets">SSH fleets</a>.</p>
-<p><img src="https://dstack.ai/static-assets/static-assets/images/dstack-arm--gh200-lambda-min.png" width="630"/></p>
-
-    
-      <nav class="md-post__action">
-        <a href="../gh200-on-lambda/">
             <span>Continue reading</span>
             <span class="icon"><svg viewBox="0 0 13 10" xmlns="http://www.w3.org/2000/svg"><path d="M12.823 4.164L8.954.182a.592.592 0 0 0-.854 0 .635.635 0 0 0 0 .88l2.836 2.92H.604A.614.614 0 0 0 0 4.604c0 .344.27.622.604.622h10.332L8.1 8.146a.635.635 0 0 0 0 .88.594.594 0 0 0 .854 0l3.869-3.982a.635.635 0 0 0 0-.88z" fill-rule="nonzero" fill="currentColor" class="fill-main"></path></svg></span>
         </a>
