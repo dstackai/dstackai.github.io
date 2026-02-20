@@ -1049,11 +1049,11 @@ Support dstack with a ⭐ on
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#backend" class="md-nav__link">
+  <a href="#domain" class="md-nav__link">
     <span class="md-ellipsis">
       
         <span class="md-typeset">
-          Backend
+          Domain
         </span>
       
     </span>
@@ -1062,11 +1062,11 @@ Support dstack with a ⭐ on
 </li>
         
           <li class="md-nav__item">
-  <a href="#instance-type" class="md-nav__link">
+  <a href="#backend" class="md-nav__link">
     <span class="md-ellipsis">
       
         <span class="md-typeset">
-          Instance type
+          Backend
         </span>
       
     </span>
@@ -1088,6 +1088,19 @@ Support dstack with a ⭐ on
 </li>
         
           <li class="md-nav__item">
+  <a href="#certificate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Certificate
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#public-ip" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1100,21 +1113,21 @@ Support dstack with a ⭐ on
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#update-dns-records" class="md-nav__link">
+          <li class="md-nav__item">
+  <a href="#instance-type" class="md-nav__link">
     <span class="md-ellipsis">
       
         <span class="md-typeset">
-          Update DNS records
+          Instance type
         </span>
       
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -4167,11 +4180,11 @@ Support dstack with a ⭐ on
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#backend" class="md-nav__link">
+  <a href="#domain" class="md-nav__link">
     <span class="md-ellipsis">
       
         <span class="md-typeset">
-          Backend
+          Domain
         </span>
       
     </span>
@@ -4180,11 +4193,11 @@ Support dstack with a ⭐ on
 </li>
         
           <li class="md-nav__item">
-  <a href="#instance-type" class="md-nav__link">
+  <a href="#backend" class="md-nav__link">
     <span class="md-ellipsis">
       
         <span class="md-typeset">
-          Instance type
+          Backend
         </span>
       
     </span>
@@ -4206,6 +4219,19 @@ Support dstack with a ⭐ on
 </li>
         
           <li class="md-nav__item">
+  <a href="#certificate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Certificate
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#public-ip" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -4218,21 +4244,21 @@ Support dstack with a ⭐ on
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#update-dns-records" class="md-nav__link">
+          <li class="md-nav__item">
+  <a href="#instance-type" class="md-nav__link">
     <span class="md-ellipsis">
       
         <span class="md-typeset">
-          Update DNS records
+          Instance type
         </span>
       
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -4404,7 +4430,6 @@ The filename must end with <code>.dstack.yml</code> (e.g. <code>.dstack.yml</cod
 
 </div>
 
-<p>A domain name is required to create a gateway.</p>
 <p>To create or update the gateway, simply call the <a href="../../reference/cli/dstack/apply/"><code>dstack apply</code></a> command:</p>
 <div class="termy">
 
@@ -4421,6 +4446,9 @@ Provisioning...
 </div>
 
 <h2 id="configuration-options">Configuration options<a class="headerlink" href="#configuration-options" title="Permanent link">&para;</a></h2>
+<h3 id="domain">Domain<a class="headerlink" href="#domain" title="Permanent link">&para;</a></h3>
+<p>A gateway requires a <code>domain</code> to be specified in the configuration before creation. The domain is used to generate service endpoints (e.g. <code>&lt;run name&gt;.&lt;gateway domain&gt;</code>).</p>
+<p>Once the gateway is created and assigned a hostname, configure your DNS by adding a wildcard record for <code>*.&lt;gateway domain&gt;</code> (e.g. <code>*.example.com</code>). The record should point to the gateway's hostname and should be of type <code>A</code> if the hostname is an IP address (most cases), or of type <code>CNAME</code> if the hostname is another domain (some private gateways and Kubernetes).</p>
 <h3 id="backend">Backend<a class="headerlink" href="#backend" title="Permanent link">&para;</a></h3>
 <p>You can create gateways with the <code>aws</code>, <code>azure</code>, <code>gcp</code>, or <code>kubernetes</code> backends, but that does not limit where services run. A gateway can use one backend while services run on any other backend supported by dstack, including backends where gateways themselves cannot be created.</p>
 <details class="info">
@@ -4428,24 +4456,6 @@ Provisioning...
 <p>Gateways in <code>kubernetes</code> backend require an external load balancer. Managed Kubernetes solutions usually include a load balancer.
 For self-hosted Kubernetes, you must provide a load balancer by yourself.</p>
 </details>
-<h3 id="instance-type">Instance type<a class="headerlink" href="#instance-type" title="Permanent link">&para;</a></h3>
-<p>By default, <code>dstack</code> provisions a small, low-cost instance for the gateway. If you expect to run high-traffic services, you can configure a larger instance type using the <code>instance_type</code> property.</p>
-<div editor-title="gateway.dstack.yml">
-
-<div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gateway</span>
-<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">example-gateway</span>
-
-<span class="nt">backend</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">aws</span>
-<span class="nt">region</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">eu-west-1</span>
-
-<span class="c1"># (Optional) Override the gateway instance type</span>
-<span class="nt">instance_type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">t3.large</span>
-
-<span class="nt">domain</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">example.com</span>
-</code></pre></div>
-
-</div>
-
 <h3 id="router">Router<a class="headerlink" href="#router" title="Permanent link">&para;</a></h3>
 <p>By default, the gateway uses its own load balancer to route traffic between replicas. However, you can delegate this responsibility to a specific router by setting the <code>router</code> property. Currently, the only supported external router is <code>sglang</code>.</p>
 <h4 id="sglang">SGLang<a class="headerlink" href="#sglang" title="Permanent link">&para;</a></h4>
@@ -4468,8 +4478,12 @@ For self-hosted Kubernetes, you must provide a load balancer by yourself.</p>
 
 </div>
 
-<div class="admonition info">
-<p class="admonition-title">Policy</p>
+<p>If you configure the <code>sglang</code> router, <a href="../services/">services</a> can run either <a href="../../../examples/inference/sglang/">standard SGLang workers</a> or <a href="../../../examples/inference/sglang/#pd-disaggregation">Prefill-Decode workers</a> (aka PD disaggregation).</p>
+<blockquote>
+<p>Note, if you want to run services with PD disaggregation, the gateway must currently run in the same cluster as the service.</p>
+</blockquote>
+<details class="info">
+<summary>Policy</summary>
 <p>The <code>policy</code> property allows you to configure the routing policy:</p>
 <ul>
 <li><code>cache_aware</code> &mdash; Default policy; combines cache locality with load balancing, falling back to shortest queue. </li>
@@ -4477,24 +4491,61 @@ For self-hosted Kubernetes, you must provide a load balancer by yourself.</p>
 <li><code>random</code> &mdash; Uniform random selection.                                                                    </li>
 <li><code>round_robin</code> &mdash; Cycles through workers in order.                                                             </li>
 </ul>
-</div>
+</details>
+<h3 id="certificate">Certificate<a class="headerlink" href="#certificate" title="Permanent link">&para;</a></h3>
+<p>By default, when you run a service with a gateway, <code>dstack</code> provisions an SSL certificate via Let's Encrypt for the configured domain. This automatically enables HTTPS for the service endpoint.</p>
+<p>If you disable <a href="#public-ip">public IP</a> (e.g. to make the gateway private) or if you simply don't need HTTPS, you can set <code>certificate</code> to <code>null</code>. </p>
 <blockquote>
-<p>Currently, services using this type of gateway must run standard SGLang workers. See the <a href="../../../examples/inference/sglang/">example</a>.</p>
-<p>Support for prefill/decode disaggregation and auto-scaling based on inter-token latency is coming soon.</p>
+<p>Note, by default services set <a href="../../reference/dstack.yml/service/#https"><code>https</code></a> to <code>true</code> which requires a certificate. You can set <code>https</code> to <code>auto</code> to detect if the gateway supports HTTPS or not automatically.</p>
 </blockquote>
+<details class="info">
+<summary>Certificate types</summary>
+<p><code>dstack</code> supports the following certificate types:</p>
+<ul>
+<li><code>lets-encrypt</code> (default) — Automatic certificates via <a href="https://letsencrypt.org/">Let's Encrypt</a>. Requires a <a href="#public-ip">public IP</a>.</li>
+<li><code>acm</code> — Certificates managed by <a href="https://aws.amazon.com/certificate-manager/">AWS Certificate Manager</a>. AWS-only. TLS is terminated at the load balancer, not at the gateway.</li>
+<li><code>null</code> — No certificate. Services will use HTTP.</li>
+</ul>
+</details>
 <h3 id="public-ip">Public IP<a class="headerlink" href="#public-ip" title="Permanent link">&para;</a></h3>
-<p>If you don't need/want a public IP for the gateway, you can set the <code>public_ip</code> to <code>false</code> (the default value is <code>true</code>), making the gateway private.
-Private gateways are currently supported in <code>aws</code> and <code>gcp</code> backends.</p>
+<p>If you don't need a public IP for the gateway, you can set <code>public_ip</code> to <code>false</code> (the default is <code>true</code>), making the gateway private.</p>
+<p>Private gateways are currently supported in <code>aws</code> and <code>gcp</code> backends.</p>
+<div editor-title="gateway.dstack.yml">
+
+<div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gateway</span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">private-gateway</span>
+
+<span class="nt">backend</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">aws</span>
+<span class="nt">region</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">eu-west-1</span>
+<span class="nt">domain</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">example.com</span>
+
+<span class="nt">public_ip</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="nt">certificate</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">null</span>
+</code></pre></div>
+
+</div>
+
+<h3 id="instance-type">Instance type<a class="headerlink" href="#instance-type" title="Permanent link">&para;</a></h3>
+<p>By default, <code>dstack</code> provisions a small, low-cost instance for the gateway. If you expect to run high-traffic services, you can configure a larger instance type using the <code>instance_type</code> property.</p>
+<div editor-title="gateway.dstack.yml">
+
+<div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gateway</span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">example-gateway</span>
+
+<span class="nt">backend</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">aws</span>
+<span class="nt">region</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">eu-west-1</span>
+
+<span class="nt">instance_type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">t3.large</span>
+
+<span class="nt">domain</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">example.com</span>
+</code></pre></div>
+
+</div>
+
 <div class="admonition info">
 <p class="admonition-title">Reference</p>
 <p>For all gateway configuration options, refer to the <a href="../../reference/dstack.yml/gateway/">reference</a>.</p>
 </div>
-<h2 id="update-dns-records">Update DNS records<a class="headerlink" href="#update-dns-records" title="Permanent link">&para;</a></h2>
-<p>Once the gateway is assigned a hostname, go to your domain's DNS settings
-and add a DNS record for <code>*.&lt;gateway domain&gt;</code>, e.g. <code>*.example.com</code>.
-The record should point to the gateway's hostname shown in <code>dstack</code>
-and should be of type <code>A</code> if the hostname is an IP address (most cases),
-or of type <code>CNAME</code> if the hostname is another domain (some private gateways and Kubernetes).</p>
 <h2 id="manage-gateways">Manage gateways<a class="headerlink" href="#manage-gateways" title="Permanent link">&para;</a></h2>
 <h3 id="list-gateways">List gateways<a class="headerlink" href="#list-gateways" title="Permanent link">&para;</a></h3>
 <p>The <a href="../../reference/cli/dstack/gateway/#dstack-gateway-list"><code>dstack gateway list</code></a> command lists existing gateways and their status.</p>

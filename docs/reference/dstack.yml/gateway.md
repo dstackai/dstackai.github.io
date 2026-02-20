@@ -12,7 +12,7 @@ The `gateway` configuration type allows creating and updating [gateways](../../c
 ###### [`router`](#router) - (Optional) `object` The router configuration for this gateway. E.g. `{ type: sglang, policy: round_robin }`.. { #_router data-toc-label='router' class='reference-item' }
 ###### `domain` - (Optional) `str` The gateway domain, e.g. `example.com`. { #domain data-toc-label='domain' class='reference-item' }
 ###### `public_ip` - (Optional) `bool` Allocate public IP for the gateway. Defaults to `True`. { #public_ip data-toc-label='public_ip' class='reference-item' }
-###### [`certificate`](#certificate) - (Optional) `object` The SSL certificate configuration. Defaults to `type: lets-encrypt`. { #_certificate data-toc-label='certificate' class='reference-item' }
+###### [`certificate`](#certificate) - (Optional) `object` The SSL certificate configuration. Set to `null` to disable. Defaults to `type: lets-encrypt`. { #_certificate data-toc-label='certificate' class='reference-item' }
 ###### `tags` - (Optional) `dict` The custom tags to associate with the gateway. The tags are also propagated to the underlying backend resources. If there is a conflict with backend-level tags, does not override them. { #tags data-toc-label='tags' class='reference-item' }
 
 
@@ -25,6 +25,8 @@ The `gateway` configuration type allows creating and updating [gateways](../../c
 
 
 ### `certificate`
+
+Set to `null` to disable certificates (e.g. for [private gateways](../../concepts/gateways.md#public-ip)).
 
 === "Let's encrypt"
 

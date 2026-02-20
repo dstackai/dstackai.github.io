@@ -965,6 +965,19 @@ Support dstack with a ⭐ on
 </li>
         
           <li class="md-nav__item">
+  <a href="#pd-disaggregation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          PD disaggregation
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#authorization" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -4341,6 +4354,19 @@ Support dstack with a ⭐ on
 </li>
         
           <li class="md-nav__item">
+  <a href="#pd-disaggregation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          PD disaggregation
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#authorization" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -4819,6 +4845,7 @@ case <code>dstack</code> adjusts the number of replicas (scales up or down) auto
 <blockquote>
 <p>The <code>scaling</code> property requires creating a <a href="../gateways/">gateway</a>.</p>
 </blockquote>
+<p><span id="replica-groups"></span></p>
 <details class="info">
 <summary>Replica groups</summary>
 <p>A service can include multiple replica groups. Each group can define its own <code>commands</code>, <code>resources</code> requirements, and <code>scaling</code> rules.</p>
@@ -4865,10 +4892,8 @@ case <code>dstack</code> adjusts the number of replicas (scales up or down) auto
 <p>Properties such as <code>regions</code>, <code>port</code>, <code>image</code>, <code>env</code> and some other cannot be configured per replica group. This support is coming soon.</p>
 </blockquote>
 </details>
-<details class="info">
-<summary>Disaggregated serving</summary>
-<p>Native support for disaggregated prefill and decode, allowing both worker types to run within a single service, is coming soon.</p>
-</details>
+<h3 id="pd-disaggregation">PD disaggregation<a class="headerlink" href="#pd-disaggregation" title="Permanent link">&para;</a></h3>
+<p>If you create a gateway with the <a href="../gateways/#sglang"><code>sglang</code> router</a>, you can run SGLang with <a href="https://docs.sglang.io/advanced_features/pd_disaggregation.html">Prefill-Decode disaggregation</a>. See the <a href="../../../examples/inference/sglang/#pd-disaggregation">corresponding example</a>.</p>
 <h3 id="authorization">Authorization<a class="headerlink" href="#authorization" title="Permanent link">&para;</a></h3>
 <p>By default, the service enables authorization, meaning the service endpoint requires a <code>dstack</code> user token.
 This can be disabled by setting <code>auth</code> to <code>false</code>.</p>

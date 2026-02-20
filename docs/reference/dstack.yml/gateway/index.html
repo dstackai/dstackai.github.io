@@ -4196,7 +4196,7 @@ Support dstack with a ⭐ on
 <h6 class="reference-item" id="_router"><a href="#router"><code>router</code></a> - (Optional) <code>object</code> The router configuration for this gateway. E.g. <code>{ type: sglang, policy: round_robin }</code>..<a class="headerlink" href="#_router" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="domain"><code>domain</code> - (Optional) <code>str</code> The gateway domain, e.g. <code>example.com</code>.<a class="headerlink" href="#domain" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="public_ip"><code>public_ip</code> - (Optional) <code>bool</code> Allocate public IP for the gateway. Defaults to <code>True</code>.<a class="headerlink" href="#public_ip" title="Permanent link">&para;</a></h6>
-<h6 class="reference-item" id="_certificate"><a href="#certificate"><code>certificate</code></a> - (Optional) <code>object</code> The SSL certificate configuration. Defaults to <code>type: lets-encrypt</code>.<a class="headerlink" href="#_certificate" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="_certificate"><a href="#certificate"><code>certificate</code></a> - (Optional) <code>object</code> The SSL certificate configuration. Set to <code>null</code> to disable. Defaults to <code>type: lets-encrypt</code>.<a class="headerlink" href="#_certificate" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="tags"><code>tags</code> - (Optional) <code>dict</code> The custom tags to associate with the gateway. The tags are also propagated to the underlying backend resources. If there is a conflict with backend-level tags, does not override them.<a class="headerlink" href="#tags" title="Permanent link">&para;</a></h6>
 <h3 id="router"><code>router</code><a class="headerlink" href="#router" title="Permanent link">&para;</a></h3>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:1"><input checked="checked" id="sglang-model-gateway" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="sglang-model-gateway">SGLang Model Gateway</label></div>
@@ -4208,6 +4208,7 @@ Support dstack with a ⭐ on
 </div>
 </div>
 <h3 id="certificate"><code>certificate</code><a class="headerlink" href="#certificate" title="Permanent link">&para;</a></h3>
+<p>Set to <code>null</code> to disable certificates (e.g. for <a href="../../../concepts/gateways/#public-ip">private gateways</a>).</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="lets-encrypt" name="__tabbed_2" type="radio" /><input id="acm" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="lets-encrypt">Let's encrypt</label><label for="acm">ACM</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">

@@ -1619,7 +1619,43 @@ projects:
     
     Ensure you've created a ClusterRoleBinding to grant the role to the user or the service account you're using.
 
-> To learn more, see the [Lambda](../../examples/clusters/lambda/#kubernetes) and [Lambda](../../examples/clusters/crusoe/#kubernetes) examples.
+??? info "Resources and offers"
+    If you use ranges with [`resources`](../concepts/tasks.md#resources) (e.g. `gpu: 1..8` or `memory: 64GB..`) in fleet or run configurations, other backends collect and try all offers that satisfy the range.
+
+    The `kubernetes` backend handles it differently.
+    
+    * For `gpu`, if you specify a range (e.g. `gpu: 4..8`), the `kubernetes` backend only provisions pods with the GPU count equal to the lower limit (`4`). The upper limit of the GPU range is always ignored.
+    * For other resources such as `cpu`, `memory`, and `disk`, the `kubernetes` backend passes the lower and upper limits of the range as Kubernetes [requests and limits](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#requests-and-limits) respectively. If the upper limit is not set, the Kubernetes limit is also not set.
+
+    Example:
+
+    <div editor-title=".dstack.yml">
+
+    ```yaml
+    type: dev-environment
+    ide: vscode
+
+    resources:
+      cpu: 32..64
+      memory: 1024GB
+      disk: 100GB..
+      gpu: nvidia:4..8
+    ```
+
+    </div>
+
+    This translates to the following Kubernetes resource spec:
+
+    | Resource            | Request  | Limit     |
+    |---------------------|----------|-----------|
+    | `cpu`               | `32`     | `64`      |
+    | `memory`            | `1024Gi` | `1024Gi`  |
+    | `ephemeral-storage` | `100Gi`  | _not set_ |
+    | `nvidia.com/gpu`    | `4`      | `4`       |
+
+    This applies to offers shown in `dstack apply` (run plans), during provisioning, and in `dstack offer`. Unlike other backends, offers for the `kubernetes` backend always reflect the lower limit of the range.
+
+> To learn more, see the [Lambda](../../examples/clusters/lambda/#kubernetes) and [Crusoe](../../examples/clusters/crusoe/#kubernetes) examples.
 
 ### RunPod
 
@@ -3931,6 +3967,8 @@ Setting the minimum number of replicas to `0` allows the service to scale down t
 
 > The `scaling` property requires creating a [gateway](gateways.md).
 
+<span id="replica-groups"></span>
+
 ??? info "Replica groups"
     A service can include multiple replica groups. Each group can define its own `commands`, `resources` requirements, and `scaling` rules.
 
@@ -3979,8 +4017,9 @@ Setting the minimum number of replicas to `0` allows the service to scale down t
 
     > Properties such as `regions`, `port`, `image`, `env` and some other cannot be configured per replica group. This support is coming soon.
 
-??? info "Disaggregated serving"
-    Native support for disaggregated prefill and decode, allowing both worker types to run within a single service, is coming soon.
+### PD disaggregation
+
+If you create a gateway with the [`sglang` router](gateways.md#sglang), you can run SGLang with [Prefill-Decode disaggregation](https://docs.sglang.io/advanced_features/pd_disaggregation.html). See the [corresponding example](../../examples/inference/sglang/index.md#pd-disaggregation).
 
 ### Authorization
 
@@ -5204,8 +5243,6 @@ domain: example.com
 
 </div>
 
-A domain name is required to create a gateway.
-
 To create or update the gateway, simply call the [`dstack apply`](../reference/cli/dstack/apply.md) command:
 
 <div class="termy">
@@ -5225,6 +5262,12 @@ Provisioning...
 
 ## Configuration options
 
+### Domain
+
+A gateway requires a `domain` to be specified in the configuration before creation. The domain is used to generate service endpoints (e.g. `<run name>.<gateway domain>`).
+
+Once the gateway is created and assigned a hostname, configure your DNS by adding a wildcard record for `*.<gateway domain>` (e.g. `*.example.com`). The record should point to the gateway's hostname and should be of type `A` if the hostname is an IP address (most cases), or of type `CNAME` if the hostname is another domain (some private gateways and Kubernetes).
+
 ### Backend
 
 You can create gateways with the `aws`, `azure`, `gcp`, or `kubernetes` backends, but that does not limit where services run. A gateway can use one backend while services run on any other backend supported by dstack, including backends where gateways themselves cannot be created.
@@ -5232,27 +5275,6 @@ You can create gateways with the `aws`, `azure`, `gcp`, or `kubernetes` backends
 ??? info "Kubernetes"
     Gateways in `kubernetes` backend require an external load balancer. Managed Kubernetes solutions usually include a load balancer.
     For self-hosted Kubernetes, you must provide a load balancer by yourself.
-
-### Instance type
-
-By default, `dstack` provisions a small, low-cost instance for the gateway. If you expect to run high-traffic services, you can configure a larger instance type using the `instance_type` property.
-
-<div editor-title="gateway.dstack.yml">
-
-```yaml
-type: gateway
-name: example-gateway
-
-backend: aws
-region: eu-west-1
-
-# (Optional) Override the gateway instance type
-instance_type: t3.large
-
-domain: example.com
-```
-
-</div>
 
 ### Router
 
@@ -5282,7 +5304,11 @@ router:
 
 </div>
 
-!!! info "Policy"
+If you configure the `sglang` router, [services](../concepts/services.md) can run either [standard SGLang workers](../../examples/inference/sglang/index.md) or [Prefill-Decode workers](../../examples/inference/sglang/index.md#pd-disaggregation) (aka PD disaggregation).
+
+> Note, if you want to run services with PD disaggregation, the gateway must currently run in the same cluster as the service.
+
+??? info "Policy"
     The `policy` property allows you to configure the routing policy:
 
     * `cache_aware` &mdash; Default policy; combines cache locality with load balancing, falling back to shortest queue. 
@@ -5291,25 +5317,66 @@ router:
     * `round_robin` &mdash; Cycles through workers in order.                                                             
 
 
-> Currently, services using this type of gateway must run standard SGLang workers. See the [example](../../examples/inference/sglang/index.md).
->
-> Support for prefill/decode disaggregation and auto-scaling based on inter-token latency is coming soon.
+
+### Certificate
+
+By default, when you run a service with a gateway, `dstack` provisions an SSL certificate via Let's Encrypt for the configured domain. This automatically enables HTTPS for the service endpoint.
+
+If you disable [public IP](#public-ip) (e.g. to make the gateway private) or if you simply don't need HTTPS, you can set `certificate` to `null`. 
+
+> Note, by default services set [`https`](../reference/dstack.yml/service.md#https) to `true` which requires a certificate. You can set `https` to `auto` to detect if the gateway supports HTTPS or not automatically.
+
+??? info "Certificate types"
+    `dstack` supports the following certificate types:
+
+    * `lets-encrypt` (default) — Automatic certificates via [Let's Encrypt](https://letsencrypt.org/). Requires a [public IP](#public-ip).
+    * `acm` — Certificates managed by [AWS Certificate Manager](https://aws.amazon.com/certificate-manager/). AWS-only. TLS is terminated at the load balancer, not at the gateway.
+    * `null` — No certificate. Services will use HTTP.
 
 ### Public IP
 
-If you don't need/want a public IP for the gateway, you can set the `public_ip` to `false` (the default value is `true`), making the gateway private.
+If you don't need a public IP for the gateway, you can set `public_ip` to `false` (the default is `true`), making the gateway private.
+
 Private gateways are currently supported in `aws` and `gcp` backends.
+
+<div editor-title="gateway.dstack.yml">
+
+```yaml
+type: gateway
+name: private-gateway
+
+backend: aws
+region: eu-west-1
+domain: example.com
+
+public_ip: false
+certificate: null
+```
+
+</div>
+
+### Instance type
+
+By default, `dstack` provisions a small, low-cost instance for the gateway. If you expect to run high-traffic services, you can configure a larger instance type using the `instance_type` property.
+
+<div editor-title="gateway.dstack.yml">
+
+```yaml
+type: gateway
+name: example-gateway
+
+backend: aws
+region: eu-west-1
+
+instance_type: t3.large
+
+domain: example.com
+```
+
+</div>
 
 !!! info "Reference"
     For all gateway configuration options, refer to the [reference](../reference/dstack.yml/gateway.md).
-
-## Update DNS records
-
-Once the gateway is assigned a hostname, go to your domain's DNS settings
-and add a DNS record for `*.<gateway domain>`, e.g. `*.example.com`.
-The record should point to the gateway's hostname shown in `dstack`
-and should be of type `A` if the hostname is an IP address (most cases),
-or of type `CNAME` if the hostname is another domain (some private gateways and Kubernetes).
 
 ## Manage gateways
 
