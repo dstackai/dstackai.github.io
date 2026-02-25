@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../../assets/images/dstack-fav-32.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.2">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.3">
     
     
       
@@ -140,8 +140,7 @@
               </button>
             
             
-Support dstack with a ⭐ on
-<a href="https://github.com/dstackai/dstack" target="_blank">GitHub</a>
+Services now support native <a href="https://dstack.ai/blog/pd-disaggregation/" target="_blank">Prefill-Decode disaggregation</a>
 
           </div>
           
@@ -253,8 +252,19 @@ Support dstack with a ⭐ on
     -->
 
     <div class="md-header__buttons">
-      <a href="https://github.com/dstackai/dstack" target="_blank" class="md-button md-button--primary github">GitHub</a>
-      <a href="https://sky.dstack.ai" target="_blank" class="md-button md-button--primary sky">dstack Sky</a>
+      <a id="gh-star-link" href="https://github.com/dstackai/dstack" target="_blank" class="md-button md-button--primary github external-skip">GitHub</a>
+      <script>
+        fetch("https://api.github.com/repos/dstackai/dstack")
+          .then(r => r.json())
+          .then(data => {
+            if (data.stargazers_count) {
+              document.getElementById("gh-star-link").textContent =
+                data.stargazers_count.toLocaleString("en-US");
+            }
+          })
+          .catch(() => {});
+      </script>
+      <a href="https://sky.dstack.ai" target="_blank" class="md-button md-button--primary sky external-skip">dstack Sky</a>
     </div>
   </nav>
   
@@ -393,6 +403,25 @@ Support dstack with a ⭐ on
     
   
   Benchmarks
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="https://discord.gg/u8SmfwPpMd" target="_blank" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Discord
 
       </a>
     </li>
@@ -4102,6 +4131,33 @@ Support dstack with a ⭐ on
   
 
     
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://discord.gg/u8SmfwPpMd" target="_blank" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Discord
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
   </ul>
 </nav>
           </div>
@@ -4767,7 +4823,7 @@ out-of-place<span class="w">                       </span><span class="k">in</sp
               
               <div class="tx-footer__section">
                 <div class="tx-footer__section-title">Community</div>
-                <a href="https://discord.gg/u8SmfwPpMd" target="_blank" class="tx-footer__section-link external">Discord</a>
+                <a href="https://discord.gg/u8SmfwPpMd" target="_blank" class="tx-footer__section-link external">Join Discord</a>
                 <a href="https://github.com/dstackai/dstack" target="_blank" class="tx-footer__section-link external">GitHub</a>
               </div>
               
@@ -4777,6 +4833,7 @@ out-of-place<span class="w">                       </span><span class="k">in</sp
                 <!-- <a href="/partners" class="tx-footer__section-link">Partners</a> -->
                 <a href="/terms" class="tx-footer__section-link">Terms</a>
                 <a href="/privacy" class="tx-footer__section-link">Privacy</a>
+                <a href="/blog" class="tx-footer__section-link">Blog</a>
                 <!--<a href="https://dstackai.notion.site/Jobs-at-dstack-ff01a450c3174904b70c36124f2d8f4b" target="_blank" class="tx-footer__section-link external">Careers</a>-->
               </div>
         </div>
