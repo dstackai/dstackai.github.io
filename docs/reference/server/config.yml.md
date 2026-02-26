@@ -316,7 +316,7 @@ to configure [backends](../../concepts/backends.md) and other [server-level sett
 ##### `projects[n].backends[type=crusoe]` { #crusoe data-toc-label="crusoe" }
 
 ###### `type` - (Required) `"crusoe"` The type of backend. Must be `crusoe`. { #type data-toc-label='type' class='reference-item' }
-###### `project_id` - (Required) `str` The Crusoe Cloud project ID. { #project_id data-toc-label='project_id' class='reference-item' }
+###### `project_id` - (Required) `str` The Crusoe project ID. { #project_id data-toc-label='project_id' class='reference-item' }
 ###### `regions` - (Optional) `list[str]` The list of allowed Crusoe regions. Omit to use all regions. { #regions data-toc-label='regions' class='reference-item' }
 ###### [`creds`](#crusoe-creds) - (Required) `object` The credentials. { #_creds data-toc-label='creds' class='reference-item' }
 
