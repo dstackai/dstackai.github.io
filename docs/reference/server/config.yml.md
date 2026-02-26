@@ -313,6 +313,21 @@ to configure [backends](../../concepts/backends.md) and other [server-level sett
 ###### `api_key` - (Required) `str` The API key. { #api_key data-toc-label='api_key' class='reference-item' }
 
 
+##### `projects[n].backends[type=crusoe]` { #crusoe data-toc-label="crusoe" }
+
+###### `type` - (Required) `"crusoe"` The type of backend. Must be `crusoe`. { #type data-toc-label='type' class='reference-item' }
+###### `project_id` - (Required) `str` The Crusoe Cloud project ID. { #project_id data-toc-label='project_id' class='reference-item' }
+###### `regions` - (Optional) `list[str]` The list of allowed Crusoe regions. Omit to use all regions. { #regions data-toc-label='regions' class='reference-item' }
+###### [`creds`](#crusoe-creds) - (Required) `object` The credentials. { #_creds data-toc-label='creds' class='reference-item' }
+
+
+###### `projects[n].backends[type=crusoe].creds` { #crusoe-creds data-toc-label="creds" }
+
+###### `type` - (Required) `"access_key"` The type of credentials. Must be `access_key`. { #type data-toc-label='type' class='reference-item' }
+###### `access_key` - (Required) `str` The Crusoe API access key. { #access_key data-toc-label='access_key' class='reference-item' }
+###### `secret_key` - (Required) `str` The Crusoe API secret key. { #secret_key data-toc-label='secret_key' class='reference-item' }
+
+
 ##### `projects[n].backends[type=hotaisle]` { #hotaisle data-toc-label="hotaisle" }
 
 ###### `type` - (Required) `"hotaisle"` The type of backend. Must be `hotaisle`. { #type data-toc-label='type' class='reference-item' }

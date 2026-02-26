@@ -5,7 +5,7 @@ The `volume` configuration type allows creating, registering, and updating [volu
 ## Root reference
 
 ###### `name` - (Optional) `str` The volume name. { #name data-toc-label='name' class='reference-item' }
-###### `backend` - (Required) `"amddevcloud" | "aws" | "azure" | "cloudrift" | "cudo" | "datacrunch" | "digitalocean" | "dstack" | "gcp" | "hotaisle" | "kubernetes" | "lambda" | "local" | "remote" | "nebius" | "oci" | "runpod" | "tensordock" | "vastai" | "verda" | "vultr"` The volume backend. { #backend data-toc-label='backend' class='reference-item' }
+###### `backend` - (Required) `"amddevcloud" | "aws" | "azure" | "cloudrift" | "crusoe" | "cudo" | "datacrunch" | "digitalocean" | "dstack" | "gcp" | "hotaisle" | "kubernetes" | "lambda" | "local" | "remote" | "nebius" | "oci" | "runpod" | "tensordock" | "vastai" | "verda" | "vultr"` The volume backend. { #backend data-toc-label='backend' class='reference-item' }
 ###### `region` - (Required) `str` The volume region. { #region data-toc-label='region' class='reference-item' }
 ###### `availability_zone` - (Optional) `str` The volume availability zone. { #availability_zone data-toc-label='availability_zone' class='reference-item' }
 ###### `size` - (Optional) `str` The volume size. Must be specified when creating new volumes. { #size data-toc-label='size' class='reference-item' }

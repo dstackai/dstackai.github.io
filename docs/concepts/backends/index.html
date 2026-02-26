@@ -1004,6 +1004,19 @@ Services now support native <a href="https://dstack.ai/blog/pd-disaggregation/" 
 </li>
         
           <li class="md-nav__item">
+  <a href="#crusoe-cloud" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Crusoe Cloud
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#hot-aisle" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -4460,6 +4473,19 @@ Services now support native <a href="https://dstack.ai/blog/pd-disaggregation/" 
 </li>
         
           <li class="md-nav__item">
+  <a href="#crusoe-cloud" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Crusoe Cloud
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#hot-aisle" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -5436,6 +5462,29 @@ Allow group &lt;dstack-users&gt; to manage virtual-network-family in compartment
 <li><code>ssh_key</code> - create, read, update,delete</li>
 </ul>
 </details>
+<h3 id="crusoe-cloud">Crusoe Cloud<a class="headerlink" href="#crusoe-cloud" title="Permanent link">&para;</a></h3>
+<p>Log into your <a href="https://console.crusoecloud.com/">Crusoe Cloud</a> console and create an API key
+under your account settings. Note your project ID from the project settings page.</p>
+<p>Then, go ahead and configure the backend:</p>
+<div editor-title="~/.dstack/server/config.yml">
+
+<div class="highlight"><pre><span></span><code><span class="nt">projects</span><span class="p">:</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">main</span>
+<span class="w">  </span><span class="nt">backends</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">crusoe</span>
+<span class="w">      </span><span class="nt">project_id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">your-project-id</span>
+<span class="w">      </span><span class="nt">creds</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">access_key</span>
+<span class="w">        </span><span class="nt">access_key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">your-access-key</span>
+<span class="w">        </span><span class="nt">secret_key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">your-secret-key</span>
+<span class="w">      </span><span class="nt">regions</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">us-east1-a</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">us-southcentral1-a</span>
+</code></pre></div>
+
+</div>
+
+<p><code>regions</code> is optional. If not specified, all available Crusoe regions are used.</p>
 <h3 id="hot-aisle">Hot Aisle<a class="headerlink" href="#hot-aisle" title="Permanent link">&para;</a></h3>
 <p>Log in to the SSH TUI as described in the <a href="https://hotaisle.xyz/quick-start/">Hot Aisle Quick Start</a>.
 Create a new team and generate an API key for the member in the team.</p>
