@@ -4684,8 +4684,8 @@ This must include the drivers, <code>tt-smi</code>, and HugePages.</p>
 </code></pre></div>
 </div>
 <h4 id="backends">Backends<a class="headerlink" href="#backends" title="Permanent link">&para;</a></h4>
-<p>Fast interconnect is supported on the <code>aws</code>, <code>gcp</code>, <code>nebius</code>, <code>kubernetes</code>, and <code>runpod</code> backends. Some backends may require additional configuration.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="4:5"><input checked="checked" id="aws" name="__tabbed_4" type="radio" /><input id="gcp" name="__tabbed_4" type="radio" /><input id="nebius" name="__tabbed_4" type="radio" /><input id="kubernetes" name="__tabbed_4" type="radio" /><input id="runpod" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="aws">AWS</label><label for="gcp">GCP</label><label for="nebius">Nebius</label><label for="kubernetes">Kubernetes</label><label for="runpod">Runpod</label></div>
+<p>Fast interconnect is supported on the <code>aws</code>, <code>gcp</code>, <code>nebius</code>, <code>crusoe</code>, and <code>kubernetes</code> backends. Some backends may require additional configuration.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:5"><input checked="checked" id="aws" name="__tabbed_4" type="radio" /><input id="gcp" name="__tabbed_4" type="radio" /><input id="nebius" name="__tabbed_4" type="radio" /><input id="crusoe" name="__tabbed_4" type="radio" /><input id="kubernetes" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="aws">AWS</label><label for="gcp">GCP</label><label for="nebius">Nebius</label><label for="crusoe">Crusoe</label><label for="kubernetes">Kubernetes</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>On AWS, <code>dstack</code> requires <code>public_ips</code> to be set to <code>false</code> in the backend configuration.
@@ -4699,17 +4699,19 @@ Refer to the <a href="../../../examples/clusters/gcp/">GCP</a> examples for more
 <p>On <a href="https://docs.nebius.com/compute/clusters/gpu">Nebius</a>, <code>dstack</code> automatically configures InfiniBand networking if it is supported by the selected instance type.</p>
 </div>
 <div class="tabbed-block">
-<p>If the Kubernetes cluster has interconnect configured, <code>dstack</code> can use it without additional setup.
-See the <a href="../../../examples/clusters/lambda/#kubernetes">Lambda</a> or <a href="../../../examples/clusters/crusoe/#kubernetes">Crusoe</a> examples.</p>
+<p>On <a href="https://docs.crusoecloud.com/networking/infiniband/managing-infiniband-networks">Crusoe</a>, <code>dstack</code> automatically configures InfiniBand networking if it is supported by the selected instance type.
+Refer to the <a href="../../../examples/clusters/crusoe/#vms">Crusoe</a> example for more details.</p>
 </div>
 <div class="tabbed-block">
-<p>On <a href="https://docs.runpod.io/instant-clusters">Runpod</a>, <code>dstack</code> automatically configures InfiniBand networking if it is supported by the selected instance type.</p>
+<p>If the Kubernetes cluster has interconnect configured, <code>dstack</code> can use it without additional setup.
+See the <a href="../../../examples/clusters/lambda/#kubernetes">Lambda</a> or <a href="../../../examples/clusters/crusoe/#kubernetes">Crusoe</a> examples.</p>
 </div>
 </div>
 </div>
 <blockquote>
 <p>See the <a href="../../../examples/#clusters">Clusters</a> examples.</p>
 </blockquote>
+<!-- TODO: Add Runpod tab to cluster backends once cluster support is fully tested -->
 </div>
 <div class="tabbed-block">
 <p>If the hosts in the SSH fleet have interconnect configured, you only need to set <code>placement</code> to <code>cluster</code>.</p>

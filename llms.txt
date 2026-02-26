@@ -56,7 +56,7 @@
 - [AWS](https://dstack.ai/examples/clusters/aws/index.md): High-performance distributed training on AWS using Elastic Fabric Adapter (EFA)
 - [GCP](https://dstack.ai/examples/clusters/gcp/index.md): Creating and using GPU clusters on GCP with GPUDirect-TCPX and RoCE support
 - [Lambda](https://dstack.ai/examples/clusters/lambda/index.md): Setting up Lambda clusters using Kubernetes or 1-Click Clusters with fast interconnect
-- [Crusoe](https://dstack.ai/examples/clusters/crusoe/index.md): Using Crusoe clusters with InfiniBand support via Kubernetes or VMs
+- [Crusoe](https://dstack.ai/examples/clusters/crusoe/index.md): Using Crusoe clusters with InfiniBand support via VMs or Kubernetes
 - [Nebius](https://dstack.ai/examples/clusters/nebius/index.md): Using Nebius clusters with InfiniBand support via VMs or Kubernetes
 - [NCCL/RCCL tests](https://dstack.ai/examples/clusters/nccl-rccl-tests/index.md): Running NCCL and RCCL tests to validate cluster network bandwidth
 

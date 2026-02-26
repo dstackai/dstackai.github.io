@@ -939,24 +939,11 @@ Services now support native <a href="https://dstack.ai/blog/pd-disaggregation/" 
 </li>
         
           <li class="md-nav__item">
-  <a href="#vultr" class="md-nav__link">
+  <a href="#crusoe-cloud" class="md-nav__link">
     <span class="md-ellipsis">
       
         <span class="md-typeset">
-          Vultr
-        </span>
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#oci" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        <span class="md-typeset">
-          OCI
+          Crusoe Cloud
         </span>
       
     </span>
@@ -996,19 +983,6 @@ Services now support native <a href="https://dstack.ai/blog/pd-disaggregation/" 
       
         <span class="md-typeset">
           Digital Ocean
-        </span>
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#crusoe" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        <span class="md-typeset">
-          Crusoe
         </span>
       
     </span>
@@ -1093,6 +1067,32 @@ Services now support native <a href="https://dstack.ai/blog/pd-disaggregation/" 
       
         <span class="md-typeset">
           Vast.ai
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vultr" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Vultr
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#oci" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          OCI
         </span>
       
     </span>
@@ -4408,24 +4408,11 @@ Services now support native <a href="https://dstack.ai/blog/pd-disaggregation/" 
 </li>
         
           <li class="md-nav__item">
-  <a href="#vultr" class="md-nav__link">
+  <a href="#crusoe-cloud" class="md-nav__link">
     <span class="md-ellipsis">
       
         <span class="md-typeset">
-          Vultr
-        </span>
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#oci" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        <span class="md-typeset">
-          OCI
+          Crusoe Cloud
         </span>
       
     </span>
@@ -4465,19 +4452,6 @@ Services now support native <a href="https://dstack.ai/blog/pd-disaggregation/" 
       
         <span class="md-typeset">
           Digital Ocean
-        </span>
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#crusoe" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        <span class="md-typeset">
-          Crusoe
         </span>
       
     </span>
@@ -4562,6 +4536,32 @@ Services now support native <a href="https://dstack.ai/blog/pd-disaggregation/" 
       
         <span class="md-typeset">
           Vast.ai
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vultr" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Vultr
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#oci" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          OCI
         </span>
       
     </span>
@@ -5302,82 +5302,29 @@ specify the contents of the private key file in <code>private_key_content</code>
 <p class="admonition-title">Python version</p>
 <p>Nebius is only supported if <code>dstack server</code> is running on Python 3.10 or higher.</p>
 </div>
-<h3 id="vultr">Vultr<a class="headerlink" href="#vultr" title="Permanent link">&para;</a></h3>
-<p>Log into your <a href="https://www.vultr.com/">Vultr</a> account, click <code>Account</code> in the sidebar, select <code>API</code>, find the <code>Personal Access Token</code> panel and click the <code>Enable API</code> button. In the <code>Access Control</code> panel, allow API requests from all addresses or from the subnet where your <code>dstack</code> server is deployed.</p>
+<h3 id="crusoe-cloud">Crusoe Cloud<a class="headerlink" href="#crusoe-cloud" title="Permanent link">&para;</a></h3>
+<p>Log into your <a href="https://console.crusoecloud.com/">Crusoe Cloud</a> console and create an API key
+under your account settings. Note your project ID from the project settings page.</p>
 <p>Then, go ahead and configure the backend:</p>
 <div editor-title="~/.dstack/server/config.yml">
 
 <div class="highlight"><pre><span></span><code><span class="nt">projects</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">main</span>
-<span class="w">    </span><span class="nt">backends</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vultr</span>
-<span class="w">        </span><span class="nt">creds</span><span class="p">:</span>
-<span class="w">          </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">api_key</span>
-<span class="w">          </span><span class="nt">api_key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">B57487240a466624b48de22865589</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">main</span>
+<span class="w">  </span><span class="nt">backends</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">crusoe</span>
+<span class="w">      </span><span class="nt">project_id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">your-project-id</span>
+<span class="w">      </span><span class="nt">creds</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">access_key</span>
+<span class="w">        </span><span class="nt">access_key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">your-access-key</span>
+<span class="w">        </span><span class="nt">secret_key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">your-secret-key</span>
+<span class="w">      </span><span class="nt">regions</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">us-east1-a</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">us-southcentral1-a</span>
 </code></pre></div>
 
 </div>
 
-<h3 id="oci">OCI<a class="headerlink" href="#oci" title="Permanent link">&para;</a></h3>
-<p>There are two ways to configure OCI: using client credentials or using the default credentials.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="default-credentials_3" name="__tabbed_6" type="radio" /><input id="client-credentials" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="default-credentials_3">Default credentials</label><label for="client-credentials">Client credentials</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<p>If you have default credentials set up in <code>~/.oci/config</code>, configure the backend like this:</p>
-<div editor-title="~/.dstack/server/config.yml">
-<div class="highlight"><pre><span></span><code><span class="nt">projects</span><span class="p">:</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">main</span>
-<span class="w">  </span><span class="nt">backends</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">oci</span>
-<span class="w">    </span><span class="nt">creds</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">default</span>
-</code></pre></div>
-</div>
-</div>
-<div class="tabbed-block">
-<p>Log into the <a href="https://cloud.oracle.com">OCI Console</a>, go to <code>My profile</code>, 
-select <code>API keys</code>, and click <code>Add API key</code>.</p>
-<p>Once you add a key, you'll see the configuration file. Copy its values to configure the backend as follows:</p>
-<div editor-title="~/.dstack/server/config.yml">
-<div class="highlight"><pre><span></span><code><span class="nt">projects</span><span class="p">:</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">main</span>
-<span class="w">  </span><span class="nt">backends</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">oci</span>
-<span class="w">    </span><span class="nt">creds</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">client</span>
-<span class="w">      </span><span class="nt">user</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ocid1.user.oc1..g5vlaeqfu47akmaafq665xsgmyaqjktyfxtacfxc4ftjxuca7aohnd2ev66m</span>
-<span class="w">      </span><span class="nt">tenancy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ocid1.tenancy.oc1..ajqsftvk4qarcfaak3ha4ycdsaahxmaita5frdwg3tqo2bcokpd3n7oizwai</span>
-<span class="w">      </span><span class="nt">region</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">eu-frankfurt-1</span>
-<span class="w">      </span><span class="nt">fingerprint</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">77:32:77:00:49:7c:cb:56:84:75:8e:77:96:7d:53:17</span>
-<span class="w">      </span><span class="nt">key_file</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">~/.oci/private_key.pem</span>
-</code></pre></div>
-</div>
-<p>Make sure to include either the path to your private key via <code>key_file</code> or the contents of the key via <code>key_content</code>.</p>
-</div>
-</div>
-</div>
-<details class="info">
-<summary>Required permissions</summary>
-<p>This is an example of a restrictive policy for a group of <code>dstack</code> users:</p>
-<div class="highlight"><pre><span></span><code>Allow group &lt;dstack-users&gt; to read compartments in tenancy where target.compartment.name = &#39;&lt;dstack-compartment&gt;&#39;
-Allow group &lt;dstack-users&gt; to read marketplace-community-listings in compartment &lt;dstack-compartment&gt;
-Allow group &lt;dstack-users&gt; to manage app-catalog-listing in compartment &lt;dstack-compartment&gt;
-Allow group &lt;dstack-users&gt; to manage instances in compartment &lt;dstack-compartment&gt;
-Allow group &lt;dstack-users&gt; to manage compute-capacity-reports in compartment &lt;dstack-compartment&gt;
-Allow group &lt;dstack-users&gt; to manage volumes in compartment &lt;dstack-compartment&gt;
-Allow group &lt;dstack-users&gt; to manage volume-attachments in compartment &lt;dstack-compartment&gt;
-Allow group &lt;dstack-users&gt; to manage virtual-network-family in compartment &lt;dstack-compartment&gt;
-</code></pre></div>
-<p>To use this policy, create a compartment for <code>dstack</code> and specify it in <code>~/.dstack/server/config.yml</code>.</p>
-<div class="highlight"><pre><span></span><code><span class="nt">projects</span><span class="p">:</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">main</span>
-<span class="w">  </span><span class="nt">backends</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">oci</span>
-<span class="w">    </span><span class="nt">creds</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">default</span>
-<span class="w">    </span><span class="nt">compartment_id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ocid1.compartment.oc1..aaaaaaaa</span>
-</code></pre></div>
-</details>
+<p><code>regions</code> is optional. If not specified, all available Crusoe regions are used.</p>
 <p><span id="datacrunch"></span></p>
 <h3 id="verda">Verda (formerly DataCrunch)<a class="headerlink" href="#verda" title="Permanent link">&para;</a></h3>
 <p>Log into your <a href="https://console.verda.com/signin">Verda</a> account, click Keys in the sidebar, find <code>REST API Credentials</code> area and then click the <code>Generate Credentials</code> button.</p>
@@ -5462,29 +5409,6 @@ Allow group &lt;dstack-users&gt; to manage virtual-network-family in compartment
 <li><code>ssh_key</code> - create, read, update,delete</li>
 </ul>
 </details>
-<h3 id="crusoe">Crusoe<a class="headerlink" href="#crusoe" title="Permanent link">&para;</a></h3>
-<p>Log into your <a href="https://console.crusoecloud.com/">Crusoe</a> console and create an API key
-under your account settings. Note your project ID from the project settings page.</p>
-<p>Then, go ahead and configure the backend:</p>
-<div editor-title="~/.dstack/server/config.yml">
-
-<div class="highlight"><pre><span></span><code><span class="nt">projects</span><span class="p">:</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">main</span>
-<span class="w">  </span><span class="nt">backends</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">crusoe</span>
-<span class="w">      </span><span class="nt">project_id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">your-project-id</span>
-<span class="w">      </span><span class="nt">creds</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">access_key</span>
-<span class="w">        </span><span class="nt">access_key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">your-access-key</span>
-<span class="w">        </span><span class="nt">secret_key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">your-secret-key</span>
-<span class="w">      </span><span class="nt">regions</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">us-east1-a</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">us-southcentral1-a</span>
-</code></pre></div>
-
-</div>
-
-<p><code>regions</code> is optional. If not specified, all available Crusoe regions are used.</p>
 <h3 id="hot-aisle">Hot Aisle<a class="headerlink" href="#hot-aisle" title="Permanent link">&para;</a></h3>
 <p>Log in to the SSH TUI as described in the <a href="https://hotaisle.xyz/quick-start/">Hot Aisle Quick Start</a>.
 Create a new team and generate an API key for the member in the team.</p>
@@ -5564,7 +5488,7 @@ In this case, <code>dstack</code> delegates provisioning to the cloud provider o
 </details>
 <details class="info">
 <summary>Required operators</summary>
-<div class="tabbed-set tabbed-alternate" data-tabs="7:2"><input checked="checked" id="nvidia" name="__tabbed_7" type="radio" /><input id="amd" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="nvidia">NVIDIA</label><label for="amd">AMD</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="nvidia" name="__tabbed_6" type="radio" /><input id="amd" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="nvidia">NVIDIA</label><label for="amd">AMD</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>For <code>dstack</code> to correctly detect GPUs in your Kubernetes cluster, the cluster must have the
@@ -5727,6 +5651,82 @@ API Key.</p>
 </div>
 
 <p>Also, the <code>vastai</code> backend supports on-demand instances only. Spot instance support coming soon.</p>
+<h3 id="vultr">Vultr<a class="headerlink" href="#vultr" title="Permanent link">&para;</a></h3>
+<p>Log into your <a href="https://www.vultr.com/">Vultr</a> account, click <code>Account</code> in the sidebar, select <code>API</code>, find the <code>Personal Access Token</code> panel and click the <code>Enable API</code> button. In the <code>Access Control</code> panel, allow API requests from all addresses or from the subnet where your <code>dstack</code> server is deployed.</p>
+<p>Then, go ahead and configure the backend:</p>
+<div editor-title="~/.dstack/server/config.yml">
+
+<div class="highlight"><pre><span></span><code><span class="nt">projects</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">main</span>
+<span class="w">    </span><span class="nt">backends</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vultr</span>
+<span class="w">        </span><span class="nt">creds</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">api_key</span>
+<span class="w">          </span><span class="nt">api_key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">B57487240a466624b48de22865589</span>
+</code></pre></div>
+
+</div>
+
+<h3 id="oci">OCI<a class="headerlink" href="#oci" title="Permanent link">&para;</a></h3>
+<p>There are two ways to configure OCI: using client credentials or using the default credentials.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="7:2"><input checked="checked" id="default-credentials_3" name="__tabbed_7" type="radio" /><input id="client-credentials" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="default-credentials_3">Default credentials</label><label for="client-credentials">Client credentials</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>If you have default credentials set up in <code>~/.oci/config</code>, configure the backend like this:</p>
+<div editor-title="~/.dstack/server/config.yml">
+<div class="highlight"><pre><span></span><code><span class="nt">projects</span><span class="p">:</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">main</span>
+<span class="w">  </span><span class="nt">backends</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">oci</span>
+<span class="w">    </span><span class="nt">creds</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">default</span>
+</code></pre></div>
+</div>
+</div>
+<div class="tabbed-block">
+<p>Log into the <a href="https://cloud.oracle.com">OCI Console</a>, go to <code>My profile</code>, 
+select <code>API keys</code>, and click <code>Add API key</code>.</p>
+<p>Once you add a key, you'll see the configuration file. Copy its values to configure the backend as follows:</p>
+<div editor-title="~/.dstack/server/config.yml">
+<div class="highlight"><pre><span></span><code><span class="nt">projects</span><span class="p">:</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">main</span>
+<span class="w">  </span><span class="nt">backends</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">oci</span>
+<span class="w">    </span><span class="nt">creds</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">client</span>
+<span class="w">      </span><span class="nt">user</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ocid1.user.oc1..g5vlaeqfu47akmaafq665xsgmyaqjktyfxtacfxc4ftjxuca7aohnd2ev66m</span>
+<span class="w">      </span><span class="nt">tenancy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ocid1.tenancy.oc1..ajqsftvk4qarcfaak3ha4ycdsaahxmaita5frdwg3tqo2bcokpd3n7oizwai</span>
+<span class="w">      </span><span class="nt">region</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">eu-frankfurt-1</span>
+<span class="w">      </span><span class="nt">fingerprint</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">77:32:77:00:49:7c:cb:56:84:75:8e:77:96:7d:53:17</span>
+<span class="w">      </span><span class="nt">key_file</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">~/.oci/private_key.pem</span>
+</code></pre></div>
+</div>
+<p>Make sure to include either the path to your private key via <code>key_file</code> or the contents of the key via <code>key_content</code>.</p>
+</div>
+</div>
+</div>
+<details class="info">
+<summary>Required permissions</summary>
+<p>This is an example of a restrictive policy for a group of <code>dstack</code> users:</p>
+<div class="highlight"><pre><span></span><code>Allow group &lt;dstack-users&gt; to read compartments in tenancy where target.compartment.name = &#39;&lt;dstack-compartment&gt;&#39;
+Allow group &lt;dstack-users&gt; to read marketplace-community-listings in compartment &lt;dstack-compartment&gt;
+Allow group &lt;dstack-users&gt; to manage app-catalog-listing in compartment &lt;dstack-compartment&gt;
+Allow group &lt;dstack-users&gt; to manage instances in compartment &lt;dstack-compartment&gt;
+Allow group &lt;dstack-users&gt; to manage compute-capacity-reports in compartment &lt;dstack-compartment&gt;
+Allow group &lt;dstack-users&gt; to manage volumes in compartment &lt;dstack-compartment&gt;
+Allow group &lt;dstack-users&gt; to manage volume-attachments in compartment &lt;dstack-compartment&gt;
+Allow group &lt;dstack-users&gt; to manage virtual-network-family in compartment &lt;dstack-compartment&gt;
+</code></pre></div>
+<p>To use this policy, create a compartment for <code>dstack</code> and specify it in <code>~/.dstack/server/config.yml</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">projects</span><span class="p">:</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">main</span>
+<span class="w">  </span><span class="nt">backends</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">oci</span>
+<span class="w">    </span><span class="nt">creds</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">default</span>
+<span class="w">    </span><span class="nt">compartment_id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ocid1.compartment.oc1..aaaaaaaa</span>
+</code></pre></div>
+</details>
 <p>SSH fleets support the same features as <a href="#vm-based">VM-based</a> backends.</p>
 <div class="admonition info">
 <p class="admonition-title">What's next</p>
