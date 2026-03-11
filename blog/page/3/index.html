@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../../assets/images/dstack-fav-32.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.3">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.5">
     
     
       
@@ -3773,6 +3773,17 @@ Services now support native <a href="https://dstack.ai/blog/pd-disaggregation/" 
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#built-in-ui-for-monitoring-essential-gpu-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Built-in UI for monitoring essential GPU metrics
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#supporting-mpi-and-ncclrccl-tests" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3865,17 +3876,6 @@ Services now support native <a href="https://dstack.ai/blog/pd-disaggregation/" 
     <span class="md-ellipsis">
       
         Supporting NVIDIA and AMD accelerators on Vultr
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#beyond-kubernetes-2024-recap-and-whats-ahead-for-ai-infra" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Beyond Kubernetes: 2024 recap and what's ahead for AI infra
       
     </span>
   </a>
@@ -4173,6 +4173,17 @@ Services now support native <a href="https://dstack.ai/blog/pd-disaggregation/" 
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#built-in-ui-for-monitoring-essential-gpu-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Built-in UI for monitoring essential GPU metrics
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#supporting-mpi-and-ncclrccl-tests" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -4271,17 +4282,6 @@ Services now support native <a href="https://dstack.ai/blog/pd-disaggregation/" 
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#beyond-kubernetes-2024-recap-and-whats-ahead-for-ai-infra" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Beyond Kubernetes: 2024 recap and what's ahead for AI infra
-      
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -4296,6 +4296,54 @@ Services now support native <a href="https://dstack.ai/blog/pd-disaggregation/" 
       <header class="md-typeset">
         <h1 id="blog">Blog<a class="headerlink" href="#blog" title="Permanent link">&para;</a></h1>
       </header>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2025-04-03 00:00:00+00:00">April 3, 2025</time></li>
+        
+          <li class="md-meta__item">
+            in
+            
+              <a href="../../changelog/" class="md-meta__link">Changelog</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              2 min read
+            
+          </li>
+        
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="built-in-ui-for-monitoring-essential-gpu-metrics"><a class="toclink" href="../../metrics-ui/">Built-in UI for monitoring essential GPU metrics</a></h2>
+<p>AI workloads generate vast amounts of metrics, making it essential to have efficient monitoring tools. While our recent
+update introduced the ability to export available metrics to Prometheus for maximum flexibility, there are times when
+users need to quickly access essential metrics without the need to switch to an external tool.</p>
+<p><img src="https://dstack.ai/static-assets/static-assets/images/dstack-metrics-ui-v3-min.png" width="630"/></p>
+<p>Previously, we introduced a <a href="../../dstack-metrics/">CLI command</a> that allows users to view essential GPU metrics for both NVIDIA
+and AMD hardware. Now, with this latest update, we’re excited to announce the addition of a built-in dashboard within
+the <code>dstack</code> control plane.</p>
+
+    
+      <nav class="md-post__action">
+        <a href="../../metrics-ui/">
+            <span>Continue reading</span>
+            <span class="icon"><svg viewBox="0 0 13 10" xmlns="http://www.w3.org/2000/svg"><path d="M12.823 4.164L8.954.182a.592.592 0 0 0-.854 0 .635.635 0 0 0 0 .88l2.836 2.92H.604A.614.614 0 0 0 0 4.604c0 .344.27.622.604.622h10.332L8.1 8.146a.635.635 0 0 0 0 .88.594.594 0 0 0 .854 0l3.869-3.982a.635.635 0 0 0 0-.88z" fill-rule="nonzero" fill="currentColor" class="fill-main"></path></svg></span>
+        </a>
+      </nav>
+    
+    
+  </div>
+</article>
       
         <article class="md-post md-post--excerpt">
   <header class="md-post__header">
@@ -4734,46 +4782,6 @@ and NVIDIA GPUs with greater flexibility and efficiency–using <code>dstack</co
   </div>
 </article>
       
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2024-12-10 00:00:00+00:00">December 10, 2024</time></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              3 min read
-            
-          </li>
-        
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="beyond-kubernetes-2024-recap-and-whats-ahead-for-ai-infra"><a class="toclink" href="../../beyond-kubernetes-2024-recap-and-whats-ahead/">Beyond Kubernetes: 2024 recap and what's ahead for AI infra</a></h2>
-<p>At <code>dstack</code>, we aim to simplify AI model development, training, and deployment of AI models by offering an
-alternative to the complex Kubernetes ecosystem. Our goal is to enable seamless AI infrastructure management across any
-cloud or hardware vendor. </p>
-<p>As 2024 comes to a close, we reflect on the milestones we've achieved and look ahead to the next steps.</p>
-
-    
-      <nav class="md-post__action">
-        <a href="../../beyond-kubernetes-2024-recap-and-whats-ahead/">
-            <span>Continue reading</span>
-            <span class="icon"><svg viewBox="0 0 13 10" xmlns="http://www.w3.org/2000/svg"><path d="M12.823 4.164L8.954.182a.592.592 0 0 0-.854 0 .635.635 0 0 0 0 .88l2.836 2.92H.604A.614.614 0 0 0 0 4.604c0 .344.27.622.604.622h10.332L8.1 8.146a.635.635 0 0 0 0 .88.594.594 0 0 0 .854 0l3.869-3.982a.635.635 0 0 0 0-.88z" fill-rule="nonzero" fill="currentColor" class="fill-main"></path></svg></span>
-        </a>
-      </nav>
-    
-    
-  </div>
-</article>
-      
       
         
           
@@ -4781,7 +4789,7 @@ cloud or hardware vendor. </p>
 
 
 <nav class="md-pagination">
-  <a class="md-pagination__link" href="../../">1</a> <a class="md-pagination__link" href="../2/">2</a> <span class="md-pagination__current">3</span> <a class="md-pagination__link" href="../4/">4</a>
+  <a class="md-pagination__link" href="../../">1</a> <a class="md-pagination__link" href="../2/">2</a> <span class="md-pagination__current">3</span> <a class="md-pagination__link" href="../4/">4</a> <a class="md-pagination__link" href="../5/">5</a>
 </nav>
         
       

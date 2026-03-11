@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../../assets/images/dstack-fav-32.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.3">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.5">
     
     
       
@@ -1079,7 +1079,7 @@ Services now support native <a href="https://dstack.ai/blog/pd-disaggregation/" 
     <span class="md-ellipsis">
       
         <span class="md-typeset">
-          RunPod
+          Runpod
         </span>
       
     </span>
@@ -4548,7 +4548,7 @@ Services now support native <a href="https://dstack.ai/blog/pd-disaggregation/" 
     <span class="md-ellipsis">
       
         <span class="md-typeset">
-          RunPod
+          Runpod
         </span>
       
     </span>
@@ -5435,6 +5435,15 @@ Create a new team and generate an API key for the member in the team.</p>
 <li><strong>Operator role for the team</strong> - Required for managing virtual machines within the team</li>
 </ul>
 </details>
+<details class="info">
+<summary>Pricing</summary>
+<p><code>dstack</code> shows the hourly price for Hot Aisle instances. Some instances also require an upfront payment for a minimum reservation period, which is usually a few hours. You will be charged for the full minimum period even if you stop the instance early.</p>
+<p>See the Hot Aisle API for the minimum reservation period for each instance type:</p>
+<div class="termy">
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>curl<span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;Authorization: Token </span><span class="nv">$API_KEY</span><span class="s2">&quot;</span><span class="w"> </span>https://admin.hotaisle.app/api/teams/<span class="nv">$TEAM_HANDLE</span>/virtual_machines/available/<span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span><span class="s2">&quot;.[] | {gpus: .Specs.gpus, MinimumReservationMinutes}&quot;</span>
+</code></pre></div>
+</div>
+</details>
 <h3 id="cloudrift">CloudRift<a class="headerlink" href="#cloudrift" title="Permanent link">&para;</a></h3>
 <p>Log into your <a href="https://console.cloudrift.ai/">CloudRift</a> console, click <code>API Keys</code> in the sidebar and click the button to create a new API key.</p>
 <p>Ensure you've created a project with CloudRift.</p>
@@ -5671,8 +5680,8 @@ In this case, <code>dstack</code> delegates provisioning to the cloud provider o
 <blockquote>
 <p>To learn more, see the <a href="../../examples/clusters/lambda/#kubernetes">Lambda</a> and <a href="../../examples/clusters/crusoe/#kubernetes">Crusoe</a> examples.</p>
 </blockquote>
-<h3 id="runpod">RunPod<a class="headerlink" href="#runpod" title="Permanent link">&para;</a></h3>
-<p>Log into your <a href="https://www.runpod.io/console/">RunPod</a> console, click Settings in the sidebar, expand the <code>API Keys</code> section, and click
+<h3 id="runpod">Runpod<a class="headerlink" href="#runpod" title="Permanent link">&para;</a></h3>
+<p>Log into your <a href="https://www.runpod.io/console/">Runpod</a> console, click Settings in the sidebar, expand the <code>API Keys</code> section, and click
 the button to create a Read &amp; Write key.</p>
 <p>Then proceed to configuring the backend.</p>
 <div editor-title="~/.dstack/server/config.yml">
@@ -5734,6 +5743,22 @@ API Key.</p>
 
 </div>
 
+<details class="info">
+<summary>Community Cloud</summary>
+<p>By default, <code>dstack</code> includes both Server Cloud (datacenter) and Community Cloud offers.
+To restrict offers to Server Cloud only, set <code>community_cloud: false</code> in the backend settings.</p>
+<div editor-title="~/.dstack/server/config.yml">
+<div class="highlight"><pre><span></span><code><span class="nt">projects</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">main</span>
+<span class="w">    </span><span class="nt">backends</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vastai</span>
+<span class="w">        </span><span class="nt">creds</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">api_key</span>
+<span class="w">          </span><span class="nt">api_key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">d75789f22f1908e0527c78a283b523dd73051c8c7d05456516fc91e9d4efd8c5</span>
+<span class="w">        </span><span class="nt">community_cloud</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+</code></pre></div>
+</div>
+</details>
 <p>Also, the <code>vastai</code> backend supports on-demand instances only. Spot instance support coming soon.</p>
 
 

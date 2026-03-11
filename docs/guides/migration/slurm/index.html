@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../../../assets/images/dstack-fav-32.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.3">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.5">
     
     
       
@@ -6661,7 +6661,7 @@ srun<span class="w"> </span>python<span class="w"> </span>train.py<span class="w
 </div>
 
 <h4 id="network-volumes">Network volumes<a class="headerlink" href="#network-volumes" title="Permanent link">&para;</a></h4>
-<p>Network volumes are persistent cloud storage (AWS EBS, GCP persistent disks, RunPod volumes).</p>
+<p>Network volumes are persistent cloud storage (AWS EBS, GCP persistent disks, Runpod volumes).</p>
 <p>Single-node task:</p>
 <div editor-title=".dstack.yml">
 
@@ -6686,7 +6686,7 @@ srun<span class="w"> </span>python<span class="w"> </span>train.py<span class="w
 
 </div>
 
-<p>Network volumes cannot be used with distributed tasks (no multi-attach support), except where multi-attach is supported (RunPod) or via volume interpolation. </p>
+<p>Network volumes cannot be used with distributed tasks (no multi-attach support), except where multi-attach is supported (Runpod) or via volume interpolation. </p>
 <p>For distributed tasks, use interpolation to attach different volumes to each node.</p>
 <div editor-title=".dstack.yml">
 

@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../../assets/images/dstack-fav-32.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.3">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.5">
     
     
       
@@ -3773,6 +3773,17 @@ Services now support native <a href="https://dstack.ai/blog/pd-disaggregation/" 
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#orchestrating-gpus-on-digitalocean-and-amd-developer-cloud" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Orchestrating GPUs on DigitalOcean and AMD Developer Cloud
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#introducing-service-probes" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3865,17 +3876,6 @@ Services now support native <a href="https://dstack.ai/blog/pd-disaggregation/" 
     <span class="md-ellipsis">
       
         Supporting GPU provisioning and orchestration on Nebius
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#built-in-ui-for-monitoring-essential-gpu-metrics" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Built-in UI for monitoring essential GPU metrics
       
     </span>
   </a>
@@ -4173,6 +4173,17 @@ Services now support native <a href="https://dstack.ai/blog/pd-disaggregation/" 
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#orchestrating-gpus-on-digitalocean-and-amd-developer-cloud" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Orchestrating GPUs on DigitalOcean and AMD Developer Cloud
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#introducing-service-probes" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -4271,17 +4282,6 @@ Services now support native <a href="https://dstack.ai/blog/pd-disaggregation/" 
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#built-in-ui-for-monitoring-essential-gpu-metrics" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Built-in UI for monitoring essential GPU metrics
-      
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -4296,6 +4296,51 @@ Services now support native <a href="https://dstack.ai/blog/pd-disaggregation/" 
       <header class="md-typeset">
         <h1 id="blog">Blog<a class="headerlink" href="#blog" title="Permanent link">&para;</a></h1>
       </header>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2025-09-04 00:00:00+00:00">September 4, 2025</time></li>
+        
+          <li class="md-meta__item">
+            in
+            
+              <a href="../../changelog/" class="md-meta__link">Changelog</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              3 min read
+            
+          </li>
+        
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="orchestrating-gpus-on-digitalocean-and-amd-developer-cloud"><a class="toclink" href="../../digitalocean-and-amd-dev-cloud/">Orchestrating GPUs on DigitalOcean and AMD Developer Cloud</a></h2>
+<p>Orchestration automates provisioning, running jobs, and tearing them down. While Kubernetes and Slurm are powerful in their domains, they lack the lightweight, GPU-native focus modern teams need to move faster.</p>
+<p><code>dstack</code> is built entirely around GPUs. Our latest update introduces native integration with <a href="https://www.digitalocean.com/products/gradient/gpu-droplets">DigitalOcean</a> and 
+<a href="https://www.amd.com/en/developer/resources/cloud-access/amd-developer-cloud.html">AMD Developer Cloud</a>, enabling teams to provision cloud GPUs and run workloads more cost-efficiently.</p>
+<p><img src="https://dstack.ai/static-assets/static-assets/images/digitalocean-and-amd-dev-cloud.png" width="630"/></p>
+
+    
+      <nav class="md-post__action">
+        <a href="../../digitalocean-and-amd-dev-cloud/">
+            <span>Continue reading</span>
+            <span class="icon"><svg viewBox="0 0 13 10" xmlns="http://www.w3.org/2000/svg"><path d="M12.823 4.164L8.954.182a.592.592 0 0 0-.854 0 .635.635 0 0 0 0 .88l2.836 2.92H.604A.614.614 0 0 0 0 4.604c0 .344.27.622.604.622h10.332L8.1 8.146a.635.635 0 0 0 0 .88.594.594 0 0 0 .854 0l3.869-3.982a.635.635 0 0 0 0-.88z" fill-rule="nonzero" fill="currentColor" class="fill-main"></path></svg></span>
+        </a>
+      </nav>
+    
+    
+  </div>
+</article>
       
         <article class="md-post md-post--excerpt">
   <header class="md-post__header">
@@ -4718,54 +4763,6 @@ offering a streamlined developer experience for teams using GPUs for AI workload
   </div>
 </article>
       
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2025-04-03 00:00:00+00:00">April 3, 2025</time></li>
-        
-          <li class="md-meta__item">
-            in
-            
-              <a href="../../changelog/" class="md-meta__link">Changelog</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              2 min read
-            
-          </li>
-        
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="built-in-ui-for-monitoring-essential-gpu-metrics"><a class="toclink" href="../../metrics-ui/">Built-in UI for monitoring essential GPU metrics</a></h2>
-<p>AI workloads generate vast amounts of metrics, making it essential to have efficient monitoring tools. While our recent
-update introduced the ability to export available metrics to Prometheus for maximum flexibility, there are times when
-users need to quickly access essential metrics without the need to switch to an external tool.</p>
-<p><img src="https://dstack.ai/static-assets/static-assets/images/dstack-metrics-ui-v3-min.png" width="630"/></p>
-<p>Previously, we introduced a <a href="../../dstack-metrics/">CLI command</a> that allows users to view essential GPU metrics for both NVIDIA
-and AMD hardware. Now, with this latest update, we’re excited to announce the addition of a built-in dashboard within
-the <code>dstack</code> control plane.</p>
-
-    
-      <nav class="md-post__action">
-        <a href="../../metrics-ui/">
-            <span>Continue reading</span>
-            <span class="icon"><svg viewBox="0 0 13 10" xmlns="http://www.w3.org/2000/svg"><path d="M12.823 4.164L8.954.182a.592.592 0 0 0-.854 0 .635.635 0 0 0 0 .88l2.836 2.92H.604A.614.614 0 0 0 0 4.604c0 .344.27.622.604.622h10.332L8.1 8.146a.635.635 0 0 0 0 .88.594.594 0 0 0 .854 0l3.869-3.982a.635.635 0 0 0 0-.88z" fill-rule="nonzero" fill="currentColor" class="fill-main"></path></svg></span>
-        </a>
-      </nav>
-    
-    
-  </div>
-</article>
-      
       
         
           
@@ -4773,7 +4770,7 @@ the <code>dstack</code> control plane.</p>
 
 
 <nav class="md-pagination">
-  <a class="md-pagination__link" href="../../">1</a> <span class="md-pagination__current">2</span> <a class="md-pagination__link" href="../3/">3</a> <a class="md-pagination__link" href="../4/">4</a>
+  <a class="md-pagination__link" href="../../">1</a> <span class="md-pagination__current">2</span> <a class="md-pagination__link" href="../3/">3</a> <a class="md-pagination__link" href="../4/">4</a> <a class="md-pagination__link" href="../5/">5</a>
 </nav>
         
       

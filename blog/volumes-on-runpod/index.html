@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Learn how to use volumes with dstack to optimize model inference cold start times on RunPod.">
+        <meta name="description" content="Learn how to use volumes with dstack to optimize model inference cold start times on Runpod.">
       
       
         <meta name="author" content="dstack GmbH">
@@ -25,11 +25,11 @@
       
       
       <link rel="icon" href="../../assets/images/dstack-fav-32.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.3">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.5">
     
     
       
-        <title>Using volumes to optimize cold starts on RunPod - dstack</title>
+        <title>Using volumes to optimize cold starts on Runpod - dstack</title>
       
     
     
@@ -112,7 +112,7 @@
     },{
       "@type": "ListItem",
       "position": 3,
-      "name": "Using volumes to optimize cold starts on RunPod"
+      "name": "Using volumes to optimize cold starts on Runpod"
     }]
 }
 </script>
@@ -120,16 +120,16 @@
 
   
 <meta property="og:type" content="website" />
-<meta property="og:title" content="Using volumes to optimize cold starts on RunPod - dstack" />
-<meta property="og:description" content="Learn how to use volumes with dstack to optimize model inference cold start times on RunPod." />
+<meta property="og:title" content="Using volumes to optimize cold starts on Runpod - dstack" />
+<meta property="og:description" content="Learn how to use volumes with dstack to optimize model inference cold start times on Runpod." />
 <meta property="og:image" content="https://dstack.ai/assets/images/social/blog/volumes-on-runpod.png" />
 <meta property="og:image:type" content="image/png" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
 <meta property="og:url" content="https://dstack.ai/blog/volumes-on-runpod/" />
 <meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter.title" content="Using volumes to optimize cold starts on RunPod - dstack" />
-<meta property="twitter:description" content="Learn how to use volumes with dstack to optimize model inference cold start times on RunPod." />
+<meta property="twitter.title" content="Using volumes to optimize cold starts on Runpod - dstack" />
+<meta property="twitter:description" content="Learn how to use volumes with dstack to optimize model inference cold start times on Runpod." />
 <meta property="twitter:image" content="https://dstack.ai/assets/images/social/blog/volumes-on-runpod.png" />
 </head>
   
@@ -200,7 +200,7 @@ Services now support native <a href="https://dstack.ai/blog/pd-disaggregation/" 
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Using volumes to optimize cold starts on RunPod
+              Using volumes to optimize cold starts on Runpod
             
           </span>
         </div>
@@ -4106,15 +4106,15 @@ Services now support native <a href="https://dstack.ai/blog/pd-disaggregation/" 
   
 
 
-<h1 id="using-volumes-to-optimize-cold-starts-on-runpod">Using volumes to optimize cold starts on RunPod<a class="headerlink" href="#using-volumes-to-optimize-cold-starts-on-runpod" title="Permanent link">&para;</a></h1>
+<h1 id="using-volumes-to-optimize-cold-starts-on-runpod">Using volumes to optimize cold starts on Runpod<a class="headerlink" href="#using-volumes-to-optimize-cold-starts-on-runpod" title="Permanent link">&para;</a></h1>
 <p>Deploying custom models in the cloud often faces the challenge of cold start times, including the time to provision a
 new instance and download the model. This is especially relevant for services with autoscaling when new model replicas
 need to be provisioned quickly. </p>
 <p>Let's explore how <code>dstack</code> optimizes this process using volumes, with an example of
-deploying a model on RunPod.</p>
+deploying a model on Runpod.</p>
 <!-- more -->
 
-<p>Suppose you want to deploy Llama 3.1 on RunPod as a <a href="../../docs/concepts/services/">service</a>:</p>
+<p>Suppose you want to deploy Llama 3.1 on Runpod as a <a href="../../docs/concepts/services/">service</a>:</p>
 <div editor-title="examples/llms/llama31/tgi/service.dstack.yml">
 
 <div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service</span>
@@ -4151,8 +4151,8 @@ the service by adjusting the number of replicas based on traffic.</p>
 <p>When starting each replica, <code>text-generation-launcher</code> downloads the model to the <code>/data</code> folder. For Llama 3.1 8B, this
 usually takes under a minute, but larger models may take longer. Repeated downloads can significantly affect
 auto-scaling efficiency.</p>
-<p>Great news: RunPod supports network volumes, which we can use for caching models across multiple replicas.</p>
-<p>With <code>dstack</code>, you can create a RunPod volume using the following configuration:</p>
+<p>Great news: Runpod supports network volumes, which we can use for caching models across multiple replicas.</p>
+<p>With <code>dstack</code>, you can create a Runpod volume using the following configuration:</p>
 <div editor-title="examples/mist/volumes/runpod.dstack.yml">
 
 <div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">volume</span>
@@ -4214,7 +4214,7 @@ volume name to the <code>/data</code> path.</p>
 
 <p>In this case, <code>dstack</code> attaches the specified volume to each new replica. This ensures the model is downloaded only
 once, reducing cold start time in proportion to the model size.</p>
-<p>A notable feature of RunPod is that volumes can be attached to multiple containers simultaneously. This capability is
+<p>A notable feature of Runpod is that volumes can be attached to multiple containers simultaneously. This capability is
 particularly useful for auto-scalable services or distributed tasks.</p>
 <p>Using <a href="../../docs/concepts/volumes/">volumes</a> not only optimizes inference cold start times but also enhances the
 efficiency of data and model checkpoint loading during training and fine-tuning.

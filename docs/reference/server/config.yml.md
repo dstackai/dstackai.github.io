@@ -163,7 +163,7 @@ to configure [backends](../../concepts/backends.md) and other [server-level sett
 
 ##### `projects[n].backends[type=runpod]` { #runpod data-toc-label="runpod" }
 
-###### `regions` - (Optional) `list[str]` The list of RunPod regions. Omit to use all regions. { #regions data-toc-label='regions' class='reference-item' }
+###### `regions` - (Optional) `list[str]` The list of Runpod regions. Omit to use all regions. { #regions data-toc-label='regions' class='reference-item' }
 ###### `community_cloud` - (Optional) `bool` Whether Community Cloud offers can be suggested in addition to Secure Cloud. Defaults to `false`. { #community_cloud data-toc-label='community_cloud' class='reference-item' }
 ###### [`creds`](#runpod-creds) - (Required) `object` The credentials. { #_creds data-toc-label='creds' class='reference-item' }
 
@@ -177,6 +177,7 @@ to configure [backends](../../concepts/backends.md) and other [server-level sett
 
 ###### `type` - (Required) `"vastai"` The type of backend. Must be `vastai`. { #type data-toc-label='type' class='reference-item' }
 ###### `regions` - (Optional) `list[str]` The list of VastAI regions. Omit to use all regions. { #regions data-toc-label='regions' class='reference-item' }
+###### `community_cloud` - (Optional) `bool` Whether Community Cloud offers can be suggested in addition to Server Cloud. Defaults to `true`. { #community_cloud data-toc-label='community_cloud' class='reference-item' }
 ###### [`creds`](#vastai-creds) - (Required) `object` The credentials. { #_creds data-toc-label='creds' class='reference-item' }
 
 

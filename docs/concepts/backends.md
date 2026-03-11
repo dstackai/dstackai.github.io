@@ -891,6 +891,18 @@ projects:
     * **Owner role for the user** - Required for creating and managing SSH keys
     * **Operator role for the team** - Required for managing virtual machines within the team
 
+??? info "Pricing"
+    `dstack` shows the hourly price for Hot Aisle instances. Some instances also require an upfront payment for a minimum reservation period, which is usually a few hours. You will be charged for the full minimum period even if you stop the instance early.
+
+    See the Hot Aisle API for the minimum reservation period for each instance type:
+
+    <div class="termy">
+
+    ```shell
+    $ curl -H "Authorization: Token $API_KEY" https://admin.hotaisle.app/api/teams/$TEAM_HANDLE/virtual_machines/available/ | jq ".[] | {gpus: .Specs.gpus, MinimumReservationMinutes}"
+    ```
+
+    </div>
 
 ### CloudRift
 
@@ -1132,9 +1144,9 @@ projects:
 
 > To learn more, see the [Lambda](../../examples/clusters/lambda/#kubernetes) and [Crusoe](../../examples/clusters/crusoe/#kubernetes) examples.
 
-### RunPod
+### Runpod
 
-Log into your [RunPod](https://www.runpod.io/console/) console, click Settings in the sidebar, expand the `API Keys` section, and click
+Log into your [Runpod](https://www.runpod.io/console/) console, click Settings in the sidebar, expand the `API Keys` section, and click
 the button to create a Read & Write key.
 
 Then proceed to configuring the backend.
@@ -1210,5 +1222,24 @@ projects:
 ```
 
 </div>
+
+??? info "Community Cloud"
+    By default, `dstack` includes both Server Cloud (datacenter) and Community Cloud offers.
+    To restrict offers to Server Cloud only, set `community_cloud: false` in the backend settings.
+
+    <div editor-title="~/.dstack/server/config.yml">
+
+    ```yaml
+    projects:
+      - name: main
+        backends:
+          - type: vastai
+            creds:
+              type: api_key
+              api_key: d75789f22f1908e0527c78a283b523dd73051c8c7d05456516fc91e9d4efd8c5
+            community_cloud: false
+    ```
+
+    </div>
 
 Also, the `vastai` backend supports on-demand instances only. Spot instance support coming soon.

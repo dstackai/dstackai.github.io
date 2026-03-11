@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../../../assets/images/dstack-fav-32.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.3">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.5">
     
     
       
@@ -4399,7 +4399,7 @@ to configure <a href="../../../concepts/backends/">backends</a> and other <a hre
 <h6 class="reference-item" id="private_key_content"><code>private_key_content</code> - (Optional) <code>str</code> Content of the service account private key. When configuring via <code>server/config.yml</code>, it's automatically filled from <code>private_key_file</code>. When configuring via UI, it has to be specified explicitly.<a class="headerlink" href="#private_key_content" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="filename"><code>filename</code> - (Optional) <code>str</code> The path to the service account credentials file.<a class="headerlink" href="#filename" title="Permanent link">&para;</a></h6>
 <h5 id="runpod"><code>projects[n].backends[type=runpod]</code><a class="headerlink" href="#runpod" title="Permanent link">&para;</a></h5>
-<h6 class="reference-item" id="regions"><code>regions</code> - (Optional) <code>list[str]</code> The list of RunPod regions. Omit to use all regions.<a class="headerlink" href="#regions" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="regions"><code>regions</code> - (Optional) <code>list[str]</code> The list of Runpod regions. Omit to use all regions.<a class="headerlink" href="#regions" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="community_cloud"><code>community_cloud</code> - (Optional) <code>bool</code> Whether Community Cloud offers can be suggested in addition to Secure Cloud. Defaults to <code>false</code>.<a class="headerlink" href="#community_cloud" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="_creds"><a href="#runpod-creds"><code>creds</code></a> - (Required) <code>object</code> The credentials.<a class="headerlink" href="#_creds" title="Permanent link">&para;</a></h6>
 <h6 id="runpod-creds"><code>projects[n].backends[type=runpod].creds</code><a class="headerlink" href="#runpod-creds" title="Permanent link">&para;</a></h6>
@@ -4407,6 +4407,7 @@ to configure <a href="../../../concepts/backends/">backends</a> and other <a hre
 <h5 id="vastai"><code>projects[n].backends[type=vastai]</code><a class="headerlink" href="#vastai" title="Permanent link">&para;</a></h5>
 <h6 class="reference-item" id="type"><code>type</code> - (Required) <code>"vastai"</code> The type of backend. Must be <code>vastai</code>.<a class="headerlink" href="#type" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="regions"><code>regions</code> - (Optional) <code>list[str]</code> The list of VastAI regions. Omit to use all regions.<a class="headerlink" href="#regions" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="community_cloud"><code>community_cloud</code> - (Optional) <code>bool</code> Whether Community Cloud offers can be suggested in addition to Server Cloud. Defaults to <code>true</code>.<a class="headerlink" href="#community_cloud" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="_creds"><a href="#vastai-creds"><code>creds</code></a> - (Required) <code>object</code> The credentials.<a class="headerlink" href="#_creds" title="Permanent link">&para;</a></h6>
 <h6 id="vastai-creds"><code>projects[n].backends[type=vastai].creds</code><a class="headerlink" href="#vastai-creds" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="type"><code>type</code> - (Required) <code>"api_key"</code> The type of credentials. Must be <code>api_key</code>.<a class="headerlink" href="#type" title="Permanent link">&para;</a></h6>
