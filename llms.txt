@@ -24,6 +24,7 @@
 - [Projects](https://dstack.ai/docs/concepts/projects.md): Organizing teams and isolating resources
 - [Metrics](https://dstack.ai/docs/concepts/metrics.md): Tracking and monitoring system metrics
 - [Events](https://dstack.ai/docs/concepts/events.md): Auditing resource state changes and operations
+- [Exports](https://dstack.ai/docs/concepts/exports.md): Exporting resources across projects
 
 ## Guides
 

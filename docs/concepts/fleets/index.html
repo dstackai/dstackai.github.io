@@ -1037,6 +1037,32 @@ Infrastructure orchestration is becoming an <a href="/blog/agentic-orchestration
 </li>
       
         <li class="md-nav__item">
+  <a href="#tenant-isolation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Tenant isolation
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#export-fleets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Export fleets
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#manage-fleets" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1381,6 +1407,34 @@ Infrastructure orchestration is becoming an <a href="/blog/agentic-orchestration
     
   
     Events
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../exports/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exports
   
 
     
@@ -2499,6 +2553,34 @@ Infrastructure orchestration is becoming an <a href="/blog/agentic-orchestration
     
   
     dstack secret
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/cli/dstack/export/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    dstack export
   
 
     
@@ -4426,6 +4508,32 @@ Infrastructure orchestration is becoming an <a href="/blog/agentic-orchestration
 </li>
       
         <li class="md-nav__item">
+  <a href="#tenant-isolation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Tenant isolation
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#export-fleets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Export fleets
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#manage-fleets" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -4952,6 +5060,14 @@ unlimited).</p>
 <p class="admonition-title">Reference</p>
 <p>The fleet configuration file supports additional options, including <a href="../../reference/dstack.yml/fleet/#instance_types"><code>instance_types</code></a>, <a href="../../reference/dstack.yml/fleet/#max_price"><code>max_price</code></a>, <a href="../../reference/dstack.yml/fleet/#max_price"><code>regions</code></a>, among others. For the complete list, see the <a href="../../reference/dstack.yml/fleet/">reference</a>.</p>
 </div>
+<h2 id="tenant-isolation">Tenant isolation<a class="headerlink" href="#tenant-isolation" title="Permanent link">&para;</a></h2>
+<p>Users running workloads on a fleet have access to the host, including the folders that may be used as instance volumes,
+and containers use host network mode unless the host has multiple <a href="#blocks">blocks</a> configured and the job uses only a subset of them.</p>
+<p>Tighter isolation is on the roadmap, including <a href="https://github.com/dstackai/dstack/issues/3644" target="_blank">SSH reverse proxy</a> and rootless access to the host.</p>
+<p>When <a href="../exports/">exporting fleets</a> to other projects, the same access model applies to members of the importer projects.</p>
+<h2 id="export-fleets">Export fleets<a class="headerlink" href="#export-fleets" title="Permanent link">&para;</a></h2>
+<p>Fleets can be exported to other projects, allowing those projects to use the exported fleets
+for running dev environments, tasks, and services. See <a href="../exports/">Exports</a> for more details.</p>
 <h2 id="manage-fleets">Manage fleets<a class="headerlink" href="#manage-fleets" title="Permanent link">&para;</a></h2>
 <h3 id="list-fleets">List fleets<a class="headerlink" href="#list-fleets" title="Permanent link">&para;</a></h3>
 <p>The <a href="../../reference/cli/dstack/fleet/#dstack-fleet-list"><code>dstack fleet</code></a> command lists fleet instances and their status:</p>
@@ -4985,6 +5101,7 @@ To terminate and delete specific instances from a fleet, pass <code>-i INSTANCE_
 <li>Check <a href="../dev-environments/">dev environments</a>, <a href="../tasks/">tasks</a>, and
 <a href="../services/">services</a></li>
 <li>Read about <a href="../backends/">Backends</a> guide</li>
+<li>Learn how to <a href="../exports/">export fleets</a> to other projects</li>
 <li>Explore the <a href="../../reference/dstack.yml/fleet/"><code>.dstack.yml</code> reference</a></li>
 <li>See the <a href="../../../examples/#clusters">Clusters</a> example</li>
 </ol>
