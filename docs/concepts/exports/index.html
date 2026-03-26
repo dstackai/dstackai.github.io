@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../../assets/images/dstack-fav-32.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.5">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
       
@@ -2465,6 +2465,34 @@ Infrastructure orchestration is becoming an <a href="/blog/agentic-orchestration
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/cli/dstack/import/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    dstack import
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -4499,8 +4527,17 @@ Export<span class="w"> </span>my-export<span class="w"> </span>deleted
 
 <p>Use <code>-y</code> to skip the confirmation prompt.</p>
 <h2 id="access-imported-fleets">Access imported fleets<a class="headerlink" href="#access-imported-fleets" title="Permanent link">&para;</a></h2>
-<p>From the importer project's perspective, exported fleets appear automatically in <code>dstack fleet list</code>
-with a <code>&lt;project&gt;/&lt;fleet&gt;</code> prefix:</p>
+<p>From the importer project's perspective, use <code>dstack import list</code> (or simply <code>dstack import</code>) to list all imports in the project — i.e., all exports from other projects that this project has been granted access to:</p>
+<div class="termy">
+
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>dstack<span class="w"> </span>import<span class="w"> </span>list
+<span class="w"> </span>NAME<span class="w">              </span>FLEETS
+<span class="w"> </span>team-a/my-export<span class="w">  </span>my-fleet,<span class="w"> </span>another-fleet
+</code></pre></div>
+
+</div>
+
+<p>Imported fleets also appear in <code>dstack fleet list</code> in the <code>&lt;project&gt;/&lt;fleet&gt;</code> format:</p>
 <div class="termy">
 
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>dstack<span class="w"> </span>fleet<span class="w"> </span>list
@@ -4513,6 +4550,18 @@ with a <code>&lt;project&gt;/&lt;fleet&gt;</code> prefix:</p>
 </div>
 
 <p>Imported fleets can be used for runs just like the project's own fleets.</p>
+<div editor-title=".dstack.yml">
+
+<div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dev-environment</span>
+<span class="nt">ide</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vscode</span>
+
+<span class="nt">fleets</span><span class="p">:</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my-local-fleet</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">team-a/my-fleet</span>
+</code></pre></div>
+
+</div>
+
 <div class="admonition info">
 <p class="admonition-title">Tenant isolation</p>
 <p>Exported fleets share the same access model as regular fleets. See <a href="../fleets/#tenant-isolation">Tenant isolation</a> for details.</p>
@@ -4521,6 +4570,7 @@ with a <code>&lt;project&gt;/&lt;fleet&gt;</code> prefix:</p>
 <p class="admonition-title">What's next?</p>
 <ol>
 <li>Check the <a href="../../reference/cli/dstack/export/"><code>dstack export</code> CLI reference</a></li>
+<li>Check the <a href="../../reference/cli/dstack/import/"><code>dstack import</code> CLI reference</a></li>
 <li>Learn how to manage <a href="../fleets/">fleets</a></li>
 <li>Read about <a href="../projects/">projects</a> and project roles</li>
 </ol>

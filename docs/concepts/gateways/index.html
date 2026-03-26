@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../../assets/images/dstack-fav-32.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.5">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
       
@@ -2536,6 +2536,34 @@ Infrastructure orchestration is becoming an <a href="/blog/agentic-orchestration
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/cli/dstack/import/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    dstack import
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -4651,7 +4679,8 @@ For self-hosted Kubernetes, you must provide a load balancer by yourself.</p>
 <p><code>dstack</code> supports the following certificate types:</p>
 <ul>
 <li><code>lets-encrypt</code> (default) — Automatic certificates via <a href="https://letsencrypt.org/">Let's Encrypt</a>. Requires a <a href="#public-ip">public IP</a>.</li>
-<li><code>acm</code> — Certificates managed by <a href="https://aws.amazon.com/certificate-manager/">AWS Certificate Manager</a>. AWS-only. TLS is terminated at the load balancer, not at the gateway.</li>
+<li><code>acm</code> — Certificates managed by <a href="https://aws.amazon.com/certificate-manager/">AWS Certificate Manager</a>. AWS-only. TLS is terminated at the load balancer, not at the gateway.
+  Requires a VPC with at least two subnets in different availability zones to provision a load balancer. If <code>public_ip: False</code>, subnets must be private and have a route to NAT gateway.</li>
 <li><code>null</code> — No certificate. Services will use HTTP.</li>
 </ul>
 </details>

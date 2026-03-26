@@ -124,7 +124,7 @@ finally:
 ###### `startup_order` - (Optional) `"any" | "master-first" | "workers-first"` The order in which master and workers jobs are started: `any`, `master-first`, `workers-first`. Defaults to `any`. { #startup_order data-toc-label='startup_order' class='reference-item' }
 ###### `stop_criteria` - (Optional) `"all-done" | "master-done"` The criteria determining when a multi-node run should be considered finished: `all-done`, `master-done`. Defaults to `all-done`. { #stop_criteria data-toc-label='stop_criteria' class='reference-item' }
 ###### [`schedule`](#schedule) - (Optional) `object` The schedule for starting the run at specified time. { #_schedule data-toc-label='schedule' class='reference-item' }
-###### `fleets` - (Optional) `list[str]` The fleets considered for reuse. { #fleets data-toc-label='fleets' class='reference-item' }
+###### [`fleets`](#fleets) - (Optional) `list[str | object]` The fleets considered for reuse. For fleets owned by the current project, specify fleet names. For imported fleets, specify `<project name>/<fleet name>`. { #_fleets data-toc-label='fleets' class='reference-item' }
 ###### `tags` - (Optional) `dict` The custom tags to associate with the resource. The tags are also propagated to the underlying backend resources. If there is a conflict with backend-level tags, does not override them. { #tags data-toc-label='tags' class='reference-item' }
 
 
@@ -176,13 +176,13 @@ finally:
 ###### `startup_order` - (Optional) `"any" | "master-first" | "workers-first"` The order in which master and workers jobs are started: `any`, `master-first`, `workers-first`. Defaults to `any`. { #startup_order data-toc-label='startup_order' class='reference-item' }
 ###### `stop_criteria` - (Optional) `"all-done" | "master-done"` The criteria determining when a multi-node run should be considered finished: `all-done`, `master-done`. Defaults to `all-done`. { #stop_criteria data-toc-label='stop_criteria' class='reference-item' }
 ###### [`schedule`](#schedule) - (Optional) `object` The schedule for starting the run at specified time. { #_schedule data-toc-label='schedule' class='reference-item' }
-###### `fleets` - (Optional) `list[str]` The fleets considered for reuse. { #fleets data-toc-label='fleets' class='reference-item' }
+###### [`fleets`](#fleets) - (Optional) `list[str | object]` The fleets considered for reuse. For fleets owned by the current project, specify fleet names. For imported fleets, specify `<project name>/<fleet name>`. { #_fleets data-toc-label='fleets' class='reference-item' }
 ###### `tags` - (Optional) `dict` The custom tags to associate with the resource. The tags are also propagated to the underlying backend resources. If there is a conflict with backend-level tags, does not override them. { #tags data-toc-label='tags' class='reference-item' }
 
 
 ### `dstack.api.DevEnvironment` { #dstack.api.DevEnvironment data-toc-label="DevEnvironment" }
 
-###### `ide` - (Required) `"cursor" | "vscode" | "windsurf"` The IDE to run. Supported values include `vscode`, `cursor`, and `windsurf`. { #ide data-toc-label='ide' class='reference-item' }
+###### `ide` - (Optional) `"cursor" | "vscode" | "windsurf"` The IDE to pre-install. Supported values include `vscode`, `cursor`, and `windsurf`. Defaults to no IDE (SSH only). { #ide data-toc-label='ide' class='reference-item' }
 ###### `version` - (Optional) `str` The version of the IDE. For `windsurf`, the version is in the format `version@commit`. { #version data-toc-label='version' class='reference-item' }
 ###### `init` - (Optional) `list[str]` The shell commands to run on startup. { #init data-toc-label='init' class='reference-item' }
 ###### `inactivity_duration` - (Optional) `bool | int | str | "off"` The maximum amount of time the dev environment can be inactive (e.g., `2h`, `1d`, etc). After it elapses, the dev environment is automatically stopped. Inactivity is defined as the absence of SSH connections to the dev environment, including VS Code connections, `ssh <run name>` shells, and attached `dstack apply` or `dstack attach` commands. Use `off` for unlimited duration. Can be updated in-place. Defaults to `off`. { #inactivity_duration data-toc-label='inactivity_duration' class='reference-item' }
@@ -221,7 +221,7 @@ finally:
 ###### `startup_order` - (Optional) `"any" | "master-first" | "workers-first"` The order in which master and workers jobs are started: `any`, `master-first`, `workers-first`. Defaults to `any`. { #startup_order data-toc-label='startup_order' class='reference-item' }
 ###### `stop_criteria` - (Optional) `"all-done" | "master-done"` The criteria determining when a multi-node run should be considered finished: `all-done`, `master-done`. Defaults to `all-done`. { #stop_criteria data-toc-label='stop_criteria' class='reference-item' }
 ###### [`schedule`](#schedule) - (Optional) `object` The schedule for starting the run at specified time. { #_schedule data-toc-label='schedule' class='reference-item' }
-###### `fleets` - (Optional) `list[str]` The fleets considered for reuse. { #fleets data-toc-label='fleets' class='reference-item' }
+###### [`fleets`](#fleets) - (Optional) `list[str | object]` The fleets considered for reuse. For fleets owned by the current project, specify fleet names. For imported fleets, specify `<project name>/<fleet name>`. { #_fleets data-toc-label='fleets' class='reference-item' }
 ###### `tags` - (Optional) `dict` The custom tags to associate with the resource. The tags are also propagated to the underlying backend resources. If there is a conflict with backend-level tags, does not override them. { #tags data-toc-label='tags' class='reference-item' }
 
 

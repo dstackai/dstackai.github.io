@@ -15,7 +15,7 @@
         <link rel="canonical" href="https://dstack.ai/docs/reference/api/python/">
       
       
-        <link rel="prev" href="../../cli/dstack/export/">
+        <link rel="prev" href="../../cli/dstack/import/">
       
       
         <link rel="next" href="../rest/">
@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../../../assets/images/dstack-fav-32.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.5">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
       
@@ -2319,6 +2319,34 @@ Infrastructure orchestration is becoming an <a href="/blog/agentic-orchestration
     
   
     dstack export
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cli/dstack/import/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    dstack import
   
 
     
@@ -5911,7 +5939,7 @@ the user's credentials. Ignored for other repo types.</p>
 <h6 class="reference-item" id="startup_order"><code>startup_order</code> - (Optional) <code>"any" | "master-first" | "workers-first"</code> The order in which master and workers jobs are started: <code>any</code>, <code>master-first</code>, <code>workers-first</code>. Defaults to <code>any</code>.<a class="headerlink" href="#startup_order" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="stop_criteria"><code>stop_criteria</code> - (Optional) <code>"all-done" | "master-done"</code> The criteria determining when a multi-node run should be considered finished: <code>all-done</code>, <code>master-done</code>. Defaults to <code>all-done</code>.<a class="headerlink" href="#stop_criteria" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="_schedule"><a href="#schedule"><code>schedule</code></a> - (Optional) <code>object</code> The schedule for starting the run at specified time.<a class="headerlink" href="#_schedule" title="Permanent link">&para;</a></h6>
-<h6 class="reference-item" id="fleets"><code>fleets</code> - (Optional) <code>list[str]</code> The fleets considered for reuse.<a class="headerlink" href="#fleets" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="_fleets"><a href="#fleets"><code>fleets</code></a> - (Optional) <code>list[str | object]</code> The fleets considered for reuse. For fleets owned by the current project, specify fleet names. For imported fleets, specify <code>&lt;project name&gt;/&lt;fleet name&gt;</code>.<a class="headerlink" href="#_fleets" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="tags"><code>tags</code> - (Optional) <code>dict</code> The custom tags to associate with the resource. The tags are also propagated to the underlying backend resources. If there is a conflict with backend-level tags, does not override them.<a class="headerlink" href="#tags" title="Permanent link">&para;</a></h6>
 <h3 id="dstack.api.Service"><code>dstack.api.Service</code><a class="headerlink" href="#dstack.api.Service" title="Permanent link">&para;</a></h3>
 <h6 class="reference-item" id="port"><code>port</code> - (Required) <code>int | str | object</code> The port the application listens on.<a class="headerlink" href="#port" title="Permanent link">&para;</a></h6>
@@ -5960,10 +5988,10 @@ the user's credentials. Ignored for other repo types.</p>
 <h6 class="reference-item" id="startup_order"><code>startup_order</code> - (Optional) <code>"any" | "master-first" | "workers-first"</code> The order in which master and workers jobs are started: <code>any</code>, <code>master-first</code>, <code>workers-first</code>. Defaults to <code>any</code>.<a class="headerlink" href="#startup_order" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="stop_criteria"><code>stop_criteria</code> - (Optional) <code>"all-done" | "master-done"</code> The criteria determining when a multi-node run should be considered finished: <code>all-done</code>, <code>master-done</code>. Defaults to <code>all-done</code>.<a class="headerlink" href="#stop_criteria" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="_schedule"><a href="#schedule"><code>schedule</code></a> - (Optional) <code>object</code> The schedule for starting the run at specified time.<a class="headerlink" href="#_schedule" title="Permanent link">&para;</a></h6>
-<h6 class="reference-item" id="fleets"><code>fleets</code> - (Optional) <code>list[str]</code> The fleets considered for reuse.<a class="headerlink" href="#fleets" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="_fleets"><a href="#fleets"><code>fleets</code></a> - (Optional) <code>list[str | object]</code> The fleets considered for reuse. For fleets owned by the current project, specify fleet names. For imported fleets, specify <code>&lt;project name&gt;/&lt;fleet name&gt;</code>.<a class="headerlink" href="#_fleets" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="tags"><code>tags</code> - (Optional) <code>dict</code> The custom tags to associate with the resource. The tags are also propagated to the underlying backend resources. If there is a conflict with backend-level tags, does not override them.<a class="headerlink" href="#tags" title="Permanent link">&para;</a></h6>
 <h3 id="dstack.api.DevEnvironment"><code>dstack.api.DevEnvironment</code><a class="headerlink" href="#dstack.api.DevEnvironment" title="Permanent link">&para;</a></h3>
-<h6 class="reference-item" id="ide"><code>ide</code> - (Required) <code>"cursor" | "vscode" | "windsurf"</code> The IDE to run. Supported values include <code>vscode</code>, <code>cursor</code>, and <code>windsurf</code>.<a class="headerlink" href="#ide" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="ide"><code>ide</code> - (Optional) <code>"cursor" | "vscode" | "windsurf"</code> The IDE to pre-install. Supported values include <code>vscode</code>, <code>cursor</code>, and <code>windsurf</code>. Defaults to no IDE (SSH only).<a class="headerlink" href="#ide" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="version"><code>version</code> - (Optional) <code>str</code> The version of the IDE. For <code>windsurf</code>, the version is in the format <code>version@commit</code>.<a class="headerlink" href="#version" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="init"><code>init</code> - (Optional) <code>list[str]</code> The shell commands to run on startup.<a class="headerlink" href="#init" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="inactivity_duration"><code>inactivity_duration</code> - (Optional) <code>bool | int | str | "off"</code> The maximum amount of time the dev environment can be inactive (e.g., <code>2h</code>, <code>1d</code>, etc). After it elapses, the dev environment is automatically stopped. Inactivity is defined as the absence of SSH connections to the dev environment, including VS Code connections, <code>ssh &lt;run name&gt;</code> shells, and attached <code>dstack apply</code> or <code>dstack attach</code> commands. Use <code>off</code> for unlimited duration. Can be updated in-place. Defaults to <code>off</code>.<a class="headerlink" href="#inactivity_duration" title="Permanent link">&para;</a></h6>
@@ -6002,7 +6030,7 @@ the user's credentials. Ignored for other repo types.</p>
 <h6 class="reference-item" id="startup_order"><code>startup_order</code> - (Optional) <code>"any" | "master-first" | "workers-first"</code> The order in which master and workers jobs are started: <code>any</code>, <code>master-first</code>, <code>workers-first</code>. Defaults to <code>any</code>.<a class="headerlink" href="#startup_order" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="stop_criteria"><code>stop_criteria</code> - (Optional) <code>"all-done" | "master-done"</code> The criteria determining when a multi-node run should be considered finished: <code>all-done</code>, <code>master-done</code>. Defaults to <code>all-done</code>.<a class="headerlink" href="#stop_criteria" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="_schedule"><a href="#schedule"><code>schedule</code></a> - (Optional) <code>object</code> The schedule for starting the run at specified time.<a class="headerlink" href="#_schedule" title="Permanent link">&para;</a></h6>
-<h6 class="reference-item" id="fleets"><code>fleets</code> - (Optional) <code>list[str]</code> The fleets considered for reuse.<a class="headerlink" href="#fleets" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="_fleets"><a href="#fleets"><code>fleets</code></a> - (Optional) <code>list[str | object]</code> The fleets considered for reuse. For fleets owned by the current project, specify fleet names. For imported fleets, specify <code>&lt;project name&gt;/&lt;fleet name&gt;</code>.<a class="headerlink" href="#_fleets" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="tags"><code>tags</code> - (Optional) <code>dict</code> The custom tags to associate with the resource. The tags are also propagated to the underlying backend resources. If there is a conflict with backend-level tags, does not override them.<a class="headerlink" href="#tags" title="Permanent link">&para;</a></h6>
 <h3 id="dstack.api.Run"><code>dstack.api.Run</code><a class="headerlink" href="#dstack.api.Run" title="Permanent link">&para;</a></h3>
 
@@ -7162,7 +7190,7 @@ You can override these credentials via the <code>git_identity_file</code> or <co
           <nav class="md-footer__inner md-grid" aria-label="Footer" >
             
               
-              <a href="../../cli/dstack/export/" class="md-footer__link md-footer__link--prev" aria-label="Previous: dstack export">
+              <a href="../../cli/dstack/import/" class="md-footer__link md-footer__link--prev" aria-label="Previous: dstack import">
                 <div class="md-footer__button md-icon">
                   
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -7172,7 +7200,7 @@ You can override these credentials via the <code>git_identity_file</code> or <co
                     Previous
                   </span>
                   <div class="md-ellipsis">
-                    dstack export
+                    dstack import
                   </div>
                 </div>
               </a>

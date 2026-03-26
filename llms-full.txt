@@ -61,7 +61,7 @@ description: How to install the dstack server and CLI
     If you don't want to host the `dstack` server (or want to access GPU marketplace),
     skip installation and proceed to [dstack Sky](https://sky.dstack.ai). -->
 
-## Set up the server
+## Launch the server
 
 The server can run on your laptop or any environment with access to the cloud and on-prem clusters you plan to use.
 
@@ -122,11 +122,11 @@ The server can run on your laptop or any environment with access to the cloud an
 
 For more details on server deployment options, see the [Server deployment](guides/server-deployment.md) guide.
 
-### Configure backends
+!!! info "Configure backends"
 
-> To orchestrate compute across GPU clouds or Kubernetes clusters, you need to configure [backends](concepts/backends.md).
+    To orchestrate compute across GPU clouds or Kubernetes clusters, you need to configure [backends](concepts/backends.md).
 
-## Set up the CLI
+## Install the CLI
 
 Once the server is up, you can access it via the `dstack` CLI. 
 
@@ -227,7 +227,7 @@ Once the server is up, you can access it via the `dstack` CLI.
         > If you get an error similar to `2: command not found: compdef`, then add the following line to the beginning of your `~/.zshrc` file:
         > `autoload -Uz compinit && compinit`.
 
-### Configure the default project
+### Configure the project
 
 To point the CLI to the `dstack` server, configure it
 with the server address, user token, and project name:
@@ -247,7 +247,7 @@ Configuration is updated at ~/.dstack/config.yml
 
 This configuration is stored in `~/.dstack/config.yml`.
 
-### Install agent skills
+## Install AI agent skills
 
 Install [skills](https://skills.sh/dstackai/dstack/dstack) to help AI agents use the `dstack` CLI and edit configuration files.
 
@@ -259,7 +259,34 @@ $ npx skills add dstackai/dstack
 
 </div>
 
-Agent skills are experimental. Share your feedback via [GitHub issues](https://github.com/dstackai/dstack/issues).
+AI agents like Claude, Codex, and Cursor can now create and manage fleets and submit workloads on your behalf.
+
+<div class="termy">
+
+```shell
+ ▐▛███▜▌   Claude Code v2.1.83
+▝▜█████▛▘  Opus 4.6 (1M context) · Claude Team
+  ▘▘ ▝▝    ~/skills-demo
+
+$ /dstack
+
+dstack skill loaded. How can I help? For example:
+
+  - Apply a configuration (*.dstack.yml)
+  - Check run status (dstack ps)
+  - Manage fleets, volumes, or services
+  - Create or edit a dstack configuration
+  - Troubleshoot provisioning or connectivity issues
+
+  What would you like to do?
+
+$ 
+```
+
+</div>
+
+!!! info "Feedback"
+    We're actively improving Skills and would love your feedback in [GitHub issues](https://github.com/dstackai/dstack/issues).
 
 !!! info "What's next?"
     1. See [Backends](concepts/backends.md)
@@ -2343,7 +2370,7 @@ description: Provisioning remote instances for cloud-based development
 
 # Dev environments
 
-A dev environment lets you provision an instance and access it with your desktop IDE.
+A dev environment lets you provision an instance and access it with your desktop IDE or SSH.
 
 ??? info "Prerequisites"
     Before running a dev environment, make sure you’ve [installed](../installation.md) the server and CLI, and created a [fleet](fleets.md).
@@ -2363,6 +2390,8 @@ name: vscode
 python: "3.11"
 # Uncomment to use a custom Docker image
 #image: huggingface/trl-latest-gpu
+
+# Comment if not required
 ide: vscode
 
 # Uncomment to leverage spot instances
@@ -2393,11 +2422,31 @@ Launching `vscode`...
 
 To open in VS Code Desktop, use this link:
   vscode://vscode-remote/ssh-remote+vscode/workflow
+
+To connect via SSH, use: `ssh vscode`
 ```
 
 </div>
 
 `dstack apply` automatically provisions an instance and sets up an IDE on it.
+
+??? info "SSH-only"
+    The `ide` property is optional. If omitted, no IDE is pre-installed, but the dev environment
+    is still accessible via SSH:
+
+    <div editor-title=".dstack.yml">
+
+    ```yaml
+    type: dev-environment
+    name: my-env
+
+    python: "3.11"
+
+    resources:
+      gpu: 24GB
+    ```
+
+    </div>
 
 ??? info "Windows"
     On Windows, `dstack` works both natively and inside WSL. But, for dev environments, 
@@ -5408,6 +5457,7 @@ If you disable [public IP](#public-ip) (e.g. to make the gateway private) or if 
 
     * `lets-encrypt` (default) — Automatic certificates via [Let's Encrypt](https://letsencrypt.org/). Requires a [public IP](#public-ip).
     * `acm` — Certificates managed by [AWS Certificate Manager](https://aws.amazon.com/certificate-manager/). AWS-only. TLS is terminated at the load balancer, not at the gateway.
+      Requires a VPC with at least two subnets in different availability zones to provision a load balancer. If `public_ip: False`, subnets must be private and have a route to NAT gateway.
     * `null` — No certificate. Services will use HTTP.
 
 ### Public IP
@@ -6100,8 +6150,20 @@ Use `-y` to skip the confirmation prompt.
 
 ## Access imported fleets
 
-From the importer project's perspective, exported fleets appear automatically in `dstack fleet list`
-with a `<project>/<fleet>` prefix:
+From the importer project's perspective, use `dstack import list` (or simply `dstack import`) to list all imports in the project — i.e., all exports from other projects that this project has been granted access to:
+
+<div class="termy">
+
+```shell
+$ dstack import list
+ NAME              FLEETS
+ team-a/my-export  my-fleet, another-fleet
+
+```
+
+</div>
+
+Imported fleets also appear in `dstack fleet list` in the `<project>/<fleet>` format:
 
 <div class="termy">
 
@@ -6118,13 +6180,27 @@ $ dstack fleet list
 
 Imported fleets can be used for runs just like the project's own fleets.
 
+<div editor-title=".dstack.yml">
+    
+```yaml
+type: dev-environment
+ide: vscode
+
+fleets:
+- my-local-fleet
+- team-a/my-fleet
+```
+
+</div>
+
 !!! info "Tenant isolation"
     Exported fleets share the same access model as regular fleets. See [Tenant isolation](fleets.md#tenant-isolation) for details.
 
 !!! info "What's next?"
     1. Check the [`dstack export` CLI reference](../reference/cli/dstack/export.md)
-    2. Learn how to manage [fleets](fleets.md)
-    3. Read about [projects](projects.md) and project roles
+    1. Check the [`dstack import` CLI reference](../reference/cli/dstack/import.md)
+    1. Learn how to manage [fleets](fleets.md)
+    1. Read about [projects](projects.md) and project roles
 
 
 # docs/guides/server-deployment.md

@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../../assets/images/dstack-fav-32.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.5">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
       
@@ -2588,6 +2588,34 @@ Infrastructure orchestration is becoming an <a href="/blog/agentic-orchestration
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/cli/dstack/import/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    dstack import
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -4649,7 +4677,7 @@ Infrastructure orchestration is becoming an <a href="/blog/agentic-orchestration
 
 
 <h1 id="dev-environments">Dev environments<a class="headerlink" href="#dev-environments" title="Permanent link">&para;</a></h1>
-<p>A dev environment lets you provision an instance and access it with your desktop IDE.</p>
+<p>A dev environment lets you provision an instance and access it with your desktop IDE or SSH.</p>
 <details class="info">
 <summary>Prerequisites</summary>
 <p>Before running a dev environment, make sure you’ve <a href="../../installation/">installed</a> the server and CLI, and created a <a href="../fleets/">fleet</a>.</p>
@@ -4666,6 +4694,8 @@ The filename must end with <code>.dstack.yml</code> (e.g. <code>.dstack.yml</cod
 <span class="nt">python</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;3.11&quot;</span>
 <span class="c1"># Uncomment to use a custom Docker image</span>
 <span class="c1">#image: huggingface/trl-latest-gpu</span>
+
+<span class="c1"># Comment if not required</span>
 <span class="nt">ide</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vscode</span>
 
 <span class="c1"># Uncomment to leverage spot instances</span>
@@ -4694,11 +4724,28 @@ Launching<span class="w"> </span><span class="sb">`</span>vscode<span class="sb"
 
 To<span class="w"> </span>open<span class="w"> </span><span class="k">in</span><span class="w"> </span>VS<span class="w"> </span>Code<span class="w"> </span>Desktop,<span class="w"> </span>use<span class="w"> </span>this<span class="w"> </span>link:
 <span class="w">  </span>vscode://vscode-remote/ssh-remote+vscode/workflow
+
+To<span class="w"> </span>connect<span class="w"> </span>via<span class="w"> </span>SSH,<span class="w"> </span>use:<span class="w"> </span><span class="sb">`</span>ssh<span class="w"> </span>vscode<span class="sb">`</span>
 </code></pre></div>
 
 </div>
 
 <p><code>dstack apply</code> automatically provisions an instance and sets up an IDE on it.</p>
+<details class="info">
+<summary>SSH-only</summary>
+<p>The <code>ide</code> property is optional. If omitted, no IDE is pre-installed, but the dev environment
+is still accessible via SSH:</p>
+<div editor-title=".dstack.yml">
+<div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dev-environment</span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my-env</span>
+
+<span class="nt">python</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;3.11&quot;</span>
+
+<span class="nt">resources</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">24GB</span>
+</code></pre></div>
+</div>
+</details>
 <details class="info">
 <summary>Windows</summary>
 <p>On Windows, <code>dstack</code> works both natively and inside WSL. But, for dev environments, 
