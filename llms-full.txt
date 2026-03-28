@@ -247,7 +247,7 @@ Configuration is updated at ~/.dstack/config.yml
 
 This configuration is stored in `~/.dstack/config.yml`.
 
-## Install AI agent skills
+## Install agent skills
 
 Install [skills](https://skills.sh/dstackai/dstack/dstack) to help AI agents use the `dstack` CLI and edit configuration files.
 
@@ -304,7 +304,7 @@ description: Quick guide to creating fleets and submitting runs
 # Quickstart
 
 !!! info "Prerequsites"
-    Before using `dstack`, ensure you've [installed](installation.md) the server and the CLI.
+    Before using `dstack`, ensure you've [installed](installation.md) the server, CLI, and agent skills.
 
 ## Create a fleet
 

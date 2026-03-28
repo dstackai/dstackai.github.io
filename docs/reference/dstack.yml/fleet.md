@@ -49,7 +49,7 @@ The `fleet` configuration type allows creating and updating fleets.
 ###### `identity_file` - (Optional) `str` The private key to use for this host. { #identity_file data-toc-label='identity_file' class='reference-item' }
 ###### [`proxy_jump`](#proxy_jump) - (Optional) `object` The SSH proxy configuration for this host. { #_proxy_jump data-toc-label='proxy_jump' class='reference-item' }
 ###### `internal_ip` - (Optional) `str` The internal IP of the host used for communication inside the cluster. If not specified, `dstack` will use the IP address from `network` or from the first found internal network.. { #internal_ip data-toc-label='internal_ip' class='reference-item' }
-###### `blocks` - (Optional) `int | "auto"` The amount of blocks to split the instance into, a number or `auto`. `auto` means as many as possible. The number of GPUs and CPUs must be divisible by the number of blocks. Defaults to `1`, i.e. do not split. Defaults to `1`. { #blocks data-toc-label='blocks' class='reference-item' }
+###### `blocks` - (Optional) `int | "auto"` The amount of blocks to split the instance into, a number or `auto`. `auto` means as many as possible. The number of GPUs and CPUs must be divisible by the number of blocks. Defaults to the top-level `blocks` value.. { #blocks data-toc-label='blocks' class='reference-item' }
 
 
 ##### `ssh_config.hosts[n].proxy_jump` { #proxy_jump data-toc-label="hosts[n].proxy_jump" }
