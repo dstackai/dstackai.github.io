@@ -4253,7 +4253,16 @@
 </style>
 
 <p><br></br></p>
-<p>!! SWAGGER ERROR: File rest_plugin_openapi.json not found. !!</p>
+<p><link type="text/css" rel="stylesheet" href="https://unpkg.com/swagger-ui-dist@5/swagger-ui.css"></p>
+<div id="swagger-ui-2">
+</div>
+<script src="https://unpkg.com/swagger-ui-dist@5/swagger-ui-bundle.js" charset="UTF-8"></script>
+<script>
+    SwaggerUIBundle({
+      url: 'rest_plugin_openapi.json',
+      dom_id: '#swagger-ui-2',
+    })
+</script>
 
 
 

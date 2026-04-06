@@ -1463,6 +1463,19 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#ssh-proxy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          SSH proxy
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#encryption" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -4580,6 +4593,19 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#ssh-proxy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          SSH proxy
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#encryption" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -4899,6 +4925,10 @@ This allows persisting the server state across re-deployments when using SQLite.
 <p>To store the server state in Postgres, set the <code>DSTACK_DATABASE_URL</code> environment variable:</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nv">DSTACK_DATABASE_URL</span><span class="o">=</span>postgresql+asyncpg://user:password@db-host:5432/dstack<span class="w"> </span>dstack<span class="w"> </span>server
 </code></pre></div>
+<p>The minimum requirements for the DB instance are 2 CPU, 2GB of RAM, and at least 50 <code>max_connections</code> per server replica
+or a configured connection pooler to handle that many connections.
+If you're using a smaller DB instance, you may need to set lower <code>DSTACK_DB_POOL_SIZE</code> and <code>DSTACK_DB_MAX_OVERFLOW</code>, e.g.
+<code>DSTACK_DB_POOL_SIZE=10</code> and <code>DSTACK_DB_MAX_OVERFLOW=0</code>.</p>
 <details class="info">
 <summary>Migrate from SQLite to PostgreSQL</summary>
 <p>You can migrate the existing state from SQLite to PostgreSQL using <code>pgloader</code>:</p>
@@ -5088,6 +5118,16 @@ storage.objects.delete
 storage.objects.update
 </code></pre></div>
 </details>
+<h2 id="ssh-proxy">SSH proxy<a class="headerlink" href="#ssh-proxy" title="Permanent link">&para;</a></h2>
+<p><a href="https://github.com/dstackai/sshproxy"><code>dstack-sshproxy</code></a> is an optional component that provides direct SSH access to workloads.</p>
+<p>Without SSH proxy, in order to connect to a job via SSH or use an IDE URL, the <code>dstack attach</code> CLI command must be used, which configures user's SSH client in a backend-specific way for each job.</p>
+<p>When SSH proxy is deployed, there is one well-known entry point – a proxy address – for all <code>dstack</code> jobs, which can be used for SSH access without any additional steps on the user's side (such as installing <code>dstack</code> and executing <code>dstack attach</code> each time). All the user has to do is to upload their public key to the <code>dstack</code> server once – there is a dedicated “SSH keys” tab on the user's page of the control plane UI.</p>
+<p>To deploy SSH proxy, see <code>dstack-sshproxy</code> <a href="https://github.com/dstackai/sshproxy/blob/main/DEPLOYMENT.md">Deployment guide</a>.</p>
+<p>To enable SSH proxy integration on the <code>dstack</code> server side, set the following environment variables:</p>
+<ul>
+<li><code>DSTACK_SSHPROXY_API_TOKEN</code> – a token used to authenticate SSH proxy API requests, must be the same value as when deploying <code>dstack-sshproxy</code>.</li>
+<li><code>DSTACK_SERVER_SSHPROXY_ADDRESS</code> – an address where SSH proxy is available to <code>dstack</code> users, in the <code>HOSTNAME[:PORT]</code> form, where <code>HOSTNAME</code> is a domain name or an IP address, and <code>PORT</code>, if not specified, defaults to 22.</li>
+</ul>
 <h2 id="encryption">Encryption<a class="headerlink" href="#encryption" title="Permanent link">&para;</a></h2>
 <p>By default, <code>dstack</code> stores data in plaintext. To enforce encryption, you 
 specify one or more encryption keys.</p>
@@ -5175,23 +5215,14 @@ Backward compatibility is maintained based on these principles:</p>
 <li>The client backward compatibility is maintained across patch releases. A new minor release indicates that the release breaks client backward compatibility. This means you don't need to update the server when you update the client to a new patch release. Still, upgrading a client to a new minor version requires upgrading the server too.</li>
 </ul>
 <h2 id="server-limits">Server limits<a class="headerlink" href="#server-limits" title="Permanent link">&para;</a></h2>
-<p>A single <code>dstack</code> server replica can support:</p>
+<p>A single <code>dstack</code> server replica can support at least</p>
 <ul>
-<li>Up to 150 active runs.</li>
-<li>Up to 150 active jobs.</li>
-<li>Up to 150 active instances.</li>
+<li>1000 active instances</li>
+<li>1000 active runs</li>
+<li>1000 active jobs.</li>
 </ul>
-<p>Having more active resources will work but can affect server performance.
-If you hit these limits, consider using Postgres with multiple server replicas.
-You can also increase processing rates of a replica by setting the <code>DSTACK_SERVER_BACKGROUND_PROCESSING_FACTOR</code> environment variable.
-You should also increase <code>DSTACK_DB_POOL_SIZE</code> and <code>DSTACK_DB_MAX_OVERFLOW</code> proportionally.
-For example, to increase processing rates 4 times, set:</p>
-<div class="highlight"><pre><span></span><code>export DSTACK_SERVER_BACKGROUND_PROCESSING_FACTOR=4
-export DSTACK_DB_POOL_SIZE=80
-export DSTACK_DB_MAX_OVERFLOW=80
-</code></pre></div>
-<p>You have to ensure your Postgres installation supports that many connections by
-configuring <a href="https://www.postgresql.org/docs/current/runtime-config-connection.html#GUC-MAX-CONNECTIONS"><code>max_connections</code></a> and/or using connection pooler.</p>
+<p>If you hit server performance limits, try scale up server instances and/or configure Postgres with multiple server replicas.
+Also, please <a href="https://github.com/dstackai/dstack/issues">submit a GitHub issue</a> describing your setup – we strive to improve <code>dstack</code> scalability and efficiency.</p>
 <h2 id="server-upgrades">Server upgrades<a class="headerlink" href="#server-upgrades" title="Permanent link">&para;</a></h2>
 <p>When upgrading the <code>dstack</code> server, follow these guidelines to ensure a smooth transition and minimize downtime.</p>
 <h3 id="before-upgrading">Before upgrading<a class="headerlink" href="#before-upgrading" title="Permanent link">&para;</a></h3>
