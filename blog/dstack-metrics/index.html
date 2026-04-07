@@ -2428,14 +2428,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../docs/reference/api/rest/" class="md-nav__link">
+      <a href="../../docs/reference/api/http/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    REST API
+    HTTP API
   
 
     
@@ -4272,9 +4272,9 @@ difference is that <code>dstack stats</code> includes GPU VRAM usage and GPU uti
 <p>Similar to <code>kubectl top</code>, if a run consists of multiple jobs (such as distributed training or an auto-scalable service),
 <code>dstack stats</code> will display metrics per job.</p>
 <div class="admonition info">
-<p class="admonition-title">REST API</p>
+<p class="admonition-title">HTTP API</p>
 <p>In addition to the <code>dstack stats</code> CLI commands, metrics can be obtained via the
-<a href="../../docs/reference/api/rest/#operations-tag-metrics"><code>/api/project/{project_name}/metrics/job/{run_name}</code></a> REST endpoint.</p>
+<a href="../../docs/reference/api/http/#operations-tag-metrics"><code>/api/project/{project_name}/metrics/job/{run_name}</code></a> HTTP endpoint.</p>
 </div>
 <h2 id="why-monitor-gpu-usage">Why monitor GPU usage<a class="headerlink" href="#why-monitor-gpu-usage" title="Permanent link">&para;</a></h2>
 <p>Kubernetes and Docker don’t offer built-in support for GPU usage tracking. Since <code>dstack</code> is tailored for AI containers, we
