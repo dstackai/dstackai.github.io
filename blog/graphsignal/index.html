@@ -6,37 +6,35 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="dstack is an open-source control plane for GPU provisioning and orchestration across GPU clouds, Kubernetes, and on-prem clusters.">
+        <meta name="description" content="How Graphsignal uses dstack as a unified layer for GPU development, inference deployment, and benchmarking across on-prem systems and GPU clouds.">
       
       
         <meta name="author" content="dstack GmbH">
       
       
-        <link rel="canonical" href="https://dstack.ai/blog/page/2/">
+        <link rel="canonical" href="https://dstack.ai/blog/graphsignal/">
       
       
-        <link rel="prev" href="../../../examples/models/wan22/">
+        <link rel="prev" href="../agentic-orchestration/">
       
-      
-        <link rel="next" href="../../changelog/">
       
       
         
       
       
-      <link rel="icon" href="../../../assets/images/dstack-fav-32.ico">
+      <link rel="icon" href="../../assets/images/dstack-fav-32.ico">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
       
-        <title>Blog - dstack</title>
+        <title>How Graphsignal uses dstack for inference benchmarking - dstack</title>
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -61,17 +59,17 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/_mkdocstrings.css">
+      <link rel="stylesheet" href="../../assets/_mkdocstrings.css">
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/extra.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/extra.css">
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/termynal.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/termynal.css">
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/landing.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/landing.css">
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/pricing.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/pricing.css">
     
-    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
   
@@ -87,10 +85,10 @@
 
     
     
-<link rel="preload" href="../../../assets/fonts/Geist-Variable.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="../../../assets/fonts/GeistMono-Variable.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="../../../assets/fonts/GeistPixel-Square.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="../../../assets/fonts/GeistPixel-Circle.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../../assets/fonts/Geist-Variable.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../../assets/fonts/GeistMono-Variable.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../../assets/fonts/GeistPixel-Square.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../../assets/fonts/GeistPixel-Circle.woff2" as="font" type="font/woff2" crossorigin>
 
 
 
@@ -109,6 +107,10 @@
       "position": 2,
       "name": "Blog",
       "item": "https://dstack.ai/blog/"
+    },{
+      "@type": "ListItem",
+      "position": 3,
+      "name": "How Graphsignal uses dstack for inference benchmarking"
     }]
 }
 </script>
@@ -116,17 +118,19 @@
 
   
 <meta property="og:type" content="website" />
-<meta property="og:title" content="Blog - dstack" />
-<meta property="og:description" content="dstack is an open-source control plane for GPU provisioning and orchestration across GPU clouds, Kubernetes, and on-prem clusters." />
-<meta property="og:image" content="https://dstack.ai/assets/images/social/blog/page/2/index.png" />
+<meta property="og:title" content="How Graphsignal uses dstack for inference benchmarking - dstack" />
+<meta property="og:description" content="How Graphsignal uses dstack as a unified layer for GPU development, inference deployment, and benchmarking across on-prem systems and GPU clouds." />
+<meta property="og:image" content="
+  https://dstack.ai/static-assets/static-assets/images/dstack-graphsignal.png" />
 <meta property="og:image:type" content="image/png" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
-<meta property="og:url" content="https://dstack.ai/blog/page/2/" />
+<meta property="og:url" content="https://dstack.ai/blog/graphsignal/" />
 <meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter.title" content="Blog - dstack" />
-<meta property="twitter:description" content="dstack is an open-source control plane for GPU provisioning and orchestration across GPU clouds, Kubernetes, and on-prem clusters." />
-<meta property="twitter:image" content="https://dstack.ai/assets/images/social/blog/page/2/index.png" />
+<meta property="twitter.title" content="How Graphsignal uses dstack for inference benchmarking - dstack" />
+<meta property="twitter:description" content="How Graphsignal uses dstack as a unified layer for GPU development, inference deployment, and benchmarking across on-prem systems and GPU clouds." />
+<meta property="twitter:image" content="
+  https://dstack.ai/static-assets/static-assets/images/dstack-graphsignal.png" />
 </head>
   
   
@@ -146,7 +150,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#blog" class="md-skip">
+        <a href="#how-graphsignal-uses-dstack-for-inference-benchmarking" class="md-skip">
           Skip to content
         </a>
       
@@ -179,7 +183,7 @@
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href="/" title="dstack" class="md-header__button md-logo" aria-label="dstack" data-md-component="logo">
       
-  <img src="../../../assets/images/dstack-logo-notext.svg" alt="logo">
+  <img src="../../assets/images/dstack-logo-notext.svg" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -196,7 +200,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Blog
+              How Graphsignal uses dstack for inference benchmarking
             
           </span>
         </div>
@@ -308,7 +312,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../.." class="md-tabs__link">
+      <a href="../.." class="md-tabs__link">
         
   
   
@@ -336,7 +340,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../docs/" class="md-tabs__link">
+        <a href="../../docs/" class="md-tabs__link">
           
   
   
@@ -359,7 +363,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../examples/" class="md-tabs__link">
+        <a href="../../examples/" class="md-tabs__link">
           
   
   
@@ -381,7 +385,7 @@
     
     
       <li class="md-tabs__item md-tabs__item--active">
-        <a href="../../" class="md-tabs__link">
+        <a href="../" class="md-tabs__link">
           
   
   
@@ -399,7 +403,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../case-studies/" class="md-tabs__link">
+      <a href="../case-studies/" class="md-tabs__link">
         
   
   
@@ -418,7 +422,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../benchmarks/" class="md-tabs__link">
+      <a href="../benchmarks/" class="md-tabs__link">
         
   
   
@@ -461,7 +465,9 @@
           
     
       
-      <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+        
+      
+      <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" hidden>
         <div class="md-sidebar__scrollwrap">
           <div class="md-sidebar__inner">
             
@@ -474,7 +480,7 @@
   <label class="md-nav__title" for="__drawer">
     <a href="/" title="dstack" class="md-nav__button md-logo" aria-label="dstack" data-md-component="logo">
       
-  <img src="../../../assets/images/dstack-logo-notext.svg" alt="logo">
+  <img src="../../assets/images/dstack-logo-notext.svg" alt="logo">
 
     </a>
     dstack
@@ -501,7 +507,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../.." class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         
   
   
@@ -632,7 +638,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../docs/" class="md-nav__link">
+      <a href="../../docs/" class="md-nav__link">
         
   
   
@@ -660,7 +666,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../docs/installation/" class="md-nav__link">
+      <a href="../../docs/installation/" class="md-nav__link">
         
   
   
@@ -688,7 +694,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../docs/quickstart/" class="md-nav__link">
+      <a href="../../docs/quickstart/" class="md-nav__link">
         
   
   
@@ -776,7 +782,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../docs/concepts/backends/" class="md-nav__link">
+      <a href="../../docs/concepts/backends/" class="md-nav__link">
         
   
   
@@ -804,7 +810,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../docs/concepts/fleets/" class="md-nav__link">
+      <a href="../../docs/concepts/fleets/" class="md-nav__link">
         
   
   
@@ -832,7 +838,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../docs/concepts/dev-environments/" class="md-nav__link">
+      <a href="../../docs/concepts/dev-environments/" class="md-nav__link">
         
   
   
@@ -860,7 +866,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../docs/concepts/tasks/" class="md-nav__link">
+      <a href="../../docs/concepts/tasks/" class="md-nav__link">
         
   
   
@@ -888,7 +894,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../docs/concepts/services/" class="md-nav__link">
+      <a href="../../docs/concepts/services/" class="md-nav__link">
         
   
   
@@ -916,7 +922,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../docs/concepts/volumes/" class="md-nav__link">
+      <a href="../../docs/concepts/volumes/" class="md-nav__link">
         
   
   
@@ -996,7 +1002,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../docs/concepts/gateways/" class="md-nav__link">
+      <a href="../../docs/concepts/gateways/" class="md-nav__link">
         
   
   
@@ -1024,7 +1030,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../docs/concepts/secrets/" class="md-nav__link">
+      <a href="../../docs/concepts/secrets/" class="md-nav__link">
         
   
   
@@ -1052,7 +1058,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../docs/concepts/projects/" class="md-nav__link">
+      <a href="../../docs/concepts/projects/" class="md-nav__link">
         
   
   
@@ -1080,7 +1086,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../docs/concepts/metrics/" class="md-nav__link">
+      <a href="../../docs/concepts/metrics/" class="md-nav__link">
         
   
   
@@ -1108,7 +1114,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../docs/concepts/events/" class="md-nav__link">
+      <a href="../../docs/concepts/events/" class="md-nav__link">
         
   
   
@@ -1136,7 +1142,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../docs/concepts/exports/" class="md-nav__link">
+      <a href="../../docs/concepts/exports/" class="md-nav__link">
         
   
   
@@ -1232,7 +1238,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../docs/guides/server-deployment/" class="md-nav__link">
+      <a href="../../docs/guides/server-deployment/" class="md-nav__link">
         
   
   
@@ -1260,7 +1266,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../docs/guides/troubleshooting/" class="md-nav__link">
+      <a href="../../docs/guides/troubleshooting/" class="md-nav__link">
         
   
   
@@ -1288,7 +1294,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../docs/guides/protips/" class="md-nav__link">
+      <a href="../../docs/guides/protips/" class="md-nav__link">
         
   
   
@@ -1316,7 +1322,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../docs/guides/upgrade/" class="md-nav__link">
+      <a href="../../docs/guides/upgrade/" class="md-nav__link">
         
   
   
@@ -1396,7 +1402,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../docs/guides/migration/slurm/" class="md-nav__link">
+      <a href="../../docs/guides/migration/slurm/" class="md-nav__link">
         
   
   
@@ -1544,7 +1550,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../docs/reference/dstack.yml/dev-environment/" class="md-nav__link">
+      <a href="../../docs/reference/dstack.yml/dev-environment/" class="md-nav__link">
         
   
   
@@ -1572,7 +1578,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../docs/reference/dstack.yml/task/" class="md-nav__link">
+      <a href="../../docs/reference/dstack.yml/task/" class="md-nav__link">
         
   
   
@@ -1600,7 +1606,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../docs/reference/dstack.yml/service/" class="md-nav__link">
+      <a href="../../docs/reference/dstack.yml/service/" class="md-nav__link">
         
   
   
@@ -1628,7 +1634,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../docs/reference/dstack.yml/fleet/" class="md-nav__link">
+      <a href="../../docs/reference/dstack.yml/fleet/" class="md-nav__link">
         
   
   
@@ -1656,7 +1662,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../docs/reference/dstack.yml/gateway/" class="md-nav__link">
+      <a href="../../docs/reference/dstack.yml/gateway/" class="md-nav__link">
         
   
   
@@ -1684,7 +1690,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../docs/reference/dstack.yml/volume/" class="md-nav__link">
+      <a href="../../docs/reference/dstack.yml/volume/" class="md-nav__link">
         
   
   
@@ -1720,7 +1726,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../docs/reference/server/config.yml/" class="md-nav__link">
+      <a href="../../docs/reference/server/config.yml/" class="md-nav__link">
         
   
   
@@ -1800,7 +1806,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../docs/reference/cli/dstack/server/" class="md-nav__link">
+      <a href="../../docs/reference/cli/dstack/server/" class="md-nav__link">
         
   
   
@@ -1828,7 +1834,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../docs/reference/cli/dstack/init/" class="md-nav__link">
+      <a href="../../docs/reference/cli/dstack/init/" class="md-nav__link">
         
   
   
@@ -1856,7 +1862,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../docs/reference/cli/dstack/apply/" class="md-nav__link">
+      <a href="../../docs/reference/cli/dstack/apply/" class="md-nav__link">
         
   
   
@@ -1884,7 +1890,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../docs/reference/cli/dstack/delete/" class="md-nav__link">
+      <a href="../../docs/reference/cli/dstack/delete/" class="md-nav__link">
         
   
   
@@ -1912,7 +1918,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../docs/reference/cli/dstack/ps/" class="md-nav__link">
+      <a href="../../docs/reference/cli/dstack/ps/" class="md-nav__link">
         
   
   
@@ -1940,7 +1946,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../docs/reference/cli/dstack/stop/" class="md-nav__link">
+      <a href="../../docs/reference/cli/dstack/stop/" class="md-nav__link">
         
   
   
@@ -1968,7 +1974,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../docs/reference/cli/dstack/attach/" class="md-nav__link">
+      <a href="../../docs/reference/cli/dstack/attach/" class="md-nav__link">
         
   
   
@@ -1996,7 +2002,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../docs/reference/cli/dstack/login/" class="md-nav__link">
+      <a href="../../docs/reference/cli/dstack/login/" class="md-nav__link">
         
   
   
@@ -2024,7 +2030,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../docs/reference/cli/dstack/logs/" class="md-nav__link">
+      <a href="../../docs/reference/cli/dstack/logs/" class="md-nav__link">
         
   
   
@@ -2052,7 +2058,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../docs/reference/cli/dstack/metrics/" class="md-nav__link">
+      <a href="../../docs/reference/cli/dstack/metrics/" class="md-nav__link">
         
   
   
@@ -2080,7 +2086,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../docs/reference/cli/dstack/event/" class="md-nav__link">
+      <a href="../../docs/reference/cli/dstack/event/" class="md-nav__link">
         
   
   
@@ -2108,7 +2114,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../docs/reference/cli/dstack/project/" class="md-nav__link">
+      <a href="../../docs/reference/cli/dstack/project/" class="md-nav__link">
         
   
   
@@ -2136,7 +2142,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../docs/reference/cli/dstack/fleet/" class="md-nav__link">
+      <a href="../../docs/reference/cli/dstack/fleet/" class="md-nav__link">
         
   
   
@@ -2164,7 +2170,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../docs/reference/cli/dstack/offer/" class="md-nav__link">
+      <a href="../../docs/reference/cli/dstack/offer/" class="md-nav__link">
         
   
   
@@ -2192,7 +2198,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../docs/reference/cli/dstack/volume/" class="md-nav__link">
+      <a href="../../docs/reference/cli/dstack/volume/" class="md-nav__link">
         
   
   
@@ -2220,7 +2226,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../docs/reference/cli/dstack/gateway/" class="md-nav__link">
+      <a href="../../docs/reference/cli/dstack/gateway/" class="md-nav__link">
         
   
   
@@ -2248,7 +2254,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../docs/reference/cli/dstack/secret/" class="md-nav__link">
+      <a href="../../docs/reference/cli/dstack/secret/" class="md-nav__link">
         
   
   
@@ -2276,7 +2282,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../docs/reference/cli/dstack/export/" class="md-nav__link">
+      <a href="../../docs/reference/cli/dstack/export/" class="md-nav__link">
         
   
   
@@ -2304,7 +2310,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../docs/reference/cli/dstack/import/" class="md-nav__link">
+      <a href="../../docs/reference/cli/dstack/import/" class="md-nav__link">
         
   
   
@@ -2392,7 +2398,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../docs/reference/api/python/" class="md-nav__link">
+      <a href="../../docs/reference/api/python/" class="md-nav__link">
         
   
   
@@ -2420,7 +2426,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../docs/reference/api/http/" class="md-nav__link">
+      <a href="../../docs/reference/api/http/" class="md-nav__link">
         
   
   
@@ -2456,7 +2462,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../docs/reference/environment-variables/" class="md-nav__link">
+      <a href="../../docs/reference/environment-variables/" class="md-nav__link">
         
   
   
@@ -2484,7 +2490,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../docs/reference/profiles.yml/" class="md-nav__link">
+      <a href="../../docs/reference/profiles.yml/" class="md-nav__link">
         
   
   
@@ -2564,7 +2570,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../docs/reference/plugins/python/" class="md-nav__link">
+      <a href="../../docs/reference/plugins/python/" class="md-nav__link">
         
   
   
@@ -2592,7 +2598,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../docs/reference/plugins/rest/" class="md-nav__link">
+      <a href="../../docs/reference/plugins/rest/" class="md-nav__link">
         
   
   
@@ -2751,7 +2757,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../examples/" class="md-nav__link">
+      <a href="../../examples/" class="md-nav__link">
         
   
   
@@ -2831,7 +2837,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../examples/single-node-training/trl/" class="md-nav__link">
+      <a href="../../examples/single-node-training/trl/" class="md-nav__link">
         
   
   
@@ -2859,7 +2865,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../examples/single-node-training/axolotl/" class="md-nav__link">
+      <a href="../../examples/single-node-training/axolotl/" class="md-nav__link">
         
   
   
@@ -2947,7 +2953,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../examples/distributed-training/trl/" class="md-nav__link">
+      <a href="../../examples/distributed-training/trl/" class="md-nav__link">
         
   
   
@@ -2975,7 +2981,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../examples/distributed-training/axolotl/" class="md-nav__link">
+      <a href="../../examples/distributed-training/axolotl/" class="md-nav__link">
         
   
   
@@ -3003,7 +3009,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../examples/distributed-training/ray-ragen/" class="md-nav__link">
+      <a href="../../examples/distributed-training/ray-ragen/" class="md-nav__link">
         
   
   
@@ -3091,7 +3097,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../examples/clusters/aws/" class="md-nav__link">
+      <a href="../../examples/clusters/aws/" class="md-nav__link">
         
   
   
@@ -3119,7 +3125,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../examples/clusters/gcp/" class="md-nav__link">
+      <a href="../../examples/clusters/gcp/" class="md-nav__link">
         
   
   
@@ -3147,7 +3153,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../examples/clusters/lambda/" class="md-nav__link">
+      <a href="../../examples/clusters/lambda/" class="md-nav__link">
         
   
   
@@ -3175,7 +3181,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../examples/clusters/crusoe/" class="md-nav__link">
+      <a href="../../examples/clusters/crusoe/" class="md-nav__link">
         
   
   
@@ -3203,7 +3209,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../examples/clusters/nebius/" class="md-nav__link">
+      <a href="../../examples/clusters/nebius/" class="md-nav__link">
         
   
   
@@ -3231,7 +3237,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../examples/clusters/nccl-rccl-tests/" class="md-nav__link">
+      <a href="../../examples/clusters/nccl-rccl-tests/" class="md-nav__link">
         
   
   
@@ -3319,7 +3325,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../examples/inference/sglang/" class="md-nav__link">
+      <a href="../../examples/inference/sglang/" class="md-nav__link">
         
   
   
@@ -3347,7 +3353,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../examples/inference/vllm/" class="md-nav__link">
+      <a href="../../examples/inference/vllm/" class="md-nav__link">
         
   
   
@@ -3375,7 +3381,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../examples/inference/tgi/" class="md-nav__link">
+      <a href="../../examples/inference/tgi/" class="md-nav__link">
         
   
   
@@ -3403,7 +3409,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../examples/inference/nim/" class="md-nav__link">
+      <a href="../../examples/inference/nim/" class="md-nav__link">
         
   
   
@@ -3431,7 +3437,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../examples/inference/trtllm/" class="md-nav__link">
+      <a href="../../examples/inference/trtllm/" class="md-nav__link">
         
   
   
@@ -3519,7 +3525,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../examples/accelerators/amd/" class="md-nav__link">
+      <a href="../../examples/accelerators/amd/" class="md-nav__link">
         
   
   
@@ -3547,7 +3553,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../examples/accelerators/tpu/" class="md-nav__link">
+      <a href="../../examples/accelerators/tpu/" class="md-nav__link">
         
   
   
@@ -3575,7 +3581,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../examples/accelerators/intel/" class="md-nav__link">
+      <a href="../../examples/accelerators/intel/" class="md-nav__link">
         
   
   
@@ -3603,7 +3609,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../examples/accelerators/tenstorrent/" class="md-nav__link">
+      <a href="../../examples/accelerators/tenstorrent/" class="md-nav__link">
         
   
   
@@ -3691,7 +3697,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../examples/models/wan22/" class="md-nav__link">
+      <a href="../../examples/models/wan22/" class="md-nav__link">
         
   
   
@@ -3788,41 +3794,14 @@
                 
   
   
-  
-    
-      
     
   
   
-    <li class="md-nav__item">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
     
   
-    <span class="md-typeset">
-      Blog
-    </span>
   
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="../../" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item md-nav__item--active">
+      <a href="../" class="md-nav__link">
         
   
   
@@ -3840,136 +3819,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#the-state-of-cloud-gpus-in-2025-costs-performance-playbooks" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        The state of cloud GPUs in 2025: costs, performance, playbooks
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#orchestrating-gpus-on-digitalocean-and-amd-developer-cloud" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Orchestrating GPUs on DigitalOcean and AMD Developer Cloud
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#introducing-service-probes" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Introducing service probes
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#introducing-passive-gpu-health-checks" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Introducing passive GPU health checks
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#supporting-hot-aisle-amd-ai-developer-cloud" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Supporting Hot Aisle AMD AI Developer Cloud
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#benchmarking-amd-gpus-bare-metal-vms" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Benchmarking AMD GPUs: bare-metal, VMs
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#benchmarking-amd-gpus-bare-metal-containers-partitions" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Benchmarking AMD GPUs: bare-metal, containers, partitions
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#rolling-deployment-secrets-files-tenstorrent-and-more" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Rolling deployment, Secrets, Files, Tenstorrent, and more
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#how-ea-uses-dstack-to-fast-track-ai-development" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        How EA uses dstack to fast-track AI development
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#supporting-arm-and-nvidia-gh200-on-lambda" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Supporting ARM and NVIDIA GH200 on Lambda
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -4039,7 +3888,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../changelog/" class="md-nav__link">
+      <a href="../changelog/" class="md-nav__link">
         
   
   
@@ -4071,7 +3920,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../case-studies/" class="md-nav__link">
+      <a href="../case-studies/" class="md-nav__link">
         
   
   
@@ -4103,7 +3952,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../benchmarks/" class="md-nav__link">
+      <a href="../benchmarks/" class="md-nav__link">
         
   
   
@@ -4150,7 +3999,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../case-studies/" class="md-nav__link">
+      <a href="../case-studies/" class="md-nav__link">
         
   
   
@@ -4181,7 +4030,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../benchmarks/" class="md-nav__link">
+      <a href="../benchmarks/" class="md-nav__link">
         
   
   
@@ -4238,6 +4087,8 @@
     
     
       
+        
+      
       <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
         <div class="md-sidebar__scrollwrap">
           <div class="md-sidebar__inner">
@@ -4250,124 +4101,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#the-state-of-cloud-gpus-in-2025-costs-performance-playbooks" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        The state of cloud GPUs in 2025: costs, performance, playbooks
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#orchestrating-gpus-on-digitalocean-and-amd-developer-cloud" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Orchestrating GPUs on DigitalOcean and AMD Developer Cloud
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#introducing-service-probes" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Introducing service probes
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#introducing-passive-gpu-health-checks" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Introducing passive GPU health checks
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#supporting-hot-aisle-amd-ai-developer-cloud" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Supporting Hot Aisle AMD AI Developer Cloud
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#benchmarking-amd-gpus-bare-metal-vms" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Benchmarking AMD GPUs: bare-metal, VMs
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#benchmarking-amd-gpus-bare-metal-containers-partitions" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Benchmarking AMD GPUs: bare-metal, containers, partitions
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#rolling-deployment-secrets-files-tenstorrent-and-more" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Rolling deployment, Secrets, Files, Tenstorrent, and more
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#how-ea-uses-dstack-to-fast-track-ai-development" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        How EA uses dstack to fast-track AI development
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#supporting-arm-and-nvidia-gh200-on-lambda" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Supporting ARM and NVIDIA GH200 on Lambda
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
           </div>
         </div>
@@ -4375,479 +4108,249 @@
     
 
           
-  <div class="md-content" data-md-component="content">
-    <div class="md-content__inner">
-      <header class="md-typeset">
-        <h1 id="blog">Blog<a class="headerlink" href="#blog" title="Permanent link">&para;</a></h1>
-      </header>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
+  <div class="md-content md-content--post" data-md-component="content">
+    <div class="md-sidebar md-sidebar--post" data-md-component="sidebar" data-md-type="navigation">
+      <div class="md-sidebar__scrollwrap">
+        <div class="md-sidebar__inner md-post">
+          <nav class="md-nav md-nav--primary">
+            <div class="md-post__back">
+              <div class="md-nav__title md-nav__container">
+                <a href="../" class="md-nav__link">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+                  <span class="md-ellipsis">
+                    Back to index
+                  </span>
+                </a>
+              </div>
+            </div>
+            
+            <ul class="md-post__meta md-nav__list">
+              <li class="md-nav__item md-nav__item--section">
+                <div class="md-post__title">
+                  <span class="md-ellipsis">
+                    Metadata
+                  </span>
+                </div>
+                <nav class="md-nav">
+                  <ul class="md-nav__list">
+                    <li class="md-nav__item">
+                      <div class="md-nav__link">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 19H5V8h14m-3-7v2H8V1H6v2H5c-1.11 0-2 .89-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-1V1m-1 11h-5v5h5z"/></svg>
+                        <time datetime="2026-04-08 00:00:00+00:00" class="md-ellipsis">April 8, 2026</time>
+                      </div>
+                    </li>
+                    
+                    
+                      <li class="md-nav__item">
+                        <div class="md-nav__link">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 3v15h3V3zm3 2 4 13 3-1-4-13zM5 5v13h3V5zM3 19v2h18v-2z"/></svg>
+                          <span class="md-ellipsis">
+                            in
+                            
+                              <a href="../case-studies/">Case studies</a></span>
+                        </div>
+                      </li>
+                    
+                    
+                      
+                      <li class="md-nav__item">
+                        <div class="md-nav__link">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20a8 8 0 0 0 8-8 8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8m0-18a10 10 0 0 1 10 10 10 10 0 0 1-10 10C6.47 22 2 17.5 2 12A10 10 0 0 1 12 2m.5 5v5.25l4.5 2.67-.75 1.23L11 13V7z"/></svg>
+                          <span class="md-ellipsis">
+                            
+                              4 min read
+                            
+                          </span>
+                        </div>
+                      </li>
+                    
+                  </ul>
+                </nav>
+              </li>
+            </ul>
+            
+              <ul class="md-post__meta md-nav__list">
+                <li class="md-nav__item md-nav__item--section">
+                  <div class="md-post__title">
+                    <span class="md-ellipsis">
+                      Related links
+                    </span>
+                  </div>
+                  <nav class="md-nav">
+                    <ul class="md-nav__list">
+                      
+                        
+                        
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://graphsignal.com/blog/autodebug-telemetry-driven-inference-optimization-loop/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
     
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2025-09-10 00:00:00+00:00">September 10, 2025</time></li>
-        
-        
+  
+    Graphsignal's autodebug blog
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                      
+                    </ul>
+                  </nav>
+                </li>
+              </ul>
+            
+          </nav>
           
-          <li class="md-meta__item">
-            
-              7 min read
-            
-          </li>
-        
-        
-      </ul>
-      
+        </div>
+      </div>
     </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="the-state-of-cloud-gpus-in-2025-costs-performance-playbooks"><a class="toclink" href="../../state-of-cloud-gpu-2025/">The state of cloud GPUs in 2025: costs, performance, playbooks</a></h2>
-<p>This is a practical map for teams renting GPUs — whether you’re a single project team fine-tuning models or a production-scale team managing thousand-GPU workloads. We’ll break down where providers fit, what actually drives performance, how pricing really works, and how to design a control plane that makes multi-cloud not just possible, but a competitive advantage.</p>
+    <article class="md-content__inner md-typeset">
+      
+        
+  
 
-    
-      <nav class="md-post__action">
-        <a href="../../state-of-cloud-gpu-2025/">
-            <span>Continue reading</span>
-            <span class="icon"><svg viewBox="0 0 13 10" xmlns="http://www.w3.org/2000/svg"><path d="M12.823 4.164L8.954.182a.592.592 0 0 0-.854 0 .635.635 0 0 0 0 .88l2.836 2.92H.604A.614.614 0 0 0 0 4.604c0 .344.27.622.604.622h10.332L8.1 8.146a.635.635 0 0 0 0 .88.594.594 0 0 0 .854 0l3.869-3.982a.635.635 0 0 0 0-.88z" fill-rule="nonzero" fill="currentColor" class="fill-main"></path></svg></span>
-        </a>
-      </nav>
-    
-    
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2025-09-04 00:00:00+00:00">September 4, 2025</time></li>
-        
-          <li class="md-meta__item">
-            in
-            
-              <a href="../../changelog/" class="md-meta__link">Changelog</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              3 min read
-            
-          </li>
-        
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="orchestrating-gpus-on-digitalocean-and-amd-developer-cloud"><a class="toclink" href="../../digitalocean-and-amd-dev-cloud/">Orchestrating GPUs on DigitalOcean and AMD Developer Cloud</a></h2>
-<p>Orchestration automates provisioning, running jobs, and tearing them down. While Kubernetes and Slurm are powerful in their domains, they lack the lightweight, GPU-native focus modern teams need to move faster.</p>
-<p><code>dstack</code> is built entirely around GPUs. Our latest update introduces native integration with <a href="https://www.digitalocean.com/products/gradient/gpu-droplets">DigitalOcean</a> and 
-<a href="https://www.amd.com/en/developer/resources/cloud-access/amd-developer-cloud.html">AMD Developer Cloud</a>, enabling teams to provision cloud GPUs and run workloads more cost-efficiently.</p>
-<p><img src="https://dstack.ai/static-assets/static-assets/images/digitalocean-and-amd-dev-cloud.png" width="630"/></p>
 
-    
-      <nav class="md-post__action">
-        <a href="../../digitalocean-and-amd-dev-cloud/">
-            <span>Continue reading</span>
-            <span class="icon"><svg viewBox="0 0 13 10" xmlns="http://www.w3.org/2000/svg"><path d="M12.823 4.164L8.954.182a.592.592 0 0 0-.854 0 .635.635 0 0 0 0 .88l2.836 2.92H.604A.614.614 0 0 0 0 4.604c0 .344.27.622.604.622h10.332L8.1 8.146a.635.635 0 0 0 0 .88.594.594 0 0 0 .854 0l3.869-3.982a.635.635 0 0 0 0-.88z" fill-rule="nonzero" fill="currentColor" class="fill-main"></path></svg></span>
-        </a>
-      </nav>
-    
-    
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2025-08-14 00:00:00+00:00">August 14, 2025</time></li>
-        
-          <li class="md-meta__item">
-            in
-            
-              <a href="../../changelog/" class="md-meta__link">Changelog</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              2 min read
-            
-          </li>
-        
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="introducing-service-probes"><a class="toclink" href="../../probes/">Introducing service probes</a></h2>
-<p><code>dstack</code> services are long-running workloads—most often inference endpoints and sometimes web apps—that run continuously on GPU or CPU instances. They can scale across replicas and support rolling deployments.</p>
-<p>This release adds HTTP probes inspired by Kubernetes readiness probes. Probes periodically call an endpoint on each replica (for example, <code>/health</code>) to confirm it responds as expected. The result gives clear visibility into startup progress and, during rolling deployments, ensures traffic only shifts to a replacement replica after all configured probes have proven ready.</p>
-<p><img src="https://dstack.ai/static-assets/static-assets/images/dstack-service-probes.png" width="630"/></p>
 
-    
-      <nav class="md-post__action">
-        <a href="../../probes/">
-            <span>Continue reading</span>
-            <span class="icon"><svg viewBox="0 0 13 10" xmlns="http://www.w3.org/2000/svg"><path d="M12.823 4.164L8.954.182a.592.592 0 0 0-.854 0 .635.635 0 0 0 0 .88l2.836 2.92H.604A.614.614 0 0 0 0 4.604c0 .344.27.622.604.622h10.332L8.1 8.146a.635.635 0 0 0 0 .88.594.594 0 0 0 .854 0l3.869-3.982a.635.635 0 0 0 0-.88z" fill-rule="nonzero" fill="currentColor" class="fill-main"></path></svg></span>
-        </a>
-      </nav>
-    
-    
-  </div>
-</article>
+  
+    <a href="https://github.com/dstackai/dstack/edit/master/docs/blog/posts/graphsignal.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
       
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2025-08-12 00:00:00+00:00">August 12, 2025</time></li>
-        
-          <li class="md-meta__item">
-            in
-            
-              <a href="../../changelog/" class="md-meta__link">Changelog</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              3 min read
-            
-          </li>
-        
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="introducing-passive-gpu-health-checks"><a class="toclink" href="../../gpu-helth-checks/">Introducing passive GPU health checks</a></h2>
-<p>In large-scale training, a single bad GPU can derail progress. Sometimes the failure is obvious — jobs crash outright. Other times it’s subtle: correctable memory errors, intermittent instability, or thermal throttling that quietly drags down throughput. In big experiments, these issues can go unnoticed for hours or days, wasting compute and delaying results.</p>
-<p><code>dstack</code> already supports GPU telemetry monitoring through NVIDIA DCGM <a href="../../../docs/concepts/metrics/">metrics</a>, covering utilization, memory, and temperature. This release extends that capability with passive hardware health checks powered by DCGM <a href="https://docs.nvidia.com/datacenter/dcgm/latest/user-guide/feature-overview.html#background-health-checks">background health checks</a>. With these, <code>dstack</code> continuously evaluates fleet GPUs for hardware reliability and displays their status before scheduling workloads.</p>
-<p><img src="https://dstack.ai/static-assets/static-assets/images/gpu-health-checks.png" width="630"/></p>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
+    </a>
+  
+  
 
-    
-      <nav class="md-post__action">
-        <a href="../../gpu-helth-checks/">
-            <span>Continue reading</span>
-            <span class="icon"><svg viewBox="0 0 13 10" xmlns="http://www.w3.org/2000/svg"><path d="M12.823 4.164L8.954.182a.592.592 0 0 0-.854 0 .635.635 0 0 0 0 .88l2.836 2.92H.604A.614.614 0 0 0 0 4.604c0 .344.27.622.604.622h10.332L8.1 8.146a.635.635 0 0 0 0 .88.594.594 0 0 0 .854 0l3.869-3.982a.635.635 0 0 0 0-.88z" fill-rule="nonzero" fill="currentColor" class="fill-main"></path></svg></span>
-        </a>
-      </nav>
-    
-    
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2025-08-11 00:00:00+00:00">August 11, 2025</time></li>
-        
-          <li class="md-meta__item">
-            in
-            
-              <a href="../../changelog/" class="md-meta__link">Changelog</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              3 min read
-            
-          </li>
-        
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="supporting-hot-aisle-amd-ai-developer-cloud"><a class="toclink" href="../../hotaisle/">Supporting Hot Aisle AMD AI Developer Cloud</a></h2>
-<p>As the ecosystem around AMD GPUs matures, developers are looking for easier ways to experiment with ROCm, benchmark new architectures, and run cost-effective workloads—without manual infrastructure setup.  </p>
-<p><code>dstack</code> is an open-source orchestrator designed for AI workloads, providing a lightweight, container-native alternative to Kubernetes and Slurm.</p>
-<p><img src="https://dstack.ai/static-assets/static-assets/images/dstack-hotaisle.png" width="630"/></p>
-<p>Today, we’re excited to announce native integration with <a href="https://www.hotaisle.io/">Hot Aisle</a>, an AMD-only GPU neocloud offering VMs and clusters at highly competitive on-demand pricing.  </p>
 
-    
-      <nav class="md-post__action">
-        <a href="../../hotaisle/">
-            <span>Continue reading</span>
-            <span class="icon"><svg viewBox="0 0 13 10" xmlns="http://www.w3.org/2000/svg"><path d="M12.823 4.164L8.954.182a.592.592 0 0 0-.854 0 .635.635 0 0 0 0 .88l2.836 2.92H.604A.614.614 0 0 0 0 4.604c0 .344.27.622.604.622h10.332L8.1 8.146a.635.635 0 0 0 0 .88.594.594 0 0 0 .854 0l3.869-3.982a.635.635 0 0 0 0-.88z" fill-rule="nonzero" fill="currentColor" class="fill-main"></path></svg></span>
-        </a>
-      </nav>
-    
-    
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2025-07-22 00:00:00+00:00">July 22, 2025</time></li>
-        
-          <li class="md-meta__item">
-            in
-            
-              <a href="../../benchmarks/" class="md-meta__link">Benchmarks</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              6 min read
-            
-          </li>
-        
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="benchmarking-amd-gpus-bare-metal-vms"><a class="toclink" href="../../benchmark-amd-vms/">Benchmarking AMD GPUs: bare-metal, VMs</a></h2>
-<p>This is the first in our series of benchmarks exploring the performance of AMD GPUs in virtualized versus bare-metal environments. As cloud infrastructure increasingly relies on virtualization, a key question arises: can VMs match bare-metal performance for GPU-intensive tasks? For this initial investigation, we focus specifically on a single-GPU setup, comparing a containerized workload on a VM against a bare-metal server, both equipped with the powerful AMD MI300X GPU.</p>
-<p><img src="https://dstack.ai/static-assets/static-assets/images/benchmark-amd-vms.png" width="630"/></p>
+<h1 id="how-graphsignal-uses-dstack-for-inference-benchmarking">How Graphsignal uses dstack for inference benchmarking<a class="headerlink" href="#how-graphsignal-uses-dstack-for-inference-benchmarking" title="Permanent link">&para;</a></h1>
+<p>In a recent engineering <a href="https://graphsignal.com/blog/autodebug-telemetry-driven-inference-optimization-loop/">blog post</a>, Graphsignal shared <code>autodebug</code>, an autonomous loop that deploys an inference service, benchmarks it, updates the deployment config, and redeploys it again. This case study looks at the team workflow behind that setup, and how <code>dstack</code> gives Graphsignal a common layer for GPU development, inference deployment, and benchmarking.</p>
+<p><img src="https://dstack.ai/static-assets/static-assets/images/dstack-graphsignal.png" width="630" /></p>
+<!-- more -->
 
-    
-      <nav class="md-post__action">
-        <a href="../../benchmark-amd-vms/">
-            <span>Continue reading</span>
-            <span class="icon"><svg viewBox="0 0 13 10" xmlns="http://www.w3.org/2000/svg"><path d="M12.823 4.164L8.954.182a.592.592 0 0 0-.854 0 .635.635 0 0 0 0 .88l2.836 2.92H.604A.614.614 0 0 0 0 4.604c0 .344.27.622.604.622h10.332L8.1 8.146a.635.635 0 0 0 0 .88.594.594 0 0 0 .854 0l3.869-3.982a.635.635 0 0 0 0-.88z" fill-rule="nonzero" fill="currentColor" class="fill-main"></path></svg></span>
-        </a>
-      </nav>
-    
-    
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2025-07-15 00:00:00+00:00">July 15, 2025</time></li>
-        
-          <li class="md-meta__item">
-            in
-            
-              <a href="../../benchmarks/" class="md-meta__link">Benchmarks</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              9 min read
-            
-          </li>
-        
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="benchmarking-amd-gpus-bare-metal-containers-partitions"><a class="toclink" href="../../benchmark-amd-containers-and-partitions/">Benchmarking AMD GPUs: bare-metal, containers, partitions</a></h2>
-<p>Our new benchmark explores two important areas for optimizing AI workloads on AMD GPUs: First, do containers introduce a performance penalty for network-intensive tasks compared to a bare-metal setup? Second, how does partitioning a powerful GPU like the MI300X affect its real-world performance for different types of AI workloads?</p>
-<p><img src="https://dstack.ai/static-assets/static-assets/images/benchmark-amd-containers-and-partitions.png" width="630"/></p>
+<p><a href="https://graphsignal.com/">Graphsignal</a> builds inference observability and AI debugging tooling for teams running production inference across models, engines, and GPUs. That puts the team close to the systems they measure and tune: inference servers, GPU infrastructure, deployment workflows, and benchmark loops.</p>
+<p>To benchmark and optimize inference efficiently, the Graphsignal team combines:</p>
+<ul>
+<li>on-prem GPU systems, including <a href="https://www.nvidia.com/en-us/products/workstations/dgx-spark/">NVIDIA DGX Spark</a> devices managed through <code>dstack</code></li>
+<li>cloud GPU capacity, including <a href="https://verda.com/">Verda</a> as a supported <code>dstack</code> backend</li>
+<li><code>dstack</code> as the common orchestration layer for GPU development and inference deployment</li>
+</ul>
+<p>For Graphsignal, the same operational model applies across on-prem systems and GPU clouds. The team can develop on GPU-backed environments, deploy inference services, and rerun benchmarks without switching orchestration models between environments.</p>
+<p>Many teams running inference need a workflow that:</p>
+<ul>
+<li>works across different GPU environments</li>
+<li>supports both development and production</li>
+<li>does not require building and maintaining custom orchestration for every provider</li>
+</ul>
+<p><code>dstack</code> gives the Graphsignal team a declarative way to provision GPU resources, deploy inference services, and iterate on deployment configs across environments without introducing a separate control plane for each provider.</p>
+<blockquote>
+<p><em><code>dstack</code> gives us a unified layer for GPU development and inference across on-prem systems and GPU clouds. It is fine-grained enough for serious inference engineering, but simple enough that we do not have to build and maintain custom orchestration around every GPU environment we use.</em></p>
+<p><em>— </em><em>Dmitry Melikyan</em><em>, Founder at Graphsignal</em></p>
+</blockquote>
+<p>The Graphsignal team primarily uses these <code>dstack</code> components:</p>
+<ul>
+<li><a href="../../docs/concepts/dev-environments/">Dev environments</a> — for GPU-backed development and experimentation</li>
+<li><a href="../../docs/concepts/services/">Services</a> — for deploying inference endpoints and running benchmarkable workloads</li>
+<li><a href="../../docs/concepts/fleets/">Fleets</a> — for spanning on-prem systems and cloud backends through one interface</li>
+<li>the <code>dstack</code> CLI — with <code>dstack apply</code> used directly in the deployment and benchmarking loop</li>
+</ul>
+<p>In practice, this gives the Graphsignal team a way to:</p>
+<ul>
+<li>move from GPU development to production inference without changing orchestration layers</li>
+<li>turn a serving change into a fresh, versioned deployment</li>
+<li>run benchmarks on real hardware across on-prem and cloud environments</li>
+<li>keep the same workflow for development, deployment, and repeated optimization</li>
+</ul>
+<p>The examples below are representative <code>dstack</code> configurations that illustrate the workflow described above. They are included to show how the same control plane can span on-prem hosts and cloud backends, not as Graphsignal production configs.</p>
+<p>For on-prem systems such as DGX Spark devices, <code>dstack</code> can manage multiple hosts through a single SSH fleet definition.</p>
+<div editor-title="spark.dstack.yml"> 
 
-    
-      <nav class="md-post__action">
-        <a href="../../benchmark-amd-containers-and-partitions/">
-            <span>Continue reading</span>
-            <span class="icon"><svg viewBox="0 0 13 10" xmlns="http://www.w3.org/2000/svg"><path d="M12.823 4.164L8.954.182a.592.592 0 0 0-.854 0 .635.635 0 0 0 0 .88l2.836 2.92H.604A.614.614 0 0 0 0 4.604c0 .344.27.622.604.622h10.332L8.1 8.146a.635.635 0 0 0 0 .88.594.594 0 0 0 .854 0l3.869-3.982a.635.635 0 0 0 0-.88z" fill-rule="nonzero" fill="currentColor" class="fill-main"></path></svg></span>
-        </a>
-      </nav>
-    
-    
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2025-07-10 00:00:00+00:00">July 10, 2025</time></li>
-        
-          <li class="md-meta__item">
-            in
-            
-              <a href="../../changelog/" class="md-meta__link">Changelog</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              4 min read
-            
-          </li>
-        
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="rolling-deployment-secrets-files-tenstorrent-and-more"><a class="toclink" href="../../changelog-07-25/">Rolling deployment, Secrets, Files, Tenstorrent, and more</a></h2>
-<p>Thanks to feedback from the community, <code>dstack</code> continues to evolve. Here’s a look at what’s new.</p>
-<h5 id="rolling-deployments"><a class="toclink" href="../../changelog-07-25/#rolling-deployments">Rolling deployments</a></h5>
-<p>Previously, updating running services could cause downtime. The latest release fixes this with <a href="../../../docs/concepts/services/#rolling-deployment">rolling deployments</a>. Replicas are now updated one by one, allowing uninterrupted traffic during redeployments.</p>
-<div class="termy">
+<div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">fleet</span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">graphsignal-onprem</span>
 
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>dstack<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>.dstack.yml
-
-Active<span class="w"> </span>run<span class="w"> </span>my-service<span class="w"> </span>already<span class="w"> </span>exists.<span class="w"> </span>Detected<span class="w"> </span>changes<span class="w"> </span>that<span class="w"> </span>can<span class="w"> </span>be<span class="w"> </span>updated<span class="w"> </span><span class="k">in</span>-place:
--<span class="w"> </span>Repo<span class="w"> </span>state<span class="w"> </span><span class="o">(</span>branch,<span class="w"> </span>commit,<span class="w"> </span>or<span class="w"> </span>other<span class="o">)</span>
--<span class="w"> </span>File<span class="w"> </span>archives
--<span class="w"> </span>Configuration<span class="w"> </span>properties:
-<span class="w">  </span>-<span class="w"> </span>env
-<span class="w">  </span>-<span class="w"> </span>files
-
-Update<span class="w"> </span>the<span class="w"> </span>run?<span class="w"> </span><span class="o">[</span>y/n<span class="o">]</span>:<span class="w"> </span>y<span class="w"> </span>
-⠋<span class="w"> </span>Launching<span class="w"> </span>my-service...
-
-<span class="w"> </span>NAME<span class="w">                      </span>BACKEND<span class="w">          </span>PRICE<span class="w">    </span>STATUS<span class="w">       </span>SUBMITTED
-<span class="w"> </span>my-service<span class="w"> </span><span class="nv">deployment</span><span class="o">=</span><span class="m">1</span><span class="w">                             </span>running<span class="w">      </span><span class="m">11</span><span class="w"> </span>mins<span class="w"> </span>ago
-<span class="w">   </span><span class="nv">replica</span><span class="o">=</span><span class="m">0</span><span class="w"> </span><span class="nv">deployment</span><span class="o">=</span><span class="m">0</span><span class="w">  </span>aws<span class="w"> </span><span class="o">(</span>us-west-2<span class="o">)</span><span class="w">  </span><span class="nv">$0</span>.0026<span class="w">  </span>terminating<span class="w">  </span><span class="m">11</span><span class="w"> </span>mins<span class="w"> </span>ago
-<span class="w">   </span><span class="nv">replica</span><span class="o">=</span><span class="m">1</span><span class="w"> </span><span class="nv">deployment</span><span class="o">=</span><span class="m">1</span><span class="w">  </span>aws<span class="w"> </span><span class="o">(</span>us-west-2<span class="o">)</span><span class="w">  </span><span class="nv">$0</span>.0026<span class="w">  </span>running<span class="w">      </span><span class="m">1</span><span class="w"> </span>min<span class="w"> </span>ago
+<span class="nt">ssh_config</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">user</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu</span>
+<span class="w">  </span><span class="nt">identity_file</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">~/.ssh/id_rsa</span>
+<span class="w">  </span><span class="nt">hosts</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dgx-spark-1</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dgx-spark-2</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dgx-spark-3</span>
 </code></pre></div>
 
 </div>
 
+<p>For cloud GPU, <code>dstack</code> supports Verda as a native backend.</p>
+<div editor-title="~/.dstack/server/config.yml"> 
 
-    
-      <nav class="md-post__action">
-        <a href="../../changelog-07-25/">
-            <span>Continue reading</span>
-            <span class="icon"><svg viewBox="0 0 13 10" xmlns="http://www.w3.org/2000/svg"><path d="M12.823 4.164L8.954.182a.592.592 0 0 0-.854 0 .635.635 0 0 0 0 .88l2.836 2.92H.604A.614.614 0 0 0 0 4.604c0 .344.27.622.604.622h10.332L8.1 8.146a.635.635 0 0 0 0 .88.594.594 0 0 0 .854 0l3.869-3.982a.635.635 0 0 0 0-.88z" fill-rule="nonzero" fill="currentColor" class="fill-main"></path></svg></span>
-        </a>
-      </nav>
-    
-    
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2025-05-22 00:00:00+00:00">May 22, 2025</time></li>
-        
-          <li class="md-meta__item">
-            in
-            
-              <a href="../../case-studies/" class="md-meta__link">Case studies</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              3 min read
-            
-          </li>
-        
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="how-ea-uses-dstack-to-fast-track-ai-development"><a class="toclink" href="../../ea-gtc25/">How EA uses dstack to fast-track AI development</a></h2>
-<p>At NVIDIA GTC 2025, Electronic Arts <a href="https://www.nvidia.com/en-us/on-demand/session/gtc25-s73667/">shared</a> how they’re scaling AI development and managing infrastructure across teams. They highlighted using tools like <code>dstack</code> to provision GPUs quickly, flexibly, and cost-efficiently. This case study summarizes key insights from their talk.</p>
-<p><img src="https://dstack.ai/static-assets/static-assets/images/dstack-ea-slide-1.png" width="630" /></p>
-<p>EA has over 100+ AI projects running, and the number keeps growing. There are many teams with AI needs—game dev, ML engineers, AI researchers, and platform teams—supported by a central tech team. Some need full MLOps support; others have in-house expertise but need flexible tooling and infrastructure.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">projects</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">main</span>
+<span class="w">    </span><span class="nt">backends</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">verda</span>
+<span class="w">        </span><span class="nt">creds</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">api_key</span>
+<span class="w">          </span><span class="nt">client_id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">YOUR_CLIENT_ID</span>
+<span class="w">          </span><span class="nt">client_secret</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">YOUR_CLIENT_SECRET</span>
+</code></pre></div>
 
-    
-      <nav class="md-post__action">
-        <a href="../../ea-gtc25/">
-            <span>Continue reading</span>
-            <span class="icon"><svg viewBox="0 0 13 10" xmlns="http://www.w3.org/2000/svg"><path d="M12.823 4.164L8.954.182a.592.592 0 0 0-.854 0 .635.635 0 0 0 0 .88l2.836 2.92H.604A.614.614 0 0 0 0 4.604c0 .344.27.622.604.622h10.332L8.1 8.146a.635.635 0 0 0 0 .88.594.594 0 0 0 .854 0l3.869-3.982a.635.635 0 0 0 0-.88z" fill-rule="nonzero" fill="currentColor" class="fill-main"></path></svg></span>
-        </a>
-      </nav>
-    
-    
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2025-05-12 00:00:00+00:00">May 12, 2025</time></li>
-        
-          <li class="md-meta__item">
-            in
-            
-              <a href="../../changelog/" class="md-meta__link">Changelog</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              3 min read
-            
-          </li>
-        
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="supporting-arm-and-nvidia-gh200-on-lambda"><a class="toclink" href="../../gh200-on-lambda/">Supporting ARM and NVIDIA GH200 on Lambda</a></h2>
-<p>The latest update to <code>dstack</code> introduces support for NVIDIA GH200 instances on <a href="../../../docs/concepts/backends/#lambda">Lambda</a>
-and enables ARM-powered hosts, including GH200 and GB200, with <a href="../../../docs/concepts/fleets/#ssh-fleets">SSH fleets</a>.</p>
-<p><img src="https://dstack.ai/static-assets/static-assets/images/dstack-arm--gh200-lambda-min.png" width="630"/></p>
+</div>
 
-    
-      <nav class="md-post__action">
-        <a href="../../gh200-on-lambda/">
-            <span>Continue reading</span>
-            <span class="icon"><svg viewBox="0 0 13 10" xmlns="http://www.w3.org/2000/svg"><path d="M12.823 4.164L8.954.182a.592.592 0 0 0-.854 0 .635.635 0 0 0 0 .88l2.836 2.92H.604A.614.614 0 0 0 0 4.604c0 .344.27.622.604.622h10.332L8.1 8.146a.635.635 0 0 0 0 .88.594.594 0 0 0 .854 0l3.869-3.982a.635.635 0 0 0 0-.88z" fill-rule="nonzero" fill="currentColor" class="fill-main"></path></svg></span>
-        </a>
-      </nav>
-    
-    
-  </div>
-</article>
-      
-      
-        
-          
+<p>For Graphsignal, <code>dstack</code> acts as a unified orchestration layer for GPU development and inference across on-prem systems and GPU clouds. It gives both developers and agents a fine-grained interface for editing configs, deploying services, and iterating on infrastructure without switching tools or rebuilding workflow around each environment.</p>
+<p>For agentic workflows, <a href="https://skills.sh/dstackai/dstack/dstack"><code>dstack</code> skills</a> extend that same interface to tools such as Claude Code, Codex, and Cursor.</p>
+<div class="termy">
+
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>npx<span class="w"> </span>skills<span class="w"> </span>add<span class="w"> </span>dstackai/dstack
+</code></pre></div>
+
+</div>
+
+<p>Once installed, they let an agent work directly with <code>dstack</code> configs and CLI commands: create or edit a <code>*.dstack.yml</code>, apply the configuration, check run status, and manage fleets, etc.</p>
+<p>Claude Code can use Graphsignal telemetry to decide what to change next, then use <code>dstack</code> to generate the updated service config and invoke the CLI on the team’s behalf.</p>
+<p><img src="https://dstack.ai/static-assets/static-assets/images/graphsignal-debug-chat.png" width="750" /></p>
+<p>The point is not a single benchmark run, but a repeatable workflow in which deployment, measurement, and optimization stay inside the same system.</p>
+<blockquote>
+<p><em>Agentic engineering is changing not only how code gets written, but how compute gets orchestrated and how inference gets optimized. Once the deployment layer is programmable, agents can participate directly in benchmarking, redeployment, and performance tuning.</em></p>
+<p><em>— Dmitry Melikyan</em><em>, Founder at Graphsignal</em></p>
+</blockquote>
+<p>Instead of treating performance testing as a separate script, the team can run it as a loop: benchmark a live endpoint, inspect logs and telemetry for the same time window, identify bottlenecks, update the <code>dstack</code> service config, redeploy, and run the next iteration.</p>
+<p><em>Huge thanks to Dmitry Melikyan and Bogdan Sulima at Graphsignal for feedback and collaboration. For more details, see Graphsignal’s engineering post on <a href="https://graphsignal.com/blog/autodebug-telemetry-driven-inference-optimization-loop/">autodebug</a>.</em></p>
+<div class="admonition info">
+<p class="admonition-title">What's next?</p>
+<ol>
+<li>Follow the <a href="../../docs/installation/"><code>Installation</code></a> and <a href="../../docs/quickstart/"><code>Quickstart</code></a> guides</li>
+<li>Explore <a href="../../docs/concepts/dev-environments/"><code>dev environments</code></a>, <a href="../../docs/concepts/tasks/"><code>tasks</code></a>, <a href="../../docs/concepts/services/"><code>services</code></a>, and <a href="../../docs/concepts/fleets/"><code>fleets</code></a></li>
+<li>Use Graphsignal’s <a href="https://graphsignal.com/docs/integrations/dstack/"><code>dstack</code> integration guide</a> to add profiling, tracing, and monitoring to a <code>dstack</code> inference service</li>
+</ol>
+</div>
 
 
 
-<nav class="md-pagination">
-  <a class="md-pagination__link" href="../../">1</a> <span class="md-pagination__current">2</span> <a class="md-pagination__link" href="../3/">3</a> <a class="md-pagination__link" href="../4/">4</a> <a class="md-pagination__link" href="../5/">5</a>
-</nav>
-        
+
+
+
+
+  
+  
+
+
+
+  
+
+
+  
+
+
+
       
-    </div>
+    </article>
   </div>
 
           
@@ -4978,17 +4481,17 @@ and enables ARM-powered hosts, including GH200 and GB200, with <a href="../../..
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["content.tooltips", "navigation.path", "content.code.copy", "content.action.edit", "navigation.tabs", "navigation.sections", "navigation.top", "announce.dismiss", "navigation.tracking", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.tooltips", "navigation.path", "content.code.copy", "content.action.edit", "navigation.tabs", "navigation.sections", "navigation.top", "announce.dismiss", "navigation.tracking", "navigation.footer"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
 <script src="/assets/javascripts/termynal.js" data-termynal-container="#termynal"></script>
 <script async src="https://tally.so/widgets/embed.js"></script>
 
-      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
-        <script src="../../../assets/javascripts/extra.js"></script>
+        <script src="../../assets/javascripts/extra.js"></script>
       
-        <script src="../../../assets/javascripts/pricing.js"></script>
+        <script src="../../assets/javascripts/pricing.js"></script>
       
     
 <script src="https://widget.kapa.ai/kapa-widget.bundle.js"
