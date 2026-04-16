@@ -95,7 +95,11 @@ router:
 
 If you configure the `sglang` router, [services](../concepts/services.md) can run either [standard SGLang workers](../../examples/inference/sglang/index.md) or [Prefill-Decode workers](../../examples/inference/sglang/index.md#pd-disaggregation) (aka PD disaggregation).
 
-> Note, if you want to run services with PD disaggregation, the gateway must currently run in the same cluster as the service.
+!!! note "PD disaggregation"
+    To run services with PD disaggregation see [SGLang PD disaggregation](https://dstack.ai/examples/inference/sglang/#pd-disaggregation).
+
+!!! note "Deprecation"
+    Configuring the SGLang router in a gateway is deprecated and will be disallowed in a future release.
 
 ??? info "Policy"
     The `policy` property allows you to configure the routing policy:
@@ -119,7 +123,7 @@ If you disable [public IP](#public-ip) (e.g. to make the gateway private) or if 
     `dstack` supports the following certificate types:
 
     * `lets-encrypt` (default) — Automatic certificates via [Let's Encrypt](https://letsencrypt.org/). Requires a [public IP](#public-ip).
-    * `acm` — Certificates managed by [AWS Certificate Manager](https://aws.amazon.com/certificate-manager/). AWS-only. TLS is terminated at the load balancer, not at the gateway.
+    * `acm` — Certificates managed by [AWS Certificate Manager](https://aws.amazon.com/certificate-manager/). AWS-only. TLS is terminated at the load balancer, not at the gateway, and HTTP requests are redirected to HTTPS by the ALB.
       Requires a VPC with at least two subnets in different availability zones to provision a load balancer. If `public_ip: False`, subnets must be private and have a route to NAT gateway.
     * `null` — No certificate. Services will use HTTP.
 

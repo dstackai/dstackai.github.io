@@ -171,7 +171,7 @@
               </button>
             
             
-<a href="/blog/agentic-orchestration/" target="_blank">Let agents manage infra and orchestrate workloads <span class="icon"><svg viewBox="0 0 13 10" xmlns="http://www.w3.org/2000/svg"><path d="M12.823 4.164L8.954.182a.592.592 0 0 0-.854 0 .635.635 0 0 0 0 .88l2.836 2.92H.604A.614.614 0 0 0 0 4.604c0 .344.27.622.604.622h10.332L8.1 8.146a.635.635 0 0 0 0 .88.594.594 0 0 0 .854 0l3.869-3.982a.635.635 0 0 0 0-.88z" fill-rule="nonzero" fill="currentColor" class="fill-main"></path></svg></span></a>
+<a href="/blog/agentic-orchestration/" target="_blank">Infrastructure orchestration is an agent skill <span class="icon"><svg viewBox="0 0 13 10" xmlns="http://www.w3.org/2000/svg"><path d="M12.823 4.164L8.954.182a.592.592 0 0 0-.854 0 .635.635 0 0 0 0 .88l2.836 2.92H.604A.614.614 0 0 0 0 4.604c0 .344.27.622.604.622h10.332L8.1 8.146a.635.635 0 0 0 0 .88.594.594 0 0 0 .854 0l3.869-3.982a.635.635 0 0 0 0-.88z" fill-rule="nonzero" fill="currentColor" class="fill-main"></path></svg></span></a>
 
           </div>
           
@@ -3757,34 +3757,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../examples/inference/tgi/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    TGI
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../../examples/inference/nim/" class="md-nav__link">
         
   
@@ -3937,34 +3909,6 @@
     
   
     TPU
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../examples/accelerators/intel/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Intel Gaudi
   
 
     
@@ -4950,7 +4894,6 @@ Model<span class="w"> </span>meta-llama/Meta-Llama-3.1-8B-Instruct<span class="w
 <p>Here are cases where a service may need a <a href="../gateways/">gateway</a>:</p>
 <ul>
 <li>To use <a href="#replicas-and-scaling">auto-scaling</a> or <a href="#rate-limits">rate limits</a></li>
-<li>To enable a support custom router, e.g. such as the <a href="https://docs.sglang.ai/advanced_features/router.html#">SGLang Model Gateway</a></li>
 <li>To enable HTTPS for the endpoint and map it to your domain</li>
 <li>If your service requires WebSockets</li>
 <li>If your service cannot work with a <a href="#path-prefix">path prefix</a></li>
@@ -5064,7 +5007,7 @@ case <code>dstack</code> adjusts the number of replicas (scales up or down) auto
 </blockquote>
 </details>
 <h3 id="pd-disaggregation">PD disaggregation<a class="headerlink" href="#pd-disaggregation" title="Permanent link">&para;</a></h3>
-<p>If you create a gateway with the <a href="../gateways/#sglang"><code>sglang</code> router</a>, you can run SGLang with <a href="https://docs.sglang.io/advanced_features/pd_disaggregation.html">Prefill-Decode disaggregation</a>. See the <a href="../../../examples/inference/sglang/#pd-disaggregation">corresponding example</a>.</p>
+<p>You can run SGLang with <a href="https://docs.sglang.io/advanced_features/pd_disaggregation.html">Prefill-Decode disaggregation</a>. See the <a href="../../../examples/inference/sglang/#pd-disaggregation">corresponding example</a>.</p>
 <h3 id="authorization">Authorization<a class="headerlink" href="#authorization" title="Permanent link">&para;</a></h3>
 <p>By default, the service enables authorization, meaning the service endpoint requires a <code>dstack</code> user token.
 This can be disabled by setting <code>auth</code> to <code>false</code>.</p>
@@ -5883,8 +5826,7 @@ Pass <code>--diagnose</code> or <code>-d</code> to view diagnostic logs, which c
 <li>Read about <a href="../dev-environments/">dev environments</a> and <a href="../tasks/">tasks</a></li>
 <li>Learn how to manage <a href="../fleets/">fleets</a></li>
 <li>See how to set up <a href="../gateways/">gateways</a></li>
-<li>Check the <a href="../../../examples/inference/tgi/">TGI</a>,
-   <a href="../../../examples/inference/vllm/">vLLM</a>, and 
+<li>Check the <a href="../../../examples/inference/vllm/">vLLM</a> and
    <a href="../../../examples/inference/nim/">NIM</a> examples</li>
 </ol>
 </div>

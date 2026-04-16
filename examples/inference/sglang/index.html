@@ -171,7 +171,7 @@
               </button>
             
             
-<a href="/blog/agentic-orchestration/" target="_blank">Let agents manage infra and orchestrate workloads <span class="icon"><svg viewBox="0 0 13 10" xmlns="http://www.w3.org/2000/svg"><path d="M12.823 4.164L8.954.182a.592.592 0 0 0-.854 0 .635.635 0 0 0 0 .88l2.836 2.92H.604A.614.614 0 0 0 0 4.604c0 .344.27.622.604.622h10.332L8.1 8.146a.635.635 0 0 0 0 .88.594.594 0 0 0 .854 0l3.869-3.982a.635.635 0 0 0 0-.88z" fill-rule="nonzero" fill="currentColor" class="fill-main"></path></svg></span></a>
+<a href="/blog/agentic-orchestration/" target="_blank">Infrastructure orchestration is an agent skill <span class="icon"><svg viewBox="0 0 13 10" xmlns="http://www.w3.org/2000/svg"><path d="M12.823 4.164L8.954.182a.592.592 0 0 0-.854 0 .635.635 0 0 0 0 .88l2.836 2.92H.604A.614.614 0 0 0 0 4.604c0 .344.27.622.604.622h10.332L8.1 8.146a.635.635 0 0 0 0 .88.594.594 0 0 0 .854 0l3.869-3.982a.635.635 0 0 0 0-.88z" fill-rule="nonzero" fill="currentColor" class="fill-main"></path></svg></span></a>
 
           </div>
           
@@ -3521,34 +3521,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../tgi/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    TGI
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../nim/" class="md-nav__link">
         
   
@@ -3704,34 +3676,6 @@
     
   
     TPU
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../accelerators/intel/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Intel Gaudi
   
 
     
@@ -4483,15 +4427,15 @@ Provisioning...
 </div>
 
 <div class="admonition info">
-<p class="admonition-title">Router policy</p>
-<p>If you'd like to use a custom routing policy, create a gateway with <code>router</code> set to <code>sglang</code>. Check out <a href="https://dstack.ai/docs/concepts/gateways#router">gateways</a> for more details.</p>
+<p class="admonition-title">Run router and workers separately</p>
+<p>To run the SGLang router and workers separately, use replica groups (router as a CPU replica group, workers as GPU replica groups). See <a href="#pd-disaggregation">PD disaggregation</a>.</p>
 </div>
 <blockquote>
 <p>If a <a href="https://dstack.ai/docs/concepts/gateways/">gateway</a> is configured (e.g. to enable auto-scaling, HTTPS, rate limits, etc.), the service endpoint will be available at <code>https://deepseek-r1.&lt;gateway domain&gt;/</code>.</p>
 </blockquote>
 <h2 id="configuration-options">Configuration options<a class="headerlink" href="#configuration-options" title="Permanent link">&para;</a></h2>
 <h3 id="pd-disaggregation">PD disaggregation<a class="headerlink" href="#pd-disaggregation" title="Permanent link">&para;</a></h3>
-<p>If you create a gateway with the <a href="https://dstack.ai/docs/concepts/gateways/#sglang"><code>sglang</code> router</a>, you can run SGLang with <a href="https://docs.sglang.io/advanced_features/pd_disaggregation.html">PD disaggregation</a>.</p>
+<p>To run SGLang with <a href="https://docs.sglang.io/advanced_features/pd_disaggregation.html">PD disaggregation</a>, run the <strong>router as a replica</strong> on a CPU-only host, while running <strong>prefill/decode workers</strong> as replicas on GPU hosts.</p>
 <div editor-title="examples/inference/sglang/pd.dstack.yml">
 
 <div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service</span>
@@ -4503,6 +4447,21 @@ Provisioning...
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MODEL_ID=zai-org/GLM-4.5-Air-FP8</span>
 
 <span class="nt">replicas</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">count</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">    </span><span class="c1"># For now replica group with router must have count: 1</span>
+<span class="w">    </span><span class="nt">commands</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip install sglang_router</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">        </span><span class="no">python -m sglang_router.launch_router \</span>
+<span class="w">          </span><span class="no">--host 0.0.0.0 \</span>
+<span class="w">          </span><span class="no">--port 8000 \</span>
+<span class="w">          </span><span class="no">--pd-disaggregation \</span>
+<span class="w">          </span><span class="no">--prefill-policy cache_aware</span>
+<span class="w">    </span><span class="nt">router</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sglang</span>
+<span class="w">    </span><span class="nt">resources</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4</span>
+
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">count</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1..4</span>
 <span class="w">    </span><span class="nt">scaling</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">metric</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rps</span>
@@ -4512,7 +4471,7 @@ Provisioning...
 <span class="w">        </span><span class="no">python -m sglang.launch_server \</span>
 <span class="w">          </span><span class="no">--model-path $MODEL_ID \</span>
 <span class="w">          </span><span class="no">--disaggregation-mode prefill \</span>
-<span class="w">          </span><span class="no">--disaggregation-transfer-backend mooncake \</span>
+<span class="w">          </span><span class="no">--disaggregation-transfer-backend nixl \</span>
 <span class="w">          </span><span class="no">--host 0.0.0.0 \</span>
 <span class="w">          </span><span class="no">--port 8000 \</span>
 <span class="w">          </span><span class="no">--disaggregation-bootstrap-port 8998</span>
@@ -4528,7 +4487,7 @@ Provisioning...
 <span class="w">        </span><span class="no">python -m sglang.launch_server \</span>
 <span class="w">          </span><span class="no">--model-path $MODEL_ID \</span>
 <span class="w">          </span><span class="no">--disaggregation-mode decode \</span>
-<span class="w">          </span><span class="no">--disaggregation-transfer-backend mooncake \</span>
+<span class="w">          </span><span class="no">--disaggregation-transfer-backend nixl \</span>
 <span class="w">          </span><span class="no">--host 0.0.0.0 \</span>
 <span class="w">          </span><span class="no">--port 8000</span>
 <span class="w">    </span><span class="nt">resources</span><span class="p">:</span>
@@ -4537,40 +4496,24 @@ Provisioning...
 <span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8000</span>
 <span class="nt">model</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">zai-org/GLM-4.5-Air-FP8</span>
 
-<span class="c1"># Custom probe is required for PD disaggregation</span>
+<span class="c1"># Custom probe is required for PD disaggregation.</span>
 <span class="nt">probes</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http</span>
-<span class="w">    </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/health_generate</span>
+<span class="w">    </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/health</span>
 <span class="w">    </span><span class="nt">interval</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">15s</span>
-
-<span class="nt">router</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sglang</span>
-<span class="w">  </span><span class="nt">pd_disaggregation</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 </code></pre></div>
 
 </div>
 
 <p>Currently, auto-scaling only supports <code>rps</code> as the metric. TTFT and ITL metrics are coming soon.</p>
-<h4 id="gateway">Gateway<a class="headerlink" href="#gateway" title="Permanent link">&para;</a></h4>
-<p>Note, running services with PD disaggregation currently requires the gateway to run in the same cluster as the service.</p>
-<p>For example, if you run services on the <code>kubernetes</code> backend, make sure to also create the gateway in the same backend:</p>
-<div editor-title="gateway.dstack.yml">
-
-<div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gateway</span>
-<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gateway-name</span>
-
-<span class="nt">backend</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kubernetes</span>
-<span class="nt">region</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">any</span>
-
-<span class="nt">domain</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">example.com</span>
-<span class="nt">router</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sglang</span>
-</code></pre></div>
-
+<h4 id="fleet">Fleet<a class="headerlink" href="#fleet" title="Permanent link">&para;</a></h4>
+<p>Create a <a href="https://dstack.ai/docs/concepts/fleets/">fleet</a> that can provision both a CPU node (for the router replica group) and GPU nodes (for the prefill/decode replica groups).
+You can create an SSH fleet, elastic Cloud fleet (nodes: 0..) or kubernetes cluster. Just don't specify any resource constraints in the fleet, and dstack will automatically provision the correct instances (both CPU and GPU, in the same fleet) based on the resources specified in replicas in the run configuration.</p>
+<p>The only requirement is that the router and worker replicas run in the same network. In practice, this typically means using a single fleet where the backend and region are the same or using <code>placement: cluster</code> if the backend supports it.</p>
+<div class="admonition note">
+<p class="admonition-title">Gateway-based routing (deprecated)</p>
+<p>If you create a gateway with the <a href="https://dstack.ai/docs/concepts/gateways/#sglang"><code>sglang</code> router</a>, you can also run SGLang with PD disaggregation. This method is deprecated and will be disallowed in a future release in favor of running the router as a replica.</p>
 </div>
-
-<!-- TODO: Gateway creation using fleets is coming to simplify this. -->
-
 <h2 id="source-code">Source code<a class="headerlink" href="#source-code" title="Permanent link">&para;</a></h2>
 <p>The source-code of these examples can be found in
 <a href="https://github.com/dstackai/dstack/blob/master/examples/llms/deepseek/sglang"><code>examples/llms/deepseek/sglang</code></a> and <a href="https://github.com/dstackai/dstack/blob/master/examples/inference/sglang"><code>examples/inference/sglang</code></a>.</p>

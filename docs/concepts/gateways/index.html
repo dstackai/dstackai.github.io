@@ -176,7 +176,7 @@
               </button>
             
             
-<a href="/blog/agentic-orchestration/" target="_blank">Let agents manage infra and orchestrate workloads <span class="icon"><svg viewBox="0 0 13 10" xmlns="http://www.w3.org/2000/svg"><path d="M12.823 4.164L8.954.182a.592.592 0 0 0-.854 0 .635.635 0 0 0 0 .88l2.836 2.92H.604A.614.614 0 0 0 0 4.604c0 .344.27.622.604.622h10.332L8.1 8.146a.635.635 0 0 0 0 .88.594.594 0 0 0 .854 0l3.869-3.982a.635.635 0 0 0 0-.88z" fill-rule="nonzero" fill="currentColor" class="fill-main"></path></svg></span></a>
+<a href="/blog/agentic-orchestration/" target="_blank">Infrastructure orchestration is an agent skill <span class="icon"><svg viewBox="0 0 13 10" xmlns="http://www.w3.org/2000/svg"><path d="M12.823 4.164L8.954.182a.592.592 0 0 0-.854 0 .635.635 0 0 0 0 .88l2.836 2.92H.604A.614.614 0 0 0 0 4.604c0 .344.27.622.604.622h10.332L8.1 8.146a.635.635 0 0 0 0 .88.594.594 0 0 0 .854 0l3.869-3.982a.635.635 0 0 0 0-.88z" fill-rule="nonzero" fill="currentColor" class="fill-main"></path></svg></span></a>
 
           </div>
           
@@ -3614,34 +3614,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../examples/inference/tgi/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    TGI
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../../examples/inference/nim/" class="md-nav__link">
         
   
@@ -3794,34 +3766,6 @@
     
   
     TPU
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../examples/accelerators/intel/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Intel Gaudi
   
 
     
@@ -4655,9 +4599,14 @@ For self-hosted Kubernetes, you must provide a load balancer by yourself.</p>
 </div>
 
 <p>If you configure the <code>sglang</code> router, <a href="../services/">services</a> can run either <a href="../../../examples/inference/sglang/">standard SGLang workers</a> or <a href="../../../examples/inference/sglang/#pd-disaggregation">Prefill-Decode workers</a> (aka PD disaggregation).</p>
-<blockquote>
-<p>Note, if you want to run services with PD disaggregation, the gateway must currently run in the same cluster as the service.</p>
-</blockquote>
+<div class="admonition note">
+<p class="admonition-title">PD disaggregation</p>
+<p>To run services with PD disaggregation see <a href="https://dstack.ai/examples/inference/sglang/#pd-disaggregation">SGLang PD disaggregation</a>.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Deprecation</p>
+<p>Configuring the SGLang router in a gateway is deprecated and will be disallowed in a future release.</p>
+</div>
 <details class="info">
 <summary>Policy</summary>
 <p>The <code>policy</code> property allows you to configure the routing policy:</p>
@@ -4679,7 +4628,7 @@ For self-hosted Kubernetes, you must provide a load balancer by yourself.</p>
 <p><code>dstack</code> supports the following certificate types:</p>
 <ul>
 <li><code>lets-encrypt</code> (default) — Automatic certificates via <a href="https://letsencrypt.org/">Let's Encrypt</a>. Requires a <a href="#public-ip">public IP</a>.</li>
-<li><code>acm</code> — Certificates managed by <a href="https://aws.amazon.com/certificate-manager/">AWS Certificate Manager</a>. AWS-only. TLS is terminated at the load balancer, not at the gateway.
+<li><code>acm</code> — Certificates managed by <a href="https://aws.amazon.com/certificate-manager/">AWS Certificate Manager</a>. AWS-only. TLS is terminated at the load balancer, not at the gateway, and HTTP requests are redirected to HTTPS by the ALB.
   Requires a VPC with at least two subnets in different availability zones to provision a load balancer. If <code>public_ip: False</code>, subnets must be private and have a route to NAT gateway.</li>
 <li><code>null</code> — No certificate. Services will use HTTP.</li>
 </ul>

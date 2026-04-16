@@ -171,7 +171,7 @@
               </button>
             
             
-<a href="/blog/agentic-orchestration/" target="_blank">Let agents manage infra and orchestrate workloads <span class="icon"><svg viewBox="0 0 13 10" xmlns="http://www.w3.org/2000/svg"><path d="M12.823 4.164L8.954.182a.592.592 0 0 0-.854 0 .635.635 0 0 0 0 .88l2.836 2.92H.604A.614.614 0 0 0 0 4.604c0 .344.27.622.604.622h10.332L8.1 8.146a.635.635 0 0 0 0 .88.594.594 0 0 0 .854 0l3.869-3.982a.635.635 0 0 0 0-.88z" fill-rule="nonzero" fill="currentColor" class="fill-main"></path></svg></span></a>
+<a href="/blog/agentic-orchestration/" target="_blank">Infrastructure orchestration is an agent skill <span class="icon"><svg viewBox="0 0 13 10" xmlns="http://www.w3.org/2000/svg"><path d="M12.823 4.164L8.954.182a.592.592 0 0 0-.854 0 .635.635 0 0 0 0 .88l2.836 2.92H.604A.614.614 0 0 0 0 4.604c0 .344.27.622.604.622h10.332L8.1 8.146a.635.635 0 0 0 0 .88.594.594 0 0 0 .854 0l3.869-3.982a.635.635 0 0 0 0-.88z" fill-rule="nonzero" fill="currentColor" class="fill-main"></path></svg></span></a>
 
           </div>
           
@@ -1095,6 +1095,19 @@
       
         <span class="md-typeset">
           Delete fleets
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#list-offers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          List offers
         </span>
       
     </span>
@@ -3672,34 +3685,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../examples/inference/tgi/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    TGI
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../../examples/inference/nim/" class="md-nav__link">
         
   
@@ -3852,34 +3837,6 @@
     
   
     TPU
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../examples/accelerators/intel/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Intel Gaudi
   
 
     
@@ -4601,6 +4558,19 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#list-offers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          List offers
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -5123,6 +5093,16 @@ Fleet<span class="w"> </span>my-gcp-fleet<span class="w"> </span>deleted
 
 <p>Alternatively, you can delete a fleet by passing the fleet name  to <code>dstack fleet delete</code>.
 To terminate and delete specific instances from a fleet, pass <code>-i INSTANCE_NUM</code>.</p>
+<h3 id="list-offers">List offers<a class="headerlink" href="#list-offers" title="Permanent link">&para;</a></h3>
+<p>To inspect offers available through a fleet, pass <code>--fleet</code> to <code>dstack offer</code>.</p>
+<div class="termy">
+
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>dstack<span class="w"> </span>offer<span class="w"> </span>--gpu<span class="w"> </span>H100<span class="w"> </span>--fleet<span class="w"> </span>my-fleet
+</code></pre></div>
+
+</div>
+
+<p>Use <code>--group-by gpu,backend</code> to aggregate offers.</p>
 <div class="admonition info">
 <p class="admonition-title">What's next?</p>
 <ol>

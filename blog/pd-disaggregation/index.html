@@ -168,7 +168,7 @@
               </button>
             
             
-<a href="/blog/agentic-orchestration/" target="_blank">Let agents manage infra and orchestrate workloads <span class="icon"><svg viewBox="0 0 13 10" xmlns="http://www.w3.org/2000/svg"><path d="M12.823 4.164L8.954.182a.592.592 0 0 0-.854 0 .635.635 0 0 0 0 .88l2.836 2.92H.604A.614.614 0 0 0 0 4.604c0 .344.27.622.604.622h10.332L8.1 8.146a.635.635 0 0 0 0 .88.594.594 0 0 0 .854 0l3.869-3.982a.635.635 0 0 0 0-.88z" fill-rule="nonzero" fill="currentColor" class="fill-main"></path></svg></span></a>
+<a href="/blog/agentic-orchestration/" target="_blank">Infrastructure orchestration is an agent skill <span class="icon"><svg viewBox="0 0 13 10" xmlns="http://www.w3.org/2000/svg"><path d="M12.823 4.164L8.954.182a.592.592 0 0 0-.854 0 .635.635 0 0 0 0 .88l2.836 2.92H.604A.614.614 0 0 0 0 4.604c0 .344.27.622.604.622h10.332L8.1 8.146a.635.635 0 0 0 0 .88.594.594 0 0 0 .854 0l3.869-3.982a.635.635 0 0 0 0-.88z" fill-rule="nonzero" fill="currentColor" class="fill-main"></path></svg></span></a>
 
           </div>
           
@@ -3383,34 +3383,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../../examples/inference/tgi/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    TGI
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../examples/inference/nim/" class="md-nav__link">
         
   
@@ -3563,34 +3535,6 @@
     
   
     TPU
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../examples/accelerators/intel/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Intel Gaudi
   
 
     
@@ -4226,7 +4170,7 @@
                           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20a8 8 0 0 0 8-8 8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8m0-18a10 10 0 0 1 10 10 10 10 0 0 1-10 10C6.47 22 2 17.5 2 12A10 10 0 0 1 12 2m.5 5v5.25l4.5 2.67-.75 1.23L11 13V7z"/></svg>
                           <span class="md-ellipsis">
                             
-                              2 min read
+                              3 min read
                             
                           </span>
                         </div>
@@ -4311,6 +4255,10 @@
 <blockquote>
 <p>If you’re new to Prefill–Decode disaggregation, see the official <a href="https://docs.sglang.io/advanced_features/pd_disaggregation.html">SGLang docs</a>.</p>
 </blockquote>
+<div class="admonition note">
+<p class="admonition-title">Deprecation notice</p>
+<p>Configuring the SGLang router in a gateway is deprecated and will be disallowed in a future release. To run router and workers as separate replica groups, see <a href="https://dstack.ai/examples/inference/sglang/#pd-disaggregation">SGLang PD disaggregation (router as replica group)</a>.</p>
+</div>
 <h2 id="services">Services<a class="headerlink" href="#services" title="Permanent link">&para;</a></h2>
 <p>With <code>dstack</code> <code>0.20.10</code>, you can define a service with separate replica groups for Prefill and Decode workers and enable PD disaggregation directly in the <code>router</code> configuration.</p>
 <div editor-title="glm45air.dstack.yml">
@@ -4402,8 +4350,8 @@ $<span class="w"> </span>dstack<span class="w"> </span>apply<span class="w"> </s
 <h2 id="limitations">Limitations<a class="headerlink" href="#limitations" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Because the SGLang router requires all workers to be on the same network, and <code>dstack</code> currently runs the router inside the gateway, the gateway and the service must be running in the same cluster.</li>
-<li>Prefill–Decode disaggregation is currently available with the SGLang backend (vLLM support is coming).</li>
 <li>Autoscaling supports RPS as the metric for now; TTFT and ITL metrics are planned next.</li>
+<li>Prefill–Decode disaggregation is currently available with the SGLang backend (vLLM support is coming).</li>
 </ul>
 <p>With native support for inference and now Prefill–Decode disaggregation, <code>dstack</code> makes it easier to run high-throughput, low-latency model serving across GPU clouds, and Kubernetes or bare-metal clusters.</p>
 <h2 id="whats-next">What's next?<a class="headerlink" href="#whats-next" title="Permanent link">&para;</a></h2>

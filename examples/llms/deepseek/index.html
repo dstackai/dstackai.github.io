@@ -139,7 +139,7 @@
               </button>
             
             
-<a href="/blog/agentic-orchestration/" target="_blank">Let agents manage infra and orchestrate workloads <span class="icon"><svg viewBox="0 0 13 10" xmlns="http://www.w3.org/2000/svg"><path d="M12.823 4.164L8.954.182a.592.592 0 0 0-.854 0 .635.635 0 0 0 0 .88l2.836 2.92H.604A.614.614 0 0 0 0 4.604c0 .344.27.622.604.622h10.332L8.1 8.146a.635.635 0 0 0 0 .88.594.594 0 0 0 .854 0l3.869-3.982a.635.635 0 0 0 0-.88z" fill-rule="nonzero" fill="currentColor" class="fill-main"></path></svg></span></a>
+<a href="/blog/agentic-orchestration/" target="_blank">Infrastructure orchestration is an agent skill <span class="icon"><svg viewBox="0 0 13 10" xmlns="http://www.w3.org/2000/svg"><path d="M12.823 4.164L8.954.182a.592.592 0 0 0-.854 0 .635.635 0 0 0 0 .88l2.836 2.92H.604A.614.614 0 0 0 0 4.604c0 .344.27.622.604.622h10.332L8.1 8.146a.635.635 0 0 0 0 .88.594.594 0 0 0 .854 0l3.869-3.982a.635.635 0 0 0 0-.88z" fill-rule="nonzero" fill="currentColor" class="fill-main"></path></svg></span></a>
 
           </div>
           
@@ -3350,34 +3350,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../../inference/tgi/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    TGI
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../inference/nim/" class="md-nav__link">
         
   
@@ -3530,34 +3502,6 @@
     
   
     TPU
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../accelerators/intel/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Intel Gaudi
   
 
     
@@ -4092,19 +4036,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#intel-gaudi" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        <span class="md-typeset">
-          Intel Gaudi
-        </span>
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#nvidia" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -4168,19 +4099,6 @@
       
         <span class="md-typeset">
           AMD
-        </span>
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#intel-gaudi_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        <span class="md-typeset">
-          Intel Gaudi
         </span>
       
     </span>
@@ -4337,100 +4255,12 @@ $<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>dstac
 </div>
 </div>
 <p>Note, when using <code>Deepseek-R1-Distill-Llama-70B</code> with <code>vLLM</code> with a 192GB GPU, we must limit the context size to 126432 tokens to fit the memory.</p>
-<h3 id="intel-gaudi">Intel Gaudi<a class="headerlink" href="#intel-gaudi" title="Permanent link">&para;</a></h3>
-<p>Here's an example of a service that deploys <code>Deepseek-R1-Distill-Llama-70B</code>
-using <a href="https://github.com/huggingface/tgi-gaudi">TGI on Gaudi</a>
-and <a href="https://github.com/HabanaAI/vllm-fork">vLLM</a> (Gaudi fork) with Intel Gaudi 2.</p>
-<blockquote>
-<p>Both <a href="https://github.com/huggingface/tgi-gaudi">TGI on Gaudi</a>
-and <a href="https://github.com/HabanaAI/vllm-fork">vLLM</a> do not support <code>Deepseek-V2-Lite</code>.
-See <a href="https://github.com/huggingface/tgi-gaudi/issues/271">this</a>
-and <a href="https://github.com/HabanaAI/vllm-fork/issues/809#issuecomment-2652454824">this</a> issues.</p>
-</blockquote>
-<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="tgi" name="__tabbed_2" type="radio" /><input id="vllm_1" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="tgi">TGI</label><label for="vllm_1">vLLM</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<p><div editor-title="examples/llms/deepseek/tgi/intel/.dstack.yml">
-<div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service</span>
-
-<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tgi</span>
-
-<span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ghcr.io/huggingface/tgi-gaudi:2.3.1</span>
-
-<span class="nt">auth</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
-<span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8000</span>
-
-<span class="nt">model</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DeepSeek-R1-Distill-Llama-70B</span>
-
-<span class="nt">env</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HF_TOKEN</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MODEL_ID=deepseek-ai/DeepSeek-R1-Distill-Llama-70B</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PORT=8000</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">OMPI_MCA_btl_vader_single_copy_mechanism=none</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TEXT_GENERATION_SERVER_IGNORE_EOS_TOKEN=true</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PT_HPU_ENABLE_LAZY_COLLECTIVES=true</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MAX_TOTAL_TOKENS=2048</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">BATCH_BUCKET_SIZE=256</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PREFILL_BATCH_BUCKET_SIZE=4</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PAD_SEQUENCE_TO_MULTIPLE_OF=64</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ENABLE_HPU_GRAPH=true</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">LIMIT_HPU_GRAPH=true</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">USE_FLASH_ATTENTION=true</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">FLASH_ATTENTION_RECOMPUTE=true</span>
-
-<span class="nt">commands</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">text-generation-launcher</span>
-<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">--sharded true</span>
-<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">--num-shard 8</span>
-<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">--max-input-length 1024</span>
-<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">--max-total-tokens 2048</span>
-<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">--max-batch-prefill-tokens 4096</span>
-<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">--max-batch-total-tokens 524288</span>
-<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">--max-waiting-tokens 7</span>
-<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">--waiting-served-ratio 1.2</span>
-<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">--max-concurrent-requests 512</span>
-
-<span class="nt">resources</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Gaudi2:8</span>
-</code></pre></div>
-</div></p>
-</div>
-<div class="tabbed-block">
-<p><div editor-title="examples/llms/deepseek/vllm/intel/.dstack.yml">
-<div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service</span>
-<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">deepseek-r1-gaudi</span>
-
-<span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vault.habana.ai/gaudi-docker/1.19.0/ubuntu22.04/habanalabs/pytorch-installer-2.5.1:latest</span>
-
-
-<span class="nt">env</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MODEL_ID=deepseek-ai/DeepSeek-R1-Distill-Llama-70B</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HABANA_VISIBLE_DEVICES=all</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">OMPI_MCA_btl_vader_single_copy_mechanism=none</span>
-
-<span class="nt">commands</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">git clone https://github.com/HabanaAI/vllm-fork.git</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cd vllm-fork</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">git checkout habana_main</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip install -r requirements-hpu.txt</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python setup.py develop</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vllm serve $MODEL_ID</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">--tensor-parallel-size 8</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">--trust-remote-code</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">--download-dir /data</span>
-
-<span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8000</span>
-</code></pre></div>
-</div></p>
-</div>
-</div>
-</div>
 <h3 id="nvidia">NVIDIA<a class="headerlink" href="#nvidia" title="Permanent link">&para;</a></h3>
 <p>Here's an example of a service that deploys <code>Deepseek-R1-Distill-Llama-8B</code>
 using <a href="https://github.com/sgl-project/sglang">SGLang</a>
 and <a href="https://github.com/vllm-project/vllm">vLLM</a> with NVIDIA GPUs.
 Both SGLang and vLLM also support <code>Deepseek-V2-Lite</code>.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="sglang_1" name="__tabbed_3" type="radio" /><input id="vllm_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="sglang_1">SGLang</label><label for="vllm_2">vLLM</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="sglang_1" name="__tabbed_2" type="radio" /><input id="vllm_1" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="sglang_1">SGLang</label><label for="vllm_1">vLLM</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div editor-title="examples/llms/deepseek/sglang/nvidia/.dstack.yml">
@@ -4547,7 +4377,7 @@ this <a href="https://github.com/sgl-project/sglang/issues/3451">issue</a>.</p>
 </tbody>
 </table>
 <p>For example, the FP8 version of Deepseek-R1 671B fits on a single node of MI300X with eight 192GB GPUs, a single node of
-H200 with eight 141GB GPUs, or a single node of Intel Gaudi2 with eight 96GB GPUs.</p>
+H200 with eight 141GB GPUs.</p>
 <h3 id="applying-the-configuration">Applying the configuration<a class="headerlink" href="#applying-the-configuration" title="Permanent link">&para;</a></h3>
 <p>To run a configuration, use the <a href="https://dstack.ai/docs/reference/cli/dstack/apply.md"><code>dstack apply</code></a> command.</p>
 <div class="termy">
@@ -4593,7 +4423,7 @@ Provisioning...
 <h2 id="fine-tuning">Fine-tuning<a class="headerlink" href="#fine-tuning" title="Permanent link">&para;</a></h2>
 <h3 id="amd_1">AMD<a class="headerlink" href="#amd_1" title="Permanent link">&para;</a></h3>
 <p>Here are the examples of LoRA fine-tuning of <code>Deepseek-V2-Lite</code> and GRPO fine-tuning of <code>DeepSeek-R1-Distill-Qwen-1.5B</code> on <code>MI300X</code> GPU using HuggingFace's <a href="https://github.com/huggingface/trl">TRL</a>.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="lora" name="__tabbed_4" type="radio" /><input id="grpo" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="lora">LoRA</label><label for="grpo">GRPO</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="lora" name="__tabbed_3" type="radio" /><input id="grpo" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="lora">LoRA</label><label for="grpo">GRPO</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div editor-title="examples/llms/deepseek/trl/amd/.dstack.yml">
@@ -4694,67 +4524,10 @@ Provisioning...
 </div>
 </div>
 <p>Note, the <code>GRPO</code> fine-tuning of <code>DeepSeek-R1-Distill-Qwen-1.5B</code> consumes up to 135GB of VRAM.</p>
-<h3 id="intel-gaudi_1">Intel Gaudi<a class="headerlink" href="#intel-gaudi_1" title="Permanent link">&para;</a></h3>
-<p>Here is an example of LoRA fine-tuning of <code>DeepSeek-R1-Distill-Qwen-7B</code> on Intel Gaudi 2 GPUs using
-HuggingFace's <a href="https://github.com/huggingface/optimum-habana">Optimum for Intel Gaudi</a>
-and <a href="https://github.com/deepspeedai/DeepSpeed">DeepSpeed</a>. Both also support <code>LoRA</code>
-fine-tuning of <code>Deepseek-V2-Lite</code> with same configuration as below.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="5:1"><input checked="checked" id="lora_1" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="lora_1">LoRA</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<p><div editor-title="examples/llms/deepseek/trl/intel/.dstack.yml">
-<div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">task</span>
-<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">trl-train</span>
-
-<span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vault.habana.ai/gaudi-docker/1.18.0/ubuntu22.04/habanalabs/pytorch-installer-2.4.0</span>
-
-<span class="nt">env</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MODEL_ID=deepseek-ai/DeepSeek-R1-Distill-Qwen-7B</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">WANDB_API_KEY</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">WANDB_PROJECT</span>
-<span class="nt">commands</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip install --upgrade-strategy eager optimum[habana]</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip install git+https://github.com/HabanaAI/DeepSpeed.git@1.19.0</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">git clone https://github.com/huggingface/optimum-habana.git</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cd optimum-habana/examples/trl</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip install -r requirements.txt</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip install wandb</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DEEPSPEED_HPU_ZERO3_SYNC_MARK_STEP_REQUIRED=1 python ../gaudi_spawn.py --world_size 8 --use_deepspeed sft.py</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">--model_name_or_path $MODEL_ID</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">--dataset_name &quot;lvwerra/stack-exchange-paired&quot;</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">--deepspeed ../language-modeling/llama2_ds_zero3_config.json</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">--output_dir=&quot;./sft&quot;</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">--do_train</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">--max_steps=500</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">--logging_steps=10</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">--save_steps=100</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">--per_device_train_batch_size=1</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">--per_device_eval_batch_size=1</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">--gradient_accumulation_steps=2</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">--learning_rate=1e-4</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">--lr_scheduler_type=&quot;cosine&quot;</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">--warmup_steps=100</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">--weight_decay=0.05</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">--optim=&quot;paged_adamw_32bit&quot;</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">--lora_target_modules &quot;q_proj&quot; &quot;v_proj&quot;</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">--bf16</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">--remove_unused_columns=False</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">--run_name=&quot;sft_deepseek_70&quot;</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">--report_to=&quot;wandb&quot;</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">--use_habana</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">--use_lazy_mode</span>
-
-<span class="nt">resources</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gaudi2:8</span>
-</code></pre></div></p>
-</div>
-</div>
-</div>
-</div>
 <h3 id="nvidia_1">NVIDIA<a class="headerlink" href="#nvidia_1" title="Permanent link">&para;</a></h3>
 <p>Here are examples of LoRA fine-tuning of <code>DeepSeek-R1-Distill-Qwen-1.5B</code> and QLoRA fine-tuning of <code>DeepSeek-V2-Lite</code>
 on NVIDIA GPU using HuggingFace's <a href="https://github.com/huggingface/trl">TRL</a> library.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="lora_2" name="__tabbed_6" type="radio" /><input id="qlora" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="lora_2">LoRA</label><label for="qlora">QLoRA</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="lora_1" name="__tabbed_4" type="radio" /><input id="qlora" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="lora_1">LoRA</label><label for="qlora">QLoRA</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div editor-title="examples/llms/deepseek/trl/nvidia/.dstack.yml">

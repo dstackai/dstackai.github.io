@@ -171,7 +171,7 @@
               </button>
             
             
-<a href="/blog/agentic-orchestration/" target="_blank">Let agents manage infra and orchestrate workloads <span class="icon"><svg viewBox="0 0 13 10" xmlns="http://www.w3.org/2000/svg"><path d="M12.823 4.164L8.954.182a.592.592 0 0 0-.854 0 .635.635 0 0 0 0 .88l2.836 2.92H.604A.614.614 0 0 0 0 4.604c0 .344.27.622.604.622h10.332L8.1 8.146a.635.635 0 0 0 0 .88.594.594 0 0 0 .854 0l3.869-3.982a.635.635 0 0 0 0-.88z" fill-rule="nonzero" fill="currentColor" class="fill-main"></path></svg></span></a>
+<a href="/blog/agentic-orchestration/" target="_blank">Infrastructure orchestration is an agent skill <span class="icon"><svg viewBox="0 0 13 10" xmlns="http://www.w3.org/2000/svg"><path d="M12.823 4.164L8.954.182a.592.592 0 0 0-.854 0 .635.635 0 0 0 0 .88l2.836 2.92H.604A.614.614 0 0 0 0 4.604c0 .344.27.622.604.622h10.332L8.1 8.146a.635.635 0 0 0 0 .88.594.594 0 0 0 .854 0l3.869-3.982a.635.635 0 0 0 0-.88z" fill-rule="nonzero" fill="currentColor" class="fill-main"></path></svg></span></a>
 
           </div>
           
@@ -3620,34 +3620,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../examples/inference/tgi/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    TGI
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../../examples/inference/nim/" class="md-nav__link">
         
   
@@ -3800,34 +3772,6 @@
     
   
     TPU
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../examples/accelerators/intel/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Intel Gaudi
   
 
     
@@ -4625,9 +4569,13 @@ and <a href="https://github.com/dstackai/dstack/issues/1551">this</a>.</p>
 <p>If you run <code>dstack apply</code> and don't see any instance offers, it means that
 <code>dstack</code> could not find instances that match the requirements in your configuration.
 Below are some of the reasons why this might happen.</p>
-<blockquote>
-<p>Feel free to use <code>dstack offer</code> to view available offers.</p>
-</blockquote>
+<p>Feel free to use <code>dstack offer</code> to inspect available offers:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># All matching offers, ignoring fleet configurations</span>
+$<span class="w"> </span>dstack<span class="w"> </span>offer<span class="w"> </span>--gpu<span class="w"> </span>H100
+
+<span class="c1"># Offers available through a specific fleet</span>
+$<span class="w"> </span>dstack<span class="w"> </span>offer<span class="w"> </span>--gpu<span class="w"> </span>H100<span class="w"> </span>--fleet<span class="w"> </span>my-fleet
+</code></pre></div>
 <h4 id="cause-1-no-backends">Cause 1: No backends<a class="headerlink" href="#cause-1-no-backends" title="Permanent link">&para;</a></h4>
 <p>If you are not using <a href="../../concepts/fleets/#ssh-fleets">SSH fleets</a>, make sure you have configured at least one <a href="../../concepts/backends/">backends</a>.</p>
 <p>If you have configured a backend but still cannot use it, check the output of <code>dstack server</code> for backend configuration errors.</p>

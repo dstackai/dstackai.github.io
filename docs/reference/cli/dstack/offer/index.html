@@ -176,7 +176,7 @@
               </button>
             
             
-<a href="/blog/agentic-orchestration/" target="_blank">Let agents manage infra and orchestrate workloads <span class="icon"><svg viewBox="0 0 13 10" xmlns="http://www.w3.org/2000/svg"><path d="M12.823 4.164L8.954.182a.592.592 0 0 0-.854 0 .635.635 0 0 0 0 .88l2.836 2.92H.604A.614.614 0 0 0 0 4.604c0 .344.27.622.604.622h10.332L8.1 8.146a.635.635 0 0 0 0 .88.594.594 0 0 0 .854 0l3.869-3.982a.635.635 0 0 0 0-.88z" fill-rule="nonzero" fill="currentColor" class="fill-main"></path></svg></span></a>
+<a href="/blog/agentic-orchestration/" target="_blank">Infrastructure orchestration is an agent skill <span class="icon"><svg viewBox="0 0 13 10" xmlns="http://www.w3.org/2000/svg"><path d="M12.823 4.164L8.954.182a.592.592 0 0 0-.854 0 .635.635 0 0 0 0 .88l2.836 2.92H.604A.614.614 0 0 0 0 4.604c0 .344.27.622.604.622h10.332L8.1 8.146a.635.635 0 0 0 0 .88.594.594 0 0 0 .854 0l3.869-3.982a.635.635 0 0 0 0-.88z" fill-rule="nonzero" fill="currentColor" class="fill-main"></path></svg></span></a>
 
           </div>
           
@@ -2274,6 +2274,19 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#fleet-offers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Fleet offers
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#examples" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2288,7 +2301,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#filtering-offers" class="md-nav__link">
+  <a href="#list-gpu-offers" class="md-nav__link">
     <span class="md-ellipsis">
       
         <span class="md-typeset">
@@ -3530,34 +3543,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../examples/inference/tgi/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    TGI
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../../../../examples/inference/nim/" class="md-nav__link">
         
   
@@ -3710,34 +3695,6 @@
     
   
     TPU
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../../../examples/accelerators/intel/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Intel Gaudi
   
 
     
@@ -4258,6 +4215,19 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#fleet-offers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Fleet offers
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#examples" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -4272,7 +4242,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#filtering-offers" class="md-nav__link">
+  <a href="#list-gpu-offers" class="md-nav__link">
     <span class="md-ellipsis">
       
         <span class="md-typeset">
@@ -4416,10 +4386,6 @@
 <h1 id="dstack-offer">dstack offer<a class="headerlink" href="#dstack-offer" title="Permanent link">&para;</a></h1>
 <p>Displays available offers (hardware configurations) from configured backends or from fleets you’ve already provisioned. Supports filtering and grouping.</p>
 <p>The output shows backend, region, instance type, resources, spot availability, and pricing.</p>
-<div class="admonition info">
-<p class="admonition-title">Experimental</p>
-<p><code>dstack offer</code> command is currently an experimental feature. Backward compatibility is not guaranteed across releases.</p>
-</div>
 <h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
 <p>This command accepts most of the same arguments as <a href="../apply/"><code>dstack apply</code></a>.</p>
 <div class="termy">
@@ -4474,8 +4440,7 @@ Profile:
 <span class="w">                        </span><span class="k">for</span><span class="w"> </span>provisioning
 
 Fleets:
-<span class="w">  </span>--fleet<span class="w"> </span>NAME<span class="w">          </span>Consider<span class="w"> </span>only<span class="w"> </span>instances<span class="w"> </span>from<span class="w"> </span>the<span class="w"> </span>specified<span class="w"> </span>fleet<span class="o">(</span>s<span class="o">)</span>
-<span class="w">                        </span><span class="k">for</span><span class="w"> </span>reuse
+<span class="w">  </span>--fleet<span class="w"> </span>NAME<span class="w">          </span>Consider<span class="w"> </span>only<span class="w"> </span>the<span class="w"> </span>specified<span class="w"> </span>fleet<span class="o">(</span>s<span class="o">)</span>
 <span class="w">  </span>-R,<span class="w"> </span>--reuse<span class="w">           </span>Reuse<span class="w"> </span>an<span class="w"> </span>existing<span class="w"> </span>instance<span class="w"> </span>from<span class="w"> </span>fleet<span class="w"> </span><span class="o">(</span><span class="k">do</span><span class="w"> </span>not
 <span class="w">                        </span>provision<span class="w"> </span>a<span class="w"> </span>new<span class="w"> </span>one<span class="o">)</span>
 <span class="w">  </span>--dont-destroy<span class="w">        </span>Do<span class="w"> </span>not<span class="w"> </span>destroy<span class="w"> </span>instance<span class="w"> </span>after<span class="w"> </span>the<span class="w"> </span>run<span class="w"> </span>is<span class="w"> </span>finished<span class="w"> </span><span class="o">(</span><span class="k">if</span>
@@ -4498,8 +4463,22 @@ Retry<span class="w"> </span>Policy:
 
 </div>
 
+<h2 id="fleet-offers">Fleet offers<a class="headerlink" href="#fleet-offers" title="Permanent link">&para;</a></h2>
+<p>By default, <code>dstack offer</code> ignores fleet configurations and shows all available offers that match the request.</p>
+<p>Use <code>--fleet</code> to inspect offers available through specific fleets. With one <code>--fleet</code>,
+<code>dstack offer</code> shows offers available through that fleet. With multiple <code>--fleet</code>, it
+combines offers available through the selected fleets.</p>
+<div class="termy">
+
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>dstack<span class="w"> </span>offer<span class="w"> </span>--gpu<span class="w"> </span>H100<span class="w"> </span>--fleet<span class="w"> </span>my-fleet
+</code></pre></div>
+
+</div>
+
+<p>The same fleet filtering applies to <code>--group-by</code> output, e.g. <code>--group-by gpu,backend</code>
+or <code>--group-by gpu,backend,region</code>.</p>
 <h2 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h2>
-<h3 id="filtering-offers">Filtering offers<a class="headerlink" href="#filtering-offers" title="Permanent link">&para;</a></h3>
+<h3 id="list-gpu-offers">Filtering offers<a class="headerlink" href="#list-gpu-offers" title="Permanent link">&para;</a></h3>
 <p>The <code>--gpu</code> flag accepts the same specification format as the <code>gpu</code> property in <a href="../../../../concepts/dev-environments/"><code>dev environment</code></a>, <a href="../../../../concepts/tasks/"><code>task</code></a>, 
 <a href="../../../../concepts/services/"><code>service</code></a>, and <a href="../../../../concepts/fleets/"><code>fleet</code></a> configurations.</p>
 <p>The general format is: <code>&lt;vendor&gt;:&lt;comma-sparated names&gt;:&lt;memory range&gt;:&lt;quantity range&gt;</code>.</p>

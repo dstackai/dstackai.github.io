@@ -176,7 +176,7 @@
               </button>
             
             
-<a href="/blog/agentic-orchestration/" target="_blank">Let agents manage infra and orchestrate workloads <span class="icon"><svg viewBox="0 0 13 10" xmlns="http://www.w3.org/2000/svg"><path d="M12.823 4.164L8.954.182a.592.592 0 0 0-.854 0 .635.635 0 0 0 0 .88l2.836 2.92H.604A.614.614 0 0 0 0 4.604c0 .344.27.622.604.622h10.332L8.1 8.146a.635.635 0 0 0 0 .88.594.594 0 0 0 .854 0l3.869-3.982a.635.635 0 0 0 0-.88z" fill-rule="nonzero" fill="currentColor" class="fill-main"></path></svg></span></a>
+<a href="/blog/agentic-orchestration/" target="_blank">Infrastructure orchestration is an agent skill <span class="icon"><svg viewBox="0 0 13 10" xmlns="http://www.w3.org/2000/svg"><path d="M12.823 4.164L8.954.182a.592.592 0 0 0-.854 0 .635.635 0 0 0 0 .88l2.836 2.92H.604A.614.614 0 0 0 0 4.604c0 .344.27.622.604.622h10.332L8.1 8.146a.635.635 0 0 0 0 .88.594.594 0 0 0 .854 0l3.869-3.982a.635.635 0 0 0 0-.88z" fill-rule="nonzero" fill="currentColor" class="fill-main"></path></svg></span></a>
 
           </div>
           
@@ -2413,6 +2413,19 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#dstack-import-delete" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          dstack import delete
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -3472,34 +3485,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../examples/inference/tgi/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    TGI
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../../../../examples/inference/nim/" class="md-nav__link">
         
   
@@ -3652,34 +3637,6 @@
     
   
     TPU
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../../../examples/accelerators/intel/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Intel Gaudi
   
 
     
@@ -4199,6 +4156,19 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#dstack-import-delete" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          dstack import delete
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -4310,6 +4280,24 @@ Usage:<span class="w"> </span>dstack<span class="w"> </span>import<span class="w
 
 Options:
 <span class="w">  </span>-h,<span class="w"> </span>--help<span class="w">  </span>show<span class="w"> </span>this<span class="w"> </span><span class="nb">help</span><span class="w"> </span>message<span class="w"> </span>and<span class="w"> </span><span class="nb">exit</span>
+</code></pre></div>
+
+</div>
+
+<h2 id="dstack-import-delete">dstack import delete<a class="headerlink" href="#dstack-import-delete" title="Permanent link">&para;</a></h2>
+<p>The <code>dstack import delete</code> command deletes the specified import. This makes the imported resources unavailable in your project, while they still exist in the host project.</p>
+<h5 id="usage_1">Usage<a class="headerlink" href="#usage_1" title="Permanent link">&para;</a></h5>
+<div class="termy">
+
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>dstack<span class="w"> </span>import<span class="w"> </span>delete<span class="w"> </span>--help
+Usage:<span class="w"> </span>dstack<span class="w"> </span>import<span class="w"> </span>delete<span class="w"> </span><span class="o">[</span>-h<span class="o">]</span><span class="w"> </span><span class="o">[</span>-y<span class="o">]</span><span class="w"> </span>name
+
+Positional<span class="w"> </span>Arguments:
+<span class="w">  </span>name<span class="w">        </span>The<span class="w"> </span>import<span class="w"> </span>to<span class="w"> </span>delete,<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="sb">`</span>export-project/export-name<span class="sb">`</span><span class="w"> </span>format
+
+Options:
+<span class="w">  </span>-h,<span class="w"> </span>--help<span class="w">  </span>show<span class="w"> </span>this<span class="w"> </span><span class="nb">help</span><span class="w"> </span>message<span class="w"> </span>and<span class="w"> </span><span class="nb">exit</span>
+<span class="w">  </span>-y,<span class="w"> </span>--yes<span class="w">   </span>Don<span class="err">&#39;</span>t<span class="w"> </span>ask<span class="w"> </span><span class="k">for</span><span class="w"> </span>confirmation
 </code></pre></div>
 
 </div>

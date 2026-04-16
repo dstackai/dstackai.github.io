@@ -65,15 +65,13 @@
 
 - [SGLang](https://dstack.ai/examples/inference/sglang/index.md): Deploying DeepSeek-R1-Distill-Llama models using SGLang on NVIDIA and AMD GPUs
 - [vLLM](https://dstack.ai/examples/inference/vllm/index.md): Deploying Llama 3.1 8B using vLLM with OpenAI-compatible API
-- [TGI](https://dstack.ai/examples/inference/tgi/index.md): Deploying Llama 4 Scout using HuggingFace Text Generation Inference
 - [NIM](https://dstack.ai/examples/inference/nim/index.md): Deploying DeepSeek-R1-Distill-Llama-8B using NVIDIA NIM
 - [TensorRT-LLM](https://dstack.ai/examples/inference/trtllm/index.md): Deploying DeepSeek R1 and distilled models using NVIDIA TensorRT-LLM with Triton
 
 ### Accelerators
 
-- [AMD](https://dstack.ai/examples/accelerators/amd/index.md): Deploying and fine-tuning models on AMD MI300X GPUs using TGI, vLLM, and Axolotl
+- [AMD](https://dstack.ai/examples/accelerators/amd/index.md): Deploying and fine-tuning models on AMD MI300X GPUs using vLLM, TRL, and Axolotl
 - [TPU](https://dstack.ai/examples/accelerators/tpu/index.md): Deploying and fine-tuning models on Google Cloud TPUs using Optimum TPU and vLLM
-- [Intel Gaudi](https://dstack.ai/examples/accelerators/intel/index.md): Deploying and fine-tuning models on Intel Gaudi accelerators using TGI, vLLM, and Optimum
 - [Tenstorrent](https://dstack.ai/examples/accelerators/tenstorrent/index.md): Running dev environments, tasks, and services on Tenstorrent Wormhole accelerators
 
 ### Models

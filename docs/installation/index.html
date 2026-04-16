@@ -171,7 +171,7 @@
               </button>
             
             
-<a href="/blog/agentic-orchestration/" target="_blank">Let agents manage infra and orchestrate workloads <span class="icon"><svg viewBox="0 0 13 10" xmlns="http://www.w3.org/2000/svg"><path d="M12.823 4.164L8.954.182a.592.592 0 0 0-.854 0 .635.635 0 0 0 0 .88l2.836 2.92H.604A.614.614 0 0 0 0 4.604c0 .344.27.622.604.622h10.332L8.1 8.146a.635.635 0 0 0 0 .88.594.594 0 0 0 .854 0l3.869-3.982a.635.635 0 0 0 0-.88z" fill-rule="nonzero" fill="currentColor" class="fill-main"></path></svg></span></a>
+<a href="/blog/agentic-orchestration/" target="_blank">Infrastructure orchestration is an agent skill <span class="icon"><svg viewBox="0 0 13 10" xmlns="http://www.w3.org/2000/svg"><path d="M12.823 4.164L8.954.182a.592.592 0 0 0-.854 0 .635.635 0 0 0 0 .88l2.836 2.92H.604A.614.614 0 0 0 0 4.604c0 .344.27.622.604.622h10.332L8.1 8.146a.635.635 0 0 0 0 .88.594.594 0 0 0 .854 0l3.869-3.982a.635.635 0 0 0 0-.88z" fill-rule="nonzero" fill="currentColor" class="fill-main"></path></svg></span></a>
 
           </div>
           
@@ -780,6 +780,19 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#use-cli-or-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Use CLI or API
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -795,6 +808,25 @@
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Install agent skills">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#use-agents" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Use agents
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -3510,34 +3542,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../../examples/inference/tgi/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    TGI
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../examples/inference/nim/" class="md-nav__link">
         
   
@@ -3690,34 +3694,6 @@
     
   
     TPU
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../examples/accelerators/intel/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Intel Gaudi
   
 
     
@@ -4264,6 +4240,19 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#use-cli-or-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Use CLI or API
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -4279,6 +4268,25 @@
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Install agent skills">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#use-agents" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Use agents
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -4502,6 +4510,7 @@ $<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><sp
 </div>
 </details>
 <h3 id="configure-the-project">Configure the project<a class="headerlink" href="#configure-the-project" title="Permanent link">&para;</a></h3>
+<p>When the server is started, by default, it creates the <code>main</code> project and the <code>admin</code> user.</p>
 <p>To point the CLI to the <code>dstack</code> server, configure it
 with the server address, user token, and project name:</p>
 <div class="termy">
@@ -4517,6 +4526,9 @@ Configuration<span class="w"> </span>is<span class="w"> </span>updated<span clas
 </div>
 
 <p>This configuration is stored in <code>~/.dstack/config.yml</code>.</p>
+<p>Later, you can create additional projects and users.</p>
+<h3 id="use-cli-or-api">Use CLI or API<a class="headerlink" href="#use-cli-or-api" title="Permanent link">&para;</a></h3>
+<p>Once the project is configured, you can use the <code>dstack</code> CLI or API.</p>
 <h2 id="install-agent-skills">Install agent skills<a class="headerlink" href="#install-agent-skills" title="Permanent link">&para;</a></h2>
 <p>Install <a href="https://skills.sh/dstackai/dstack/dstack"><code>dstack</code> skills</a> to help AI agents use the CLI and edit configuration files.</p>
 <div class="termy">
@@ -4526,6 +4538,7 @@ Configuration<span class="w"> </span>is<span class="w"> </span>updated<span clas
 
 </div>
 
+<h3 id="use-agents">Use agents<a class="headerlink" href="#use-agents" title="Permanent link">&para;</a></h3>
 <p>AI agents like Claude, Codex, and Cursor can now create and manage fleets and submit workloads on your behalf.</p>
 <div class="termy">
 
@@ -4550,16 +4563,13 @@ $<span class="w"> </span>
 
 </div>
 
-<div class="admonition info">
-<p class="admonition-title">Feedback</p>
 <p>We're actively improving Skills and would love your feedback in <a href="https://github.com/dstackai/dstack/issues">GitHub issues</a>.</p>
-</div>
 <div class="admonition info">
 <p class="admonition-title">What's next?</p>
 <ol>
 <li>See <a href="../concepts/backends/">Backends</a></li>
 <li>Follow <a href="../quickstart/">Quickstart</a></li>
-<li>Check the <a href="../guides/server-deployment/">server deployment</a> guide</li>
+<li>Check the <a href="../guides/server-deployment/">Server deployment</a> guide</li>
 </ol>
 </div>
 

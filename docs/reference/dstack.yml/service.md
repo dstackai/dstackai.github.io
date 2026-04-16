@@ -64,52 +64,6 @@ The `service` configuration type allows running [services](../../concepts/servic
     ###### `prefix` - (Optional) `str` The `base_url` prefix (after hostname). Defaults to `/v1`. { #prefix data-toc-label='prefix' class='reference-item' }
 
 
-=== "TGI"
-
-    > TGI provides an OpenAI-compatible API starting with version 1.4.0,
-    so models served by TGI can be defined with `format: openai` too.
-
-    ###### `type` - (Required) `"chat"` The type of the model. Must be `chat`. { #type data-toc-label='type' class='reference-item' }
-    ###### `name` - (Required) `str` The name of the model. { #name data-toc-label='name' class='reference-item' }
-    ###### `format` - (Required) `"tgi"` The serving format. Must be set to `tgi`. { #format data-toc-label='format' class='reference-item' }
-    ###### `chat_template` - (Optional) `str` The custom prompt template for the model. If not specified, the default prompt template from the HuggingFace Hub configuration will be used. { #chat_template data-toc-label='chat_template' class='reference-item' }
-    ###### `eos_token` - (Optional) `str` The custom end of sentence token. If not specified, the default end of sentence token from the HuggingFace Hub configuration will be used. { #eos_token data-toc-label='eos_token' class='reference-item' }
-
-
-    ??? info "Chat template"
-
-        By default, `dstack` loads the [chat template](https://huggingface.co/docs/transformers/main/en/chat_templating)
-        from the model's repository. If it is not present there, manual configuration is required.
-
-        ```yaml
-        type: service
-
-        image: ghcr.io/huggingface/text-generation-inference:latest
-        env:
-          - MODEL_ID=TheBloke/Llama-2-13B-chat-GPTQ
-        commands:
-          - text-generation-launcher --port 8000 --trust-remote-code --quantize gptq
-        port: 8000
-
-        resources:
-          gpu: 80GB
-
-        # Enable the OpenAI-compatible endpoint
-        model:
-          type: chat
-          name: TheBloke/Llama-2-13B-chat-GPTQ
-          format: tgi
-          chat_template: "{% if messages[0]['role'] == 'system' %}{% set loop_messages = messages[1:] %}{% set system_message = messages[0]['content'] %}{% else %}{% set loop_messages = messages %}{% set system_message = false %}{% endif %}{% for message in loop_messages %}{% if (message['role'] == 'user') != (loop.index0 % 2 == 0) %}{{ raise_exception('Conversation roles must alternate user/assistant/user/assistant/...') }}{% endif %}{% if loop.index0 == 0 and system_message != false %}{% set content = '<<SYS>>\\n' + system_message + '\\n<</SYS>>\\n\\n' + message['content'] %}{% else %}{% set content = message['content'] %}{% endif %}{% if message['role'] == 'user' %}{{ '<s>[INST] ' + content.strip() + ' [/INST]' }}{% elif message['role'] == 'assistant' %}{{ ' '  + content.strip() + ' </s>' }}{% endif %}{% endfor %}"
-          eos_token: "</s>"
-        ```
-
-        Please note that model mapping is an experimental feature with the following limitations:
-
-        1. Doesn't work if your `chat_template` uses `bos_token`. As a workaround, replace `bos_token` inside `chat_template` with the token content itself.
-        2. Doesn't work if `eos_token` is defined in the model repository as a dictionary. As a workaround, set `eos_token` manually, as shown in the example above (see Chat template).
-
-        If you encounter any ofther issues, please make sure to file a
-        [GitHub issue](https://github.com/dstackai/dstack/issues/new/choose).
 
 ### `scaling`
 
@@ -179,6 +133,7 @@ The `service` configuration type allows running [services](../../concepts/servic
 ###### [`scaling`](#scaling) - (Optional) `object` The auto-scaling rules. Required if `count` is set to a range. { #_scaling data-toc-label='scaling' class='reference-item' }
 ###### [`resources`](#resources) - (Optional) `object` The resources requirements for replicas in this group. { #_resources data-toc-label='resources' class='reference-item' }
 ###### `commands` - (Optional) `list[str]` The shell commands to run for replicas in this group. { #commands data-toc-label='commands' class='reference-item' }
+###### [`router`](#router) - (Optional) `object` When set, replicas in this group run the in-service HTTP router (e.g. SGLang).. { #_router data-toc-label='router' class='reference-item' }
 
 
 ### `retry`
