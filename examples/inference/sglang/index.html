@@ -4426,16 +4426,12 @@ Provisioning...
 </code></pre></div>
 </div>
 
-<div class="admonition info">
-<p class="admonition-title">Run router and workers separately</p>
-<p>To run the SGLang router and workers separately, use replica groups (router as a CPU replica group, workers as GPU replica groups). See <a href="#pd-disaggregation">PD disaggregation</a>.</p>
-</div>
 <blockquote>
 <p>If a <a href="https://dstack.ai/docs/concepts/gateways/">gateway</a> is configured (e.g. to enable auto-scaling, HTTPS, rate limits, etc.), the service endpoint will be available at <code>https://deepseek-r1.&lt;gateway domain&gt;/</code>.</p>
 </blockquote>
 <h2 id="configuration-options">Configuration options<a class="headerlink" href="#configuration-options" title="Permanent link">&para;</a></h2>
 <h3 id="pd-disaggregation">PD disaggregation<a class="headerlink" href="#pd-disaggregation" title="Permanent link">&para;</a></h3>
-<p>To run SGLang with <a href="https://docs.sglang.io/advanced_features/pd_disaggregation.html">PD disaggregation</a>, run the <strong>router as a replica</strong> on a CPU-only host, while running <strong>prefill/decode workers</strong> as replicas on GPU hosts.</p>
+<p>To run SGLang with <a href="https://docs.sglang.io/advanced_features/pd_disaggregation.html">PD disaggregation</a>, use replicas groups: one for a router (for example, <a href="https://docs.sglang.io/advanced_features/sgl_model_gateway.html">SGLang Model Gateway</a>), one for prefill workers, and one for decode workers.</p>
 <div editor-title="examples/inference/sglang/pd.dstack.yml">
 
 <div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service</span>
@@ -4506,13 +4502,10 @@ Provisioning...
 </div>
 
 <p>Currently, auto-scaling only supports <code>rps</code> as the metric. TTFT and ITL metrics are coming soon.</p>
-<h4 id="fleet">Fleet<a class="headerlink" href="#fleet" title="Permanent link">&para;</a></h4>
-<p>Create a <a href="https://dstack.ai/docs/concepts/fleets/">fleet</a> that can provision both a CPU node (for the router replica group) and GPU nodes (for the prefill/decode replica groups).
-You can create an SSH fleet, elastic Cloud fleet (nodes: 0..) or kubernetes cluster. Just don't specify any resource constraints in the fleet, and dstack will automatically provision the correct instances (both CPU and GPU, in the same fleet) based on the resources specified in replicas in the run configuration.</p>
-<p>The only requirement is that the router and worker replicas run in the same network. In practice, this typically means using a single fleet where the backend and region are the same or using <code>placement: cluster</code> if the backend supports it.</p>
-<div class="admonition note">
-<p class="admonition-title">Gateway-based routing (deprecated)</p>
-<p>If you create a gateway with the <a href="https://dstack.ai/docs/concepts/gateways/#sglang"><code>sglang</code> router</a>, you can also run SGLang with PD disaggregation. This method is deprecated and will be disallowed in a future release in favor of running the router as a replica.</p>
+<div class="admonition info">
+<p class="admonition-title">Cluster</p>
+<p>PD disaggregation requires the service to run in a fleet with <code>placement</code> set to <code>cluster</code>, because the replicas require an interconnect between instances.</p>
+<p>While the prefill and decode replicas run on GPUs, the router replica requires a CPU instance in the same cluster.</p>
 </div>
 <h2 id="source-code">Source code<a class="headerlink" href="#source-code" title="Permanent link">&para;</a></h2>
 <p>The source-code of these examples can be found in

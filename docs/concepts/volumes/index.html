@@ -4486,7 +4486,9 @@
 Useful as a cache for cloud fleets or for persistent storage with SSH fleets.</li>
 </ul>
 <h2 id="network-volumes">Network volumes<a class="headerlink" href="#network-volumes" title="Permanent link">&para;</a></h2>
-<p>Network volumes are currently supported for the <code>aws</code>, <code>gcp</code>, and <code>runpod</code> backends.</p>
+<blockquote>
+<p>Network volumes are currently supported for the <code>aws</code>, <code>gcp</code>, <code>runpod</code>, and <code>kubernetes</code> backends.</p>
+</blockquote>
 <h3 id="apply-a-configuration">Apply a configuration<a class="headerlink" href="#apply-a-configuration" title="Permanent link">&para;</a></h3>
 <p>First, define a volume configuration as a YAML file in your project folder.
 The filename must end with <code>.dstack.yml</code> (e.g. <code>.dstack.yml</code> or <code>volume.dstack.yml</code> are both acceptable).</p>
@@ -4507,6 +4509,21 @@ The filename must end with <code>.dstack.yml</code> (e.g. <code>.dstack.yml</cod
 </div>
 
 <p>If you use this configuration, <code>dstack</code> will create a new volume based on the specified options.</p>
+<details class="info">
+<summary>Kubernetes</summary>
+<p>With the <code>kubernetes</code> backend, you don't have to specify <code>region</code>, but you can optionally specify  <code>storage_class_name</code> and/or <code>access_modes</code>:</p>
+<p><div editor-title="volume.dstack.yml"> </p>
+<div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">volume</span>
+<span class="nt">backend</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kubernetes</span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my-volume</span>
+
+<span class="nt">size</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">100GB</span>
+</code></pre></div>
+</div>
+<p>This automatically creates a <code>PersistentVolumeClaim</code> and associates it with the volume.</p>
+<p>If you don't specify <code>storage_class_name</code>, the decision is delegated to the <code>DefaultStorageClass</code> admission controller, if enabled.</p>
+<p>If you don't specify <code>access_modes</code>, it defaults to <code>[ReadWriteOnce]</code>. To attach volumes to multiple runs at the same time, set it to <code>[ReadWriteMany]</code> or <code>[ReadWriteMany, ReadOnlyMany]</code>.</p>
+</details>
 <p>To create, update, or register the volume, pass the volume configuration to <code>dstack apply</code>:</p>
 <div class="termy">
 
@@ -4523,11 +4540,11 @@ Volume<span class="w"> </span>my-volume<span class="w"> </span>does<span class="
 <blockquote>
 <p>When creating a new network volume, <code>dstack</code> automatically creates an <code>ext4</code> filesystem on it.</p>
 </blockquote>
-<details class="info">
-<summary>Register existing volumes</summary>
+<h4 id="register-existing-volumes">Register existing volumes<a class="headerlink" href="#register-existing-volumes" title="Permanent link">&para;</a></h4>
 <p>If you prefer not to create a new volume but to reuse an existing one (e.g., created manually), you can 
 specify its ID via <a href="../../reference/dstack.yml/volume/#volume_id"><code>volume_id</code></a>. In this case, <code>dstack</code> will register the specified volume so that you can use it with dev environments, tasks, and services.</p>
-<p><div editor-title="volume.dstack.yml"> </p>
+<div editor-title="volume.dstack.yml"> 
+
 <div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">volume</span>
 <span class="c1"># The name of the volume</span>
 <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my-volume</span>
@@ -4539,16 +4556,23 @@ specify its ID via <a href="../../reference/dstack.yml/volume/#volume_id"><code>
 <span class="c1"># The ID of the volume in AWS</span>
 <span class="nt">volume_id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vol1235</span>
 </code></pre></div>
+
 </div>
-<div class="admonition info">
-<p class="admonition-title">Filesystem</p>
+
 <p>If you register an existing volume, you must ensure the volume already has a filesystem.</p>
+<details class="info">
+<summary>Kubernetes</summary>
+<p>With the <code>kubernetes</code> backend, to reuse an existing <code>PersistentVolumeClaim</code>, specify its name in <code>claim_name</code>:</p>
+<p><div editor-title="volume.dstack.yml"> </p>
+<div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">volume</span>
+<span class="nt">backend</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kubernetes</span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my-volume</span>
+
+<span class="nt">claim_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">existing-pvc</span>
+</code></pre></div>
 </div>
 </details>
-<div class="admonition info">
-<p class="admonition-title">Reference</p>
 <p>For all volume configuration options, refer to the <a href="../../reference/dstack.yml/volume/">reference</a>.</p>
-</div>
 <h3 id="attach-network-volume">Attach a volume<a class="headerlink" href="#attach-network-volume" title="Permanent link">&para;</a></h3>
 <p>Dev environments, tasks, and services let you attach any number of network volumes.
 To attach a network volume, simply specify its name using the <code>volumes</code> property
@@ -4663,6 +4687,9 @@ and specify them for the same mount point as <a href="#attach-network-volume">do
 <h2 id="instance-volumes">Instance volumes<a class="headerlink" href="#instance-volumes" title="Permanent link">&para;</a></h2>
 <p>Instance volumes allow mapping any directory on the instance where the run is executed to any path inside the container.
 This means that the data in instance volumes is persisted only if the run is executed on the same instance.</p>
+<blockquote>
+<p>Instance volumes are currently supported for all backends except <code>runpod</code> and <code>vastai</code>, and can also be used with <a href="../fleets/#ssh-fleets">SSH fleets</a>.</p>
+</blockquote>
 <h3 id="attach-a-volume">Attach a volume<a class="headerlink" href="#attach-a-volume" title="Permanent link">&para;</a></h3>
 <p>A run can configure any number of instance volumes. To attach an instance volume,
 specify the <code>instance_path</code> and <code>path</code> in the <code>volumes</code> property:</p>
@@ -4688,10 +4715,6 @@ specify the <code>instance_path</code> and <code>path</code> in the <code>volume
 
 <p>Since persistence isn't guaranteed (instances may be interrupted or runs may occur on different instances), use instance
 volumes only for caching or with directories manually mounted to network storage.</p>
-<div class="admonition info">
-<p class="admonition-title">Backends</p>
-<p>Instance volumes are currently supported for all backends except <code>runpod</code> and <code>vastai</code>, and can also be used with <a href="../fleets/#ssh-fleets">SSH fleets</a>.</p>
-</div>
 <details class="info">
 <summary>Optional volumes</summary>
 <p>If the volume is not critical for your workload, you can mark it as <code>optional</code>.</p>
