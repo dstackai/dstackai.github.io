@@ -63,17 +63,13 @@
 
 ### Inference
 
-- [SGLang](https://dstack.ai/examples/inference/sglang/index.md): Deploying DeepSeek-R1-Distill-Llama models using SGLang on NVIDIA and AMD GPUs
-- [vLLM](https://dstack.ai/examples/inference/vllm/index.md): Deploying Llama 3.1 8B using vLLM with OpenAI-compatible API
-- [NIM](https://dstack.ai/examples/inference/nim/index.md): Deploying DeepSeek-R1-Distill-Llama-8B using NVIDIA NIM
-- [TensorRT-LLM](https://dstack.ai/examples/inference/trtllm/index.md): Deploying DeepSeek R1 and distilled models using NVIDIA TensorRT-LLM with Triton
+- [SGLang](https://dstack.ai/examples/inference/sglang/index.md): Deploying Qwen3.5-397B-A17B-FP8 using SGLang on NVIDIA and AMD GPUs
+- [vLLM](https://dstack.ai/examples/inference/vllm/index.md): Deploying Qwen3.5-397B-A17B-FP8 using vLLM on NVIDIA GPUs
+- [NIM](https://dstack.ai/examples/inference/nim/index.md): Deploying Nemotron-3-Super-120B-A12B using NVIDIA NIM
+- [TensorRT-LLM](https://dstack.ai/examples/inference/trtllm/index.md): Deploying Qwen3-235B-A22B-FP8 using NVIDIA TensorRT-LLM on NVIDIA GPUs
 
 ### Accelerators
 
 - [AMD](https://dstack.ai/examples/accelerators/amd/index.md): Deploying and fine-tuning models on AMD MI300X GPUs using vLLM, TRL, and Axolotl
 - [TPU](https://dstack.ai/examples/accelerators/tpu/index.md): Deploying and fine-tuning models on Google Cloud TPUs using Optimum TPU and vLLM
 - [Tenstorrent](https://dstack.ai/examples/accelerators/tenstorrent/index.md): Running dev environments, tasks, and services on Tenstorrent Wormhole accelerators
-
-### Models
-
-- [Wan2.2](https://dstack.ai/examples/models/wan22/index.md): Text-to-video generation using the Wan2.2 T2V-A14B foundational video model

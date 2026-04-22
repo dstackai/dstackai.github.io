@@ -3958,94 +3958,6 @@
 
               
             
-              
-                
-  
-  
-  
-  
-    
-    
-    
-    
-      
-      
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7" >
-        
-          
-          <label class="md-nav__link" for="__nav_3_7" id="__nav_3_7_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Models
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_7_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3_7">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Models
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../examples/models/wan22/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Wan2.2
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
           </ul>
         </nav>
       
@@ -4811,54 +4723,110 @@
 <h2 id="apply-a-configuration">Apply a configuration<a class="headerlink" href="#apply-a-configuration" title="Permanent link">&para;</a></h2>
 <p>First, define a service configuration as a YAML file in your project folder.
 The filename must end with <code>.dstack.yml</code> (e.g. <code>.dstack.yml</code> or <code>dev.dstack.yml</code> are both acceptable).</p>
-<div editor-title=".dstack.yml"> 
-
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="nvidia" name="__tabbed_1" type="radio" /><input id="amd" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="nvidia">NVIDIA</label><label for="amd">AMD</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div editor-title=".dstack.yml">
 <div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service</span>
-<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">llama31</span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">qwen397</span>
 
-<span class="c1"># If `image` is not specified, dstack uses its default image</span>
-<span class="nt">python</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.12</span>
-<span class="nt">env</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HF_TOKEN</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MODEL_ID=meta-llama/Meta-Llama-3.1-8B-Instruct</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MAX_MODEL_LEN=4096</span>
+<span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">lmsysorg/sglang:v0.5.10.post1</span>
+
 <span class="nt">commands</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uv pip install vllm</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vllm serve $MODEL_ID</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">--max-model-len $MAX_MODEL_LEN</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">--tensor-parallel-size $DSTACK_GPUS_NUM</span>
-<span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8000</span>
-<span class="c1"># (Optional) Register the model</span>
-<span class="nt">model</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">meta-llama/Meta-Llama-3.1-8B-Instruct</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">    </span><span class="no">sglang serve \</span>
+<span class="w">      </span><span class="no">--model-path Qwen/Qwen3.5-397B-A17B-FP8 \</span>
+<span class="w">      </span><span class="no">--port 30000 \</span>
+<span class="w">      </span><span class="no">--tp $DSTACK_GPUS_NUM \</span>
+<span class="w">      </span><span class="no">--reasoning-parser qwen3 \</span>
+<span class="w">      </span><span class="no">--tool-call-parser qwen3_coder \</span>
+<span class="w">      </span><span class="no">--enable-flashinfer-allreduce-fusion \</span>
+<span class="w">      </span><span class="no">--mem-fraction-static 0.8</span>
 
-<span class="c1"># Uncomment to leverage spot instances</span>
-<span class="c1">#spot_policy: auto</span>
+<span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30000</span>
+<span class="nt">model</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Qwen/Qwen3.5-397B-A17B-FP8</span>
+
+<span class="nt">volumes</span><span class="p">:</span>
+<span class="w">  </span><span class="c1"># Optional instance volume for model and runtime caches</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">instance_path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/root/.cache</span>
+<span class="w">    </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/root/.cache</span>
+<span class="w">    </span><span class="nt">optional</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 
 <span class="nt">resources</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">24GB</span>
+<span class="w">  </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">x86:96..</span>
+<span class="w">  </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">512GB..</span>
+<span class="w">  </span><span class="nt">shm_size</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">16GB</span>
+<span class="w">  </span><span class="nt">disk</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">500GB..</span>
+<span class="w">  </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">H100:80GB:8</span>
 </code></pre></div>
-
 </div>
+</div>
+<div class="tabbed-block">
+<div editor-title=".dstack.yml">
+<div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service</span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">qwen397</span>
 
+<span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">lmsysorg/sglang:v0.5.10.post1-rocm720-mi30x</span>
+
+<span class="nt">env</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HIP_FORCE_DEV_KERNARG=1</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SGLANG_ALLOW_OVERWRITE_LONGER_CONTEXT_LEN=1</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SGLANG_DISABLE_CUDNN_CHECK=1</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SGLANG_INT4_WEIGHT=0</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SGLANG_MOE_PADDING=1</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SGLANG_ROCM_DISABLE_LINEARQUANT=0</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SGLANG_ROCM_FUSED_DECODE_MLA=1</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SGLANG_SET_CPU_AFFINITY=1</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SGLANG_USE_AITER=1</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SGLANG_USE_ROCM700A=1</span>
+
+<span class="nt">commands</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">    </span><span class="no">sglang serve \</span>
+<span class="w">      </span><span class="no">--model-path Qwen/Qwen3.5-397B-A17B-FP8 \</span>
+<span class="w">      </span><span class="no">--tp $DSTACK_GPUS_NUM \</span>
+<span class="w">      </span><span class="no">--reasoning-parser qwen3 \</span>
+<span class="w">      </span><span class="no">--tool-call-parser qwen3_coder \</span>
+<span class="w">      </span><span class="no">--mem-fraction-static 0.8 \</span>
+<span class="w">      </span><span class="no">--context-length 262144 \</span>
+<span class="w">      </span><span class="no">--attention-backend triton \</span>
+<span class="w">      </span><span class="no">--disable-cuda-graph \</span>
+<span class="w">      </span><span class="no">--fp8-gemm-backend aiter \</span>
+<span class="w">      </span><span class="no">--port 30000</span>
+
+<span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30000</span>
+<span class="nt">model</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Qwen/Qwen3.5-397B-A17B-FP8</span>
+
+<span class="nt">volumes</span><span class="p">:</span>
+<span class="w">  </span><span class="c1"># Optional instance volume for model and runtime caches</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">instance_path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/root/.cache</span>
+<span class="w">    </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/root/.cache</span>
+<span class="w">    </span><span class="nt">optional</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+
+<span class="nt">resources</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">x86:52..</span>
+<span class="w">  </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">700GB..</span>
+<span class="w">  </span><span class="nt">shm_size</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">16GB</span>
+<span class="w">  </span><span class="nt">disk</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">600GB..</span>
+<span class="w">  </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MI300X:192GB:4</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+</div>
 <p>To run a service, pass the configuration to <a href="../../reference/cli/dstack/apply/"><code>dstack apply</code></a>:</p>
 <div class="termy">
 
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nv">HF_TOKEN</span><span class="o">=</span>...
-$<span class="w"> </span>dstack<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>.dstack.yml
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>dstack<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>.dstack.yml
 
-<span class="w"> </span><span class="c1">#  BACKEND  REGION    RESOURCES                    SPOT  PRICE</span>
-<span class="w"> </span><span class="m">1</span><span class="w">  </span>runpod<span class="w">   </span>CA-MTL-1<span class="w">  </span>18xCPU,<span class="w"> </span>100GB,<span class="w"> </span>A5000:24GB:2<span class="w">  </span>yes<span class="w">   </span><span class="nv">$0</span>.22
-<span class="w"> </span><span class="m">2</span><span class="w">  </span>runpod<span class="w">   </span>EU-SE-1<span class="w">   </span>18xCPU,<span class="w"> </span>100GB,<span class="w"> </span>A5000:24GB:2<span class="w">  </span>yes<span class="w">   </span><span class="nv">$0</span>.22
-<span class="w"> </span><span class="m">3</span><span class="w">  </span>gcp<span class="w">      </span>us-west4<span class="w">  </span>27xCPU,<span class="w"> </span>150GB,<span class="w"> </span>A5000:24GB:3<span class="w">  </span>yes<span class="w">   </span><span class="nv">$0</span>.33
-
-Submit<span class="w"> </span>the<span class="w"> </span>run<span class="w"> </span>llama31?<span class="w"> </span><span class="o">[</span>y/n<span class="o">]</span>:<span class="w"> </span>y
+Submit<span class="w"> </span>the<span class="w"> </span>run<span class="w"> </span>qwen397?<span class="w"> </span><span class="o">[</span>y/n<span class="o">]</span>:<span class="w"> </span>y
 
 Provisioning...
 ---&gt;<span class="w"> </span><span class="m">100</span>%
 
-Service<span class="w"> </span>is<span class="w"> </span>published<span class="w"> </span>at:<span class="w"> </span>
-<span class="w">  </span>http://localhost:3000/proxy/services/main/llama31/
-Model<span class="w"> </span>meta-llama/Meta-Llama-3.1-8B-Instruct<span class="w"> </span>is<span class="w"> </span>published<span class="w"> </span>at:
+Service<span class="w"> </span>is<span class="w"> </span>published<span class="w"> </span>at:
+<span class="w">  </span>http://localhost:3000/proxy/services/main/qwen397/
+Model<span class="w"> </span>Qwen/Qwen3.5-397B-A17B-FP8<span class="w"> </span>is<span class="w"> </span>published<span class="w"> </span>at:
 <span class="w">  </span>http://localhost:3000/proxy/models/main/
 </code></pre></div>
 
@@ -4869,11 +4837,11 @@ Model<span class="w"> </span>meta-llama/Meta-Llama-3.1-8B-Instruct<span class="w
 <code>&lt;dstack server URL&gt;/proxy/services/&lt;project name&gt;/&lt;run name&gt;/</code>.</p>
 <div class="termy">
 
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>curl<span class="w"> </span>http://localhost:3000/proxy/services/main/llama31/v1/chat/completions<span class="w"> </span><span class="se">\</span>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>curl<span class="w"> </span>http://localhost:3000/proxy/services/main/qwen397/v1/chat/completions<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-H<span class="w"> </span><span class="s1">&#39;Content-Type: application/json&#39;</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-H<span class="w"> </span><span class="s1">&#39;Authorization: Bearer &amp;lt;dstack token&amp;gt;&#39;</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-d<span class="w"> </span><span class="s1">&#39;{</span>
-<span class="s1">        &quot;model&quot;: &quot;meta-llama/Meta-Llama-3.1-8B-Instruct&quot;,</span>
+<span class="s1">        &quot;model&quot;: &quot;Qwen/Qwen3.5-397B-A17B-FP8&quot;,</span>
 <span class="s1">        &quot;messages&quot;: [</span>
 <span class="s1">            {</span>
 <span class="s1">                &quot;role&quot;: &quot;user&quot;,</span>
@@ -4885,6 +4853,9 @@ Model<span class="w"> </span>meta-llama/Meta-Llama-3.1-8B-Instruct<span class="w
 
 </div>
 
+<p>The request and response format depends on the serving framework used by the
+service. Even for OpenAI-compatible endpoints, the format may vary slightly
+across frameworks.</p>
 <p>If <a href="#authorization">authorization</a> is not disabled, the service endpoint requires the <code>Authorization</code> header with <code>Bearer &lt;dstack token&gt;</code>.</p>
 <h2 id="configuration-options">Configuration options<a class="headerlink" href="#configuration-options" title="Permanent link">&para;</a></h2>
 <!-- !!! info "No commands"
@@ -4925,36 +4896,110 @@ a gateway is already pre-configured for you. -->
 <h3 id="replicas-and-scaling">Replicas and scaling<a class="headerlink" href="#replicas-and-scaling" title="Permanent link">&para;</a></h3>
 <p>By default, <code>dstack</code> runs a single replica of the service.
 You can configure the number of replicas as well as the auto-scaling rules.</p>
-<div editor-title="service.dstack.yml"> 
-
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="nvidia_1" name="__tabbed_2" type="radio" /><input id="amd_1" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="nvidia_1">NVIDIA</label><label for="amd_1">AMD</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div editor-title="service.dstack.yml">
 <div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service</span>
-<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">llama31-service</span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">qwen397-service</span>
 
-<span class="nt">python</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.12</span>
+<span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">lmsysorg/sglang:v0.5.10.post1</span>
 
-<span class="nt">env</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HF_TOKEN</span>
 <span class="nt">commands</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uv pip install vllm</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vllm serve meta-llama/Meta-Llama-3.1-8B-Instruct --max-model-len 4096</span>
-<span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8000</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">    </span><span class="no">sglang serve \</span>
+<span class="w">      </span><span class="no">--model-path Qwen/Qwen3.5-397B-A17B-FP8 \</span>
+<span class="w">      </span><span class="no">--port 30000 \</span>
+<span class="w">      </span><span class="no">--tp $DSTACK_GPUS_NUM \</span>
+<span class="w">      </span><span class="no">--reasoning-parser qwen3 \</span>
+<span class="w">      </span><span class="no">--tool-call-parser qwen3_coder \</span>
+<span class="w">      </span><span class="no">--enable-flashinfer-allreduce-fusion \</span>
+<span class="w">      </span><span class="no">--mem-fraction-static 0.8</span>
+
+<span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30000</span>
+<span class="nt">model</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Qwen/Qwen3.5-397B-A17B-FP8</span>
+
+<span class="nt">volumes</span><span class="p">:</span>
+<span class="w">  </span><span class="c1"># Optional instance volume for model and runtime caches</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">instance_path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/root/.cache</span>
+<span class="w">    </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/root/.cache</span>
+<span class="w">    </span><span class="nt">optional</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 
 <span class="nt">resources</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">24GB</span>
+<span class="w">  </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">x86:96..</span>
+<span class="w">  </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">512GB..</span>
+<span class="w">  </span><span class="nt">shm_size</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">16GB</span>
+<span class="w">  </span><span class="nt">disk</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">500GB..</span>
+<span class="w">  </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">H100:80GB:8</span>
 
-<span class="nt">replicas</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1..4</span>
+<span class="nt">replicas</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1..2</span>
 <span class="nt">scaling</span><span class="p">:</span>
-<span class="w">  </span><span class="c1"># Requests per seconds</span>
 <span class="w">  </span><span class="nt">metric</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rps</span>
-<span class="w">  </span><span class="c1"># Target metric value</span>
-<span class="w">  </span><span class="nt">target</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span>
+<span class="w">  </span><span class="nt">target</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
 </code></pre></div>
-
 </div>
+</div>
+<div class="tabbed-block">
+<div editor-title="service.dstack.yml">
+<div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service</span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">qwen397-service</span>
 
+<span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">lmsysorg/sglang:v0.5.10.post1-rocm720-mi30x</span>
+
+<span class="nt">env</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HIP_FORCE_DEV_KERNARG=1</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SGLANG_ALLOW_OVERWRITE_LONGER_CONTEXT_LEN=1</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SGLANG_DISABLE_CUDNN_CHECK=1</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SGLANG_INT4_WEIGHT=0</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SGLANG_MOE_PADDING=1</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SGLANG_ROCM_DISABLE_LINEARQUANT=0</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SGLANG_ROCM_FUSED_DECODE_MLA=1</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SGLANG_SET_CPU_AFFINITY=1</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SGLANG_USE_AITER=1</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SGLANG_USE_ROCM700A=1</span>
+
+<span class="nt">commands</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">    </span><span class="no">sglang serve \</span>
+<span class="w">      </span><span class="no">--model-path Qwen/Qwen3.5-397B-A17B-FP8 \</span>
+<span class="w">      </span><span class="no">--tp $DSTACK_GPUS_NUM \</span>
+<span class="w">      </span><span class="no">--reasoning-parser qwen3 \</span>
+<span class="w">      </span><span class="no">--tool-call-parser qwen3_coder \</span>
+<span class="w">      </span><span class="no">--mem-fraction-static 0.8 \</span>
+<span class="w">      </span><span class="no">--context-length 262144 \</span>
+<span class="w">      </span><span class="no">--attention-backend triton \</span>
+<span class="w">      </span><span class="no">--disable-cuda-graph \</span>
+<span class="w">      </span><span class="no">--fp8-gemm-backend aiter \</span>
+<span class="w">      </span><span class="no">--port 30000</span>
+
+<span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30000</span>
+<span class="nt">model</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Qwen/Qwen3.5-397B-A17B-FP8</span>
+
+<span class="nt">volumes</span><span class="p">:</span>
+<span class="w">  </span><span class="c1"># Optional instance volume for model and runtime caches</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">instance_path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/root/.cache</span>
+<span class="w">    </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/root/.cache</span>
+<span class="w">    </span><span class="nt">optional</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+
+<span class="nt">resources</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">x86:52..</span>
+<span class="w">  </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">700GB..</span>
+<span class="w">  </span><span class="nt">shm_size</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">16GB</span>
+<span class="w">  </span><span class="nt">disk</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">600GB..</span>
+<span class="w">  </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MI300X:192GB:4</span>
+
+<span class="nt">replicas</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1..2</span>
+<span class="nt">scaling</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">metric</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rps</span>
+<span class="w">  </span><span class="nt">target</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+</div>
 <p>The <a href="../../reference/dstack.yml/service/#replicas"><code>replicas</code></a> property can be a number or a range.</p>
-<p>The <a href="../../reference/dstack.yml/service/#metric"><code>metric</code></a> property of <a href="../../reference/dstack.yml/service/#scaling"><code>scaling</code></a> only supports the <code>rps</code> metric (requests per second). In this 
-case <code>dstack</code> adjusts the number of replicas (scales up or down) automatically based on the load. </p>
+<p>The <a href="../../reference/dstack.yml/service/#metric"><code>metric</code></a> property of <a href="../../reference/dstack.yml/service/#scaling"><code>scaling</code></a> only supports the <code>rps</code> metric (requests per second). In this
+case <code>dstack</code> adjusts the number of replicas (scales up or down) automatically based on the load.</p>
 <p>Setting the minimum number of replicas to <code>0</code> allows the service to scale down to zero when there are no requests.</p>
 <blockquote>
 <p>The <code>scaling</code> property requires creating a <a href="../gateways/">gateway</a>.</p>
@@ -4963,11 +5008,11 @@ case <code>dstack</code> adjusts the number of replicas (scales up or down) auto
 <details class="info">
 <summary>Replica groups</summary>
 <p>A service can include multiple replica groups. Each group can define its own <code>commands</code>, <code>resources</code> requirements, and <code>scaling</code> rules.</p>
-<p><div editor-title="service.dstack.yml"> </p>
+<div editor-title="service.dstack.yml">
 <div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service</span>
 <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">llama-8b-service</span>
 
-<span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">lmsysorg/sglang:latest</span>
+<span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">lmsysorg/sglang:v0.5.10.post1</span>
 <span class="nt">env</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MODEL_ID=deepseek-ai/DeepSeek-R1-Distill-Llama-8B</span>
 
@@ -5012,11 +5057,13 @@ case <code>dstack</code> adjusts the number of replicas (scales up or down) auto
 <p>Currently, Prefill-Decode disaggregation is supported only for SGLang.</p>
 </blockquote>
 <p>Below is an example for running <code>zai-org/GLM-4.5-Air-FP8</code>:</p>
-<div editor-title="examples/inference/sglang/pd.dstack.yml">
-
+<div class="tabbed-set tabbed-alternate" data-tabs="3:1"><input checked="checked" id="nvidia_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="nvidia_2">NVIDIA</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div editor-title="pd.dstack.yml">
 <div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service</span>
 <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prefill-decode</span>
-<span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">lmsysorg/sglang:latest</span>
+<span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">lmsysorg/sglang:v0.5.10.post1</span>
 
 <span class="nt">env</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HF_TOKEN</span>
@@ -5029,7 +5076,6 @@ case <code>dstack</code> adjusts the number of replicas (scales up or down) auto
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip install sglang_router</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
 <span class="w">        </span><span class="no">python -m sglang_router.launch_router \</span>
-<span class="w">          </span><span class="no">--host 0.0.0.0 \</span>
 <span class="w">          </span><span class="no">--port 8000 \</span>
 <span class="w">          </span><span class="no">--pd-disaggregation \</span>
 <span class="w">          </span><span class="no">--prefill-policy cache_aware</span>
@@ -5048,7 +5094,6 @@ case <code>dstack</code> adjusts the number of replicas (scales up or down) auto
 <span class="w">          </span><span class="no">--model-path $MODEL_ID \</span>
 <span class="w">          </span><span class="no">--disaggregation-mode prefill \</span>
 <span class="w">          </span><span class="no">--disaggregation-transfer-backend nixl \</span>
-<span class="w">          </span><span class="no">--host 0.0.0.0 \</span>
 <span class="w">          </span><span class="no">--port 8000 \</span>
 <span class="w">          </span><span class="no">--disaggregation-bootstrap-port 8998</span>
 <span class="w">    </span><span class="nt">resources</span><span class="p">:</span>
@@ -5064,7 +5109,6 @@ case <code>dstack</code> adjusts the number of replicas (scales up or down) auto
 <span class="w">          </span><span class="no">--model-path $MODEL_ID \</span>
 <span class="w">          </span><span class="no">--disaggregation-mode decode \</span>
 <span class="w">          </span><span class="no">--disaggregation-transfer-backend nixl \</span>
-<span class="w">          </span><span class="no">--host 0.0.0.0 \</span>
 <span class="w">          </span><span class="no">--port 8000</span>
 <span class="w">    </span><span class="nt">resources</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">H200</span>
@@ -5078,9 +5122,10 @@ case <code>dstack</code> adjusts the number of replicas (scales up or down) auto
 <span class="w">    </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/health</span>
 <span class="w">    </span><span class="nt">interval</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">15s</span>
 </code></pre></div>
-
 </div>
-
+</div>
+</div>
+</div>
 <div class="admonition info">
 <p class="admonition-title">Cluster</p>
 <p>PD disaggregation requires the service to run in a fleet with <code>placement</code> set to <code>cluster</code>, because the replicas require an interconnect between instances.</p>
@@ -5089,7 +5134,7 @@ case <code>dstack</code> adjusts the number of replicas (scales up or down) auto
 <h3 id="authorization">Authorization<a class="headerlink" href="#authorization" title="Permanent link">&para;</a></h3>
 <p>By default, the service enables authorization, meaning the service endpoint requires a <code>dstack</code> user token.
 This can be disabled by setting <code>auth</code> to <code>false</code>.</p>
-<div editor-title="examples/misc/http.server/service.dstack.yml"> 
+<div editor-title="examples/misc/http.server/service.dstack.yml">
 
 <div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service</span>
 <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http-server-service</span>
@@ -5172,7 +5217,7 @@ This can be disabled by setting <code>auth</code> to <code>false</code>.</p>
 </details>
 <details class="info">
 <summary>Model</summary>
-<p>If you set the <a href="#model"><code>model</code></a> property but don't explicitly configure <code>probes</code>, 
+<p>If you set the <a href="#model"><code>model</code></a> property but don't explicitly configure <code>probes</code>,
 <code>dstack</code> automatically configures a default probe that tests the model using the <code>/v1/chat/completions</code> API.
 To disable probes entirely when <code>model</code> is set, explicitly set <code>probes</code> to an empty list.</p>
 </details>
@@ -5182,7 +5227,7 @@ To disable probes entirely when <code>model</code> is set, explicitly set <code>
 <code>/proxy/services/&lt;project name&gt;/&lt;run name&gt;/</code> path prefix in the URL.
 When running web apps, you may need to set some app-specific settings
 so that browser-side scripts and CSS work correctly with the path prefix.</p>
-<div editor-title="dash.dstack.yml"> 
+<div editor-title="dash.dstack.yml">
 
 <div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service</span>
 <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dash</span>
@@ -5216,7 +5261,7 @@ on a dedicated domain name by setting up a <a href="../gateways/">gateway</a>.</
 <h3 id="rate-limits">Rate limits<a class="headerlink" href="#rate-limits" title="Permanent link">&para;</a></h3>
 <p>If you have a <a href="../gateways/">gateway</a>, you can configure rate limits for your service
 using the <a href="../../reference/dstack.yml/service/#rate_limits"><code>rate_limits</code></a> property.</p>
-<div editor-title="service.dstack.yml"> 
+<div editor-title="service.dstack.yml">
 
 <div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service</span>
 <span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my-app:latest</span>
@@ -5239,7 +5284,7 @@ using the <a href="../../reference/dstack.yml/service/#rate_limits"><code>rate_l
 <summary>Partitioning key</summary>
 <p>Instead of partitioning requests by client IP address,
 you can choose to partition by the value of a header.</p>
-<p><div editor-title="service.dstack.yml"> </p>
+<div editor-title="service.dstack.yml">
 <div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service</span>
 <span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my-app:latest</span>
 <span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">80</span>
@@ -5255,14 +5300,14 @@ you can choose to partition by the value of a header.</p>
 </div>
 </details>
 <h3 id="model">Model<a class="headerlink" href="#model" title="Permanent link">&para;</a></h3>
-<p>If the service runs a model with an OpenAI-compatible interface, you can set the <a href="#model"><code>model</code></a> property to make the model accessible through <code>dstack</code>'s chat UI on the <code>Models</code> page. 
+<p>If the service runs a model with an OpenAI-compatible interface, you can set the <a href="#model"><code>model</code></a> property to make the model accessible through <code>dstack</code>'s chat UI on the <code>Models</code> page.
 In this case, <code>dstack</code> will use the service's <code>/v1/chat/completions</code> service.</p>
 <p>When <code>model</code> is set, <code>dstack</code> automatically configures <a href="#probes"><code>probes</code></a> to verify model health.
 To customize or disable this, set <code>probes</code> explicitly.</p>
 <h3 id="resources">Resources<a class="headerlink" href="#resources" title="Permanent link">&para;</a></h3>
-<p>If you specify memory size, you can either specify an explicit size (e.g. <code>24GB</code>) or a 
+<p>If you specify memory size, you can either specify an explicit size (e.g. <code>24GB</code>) or a
 range (e.g. <code>24GB..</code>, or <code>24GB..80GB</code>, or <code>..80GB</code>).</p>
-<div editor-title=".dstack.yml"> 
+<div editor-title=".dstack.yml">
 
 <div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service</span>
 <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">llama31-service</span>
@@ -5292,9 +5337,9 @@ range (e.g. <code>24GB..</code>, or <code>24GB..80GB</code>, or <code>..80GB</co
 
 </div>
 
-<p>The <code>cpu</code> property lets you set the architecture (<code>x86</code> or <code>arm</code>) and core count — e.g., <code>x86:16</code> (16 x86 cores), <code>arm:8..</code> (at least 8 ARM cores). 
+<p>The <code>cpu</code> property lets you set the architecture (<code>x86</code> or <code>arm</code>) and core count — e.g., <code>x86:16</code> (16 x86 cores), <code>arm:8..</code> (at least 8 ARM cores).
 If not set, <code>dstack</code> infers it from the GPU or defaults to <code>x86</code>.</p>
-<p>The <code>gpu</code> property lets you specify vendor, model, memory, and count — e.g., <code>nvidia</code> (one NVIDIA GPU), <code>A100</code> (one A100), <code>A10G,A100</code> (either), <code>A100:80GB</code> (one 80GB A100), <code>A100:2</code> (two A100), <code>24GB..40GB:2</code> (two GPUs with 24–40GB), <code>A100:40GB:2</code> (two 40GB A100s). </p>
+<p>The <code>gpu</code> property lets you specify vendor, model, memory, and count — e.g., <code>nvidia</code> (one NVIDIA GPU), <code>A100</code> (one A100), <code>A10G,A100</code> (either), <code>A100:80GB</code> (one 80GB A100), <code>A100:2</code> (two A100), <code>24GB..40GB:2</code> (two GPUs with 24–40GB), <code>A100:40GB:2</code> (two 40GB A100s).</p>
 <p>If vendor is omitted, <code>dstack</code> infers it from the model or defaults to <code>nvidia</code>.</p>
 <!-- ??? info "Google Cloud TPU"
     To use TPUs, specify its architecture via the `gpu` property.
@@ -5322,7 +5367,7 @@ If not set, <code>dstack</code> infers it from the GPU or defaults to <code>x86<
 
 <details class="info">
 <summary>Shared memory</summary>
-<p>If you are using parallel communicating processes (e.g., dataloaders in PyTorch), you may need to configure 
+<p>If you are using parallel communicating processes (e.g., dataloaders in PyTorch), you may need to configure
 <code>shm_size</code>, e.g. set it to <code>16GB</code>.</p>
 </details>
 <blockquote>
@@ -5331,15 +5376,15 @@ If not set, <code>dstack</code> infers it from the GPU or defaults to <code>x86<
 </blockquote>
 <h3 id="docker">Docker<a class="headerlink" href="#docker" title="Permanent link">&para;</a></h3>
 <h4 id="default-image">Default image<a class="headerlink" href="#default-image" title="Permanent link">&para;</a></h4>
-<p>If you don't specify <code>image</code>, <code>dstack</code> uses its <a href="https://github.com/dstackai/dstack/tree/master/docker/base">base</a> Docker image pre-configured with 
-    <code>uv</code>, <code>python</code>, <code>pip</code>, essential CUDA drivers, <code>mpirun</code>, and NCCL tests (under <code>/opt/nccl-tests/build</code>). </p>
+<p>If you don't specify <code>image</code>, <code>dstack</code> uses its <a href="https://github.com/dstackai/dstack/tree/master/docker/base">base</a> Docker image pre-configured with
+    <code>uv</code>, <code>python</code>, <code>pip</code>, essential CUDA drivers, <code>mpirun</code>, and NCCL tests (under <code>/opt/nccl-tests/build</code>).</p>
 <p>Set the <code>python</code> property to pre-install a specific version of Python.</p>
 <!-- TODO: Add a relevant example -->
 
-<div editor-title=".dstack.yml"> 
+<div editor-title=".dstack.yml">
 
 <div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service</span>
-<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http-server-service</span><span class="w">    </span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http-server-service</span>
 
 <span class="nt">python</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.12</span>
 
@@ -5351,14 +5396,14 @@ If not set, <code>dstack</code> infers it from the GPU or defaults to <code>x86<
 </div>
 
 <h4 id="nvcc">NVCC<a class="headerlink" href="#nvcc" title="Permanent link">&para;</a></h4>
-<p>By default, the base Docker image doesn’t include <code>nvcc</code>, which is required for building custom CUDA kernels. 
+<p>By default, the base Docker image doesn’t include <code>nvcc</code>, which is required for building custom CUDA kernels.
 If you need <code>nvcc</code>, set the <a href="../../reference/dstack.yml/dev-environment/#nvcc"><code>nvcc</code></a> property to true.</p>
 <!-- TODO: Add a relevant example -->
 
-<div editor-title="service.dstack.yml"> 
+<div editor-title="service.dstack.yml">
 
 <div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service</span>
-<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http-server-service</span><span class="w">    </span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http-server-service</span>
 
 <span class="nt">python</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.12</span>
 <span class="nt">nvcc</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
@@ -5388,17 +5433,25 @@ If you need <code>nvcc</code>, set the <a href="../../reference/dstack.yml/dev-e
 
 <h4 id="docker-in-docker">Docker in Docker<a class="headerlink" href="#docker-in-docker" title="Permanent link">&para;</a></h4>
 <p>Set <code>docker</code> to <code>true</code> to enable the <code>docker</code> CLI in your service, e.g., to run Docker images or use Docker Compose.</p>
-<div editor-title="examples/misc/docker-compose/service.dstack.yml"> 
+<div editor-title="service.dstack.yml">
 
 <div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service</span>
-<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">chat-ui-task</span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">compose-service</span>
 
 <span class="nt">auth</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
 
 <span class="nt">docker</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 
-<span class="nt">working_dir</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">examples/misc/docker-compose</span>
 <span class="nt">commands</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">    </span><span class="no">cat &gt; compose.yaml &lt;&lt;&#39;EOF&#39;</span>
+<span class="w">    </span><span class="no">services:</span>
+<span class="w">      </span><span class="no">web:</span>
+<span class="w">        </span><span class="no">image: python:3.11-slim</span>
+<span class="w">        </span><span class="no">command: python -m http.server 9000</span>
+<span class="w">        </span><span class="no">ports:</span>
+<span class="w">          </span><span class="no">- &quot;9000:9000&quot;</span>
+<span class="w">    </span><span class="no">EOF</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker compose up</span>
 <span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">9000</span>
 </code></pre></div>
@@ -5410,7 +5463,7 @@ If you need <code>nvcc</code>, set the <a href="../../reference/dstack.yml/dev-e
 <p>To enable privileged mode, set <a href="../../reference/dstack.yml/dev-environment/#privileged"><code>privileged</code></a> to <code>true</code>.</p>
 <p>Not supported with <code>runpod</code>, <code>vastai</code>, and <code>kubernetes</code>.</p>
 <h4 id="private-registry">Private registry<a class="headerlink" href="#private-registry" title="Permanent link">&para;</a></h4>
-<p>Use the <a href="../../reference/dstack.yml/dev-environment/#registry_auth"><code>registry_auth</code></a> property to provide credentials for a private Docker registry. </p>
+<p>Use the <a href="../../reference/dstack.yml/dev-environment/#registry_auth"><code>registry_auth</code></a> property to provide credentials for a private Docker registry.</p>
 <div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service</span>
 <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">serve-distill-deepseek</span>
 
@@ -5501,7 +5554,7 @@ If you need <code>nvcc</code>, set the <a href="../../reference/dstack.yml/dev-e
 <p>Sometimes, when you run a service, you may want to mount local files. This is possible via the <a href="../../reference/dstack.yml/task/#_files"><code>files</code></a> property. Each entry maps a local directory or file to a path inside the container.</p>
 <!-- TODO: Add a more relevant example -->
 
-<div editor-title="examples/.dstack.yml"> 
+<div editor-title="examples/.dstack.yml">
 
 <div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service</span>
 <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">llama-2-7b-service</span>
@@ -5531,7 +5584,7 @@ If the container path is relative, it’s resolved relative to the <a href="#wor
 <p>The container path is optional. If not specified, it will be automatically calculated:</p>
 <!-- TODO: Add a more relevant example -->
 
-<div editor-title="examples/.dstack.yml"> 
+<div editor-title="examples/.dstack.yml">
 
 <div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service</span>
 <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">llama-2-7b-service</span>
@@ -5567,7 +5620,7 @@ The 2MB upload limit can be increased by setting the <code>DSTACK_SERVER_CODE_UP
 <p>Imagine you have a Git repo (clonned locally) containing an <code>examples</code> subdirectory with a <code>.dstack.yml</code> file:</p>
 <!-- TODO: Add a more relevant example -->
 
-<div editor-title="examples/.dstack.yml"> 
+<div editor-title="examples/.dstack.yml">
 
 <div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service</span>
 <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">llama-2-7b-service</span>
@@ -5599,7 +5652,7 @@ The 2MB upload limit can be increased by setting the <code>DSTACK_SERVER_CODE_UP
 <p>By default, <code>dstack</code> clones the repo to the <a href="#working-directory">working directory</a>.</p>
 <!-- TODO: In a future version, the default working directory will come from the image, so this should be revisited. -->
 <p>You can override the repo directory using either a relative or an absolute path:</p>
-<p><div editor-title="examples/.dstack.yml"> </p>
+<div editor-title="examples/.dstack.yml">
 <div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service</span>
 <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">llama-2-7b-service</span>
 
@@ -5624,10 +5677,10 @@ The 2MB upload limit can be increased by setting the <code>DSTACK_SERVER_CODE_UP
 <blockquote>
 <p>If the repo directory is relative, it is resolved against <a href="#working-directory">working directory</a>.</p>
 </blockquote>
-<p>If the repo directory is not empty, the run will fail with a runner error.<br />
+<p>If the repo directory is not empty, the run will fail with a runner error.
 To override this behavior, you can set <code>if_exists</code> to <code>skip</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service</span>
-<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">llama-2-7b-service</span><span class="w">   </span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">llama-2-7b-service</span>
 
 <span class="nt">repos</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">local_path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">..</span>
@@ -5650,7 +5703,7 @@ To override this behavior, you can set <code>if_exists</code> to <code>skip</cod
 </details>
 <details class="info">
 <summary>Repo size</summary>
-<p>The repo size is not limited. However, local changes are limited to 2MB. 
+<p>The repo size is not limited. However, local changes are limited to 2MB.
 To avoid exceeding this limit, exclude unnecessary files using <code>.gitignore</code> or <code>.dstackignore</code>.
 You can increase the 2MB limit by setting the <code>DSTACK_SERVER_CODE_UPLOAD_LIMIT</code> environment variable.</p>
 </details>
@@ -5658,7 +5711,7 @@ You can increase the 2MB limit by setting the <code>DSTACK_SERVER_CODE_UPLOAD_LI
 <summary>Repo URL</summary>
 <p>Sometimes you may want to clone a Git repo within the container without cloning it locally. In this case, simply provide a URL in <code>repos</code>:</p>
 <!-- TODO: Add a more relevant example -->
-<p><div editor-title="examples/.dstack.yml"> </p>
+<div editor-title="examples/.dstack.yml">
 <div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service</span>
 <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">llama-2-7b-service</span>
 
@@ -5692,7 +5745,7 @@ You can increase the 2MB limit by setting the <code>DSTACK_SERVER_CODE_UPLOAD_LI
 <p>Currently, you can configure up to one repo per run configuration.</p>
 <h3 id="retry-policy">Retry policy<a class="headerlink" href="#retry-policy" title="Permanent link">&para;</a></h3>
 <p>By default, if <code>dstack</code> can't find capacity, or the service exits with an error, or the instance is interrupted, the run will fail.</p>
-<p>If you'd like <code>dstack</code> to automatically retry, configure the 
+<p>If you'd like <code>dstack</code> to automatically retry, configure the
 <a href="../../reference/dstack.yml/service/#retry">retry</a> property accordingly:</p>
 <!-- TODO: Add a relevant example -->
 
@@ -5835,8 +5888,8 @@ If the run reuses an existing fleet instance, only the fleet's
 <div class="admonition info">
 <p class="admonition-title">Reference</p>
 <p>Services support many more configuration options,
-incl. <a href="../../reference/dstack.yml/service/#backends"><code>backends</code></a>, 
-<a href="../../reference/dstack.yml/service/#regions"><code>regions</code></a>, 
+incl. <a href="../../reference/dstack.yml/service/#backends"><code>backends</code></a>,
+<a href="../../reference/dstack.yml/service/#regions"><code>regions</code></a>,
 <a href="../../reference/dstack.yml/service/#max_price"><code>max_price</code></a>, and
 among <a href="../../reference/dstack.yml/service/">others</a>.</p>
 </div>
@@ -5859,7 +5912,7 @@ Update<span class="w"> </span>the<span class="w"> </span>run?<span class="w"> </
 </div>
 
 <p>If approved, <code>dstack</code> gradually updates the service replicas. To update a replica, <code>dstack</code> starts a new replica, waits for it to become <code>running</code> and for all of its <a href="#probes">probes</a> to pass, then terminates the old replica. This process is repeated for each replica, one at a time.</p>
-<p>You can track the progress of rolling deployment in both <code>dstack apply</code> or <code>dstack ps</code>. 
+<p>You can track the progress of rolling deployment in both <code>dstack apply</code> or <code>dstack ps</code>.
 Older replicas have lower <code>deployment</code> numbers; newer ones have higher.</p>
 <!--
     Not using termy for this example, since the example shows an intermediate CLI state,
@@ -5881,7 +5934,7 @@ Older replicas have lower <code>deployment</code> numbers; newer ones have highe
 <p>Rolling deployment supports changes to the following properties: <code>port</code>, <code>probes</code>, <code>resources</code>, <code>volumes</code>, <code>docker</code>, <code>files</code>, <code>image</code>, <code>user</code>, <code>privileged</code>, <code>entrypoint</code>, <code>working_dir</code>, <code>python</code>, <code>nvcc</code>, <code>single_branch</code>, <code>env</code>, <code>shell</code>, <code>commands</code>, as well as changes to <a href="#repos">repo</a> or <a href="#files">file</a> contents.</p>
 <p>Changes to <code>replicas</code> and <code>scaling</code> can be applied without redeploying replicas.</p>
 <p>Changes to other properties require a full service restart.</p>
-<p>To trigger a rolling deployment when no properties have changed (e.g., after updating <a href="../secrets/">secrets</a> or to restart all replicas),<br />
+<p>To trigger a rolling deployment when no properties have changed (e.g., after updating <a href="../secrets/">secrets</a> or to restart all replicas),
 make a minor config change, such as adding a dummy <a href="#environment-variables">environment variable</a>.</p>
 </details>
 <h2 id="manage-runs">Manage runs<a class="headerlink" href="#manage-runs" title="Permanent link">&para;</a></h2>

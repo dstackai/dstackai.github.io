@@ -3582,94 +3582,6 @@
 
               
             
-              
-                
-  
-  
-  
-  
-    
-    
-    
-    
-      
-      
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7" >
-        
-          
-          <label class="md-nav__link" for="__nav_3_7" id="__nav_3_7_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Models
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_7_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3_7">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Models
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../examples/models/wan22/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Wan2.2
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
           </ul>
         </nav>
       
@@ -4143,7 +4055,7 @@ deploying a model on Runpod.</p>
 <!-- more -->
 
 <p>Suppose you want to deploy Llama 3.1 on Runpod as a <a href="../../docs/concepts/services/">service</a>:</p>
-<div editor-title="examples/llms/llama31/tgi/service.dstack.yml">
+<div editor-title="service.dstack.yml">
 
 <div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service</span>
 <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">llama31-service-tgi</span>
@@ -4181,7 +4093,7 @@ usually takes under a minute, but larger models may take longer. Repeated downlo
 auto-scaling efficiency.</p>
 <p>Great news: Runpod supports network volumes, which we can use for caching models across multiple replicas.</p>
 <p>With <code>dstack</code>, you can create a Runpod volume using the following configuration:</p>
-<div editor-title="examples/mist/volumes/runpod.dstack.yml">
+<div editor-title="runpod-volume.dstack.yml">
 
 <div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">volume</span>
 <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">llama31-volume</span>
@@ -4198,14 +4110,14 @@ auto-scaling efficiency.</p>
 <p>Go ahead and create it via <code>dstack apply</code>:</p>
 <div class="termy">
 
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>dstack<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>examples/mist/volumes/runpod.dstack.yml
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>dstack<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>runpod-volume.dstack.yml
 </code></pre></div>
 
 </div>
 
 <p>Once the volume is created, attach it to your service by updating the configuration file and mapping the 
 volume name to the <code>/data</code> path.</p>
-<div editor-title="examples/llms/llama31/tgi/service.dstack.yml">
+<div editor-title="service.dstack.yml">
 
 <div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service</span>
 <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">llama31-service-tgi</span>

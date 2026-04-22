@@ -3621,19 +3621,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#source-code" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        <span class="md-typeset">
-          Source code
-        </span>
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#whats-next" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3698,97 +3685,6 @@
     
   
     Tenstorrent
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-    
-    
-      
-      
-        
-          
-          
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7" >
-        
-          
-          <label class="md-nav__link" for="__nav_3_7" id="__nav_3_7_label" tabindex="">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Models
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_7_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3_7">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Models
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../models/wan22/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Wan2.2
   
 
     
@@ -4219,19 +4115,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#source-code" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        <span class="md-typeset">
-          Source code
-        </span>
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#whats-next" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -4329,7 +4212,7 @@ Llama 3.1 70B in FP16 using <a href="https://docs.vllm.ai/en/latest/getting_star
 <div class="tabbed-set tabbed-alternate" data-tabs="1:1"><input checked="checked" id="vllm" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="vllm">vLLM</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div editor-title="examples/inference/vllm/amd/.dstack.yml">
+<div editor-title="service.dstack.yml">
 <div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service</span>
 <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">llama31-service-vllm-amd</span>
 
@@ -4378,9 +4261,7 @@ Llama 3.1 70B in FP16 using <a href="https://docs.vllm.ai/en/latest/getting_star
 </div>
 <p>Note, maximum size of vLLM’s <code>KV cache</code> is 126192, consequently we must set <code>MAX_MODEL_LEN</code> to 126192. Adding <code>/opt/conda/envs/py_3.10/bin</code> to PATH ensures we use the Python 3.10 environment necessary for the pre-built binaries compiled specifically for this version.</p>
 <blockquote>
-<p>To speed up the <code>vLLM-ROCm</code> installation, we use a pre-built binary from S3.
-You can find the task to build and upload the binary in
-<a href="https://github.com/dstackai/dstack/blob/master/examples/inference/vllm/amd/"><code>examples/inference/vllm/amd/</code></a>.</p>
+<p>To speed up the <code>vLLM-ROCm</code> installation, this example uses a pre-built binary from S3.</p>
 </blockquote>
 </div>
 </div>
@@ -4398,7 +4279,7 @@ ROCm drivers.</p>
 <p>Below is an example of LoRA fine-tuning Llama 3.1 8B using <a href="https://rocm.docs.amd.com/en/latest/how-to/llm-fine-tuning-optimization/single-gpu-fine-tuning-and-inference.html">TRL</a>
 and the <a href="https://huggingface.co/datasets/mlabonne/guanaco-llama2-1k"><code>mlabonne/guanaco-llama2-1k</code></a>
 dataset.</p>
-<div editor-title="examples/single-node-training/trl/amd/.dstack.yml">
+<div editor-title="train.dstack.yml">
 <div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">task</span>
 <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">trl-amd-llama31-train</span>
 
@@ -4440,7 +4321,7 @@ dataset.</p>
 <p>Below is an example of fine-tuning Llama 3.1 8B using <a href="https://rocm.blogs.amd.com/artificial-intelligence/axolotl/README.html">Axolotl</a>
 and the <a href="https://huggingface.co/datasets/tatsu-lab/alpaca">tatsu-lab/alpaca</a>
 dataset.</p>
-<div editor-title="examples/single-node-training/axolotl/amd/.dstack.yml">
+<div editor-title="train.dstack.yml">
 <p><div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">task</span>
 <span class="c1"># The name is optional, if not specified, generated randomly</span>
 <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">axolotl-amd-llama31-train</span>
@@ -4491,15 +4372,14 @@ dataset.</p>
 </div></p>
 <p>Note, to support ROCm, we need to checkout to commit <code>d4f6c65</code>. This commit eliminates the need to manually modify the Axolotl source code to make xformers compatible with ROCm, as described in the <a href="https://docs.axolotl.ai/docs/amd_hpc.html#apply-xformers-workaround">xformers workaround</a>. This installation approach is also followed for building Axolotl ROCm docker image. <a href="https://github.com/ROCm/rocm-blogs/blob/release/blogs/artificial-intelligence/axolotl/src/Dockerfile.rocm">(See Dockerfile)</a>.</p>
 <blockquote>
-<p>To speed up installation of <code>flash-attention</code> and <code>xformers</code>, we use pre-built binaries uploaded to S3.
-You can find the tasks that build and upload the binaries
-in <a href="https://github.com/dstackai/dstack/blob/master/examples/single-node-training/axolotl/amd/"><code>examples/single-node-training/axolotl/amd/</code></a>.</p>
+<p>To speed up installation of <code>flash-attention</code> and <code>xformers</code>, we use pre-built binaries uploaded to S3.</p>
 </blockquote>
 </div>
 </div>
 </div>
 <h2 id="running-a-configuration">Running a configuration<a class="headerlink" href="#running-a-configuration" title="Permanent link">&para;</a></h2>
-<p>Once the configuration is ready, run <code>dstack apply -f &lt;configuration file&gt;</code>, and <code>dstack</code> will automatically provision the
+<p>Once a configuration is ready, save it to a <code>.dstack.yml</code> file, then run
+<code>dstack apply -f &lt;configuration file&gt;</code>, and <code>dstack</code> will automatically provision the
 cloud resources and run the configuration.</p>
 <div class="termy">
 
@@ -4508,16 +4388,11 @@ $<span class="w"> </span><span class="nv">WANDB_API_KEY</span><span class="o">=<
 $<span class="w"> </span><span class="nv">WANDB_PROJECT</span><span class="o">=</span>...
 $<span class="w"> </span><span class="nv">WANDB_NAME</span><span class="o">=</span>axolotl-amd-llama31-train
 $<span class="w"> </span><span class="nv">HUB_MODEL_ID</span><span class="o">=</span>...
-$<span class="w"> </span>dstack<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>examples/inference/vllm/amd/.dstack.yml
+$<span class="w"> </span>dstack<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>service.dstack.yml
 </code></pre></div>
 
 </div>
 
-<h2 id="source-code">Source code<a class="headerlink" href="#source-code" title="Permanent link">&para;</a></h2>
-<p>The source-code of this example can be found in
-<a href="https://github.com/dstackai/dstack/blob/master/examples/inference/vllm/amd"><code>examples/inference/vllm/amd</code></a>,
-<a href="https://github.com/dstackai/dstack/blob/master/examples/single-node-training/axolotl/amd"><code>examples/single-node-training/axolotl/amd</code></a> and
-<a href="https://github.com/dstackai/dstack/blob/master/examples/single-node-training/trl/amd"><code>examples/single-node-training/trl/amd</code></a></p>
 <h2 id="whats-next">What's next?<a class="headerlink" href="#whats-next" title="Permanent link">&para;</a></h2>
 <ol>
 <li>Browse <a href="https://docs.vllm.ai/en/latest/getting_started/amd-installation.html#build-from-source-rocm">vLLM</a>,

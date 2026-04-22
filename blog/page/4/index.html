@@ -15,7 +15,7 @@
         <link rel="canonical" href="https://dstack.ai/blog/page/4/">
       
       
-        <link rel="prev" href="../../../examples/models/wan22/">
+        <link rel="prev" href="../../../examples/accelerators/tenstorrent/">
       
       
         <link rel="next" href="../../changelog/">
@@ -3576,94 +3576,6 @@
 
               
             
-              
-                
-  
-  
-  
-  
-    
-    
-    
-    
-      
-      
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7" >
-        
-          
-          <label class="md-nav__link" for="__nav_3_7" id="__nav_3_7_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Models
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_7_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3_7">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Models
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../examples/models/wan22/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Wan2.2
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
           </ul>
         </nav>
       
@@ -4560,17 +4472,25 @@ mount an NFS share to your SSH fleet. To address this, we're now introducing ins
 <p>To run containers with <code>dstack</code>, you can use your own Docker image (or the default one) without a need to interact
 directly with Docker. However, some existing code may require direct use of Docker or Docker Compose. That's why,
 in our latest release, we've added this option.</p>
-<div editor-title="examples/misc/docker-compose/task.dstack.yml"> 
+<div editor-title="task.dstack.yml">
 
 <div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">task</span>
-<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">chat-ui-task</span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">compose-task</span>
 
 <span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dstackai/dind</span>
 <span class="nt">privileged</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 
-<span class="nt">working_dir</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">examples/misc/docker-compose</span>
 <span class="nt">commands</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">start-dockerd</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">    </span><span class="no">cat &gt; compose.yaml &lt;&lt;&#39;EOF&#39;</span>
+<span class="w">    </span><span class="no">services:</span>
+<span class="w">      </span><span class="no">web:</span>
+<span class="w">        </span><span class="no">image: python:3.11-slim</span>
+<span class="w">        </span><span class="no">command: python -m http.server 9000</span>
+<span class="w">        </span><span class="no">ports:</span>
+<span class="w">          </span><span class="no">- &quot;9000:9000&quot;</span>
+<span class="w">    </span><span class="no">EOF</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker compose up</span>
 <span class="nt">ports</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">9000</span><span class="p p-Indicator">]</span>
 

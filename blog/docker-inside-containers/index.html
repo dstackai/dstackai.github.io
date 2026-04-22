@@ -3584,94 +3584,6 @@
 
               
             
-              
-                
-  
-  
-  
-  
-    
-    
-    
-    
-      
-      
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7" >
-        
-          
-          <label class="md-nav__link" for="__nav_3_7" id="__nav_3_7_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Models
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_7_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3_7">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Models
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../examples/models/wan22/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Wan2.2
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
           </ul>
         </nav>
       
@@ -4125,19 +4037,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#examples" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        <span class="md-typeset">
-          Examples
-        </span>
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#feedback" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -4235,17 +4134,25 @@
 <p>To run containers with <code>dstack</code>, you can use your own Docker image (or the default one) without a need to interact
 directly with Docker. However, some existing code may require direct use of Docker or Docker Compose. That's why,
 in our latest release, we've added this option.</p>
-<div editor-title="examples/misc/docker-compose/task.dstack.yml"> 
+<div editor-title="task.dstack.yml">
 
 <div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">task</span>
-<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">chat-ui-task</span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">compose-task</span>
 
 <span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dstackai/dind</span>
 <span class="nt">privileged</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 
-<span class="nt">working_dir</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">examples/misc/docker-compose</span>
 <span class="nt">commands</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">start-dockerd</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">    </span><span class="no">cat &gt; compose.yaml &lt;&lt;&#39;EOF&#39;</span>
+<span class="w">    </span><span class="no">services:</span>
+<span class="w">      </span><span class="no">web:</span>
+<span class="w">        </span><span class="no">image: python:3.11-slim</span>
+<span class="w">        </span><span class="no">command: python -m http.server 9000</span>
+<span class="w">        </span><span class="no">ports:</span>
+<span class="w">          </span><span class="no">- &quot;9000:9000&quot;</span>
+<span class="w">    </span><span class="no">EOF</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker compose up</span>
 <span class="nt">ports</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">9000</span><span class="p p-Indicator">]</span>
 
@@ -4258,13 +4165,13 @@ in our latest release, we've added this option.</p>
 <!-- more -->
 
 <h2 id="how-it-works">How it works<a class="headerlink" href="#how-it-works" title="Permanent link">&para;</a></h2>
-<p>To use Docker or Docker Compose with your <code>dstack</code> configuration, set <code>image</code> to <code>dstackai/dind</code>, <code>privileged</code> to 
+<p>To use Docker or Docker Compose with your <code>dstack</code> configuration, set <code>image</code> to <code>dstackai/dind</code>, <code>privileged</code> to
 <code>true</code>, and add the <code>start-dockerd</code> command. After this command, you can use Docker or Docker Compose directly.</p>
 <p>For dev environments, add <code>start-dockerd</code> as the first command
 in the <code>init</code> property.</p>
 <details class="info">
 <summary>Dev environment</summary>
-<div editor-title="examples/misc/docker-compose/.dstack.yml">
+<div editor-title=".dstack.yml">
 <div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dev-environment</span>
 <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vscode-dind</span>
 
@@ -4276,7 +4183,7 @@ in the <code>init</code> property.</p>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">start-dockerd</span>
 
 <span class="nt">resources</span><span class="p">:</span>
-<span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">16GB..24GB</span>
+<span class="w">  </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">16GB..24GB</span>
 </code></pre></div>
 </div>
 </details>
@@ -4286,25 +4193,23 @@ inside containers.</p>
 support GPU usage.</p>
 <div class="admonition info">
 <p class="admonition-title">Backends</p>
-<p>Note that the <code>privileged</code> option is only supported by VM-based backends. This does not include <code>runpod</code>, <code>vastai</code>, 
+<p>Note that the <code>privileged</code> option is only supported by VM-based backends. This does not include <code>runpod</code>, <code>vastai</code>,
 and <code>kubernetes</code>. All other backends support it.</p>
 </div>
 <h2 id="when-using-it">When using it<a class="headerlink" href="#when-using-it" title="Permanent link">&para;</a></h2>
 <h3 id="docker-compose">docker compose<a class="headerlink" href="#docker-compose" title="Permanent link">&para;</a></h3>
-<p>One of the obvious use cases for this feature is when you need to use Docker Compose. 
-For example, the Hugging Face Chat UI requires a MongoDB database, so using Docker Compose to run it is 
+<p>One of the obvious use cases for this feature is when you need to use Docker Compose.
+For example, the Hugging Face Chat UI requires a MongoDB database, so using Docker Compose to run it is
 the easiest way:</p>
 <p><img src="https://dstack.ai/static-assets/static-assets/images/dstack-docker-compose-terminal.png" width="750"/></p>
 <h3 id="docker-build">docker build<a class="headerlink" href="#docker-build" title="Permanent link">&para;</a></h3>
 <p>Another use case for this feature is when you need to build a custom Docker image using the <code>docker build</code> command.</p>
 <h3 id="docker-run">docker run<a class="headerlink" href="#docker-run" title="Permanent link">&para;</a></h3>
 <p>Last but not least, you can, of course, use the <code>docker run</code> command, for example, if your existing code requires it.</p>
-<h2 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h2>
-<p>A few examples of using this feature can be found in <a href="https://github.com/dstackai/dstack/blob/master/examples/misc/docker-compose"><code>examples/misc/docker-compose</code></a>.</p>
 <h2 id="feedback">Feedback<a class="headerlink" href="#feedback" title="Permanent link">&para;</a></h2>
 <p>If you find something not working as intended, please be sure to report it to
-our <a href="https://github.com/dstackai/dstack/issues" target="_ blank">bug tracker</a>. 
-Your feedback and feature requests are also very welcome on both 
+our <a href="https://github.com/dstackai/dstack/issues" target="_ blank">bug tracker</a>.
+Your feedback and feature requests are also very welcome on both
 <a href="https://discord.gg/u8SmfwPpMd">Discord</a> and the
 <a href="https://github.com/dstackai/dstack/issues">issue tracker</a>.</p>
 

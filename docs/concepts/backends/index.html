@@ -3899,94 +3899,6 @@
 
               
             
-              
-                
-  
-  
-  
-  
-    
-    
-    
-    
-      
-      
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7" >
-        
-          
-          <label class="md-nav__link" for="__nav_3_7" id="__nav_3_7_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Models
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_7_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3_7">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Models
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../examples/models/wan22/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Wan2.2
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
           </ul>
         </nav>
       
@@ -5089,7 +5001,7 @@ Additionally, private subnets must have outbound internet connectivity provided 
 </div>
 <details class="info">
 <summary>User interface</summary>
-<p>If you are configuring the <code>gcp</code> backend on the <a href="../projects/#backends">project settigns page</a>, 
+<p>If you are configuring the <code>gcp</code> backend on the <a href="../projects/#backends">project settings page</a>,
 specify the contents of the JSON file in <code>data</code>:</p>
 <div editor-title="~/.dstack/server/config.yml">
 <div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gcp</span>
@@ -5291,7 +5203,7 @@ button to create a new API key.</p>
 </details>
 <details class="info">
 <summary>User interface</summary>
-<p>If you are configuring the <code>nebius</code> backend on the <a href="../projects/#backends">project settigns page</a>, 
+<p>If you are configuring the <code>nebius</code> backend on the <a href="../projects/#backends">project settings page</a>,
 specify the contents of the private key file in <code>private_key_content</code>:</p>
 <div editor-title="~/.dstack/server/config.yml">
 <div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nebius</span>
@@ -5588,8 +5500,10 @@ In this case, <code>dstack</code> delegates provisioning to the cloud provider o
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">main</span>
 <span class="w">  </span><span class="nt">backends</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kubernetes</span>
+
 <span class="w">    </span><span class="nt">kubeconfig</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">filename</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">~/.kube/config</span>
+
 <span class="w">    </span><span class="nt">proxy_jump</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">hostname</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">204.12.171.137</span>
 <span class="w">      </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">32000</span>
@@ -5597,8 +5511,8 @@ In this case, <code>dstack</code> delegates provisioning to the cloud provider o
 
 </div>
 
-<details class="info">
-<summary>Proxy jump</summary>
+<div class="admonition info">
+<p class="admonition-title">Proxy jump</p>
 <p>To allow the <code>dstack</code> server and CLI to access runs via SSH, <code>dstack</code> requires a node that acts as a jump host to proxy SSH traffic into containers.  </p>
 <p>To configure this node, specify <code>hostname</code> and <code>port</code> under the <code>proxy_jump</code> property:  </p>
 <ul>
@@ -5606,6 +5520,43 @@ In this case, <code>dstack</code> delegates provisioning to the cloud provider o
 <li><code>port</code> — any accessible port on that node, which <code>dstack</code> uses to forward SSH traffic.  </li>
 </ul>
 <p>No additional setup is required — <code>dstack</code> configures and manages the proxy automatically.</p>
+</div>
+<details class="info">
+<summary>User interface</summary>
+<p>If you are configuring the <code>kubernetes</code> backend on the <a href="../projects/#backends">project settings page</a>,
+specify the contents of the <code>kubeconfig</code> file in <code>data</code>:</p>
+<div editor-title="~/.dstack/server/config.yml">
+<div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kubernetes</span>
+
+<span class="nt">kubeconfig</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">data</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">    </span><span class="no">apiVersion: v1</span>
+<span class="w">    </span><span class="no">kind: Config</span>
+<span class="w">    </span><span class="no">current-context: kubernetes-admin@gpu-cluster</span>
+
+<span class="w">    </span><span class="no">clusters:</span>
+<span class="w">    </span><span class="no">- name: gpu-cluster</span>
+<span class="w">      </span><span class="no">cluster:</span>
+<span class="w">        </span><span class="no">server: https://gpu-cluster.internal.example.com:6443</span>
+<span class="w">        </span><span class="no">certificate-authority-data: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0t...LS0tLQo=</span>
+
+<span class="w">    </span><span class="no">users:</span>
+<span class="w">    </span><span class="no">- name: kubernetes-admin</span>
+<span class="w">      </span><span class="no">user:</span>
+<span class="w">        </span><span class="no">client-certificate-data: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0t...LS0tLQo=</span>
+<span class="w">        </span><span class="no">client-key-data: LS0tLS1CRUdJTiBQUklWQVRFIEtFWS0tLS0t...LS0tLQo=</span>
+
+<span class="w">    </span><span class="no">contexts:</span>
+<span class="w">    </span><span class="no">- name: kubernetes-admin@gpu-cluster</span>
+<span class="w">      </span><span class="no">context:</span>
+<span class="w">        </span><span class="no">cluster: gpu-cluster</span>
+<span class="w">        </span><span class="no">user: kubernetes-admin</span>
+
+<span class="nt">proxy_jump</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">hostname</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">204.12.171.137</span>
+<span class="w">  </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">32000</span>
+</code></pre></div>
+</div>
 </details>
 <details class="info">
 <summary>Required operators</summary>
