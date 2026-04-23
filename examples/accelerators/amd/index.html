@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Deploying and fine-tuning models on AMD MI300X GPUs using vLLM, TRL, and Axolotl">
+        <meta name="description" content="Deploying and fine-tuning models on AMD MI300X GPUs using SGLang, vLLM, TRL, and Axolotl">
       
       
         <meta name="author" content="dstack GmbH">
@@ -126,7 +126,7 @@
   
 <meta property="og:type" content="website" />
 <meta property="og:title" content="AMD - dstack" />
-<meta property="og:description" content="Deploying and fine-tuning models on AMD MI300X GPUs using vLLM, TRL, and Axolotl" />
+<meta property="og:description" content="Deploying and fine-tuning models on AMD MI300X GPUs using SGLang, vLLM, TRL, and Axolotl" />
 <meta property="og:image" content="https://dstack.ai/assets/images/social/examples/accelerators/amd/index.png" />
 <meta property="og:image:type" content="image/png" />
 <meta property="og:image:width" content="1200" />
@@ -134,7 +134,7 @@
 <meta property="og:url" content="https://dstack.ai/examples/accelerators/amd/" />
 <meta property="twitter:card" content="summary_large_image" />
 <meta property="twitter.title" content="AMD - dstack" />
-<meta property="twitter:description" content="Deploying and fine-tuning models on AMD MI300X GPUs using vLLM, TRL, and Axolotl" />
+<meta property="twitter:description" content="Deploying and fine-tuning models on AMD MI300X GPUs using SGLang, vLLM, TRL, and Axolotl" />
 <meta property="twitter:image" content="https://dstack.ai/assets/images/social/examples/accelerators/amd/index.png" />
 </head>
   
@@ -3706,6 +3706,97 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_7" id="__nav_3_7_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Models
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Models
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../models/qwen36/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Qwen 3.6
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -4207,72 +4298,94 @@
 You can do that by setting up an <a href="https://dstack.ai/docs/concepts/fleets#ssh-fleets">SSH fleet</a>
 with on-prem AMD GPUs or configuring a backend that offers AMD GPUs such as the <code>runpod</code> backend.</p>
 <h2 id="deployment">Deployment<a class="headerlink" href="#deployment" title="Permanent link">&para;</a></h2>
-<p>vLLM supports AMD GPUs. Here's an example of a <a href="https://dstack.ai/docs/services">service</a> that deploys
-Llama 3.1 70B in FP16 using <a href="https://docs.vllm.ai/en/latest/getting_started/amd-installation.html">vLLM</a>.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:1"><input checked="checked" id="vllm" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="vllm">vLLM</label></div>
+<p>Here are examples of a <a href="https://dstack.ai/docs/services">service</a> that deploy
+<code>Qwen/Qwen3.6-27B</code> on AMD MI300X GPUs using
+<a href="https://github.com/sgl-project/sglang">SGLang</a> and
+<a href="https://docs.vllm.ai/en/latest/">vLLM</a>.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="sglang" name="__tabbed_1" type="radio" /><input id="vllm" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="sglang">SGLang</label><label for="vllm">vLLM</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div editor-title="service.dstack.yml">
 <div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service</span>
-<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">llama31-service-vllm-amd</span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">qwen36-service-sglang-amd</span>
 
-<span class="c1"># Using Runpod&#39;s ROCm Docker image</span>
-<span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">runpod/pytorch:2.4.0-py3.10-rocm6.1.0-ubuntu22.04</span>
-<span class="c1"># Required environment variables</span>
-<span class="nt">env</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HF_TOKEN</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MODEL_ID=meta-llama/Meta-Llama-3.1-70B-Instruct</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MAX_MODEL_LEN=126192</span>
-<span class="c1"># Commands of the task</span>
+<span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">lmsysorg/sglang:v0.5.10-rocm720-mi30x</span>
+
 <span class="nt">commands</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">export PATH=/opt/conda/envs/py_3.10/bin:$PATH</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">wget https://github.com/ROCm/hipBLAS/archive/refs/tags/rocm-6.1.0.zip</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">unzip rocm-6.1.0.zip</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cd hipBLAS-rocm-6.1.0</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python rmake.py</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cd ..</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">git clone https://github.com/vllm-project/vllm.git</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cd vllm</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip install triton</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip uninstall torch -y</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/rocm6.1</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip install /opt/rocm/share/amd_smi</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip install --upgrade numba scipy huggingface-hub[cli]</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip install &quot;numpy&lt;2&quot;</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip install -r requirements-rocm.txt</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">wget -N https://github.com/ROCm/vllm/raw/fa78403/rocm_patch/libamdhip64.so.6 -P /opt/rocm/lib</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rm -f &quot;$(python3 -c &#39;import torch; print(torch.__path__[0])&#39;)&quot;/lib/libamdhip64.so*</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">export PYTORCH_ROCM_ARCH=&quot;gfx90a;gfx942&quot;</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">wget https://dstack-binaries.s3.amazonaws.com/vllm-0.6.0%2Brocm614-cp310-cp310-linux_x86_64.whl</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip install vllm-0.6.0+rocm614-cp310-cp310-linux_x86_64.whl</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vllm serve $MODEL_ID --max-model-len $MAX_MODEL_LEN --port 8000</span>
-<span class="c1"># Service port</span>
-<span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8000</span>
-<span class="c1"># Register the model</span>
-<span class="nt">model</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">meta-llama/Meta-Llama-3.1-70B-Instruct</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">    </span><span class="no">sglang serve \</span>
+<span class="w">      </span><span class="no">--model-path Qwen/Qwen3.6-27B \</span>
+<span class="w">      </span><span class="no">--host 0.0.0.0 \</span>
+<span class="w">      </span><span class="no">--port 30000 \</span>
+<span class="w">      </span><span class="no">--tp $DSTACK_GPUS_NUM \</span>
+<span class="w">      </span><span class="no">--reasoning-parser qwen3 \</span>
+<span class="w">      </span><span class="no">--mem-fraction-static 0.8 \</span>
+<span class="w">      </span><span class="no">--context-length 262144</span>
 
-<span class="c1"># Uncomment to leverage spot instances</span>
-<span class="c1">#spot_policy: auto</span>
+<span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30000</span>
+<span class="nt">model</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Qwen/Qwen3.6-27B</span>
+
+<span class="nt">volumes</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">instance_path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/root/.cache</span>
+<span class="w">    </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/root/.cache</span>
+<span class="w">    </span><span class="nt">optional</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 
 <span class="nt">resources</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MI300X</span>
-<span class="w">  </span><span class="nt">disk</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">200GB</span>
+<span class="w">  </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">52..</span>
+<span class="w">  </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">896GB..</span>
+<span class="w">  </span><span class="nt">shm_size</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">16GB</span>
+<span class="w">  </span><span class="nt">disk</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">450GB..</span>
+<span class="w">  </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MI300X:4</span>
 </code></pre></div>
 </div>
-<p>Note, maximum size of vLLM’s <code>KV cache</code> is 126192, consequently we must set <code>MAX_MODEL_LEN</code> to 126192. Adding <code>/opt/conda/envs/py_3.10/bin</code> to PATH ensures we use the Python 3.10 environment necessary for the pre-built binaries compiled specifically for this version.</p>
-<blockquote>
-<p>To speed up the <code>vLLM-ROCm</code> installation, this example uses a pre-built binary from S3.</p>
-</blockquote>
+</div>
+<div class="tabbed-block">
+<div editor-title="service.dstack.yml">
+<div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service</span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">qwen36-service-vllm-amd</span>
+
+<span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vllm/vllm-openai-rocm:v0.19.1</span>
+
+<span class="nt">commands</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">    </span><span class="no">vllm serve Qwen/Qwen3.6-27B \</span>
+<span class="w">      </span><span class="no">--host 0.0.0.0 \</span>
+<span class="w">      </span><span class="no">--port 8000 \</span>
+<span class="w">      </span><span class="no">--tensor-parallel-size $DSTACK_GPUS_NUM \</span>
+<span class="w">      </span><span class="no">--max-model-len 262144 \</span>
+<span class="w">      </span><span class="no">--reasoning-parser qwen3</span>
+
+<span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8000</span>
+<span class="nt">model</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Qwen/Qwen3.6-27B</span>
+
+<span class="nt">volumes</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">instance_path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/root/.cache</span>
+<span class="w">    </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/root/.cache</span>
+<span class="w">    </span><span class="nt">optional</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+
+<span class="nt">resources</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">52..</span>
+<span class="w">  </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">896GB..</span>
+<span class="w">  </span><span class="nt">shm_size</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">16GB</span>
+<span class="w">  </span><span class="nt">disk</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">450GB..</span>
+<span class="w">  </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MI300X:4</span>
+</code></pre></div>
+</div>
 </div>
 </div>
 </div>
 <div class="admonition info">
 <p class="admonition-title">Docker image</p>
-<p>If you want to use AMD, specifying <code>image</code> is currently required. This must be an image that includes
-ROCm drivers.</p>
+<p>AMD deployments require specifying an image that already includes ROCm
+drivers. The SGLang and vLLM examples above use pinned ROCm images.</p>
 </div>
 <p>To request multiple GPUs, specify the quantity after the GPU name, separated by a colon, e.g., <code>MI300X:4</code>.</p>
 <h2 id="fine-tuning">Fine-tuning<a class="headerlink" href="#fine-tuning" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>If you're planning multi-node AMD training, validate cluster networking first
+with the <a href="https://dstack.ai/examples/clusters/nccl-rccl-tests/">NCCL/RCCL tests</a>
+example.</p>
+</blockquote>
 <div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="trl" name="__tabbed_2" type="radio" /><input id="axolotl" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="trl">TRL</label><label for="axolotl">Axolotl</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -4378,28 +4491,30 @@ dataset.</p>
 </div>
 </div>
 <h2 id="running-a-configuration">Running a configuration<a class="headerlink" href="#running-a-configuration" title="Permanent link">&para;</a></h2>
-<p>Once a configuration is ready, save it to a <code>.dstack.yml</code> file, then run
-<code>dstack apply -f &lt;configuration file&gt;</code>, and <code>dstack</code> will automatically provision the
-cloud resources and run the configuration.</p>
+<p>Once a configuration is ready, save it to a <code>.dstack.yml</code> file. If your
+configuration references environment variables such as <code>HF_TOKEN</code> or
+<code>WANDB_API_KEY</code>, export them first. Then run
+<code>dstack apply -f &lt;configuration file&gt;</code>, and <code>dstack</code> will automatically
+provision the cloud resources and run the configuration.</p>
 <div class="termy">
 
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nv">HF_TOKEN</span><span class="o">=</span>...
-$<span class="w"> </span><span class="nv">WANDB_API_KEY</span><span class="o">=</span>...
-$<span class="w"> </span><span class="nv">WANDB_PROJECT</span><span class="o">=</span>...
-$<span class="w"> </span><span class="nv">WANDB_NAME</span><span class="o">=</span>axolotl-amd-llama31-train
-$<span class="w"> </span><span class="nv">HUB_MODEL_ID</span><span class="o">=</span>...
-$<span class="w"> </span>dstack<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>service.dstack.yml
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>dstack<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>&lt;configuration<span class="w"> </span>file&gt;
 </code></pre></div>
 
 </div>
 
 <h2 id="whats-next">What's next?<a class="headerlink" href="#whats-next" title="Permanent link">&para;</a></h2>
 <ol>
-<li>Browse <a href="https://docs.vllm.ai/en/latest/getting_started/amd-installation.html#build-from-source-rocm">vLLM</a>,
+<li>Browse the dedicated <a href="https://dstack.ai/examples/inference/sglang/">SGLang</a>
+   and <a href="https://dstack.ai/examples/inference/vllm/">vLLM</a> examples, plus
    <a href="https://github.com/ROCm/rocm-blogs/tree/release/blogs/artificial-intelligence/axolotl">Axolotl</a>,
-   <a href="https://rocm.docs.amd.com/en/latest/how-to/llm-fine-tuning-optimization/fine-tuning-and-inference.html">TRL</a> and
-   <a href="https://github.com/ROCm/bitsandbytes">ROCm Bitsandbytes</a></li>
-<li>Check <a href="https://dstack.ai/docs/dev-environments">dev environments</a>, <a href="https://dstack.ai/docs/tasks">tasks</a>, and
+   <a href="https://rocm.docs.amd.com/en/latest/how-to/llm-fine-tuning-optimization/fine-tuning-and-inference.html">TRL</a>,
+   and <a href="https://github.com/ROCm/bitsandbytes">ROCm Bitsandbytes</a></li>
+<li>For multi-node training, run
+   <a href="https://dstack.ai/examples/clusters/nccl-rccl-tests/">NCCL/RCCL tests</a>
+   to validate AMD cluster networking.</li>
+<li>Check <a href="https://dstack.ai/docs/dev-environments">dev environments</a>,
+   <a href="https://dstack.ai/docs/tasks">tasks</a>, and
    <a href="https://dstack.ai/docs/services">services</a>.</li>
 </ol>
 

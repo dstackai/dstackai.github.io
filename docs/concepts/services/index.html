@@ -3958,6 +3958,94 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_7" id="__nav_3_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Models
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Models
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/models/qwen36/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Qwen 3.6
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -4728,23 +4816,23 @@ The filename must end with <code>.dstack.yml</code> (e.g. <code>.dstack.yml</cod
 <div class="tabbed-block">
 <div editor-title=".dstack.yml">
 <div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service</span>
-<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">qwen397</span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">qwen36</span>
 
 <span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">lmsysorg/sglang:v0.5.10.post1</span>
 
 <span class="nt">commands</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
 <span class="w">    </span><span class="no">sglang serve \</span>
-<span class="w">      </span><span class="no">--model-path Qwen/Qwen3.5-397B-A17B-FP8 \</span>
+<span class="w">      </span><span class="no">--model-path Qwen/Qwen3.6-27B \</span>
+<span class="w">      </span><span class="no">--host 0.0.0.0 \</span>
 <span class="w">      </span><span class="no">--port 30000 \</span>
 <span class="w">      </span><span class="no">--tp $DSTACK_GPUS_NUM \</span>
-<span class="w">      </span><span class="no">--reasoning-parser qwen3 \</span>
-<span class="w">      </span><span class="no">--tool-call-parser qwen3_coder \</span>
-<span class="w">      </span><span class="no">--enable-flashinfer-allreduce-fusion \</span>
-<span class="w">      </span><span class="no">--mem-fraction-static 0.8</span>
+<span class="w">      </span><span class="no">--mem-fraction-static 0.8 \</span>
+<span class="w">      </span><span class="no">--context-length 262144 \</span>
+<span class="w">      </span><span class="no">--reasoning-parser qwen3</span>
 
 <span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30000</span>
-<span class="nt">model</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Qwen/Qwen3.5-397B-A17B-FP8</span>
+<span class="nt">model</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Qwen/Qwen3.6-27B</span>
 
 <span class="nt">volumes</span><span class="p">:</span>
 <span class="w">  </span><span class="c1"># Optional instance volume for model and runtime caches</span>
@@ -4753,49 +4841,31 @@ The filename must end with <code>.dstack.yml</code> (e.g. <code>.dstack.yml</cod
 <span class="w">    </span><span class="nt">optional</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 
 <span class="nt">resources</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">x86:96..</span>
-<span class="w">  </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">512GB..</span>
 <span class="w">  </span><span class="nt">shm_size</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">16GB</span>
-<span class="w">  </span><span class="nt">disk</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">500GB..</span>
-<span class="w">  </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">H100:80GB:8</span>
+<span class="w">  </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">H100:4</span>
 </code></pre></div>
 </div>
 </div>
 <div class="tabbed-block">
 <div editor-title=".dstack.yml">
 <div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service</span>
-<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">qwen397</span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">qwen36</span>
 
-<span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">lmsysorg/sglang:v0.5.10.post1-rocm720-mi30x</span>
-
-<span class="nt">env</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HIP_FORCE_DEV_KERNARG=1</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SGLANG_ALLOW_OVERWRITE_LONGER_CONTEXT_LEN=1</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SGLANG_DISABLE_CUDNN_CHECK=1</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SGLANG_INT4_WEIGHT=0</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SGLANG_MOE_PADDING=1</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SGLANG_ROCM_DISABLE_LINEARQUANT=0</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SGLANG_ROCM_FUSED_DECODE_MLA=1</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SGLANG_SET_CPU_AFFINITY=1</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SGLANG_USE_AITER=1</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SGLANG_USE_ROCM700A=1</span>
+<span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">lmsysorg/sglang:v0.5.10-rocm720-mi30x</span>
 
 <span class="nt">commands</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
 <span class="w">    </span><span class="no">sglang serve \</span>
-<span class="w">      </span><span class="no">--model-path Qwen/Qwen3.5-397B-A17B-FP8 \</span>
+<span class="w">      </span><span class="no">--model-path Qwen/Qwen3.6-27B \</span>
+<span class="w">      </span><span class="no">--host 0.0.0.0 \</span>
+<span class="w">      </span><span class="no">--port 30000 \</span>
 <span class="w">      </span><span class="no">--tp $DSTACK_GPUS_NUM \</span>
-<span class="w">      </span><span class="no">--reasoning-parser qwen3 \</span>
-<span class="w">      </span><span class="no">--tool-call-parser qwen3_coder \</span>
 <span class="w">      </span><span class="no">--mem-fraction-static 0.8 \</span>
 <span class="w">      </span><span class="no">--context-length 262144 \</span>
-<span class="w">      </span><span class="no">--attention-backend triton \</span>
-<span class="w">      </span><span class="no">--disable-cuda-graph \</span>
-<span class="w">      </span><span class="no">--fp8-gemm-backend aiter \</span>
-<span class="w">      </span><span class="no">--port 30000</span>
+<span class="w">      </span><span class="no">--reasoning-parser qwen3</span>
 
 <span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30000</span>
-<span class="nt">model</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Qwen/Qwen3.5-397B-A17B-FP8</span>
+<span class="nt">model</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Qwen/Qwen3.6-27B</span>
 
 <span class="nt">volumes</span><span class="p">:</span>
 <span class="w">  </span><span class="c1"># Optional instance volume for model and runtime caches</span>
@@ -4804,29 +4874,31 @@ The filename must end with <code>.dstack.yml</code> (e.g. <code>.dstack.yml</cod
 <span class="w">    </span><span class="nt">optional</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 
 <span class="nt">resources</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">x86:52..</span>
-<span class="w">  </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">700GB..</span>
+<span class="w">  </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">52..</span>
+<span class="w">  </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">896GB..</span>
 <span class="w">  </span><span class="nt">shm_size</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">16GB</span>
-<span class="w">  </span><span class="nt">disk</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">600GB..</span>
-<span class="w">  </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MI300X:192GB:4</span>
+<span class="w">  </span><span class="nt">disk</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">450GB..</span>
+<span class="w">  </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MI300X:4</span>
 </code></pre></div>
 </div>
 </div>
 </div>
 </div>
+<p>The first startup on MI300X can take longer while SGLang compiles ROCm
+kernels.</p>
 <p>To run a service, pass the configuration to <a href="../../reference/cli/dstack/apply/"><code>dstack apply</code></a>:</p>
 <div class="termy">
 
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>dstack<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>.dstack.yml
 
-Submit<span class="w"> </span>the<span class="w"> </span>run<span class="w"> </span>qwen397?<span class="w"> </span><span class="o">[</span>y/n<span class="o">]</span>:<span class="w"> </span>y
+Submit<span class="w"> </span>the<span class="w"> </span>run<span class="w"> </span>qwen36?<span class="w"> </span><span class="o">[</span>y/n<span class="o">]</span>:<span class="w"> </span>y
 
 Provisioning...
 ---&gt;<span class="w"> </span><span class="m">100</span>%
 
 Service<span class="w"> </span>is<span class="w"> </span>published<span class="w"> </span>at:
-<span class="w">  </span>http://localhost:3000/proxy/services/main/qwen397/
-Model<span class="w"> </span>Qwen/Qwen3.5-397B-A17B-FP8<span class="w"> </span>is<span class="w"> </span>published<span class="w"> </span>at:
+<span class="w">  </span>http://localhost:3000/proxy/services/main/qwen36/
+Model<span class="w"> </span>Qwen/Qwen3.6-27B<span class="w"> </span>is<span class="w"> </span>published<span class="w"> </span>at:
 <span class="w">  </span>http://localhost:3000/proxy/models/main/
 </code></pre></div>
 
@@ -4837,11 +4909,11 @@ Model<span class="w"> </span>Qwen/Qwen3.5-397B-A17B-FP8<span class="w"> </span>i
 <code>&lt;dstack server URL&gt;/proxy/services/&lt;project name&gt;/&lt;run name&gt;/</code>.</p>
 <div class="termy">
 
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>curl<span class="w"> </span>http://localhost:3000/proxy/services/main/qwen397/v1/chat/completions<span class="w"> </span><span class="se">\</span>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>curl<span class="w"> </span>http://localhost:3000/proxy/services/main/qwen36/v1/chat/completions<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-H<span class="w"> </span><span class="s1">&#39;Content-Type: application/json&#39;</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-H<span class="w"> </span><span class="s1">&#39;Authorization: Bearer &amp;lt;dstack token&amp;gt;&#39;</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-d<span class="w"> </span><span class="s1">&#39;{</span>
-<span class="s1">        &quot;model&quot;: &quot;Qwen/Qwen3.5-397B-A17B-FP8&quot;,</span>
+<span class="s1">        &quot;model&quot;: &quot;Qwen/Qwen3.6-27B&quot;,</span>
 <span class="s1">        &quot;messages&quot;: [</span>
 <span class="s1">            {</span>
 <span class="s1">                &quot;role&quot;: &quot;user&quot;,</span>
@@ -4901,23 +4973,23 @@ You can configure the number of replicas as well as the auto-scaling rules.</p>
 <div class="tabbed-block">
 <div editor-title="service.dstack.yml">
 <div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service</span>
-<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">qwen397-service</span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">qwen36-service</span>
 
 <span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">lmsysorg/sglang:v0.5.10.post1</span>
 
 <span class="nt">commands</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
 <span class="w">    </span><span class="no">sglang serve \</span>
-<span class="w">      </span><span class="no">--model-path Qwen/Qwen3.5-397B-A17B-FP8 \</span>
+<span class="w">      </span><span class="no">--model-path Qwen/Qwen3.6-27B \</span>
+<span class="w">      </span><span class="no">--host 0.0.0.0 \</span>
 <span class="w">      </span><span class="no">--port 30000 \</span>
 <span class="w">      </span><span class="no">--tp $DSTACK_GPUS_NUM \</span>
 <span class="w">      </span><span class="no">--reasoning-parser qwen3 \</span>
-<span class="w">      </span><span class="no">--tool-call-parser qwen3_coder \</span>
-<span class="w">      </span><span class="no">--enable-flashinfer-allreduce-fusion \</span>
-<span class="w">      </span><span class="no">--mem-fraction-static 0.8</span>
+<span class="w">      </span><span class="no">--mem-fraction-static 0.8 \</span>
+<span class="w">      </span><span class="no">--context-length 262144</span>
 
 <span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30000</span>
-<span class="nt">model</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Qwen/Qwen3.5-397B-A17B-FP8</span>
+<span class="nt">model</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Qwen/Qwen3.6-27B</span>
 
 <span class="nt">volumes</span><span class="p">:</span>
 <span class="w">  </span><span class="c1"># Optional instance volume for model and runtime caches</span>
@@ -4926,11 +4998,8 @@ You can configure the number of replicas as well as the auto-scaling rules.</p>
 <span class="w">    </span><span class="nt">optional</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 
 <span class="nt">resources</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">x86:96..</span>
-<span class="w">  </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">512GB..</span>
 <span class="w">  </span><span class="nt">shm_size</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">16GB</span>
-<span class="w">  </span><span class="nt">disk</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">500GB..</span>
-<span class="w">  </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">H100:80GB:8</span>
+<span class="w">  </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">H100:4</span>
 
 <span class="nt">replicas</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1..2</span>
 <span class="nt">scaling</span><span class="p">:</span>
@@ -4942,38 +5011,23 @@ You can configure the number of replicas as well as the auto-scaling rules.</p>
 <div class="tabbed-block">
 <div editor-title="service.dstack.yml">
 <div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service</span>
-<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">qwen397-service</span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">qwen36-service</span>
 
-<span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">lmsysorg/sglang:v0.5.10.post1-rocm720-mi30x</span>
-
-<span class="nt">env</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HIP_FORCE_DEV_KERNARG=1</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SGLANG_ALLOW_OVERWRITE_LONGER_CONTEXT_LEN=1</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SGLANG_DISABLE_CUDNN_CHECK=1</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SGLANG_INT4_WEIGHT=0</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SGLANG_MOE_PADDING=1</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SGLANG_ROCM_DISABLE_LINEARQUANT=0</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SGLANG_ROCM_FUSED_DECODE_MLA=1</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SGLANG_SET_CPU_AFFINITY=1</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SGLANG_USE_AITER=1</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SGLANG_USE_ROCM700A=1</span>
+<span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">lmsysorg/sglang:v0.5.10-rocm720-mi30x</span>
 
 <span class="nt">commands</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
 <span class="w">    </span><span class="no">sglang serve \</span>
-<span class="w">      </span><span class="no">--model-path Qwen/Qwen3.5-397B-A17B-FP8 \</span>
+<span class="w">      </span><span class="no">--model-path Qwen/Qwen3.6-27B \</span>
+<span class="w">      </span><span class="no">--host 0.0.0.0 \</span>
+<span class="w">      </span><span class="no">--port 30000 \</span>
 <span class="w">      </span><span class="no">--tp $DSTACK_GPUS_NUM \</span>
 <span class="w">      </span><span class="no">--reasoning-parser qwen3 \</span>
-<span class="w">      </span><span class="no">--tool-call-parser qwen3_coder \</span>
 <span class="w">      </span><span class="no">--mem-fraction-static 0.8 \</span>
-<span class="w">      </span><span class="no">--context-length 262144 \</span>
-<span class="w">      </span><span class="no">--attention-backend triton \</span>
-<span class="w">      </span><span class="no">--disable-cuda-graph \</span>
-<span class="w">      </span><span class="no">--fp8-gemm-backend aiter \</span>
-<span class="w">      </span><span class="no">--port 30000</span>
+<span class="w">      </span><span class="no">--context-length 262144</span>
 
 <span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30000</span>
-<span class="nt">model</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Qwen/Qwen3.5-397B-A17B-FP8</span>
+<span class="nt">model</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Qwen/Qwen3.6-27B</span>
 
 <span class="nt">volumes</span><span class="p">:</span>
 <span class="w">  </span><span class="c1"># Optional instance volume for model and runtime caches</span>
@@ -4982,11 +5036,11 @@ You can configure the number of replicas as well as the auto-scaling rules.</p>
 <span class="w">    </span><span class="nt">optional</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 
 <span class="nt">resources</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">x86:52..</span>
-<span class="w">  </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">700GB..</span>
+<span class="w">  </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">52..</span>
+<span class="w">  </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">896GB..</span>
 <span class="w">  </span><span class="nt">shm_size</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">16GB</span>
-<span class="w">  </span><span class="nt">disk</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">600GB..</span>
-<span class="w">  </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MI300X:192GB:4</span>
+<span class="w">  </span><span class="nt">disk</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">450GB..</span>
+<span class="w">  </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MI300X:4</span>
 
 <span class="nt">replicas</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1..2</span>
 <span class="nt">scaling</span><span class="p">:</span>
@@ -5052,6 +5106,8 @@ case <code>dstack</code> adjusts the number of replicas (scales up or down) auto
 </blockquote>
 </details>
 <h3 id="pd-disaggregation">PD disaggregation<a class="headerlink" href="#pd-disaggregation" title="Permanent link">&para;</a></h3>
+<!-- NOTE: this section is referenced from the CLI, keep the URL unchanged -->
+
 <p>Since 0.20.17, <code>dstack</code> supports serving a model using PD disaggregation. To use it, configure three replica groups: one for a router (for example, <a href="https://docs.sglang.io/advanced_features/sgl_model_gateway.html">SGLang Model Gateway</a>), one for prefill workers, and one for decode workers.</p>
 <blockquote>
 <p>Currently, Prefill-Decode disaggregation is supported only for SGLang.</p>

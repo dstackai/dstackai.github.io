@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Deploying Qwen3.5-397B-A17B-FP8 using SGLang on NVIDIA and AMD GPUs">
+        <meta name="description" content="Deploying Qwen3.6-27B using SGLang on NVIDIA and AMD GPUs">
       
       
         <meta name="author" content="dstack GmbH">
@@ -126,7 +126,7 @@
   
 <meta property="og:type" content="website" />
 <meta property="og:title" content="SGLang - dstack" />
-<meta property="og:description" content="Deploying Qwen3.5-397B-A17B-FP8 using SGLang on NVIDIA and AMD GPUs" />
+<meta property="og:description" content="Deploying Qwen3.6-27B using SGLang on NVIDIA and AMD GPUs" />
 <meta property="og:image" content="https://dstack.ai/assets/images/social/examples/inference/sglang/index.png" />
 <meta property="og:image:type" content="image/png" />
 <meta property="og:image:width" content="1200" />
@@ -134,7 +134,7 @@
 <meta property="og:url" content="https://dstack.ai/examples/inference/sglang/" />
 <meta property="twitter:card" content="summary_large_image" />
 <meta property="twitter.title" content="SGLang - dstack" />
-<meta property="twitter:description" content="Deploying Qwen3.5-397B-A17B-FP8 using SGLang on NVIDIA and AMD GPUs" />
+<meta property="twitter:description" content="Deploying Qwen3.6-27B using SGLang on NVIDIA and AMD GPUs" />
 <meta property="twitter:image" content="https://dstack.ai/assets/images/social/examples/inference/sglang/index.png" />
 </head>
   
@@ -3712,6 +3712,97 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_7" id="__nav_3_7_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Models
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Models
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../models/qwen36/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Qwen 3.6
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -4215,33 +4306,33 @@
 
 
 <h1 id="sglang">SGLang<a class="headerlink" href="#sglang" title="Permanent link">&para;</a></h1>
-<p>This example shows how to deploy <code>Qwen/Qwen3.5-397B-A17B-FP8</code> using
+<p>This example shows how to deploy <code>Qwen/Qwen3.6-27B</code> using
 <a href="https://github.com/sgl-project/sglang">SGLang</a> and <code>dstack</code>.</p>
 <h2 id="apply-a-configuration">Apply a configuration<a class="headerlink" href="#apply-a-configuration" title="Permanent link">&para;</a></h2>
 <p>Here's an example of a service that deploys
-<code>Qwen/Qwen3.5-397B-A17B-FP8</code> using SGLang.</p>
+<code>Qwen/Qwen3.6-27B</code> using SGLang.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="nvidia" name="__tabbed_1" type="radio" /><input id="amd" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="nvidia">NVIDIA</label><label for="amd">AMD</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div editor-title="qwen397.dstack.yml">
+<div editor-title="qwen36.dstack.yml">
 <p><div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service</span>
-<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">qwen397</span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">qwen36</span>
 
 <span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">lmsysorg/sglang:v0.5.10.post1</span>
 
 <span class="nt">commands</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
 <span class="w">    </span><span class="no">sglang serve \</span>
-<span class="w">      </span><span class="no">--model-path Qwen/Qwen3.5-397B-A17B-FP8 \</span>
+<span class="w">      </span><span class="no">--model-path Qwen/Qwen3.6-27B \</span>
+<span class="w">      </span><span class="no">--host 0.0.0.0 \</span>
 <span class="w">      </span><span class="no">--port 30000 \</span>
 <span class="w">      </span><span class="no">--tp $DSTACK_GPUS_NUM \</span>
 <span class="w">      </span><span class="no">--reasoning-parser qwen3 \</span>
-<span class="w">      </span><span class="no">--tool-call-parser qwen3_coder \</span>
-<span class="w">      </span><span class="no">--enable-flashinfer-allreduce-fusion \</span>
-<span class="w">      </span><span class="no">--mem-fraction-static 0.8</span>
+<span class="w">      </span><span class="no">--mem-fraction-static 0.8 \</span>
+<span class="w">      </span><span class="no">--context-length 262144</span>
 
 <span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30000</span>
-<span class="nt">model</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Qwen/Qwen3.5-397B-A17B-FP8</span>
+<span class="nt">model</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Qwen/Qwen3.6-27B</span>
 
 <span class="nt">volumes</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">instance_path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/root/.cache</span>
@@ -4249,49 +4340,31 @@
 <span class="w">    </span><span class="nt">optional</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 
 <span class="nt">resources</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">x86:96..</span>
-<span class="w">  </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">512GB..</span>
 <span class="w">  </span><span class="nt">shm_size</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">16GB</span>
-<span class="w">  </span><span class="nt">disk</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">500GB..</span>
-<span class="w">  </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">H100:80GB:8</span>
+<span class="w">  </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">H100:4</span>
 </code></pre></div>
 </div></p>
 </div>
 <div class="tabbed-block">
-<div editor-title="qwen397.dstack.yml">
+<div editor-title="qwen36.dstack.yml">
 <p><div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service</span>
-<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">qwen397</span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">qwen36</span>
 
-<span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">lmsysorg/sglang:v0.5.10.post1-rocm720-mi30x</span>
-
-<span class="nt">env</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HIP_FORCE_DEV_KERNARG=1</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SGLANG_ALLOW_OVERWRITE_LONGER_CONTEXT_LEN=1</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SGLANG_DISABLE_CUDNN_CHECK=1</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SGLANG_INT4_WEIGHT=0</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SGLANG_MOE_PADDING=1</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SGLANG_ROCM_DISABLE_LINEARQUANT=0</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SGLANG_ROCM_FUSED_DECODE_MLA=1</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SGLANG_SET_CPU_AFFINITY=1</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SGLANG_USE_AITER=1</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SGLANG_USE_ROCM700A=1</span>
+<span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">lmsysorg/sglang:v0.5.10-rocm720-mi30x</span>
 
 <span class="nt">commands</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
 <span class="w">    </span><span class="no">sglang serve \</span>
-<span class="w">      </span><span class="no">--model-path Qwen/Qwen3.5-397B-A17B-FP8 \</span>
+<span class="w">      </span><span class="no">--model-path Qwen/Qwen3.6-27B \</span>
+<span class="w">      </span><span class="no">--host 0.0.0.0 \</span>
+<span class="w">      </span><span class="no">--port 30000 \</span>
 <span class="w">      </span><span class="no">--tp $DSTACK_GPUS_NUM \</span>
 <span class="w">      </span><span class="no">--reasoning-parser qwen3 \</span>
-<span class="w">      </span><span class="no">--tool-call-parser qwen3_coder \</span>
 <span class="w">      </span><span class="no">--mem-fraction-static 0.8 \</span>
-<span class="w">      </span><span class="no">--context-length 262144 \</span>
-<span class="w">      </span><span class="no">--attention-backend triton \</span>
-<span class="w">      </span><span class="no">--disable-cuda-graph \</span>
-<span class="w">      </span><span class="no">--fp8-gemm-backend aiter \</span>
-<span class="w">      </span><span class="no">--port 30000</span>
+<span class="w">      </span><span class="no">--context-length 262144</span>
 
 <span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30000</span>
-<span class="nt">model</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Qwen/Qwen3.5-397B-A17B-FP8</span>
+<span class="nt">model</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Qwen/Qwen3.6-27B</span>
 
 <span class="nt">volumes</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">instance_path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/root/.cache</span>
@@ -4299,23 +4372,25 @@
 <span class="w">    </span><span class="nt">optional</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 
 <span class="nt">resources</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">x86:52..</span>
-<span class="w">  </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">700GB..</span>
+<span class="w">  </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">52..</span>
+<span class="w">  </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">896GB..</span>
 <span class="w">  </span><span class="nt">shm_size</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">16GB</span>
-<span class="w">  </span><span class="nt">disk</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">600GB..</span>
-<span class="w">  </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MI300X:192GB:4</span>
+<span class="w">  </span><span class="nt">disk</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">450GB..</span>
+<span class="w">  </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MI300X:4</span>
 </code></pre></div>
 </div></p>
 </div>
 </div>
 </div>
-<p>The AMD example uses the exact validated MI300X configuration for this model,
-including the ROCm/AITER settings required for stable FP8 serving.</p>
-<p>Save one of the configurations above as <code>qwen397.dstack.yml</code>, then use the
+<p>The AMD example keeps the deployment close to the upstream Qwen and SGLang
+guidance: a pinned ROCm image, tensor parallelism across all four GPUs, and the
+standard <code>qwen3</code> reasoning parser without extra ROCm-specific tuning flags.
+The first startup on MI300X can take longer while SGLang compiles ROCm kernels.</p>
+<p>Save one of the configurations above as <code>qwen36.dstack.yml</code>, then use the
 <a href="https://dstack.ai/docs/reference/cli/dstack/apply.md"><code>dstack apply</code></a> command.</p>
 <div class="termy">
 
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>dstack<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>qwen397.dstack.yml
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>dstack<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>qwen36.dstack.yml
 </code></pre></div>
 
 </div>
@@ -4323,27 +4398,29 @@ including the ROCm/AITER settings required for stable FP8 serving.</p>
 <p>If no gateway is created, the service endpoint will be available at <code>&lt;dstack server URL&gt;/proxy/services/&lt;project name&gt;/&lt;run name&gt;/</code>.</p>
 <div class="termy">
 
-<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>http://127.0.0.1:3000/proxy/services/main/qwen397/v1/chat/completions<span class="w"> </span><span class="se">\</span>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>http://127.0.0.1:3000/proxy/services/main/qwen36/v1/chat/completions<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-X<span class="w"> </span>POST<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-H<span class="w"> </span><span class="s1">&#39;Authorization: Bearer &amp;lt;dstack token&amp;gt;&#39;</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-H<span class="w"> </span><span class="s1">&#39;Content-Type: application/json&#39;</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-d<span class="w"> </span><span class="s1">&#39;{</span>
-<span class="s1">      &quot;model&quot;: &quot;Qwen/Qwen3.5-397B-A17B-FP8&quot;,</span>
+<span class="s1">      &quot;model&quot;: &quot;Qwen/Qwen3.6-27B&quot;,</span>
 <span class="s1">      &quot;messages&quot;: [</span>
 <span class="s1">        {</span>
 <span class="s1">          &quot;role&quot;: &quot;user&quot;,</span>
 <span class="s1">          &quot;content&quot;: &quot;A bat and a ball cost $1.10 total. The bat costs $1.00 more than the ball. How much does the ball cost? Answer with just the dollar amount.&quot;</span>
 <span class="s1">        }</span>
 <span class="s1">      ],</span>
-<span class="s1">      &quot;chat_template_kwargs&quot;: {&quot;enable_thinking&quot;: true},</span>
 <span class="s1">      &quot;separate_reasoning&quot;: true,</span>
 <span class="s1">      &quot;max_tokens&quot;: 1024</span>
 <span class="s1">    }&#39;</span>
 </code></pre></div>
 </div>
 
+<p>Qwen3.6 uses thinking mode by default. To disable thinking, pass
+<code>"chat_template_kwargs": {"enable_thinking": false}</code> in the request body. To
+enable tool calling, add <code>--tool-call-parser qwen3_coder</code> to the serve command.</p>
 <blockquote>
-<p>If a <a href="https://dstack.ai/docs/concepts/gateways/">gateway</a> is configured (e.g. to enable auto-scaling, HTTPS, rate limits, etc.), the service endpoint will be available at <code>https://qwen397.&lt;gateway domain&gt;/</code>.</p>
+<p>If a <a href="https://dstack.ai/docs/concepts/gateways/">gateway</a> is configured (e.g. to enable auto-scaling, HTTPS, rate limits, etc.), the service endpoint will be available at <code>https://qwen36.&lt;gateway domain&gt;/</code>.</p>
 </blockquote>
 <h2 id="configuration-options">Configuration options<a class="headerlink" href="#configuration-options" title="Permanent link">&para;</a></h2>
 <h3 id="pd-disaggregation">PD disaggregation<a class="headerlink" href="#pd-disaggregation" title="Permanent link">&para;</a></h3>
@@ -4429,7 +4506,7 @@ including the ROCm/AITER settings required for stable FP8 serving.</p>
 <h2 id="whats-next">What's next?<a class="headerlink" href="#whats-next" title="Permanent link">&para;</a></h2>
 <ol>
 <li>Read about <a href="https://dstack.ai/docs/concepts/services">services</a> and <a href="https://dstack.ai/docs/concepts/gateways">gateways</a></li>
-<li>Browse the <a href="https://cookbook.sglang.io/autoregressive/Qwen/Qwen3.5">Qwen 3.5 SGLang cookbook</a> and the <a href="https://docs.sglang.ai/advanced_features/server_arguments.html">SGLang server arguments reference</a></li>
+<li>Browse the <a href="https://docs.sglang.io/cookbook/autoregressive/Qwen/Qwen3.6">Qwen 3.6 SGLang cookbook</a> and the <a href="https://docs.sglang.ai/advanced_features/server_arguments.html">SGLang server arguments reference</a></li>
 </ol>
 
 

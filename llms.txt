@@ -39,7 +39,7 @@
 
 ## Examples
 
-- [Examples](https://dstack.ai/examples.md): Collection of examples for training, inference, and clusters
+- [Examples](https://dstack.ai/examples.md): Collection of examples for models, training, inference, and clusters
 
 ### Single-node training
 
@@ -63,13 +63,17 @@
 
 ### Inference
 
-- [SGLang](https://dstack.ai/examples/inference/sglang/index.md): Deploying Qwen3.5-397B-A17B-FP8 using SGLang on NVIDIA and AMD GPUs
-- [vLLM](https://dstack.ai/examples/inference/vllm/index.md): Deploying Qwen3.5-397B-A17B-FP8 using vLLM on NVIDIA GPUs
+- [SGLang](https://dstack.ai/examples/inference/sglang/index.md): Deploying Qwen3.6-27B using SGLang on NVIDIA and AMD GPUs
+- [vLLM](https://dstack.ai/examples/inference/vllm/index.md): Deploying Qwen3.6-27B using vLLM on NVIDIA and AMD GPUs
 - [NIM](https://dstack.ai/examples/inference/nim/index.md): Deploying Nemotron-3-Super-120B-A12B using NVIDIA NIM
 - [TensorRT-LLM](https://dstack.ai/examples/inference/trtllm/index.md): Deploying Qwen3-235B-A22B-FP8 using NVIDIA TensorRT-LLM on NVIDIA GPUs
 
 ### Accelerators
 
-- [AMD](https://dstack.ai/examples/accelerators/amd/index.md): Deploying and fine-tuning models on AMD MI300X GPUs using vLLM, TRL, and Axolotl
+- [AMD](https://dstack.ai/examples/accelerators/amd/index.md): Deploying and fine-tuning models on AMD MI300X GPUs using SGLang, vLLM, TRL, and Axolotl
 - [TPU](https://dstack.ai/examples/accelerators/tpu/index.md): Deploying and fine-tuning models on Google Cloud TPUs using Optimum TPU and vLLM
 - [Tenstorrent](https://dstack.ai/examples/accelerators/tenstorrent/index.md): Running dev environments, tasks, and services on Tenstorrent Wormhole accelerators
+
+### Models
+
+- [Qwen 3.6](https://dstack.ai/examples/models/qwen36/index.md): Deploying Qwen3.6-27B using SGLang on NVIDIA and AMD GPUs

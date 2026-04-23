@@ -3692,6 +3692,94 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_7" id="__nav_3_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Models
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Models
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/models/qwen36/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Qwen 3.6
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -4355,47 +4443,44 @@ Provisioning<span class="w"> </span><span class="sb">`</span>streamlit<span clas
 <p>Create the following run configuration:</p>
 <p><div editor-title="service.dstack.yml"> </p>
 <div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service</span>
-<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">llama31-service</span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">qwen36-service</span>
 
-<span class="c1"># If `image` is not specified, dstack uses its default image</span>
-<span class="nt">python</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;3.11&quot;</span>
-<span class="c1">#image: dstackai/base:py3.13-0.7-cuda-12.1</span>
+<span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">lmsysorg/sglang:v0.5.10.post1</span>
 
-<span class="c1"># Required environment variables</span>
-<span class="nt">env</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HF_TOKEN</span>
 <span class="nt">commands</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip install vllm</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vllm serve meta-llama/Meta-Llama-3.1-8B-Instruct --max-model-len 4096</span>
-<span class="c1"># Expose the vllm server port</span>
-<span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8000</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">    </span><span class="no">sglang serve \</span>
+<span class="w">      </span><span class="no">--model-path Qwen/Qwen3.6-27B \</span>
+<span class="w">      </span><span class="no">--host 0.0.0.0 \</span>
+<span class="w">      </span><span class="no">--port 30000 \</span>
+<span class="w">      </span><span class="no">--reasoning-parser qwen3</span>
+<span class="c1"># Expose the SGLang server port</span>
+<span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30000</span>
 
 <span class="c1"># Specify a name if it&#39;s an OpenAI-compatible model</span>
-<span class="nt">model</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">meta-llama/Meta-Llama-3.1-8B-Instruct</span>
+<span class="nt">model</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Qwen/Qwen3.6-27B</span>
 
 <span class="c1"># Required resources</span>
 <span class="nt">resources</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">24GB</span>
+<span class="w">  </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">H100</span>
 </code></pre></div>
 </div>
 <p>Run the configuration via <code>dstack apply</code>:</p>
 <div class="termy">
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nv">HF_TOKEN</span><span class="o">=</span>...
-$<span class="w"> </span>dstack<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>service.dstack.yml
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>dstack<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>service.dstack.yml
 
-<span class="w"> </span><span class="c1">#  BACKEND  REGION     INSTANCE       RESOURCES                    SPOT  PRICE</span>
-<span class="w"> </span><span class="m">1</span><span class="w">  </span>aws<span class="w">      </span>us-west-2<span class="w">  </span>g5.4xlarge<span class="w">     </span>16xCPU,<span class="w"> </span>64GB,<span class="w"> </span>1xA10G<span class="w"> </span><span class="o">(</span>24GB<span class="o">)</span><span class="w">  </span>yes<span class="w">   </span><span class="nv">$0</span>.22
-<span class="w"> </span><span class="m">2</span><span class="w">  </span>aws<span class="w">      </span>us-east-2<span class="w">  </span>g6.xlarge<span class="w">      </span>4xCPU,<span class="w"> </span>16GB,<span class="w"> </span>1xL4<span class="w"> </span><span class="o">(</span>24GB<span class="o">)</span><span class="w">     </span>yes<span class="w">   </span><span class="nv">$0</span>.27
-<span class="w"> </span><span class="m">3</span><span class="w">  </span>gcp<span class="w">      </span>us-west1<span class="w">   </span>g2-standard-4<span class="w">  </span>4xCPU,<span class="w"> </span>16GB,<span class="w"> </span>1xL4<span class="w"> </span><span class="o">(</span>24GB<span class="o">)</span><span class="w">     </span>yes<span class="w">   </span><span class="nv">$0</span>.27
+<span class="w"> </span><span class="c1">#  BACKEND  REGION     INSTANCE              RESOURCES                          SPOT  PRICE</span>
+<span class="w"> </span><span class="m">1</span><span class="w">  </span>nebius<span class="w">   </span>eu-north1<span class="w">  </span>gpu-h100-sxm<span class="w">          </span>16xCPU,<span class="w"> </span>250GB,<span class="w"> </span>1xH100<span class="w"> </span><span class="o">(</span>80GB<span class="o">)</span><span class="w">      </span>no<span class="w">    </span><span class="nv">$2</span>.95
+<span class="w"> </span><span class="m">2</span><span class="w">  </span>runpod<span class="w">   </span>US-CA-2<span class="w">    </span>NVIDIA<span class="w"> </span>H100<span class="w"> </span>80GB<span class="w"> </span>HBM3<span class="w"> </span>64xCPU,<span class="w"> </span>1004GB,<span class="w"> </span>1xH100<span class="w"> </span><span class="o">(</span>80GB<span class="o">)</span><span class="w">     </span>no<span class="w">    </span><span class="nv">$2</span>.99
 
-Submit<span class="w"> </span>the<span class="w"> </span>run<span class="w"> </span>llama31-service?<span class="w"> </span><span class="o">[</span>y/n<span class="o">]</span>:<span class="w"> </span>y
+Submit<span class="w"> </span>the<span class="w"> </span>run<span class="w"> </span>qwen36-service?<span class="w"> </span><span class="o">[</span>y/n<span class="o">]</span>:<span class="w"> </span>y
 
-Provisioning<span class="w"> </span><span class="sb">`</span>llama31-service<span class="sb">`</span>...
+Provisioning<span class="w"> </span><span class="sb">`</span>qwen36-service<span class="sb">`</span>...
 ---&gt;<span class="w"> </span><span class="m">100</span>%
 
 Service<span class="w"> </span>is<span class="w"> </span>published<span class="w"> </span>at:<span class="w"> </span>
-<span class="w">  </span>http://localhost:3000/proxy/services/main/llama31-service/
-Model<span class="w"> </span>meta-llama/Meta-Llama-3.1-8B-Instruct<span class="w"> </span>is<span class="w"> </span>published<span class="w"> </span>at:
+<span class="w">  </span>http://localhost:3000/proxy/services/main/qwen36-service/
+Model<span class="w"> </span>Qwen/Qwen3.6-27B<span class="w"> </span>is<span class="w"> </span>published<span class="w"> </span>at:
 <span class="w">  </span>http://localhost:3000/proxy/models/main/
 </code></pre></div>
 </div>
