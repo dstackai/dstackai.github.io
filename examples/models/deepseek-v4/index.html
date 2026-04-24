@@ -4360,6 +4360,11 @@
 <span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30000</span>
 <span class="nt">model</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">deepseek-ai/DeepSeek-V4-Pro</span>
 
+<span class="nt">volumes</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">instance_path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/root/.cache</span>
+<span class="w">    </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/root/.cache</span>
+<span class="w">    </span><span class="nt">optional</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+
 <span class="nt">resources</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">B200:8</span>
 <span class="w">  </span><span class="nt">shm_size</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">32GB</span>
@@ -4441,12 +4446,10 @@ top-level JSON fields.</p>
 </ul>
 <h2 id="deployment-notes">Deployment notes<a class="headerlink" href="#deployment-notes" title="Permanent link">&para;</a></h2>
 <ul>
-<li>Use <code>lmsysorg/sglang:deepseek-v4-blackwell</code> for <code>B200:8</code>.</li>
 <li>The first startup can take several minutes while the model loads and SGLang
-  finishes CUDA graph capture.</li>
-<li>On container backends such as Vast.ai, avoid <code>instance_path</code> cache volumes in
-  this service config.</li>
-<li>The endpoint is OpenAI-compatible and served on port <code>30000</code>.</li>
+  finishes initialization.</li>
+<li>The optional <code>/root/.cache</code> instance volume helps reuse the model cache on
+  backends that support instance volumes.</li>
 </ul>
 <h2 id="whats-next">What's next?<a class="headerlink" href="#whats-next" title="Permanent link">&para;</a></h2>
 <ol>
