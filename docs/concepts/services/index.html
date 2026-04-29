@@ -5136,7 +5136,7 @@ case <code>dstack</code> adjusts the number of replicas (scales up or down) auto
 <h3 id="pd-disaggregation">PD disaggregation<a class="headerlink" href="#pd-disaggregation" title="Permanent link">&para;</a></h3>
 <!-- NOTE: this section is referenced from the CLI, keep the URL unchanged -->
 
-<p>Since 0.20.17, <code>dstack</code> supports serving a model using PD disaggregation. To use it, configure three replica groups: one for a router (for example, <a href="https://docs.sglang.io/advanced_features/sgl_model_gateway.html">SGLang Model Gateway</a>), one for prefill workers, and one for decode workers.</p>
+<p>Since 0.20.17, <code>dstack</code> supports serving a model using PD disaggregation. To use it, configure three replica groups: one for <a href="https://docs.sglang.io/advanced_features/sgl_model_gateway.html">Shepherd Model Gateway (SMG)</a>, one for prefill workers, and one for decode workers.</p>
 <blockquote>
 <p>Currently, Prefill-Decode disaggregation is supported only for SGLang.</p>
 </blockquote>
@@ -5157,9 +5157,10 @@ case <code>dstack</code> adjusts the number of replicas (scales up or down) auto
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">count</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
 <span class="w">    </span><span class="c1"># For now replica group with router must have count: 1</span>
 <span class="w">    </span><span class="nt">commands</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip install sglang_router</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip install smg</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
-<span class="w">        </span><span class="no">python -m sglang_router.launch_router \</span>
+<span class="w">        </span><span class="no">smg launch \</span>
+<span class="w">          </span><span class="no">--host 0.0.0.0 \</span>
 <span class="w">          </span><span class="no">--port 8000 \</span>
 <span class="w">          </span><span class="no">--pd-disaggregation \</span>
 <span class="w">          </span><span class="no">--prefill-policy cache_aware</span>

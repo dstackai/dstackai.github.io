@@ -69,8 +69,9 @@ The `service` configuration type allows running [services](../../concepts/servic
 
 ###### `metric` - (Required) `"rps"` The target metric to track. Currently, the only supported value is `rps` (meaning requests per second). { #metric data-toc-label='metric' class='reference-item' }
 ###### `target` - (Required) `float` The target value of the metric. The number of replicas is calculated based on this number and automatically adjusts (scales up or down) as this metric changes. { #target data-toc-label='target' class='reference-item' }
-###### `scale_up_delay` - (Optional) `int | str` The delay in seconds before scaling up. Defaults to `300`. { #scale_up_delay data-toc-label='scale_up_delay' class='reference-item' }
-###### `scale_down_delay` - (Optional) `int | str` The delay in seconds before scaling down. Defaults to `600`. { #scale_down_delay data-toc-label='scale_down_delay' class='reference-item' }
+###### `window` - (Optional) `int | str` The time window used to calculate requests per second. Allowed values: `30s`, `60s`, `300s`. Defaults to `60s`. { #window data-toc-label='window' class='reference-item' }
+###### `scale_up_delay` - (Optional) `int | str` The minimum time, in seconds, between a scaling event and the next scale-up decision. Used to prevent overly frequent scaling. Defaults to `300`. { #scale_up_delay data-toc-label='scale_up_delay' class='reference-item' }
+###### `scale_down_delay` - (Optional) `int | str` The minimum time, in seconds, between a scaling event and the next scale-down decision. Used to prevent overly frequent scaling. Defaults to `600`. { #scale_down_delay data-toc-label='scale_down_delay' class='reference-item' }
 
 
 ### `rate_limits`

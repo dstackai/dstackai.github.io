@@ -4456,7 +4456,7 @@ enable tool calling, add <code>--tool-call-parser qwen3_coder</code> to the serv
 </blockquote>
 <h2 id="configuration-options">Configuration options<a class="headerlink" href="#configuration-options" title="Permanent link">&para;</a></h2>
 <h3 id="pd-disaggregation">PD disaggregation<a class="headerlink" href="#pd-disaggregation" title="Permanent link">&para;</a></h3>
-<p>To run SGLang with <a href="https://docs.sglang.io/advanced_features/pd_disaggregation.html">PD disaggregation</a>, use replicas groups: one for a router (for example, <a href="https://docs.sglang.io/advanced_features/sgl_model_gateway.html">SGLang Model Gateway</a>), one for prefill workers, and one for decode workers.</p>
+<p>To run SGLang with <a href="https://docs.sglang.io/advanced_features/pd_disaggregation.html">PD disaggregation</a>, use replica groups: one for <a href="https://docs.sglang.io/advanced_features/sgl_model_gateway.html">Shepherd Model Gateway (SMG)</a>, one for prefill workers, and one for decode workers.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="2:1"><input checked="checked" id="nvidia_1" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="nvidia_1">NVIDIA</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -4473,9 +4473,9 @@ enable tool calling, add <code>--tool-call-parser qwen3_coder</code> to the serv
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">count</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
 <span class="w">    </span><span class="c1"># For now replica group with router must have count: 1</span>
 <span class="w">    </span><span class="nt">commands</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip install sglang_router</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip install smg</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
-<span class="w">        </span><span class="no">python -m sglang_router.launch_router \</span>
+<span class="w">        </span><span class="no">smg launch \</span>
 <span class="w">          </span><span class="no">--host 0.0.0.0 \</span>
 <span class="w">          </span><span class="no">--port 8000 \</span>
 <span class="w">          </span><span class="no">--pd-disaggregation \</span>
