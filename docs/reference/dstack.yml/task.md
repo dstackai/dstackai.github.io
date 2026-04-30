@@ -10,7 +10,7 @@ The `task` configuration type allows running [tasks](../../concepts/tasks.md).
 ###### `name` - (Optional) `str` The run name. If not specified, a random name is generated. { #name data-toc-label='name' class='reference-item' }
 ###### `image` - (Optional) `str` The name of the Docker image to run. { #image data-toc-label='image' class='reference-item' }
 ###### `user` - (Optional) `str` The user inside the container, `user_name_or_id[:group_name_or_id]` (e.g., `ubuntu`, `1000:1000`). Defaults to the default user from the `image`. { #user data-toc-label='user' class='reference-item' }
-###### `privileged` - (Optional) `bool` Run the container in privileged mode. { #privileged data-toc-label='privileged' class='reference-item' }
+###### `privileged` - (Optional) `bool` Run the container in privileged mode. Defaults to `false`. { #privileged data-toc-label='privileged' class='reference-item' }
 ###### `entrypoint` - (Optional) `str` The Docker entrypoint. { #entrypoint data-toc-label='entrypoint' class='reference-item' }
 ###### `working_dir` - (Optional) `str` The absolute path to the working directory inside the container. Defaults to the `image`'s default working directory. { #working_dir data-toc-label='working_dir' class='reference-item' }
 ###### [`registry_auth`](#registry_auth) - (Optional) `object` Credentials for pulling a private Docker image. { #_registry_auth data-toc-label='registry_auth' class='reference-item' }
@@ -110,7 +110,7 @@ The `task` configuration type allows running [tasks](../../concepts/tasks.md).
 
     ###### `instance_path` - (Required) `str` The absolute path on the instance (host). { #instance_path data-toc-label='instance_path' class='reference-item' }
     ###### `path` - (Required) `str` The absolute path in the container. { #path data-toc-label='path' class='reference-item' }
-    ###### `optional` - (Optional) `bool` Allow running without this volume in backends that do not support instance volumes. { #optional data-toc-label='optional' class='reference-item' }
+    ###### `optional` - (Optional) `bool` Allow running without this volume in backends that do not support instance volumes. Defaults to `false`. { #optional data-toc-label='optional' class='reference-item' }
 
 
 ??? info "Short syntax"
@@ -131,7 +131,7 @@ The `task` configuration type allows running [tasks](../../concepts/tasks.md).
 ###### `branch` - (Optional) `str` The repo branch. Defaults to the active branch for local paths and the default branch for URLs. { #branch data-toc-label='branch' class='reference-item' }
 ###### `hash` - (Optional) `str` The commit hash. { #hash data-toc-label='hash' class='reference-item' }
 ###### `path` - (Optional) `str` The repo path inside the run container. Relative paths are resolved relative to the working directory. Defaults to `.`. { #path data-toc-label='path' class='reference-item' }
-###### `if_exists` - (Optional) `"error" | "skip"` The action to be taken if `path` exists and is not empty. One of: `error`, `skip`. Defaults to `error`. { #if_exists data-toc-label='if_exists' class='reference-item' }
+###### `if_exists` - (Optional) `"error" | "skip"` The action to be taken if `path` exists and is not empty. One of: `error`, `skip`. Defaults to `RepoExistsAction.ERROR`. { #if_exists data-toc-label='if_exists' class='reference-item' }
 
 
 ??? info "`if_exists` action"

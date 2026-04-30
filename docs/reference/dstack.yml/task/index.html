@@ -4474,7 +4474,7 @@
 <h6 class="reference-item" id="name"><code>name</code> - (Optional) <code>str</code> The run name. If not specified, a random name is generated.<a class="headerlink" href="#name" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="image"><code>image</code> - (Optional) <code>str</code> The name of the Docker image to run.<a class="headerlink" href="#image" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="user"><code>user</code> - (Optional) <code>str</code> The user inside the container, <code>user_name_or_id[:group_name_or_id]</code> (e.g., <code>ubuntu</code>, <code>1000:1000</code>). Defaults to the default user from the <code>image</code>.<a class="headerlink" href="#user" title="Permanent link">&para;</a></h6>
-<h6 class="reference-item" id="privileged"><code>privileged</code> - (Optional) <code>bool</code> Run the container in privileged mode.<a class="headerlink" href="#privileged" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="privileged"><code>privileged</code> - (Optional) <code>bool</code> Run the container in privileged mode. Defaults to <code>false</code>.<a class="headerlink" href="#privileged" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="entrypoint"><code>entrypoint</code> - (Optional) <code>str</code> The Docker entrypoint.<a class="headerlink" href="#entrypoint" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="working_dir"><code>working_dir</code> - (Optional) <code>str</code> The absolute path to the working directory inside the container. Defaults to the <code>image</code>'s default working directory.<a class="headerlink" href="#working_dir" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="_registry_auth"><a href="#registry_auth"><code>registry_auth</code></a> - (Optional) <code>object</code> Credentials for pulling a private Docker image.<a class="headerlink" href="#_registry_auth" title="Permanent link">&para;</a></h6>
@@ -4546,7 +4546,7 @@
 <div class="tabbed-block">
 <h6 class="reference-item" id="instance_path"><code>instance_path</code> - (Required) <code>str</code> The absolute path on the instance (host).<a class="headerlink" href="#instance_path" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="path"><code>path</code> - (Required) <code>str</code> The absolute path in the container.<a class="headerlink" href="#path" title="Permanent link">&para;</a></h6>
-<h6 class="reference-item" id="optional"><code>optional</code> - (Optional) <code>bool</code> Allow running without this volume in backends that do not support instance volumes.<a class="headerlink" href="#optional" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="optional"><code>optional</code> - (Optional) <code>bool</code> Allow running without this volume in backends that do not support instance volumes. Defaults to <code>false</code>.<a class="headerlink" href="#optional" title="Permanent link">&para;</a></h6>
 </div>
 </div>
 </div>
@@ -4568,7 +4568,7 @@
 <h6 class="reference-item" id="branch"><code>branch</code> - (Optional) <code>str</code> The repo branch. Defaults to the active branch for local paths and the default branch for URLs.<a class="headerlink" href="#branch" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="hash"><code>hash</code> - (Optional) <code>str</code> The commit hash.<a class="headerlink" href="#hash" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="path"><code>path</code> - (Optional) <code>str</code> The repo path inside the run container. Relative paths are resolved relative to the working directory. Defaults to <code>.</code>.<a class="headerlink" href="#path" title="Permanent link">&para;</a></h6>
-<h6 class="reference-item" id="if_exists"><code>if_exists</code> - (Optional) <code>"error" | "skip"</code> The action to be taken if <code>path</code> exists and is not empty. One of: <code>error</code>, <code>skip</code>. Defaults to <code>error</code>.<a class="headerlink" href="#if_exists" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="if_exists"><code>if_exists</code> - (Optional) <code>"error" | "skip"</code> The action to be taken if <code>path</code> exists and is not empty. One of: <code>error</code>, <code>skip</code>. Defaults to <code>RepoExistsAction.ERROR</code>.<a class="headerlink" href="#if_exists" title="Permanent link">&para;</a></h6>
 <details class="info">
 <summary><code>if_exists</code> action</summary>
 <p>If the <code>path</code> already exists and is a non-empty directory, by default the run is terminated with an error.

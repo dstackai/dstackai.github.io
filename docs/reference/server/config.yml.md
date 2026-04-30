@@ -377,7 +377,7 @@ to configure [backends](../../concepts/backends.md) and other [server-level sett
 
 ### `default_permissions` { #default_permissions data-toc-label="default_permissions" }
 
-###### `allow_non_admins_create_projects` - (Optional) `bool` This flag controls whether regular users (non-global admins) can create and manage their own projects. Defaults to `True`. { #allow_non_admins_create_projects data-toc-label='allow_non_admins_create_projects' class='reference-item' }
-###### `allow_non_admins_manage_ssh_fleets` - (Optional) `bool` This flag controls whether regular project members (i.e. Users) can add and delete SSH fleets. Defaults to `True`. { #allow_non_admins_manage_ssh_fleets data-toc-label='allow_non_admins_manage_ssh_fleets' class='reference-item' }
-###### `allow_managers_manage_secrets` - (Optional) `bool` This flag controls whether project managers can manage project secrets. { #allow_managers_manage_secrets data-toc-label='allow_managers_manage_secrets' class='reference-item' }
+###### `allow_non_admins_create_projects` - (Optional) `bool` This flag controls whether regular users (non-global admins) can create and manage their own projects. Defaults to `true`. { #allow_non_admins_create_projects data-toc-label='allow_non_admins_create_projects' class='reference-item' }
+###### `allow_non_admins_manage_ssh_fleets` - (Optional) `bool` This flag controls whether regular project members (i.e. Users) can add and delete SSH fleets. Defaults to `true`. { #allow_non_admins_manage_ssh_fleets data-toc-label='allow_non_admins_manage_ssh_fleets' class='reference-item' }
+###### `allow_managers_manage_secrets` - (Optional) `bool` This flag controls whether project managers can manage project secrets. Defaults to `false`. { #allow_managers_manage_secrets data-toc-label='allow_managers_manage_secrets' class='reference-item' }
 

@@ -6,10 +6,10 @@ The `service` configuration type allows running [services](../../concepts/servic
 
 ###### `port` - (Required) `int | str | object` The port the application listens on. { #port data-toc-label='port' class='reference-item' }
 ###### `gateway` - (Optional) `bool | str` The name of the gateway. Specify boolean `false` to run without a gateway. Specify boolean `true` to run with the default gateway. Omit to run with the default gateway if there is one, or without a gateway otherwise. { #gateway data-toc-label='gateway' class='reference-item' }
-###### `strip_prefix` - (Optional) `bool` Strip the `/proxy/services/<project name>/<run name>/` path prefix when forwarding requests to the service. Only takes effect when running the service without a gateway. Defaults to `True`. { #strip_prefix data-toc-label='strip_prefix' class='reference-item' }
+###### `strip_prefix` - (Optional) `bool` Strip the `/proxy/services/<project name>/<run name>/` path prefix when forwarding requests to the service. Only takes effect when running the service without a gateway. Defaults to `true`. { #strip_prefix data-toc-label='strip_prefix' class='reference-item' }
 ###### [`model`](#model) - (Optional) `str | object` Mapping of the model for the OpenAI-compatible endpoint provided by `dstack`. Can be a full model format definition or just a model name. If it's a name, the service is expected to expose an OpenAI-compatible API at the `/v1` path. { #_model data-toc-label='model' class='reference-item' }
 ###### `https` - (Optional) `bool | "auto"` Enable HTTPS if running with a gateway. Set to `auto` to determine automatically based on gateway configuration. Defaults to `true`. { #https data-toc-label='https' class='reference-item' }
-###### `auth` - (Optional) `bool` Enable the authorization. Defaults to `True`. { #auth data-toc-label='auth' class='reference-item' }
+###### `auth` - (Optional) `bool` Enable the authorization. Defaults to `true`. { #auth data-toc-label='auth' class='reference-item' }
 ###### [`scaling`](#scaling) - (Optional) `object` The auto-scaling rules. Required if `replicas` is set to a range. { #_scaling data-toc-label='scaling' class='reference-item' }
 ###### [`rate_limits`](#rate_limits) - (Optional) `list[object]` Rate limiting rules. { #_rate_limits data-toc-label='rate_limits' class='reference-item' }
 ###### [`probes`](#probes) - (Optional) `list[object]` The list of probes to determine service health. If `model` is set, defaults to a `/v1/chat/completions` probe. Set explicitly to override. { #_probes data-toc-label='probes' class='reference-item' }
@@ -19,7 +19,7 @@ The `service` configuration type allows running [services](../../concepts/servic
 ###### `name` - (Optional) `str` The run name. If not specified, a random name is generated. { #name data-toc-label='name' class='reference-item' }
 ###### `image` - (Optional) `str` The name of the Docker image to run. { #image data-toc-label='image' class='reference-item' }
 ###### `user` - (Optional) `str` The user inside the container, `user_name_or_id[:group_name_or_id]` (e.g., `ubuntu`, `1000:1000`). Defaults to the default user from the `image`. { #user data-toc-label='user' class='reference-item' }
-###### `privileged` - (Optional) `bool` Run the container in privileged mode. { #privileged data-toc-label='privileged' class='reference-item' }
+###### `privileged` - (Optional) `bool` Run the container in privileged mode. Defaults to `false`. { #privileged data-toc-label='privileged' class='reference-item' }
 ###### `entrypoint` - (Optional) `str` The Docker entrypoint. { #entrypoint data-toc-label='entrypoint' class='reference-item' }
 ###### `working_dir` - (Optional) `str` The absolute path to the working directory inside the container. Defaults to the `image`'s default working directory. { #working_dir data-toc-label='working_dir' class='reference-item' }
 ###### [`registry_auth`](#registry_auth) - (Optional) `object` Credentials for pulling a private Docker image. { #_registry_auth data-toc-label='registry_auth' class='reference-item' }
@@ -81,7 +81,7 @@ The `service` configuration type allows running [services](../../concepts/servic
 ###### `prefix` - (Optional) `str` URL path prefix to which this limit is applied. If an incoming request matches several prefixes, the longest prefix is applied. Defaults to `/`. { #prefix data-toc-label='prefix' class='reference-item' }
 ###### [`key`](#key) - (Optional) `object` The partitioning key. Each incoming request belongs to a partition and rate limits are applied per partition. Defaults to partitioning by client IP address. { #_key data-toc-label='key' class='reference-item' }
 ###### `rps` - (Required) `float` Max allowed number of requests per second. Requests are tracked at millisecond granularity. For example, `rps: 10` means at most 1 request per 100ms. { #rps data-toc-label='rps' class='reference-item' }
-###### `burst` - (Optional) `int` Max number of requests that can be passed to the service ahead of the rate limit. { #burst data-toc-label='burst' class='reference-item' }
+###### `burst` - (Optional) `int` Max number of requests that can be passed to the service ahead of the rate limit. Defaults to `0`. { #burst data-toc-label='burst' class='reference-item' }
 
 
 ##### `rate_limits[n].key` { data-toc-label="key" }
@@ -202,7 +202,7 @@ The `service` configuration type allows running [services](../../concepts/servic
 
     ###### `instance_path` - (Required) `str` The absolute path on the instance (host). { #instance_path data-toc-label='instance_path' class='reference-item' }
     ###### `path` - (Required) `str` The absolute path in the container. { #path data-toc-label='path' class='reference-item' }
-    ###### `optional` - (Optional) `bool` Allow running without this volume in backends that do not support instance volumes. { #optional data-toc-label='optional' class='reference-item' }
+    ###### `optional` - (Optional) `bool` Allow running without this volume in backends that do not support instance volumes. Defaults to `false`. { #optional data-toc-label='optional' class='reference-item' }
 
 
 ??? info "Short syntax"
@@ -223,7 +223,7 @@ The `service` configuration type allows running [services](../../concepts/servic
 ###### `branch` - (Optional) `str` The repo branch. Defaults to the active branch for local paths and the default branch for URLs. { #branch data-toc-label='branch' class='reference-item' }
 ###### `hash` - (Optional) `str` The commit hash. { #hash data-toc-label='hash' class='reference-item' }
 ###### `path` - (Optional) `str` The repo path inside the run container. Relative paths are resolved relative to the working directory. Defaults to `.`. { #path data-toc-label='path' class='reference-item' }
-###### `if_exists` - (Optional) `"error" | "skip"` The action to be taken if `path` exists and is not empty. One of: `error`, `skip`. Defaults to `error`. { #if_exists data-toc-label='if_exists' class='reference-item' }
+###### `if_exists` - (Optional) `"error" | "skip"` The action to be taken if `path` exists and is not empty. One of: `error`, `skip`. Defaults to `RepoExistsAction.ERROR`. { #if_exists data-toc-label='if_exists' class='reference-item' }
 
 
 ??? info "`if_exists` action"

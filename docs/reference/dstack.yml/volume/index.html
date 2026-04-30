@@ -4211,7 +4211,7 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="1:4"><input checked="checked" id="aws" name="__tabbed_1" type="radio" /><input id="gcp" name="__tabbed_1" type="radio" /><input id="runpod" name="__tabbed_1" type="radio" /><input id="kubernetes" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="aws">AWS</label><label for="gcp">GCP</label><label for="runpod">Runpod</label><label for="kubernetes">Kubernetes</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<h6 class="reference-item" id="backend"><code>backend</code> - (Required) <code>"aws"</code> The volume backend. Must be <code>aws</code>.<a class="headerlink" href="#backend" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="backend"><code>backend</code> - (Required) <code>"aws"</code> The volume backend. Must be <code>BackendType.AWS</code>.<a class="headerlink" href="#backend" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="name"><code>name</code> - (Optional) <code>str</code> The volume name.<a class="headerlink" href="#name" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="size"><code>size</code> - (Optional) <code>str</code> The volume size. Must be specified when creating new volumes.<a class="headerlink" href="#size" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="auto_cleanup_duration"><code>auto_cleanup_duration</code> - (Optional) <code>int | str</code> Time to wait after volume is no longer used by any job before deleting it. Defaults to keep the volume indefinitely. Use the value <code>off</code> or <code>-1</code> to disable auto-cleanup.<a class="headerlink" href="#auto_cleanup_duration" title="Permanent link">&para;</a></h6>
@@ -4221,7 +4221,7 @@
 <h6 class="reference-item" id="availability_zone"><code>availability_zone</code> - (Optional) <code>str</code> The volume availability zone.<a class="headerlink" href="#availability_zone" title="Permanent link">&para;</a></h6>
 </div>
 <div class="tabbed-block">
-<h6 class="reference-item" id="backend"><code>backend</code> - (Required) <code>"gcp"</code> The volume backend. Must be <code>gcp</code>.<a class="headerlink" href="#backend" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="backend"><code>backend</code> - (Required) <code>"gcp"</code> The volume backend. Must be <code>BackendType.GCP</code>.<a class="headerlink" href="#backend" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="name"><code>name</code> - (Optional) <code>str</code> The volume name.<a class="headerlink" href="#name" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="size"><code>size</code> - (Optional) <code>str</code> The volume size. Must be specified when creating new volumes.<a class="headerlink" href="#size" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="auto_cleanup_duration"><code>auto_cleanup_duration</code> - (Optional) <code>int | str</code> Time to wait after volume is no longer used by any job before deleting it. Defaults to keep the volume indefinitely. Use the value <code>off</code> or <code>-1</code> to disable auto-cleanup.<a class="headerlink" href="#auto_cleanup_duration" title="Permanent link">&para;</a></h6>
@@ -4231,7 +4231,7 @@
 <h6 class="reference-item" id="availability_zone"><code>availability_zone</code> - (Optional) <code>str</code> The volume availability zone.<a class="headerlink" href="#availability_zone" title="Permanent link">&para;</a></h6>
 </div>
 <div class="tabbed-block">
-<h6 class="reference-item" id="backend"><code>backend</code> - (Required) <code>"runpod"</code> The volume backend. Must be <code>runpod</code>.<a class="headerlink" href="#backend" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="backend"><code>backend</code> - (Required) <code>"runpod"</code> The volume backend. Must be <code>BackendType.RUNPOD</code>.<a class="headerlink" href="#backend" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="name"><code>name</code> - (Optional) <code>str</code> The volume name.<a class="headerlink" href="#name" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="size"><code>size</code> - (Optional) <code>str</code> The volume size. Must be specified when creating new volumes.<a class="headerlink" href="#size" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="auto_cleanup_duration"><code>auto_cleanup_duration</code> - (Optional) <code>int | str</code> Time to wait after volume is no longer used by any job before deleting it. Defaults to keep the volume indefinitely. Use the value <code>off</code> or <code>-1</code> to disable auto-cleanup.<a class="headerlink" href="#auto_cleanup_duration" title="Permanent link">&para;</a></h6>
@@ -4260,14 +4260,15 @@
 <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">existing-volume</span>
 <span class="nt">claim_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">existing-pvc</span>
 </code></pre></div>
-<h6 class="reference-item" id="backend"><code>backend</code> - (Required) <code>"kubernetes"</code> The volume backend. Must be <code>kubernetes</code>.<a class="headerlink" href="#backend" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="backend"><code>backend</code> - (Required) <code>"kubernetes"</code> The volume backend. Must be <code>BackendType.KUBERNETES</code>.<a class="headerlink" href="#backend" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="name"><code>name</code> - (Optional) <code>str</code> The volume name.<a class="headerlink" href="#name" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="size"><code>size</code> - (Optional) <code>str</code> The requested volume size. Must be specified when creating new PVCs. Ignored if <code>claim_name</code> is set.<a class="headerlink" href="#size" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="auto_cleanup_duration"><code>auto_cleanup_duration</code> - (Optional) <code>int | str</code> Time to wait after volume is no longer used by any job before deleting it. Defaults to keep the volume indefinitely. Use the value <code>off</code> or <code>-1</code> to disable auto-cleanup.<a class="headerlink" href="#auto_cleanup_duration" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="tags"><code>tags</code> - (Optional) <code>dict</code> The custom tags to associate with the volume. The tags are also propagated to the underlying backend resources. If there is a conflict with backend-level tags, does not override them.<a class="headerlink" href="#tags" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="claim_name"><code>claim_name</code> - (Optional) <code>str</code> The <code>PersistentVolumeClaim</code> name. Must be specified when registering the existing PVC instead of creating a new one.<a class="headerlink" href="#claim_name" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="storage_class_name"><code>storage_class_name</code> - (Optional) <code>str</code> The <code>StorageClass</code> name. Ignored if <code>claim_name</code> is set.<a class="headerlink" href="#storage_class_name" title="Permanent link">&para;</a></h6>
-<h6 class="reference-item" id="access_modes"><code>access_modes</code> - (Optional) <code>list[str]</code> A list of accepted access modes. Ignored if <code>claim_name</code> is set. Defaults to <code>['ReadWriteOnce']</code>.<a class="headerlink" href="#access_modes" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="access_modes"><code>access_modes</code> - (Optional) <code>list[str]</code> A list of accepted access modes. Ignored if <code>claim_name</code> is set. Defaults to <code>["ReadWriteOnce"]</code>.<a class="headerlink" href="#access_modes" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="read_only"><code>read_only</code> - (Optional) <code>bool</code> If <code>true</code>, enforces the volume to be mounted as read-only. Defaults to <code>false</code>.<a class="headerlink" href="#read_only" title="Permanent link">&para;</a></h6>
 </div>
 </div>
 </div>
