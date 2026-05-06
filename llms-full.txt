@@ -584,7 +584,7 @@ Something not working? See the [troubleshooting](guides/troubleshooting.md) guid
 
 !!! info "What's next?"
     1. Read about [backends](concepts/backends.md),  [dev environments](concepts/dev-environments.md), [tasks](concepts/tasks.md), [services](concepts/services.md), and [fleets](concepts/services.md)
-    2. Browse [examples](../examples.md)
+    2. Browse [examples](examples.md)
     3. Join [Discord](https://discord.gg/u8SmfwPpMd)
 
 
@@ -1780,7 +1780,7 @@ projects:
 
     This applies to offers shown in `dstack apply` (run plans), during provisioning, and in `dstack offer`. Unlike other backends, offers for the `kubernetes` backend always reflect the lower limit of the range.
 
-> To learn more, see the [Lambda](../../examples/clusters/lambda/#kubernetes) and [Crusoe](../../examples/clusters/crusoe/#kubernetes) examples.
+> To learn more, see the [Lambda](../examples/clusters/lambda/#kubernetes) and [Crusoe](../examples/clusters/crusoe/#kubernetes) examples.
 
 ### Runpod
 
@@ -2051,24 +2051,22 @@ This property ensures that instances are interconnected. This is required for ru
 
     === "AWS"
         On AWS, `dstack` requires `public_ips` to be set to `false` in the backend configuration.
-        Refer to the [AWS](../../examples/clusters/aws/index.md) example for more details.
+        Refer to the [AWS](../examples/clusters/aws.md) example for more details.
 
     === "GCP"
         On GCP, you may need to configure `extra_vpcs` and `roce_vpcs` in the `gcp` backend configuration.
-        Refer to the [GCP](../../examples/clusters/gcp/index.md) examples for more details.
+        Refer to the [GCP](../examples/clusters/gcp.md) examples for more details.
 
     === "Nebius"
         On [Nebius](https://docs.nebius.com/compute/clusters/gpu), `dstack` automatically configures InfiniBand networking if it is supported by the selected instance type.
 
     === "Crusoe"
         On [Crusoe](https://docs.crusoecloud.com/networking/infiniband/managing-infiniband-networks), `dstack` automatically configures InfiniBand networking if it is supported by the selected instance type.
-        Refer to the [Crusoe](../../examples/clusters/crusoe/index.md#vms) example for more details.
+        Refer to the [Crusoe](../examples/clusters/crusoe.md#vms) example for more details.
 
     === "Kubernetes"
         If the Kubernetes cluster has interconnect configured, `dstack` can use it without additional setup.
-        See the [Lambda](../../examples/clusters/lambda/index.md#kubernetes) or [Crusoe](../../examples/clusters/crusoe/index.md#kubernetes) examples.
-    
-    > See the [Clusters](../../examples.md#clusters) examples.
+        See the [Lambda](../examples/clusters/lambda.md#kubernetes) or [Crusoe](../examples/clusters/crusoe.md#kubernetes) examples.
 
     <!-- TODO: Add Runpod tab to cluster backends once cluster support is fully tested -->
 
@@ -2097,6 +2095,9 @@ This property ensures that instances are interconnected. This is required for ru
         By default, `dstack` automatically detects the network shared by the hosts. However, it's possible to configure it explicitly via the [`network`](../reference/dstack.yml/fleet.md#network) property.
 
         <!-- TODO: Add network configuration example -->
+
+!!! info "Examples"
+    See the cluster examples for [AWS](../examples/clusters/aws.md), [GCP](../examples/clusters/gcp.md), [Lambda](../examples/clusters/lambda.md), [Crusoe](../examples/clusters/crusoe.md), [Nebius](../examples/clusters/nebius.md), and [NCCL/RCCL tests](../examples/clusters/nccl-rccl-tests.md).
 
 ### Nodes
 
@@ -2424,7 +2425,7 @@ Use `--group-by gpu,backend` to aggregate offers.
     2. Read about [Backends](backends.md) guide
     3. Learn how to [export fleets](exports.md) to other projects
     4. Explore the [`.dstack.yml` reference](../reference/dstack.yml/fleet.md)
-    5. See the [Clusters](../../examples.md#clusters) example
+    5. See the cluster examples for [AWS](../examples/clusters/aws.md), [GCP](../examples/clusters/gcp.md), [Lambda](../examples/clusters/lambda.md), [Crusoe](../examples/clusters/crusoe.md), [Nebius](../examples/clusters/nebius.md), and [NCCL/RCCL tests](../examples/clusters/nccl-rccl-tests.md)
 
 
 # docs/concepts/dev-environments.md
@@ -3243,8 +3244,10 @@ Jobs on each node communicate using their private IP addresses. Use `DSTACK_MAST
 
 `dstack` is easy to use with `accelerate`, `torchrun`, Ray, Spark, and any other distributed frameworks.
     
-> For detailed examples, see the [distributed training](../../examples.md#distributed-training) 
-  and [clusters](../../examples.md#clusters) examples.
+!!! info "Examples"
+    See the training examples for [TRL](../examples/training/trl.md#distributed-training), [Axolotl](../examples/training/axolotl.md#distributed-training), and [Ray+RAGEN](../examples/training/ray-ragen.md).
+
+    See the cluster examples for [AWS](../examples/clusters/aws.md), [GCP](../examples/clusters/gcp.md), [Lambda](../examples/clusters/lambda.md), [Crusoe](../examples/clusters/crusoe.md), [Nebius](../examples/clusters/nebius.md), and [NCCL/RCCL tests](../examples/clusters/nccl-rccl-tests.md).
 
 ??? info "Network interface"
     Distributed frameworks usually detect the correct network interface automatically,
@@ -3970,7 +3973,7 @@ via the [`spot_policy`](../reference/dstack.yml/task.md#spot_policy) property. I
 !!! info "What's next?"
     1. Read about [dev environments](dev-environments.md) and [services](services.md)
     2. Learn how to manage [fleets](fleets.md)
-    3. Check the [Axolotl](/examples/single-node-training/axolotl) example
+    3. Check the [Axolotl](../examples/training/axolotl.md) example
 
 
 # docs/concepts/services.md
@@ -5265,8 +5268,8 @@ The rolling deployment stops when all replicas are updated or when a new deploym
     1. Read about [dev environments](dev-environments.md) and [tasks](tasks.md)
     2. Learn how to manage [fleets](fleets.md)
     3. See how to set up [gateways](gateways.md)
-    4. Check the [vLLM](../../examples/inference/vllm/index.md) and
-       [NIM](../../examples/inference/nim/index.md) examples
+    4. Check the [vLLM](../examples/inference/vllm.md) and
+       [NIM](../examples/inference/nim.md) examples
 
 
 # docs/concepts/volumes.md
@@ -5730,10 +5733,10 @@ router:
 
 </div>
 
-If you configure the `sglang` router, [services](../concepts/services.md) can run either [standard SGLang workers](../../examples/inference/sglang/index.md) or [Prefill-Decode workers](../../examples/inference/sglang/index.md#pd-disaggregation) (aka PD disaggregation).
+If you configure the `sglang` router, [services](../concepts/services.md) can run either [standard SGLang workers](../examples/inference/sglang.md) or [Prefill-Decode workers](../examples/inference/sglang.md#pd-disaggregation) (aka PD disaggregation).
 
 !!! note "PD disaggregation"
-    To run services with PD disaggregation see [SGLang PD disaggregation](https://dstack.ai/examples/inference/sglang/#pd-disaggregation).
+    To run services with PD disaggregation see [SGLang PD disaggregation](../examples/inference/sglang.md#pd-disaggregation).
 
 !!! note "Deprecation"
     Configuring the SGLang router in a gateway is deprecated and will be disallowed in a future release.
@@ -9726,339 +9729,3860 @@ fi
 
 1. Check out [Quickstart](../../quickstart.md)
 2. Read about [dev environments](../../concepts/dev-environments.md), [tasks](../../concepts/tasks.md), and [services](../../concepts/services.md)
-3. Browse the [examples](../../../examples.md)
+3. Browse the [examples](../../examples.md)
 
 
-# examples.md
+# docs/examples/training/trl.md
 
 ---
-title: Examples
-description: Collection of examples for models, training, inference, and clusters
-#template: examples.html
-hide:
-#    - navigation
-   - toc
-#    - footer
+title: TRL
+description: Fine-tuning Llama with TRL — single-node SFT with QLoRA, or distributed across multiple nodes with FSDP and DeepSpeed
 ---
 
-<!-- <style>
-.md-main .md-main__inner.md-grid {
-    flex-direction: row-reverse;
-}
-</style> -->
+# TRL
+
+This example walks you through how to use [TRL](https://github.com/huggingface/trl) with `dstack` to fine-tune `Llama-3.1-8B` — on a single node with SFT and QLoRA, or distributed across multiple nodes with [Accelerate](https://github.com/huggingface/accelerate) and [DeepSpeed](https://github.com/deepspeedai/DeepSpeed).
 
 ## Single-node training
 
-<div class="tx-landing__highlights_grid">
-    <a href="/examples/single-node-training/trl"
-       class="feature-cell">
-        <h3>
-            TRL
-        </h3>
+### Define a configuration
 
-        <p>
-            Fine-tune Llama 3.1 8B on a custom dataset using TRL.
-        </p>
-    </a>
+Below is a task configuration that does fine-tuning.
 
-    <a href="/examples/single-node-training/axolotl"
-       class="feature-cell">
-        <h3>
-            Axolotl
-        </h3>
+<div editor-title="train.dstack.yml"> 
 
-        <p>
-            Fine-tune Llama 4 on a custom dataset using Axolotl.
-        </p>
-    </a>
+```yaml
+type: task
+name: trl-train
+
+python: 3.12
+# Ensure nvcc is installed (req. for Flash Attention) 
+nvcc: true
+
+env:
+  - HF_TOKEN
+  - WANDB_API_KEY
+  - HUB_MODEL_ID
+commands:
+  # Pin torch==2.6.0 to avoid building Flash Attention from source.
+  # Prebuilt Flash Attention wheels are not available for the latest torch==2.7.0.
+  - uv pip install torch==2.6.0
+  - uv pip install transformers bitsandbytes peft wandb
+  - uv pip install flash_attn --no-build-isolation
+  - git clone https://github.com/huggingface/trl
+  - cd trl
+  - uv pip install .
+  - |
+    accelerate launch \
+      --config_file=examples/accelerate_configs/multi_gpu.yaml \
+      --num_processes $DSTACK_GPUS_PER_NODE \
+      trl/scripts/sft.py \
+      --model_name meta-llama/Meta-Llama-3.1-8B \
+      --dataset_name OpenAssistant/oasst_top1_2023-08-25 \
+      --dataset_text_field="text" \
+      --per_device_train_batch_size 1 \
+      --per_device_eval_batch_size 1 \
+      --gradient_accumulation_steps 4 \
+      --learning_rate 2e-4 \
+      --report_to wandb \
+      --bf16 \
+      --max_seq_length 1024 \
+      --lora_r 16 \
+      --lora_alpha 32 \
+      --lora_target_modules q_proj k_proj v_proj o_proj \
+      --load_in_4bit \
+      --use_peft \
+      --attn_implementation "flash_attention_2" \
+      --logging_steps=10 \
+      --output_dir models/llama31 \
+      --hub_model_id peterschmidt85/FineLlama-3.1-8B
+
+resources:
+  gpu:
+    # 24GB or more VRAM
+    memory: 24GB..
+    # One or more GPU
+    count: 1..
+  # Shared memory (for multi-gpu)
+  shm_size: 24GB
+```
+
+</div>
+
+Change the `resources` property to specify more GPUs.
+
+!!! info "AMD"
+    The example above uses NVIDIA accelerators. To use it with AMD, check out [AMD](../accelerators/amd.md#trl).
+
+??? info "DeepSpeed"
+    For more memory-efficient use of multiple GPUs, consider using DeepSpeed and ZeRO Stage 3.
+
+    To do this, use the `examples/accelerate_configs/deepspeed_zero3.yaml` configuration file instead of 
+    `examples/accelerate_configs/multi_gpu.yaml`.
+
+### Run the configuration
+
+Once the configuration is ready, run `dstack apply -f <configuration file>`, and `dstack` will automatically provision the
+cloud resources and run the configuration.
+
+<div class="termy">
+
+```shell
+$ HF_TOKEN=...
+$ WANDB_API_KEY=...
+$ HUB_MODEL_ID=...
+$ dstack apply -f train.dstack.yml
+
+ #  BACKEND              RESOURCES                     INSTANCE TYPE  PRICE     
+ 1  vastai (cz-czechia)  cpu=64 mem=128GB H100:80GB:2  18794506       $3.8907   
+ 2  vastai (us-texas)    cpu=52 mem=64GB  H100:80GB:2  20442365       $3.6926   
+ 3  vastai (fr-france)   cpu=64 mem=96GB  H100:80GB:2  20379984       $3.7389
+
+Submit the run trl-train? [y/n]:
+
+Provisioning...
+---> 100%
+```
+
 </div>
 
 ## Distributed training
 
-<div class="tx-landing__highlights_grid">
-    <a href="/examples/distributed-training/trl"
-       class="feature-cell sky">
-        <h3>
-            TRL
-        </h3>
+!!! info "Prerequisites"
+    Before running a distributed task, make sure to create a fleet with `placement` set to `cluster` (can be a [managed fleet](../../concepts/fleets.md#cluster-placement) or an [SSH fleet](../../concepts/fleets.md#ssh-placement)).
 
-        <p>
-            Fine-tune LLM on multiple nodes
-            with TRL, Accelerate, and Deepspeed.
-        </p>
-    </a>
-    <a href="/examples/distributed-training/axolotl"
-       class="feature-cell sky">
-        <h3>
-            Axolotl
-        </h3>
+### Define a configuration
 
-        <p>
-            Fine-tune LLM on multiple nodes
-            with Axolotl.
-        </p>
-    </a>
-    <a href="/examples/distributed-training/ray-ragen"
-       class="feature-cell sky">
-        <h3>
-            Ray+RAGEN
-        </h3>
+Once the fleet is created, define a distributed task configuration. Here's an example using either FSDP or DeepSpeed ZeRO-3.
 
-        <p>
-            Fine-tune an agent on multiple nodes
-            with RAGEN, verl, and Ray.
-        </p>
-    </a>
+=== "FSDP"
+
+    <div editor-title="train-distrib.dstack.yml">
+
+    ```yaml
+    type: task
+    name: trl-train-fsdp-distrib
+
+    nodes: 2
+
+    image: nvcr.io/nvidia/pytorch:25.01-py3
+
+    env:
+      - HF_TOKEN
+      - ACCELERATE_LOG_LEVEL=info
+      - WANDB_API_KEY
+      - MODEL_ID=meta-llama/Llama-3.1-8B
+      - HUB_MODEL_ID
+
+    commands:
+      - pip install transformers bitsandbytes peft wandb
+      - git clone https://github.com/huggingface/trl
+      - cd trl
+      - pip install .
+      - |
+        accelerate launch \
+          --config_file=examples/accelerate_configs/fsdp1.yaml \
+          --main_process_ip=$DSTACK_MASTER_NODE_IP \
+          --main_process_port=8008 \
+          --machine_rank=$DSTACK_NODE_RANK \
+          --num_processes=$DSTACK_GPUS_NUM \
+          --num_machines=$DSTACK_NODES_NUM \
+          trl/scripts/sft.py \
+          --model_name $MODEL_ID \
+          --dataset_name OpenAssistant/oasst_top1_2023-08-25 \
+          --dataset_text_field="text" \
+          --per_device_train_batch_size 1 \
+          --per_device_eval_batch_size 1 \
+          --gradient_accumulation_steps 4 \
+          --learning_rate 2e-4 \
+          --report_to wandb \
+          --bf16 \
+          --max_seq_length 1024 \
+          --attn_implementation flash_attention_2 \
+          --logging_steps=10 \
+          --output_dir /checkpoints/llama31-ft \
+          --hub_model_id $HUB_MODEL_ID \
+          --torch_dtype bfloat16
+
+    resources:
+      gpu: 80GB:8
+      shm_size: 128GB
+
+    volumes:
+      - /checkpoints:/checkpoints
+    ```
+
+    </div>
+
+=== "DeepSpeed ZeRO-3"
+
+    <div editor-title="train-distrib.dstack.yml">
+
+    ```yaml
+    type: task
+    name: trl-train-deepspeed-distrib
+
+    nodes: 2
+
+    image: nvcr.io/nvidia/pytorch:25.01-py3
+
+    env:
+      - HF_TOKEN
+      - WANDB_API_KEY
+      - HUB_MODEL_ID
+      - MODEL_ID=meta-llama/Llama-3.1-8B
+      - ACCELERATE_LOG_LEVEL=info
+
+    commands:
+      - pip install transformers bitsandbytes peft wandb deepspeed
+      - git clone https://github.com/huggingface/trl
+      - cd trl
+      - pip install .
+      - |
+        accelerate launch \
+          --config_file=examples/accelerate_configs/deepspeed_zero3.yaml \
+          --main_process_ip=$DSTACK_MASTER_NODE_IP \
+          --main_process_port=8008 \
+          --machine_rank=$DSTACK_NODE_RANK \
+          --num_processes=$DSTACK_GPUS_NUM \
+          --num_machines=$DSTACK_NODES_NUM \
+          trl/scripts/sft.py \
+          --model_name $MODEL_ID \
+          --dataset_name OpenAssistant/oasst_top1_2023-08-25 \
+          --dataset_text_field="text" \
+          --per_device_train_batch_size 1 \
+          --per_device_eval_batch_size 1 \
+          --gradient_accumulation_steps 4 \
+          --learning_rate 2e-4 \
+          --report_to wandb \
+          --bf16 \
+          --max_seq_length 1024 \
+          --attn_implementation flash_attention_2 \
+          --logging_steps=10 \
+          --output_dir /checkpoints/llama31-ft \
+          --hub_model_id $HUB_MODEL_ID \
+          --torch_dtype bfloat16
+
+    resources:
+      gpu: 80GB:8
+      shm_size: 128GB
+
+    volumes:
+      - /checkpoints:/checkpoints
+    ```
+
+    </div>
+
+!!! info "Docker image"
+    We are using `nvcr.io/nvidia/pytorch:25.01-py3` from NGC because it includes the necessary libraries and packages for RDMA and InfiniBand support.
+
+### Run the configuration
+
+To run a configuration, use the [`dstack apply`](../../reference/cli/dstack/apply.md) command.
+
+<div class="termy">
+
+```shell
+$ HF_TOKEN=...
+$ WANDB_API_KEY=...
+$ HUB_MODEL_ID=...
+$ dstack apply -f train-distrib.dstack.yml
+
+ #  BACKEND       RESOURCES                       INSTANCE TYPE  PRICE
+ 1  ssh (remote)  cpu=208 mem=1772GB H100:80GB:8  instance       $0     idle
+ 2  ssh (remote)  cpu=208 mem=1772GB H100:80GB:8  instance       $0     idle
+
+Submit the run trl-train-fsdp-distrib? [y/n]: y
+
+Provisioning...
+---> 100%
+```
+
 </div>
 
+## What's next?
 
-## Clusters
+1. Check [dev environments](../../concepts/dev-environments.md), [tasks](../../concepts/tasks.md), 
+   [services](../../concepts/services.md), and [fleets](../../concepts/fleets.md)
+2. Read about [cluster placement](../../concepts/fleets.md#cluster-placement)
+3. See the [AMD](../accelerators/amd.md#trl) example
 
-<div class="tx-landing__highlights_grid">
-    <a href="/examples/clusters/gcp"
-       class="feature-cell sky">
-        <h3>
-            GCP
-        </h3>
 
-        <p>
-            Set up GCP A4 and A3 clusters with optimized networking
-        </p>
-    </a>
-    <a href="/examples/clusters/efa"
-       class="feature-cell sky">
-        <h3>
-            AWS
-        </h3>
+# docs/examples/training/axolotl.md
 
-        <p>
-            Set up AWS EFA clusters with optimized networking
-        </p>
-    </a>
-    <a href="/examples/clusters/lambda"
-       class="feature-cell sky">
-        <h3>
-            Lambda
-        </h3>
+---
+title: Axolotl
+description: Fine-tuning Llama models with Axolotl — single-node SFT with FSDP and QLoRA, or distributed across multiple nodes
+---
 
-        <p>
-            Set up Lambda clusters with optimized networking
-        </p>
-    </a>
-    <a href="/examples/clusters/crusoe"
-       class="feature-cell sky">
-        <h3>
-            Crusoe
-        </h3>
+# Axolotl
 
-        <p>
-            Set up Crusoe clusters with optimized networking
-        </p>
-    </a>
-    <a href="/examples/clusters/nebius"
-       class="feature-cell sky">
-        <h3>
-            Nebius
-        </h3>
+This example shows how to use [Axolotl](https://github.com/OpenAccess-AI-Collective/axolotl) with `dstack` to fine-tune Llama models — on a single node with SFT, FSDP, and QLoRA, or distributed across multiple nodes.
 
-        <p>
-            Set up Nebius clusters with optimized networking
-        </p>
-    </a>
-    <a href="/examples/clusters/nccl-rccl-tests"
-       class="feature-cell sky">
-        <h3>
-            NCCL/RCCL tests
-        </h3>
+## Single-node training
 
-        <p>
-            Run multi-node NCCL tests with MPI
-        </p>
-    </a>
+This section walks through fine-tuning 4-bit quantized `Llama-4-Scout-17B-16E` using SFT with FSDP and QLoRA.
+
+### Define a configuration
+
+Axolotl reads the model, QLoRA, and dataset arguments, as well as trainer configuration from a [`scout-qlora-flexattn-fsdp2.yaml`](https://github.com/axolotl-ai-cloud/axolotl/blob/main/examples/llama-4/scout-qlora-flexattn-fsdp2.yaml) file. The configuration uses 4-bit axolotl quantized version of `meta-llama/Llama-4-Scout-17B-16E`, requiring only ~43GB VRAM/GPU with 4K context length.
+
+Below is a task configuration that does fine-tuning.
+
+<div editor-title="train.dstack.yml">
+
+```yaml
+type: task
+# The name is optional, if not specified, generated randomly
+name: axolotl-nvidia-llama-scout-train
+
+# Using the official Axolotl's Docker image
+image: axolotlai/axolotl:main-latest
+
+# Required environment variables
+env:
+  - HF_TOKEN
+  - WANDB_API_KEY
+  - WANDB_PROJECT
+  - HUB_MODEL_ID
+# Commands of the task
+commands:
+  - wget https://raw.githubusercontent.com/axolotl-ai-cloud/axolotl/main/examples/llama-4/scout-qlora-flexattn-fsdp2.yaml
+  - |
+    axolotl train scout-qlora-flexattn-fsdp2.yaml \
+      --wandb-project $WANDB_PROJECT \
+      --wandb-name $DSTACK_RUN_NAME \
+      --hub-model-id $HUB_MODEL_ID
+
+resources:
+  # Four GPU (required by FSDP)
+  gpu: H100:4
+  # Shared memory size for inter-process communication
+  shm_size: 64GB
+  disk: 500GB..
+```
+
 </div>
 
-## Inference
+The task uses Axolotl's Docker image, where Axolotl is already pre-installed.
 
-<div class="tx-landing__highlights_grid">
-    <a href="/examples/inference/sglang" 
-       class="feature-cell">
-       <h3>
-           SGLang
-       </h3>
-       <p>
-           Deploy Qwen3.6-27B with SGLang
-      </p>
-    </a>
-    <a href="/examples/inference/vllm" 
-       class="feature-cell">
-       <h3>
-           vLLM
-       </h3>
-       <p>
-            Deploy Qwen3.6-27B with vLLM
-        </p>
-    </a>
-    <a href="/examples/inference/nim" 
-       class="feature-cell">
-       <h3>
-           NIM
-       </h3>
-       <p>
-            Deploy a DeepSeek distilled model with NIM
-        </p>
-    </a>
-    <a href="/examples/inference/trtllm"
-       class="feature-cell">
-       <h3>
-           TensorRT-LLM
-       </h3>
-       <p>
-            Deploy Qwen3 with TensorRT-LLM
-        </p>
-    </a>
+!!! info "AMD"
+    The example above uses NVIDIA accelerators. To use it with AMD, check out [AMD](../accelerators/amd.md#axolotl).
+
+### Run the configuration
+
+Once the configuration is ready, run `dstack apply -f <configuration file>`, and `dstack` will automatically provision the
+cloud resources and run the configuration.
+
+<div class="termy">
+
+```shell
+$ HF_TOKEN=...
+$ WANDB_API_KEY=...
+$ WANDB_PROJECT=...
+$ HUB_MODEL_ID=...
+$ dstack apply -f train.dstack.yml
+
+ #  BACKEND              RESOURCES                     INSTANCE TYPE  PRICE
+ 1  vastai (cz-czechia)  cpu=64 mem=128GB H100:80GB:2  18794506       $3.8907
+ 2  vastai (us-texas)    cpu=52 mem=64GB  H100:80GB:2  20442365       $3.6926
+ 3  vastai (fr-france)   cpu=64 mem=96GB  H100:80GB:2  20379984       $3.7389
+
+Submit the run axolotl-nvidia-llama-scout-train? [y/n]:
+
+Provisioning...
+---> 100%
+```
+
 </div>
 
-## Models
+## Distributed training
 
-<div class="tx-landing__highlights_grid">
-    <a href="/examples/models/deepseek-v4"
-       class="feature-cell">
-        <h3>
-            DeepSeek V4
-        </h3>
+!!! info "Prerequisites"
+    Before running a distributed task, make sure to create a fleet with `placement` set to `cluster` (can be a [managed fleet](../../concepts/fleets.md#cluster-placement) or an [SSH fleet](../../concepts/fleets.md#ssh-placement)).
 
-        <p>
-            Deploy DeepSeek V4 with SGLang on B200:8
-        </p>
-    </a>
+This section walks through running distributed fine-tuning of `Llama-3.1-70B` with QLoRA and FSDP across multiple nodes.
 
-    <a href="/examples/models/qwen36"
-       class="feature-cell">
-        <h3>
-            Qwen 3.6
-        </h3>
+### Define a configuration
 
-        <p>
-            Deploy Qwen3.6-27B with SGLang on NVIDIA or AMD
-        </p>
-    </a>
+Once the fleet is created, define a distributed task configuration. Here's an example of a distributed `QLoRA` task using `FSDP`.
+
+<div editor-title="train-distrib.dstack.yml">
+
+```yaml
+type: task
+name: axolotl-multi-node-qlora-llama3-70b
+
+nodes: 2
+
+image: nvcr.io/nvidia/pytorch:25.01-py3
+
+env:
+  - HF_TOKEN
+  - WANDB_API_KEY
+  - WANDB_PROJECT
+  - HUB_MODEL_ID
+  - CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7
+  - NCCL_DEBUG=INFO
+  - ACCELERATE_LOG_LEVEL=info
+
+commands:
+  # Replacing the default Torch and FlashAttention in the NCG container with Axolotl-compatible versions.
+  # The preinstalled versions are incompatible with Axolotl.
+  - pip uninstall -y torch flash-attn
+  - pip install torch==2.6.0 torchvision==0.21.0 torchaudio==2.6.0 --index-url https://download.pytorch.org/whl/test/cu124
+  - pip install --no-build-isolation axolotl[flash-attn,deepspeed]
+  - wget https://raw.githubusercontent.com/huggingface/trl/main/examples/accelerate_configs/fsdp1.yaml
+  - wget https://raw.githubusercontent.com/axolotl-ai-cloud/axolotl/main/examples/llama-3/qlora-fsdp-70b.yaml
+  # Axolotl includes hf-xet version 1.1.0, which fails during downloads. Replacing it with the latest version (1.1.2).
+  - pip uninstall -y hf-xet
+  - pip install hf-xet --no-cache-dir
+  - |
+    accelerate launch \
+      --config_file=fsdp1.yaml \
+      -m axolotl.cli.train qlora-fsdp-70b.yaml \
+      --hub-model-id $HUB_MODEL_ID \
+      --output-dir /checkpoints/qlora-llama3-70b \
+      --wandb-project $WANDB_PROJECT \
+      --wandb-name $DSTACK_RUN_NAME \
+      --main_process_ip=$DSTACK_MASTER_NODE_IP \
+      --main_process_port=8008 \
+      --machine_rank=$DSTACK_NODE_RANK \
+      --num_processes=$DSTACK_GPUS_NUM \
+      --num_machines=$DSTACK_NODES_NUM
+
+resources:
+  gpu: 80GB:8
+  shm_size: 128GB
+
+volumes:
+  - /checkpoints:/checkpoints
+```
+
 </div>
 
-## Accelerators
+!!! info "Docker image"
+    We are using `nvcr.io/nvidia/pytorch:25.01-py3` from NGC because it includes the necessary libraries and packages for RDMA and InfiniBand support.
 
-<div class="tx-landing__highlights_grid">
-    <a href="/examples/accelerators/amd"
-       class="feature-cell sky">
-        <h3>
-            AMD
-        </h3>
+### Run the configuration
 
-        <p>
-            Deploy and fine-tune LLMs on AMD
-        </p>
-    </a>
+To run a configuration, use the [`dstack apply`](../../reference/cli/dstack/apply.md) command.
 
-    <a href="/examples/accelerators/tpu"
-       class="feature-cell sky">
-        <h3>
-            TPU
-        </h3>
+<div class="termy">
 
-        <p>
-            Deploy and fine-tune LLMs on TPU
-        </p>
-    </a>
+```shell
+$ HF_TOKEN=...
+$ WANDB_API_KEY=...
+$ WANDB_PROJECT=...
+$ HUB_MODEL_ID=...
+$ dstack apply -f train-distrib.dstack.yml
 
-    <a href="/examples/accelerators/tenstorrent"
-       class="feature-cell sky">
-        <h3>
-            Tenstorrent
-        </h3>
+ #  BACKEND       RESOURCES                       INSTANCE TYPE  PRICE
+ 1  ssh (remote)  cpu=208 mem=1772GB H100:80GB:8  instance       $0     idle
+ 2  ssh (remote)  cpu=208 mem=1772GB H100:80GB:8  instance       $0     idle
 
-        <p>
-            Deploy and fine-tune LLMs on Tenstorrent
-        </p>
-    </a>
+Submit the run axolotl-multi-node-qlora-llama3-70b? [y/n]: y
+
+Provisioning...
+---> 100%
+```
+
 </div>
 
+## What's next?
 
-# examples/single-node-training/trl/index.md
-
-
-
-# examples/single-node-training/axolotl/index.md
-
-
-
-# examples/distributed-training/trl/index.md
+1. Check [dev environments](../../concepts/dev-environments.md), [tasks](../../concepts/tasks.md),
+   [services](../../concepts/services.md), and [fleets](../../concepts/fleets.md)
+2. Read about [cluster placement](../../concepts/fleets.md#cluster-placement)
+3. See the [AMD](../accelerators/amd.md#axolotl) example
 
 
+# docs/examples/training/ray-ragen.md
 
-# examples/distributed-training/axolotl/index.md
+---
+title: Ray + RAGEN
+description: Multi-node agent fine-tuning using RAGEN with Ray and verl for reinforcement learning
+---
+
+# Ray + RAGEN
+
+This example shows how use `dstack` and [RAGEN](https://github.com/RAGEN-AI/RAGEN)
+to fine-tune an agent on multiple nodes.
+
+Under the hood `RAGEN` uses [verl](https://github.com/volcengine/verl) for Reinforcement Learning and [Ray](https://docs.ray.io/en/latest/) for distributed training.
+
+!!! info "Prerequisites"
+    Before running a distributed task, make sure to create a fleet with `placement` set to `cluster` (can be a [managed fleet](../../concepts/fleets.md#cluster-placement) or an [SSH fleet](../../concepts/fleets.md#ssh-placement)).
+
+## Run a Ray cluster
+
+If you want to use Ray with `dstack`, you have to first run a Ray cluster.
+
+The task below runs a Ray cluster on an existing fleet:
+
+<div editor-title="ray-cluster.dstack.yml">
+
+```yaml
+type: task
+name: ray-cluster
+
+nodes: 2
+
+env:
+- WANDB_API_KEY
+image: whatcanyousee/verl:ngc-cu124-vllm0.8.5-sglang0.4.6-mcore0.12.0-te2.2
+commands:
+  - wget -O miniconda.sh https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+  - bash miniconda.sh -b -p /workflow/miniconda
+  - eval "$(/workflow/miniconda/bin/conda shell.bash hook)"
+  - git clone https://github.com/RAGEN-AI/RAGEN.git
+  - cd RAGEN
+  - bash scripts/setup_ragen.sh
+  - conda activate ragen
+  - cd verl
+  - pip install --no-deps -e .
+  - pip install hf_transfer hf_xet
+  - pip uninstall -y ray
+  - pip install -U "ray[default]"
+  - |
+    if [ $DSTACK_NODE_RANK = 0 ]; then 
+        ray start --head --port=6379;
+    else
+        ray start --address=$DSTACK_MASTER_NODE_IP:6379
+    fi
+
+# Expose Ray dashboard port
+ports:
+  - 8265
+
+resources:
+  gpu: 80GB:8
+  shm_size: 128GB
+
+# Save checkpoints on the instance
+volumes:
+  - /checkpoints:/checkpoints
+```
+
+</div>
+
+We are using verl's docker image for vLLM with FSDP. See [Installation](https://verl.readthedocs.io/en/latest/start/install.html) for more.
+
+The `RAGEN` setup script `scripts/setup_ragen.sh` isolates dependencies within Conda environment.
+
+Note that the Ray setup in the RAGEN environment is missing the dashboard, so we reinstall it using `ray[default]`.
+
+Now, if you run this task via `dstack apply`, it will automatically forward the Ray's dashboard port to `localhost:8265`.
+
+<div class="termy">
+
+```shell
+$ dstack apply -f ray-cluster.dstack.yml
+```
+
+</div>
+
+As long as the `dstack apply` is attached, you can use `localhost:8265` to submit Ray jobs for execution.
+If `dstack apply` is detached, you can use `dstack attach` to re-attach.
+
+## Submit Ray jobs
+
+Before you can submit Ray jobs, ensure to install `ray` locally:
+
+<div class="termy">
+
+```shell
+$ pip install ray
+```
+
+</div>
+
+Now you can submit the training job to the Ray cluster which is available at `localhost:8265`:
+
+<div class="termy">
+
+```shell
+$ RAY_ADDRESS=http://localhost:8265
+$ ray job submit \
+  -- bash -c "\
+    export PYTHONPATH=/workflow/RAGEN; \
+    cd /workflow/RAGEN; \
+    /workflow/miniconda/envs/ragen/bin/python train.py \
+      --config-name base \
+      system.CUDA_VISIBLE_DEVICES=[0,1,2,3,4,5,6,7] \
+      model_path=Qwen/Qwen2.5-7B-Instruct \
+      trainer.experiment_name=agent-fine-tuning-Qwen2.5-7B \
+      trainer.n_gpus_per_node=8 \
+      trainer.nnodes=2 \
+      micro_batch_size_per_gpu=2 \
+      trainer.default_local_dir=/checkpoints \
+      trainer.save_freq=50 \
+      actor_rollout_ref.rollout.tp_size_check=False \
+      actor_rollout_ref.rollout.tensor_model_parallel_size=4"
+```
+
+</div>
+
+!!! info "Training parameters"
+    1. `actor_rollout_ref.rollout.tensor_model_parallel_size=4`, because `Qwen/Qwen2.5-7B-Instruct` has 28 attention heads and number of attention heads should be divisible by `tensor_model_parallel_size`
+    2. `actor_rollout_ref.rollout.tp_size_check=False`, if True `tensor_model_parallel_size` should be equal to `trainer.n_gpus_per_node`
+    3. `micro_batch_size_per_gpu=2`, to keep the RAGEN-paper's `rollout_filter_ratio` and `es_manager` settings as it is for world size `16`
+
+Using Ray via `dstack` is a powerful way to get access to the rich Ray ecosystem while benefiting from `dstack`'s provisioning capabilities.
+
+!!! info "What's next"
+    1. Read about [distributed tasks](../../concepts/tasks.md#distributed-tasks), [fleets](../../concepts/fleets.md), and [cluster placement](../../concepts/fleets.md#cluster-placement)
+    2. Browse Ray's [docs](https://docs.ray.io/en/latest/train/examples.html) for other examples.
 
 
+# docs/examples/clusters/aws.md
 
-# examples/distributed-training/ray-ragen/index.md
+---
+title: AWS
+description: High-performance distributed training on AWS using Elastic Fabric Adapter (EFA)
+---
+
+# AWS
+
+In this guide, we'll walk through how to run high-performance distributed training on AWS using [Amazon Elastic Fabric Adapter (EFA)](https://aws.amazon.com/hpc/efa/) with `dstack`.
+
+## Overview
+
+EFA is a network interface for Amazon EC2 that enables low-latency, high-bandwidth inter-node communication — essential for scaling distributed deep learning. With `dstack`, EFA is automatically enabled when you create fleets with supported instance types.
+
+## Prerequisite
+
+Before you start, make sure the `aws` backend is properly configured.
+
+<div editor-title="~/.dstack/server/config.yml">
+
+```yaml
+projects:
+- name: main
+  backends:
+    - type: aws
+      creds:
+        type: default
+      regions: ["us-west-2"]
+
+      public_ips: false
+      vpc_name: my-custom-vpc
+```
+
+</div>
+
+!!! info "Multiple network interfaces"
+    To use P4, P5, or P6 instances, set `public_ips` to `false` — this allows AWS to attach multiple network interfaces for EFA. In this case, the `dstack` server can reach your VPC’s private subnets.
+
+!!! info "VPC"
+    If you use a custom VPC, verify that it permits all internal traffic between nodes for EFA to function properly
+
+## Create a fleet
+
+Once your backend is ready, define a fleet configuration.
+
+<div editor-title="efa-fleet.dstack.yml">
+    
+    ```yaml
+    type: fleet
+    name: efa-fleet
+    
+    nodes: 2
+    placement: cluster
+    
+    resources:
+      gpu: H100:8
+    ```
+    
+</div>
+
+Provision the fleet with `dstack apply`:
+
+<div class="termy">
+
+```shell
+$ dstack apply -f efa-fleet.dstack.yml
+
+Provisioning...
+---> 100%
+
+ FLEET      INSTANCE  BACKEND          INSTANCE TYPE  GPU          PRICE   STATUS  CREATED 
+ efa-fleet  0         aws (us-west-2)  p4d.24xlarge   H100:8:80GB  $98.32  idle    3 mins ago      
+            1         aws (us-west-2)  p4d.24xlarge   H100:8:80GB  $98.32  idle    3 mins ago    
+```
+
+</div>
+
+??? info "Instance types"
+    `dstack` selects suitable instances automatically, but not
+    [all types support EFA](https://aws.amazon.com/hpc/efa/).
+    To enforce EFA, you can specify `instance_types` explicitly:
+
+    ```yaml
+    type: fleet
+    name: efa-fleet
+    
+    nodes: 2
+    placement: cluster
+    
+    resources:
+      gpu: L4
+
+    instance_types: ["g6.8xlarge"] # If not specified, g6.xlarge is used (won't have EFA)
+    ```
+      
+## Run NCCL tests
+
+To confirm that EFA is working, run NCCL tests:
+
+<div editor-title="nccl-tests.dstack.yml">
+
+```yaml
+type: task
+name: nccl-tests
+
+nodes: 2
+
+startup_order: workers-first
+stop_criteria: master-done
+
+env:
+  - NCCL_DEBUG=INFO
+commands:
+  - |
+    if [ $DSTACK_NODE_RANK -eq 0 ]; then
+      mpirun \
+        --allow-run-as-root \
+        --hostfile $DSTACK_MPI_HOSTFILE \
+        -n $DSTACK_GPUS_NUM \
+        -N $DSTACK_GPUS_PER_NODE \
+        --bind-to none \
+        /opt/nccl-tests/build/all_reduce_perf -b 8 -e 8G -f 2 -g 1
+    else
+      sleep infinity
+    fi
+
+resources:
+  gpu: 1..8
+  shm_size: 16GB
+```
+
+</div>
+
+Run it with `dstack apply`:
+
+<div class="termy">
+
+```shell
+$ dstack apply -f nccl-tests.dstack.yml
+
+Provisioning...
+---> 100%
+```
+
+</div>
+
+!!! info "Docker image"
+    You can use your own container by setting `image`. If omitted, `dstack` uses its default image with drivers, NCCL tests, and tools pre-installed.
+
+## Run distributed training
+
+Here’s an example using `torchrun` for a simple multi-node PyTorch job:
+
+<div editor-title="train-distrib.dstack.yml">
+
+```yaml
+type: task
+name: train-distrib
+
+nodes: 2
+
+python: 3.12
+env:
+  - NCCL_DEBUG=INFO
+commands:
+  - git clone https://github.com/pytorch/examples.git pytorch-examples
+  - cd pytorch-examples/distributed/ddp-tutorial-series
+  - uv pip install -r requirements.txt
+  - |
+    torchrun \
+      --nproc-per-node=$DSTACK_GPUS_PER_NODE \
+      --node-rank=$DSTACK_NODE_RANK \
+      --nnodes=$DSTACK_NODES_NUM \
+      --master-addr=$DSTACK_MASTER_NODE_IP \
+      --master-port=12345 \
+      multinode.py 50 10
+
+resources:
+  gpu: 1..8
+  shm_size: 16GB
+```
+
+</div>
+
+Provision and launch it via `dstack apply`.
+
+<div class="termy">
+
+```shell
+$ dstack apply -f train-distrib.dstack.yml
+
+Provisioning...
+---> 100%
+```
+
+</div>
+
+Instead of setting `python`, you can specify your own Docker image using `image`. Make sure that the image is properly configured for EFA.
+
+!!! info "What's next"
+    1. Learn more about [distributed tasks](../../concepts/tasks.md#distributed-tasks) and [cluster placement](../../concepts/fleets.md#cluster-placement)
+    2. Check [dev environments](../../concepts/dev-environments.md),
+       [services](../../concepts/services.md), and [fleets](../../concepts/fleets.md)
 
 
+# docs/examples/clusters/gcp.md
 
-# examples/clusters/aws/index.md
+---
+title: GCP
+description: Creating and using GPU clusters on GCP with GPUDirect-TCPX and RoCE support
+---
+
+# GCP
+
+This example shows how to create and use clusters on GCP.
+
+`dstack` supports the following instance types:
+
+| Instance type | GPU    | Maximum bandwidth | Fabric                                                                                                           |
+| ------------- | ------ | ----------------- | ---------------------------------------------------------------------------------------------------------------- |
+| **A3 Edge**   | H100:8 | 0.8 Tbps          | [GPUDirect-TCPX](https://cloud.google.com/compute/docs/gpus/gpudirect)                                           |
+| **A3 High**   | H100:8 | 1 Tbps            | [GPUDirect-TCPX](https://cloud.google.com/compute/docs/gpus/gpudirect)                                           |
+| **A3 Mega**   | H100:8 | 1.8 Tbps          | [GPUDirect-TCPXO](https://cloud.google.com/kubernetes-engine/docs/how-to/gpu-bandwidth-gpudirect-tcpx-autopilot) |
+| **A4**        | B200:8 | 3.2 Tbps          | RoCE                                                                                                             |
+
+## Configure the backend
+
+Despite hiding most of the complexity, `dstack` still requires instance-specific backend configuration:
+
+=== "A4"
+    A4 requires one `extra_vpcs` for inter-node traffic (regular VPC, one subnet) and one `roce_vpcs` for GPU-to-GPU communication (RoCE profile, eight subnets).
+
+    <div editor-title="~/.dstack/server/config.yml">
+
+    ```yaml
+    projects:
+    - name: main
+      backends:
+        - type: gcp
+          # Specify your GCP project ID
+          project_id: <project id>
+
+          extra_vpcs: [dstack-gvnic-net-1]
+          roce_vpcs: [dstack-mrdma]
+
+          # Specify the regions you intend to use
+          regions: [us-west2]
+
+          creds:
+            type: default
+    ```
+
+    </div>
+
+    <h4>Create extra and RoCE VPCs</h4>
+    
+    See GCP's [RoCE network setup guide](https://cloud.google.com/ai-hypercomputer/docs/create/create-vm#setup-network) for the commands to create
+    VPCs and filewall rules. 
+    
+    Ensure VPCs allow internal traffic between nodes for MPI/NCCL to function.
+
+=== "A3 Mega"
+    A3 Edge/High require at least 4 `extra_vpcs` for data NICs.
+
+    <div editor-title="~/.dstack/server/config.yml">
+
+    ```yaml
+    projects:
+    - name: main
+      backends:
+        - type: gcp
+          # Specify your GCP project ID
+          project_id: <project id>
+
+          extra_vpcs:
+            - dstack-gpu-data-net-1
+            - dstack-gpu-data-net-2
+            - dstack-gpu-data-net-3
+            - dstack-gpu-data-net-4
+            - dstack-gpu-data-net-5
+            - dstack-gpu-data-net-6
+            - dstack-gpu-data-net-7
+            - dstack-gpu-data-net-8
+          
+          # Specify the regions you intend to use
+          regions: [europe-west4]
+          
+          creds:
+            type: default
+    ```
+
+    </div>
+
+    <h4>Create extra VPCs</h4>
+
+    Create the VPC networks for GPUDirect in your project, each with a subnet and a firewall rule:
+    
+    ```shell
+    # Specify the region where you intend to deploy the cluster
+    REGION="europe-west4"
+
+    for N in $(seq 1 8); do
+    gcloud compute networks create dstack-gpu-data-net-$N \
+        --subnet-mode=custom \
+        --mtu=8244
+
+    gcloud compute networks subnets create dstack-gpu-data-sub-$N \
+        --network=dstack-gpu-data-net-$N \
+        --region=$REGION \
+        --range=192.168.$N.0/24
+
+    gcloud compute firewall-rules create dstack-gpu-data-internal-$N \
+      --network=dstack-gpu-data-net-$N \
+      --action=ALLOW \
+      --rules=tcp:0-65535,udp:0-65535,icmp \
+      --source-ranges=192.168.0.0/16
+    done
+    ```
+
+=== "A3 High/Edge"
+    A3 Edge/High require at least 4 `extra_vpcs` for data NICs and a `vm_service_account` authorized to pull GPUDirect Docker images.
+
+    <div editor-title="~/.dstack/server/config.yml">
+
+    ```yaml
+    projects:
+    - name: main
+      backends:
+        - type: gcp
+          # Specify your GCP project ID
+          project_id: <project id>
+
+          extra_vpcs:
+            - dstack-gpu-data-net-1
+            - dstack-gpu-data-net-2
+            - dstack-gpu-data-net-3
+            - dstack-gpu-data-net-4
+
+          # Specify the regions you intend to use
+          regions: [europe-west4]
+
+          # Specify your GCP project ID
+          vm_service_account: a3cluster-sa@$<project id>.iam.gserviceaccount.com
+
+          creds:
+            type: default
+    ```
+
+    </div>
+
+    <h4>Create extra VPCs</h4>
+
+    Create the VPC networks for GPUDirect in your project, each with a subnet and a firewall rule:
+    
+    ```shell
+    # Specify the region where you intend to deploy the cluster
+    REGION="europe-west4"
+
+    for N in $(seq 1 4); do
+    gcloud compute networks create dstack-gpu-data-net-$N \
+        --subnet-mode=custom \
+        --mtu=8244
+
+    gcloud compute networks subnets create dstack-gpu-data-sub-$N \
+        --network=dstack-gpu-data-net-$N \
+        --region=$REGION \
+        --range=192.168.$N.0/24
+
+    gcloud compute firewall-rules create dstack-gpu-data-internal-$N \
+        --network=dstack-gpu-data-net-$N \
+        --action=ALLOW \
+        --rules=tcp:0-65535,udp:0-65535,icmp \
+        --source-ranges=192.168.0.0/16
+    done
+    ```
+
+    <h4>Create a service account</h4>
+
+    Create a VM service account that allows VMs to access the `pkg.dev` registry:
+
+    ```shell
+    PROJECT_ID=$(gcloud config get-value project)
+
+    gcloud iam service-accounts create a3cluster-sa \
+        --display-name "Service Account for pulling GCR images"
+
+    gcloud projects add-iam-policy-binding $PROJECT_ID \
+        --member="serviceAccount:a3cluster-sa@${PROJECT_ID}.iam.gserviceaccount.com" \
+        --role="roles/artifactregistry.reader"
+    ```
+
+!!! info "Default VPC"
+    If you set a non-default `vpc_name` in the backend configuration, ensure it allows all inter-node traffic. This is required for MPI and NCCL. The default VPC already allows this.
+
+## Create a fleet
+
+Once you've configured the `gcp` backend, create the fleet configuration:
+
+=== "A4"
+
+    <div editor-title="a4-fleet.dstack.yml">
+
+    ```yaml
+    type: fleet
+    name: a4-fleet
+
+    placement: cluster
+    # Can be a range on a fixed number
+    nodes: 2
+
+    # Specify the zone where you have configured the RoCE VPC
+    availability_zones: [us-west2-c]
+
+    backends: [gcp]
+
+    # Uncomment to allow spot instances 
+    #spot_policy: auto
+
+    resources:
+      gpu: B200:8
+    ```
+
+    </div>
+
+    Then apply it with `dstack apply`:
+
+    <div class="termy">
+
+    ```shell
+    $ dstack apply -f a4-fleet.dstack.yml
+
+    Provisioning...
+    ---> 100%
+
+    FLEET     INSTANCE  BACKEND         GPU                  PRICE    STATUS  CREATED
+    a4-fleet  0         gcp (us-west2)  B200:180GB:8 (spot)  $51.552  idle    9 mins ago
+              1         gcp (us-west2)  B200:180GB:8 (spot)  $51.552  idle    9 mins ago
+    ```
+
+    </div>
+
+=== "A3 Mega"
+
+    <div editor-title="fleet.dstack.yml">
+
+    ```yaml
+        type: fleet
+        name: a3mega-fleet
+        
+        placement: cluster
+        # Can be a range on a fixed number
+        nodes: 2
+        
+        instance_types:
+          - a3-megagpu-8g
+        
+        # Uncomment to allow spot instances 
+        #spot_policy: auto
+    ```
+    </div>
+
+    Pass the configuration to `dstack apply`:
+
+    <div class="termy">
+
+    ```shell
+    $ dstack apply -f a3mega-fleet.dstack.yml                
+
+    FLEET         INSTANCE  BACKEND             GPU          PRICE            STATUS  CREATED
+    a3mega-fleet  1         gcp (europe-west4)  H100:80GB:8  $22.1525 (spot)  idle    9 mins ago
+    a3mega-fleet  2         gcp (europe-west4)  H100:80GB:8  $64.2718         idle    9 mins ago
+
+    Create the fleet? [y/n]: y
+
+    Provisioning...
+    ---> 100%
+    ```
+
+    </div>
+
+=== "A3 High/Edge"
+
+    <div editor-title="a3high-fleet.dstack.yml">
+
+    ```yaml
+    type: fleet
+    name: a3high-fleet
+
+    placement: cluster
+    nodes: 2
+
+    instance_types:
+      - a3-highgpu-8g
+    
+    # Uncomment to allow spot instances 
+    #spot_policy: auto
+    ```
+
+    </div>
+
+    Pass the configuration to `dstack apply`:
+
+    <div class="termy">
+
+    ```shell
+    $ dstack apply -f a3high-fleet.dstack.yml
+                   
+    FLEET         INSTANCE  BACKEND             GPU          PRICE            STATUS  CREATED
+    a3mega-fleet  1         gcp (europe-west4)  H100:80GB:8  $20.5688 (spot)  idle    9 mins ago
+    a3mega-fleet  2         gcp (europe-west4)  H100:80GB:8  $58.5419         idle    9 mins ago
+
+    Create the fleet? [y/n]: y
+
+    Provisioning...
+    ---> 100%                    
+    ```
+
+    </div>
+
+Once the fleet is created, you can run distributed tasks, in addition to dev environments, services, and regular tasks.
+
+## Run tasks
+
+### NCCL tests
+
+Use a distributed task that runs NCCL tests to validate cluster network bandwidth.
+
+=== "A4"
+    Pass the configuration to `dstack apply`:
+
+    <div class="termy">
+
+    ```shell
+    $ dstack apply -f nccl-tests.dstack.yml
+
+    Provisioning...
+    ---> 100%
+    
+    nccl-tests provisioning completed (running)
+    nThread 1 nGpus 1 minBytes 8 maxBytes 8589934592 step: 2(factor) warmup iters: 5 iters: 20 agg iters: 1 validation: 1 graph: 0
+          size         count      type   redop    root     time   algbw   busbw  wrong     time   algbw   busbw  wrong
+           (B)    (elements)                               (us)  (GB/s)  (GB/s)            (us)  (GB/s)  (GB/s)       
+       8388608       2097152     float     sum      -1    156.9   53.47  100.25      0    167.6   50.06   93.86      0
+      16777216       4194304     float     sum      -1    196.3   85.49  160.29      0    206.2   81.37  152.57      0
+      33554432       8388608     float     sum      -1    258.5  129.82  243.42      0    261.8  128.18  240.33      0
+      67108864      16777216     float     sum      -1    369.4  181.69  340.67      0    371.2  180.79  338.98      0
+     134217728      33554432     float     sum      -1    638.5  210.22  394.17      0    587.2  228.57  428.56      0
+     268435456      67108864     float     sum      -1    940.3  285.49  535.29      0    950.7  282.36  529.43      0
+     536870912     134217728     float     sum      -1   1695.2  316.70  593.81      0   1666.9  322.08  603.89      0
+    1073741824     268435456     float     sum      -1   3229.9  332.44  623.33      0   3201.8  335.35  628.78      0
+    2147483648     536870912     float     sum      -1   6107.7  351.61  659.26      0   6157.1  348.78  653.97      0
+    4294967296    1073741824     float     sum      -1    11952  359.36  673.79      0    11942  359.65  674.34      0
+    8589934592    2147483648     float     sum      -1    23563  364.55  683.52      0    23702  362.42  679.54      0
+    Out of bounds values : 0 OK
+    Avg bus bandwidth    : 165.789
+    ```
+
+    </div>
+
+=== "A3 Mega"
+
+    <div editor-title="nccl-tests.dstack.yml">
+
+    ```yaml
+    type: task
+    name: nccl-tests
+    nodes: 2
+    image: nvcr.io/nvidia/pytorch:24.04-py3
+    entrypoint: "bash -c" # Need to use bash instead of default dash for nccl-env-profile.sh
+    commands:
+      - |
+        # Setup TCPXO NCCL env variables
+        NCCL_LIB_DIR="/var/lib/tcpxo/lib64"
+        source ${NCCL_LIB_DIR}/nccl-env-profile-ll128.sh
+        export NCCL_FASTRAK_CTRL_DEV=enp0s12
+        export NCCL_FASTRAK_IFNAME=enp6s0,enp7s0,enp13s0,enp14s0,enp134s0,enp135s0,enp141s0,enp142s0
+        export NCCL_SOCKET_IFNAME=enp0s12
+        export NCCL_FASTRAK_LLCM_DEVICE_DIRECTORY="/dev/aperture_devices"
+        export LD_LIBRARY_PATH="${NCCL_LIB_DIR}:${LD_LIBRARY_PATH}"
+        # Build NCCL Tests
+        git clone https://github.com/NVIDIA/nccl-tests.git
+        cd nccl-tests
+        MPI=1 CC=mpicc CXX=mpicxx make -j
+        cd build
+        # We use FIFO for inter-node communication
+        FIFO=/tmp/dstack_job
+        if [ ${DSTACK_NODE_RANK} -eq 0 ]; then
+          sleep 10
+          echo "${DSTACK_NODES_IPS}" > hostfile
+          MPIRUN='mpirun --allow-run-as-root --hostfile hostfile'
+          # Wait for other nodes
+          while true; do
+            if ${MPIRUN} -n ${DSTACK_NODES_NUM} -N 1 true >/dev/null 2>&1; then
+              break
+            fi
+            echo 'Waiting for nodes...'
+            sleep 5
+          done
+          # Run NCCL Tests
+          ${MPIRUN} \
+            -n ${DSTACK_GPUS_NUM} -N ${DSTACK_GPUS_PER_NODE} \
+            --mca btl tcp,self --mca btl_tcp_if_exclude lo,docker0 \
+            $(env | awk -F= '{print "-x", $1}' | xargs) \
+            ./all_gather_perf -b 8M -e 8G -f 2 -g 1 -w 5 --iters 200 -c 0;
+          # Notify nodes the job is done
+          ${MPIRUN} -n ${DSTACK_NODES_NUM} -N 1 sh -c "echo done > ${FIFO}"
+        else
+          mkfifo ${FIFO}
+          # Wait for a message from the first node
+          cat ${FIFO}
+        fi
+    spot_policy: auto
+    resources:
+      shm_size: 16GB
+    ```
+
+    </div>
+
+    Pass the configuration to `dstack apply`:
+
+    <div class="termy">
+
+    ```shell
+    $ dstack apply -f nccl-tests.dstack.yml
+
+    nccl-tests provisioning completed (running)
+    nThread 1 nGpus 1 minBytes 8388608 maxBytes 8589934592 step: 2(factor) warmup iters: 5 iters: 200 agg iters: 1 validation: 0 graph: 0
+    
+                                                                 out-of-place                       in-place          
+          size         count      type   redop    root     time   algbw   busbw #wrong     time   algbw   busbw #wrong
+           (B)    (elements)                               (us)  (GB/s)  (GB/s)            (us)  (GB/s)  (GB/s)       
+         8388608        131072     float    none      -1    166.6   50.34   47.19    N/A    164.1   51.11   47.92    N/A
+        16777216        262144     float    none      -1    204.6   82.01   76.89    N/A    203.8   82.30   77.16    N/A
+        33554432        524288     float    none      -1    284.0  118.17  110.78    N/A    281.7  119.12  111.67    N/A
+        67108864       1048576     float    none      -1    447.4  150.00  140.62    N/A    443.5  151.31  141.86    N/A
+       134217728       2097152     float    none      -1    808.3  166.05  155.67    N/A    801.9  167.38  156.92    N/A
+       268435456       4194304     float    none      -1   1522.1  176.36  165.34    N/A   1518.7  176.76  165.71    N/A
+       536870912       8388608     float    none      -1   2892.3  185.62  174.02    N/A   2894.4  185.49  173.89    N/A
+      1073741824      16777216     float    none      -1   5532.7  194.07  181.94    N/A   5530.7  194.14  182.01    N/A
+      2147483648      33554432     float    none      -1    10863  197.69  185.34    N/A    10837  198.17  185.78    N/A
+      4294967296      67108864     float    none      -1    21481  199.94  187.45    N/A    21466  200.08  187.58    N/A
+      8589934592     134217728     float    none      -1    42713  201.11  188.54    N/A    42701  201.16  188.59    N/A
+    Out of bounds values : 0 OK
+    Avg bus bandwidth    : 146.948 
+    ```
+
+    </div>
+
+=== "A3 High/Edge"
+
+    <div editor-title="nccl-tests.dstack.yml">
+
+    ```yaml
+    type: task
+    name: nccl-tests
+    nodes: 2
+    image: us-docker.pkg.dev/gce-ai-infra/gpudirect-tcpx/nccl-plugin-gpudirecttcpx
+    commands:
+      - |
+        export NCCL_DEBUG=INFO
+        export LD_LIBRARY_PATH=/usr/local/tcpx/lib64:$LD_LIBRARY_PATH
+        # We use FIFO for inter-node communication
+        FIFO=/tmp/dstack_job
+        if [ ${DSTACK_NODE_RANK} -eq 0 ]; then
+          mkdir -p /scripts/hostfiles2
+          : > /scripts/hostfiles2/hostfile8
+          for ip in ${DSTACK_NODES_IPS}; do
+            echo "${ip} slots=${DSTACK_GPUS_PER_NODE}" >> /scripts/hostfiles2/hostfile8
+          done
+          MPIRUN='mpirun --allow-run-as-root --hostfile /scripts/hostfiles2/hostfile8'
+          # Wait for other nodes
+          while true; do
+            if ${MPIRUN} -n ${DSTACK_NODES_NUM} -N 1 true >/dev/null 2>&1; then
+              break
+            fi
+            echo 'Waiting for nodes...'
+            sleep 5
+          done
+          # Run NCCL Tests
+          NCCL_GPUDIRECTTCPX_FORCE_ACK=0 /scripts/run-allgather.sh 8 eth1,eth2,eth3,eth4 8M 8GB 2
+          # Notify nodes the job is done
+          ${MPIRUN} -n ${DSTACK_NODES_NUM} -N 1 sh -c "echo done > ${FIFO}"
+        else
+          mkfifo ${FIFO}
+          # Wait for a message from the first node
+          cat ${FIFO}
+        fi
+    spot_policy: auto
+    resources:
+      shm_size: 16GB
+    ```
+
+    </div>
+
+    Pass the configuration to `dstack apply`:
+
+    <div class="termy">
+
+    ```shell
+    $ dstack apply -f nccl-tests.dstack.yml
+
+    nccl-tests provisioning completed (running)
+    nThread 1 nGpus 1 minBytes 8388608 maxBytes 8589934592 step: 2(factor) warmup iters: 5 iters: 200 agg iters: 1 validation: 0 graph: 0
+    
+                                                                  out-of-place                       in-place          
+           size         count      type   redop    root     time   algbw   busbw #wrong     time   algbw   busbw #wrong
+            (B)    (elements)                               (us)  (GB/s)  (GB/s)            (us)  (GB/s)  (GB/s)       
+         8388608        131072     float    none      -1    784.9   10.69   10.02      0    775.9   10.81   10.14      0
+        16777216        262144     float    none      -1   1010.3   16.61   15.57      0    999.3   16.79   15.74      0
+        33554432        524288     float    none      -1   1161.6   28.89   27.08      0   1152.9   29.10   27.28      0
+        67108864       1048576     float    none      -1   1432.6   46.84   43.92      0   1437.8   46.67   43.76      0
+       134217728       2097152     float    none      -1   2516.9   53.33   49.99      0   2491.7   53.87   50.50      0
+       268435456       4194304     float    none      -1   5066.8   52.98   49.67      0   5131.4   52.31   49.04      0
+       536870912       8388608     float    none      -1    10028   53.54   50.19      0    10149   52.90   49.60      0
+      1073741824      16777216     float    none      -1    20431   52.55   49.27      0    20214   53.12   49.80      0
+      2147483648      33554432     float    none      -1    40254   53.35   50.01      0    39923   53.79   50.43      0
+      4294967296      67108864     float    none      -1    80896   53.09   49.77      0    78875   54.45   51.05      0
+      8589934592     134217728     float    none      -1   160505   53.52   50.17      0   160117   53.65   50.29      0
+    Out of bounds values : 0 OK
+    Avg bus bandwidth    : 40.6043
+    ```
+
+    </div>
+
+### Distributed training
+
+=== "A4"
+    You can use the standard [distributed task](../../concepts/tasks.md#distributed-tasks) example to run distributed training on A4 instances.
+
+=== "A3 Mega"
+    You can use the standard [distributed task](../../concepts/tasks.md#distributed-tasks) example to run distributed training on A3 Mega instances. To enable GPUDirect-TCPX, make sure the required [NCCL environment variables](https://cloud.google.com/kubernetes-engine/docs/how-to/gpu-bandwidth-gpudirect-tcpx-autopilot#environment-variables-nccl) are properly set, for example by adding the following commands at the beginning:
+
+    ```shell
+    # ...
+
+    commands: 
+    - | 
+      NCCL_LIB_DIR="/var/lib/tcpxo/lib64"
+      source ${NCCL_LIB_DIR}/nccl-env-profile-ll128.sh
+      export NCCL_FASTRAK_CTRL_DEV=enp0s12
+      export NCCL_FASTRAK_IFNAME=enp6s0,enp7s0,enp13s0,enp14s0,enp134s0,enp135s0,enp141s0,enp142s0
+      export NCCL_SOCKET_IFNAME=enp0s12
+      export NCCL_FASTRAK_LLCM_DEVICE_DIRECTORY="/dev/aperture_devices"
+      export LD_LIBRARY_PATH="${NCCL_LIB_DIR}:${LD_LIBRARY_PATH}"
+    
+    # ...
+    ```
+
+=== "A3 High/Edge"
+    You can use the standard [distributed task](../../concepts/tasks.md#distributed-tasks) example to run distributed training on A3 High/Edge instances. To enable GPUDirect-TCPX0, make sure the required [NCCL environment variables](https://cloud.google.com/kubernetes-engine/docs/how-to/gpu-bandwidth-gpudirect-tcpx-autopilot#environment-variables-nccl) are properly set, for example by adding the following commands at the beginning:
+
+    ```shell
+    # ...
+
+    commands: 
+    - | 
+      export NCCL_DEBUG=INFO
+      NCCL_LIB_DIR="/usr/local/tcpx/lib64"
+      export LD_LIBRARY_PATH="${NCCL_LIB_DIR}:${LD_LIBRARY_PATH}"
+      export NCCL_SOCKET_IFNAME=eth0
+      export NCCL_CROSS_NIC=0
+      export NCCL_ALGO=Ring
+      export NCCL_PROTO=Simple
+      export NCCL_NSOCKS_PERTHREAD=4
+      export NCCL_SOCKET_NTHREADS=1
+      export NCCL_NET_GDR_LEVEL=PIX
+      export NCCL_P2P_PXN_LEVEL=0
+      export NCCL_GPUDIRECTTCPX_SOCKET_IFNAME=eth1,eth2,eth3,eth4
+      export NCCL_GPUDIRECTTCPX_CTRL_DEV=eth0
+      export NCCL_DYNAMIC_CHUNK_SIZE=524288
+      export NCCL_P2P_NET_CHUNKSIZE=524288
+      export NCCL_P2P_PCI_CHUNKSIZE=524288
+      export NCCL_P2P_NVL_CHUNKSIZE=1048576
+      export NCCL_BUFFSIZE=4194304
+      export NCCL_GPUDIRECTTCPX_TX_BINDINGS="eth1:8-21,112-125;eth2:8-21,112-125;eth3:60-73,164-177;eth4:60-73,164-177"
+      export NCCL_GPUDIRECTTCPX_RX_BINDINGS="eth1:22-35,126-139;eth2:22-35,126-139;eth3:74-87,178-191;eth4:74-87,178-191"
+      export NCCL_GPUDIRECTTCPX_PROGRAM_FLOW_STEERING_WAIT_MICROS=50000
+      export NCCL_GPUDIRECTTCPX_UNIX_CLIENT_PREFIX="/run/tcpx"
+    
+    # ...
+    ```
+
+In addition to distributed training, you can of course run regular tasks, dev environments, and services.
+
+## What's new
+
+1. Learn about [dev environments](../../concepts/dev-environments.md), [tasks](../../concepts/tasks.md), [services](../../concepts/services.md)
+2. Read about [cluster placement](../../concepts/fleets.md#cluster-placement)
+3. Check GCP's docs on using [A4](https://docs.cloud.google.com/compute/docs/gpus/create-gpu-vm-a3u-a4), and [A3 Mega/High/Edge](https://docs.cloud.google.com/compute/docs/gpus/gpudirect) instances
 
 
+# docs/examples/clusters/lambda.md
 
-# examples/clusters/gcp/index.md
+---
+title: Lambda
+description: Setting up Lambda clusters using Kubernetes or 1-Click Clusters with fast interconnect
+---
+
+# Lambda
+
+`dstack` allows using Lambda clusters with fast interconnect via two ways:
+
+* [Kubernetes](#kubernetes) – If you create a Kubernetes cluster on Lambda and configure a `kubernetes` backend and create a backend fleet in `dstack`, `dstack` lets you fully use this cluster through `dstack`.
+* [VMs](#vms) – If you create a 1CC cluster on Lambda and create an SSH fleet in `dstack`, `dstack` lets you fully use this cluster through `dstack`.
+
+## Kubernetes
+
+### Prerequsisites
+
+1. Follow the instructions in [Lambda's guide](https://docs.lambda.ai/public-cloud/1-click-clusters/managed-kubernetes/#accessing-mk8s) on accessing MK8s.
+2. Go to `Firewall` → `Edit rules`, click `Add rule`, and allow ingress traffic on port `30022`. This port will be used by the `dstack` server to access the jump host.
+
+### Configure the backend
+
+Follow the standard instructions for setting up a [Kubernetes](../../concepts/backends.md#kubernetes) backend:
+
+<div editor-title="~/.dstack/server/config.yml">
+
+```yaml
+projects:
+  - name: main
+    backends:
+    - type: kubernetes
+      kubeconfig:
+        filename: <kubeconfig path>
+      proxy_jump:
+        port: 30022
+```
+
+</div>
+
+### Create a fleet
+
+Once the Kubernetes cluster and the `dstack` server are running, you can create a fleet:
+
+<div editor-title="lambda-fleet.dstack.yml">
+    
+```yaml
+type: fleet
+name: lambda-fleet
+
+placement: cluster
+nodes: 0..
+
+backends: [kubernetes]
+
+resources:
+  # Specify requirements to filter nodes
+  gpu: 1..8
+```
+    
+</div>
+
+Pass the fleet configuration to `dstack apply`:
+
+<div class="termy">
+
+```shell
+$ dstack apply -f lambda-fleet.dstack.yml
+```
+
+</div>
+
+Once the fleet is created, you can run [dev environments](../../concepts/dev-environments.md), [tasks](../../concepts/tasks.md), and [services](../../concepts/services.md).
+
+## 1-Click Clusters
+
+Another way to work with Lambda clusters is through [1CC](https://lambda.ai/1-click-clusters). While `dstack` supports automated cluster provisioning via [VM-based backends](../../concepts/backends.md#vm-based), there is currently no programmatic way to provision Lambda 1CCs. As a result, to use a 1CC cluster with `dstack`, you must use [SSH fleets](../../concepts/fleets.md).
+
+### Prerequsisites
+
+1.  Follow the instructions in [Lambda's guide](https://docs.lambda.ai/public-cloud/1-click-clusters/) on working with 1-Click Clusters
+
+### Create a fleet
+
+Follow the standard instructions for setting up an [SSH fleet](../../concepts/fleets.md#ssh-fleets):
+
+<div editor-title="lambda-fleet.dstack.yml"> 
+    
+```yaml
+type: fleet
+name: lambda-fleet
+
+ssh_config:
+  user: ubuntu
+  identity_file: ~/.ssh/id_rsa
+  hosts:
+    - worker-gpu-8x-b200-rplfm-ll9nr
+    - worker-gpu-8x-b200-rplfm-qrcs9
+  proxy_jump:
+    hostname: 192.222.55.54
+    user: ubuntu
+    identity_file: ~/.ssh/id_rsa
+
+placement: cluster
+```
+    
+</div>
+
+> Under `proxy_jump`, we specify the hostname of the head node along with the private SSH key.
+
+Pass the fleet configuration to `dstack apply`:
+
+<div class="termy">
+
+```shell
+$ dstack apply -f lambda-fleet.dstack.yml
+```
+
+</div>
+
+Once the fleet is created, you can run [dev environments](../../concepts/dev-environments.md), [tasks](../../concepts/tasks.md), and [services](../../concepts/services.md).
+
+## Run tasks
+
+To run tasks on a cluster, you must use [distributed tasks](../../concepts/tasks.md#distributed-task).
+
+### Run NCCL tests
+
+To validate cluster network bandwidth, use the following task:
+
+<div editor-title="lambda-nccl-tests.dstack.yml">
+
+```yaml
+type: task
+name: nccl-tests
+
+nodes: 2
+startup_order: workers-first
+stop_criteria: master-done
+
+commands:
+  - |
+    if [ $DSTACK_NODE_RANK -eq 0 ]; then
+      mpirun \
+        --allow-run-as-root \
+        --hostfile $DSTACK_MPI_HOSTFILE \
+        -n $DSTACK_GPUS_NUM \
+        -N $DSTACK_GPUS_PER_NODE \
+        --bind-to none \
+        -x NCCL_IB_HCA=^mlx5_0 \
+        /opt/nccl-tests/build/all_reduce_perf -b 8 -e 2G -f 2 -t 1 -g 1 -c 1 -n 100
+    else
+      sleep infinity
+    fi
+
+# Uncomment if the `kubernetes` backend requires it for `/dev/infiniband` access
+#privileged: true
+
+resources:
+  gpu: nvidia:B200:8
+  shm_size: 16GB
+```
+
+</div>
+
+Pass the configuration to `dstack apply`:
+
+<div class="termy">
+
+```shell
+$ dstack apply -f lambda-nccl-tests.dstack.yml
+
+Provisioning...
+---> 100%
+
+  nccl-tests version 2.17.6 nccl-headers=22602 nccl-library=22602
+  Collective test starting: all_reduce_perf
+
+        size         count      type   redop    root     time   algbw   busbw  #wrong     time   algbw   busbw  #wrong
+         (B)    (elements)                               (us)  (GB/s)  (GB/s)             (us)  (GB/s)  (GB/s)
+           8             2     float     sum      -1    36.50    0.00    0.00       0    36.16    0.00    0.00       0
+          16             4     float     sum      -1    35.55    0.00    0.00       0    35.49    0.00    0.00       0
+          32             8     float     sum      -1    35.49    0.00    0.00       0    36.28    0.00    0.00       0
+          64            16     float     sum      -1    35.85    0.00    0.00       0    35.54    0.00    0.00       0
+         128            32     float     sum      -1    37.36    0.00    0.01       0    36.82    0.00    0.01       0
+         256            64     float     sum      -1    37.38    0.01    0.01       0    37.80    0.01    0.01       0
+         512           128     float     sum      -1    51.05    0.01    0.02       0    37.17    0.01    0.03       0
+        1024           256     float     sum      -1    45.33    0.02    0.04       0    37.98    0.03    0.05       0
+        2048           512     float     sum      -1    38.67    0.05    0.10       0    38.30    0.05    0.10       0
+        4096          1024     float     sum      -1    40.08    0.10    0.19       0    39.18    0.10    0.20       0
+        8192          2048     float     sum      -1    42.13    0.19    0.36       0    41.47    0.20    0.37       0
+       16384          4096     float     sum      -1    43.66    0.38    0.70       0    41.94    0.39    0.73       0
+       32768          8192     float     sum      -1    45.42    0.72    1.35       0    43.29    0.76    1.42       0
+       65536         16384     float     sum      -1    44.59    1.47    2.76       0    43.90    1.49    2.80       0
+      131072         32768     float     sum      -1    47.44    2.76    5.18       0    46.79    2.80    5.25       0
+      262144         65536     float     sum      -1    66.68    3.93    7.37       0    65.36    4.01    7.52       0
+      524288        131072     float     sum      -1   240.71    2.18    4.08       0   125.73    4.17    7.82       0
+     1048576        262144     float     sum      -1   115.58    9.07   17.01       0   115.48    9.08   17.03       0
+     2097152        524288     float     sum      -1   114.44   18.33   34.36       0   114.27   18.35   34.41       0
+     4194304       1048576     float     sum      -1   118.25   35.47   66.50       0   117.11   35.82   67.15       0
+     8388608       2097152     float     sum      -1   141.39   59.33  111.24       0   134.95   62.16  116.55       0
+    16777216       4194304     float     sum      -1   186.86   89.78  168.34       0   184.39   90.99  170.60       0
+    33554432       8388608     float     sum      -1   255.79  131.18  245.96       0   253.88  132.16  247.81       0
+    67108864      16777216     float     sum      -1   350.41  191.52  359.09       0   350.71  191.35  358.79       0
+   134217728      33554432     float     sum      -1   596.75  224.92  421.72       0   595.37  225.44  422.69       0
+   268435456      67108864     float     sum      -1   934.67  287.20  538.50       0   931.37  288.22  540.41       0
+   536870912     134217728     float     sum      -1  1625.63  330.25  619.23       0  1687.31  318.18  596.59       0
+  1073741824     268435456     float     sum      -1  2972.25  361.26  677.35       0  2971.33  361.37  677.56       0
+  2147483648     536870912     float     sum      -1  5784.75  371.23  696.06       0  5728.40  374.88  702.91       0
+  Out of bounds values : 0 OK
+  Avg bus bandwidth    : 137.179
+```
+
+</div>
+
+## What's next
+
+1. Learn about [dev environments](../../concepts/dev-environments.md), [tasks](../../concepts/tasks.md), [services](../../concepts/services.md)
+2. Read about the [Kubernetes backend](../../concepts/backends.md#kubernetes) and [cluster placement](../../concepts/fleets.md#cluster-placement)
+3. Check Lambda's docs on [Kubernetes](https://docs.lambda.ai/public-cloud/1-click-clusters/managed-kubernetes/#accessing-mk8s) and [1CC](https://docs.lambda.ai/public-cloud/1-click-clusters/)
 
 
+# docs/examples/clusters/crusoe.md
 
-# examples/clusters/lambda/index.md
+---
+title: Crusoe
+description: Using Crusoe clusters with InfiniBand support via VMs or Kubernetes
+---
+
+# Crusoe
+
+`dstack` allows using Crusoe clusters with fast interconnect via two ways:
+
+* [VMs](#vms) – If you configure a `crusoe` backend in `dstack` by providing your Crusoe credentials, `dstack` lets you fully provision and use clusters through `dstack`.
+* [Kubernetes](#kubernetes) – If you create a Kubernetes cluster on Crusoe and configure a `kubernetes` backend and create a backend fleet in `dstack`, `dstack` lets you fully use this cluster through `dstack`.
+
+## VMs
+
+Since `dstack` offers a VM-based backend that natively integrates with Crusoe, you only need to provide your Crusoe credentials to `dstack`, and it will allow you to fully provision and use clusters on Crusoe through `dstack`.
+
+### Configure a backend
+
+Log into your [Crusoe](https://console.crusoecloud.com/) console, create an API key under your account settings, and note your project ID.
+
+<div editor-title="~/.dstack/server/config.yml">
+
+```yaml
+projects:
+- name: main
+  backends:
+    - type: crusoe
+      project_id: your-project-id
+      creds:
+        type: access_key
+        access_key: your-access-key
+        secret_key: your-secret-key
+```
+
+</div>
+
+### Create a fleet
+
+Once the backend is configured, you can create a fleet:
+
+<div editor-title="crusoe-fleet.dstack.yml">
+    
+```yaml
+type: fleet
+name: crusoe-fleet
+
+nodes: 2
+placement: cluster
+
+backends: [crusoe]
+
+resources:
+  gpu: A100:80GB:8
+```
+    
+</div>
+
+Pass the fleet configuration to `dstack apply`:
+
+<div class="termy">
+
+```shell
+$ dstack apply -f crusoe-fleet.dstack.yml
+```
+
+</div>
+
+This will automatically create an IB partition and provision instances with InfiniBand networking.
+
+Once the fleet is created, you can run [dev environments](../../concepts/dev-environments.md), [tasks](../../concepts/tasks.md), and [services](../../concepts/services.md).
+
+> If you want instances to be provisioned on demand, you can set `nodes` to `0..2`. In this case, `dstack` will create instances only when you run workloads.
+
+## Kubernetes
+
+### Create a cluster
+
+1. Go `Networking` → `Firewall Rules`, click `Create Firewall Rule`, and allow ingress traffic on port `30022`. This port will be used by the `dstack` server to access the jump host.
+2. Go to `Orchestration` and click `Create Cluster`. Make sure to enable the `NVIDIA GPU Operator` add-on.
+3. Go the the cluster, and click `Create Node Pool`. Select the right type of the instance, and  `Desired Number of Nodes`.
+4. Wait until nodes are provisioned.
+
+> Even if you enable `autoscaling`, `dstack` can use only the nodes that are already provisioned.
+
+### Configure the backend
+
+Follow the standard instructions for setting up a [`kubernetes`](../../concepts/backends.md#kubernetes) backend:
+
+<div editor-title="~/.dstack/server/config.yml">
+
+```yaml
+projects:
+  - name: main
+    backends:
+    - type: kubernetes
+      kubeconfig:
+        filename: <kubeconfig path>
+      proxy_jump:
+        port: 30022
+```
+
+</div>
+
+### Create a fleet
+
+Once the Crusoe Managed Kubernetes cluster and the `dstack` server are running, you can create a fleet:
+
+<div editor-title="crusoe-fleet.dstack.yml">
+    
+```yaml
+type: fleet
+name: crusoe-fleet
+
+placement: cluster
+nodes: 0..
+
+backends: [kubernetes]
+
+resources:
+  # Specify requirements to filter nodes
+  gpu: 8
+```
+    
+</div>
+
+Pass the fleet configuration to `dstack apply`:
+
+<div class="termy">
+
+```shell
+$ dstack apply -f crusoe-fleet.dstack.yml
+```
+
+</div>
+
+Once the fleet is created, you can run [dev environments](../../concepts/dev-environments.md), [tasks](../../concepts/tasks.md), and [services](../../concepts/services.md).
+
+## NCCL tests
+
+Use a [distributed task](../../concepts/tasks.md#distributed-tasks) that runs NCCL tests to validate cluster network bandwidth.
+
+=== "VMs"
+
+    With the Crusoe backend, HPC-X and NCCL topology files are pre-installed on the host VM image. Mount them into the container via [instance volumes](../../concepts/volumes.md#instance-volumes).
+
+    <div editor-title="crusoe-nccl-tests.dstack.yml">
+
+    ```yaml
+    type: task
+    name: nccl-tests
+
+    nodes: 2
+    startup_order: workers-first
+    stop_criteria: master-done
+
+    volumes:
+      - /opt/hpcx:/opt/hpcx
+      - /etc/crusoe/nccl_topo:/etc/crusoe/nccl_topo
+
+    commands:
+      - . /opt/hpcx/hpcx-init.sh
+      - hpcx_load
+      - |
+        if [ $DSTACK_NODE_RANK -eq 0 ]; then
+          mpirun \
+            --allow-run-as-root \
+            --hostfile $DSTACK_MPI_HOSTFILE \
+            -n $DSTACK_GPUS_NUM \
+            -N $DSTACK_GPUS_PER_NODE \
+            --bind-to none \
+            -mca btl tcp,self \
+            -mca coll_hcoll_enable 0 \
+            -x PATH \
+            -x LD_LIBRARY_PATH \
+            -x CUDA_DEVICE_ORDER=PCI_BUS_ID \
+            -x NCCL_SOCKET_NTHREADS=4 \
+            -x NCCL_NSOCKS_PERTHREAD=8 \
+            -x NCCL_TOPO_FILE=/etc/crusoe/nccl_topo/a100-80gb-sxm-ib-cloud-hypervisor.xml \
+            -x NCCL_IB_MERGE_VFS=0 \
+            -x NCCL_IB_HCA=^mlx5_0:1 \
+            /opt/nccl-tests/build/all_reduce_perf -b 8 -e 2G -f 2 -t 1 -g 1 -c 1 -n 100
+        else
+          sleep infinity
+        fi
+
+    backends: [crusoe]
+
+    resources:
+      gpu: A100:80GB:8
+      shm_size: 16GB
+    ```
+
+    </div>
+
+    > Update `NCCL_TOPO_FILE` to match your instance type. Topology files for all supported types are available at `/etc/crusoe/nccl_topo/` on the host.
+
+=== "Kubernetes"
+
+    If you're running on Crusoe Managed Kubernetes, make sure to install HPC-X and provide an up-to-date topology file. 
+
+    <div editor-title="crusoe-nccl-tests.dstack.yml">
+
+    ```yaml
+    type: task
+    name: nccl-tests
+
+    nodes: 2
+    startup_order: workers-first
+    stop_criteria: master-done
+
+    commands:
+      # Install NCCL topology files
+      - curl -sSL https://gist.github.com/un-def/48df8eea222fa9547ad4441986eb15af/archive/df51d56285c5396a0e82bb42f4f970e7bb0a9b65.tar.gz -o nccl_topo.tar.gz
+      - mkdir -p /etc/crusoe/nccl_topo
+      - tar -C /etc/crusoe/nccl_topo -xf nccl_topo.tar.gz --strip-components=1
+      # Install and initialize HPC-X
+      - curl -sSL https://content.mellanox.com/hpc/hpc-x/v2.21.3/hpcx-v2.21.3-gcc-doca_ofed-ubuntu22.04-cuda12-x86_64.tbz -o hpcx.tar.bz
+      - mkdir -p /opt/hpcx
+      - tar -C /opt/hpcx -xf hpcx.tar.bz --strip-components=1 --checkpoint=10000
+      - . /opt/hpcx/hpcx-init.sh
+      - hpcx_load
+      # Run NCCL Tests
+      - |
+        if [ $DSTACK_NODE_RANK -eq 0 ]; then
+          mpirun \
+            --allow-run-as-root \
+            --hostfile $DSTACK_MPI_HOSTFILE \
+            -n $DSTACK_GPUS_NUM \
+            -N $DSTACK_GPUS_PER_NODE \
+            --bind-to none \
+            -mca btl tcp,self \
+            -mca coll_hcoll_enable 0 \
+            -x PATH \
+            -x LD_LIBRARY_PATH \
+            -x CUDA_DEVICE_ORDER=PCI_BUS_ID \
+            -x NCCL_SOCKET_NTHREADS=4 \
+            -x NCCL_NSOCKS_PERTHREAD=8 \
+            -x NCCL_TOPO_FILE=/etc/crusoe/nccl_topo/a100-80gb-sxm-ib-cloud-hypervisor.xml \
+            -x NCCL_IB_MERGE_VFS=0 \
+            -x NCCL_IB_AR_THRESHOLD=0 \
+            -x NCCL_IB_PCI_RELAXED_ORDERING=1 \
+            -x NCCL_IB_SPLIT_DATA_ON_QPS=0 \
+            -x NCCL_IB_QPS_PER_CONNECTION=2 \
+            -x NCCL_IB_HCA=mlx5_1:1,mlx5_2:1,mlx5_3:1,mlx5_4:1,mlx5_5:1,mlx5_6:1,mlx5_7:1,mlx5_8:1 \
+            -x UCX_NET_DEVICES=mlx5_1:1,mlx5_2:1,mlx5_3:1,mlx5_4:1,mlx5_5:1,mlx5_6:1,mlx5_7:1,mlx5_8:1 \
+            /opt/nccl-tests/build/all_reduce_perf -b 8 -e 2G -f 2 -t 1 -g 1 -c 1 -n 100
+        else
+          sleep infinity
+        fi
+
+    # Required for IB
+    privileged: true
+
+    resources:
+      gpu: A100:8
+      shm_size: 16GB
+    ```
+
+    </div>
+
+    > The task above downloads an A100 topology file from a Gist. The most reliable way to obtain the latest topology is to copy it from a Crusoe-provisioned VM (see [VMs](#vms)).
+    
+    ??? info "Privileged"
+        When running on Crusoe Managed Kubernetes, set `privileged` to `true` to ensure access to InfiniBand.
+
+Pass the configuration to `dstack apply`:
+
+<div class="termy">
+
+```shell
+$ dstack apply -f crusoe-nccl-tests.dstack.yml
+```
+
+</div>
+
+## What's next
+
+1. Learn about [dev environments](../../concepts/dev-environments.md), [tasks](../../concepts/tasks.md), [services](../../concepts/services.md)
+2. Check out [backends](../../concepts/backends.md#crusoe-cloud) and [fleets](../../concepts/fleets.md#cloud-fleets)
+3. Check the docs on [Crusoe's networking](https://docs.crusoecloud.com/networking/infiniband/) and ["Crusoe Managed" Kubernetes](https://docs.crusoecloud.com/orchestration/cmk/index.html)
 
 
+# docs/examples/clusters/nebius.md
 
-# examples/clusters/crusoe/index.md
+---
+title: Nebius
+description: Using Nebius clusters with InfiniBand support via VMs or Kubernetes
+---
+
+# Nebius
+
+`dstack` allows you to use Nebius clusters with fast interconnects in two ways:
+
+* [VMs](#vms) – If you configure a `nebius` backend in `dstack` by providing your Nebius credentials, `dstack` lets you fully provision and use clusters through `dstack`.
+* [Kubernetes](#kubernetes) – If you create a Kubernetes cluster on Nebius and configure a `kubernetes` backend and create a backend fleet in `dstack`, `dstack` lets you fully use this cluster through `dstack`.
+
+## VMs
+
+Since `dstack` offers a VM-based backend that natively integrates with Nebius, you only need to provide your Nebius credentials to `dstack`, and it will allow you to fully provision and use clusters on Nebius through `dstack`.
+
+### Configure a backend
+
+You can configure the `nebius` backend using a credentials file [generated](https://docs.nebius.com/iam/service-accounts/authorized-keys#create) by the `nebius` CLI:
+
+<div class="termy">
+
+```shell
+$ nebius iam auth-public-key generate \
+    --service-account-id &lt;service account ID&gt; \
+    --output ~/.nebius/sa-credentials.json
+```
+
+</div>
+
+<div editor-title="~/.dstack/server/config.yml">
+
+```yaml
+projects:
+- name: main
+  backends:
+    - type: nebius
+      creds:
+        type: service_account
+        filename: ~/.nebius/sa-credentials.json
+```
+
+</div>
+
+### Create a fleet
+
+Once the backend configured, you can create a fleet:
+
+<div editor-title="nebius-fleet.dstack.yml">
+        
+```yaml
+type: fleet
+name: nebius-fleet
+
+nodes: 2
+placement: cluster
+
+backends: [nebius]
+
+resources:
+  gpu: H100:8
+```
+        
+</div>
+
+Pass the fleet configuration to `dstack apply`:
+
+<div class="termy">
+
+```shell
+$ dstack apply -f nebius-fleet.dstack.yml
+```
+
+</div>
+
+This will automatically create a Nebius cluster and provision instances. 
+
+Once the fleet is created, you can run [dev environments](../../concepts/dev-environments.md), [tasks](../../concepts/tasks.md), and [services](../../concepts/services.md).
+
+> If you want instances to be provisioned on demand, you can set `nodes` to `0..2`. In this case, `dstack` will create instances only when you run workloads.
+
+## Kubernetes
+
+If, for some reason, you’d like to use dstack with Nebius’s managed Kubernetes service, you can point `dstack` to the cluster’s kubeconfig file, and `dstack` will allow you to fully use this cluster through `dstack`.
+
+### Create a cluster
+
+1. Go to `Compute` → `Kubernetes` and click `Create cluster`. Make sure to enable `Public endpoint`.
+2. Go to `Node groups` and click `Create node group`. Make sure to enable `Assign public IPv4 addresses` and `Install NVIDIA GPU drivers and other components`. Select the appropriate instance type, specify the `Number of nodes`, and set `Node storage` to at least `120 GiB`. Make sure to click `Create` under `GPU cluster` if you plan to use a fast interconnect.
+3. Go to `Applications`, find `NVIDIA Device Plugin`, and click `Deploy`.
+4. Wait until the nodes are provisioned.
+
+> Even if you enable `autoscaling`, `dstack` can use only the nodes that are already provisioned. To provision instances on demand, use [VMs](#vms) (see above).
+
+#### Configure the kubeconfig file
+
+1. Click `How to connect` and copy the `nebius` CLI command that configures the `kubeconfig` file.
+2. Install the `nebius` CLI and run the command:
+
+<div class="termy">
+
+```shell
+$ nebius mk8s cluster get-credentials --id &lt;cluster id&gt; --external
+```
+
+</div>
+
+### Configure a backend
+
+Follow the standard instructions for setting up a [`kubernetes`](../../concepts/backends.md#kubernetes) backend:
+
+<div editor-title="~/.dstack/server/config.yml">
+
+```yaml
+projects:
+  - name: main
+    backends:
+      - type: kubernetes
+        kubeconfig:
+          filename: <kubeconfig path>
+```
+
+</div>
+
+### Create a fleet
+
+Once the cluster and the `dstack` server are running, you can create a fleet:
+
+<div editor-title="nebius-fleet.dstack.yml">
+    
+```yaml
+type: fleet
+name: nebius-fleet
+
+placement: cluster
+nodes: 0..
+
+backends: [kubernetes]
+
+resources:
+  # Specify requirements to filter nodes
+  gpu: 8
+```
+    
+</div>
+
+Pass the fleet configuration to `dstack apply`:
+
+<div class="termy">
+
+```shell
+$ dstack apply -f nebius-fleet.dstack.yml
+```
+
+</div>
+
+Once the fleet is created, you can run [dev environments](../../concepts/dev-environments.md), [tasks](../../concepts/tasks.md), and [services](../../concepts/services.md).
+
+## NCCL tests
+
+Use a [distributed task](../../concepts/tasks.md#distributed-tasks) to run NCCL tests and validate the cluster’s network bandwidth.
+
+<div editor-title="nccl-tests.dstack.yml">
+
+```yaml
+type: task
+name: nccl-tests
+
+nodes: 2
+startup_order: workers-first
+stop_criteria: master-done
+
+env:
+  - NCCL_DEBUG=INFO
+commands:
+  - |
+    if [ $DSTACK_NODE_RANK -eq 0 ]; then
+      mpirun \
+        --allow-run-as-root \
+        --hostfile $DSTACK_MPI_HOSTFILE \
+        -n $DSTACK_GPUS_NUM \
+        -N $DSTACK_GPUS_PER_NODE \
+        --bind-to none \
+        /opt/nccl-tests/build/all_reduce_perf -b 8 -e 8G -f 2 -g 1
+    else
+      sleep infinity
+    fi
+
+# Required for `/dev/infiniband` access
+privileged: true
+
+resources:
+  gpu: 8
+  shm_size: 16GB
+```
+
+</div>
+
+Pass the configuration to `dstack apply`:
+
+<div class="termy">
+
+```shell
+$ dstack apply -f nebius-nccl-tests.dstack.yml
+
+Provisioning...
+---> 100%
+
+nccl-tests provisioning completed (running)
+
+ out-of-place                       in-place
+        size         count      type   redop    root     time   algbw   busbw  #wrong     time   algbw   busbw  #wrong
+        (B)    (elements)                               (us)  (GB/s)  (GB/s)             (us)  (GB/s)  (GB/s)
+           8             2     float     sum      -1    45.72    0.00    0.00       0    29.78    0.00    0.00       0
+          16             4     float     sum      -1    29.92    0.00    0.00       0    29.42    0.00    0.00       0
+          32             8     float     sum      -1    30.10    0.00    0.00       0    29.75    0.00    0.00       0
+          64            16     float     sum      -1    34.48    0.00    0.00       0    29.36    0.00    0.00       0
+         128            32     float     sum      -1    30.38    0.00    0.01       0    29.67    0.00    0.01       0
+         256            64     float     sum      -1    30.48    0.01    0.02       0    29.97    0.01    0.02       0
+         512           128     float     sum      -1    30.45    0.02    0.03       0    30.85    0.02    0.03       0
+        1024           256     float     sum      -1    31.36    0.03    0.06       0    31.29    0.03    0.06       0
+        2048           512     float     sum      -1    32.27    0.06    0.12       0    32.26    0.06    0.12       0
+        4096          1024     float     sum      -1    36.04    0.11    0.21       0    43.17    0.09    0.18       0
+        8192          2048     float     sum      -1    37.24    0.22    0.41       0    35.54    0.23    0.43       0
+       16384          4096     float     sum      -1    37.22    0.44    0.83       0    34.55    0.47    0.89       0
+       32768          8192     float     sum      -1    43.82    0.75    1.40       0    35.64    0.92    1.72       0
+       65536         16384     float     sum      -1    37.85    1.73    3.25       0    37.55    1.75    3.27       0
+      131072         32768     float     sum      -1    43.10    3.04    5.70       0    53.08    2.47    4.63       0
+      262144         65536     float     sum      -1    58.59    4.47    8.39       0    63.33    4.14    7.76       0
+      524288        131072     float     sum      -1    97.88    5.36   10.04       0    83.91    6.25   11.72       0
+     1048576        262144     float     sum      -1    87.08   12.04   22.58       0    77.82   13.47   25.26       0
+     2097152        524288     float     sum      -1    99.06   21.17   39.69       0    97.67   21.47   40.26       0
+     4194304       1048576     float     sum      -1   110.14   38.08   71.40       0   114.66   36.58   68.59       0
+     8388608       2097152     float     sum      -1   154.48   54.30  101.82       0   156.03   53.76  100.80       0
+    16777216       4194304     float     sum      -1   210.33   79.77  149.56       0   200.98   83.48  156.52       0
+    33554432       8388608     float     sum      -1   274.23  122.36  229.43       0   276.45  121.38  227.58       0
+    67108864      16777216     float     sum      -1   472.43  142.05  266.35       0   480.00  139.81  262.14       0
+   134217728      33554432     float     sum      -1   759.58  176.70  331.31       0   756.21  177.49  332.79       0
+   268435456      67108864     float     sum      -1  1305.66  205.59  385.49       0  1303.37  205.95  386.16       0
+   536870912     134217728     float     sum      -1  2379.38  225.63  423.06       0  2373.42  226.20  424.13       0
+  1073741824     268435456     float     sum      -1  4511.97  237.98  446.21       0  4513.82  237.88  446.02       0
+  2147483648     536870912     float     sum      -1  8776.26  244.69  458.80       0  8760.42  245.13  459.63       0
+  4294967296    1073741824     float     sum      -1  17407.8  246.73  462.61       0  17302.2  248.23  465.44       0
+  8589934592    2147483648     float     sum      -1  34448.4  249.36  467.54       0  34381.0  249.85  468.46       0
+  Out of bounds values : 0 OK
+  Avg bus bandwidth    : 125.499
+
+  Collective test concluded: all_reduce_perf
+```
+
+</div>
+
+## What's next
+
+1. Learn about [dev environments](../../concepts/dev-environments.md), [tasks](../../concepts/tasks.md), [services](../../concepts/services.md)
+2. Check out [backends](../../concepts/backends.md) and [fleets](../../concepts/fleets.md)
+3. Read Nebius' docs on [networking for VMs](https://docs.nebius.com/compute/clusters/gpu) and the [managed Kubernetes service](https://docs.nebius.com/kubernetes).
 
 
+# docs/examples/clusters/nccl-rccl-tests.md
 
-# examples/clusters/nebius/index.md
+---
+title: NCCL/RCCL tests
+description: Running NCCL and RCCL tests to validate cluster network bandwidth
+---
+
+# NCCL/RCCL tests
+
+This example shows how to run [NCCL](https://github.com/NVIDIA/nccl-tests) or [RCCL](https://github.com/ROCm/rccl-tests) tests on a cluster using [distributed tasks](../../concepts/tasks.md#distributed-tasks).
+
+!!! info "Prerequisites"
+    Before running a distributed task, make sure to create a fleet with `placement` set to `cluster` (can be a [managed fleet](../../concepts/fleets.md#cluster-placement) or an [SSH fleet](../../concepts/fleets.md#ssh-placement)).
+
+## Running as a task
+
+Here's an example of a task that runs AllReduce test on 2 nodes, each with 4 GPUs (8 processes in total).
+
+=== "NCCL tests"
+
+    <div editor-title="nccl-tests.dstack.yml">
+
+    ```yaml
+    type: task
+    name: nccl-tests
+
+    nodes: 2
+
+    startup_order: workers-first
+    stop_criteria: master-done
+
+    env:
+      - NCCL_DEBUG=INFO
+    commands:
+      - |
+        if [ $DSTACK_NODE_RANK -eq 0 ]; then
+          mpirun \
+            --allow-run-as-root \
+            --hostfile $DSTACK_MPI_HOSTFILE \
+            -n $DSTACK_GPUS_NUM \
+            -N $DSTACK_GPUS_PER_NODE \
+            --bind-to none \
+            /opt/nccl-tests/build/all_reduce_perf -b 8 -e 8G -f 2 -g 1
+        else
+          sleep infinity
+        fi
+
+    # Uncomment if the `kubernetes` backend requires it for `/dev/infiniband` access
+    #privileged: true
+
+    resources:
+      gpu: nvidia:1..8
+      shm_size: 16GB
+    ```
+
+    </div>
+
+    !!! info "Default image"
+        If you don't specify `image`, `dstack` uses its [base](https://github.com/dstackai/dstack/tree/master/docker/base) Docker image pre-configured with 
+        `uv`, `python`, `pip`, essential CUDA drivers, `mpirun`, and NCCL tests (under `/opt/nccl-tests/build`). 
+
+=== "RCCL tests"
+
+    <div editor-title="rccl-tests.dstack.yml">
+
+    ```yaml
+    type: task
+    name: rccl-tests
+
+    nodes: 2
+    startup_order: workers-first
+    stop_criteria: master-done
+
+    # Mount the system libraries folder from the host
+    volumes:
+      - /usr/local/lib:/mnt/lib
+
+    image: rocm/dev-ubuntu-22.04:6.4-complete
+    env:
+      - NCCL_DEBUG=INFO
+      - OPEN_MPI_HOME=/usr/lib/x86_64-linux-gnu/openmpi
+    commands:
+      # Setup MPI and build RCCL tests
+      - apt-get install -y git libopenmpi-dev openmpi-bin
+      - git clone https://github.com/ROCm/rccl-tests.git
+      - cd rccl-tests
+      - make MPI=1 MPI_HOME=$OPEN_MPI_HOME
+
+      # Preload the RoCE driver library from the host (for Broadcom driver compatibility)
+      - export LD_PRELOAD=/mnt/lib/libbnxt_re-rdmav34.so
+
+      # Run RCCL tests via MPI
+      - |
+        if [ $DSTACK_NODE_RANK -eq 0 ]; then
+          mpirun --allow-run-as-root \
+            --hostfile $DSTACK_MPI_HOSTFILE \
+            -n $DSTACK_GPUS_NUM \
+            -N $DSTACK_GPUS_PER_NODE \
+            --mca btl_tcp_if_include ens41np0 \
+            -x LD_PRELOAD \
+            -x NCCL_IB_HCA=mlx5_0/1,bnxt_re0,bnxt_re1,bnxt_re2,bnxt_re3,bnxt_re4,bnxt_re5,bnxt_re6,bnxt_re7 \
+            -x NCCL_IB_GID_INDEX=3 \
+            -x NCCL_IB_DISABLE=0 \
+            ./build/all_reduce_perf -b 8M -e 8G -f 2 -g 1 -w 5 --iters 20 -c 0;
+        else
+          sleep infinity
+        fi
+
+    resources:
+      gpu: MI300X:8
+    ```
+
+    </div>
+
+    !!! info "RoCE library"
+        Broadcom RoCE drivers require the `libbnxt_re` userspace library inside the container to be compatible with the host’s Broadcom 
+        kernel driver `bnxt_re`. To ensure this compatibility, we mount `libbnxt_re-rdmav34.so` from the host and preload it 
+        using `LD_PRELOAD` when running MPI.
+
+!!! info "Privileged"
+    In some cases, the backend (e.g., `kubernetes`) may require `privileged: true` to access the high-speed interconnect (e.g., InfiniBand).
+
+### Apply a configuration
+
+To run a configuration, use the [`dstack apply`](../../reference/cli/dstack/apply.md) command.
+
+<div class="termy">
+
+```shell
+$ dstack apply -f nccl-tests.dstack.yml
+
+ #  BACKEND  REGION     INSTANCE       RESOURCES                                   SPOT  PRICE
+ 1  aws      us-east-1  g4dn.12xlarge  48xCPU, 192GB, 4xT4 (16GB), 100.0GB (disk)  no    $3.912
+ 2  aws      us-west-2  g4dn.12xlarge  48xCPU, 192GB, 4xT4 (16GB), 100.0GB (disk)  no    $3.912
+ 3  aws      us-east-2  g4dn.12xlarge  48xCPU, 192GB, 4xT4 (16GB), 100.0GB (disk)  no    $3.912
+
+Submit the run nccl-tests? [y/n]: y
+```
+
+</div>
+
+## What's next?
+
+1. Check [dev environments](../../concepts/dev-environments.md), [tasks](../../concepts/tasks.md), 
+   [services](../../concepts/services.md), and [fleets](../../concepts/fleets.md).
 
 
+# docs/examples/inference/sglang.md
 
-# examples/clusters/nccl-rccl-tests/index.md
+---
+title: SGLang
+description: Deploying Qwen3.6-27B using SGLang on NVIDIA and AMD GPUs
+---
+
+# SGLang
+
+This example shows how to deploy `Qwen/Qwen3.6-27B` using
+[SGLang](https://github.com/sgl-project/sglang) and `dstack`.
+
+> For a `DeepSeek-V4-Pro` deployment on `B200:8`, see the
+[DeepSeek V4](../models/deepseek-v4.md) model page.
+
+## Apply a configuration
+
+Here's an example of a service that deploys
+`Qwen/Qwen3.6-27B` using SGLang.
+
+=== "NVIDIA"
+
+    <div editor-title="service.dstack.yml">
+
+    ```yaml
+    type: service
+    name: qwen36
+
+    image: lmsysorg/sglang:v0.5.10.post1
+
+    commands:
+      - |
+        sglang serve \
+          --model-path Qwen/Qwen3.6-27B \
+          --host 0.0.0.0 \
+          --port 30000 \
+          --tp $DSTACK_GPUS_NUM \
+          --reasoning-parser qwen3 \
+          --mem-fraction-static 0.8 \
+          --context-length 262144
+
+    port: 30000
+    model: Qwen/Qwen3.6-27B
+
+    volumes:
+      - instance_path: /root/.cache
+        path: /root/.cache
+        optional: true
+
+    resources:
+      shm_size: 16GB
+      gpu: H100:4
+    ```
+    </div>
+
+=== "AMD"
+
+    <div editor-title="service.dstack.yml">
+
+    ```yaml
+    type: service
+    name: qwen36
+
+    image: lmsysorg/sglang:v0.5.10-rocm720-mi30x
+
+    commands:
+      - |
+        sglang serve \
+          --model-path Qwen/Qwen3.6-27B \
+          --host 0.0.0.0 \
+          --port 30000 \
+          --tp $DSTACK_GPUS_NUM \
+          --reasoning-parser qwen3 \
+          --mem-fraction-static 0.8 \
+          --context-length 262144
+
+    port: 30000
+    model: Qwen/Qwen3.6-27B
+
+    volumes:
+      - instance_path: /root/.cache
+        path: /root/.cache
+        optional: true
+
+    resources:
+      cpu: 52..
+      memory: 896GB..
+      shm_size: 16GB
+      disk: 450GB..
+      gpu: MI300X:4
+    ```
+    </div>
+
+The AMD example keeps the deployment close to the upstream Qwen and SGLang
+guidance: a pinned ROCm image, tensor parallelism across all four GPUs, and the
+standard `qwen3` reasoning parser without extra ROCm-specific tuning flags.
+The first startup on MI300X can take longer while SGLang compiles ROCm kernels.
+
+Save one of the configurations above as `service.dstack.yml`, then use the
+[`dstack apply`](../../reference/cli/dstack/apply.md) command.
+
+<div class="termy">
+
+```shell
+$ dstack apply -f service.dstack.yml
+```
+
+</div>
+
+If no gateway is created, the service endpoint will be available at `<dstack server URL>/proxy/services/<project name>/<run name>/`.
+
+<div class="termy">
+
+```shell
+curl http://127.0.0.1:3000/proxy/services/main/qwen36/v1/chat/completions \
+    -X POST \
+    -H 'Authorization: Bearer &lt;dstack token&gt;' \
+    -H 'Content-Type: application/json' \
+    -d '{
+      "model": "Qwen/Qwen3.6-27B",
+      "messages": [
+        {
+          "role": "user",
+          "content": "A bat and a ball cost $1.10 total. The bat costs $1.00 more than the ball. How much does the ball cost? Answer with just the dollar amount."
+        }
+      ],
+      "separate_reasoning": true,
+      "max_tokens": 1024
+    }'
+```
+</div>
+
+Qwen3.6 uses thinking mode by default. To disable thinking, pass
+`"chat_template_kwargs": {"enable_thinking": false}` in the request body. To
+enable tool calling, add `--tool-call-parser qwen3_coder` to the serve command.
+
+> If a [gateway](../../concepts/gateways.md) is configured (e.g. to enable auto-scaling, HTTPS, rate limits, etc.), the service endpoint will be available at `https://qwen36.<gateway domain>/`.
+
+## Configuration options
+
+### PD disaggregation
+
+To run SGLang with [PD disaggregation](https://docs.sglang.io/advanced_features/pd_disaggregation.html), use replica groups: one for [Shepherd Model Gateway (SMG)](https://docs.sglang.io/advanced_features/sgl_model_gateway.html), one for prefill workers, and one for decode workers.
+
+=== "NVIDIA"
+
+    <div editor-title="pd.dstack.yml">
+
+    ```yaml
+    type: service
+    name: prefill-decode
+    image: lmsysorg/sglang:v0.5.10.post1
+
+    env:
+      - HF_TOKEN
+      - MODEL_ID=zai-org/GLM-4.5-Air-FP8
+
+    replicas:
+      - count: 1
+        # For now replica group with router must have count: 1
+        commands:
+          - pip install smg
+          - |
+            smg launch \
+              --host 0.0.0.0 \
+              --port 8000 \
+              --pd-disaggregation \
+              --prefill-policy cache_aware
+        router:
+          type: sglang
+        resources:
+          cpu: 4
+
+      - count: 1..4
+        scaling:
+          metric: rps
+          target: 3
+        commands:
+          - |
+            python -m sglang.launch_server \
+              --model-path $MODEL_ID \
+              --disaggregation-mode prefill \
+              --disaggregation-transfer-backend nixl \
+              --host 0.0.0.0 \
+              --port 8000 \
+              --disaggregation-bootstrap-port 8998
+        resources:
+          gpu: H200
+
+      - count: 1..8
+        scaling:
+          metric: rps
+          target: 2
+        commands:
+          - |
+            python -m sglang.launch_server \
+              --model-path $MODEL_ID \
+              --disaggregation-mode decode \
+              --disaggregation-transfer-backend nixl \
+              --host 0.0.0.0 \
+              --port 8000
+        resources:
+          gpu: H200
+
+    port: 8000
+    model: zai-org/GLM-4.5-Air-FP8
+
+    # Custom probe is required for PD disaggregation.
+    probes:
+      - type: http
+        url: /health
+        interval: 15s
+    ```
+
+    </div>
+
+Currently, auto-scaling only supports `rps` as the metric. TTFT and ITL metrics are coming soon.
+
+!!! info "Cluster"
+    PD disaggregation requires the service to run in a fleet with `placement` set to `cluster`, because the replicas require an interconnect between instances.
+
+    While the prefill and decode replicas run on GPUs, the router replica requires a CPU instance in the same cluster.
+
+## What's next?
+
+1. Read about [services](../../concepts/services.md) and [gateways](../../concepts/gateways.md)
+2. Browse the [Qwen 3.6 SGLang cookbook](https://docs.sglang.io/cookbook/autoregressive/Qwen/Qwen3.6) and the [SGLang server arguments reference](https://docs.sglang.ai/advanced_features/server_arguments.html)
 
 
+# docs/examples/inference/vllm.md
 
-# examples/inference/sglang/index.md
+---
+title: vLLM
+description: Deploying Qwen3.6-27B using vLLM on NVIDIA and AMD GPUs
+---
+
+# vLLM
+
+This example shows how to deploy `Qwen/Qwen3.6-27B` using
+[vLLM](https://docs.vllm.ai/en/latest/) and `dstack`.
+
+## Apply a configuration
+
+Here's an example of a service that deploys
+`Qwen/Qwen3.6-27B` using vLLM.
+
+=== "NVIDIA"
+
+    <div editor-title="service.dstack.yml">
+
+    ```yaml
+    type: service
+    name: qwen36
+
+    image: vllm/vllm-openai:v0.19.1
+
+    commands:
+      - |
+        vllm serve Qwen/Qwen3.6-27B \
+          --host 0.0.0.0 \
+          --port 8000 \
+          --tensor-parallel-size $DSTACK_GPUS_NUM \
+          --max-model-len 262144 \
+          --reasoning-parser qwen3
+
+    port: 8000
+    model: Qwen/Qwen3.6-27B
+
+    volumes:
+      - instance_path: /root/.cache
+        path: /root/.cache
+        optional: true
+
+    resources:
+      shm_size: 16GB
+      gpu: H100:4
+    ```
+
+    </div>
+
+=== "AMD"
+
+    <div editor-title="service.dstack.yml">
+
+    ```yaml
+    type: service
+    name: qwen36
+
+    image: vllm/vllm-openai-rocm:v0.19.1
+
+    commands:
+      - |
+        vllm serve Qwen/Qwen3.6-27B \
+          --host 0.0.0.0 \
+          --port 8000 \
+          --tensor-parallel-size $DSTACK_GPUS_NUM \
+          --max-model-len 262144 \
+          --reasoning-parser qwen3
+
+    port: 8000
+    model: Qwen/Qwen3.6-27B
+
+    volumes:
+      - instance_path: /root/.cache
+        path: /root/.cache
+        optional: true
+
+    resources:
+      cpu: 52..
+      memory: 896GB..
+      shm_size: 16GB
+      disk: 450GB..
+      gpu: MI300X:4
+    ```
+
+    </div>
+
+Qwen3.6-27B is a multimodal model. For text-only workloads, add
+`--language-model-only` to free more memory for the KV cache. To enable tool
+calling, add `--enable-auto-tool-choice --tool-call-parser qwen3_coder`.
+
+Save one of the configurations above as `service.dstack.yml`, then use the
+[`dstack apply`](../../reference/cli/dstack/apply.md) command.
+
+<div class="termy">
+
+```shell
+$ dstack apply -f service.dstack.yml
+```
+
+</div>
+
+If no gateway is created, the service endpoint will be available at `<dstack server URL>/proxy/services/<project name>/<run name>/`.
+
+<div class="termy">
+
+```shell
+curl http://127.0.0.1:3000/proxy/services/main/qwen36/v1/chat/completions \
+    -X POST \
+    -H 'Authorization: Bearer &lt;dstack token&gt;' \
+    -H 'Content-Type: application/json' \
+    -d '{
+      "model": "Qwen/Qwen3.6-27B",
+      "messages": [
+        {
+          "role": "user",
+          "content": "A bat and a ball cost $1.10 total. The bat costs $1.00 more than the ball. How much does the ball cost?"
+        }
+      ],
+      "max_tokens": 1024
+    }'
+```
+
+</div>
+
+> If a [gateway](../../concepts/gateways.md) is configured (e.g. to enable auto-scaling, HTTPS, rate limits, etc.), the service endpoint will be available at `https://qwen36.<gateway domain>/`.
+
+## What's next?
+
+1. Read about [services](../../concepts/services.md) and [gateways](../../concepts/gateways.md)
+2. Browse the [Qwen 3.5 & 3.6 vLLM recipe](https://docs.vllm.ai/projects/recipes/en/latest/Qwen/Qwen3.5.html) and the [SGLang](../inference/sglang.md) example
 
 
+# docs/examples/inference/nim.md
 
-# examples/inference/vllm/index.md
+---
+title: NVIDIA NIM
+description: Deploying Nemotron-3-Super-120B-A12B using NVIDIA NIM
+---
+
+# NVIDIA NIM
+
+This example shows how to deploy Nemotron-3-Super-120B-A12B using [NVIDIA NIM](https://docs.nvidia.com/nim/large-language-models/latest/getting-started.html) and `dstack`.
+
+??? info "Prerequisites"
+    Once `dstack` is [installed](../../installation.md), clone the repo with examples.
+
+    <div class="termy">
+ 
+    ```shell
+    $ git clone https://github.com/dstackai/dstack
+    $ cd dstack
+    ```
+ 
+    </div>
+
+## Deployment
+
+Here's an example of a service that deploys Nemotron-3-Super-120B-A12B using NIM.
+
+<div editor-title="service.dstack.yml">
+
+```yaml
+type: service
+name: nemotron120
+
+image: nvcr.io/nim/nvidia/nemotron-3-super-120b-a12b:1.8.0
+env:
+  - NGC_API_KEY
+registry_auth:
+  username: $oauthtoken
+  password: ${{ env.NGC_API_KEY }}
+port: 8000
+model: nvidia/nemotron-3-super-120b-a12b
+volumes:
+  - instance_path: /root/.cache/nim
+    path: /opt/nim/.cache
+    optional: true
+
+resources:
+  cpu: x86:96..
+  memory: 512GB..
+  shm_size: 16GB
+  disk: 500GB..
+  gpu: H100:80GB:8
+```
+</div>
+
+### Running a configuration
+
+Save the configuration above as `nemotron120.dstack.yml`, then use the
+[`dstack apply`](../../reference/cli/dstack/apply.md) command.
+
+<div class="termy">
+
+```shell
+$ NGC_API_KEY=...
+$ dstack apply -f service.dstack.yml
+```
+</div>
+
+If no gateway is created, the service endpoint will be available at `<dstack server URL>/proxy/services/<project name>/<run name>/`.
+
+<div class="termy">
+
+```shell
+$ curl http://127.0.0.1:3000/proxy/services/main/nemotron120/v1/chat/completions \
+    -X POST \
+    -H 'Authorization: Bearer &lt;dstack token&gt;' \
+    -H 'Content-Type: application/json' \
+    -d '{
+      "model": "nvidia/nemotron-3-super-120b-a12b",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are a helpful assistant."
+        },
+        {
+          "role": "user",
+          "content": "What is Deep Learning?"
+        }
+      ],
+      "max_tokens": 128
+    }'
+```
+
+</div>
+
+When a [gateway](../../concepts/gateways.md) is configured, the service endpoint will be available at `https://nemotron120.<gateway domain>/`.
+
+## What's next?
+
+1. Check [services](../../concepts/services.md)
+2. Browse the [Nemotron-3-Super-120B-A12B model page](https://build.nvidia.com/nvidia/nemotron-3-super-120b-a12b)
 
 
+# docs/examples/inference/trtllm.md
 
-# examples/inference/nim/index.md
+---
+title: TensorRT-LLM
+description: Deploying Qwen3-235B-A22B-FP8 using NVIDIA TensorRT-LLM on NVIDIA GPUs
+---
+
+# TensorRT-LLM
+
+This example shows how to deploy `nvidia/Qwen3-235B-A22B-FP8` using
+[TensorRT-LLM](https://github.com/NVIDIA/TensorRT-LLM) and `dstack`.
+
+## Apply a configuration
+
+Here's an example of a service that deploys
+`nvidia/Qwen3-235B-A22B-FP8` using TensorRT-LLM.
+
+<div editor-title="service.dstack.yml">
+
+```yaml
+type: service
+name: qwen235
+
+image: nvcr.io/nvidia/tensorrt-llm/release:1.3.0rc11
+
+env:
+  - HF_HUB_ENABLE_HF_TRANSFER=1
+
+commands:
+  - pip install hf_transfer
+  - |
+    trtllm-serve serve nvidia/Qwen3-235B-A22B-FP8 \
+      --host 0.0.0.0 \
+      --port 8000 \
+      --backend pytorch \
+      --tp_size $DSTACK_GPUS_NUM \
+      --max_batch_size 32 \
+      --max_num_tokens 4096 \
+      --kv_cache_free_gpu_memory_fraction 0.75
+
+port: 8000
+model: nvidia/Qwen3-235B-A22B-FP8
+
+volumes:
+  - instance_path: /root/.cache
+    path: /root/.cache
+    optional: true
+
+resources:
+  cpu: 96..
+  memory: 512GB..
+  shm_size: 32GB
+  disk: 1000GB..
+  gpu: H100:8
+```
+</div>
+
+Apply it with [`dstack apply`](../../reference/cli/dstack/apply.md):
+
+<div class="termy">
+
+```shell
+$ dstack apply -f service.dstack.yml
+```
+
+</div>
+
+## Access the endpoint
+
+If no gateway is created, the service endpoint will be available at `<dstack server URL>/proxy/services/<project name>/<run name>/`.
+
+<div class="termy">
+
+```shell
+$ curl http://127.0.0.1:3000/proxy/services/main/qwen235/v1/chat/completions \
+    -X POST \
+    -H 'Authorization: Bearer &lt;dstack token&gt;' \
+    -H 'Content-Type: application/json' \
+    -d '{
+      "model": "nvidia/Qwen3-235B-A22B-FP8",
+      "messages": [
+        {
+          "role": "user",
+          "content": "A bat and a ball cost $1.10 total. The bat costs $1.00 more than the ball. How much does the ball cost?"
+        }
+      ],
+      "chat_template_kwargs": {"enable_thinking": true},
+      "max_tokens": 1024,
+      "temperature": 0.0
+    }'
+```
+
+</div>
+
+When a [gateway](../../concepts/gateways.md) is configured, the service endpoint will be available at `https://qwen235.<gateway domain>/`.
+
+## What's next?
+
+1. Read about [services](../../concepts/services.md) and [gateways](../../concepts/gateways.md)
+2. Browse the [TensorRT-LLM deployment guides](https://nvidia.github.io/TensorRT-LLM/deployment-guide/index.html) and the [Qwen3 deployment guide](https://nvidia.github.io/TensorRT-LLM/deployment-guide/deployment-guide-for-qwen3-on-trtllm.html)
+3. See the [`trtllm-serve` reference](https://nvidia.github.io/TensorRT-LLM/commands/trtllm-serve/trtllm-serve.html)
 
 
+# docs/examples/models/deepseek-v4.md
 
-# examples/inference/trtllm/index.md
+---
+title: DeepSeek V4
+description: Deploying DeepSeek-V4-Pro using SGLang on NVIDIA B200:8
+---
+
+# DeepSeek V4
+
+This example shows how to deploy `deepseek-ai/DeepSeek-V4-Pro` as a
+[service](../../concepts/services.md) using
+[SGLang](https://github.com/sgl-project/sglang) and `dstack`.
+
+## Apply a configuration
+
+Save the following configuration as `deepseek-v4.dstack.yml`.
+
+<div editor-title="deepseek-v4.dstack.yml">
+
+```yaml
+type: service
+name: deepseek-v4
+
+image: lmsysorg/sglang:deepseek-v4-blackwell
+
+env:
+  - HF_TOKEN
+  - SGLANG_DEEPEP_NUM_MAX_DISPATCH_TOKENS_PER_RANK=256
+  - SGLANG_JIT_DEEPGEMM_PRECOMPILE=0
+
+commands:
+  - |
+    sglang serve \
+      --trust-remote-code \
+      --model-path deepseek-ai/DeepSeek-V4-Pro \
+      --tp 8 \
+      --dp 8 \
+      --enable-dp-attention \
+      --moe-a2a-backend deepep \
+      --mem-fraction-static 0.82 \
+      --cuda-graph-max-bs 64 \
+      --max-running-requests 256 \
+      --deepep-config '{"normal_dispatch":{"num_sms":96},"normal_combine":{"num_sms":96}}' \
+      --tool-call-parser deepseekv4 \
+      --reasoning-parser deepseek-v4 \
+      --host 0.0.0.0 \
+      --port 30000
+
+port: 30000
+model: deepseek-ai/DeepSeek-V4-Pro
+
+volumes:
+  - instance_path: /root/.cache
+    path: /root/.cache
+    optional: true
+
+resources:
+  gpu: B200:8
+  shm_size: 32GB
+  disk: 2TB..
+```
+
+</div>
+
+This configuration uses the single-node Blackwell `DeepSeek-V4-Pro` recipe
+shape for `8 x NVIDIA B200`.
+
+Export your Hugging Face token and apply the configuration with
+[`dstack apply`](../../reference/cli/dstack/apply.md).
+
+<div class="termy">
+
+```shell
+$ export HF_TOKEN=<your-hf-token>
+$ dstack apply -f deepseek-v4.dstack.yml
+```
+
+</div>
+
+If no gateway is created, the service endpoint will be available at
+`<dstack server URL>/proxy/services/<project name>/<run name>/`.
+
+<div class="termy">
+
+```shell
+curl http://127.0.0.1:3000/proxy/services/main/deepseek-v4/v1/chat/completions \
+    -X POST \
+    -H 'Authorization: Bearer &lt;dstack token&gt;' \
+    -H 'Content-Type: application/json' \
+    -d '{
+      "model": "deepseek-ai/DeepSeek-V4-Pro",
+      "messages": [
+        {
+          "role": "user",
+          "content": "What is 15% of 240? Reply with just the number."
+        }
+      ],
+      "temperature": 0,
+      "max_tokens": 32
+    }'
+```
+
+</div>
+
+## Reasoning mode
+
+To separate the model's reasoning into `reasoning_content`, keep
+`--reasoning-parser deepseek-v4` in the server command and send
+`chat_template_kwargs` in the request body.
+
+For raw HTTP requests, `chat_template_kwargs` and `separate_reasoning` must be
+top-level JSON fields.
+
+<div class="termy">
+
+```shell
+curl http://127.0.0.1:3000/proxy/services/main/deepseek-v4/v1/chat/completions \
+    -X POST \
+    -H 'Authorization: Bearer &lt;dstack token&gt;' \
+    -H 'Content-Type: application/json' \
+    -d '{
+      "model": "deepseek-ai/DeepSeek-V4-Pro",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Solve step by step: If 3x + 5 = 20, what is x?"
+        }
+      ],
+      "temperature": 0,
+      "max_tokens": 256,
+      "chat_template_kwargs": {
+        "thinking": true
+      },
+      "separate_reasoning": true
+    }'
+```
+
+</div>
+
+This returns both:
+
+- `reasoning_content`: a separate reasoning trace
+- `content`: the final user-visible answer
+
+## Deployment notes
+
+- The first startup can take several minutes while the model loads and SGLang
+  finishes initialization.
+- The optional `/root/.cache` instance volume helps reuse the model cache on
+  backends that support instance volumes.
+
+## What's next?
+
+1. Read the [DeepSeek-V4-Pro model card](https://huggingface.co/deepseek-ai/DeepSeek-V4-Pro)
+2. Read the [DeepSeek-V4 SGLang cookbook](https://docs.sglang.io/cookbook/autoregressive/DeepSeek/DeepSeek-V4)
+3. Browse the dedicated [SGLang](../inference/sglang.md) and [vLLM](../inference/vllm.md) examples
 
 
+# docs/examples/models/qwen36.md
 
-# examples/models/deepseek-v4/index.md
+---
+title: Qwen 3.6
+description: Deploying Qwen3.6-27B using SGLang on NVIDIA and AMD GPUs
+---
+
+# Qwen 3.6
+
+This example shows how to deploy `Qwen/Qwen3.6-27B` as a
+[service](../../concepts/services.md) using
+[SGLang](https://github.com/sgl-project/sglang) and `dstack`.
+
+## Apply a configuration
+
+Save one of the following configurations as `qwen36.dstack.yml`.
+
+=== "NVIDIA"
+
+    <div editor-title="qwen36.dstack.yml">
+
+    ```yaml
+    type: service
+    name: qwen36
+
+    image: lmsysorg/sglang:v0.5.10.post1
+
+    commands:
+      - |
+        sglang serve \
+          --model-path Qwen/Qwen3.6-27B \
+          --host 0.0.0.0 \
+          --port 30000 \
+          --tp $DSTACK_GPUS_NUM \
+          --reasoning-parser qwen3 \
+          --mem-fraction-static 0.8 \
+          --context-length 262144
+
+    port: 30000
+    model: Qwen/Qwen3.6-27B
+
+    volumes:
+      - instance_path: /root/.cache
+        path: /root/.cache
+        optional: true
+
+    resources:
+      shm_size: 16GB
+      gpu: H100:4
+    ```
+
+    </div>
+
+=== "AMD"
+
+    <div editor-title="qwen36.dstack.yml">
+
+    ```yaml
+    type: service
+    name: qwen36
+
+    image: lmsysorg/sglang:v0.5.10-rocm720-mi30x
+
+    commands:
+      - |
+        sglang serve \
+          --model-path Qwen/Qwen3.6-27B \
+          --host 0.0.0.0 \
+          --port 30000 \
+          --tp $DSTACK_GPUS_NUM \
+          --reasoning-parser qwen3 \
+          --mem-fraction-static 0.8 \
+          --context-length 262144
+
+    port: 30000
+    model: Qwen/Qwen3.6-27B
+
+    volumes:
+      - instance_path: /root/.cache
+        path: /root/.cache
+        optional: true
+
+    resources:
+      cpu: 52..
+      memory: 896GB..
+      shm_size: 16GB
+      disk: 450GB..
+      gpu: MI300X:4
+    ```
+
+    </div>
+
+The NVIDIA and AMD configurations above use pinned SGLang images and the same
+straightforward 4-GPU layout used across the Qwen 3.6 docs and examples.
+
+Apply the configuration with
+[`dstack apply`](../../reference/cli/dstack/apply.md).
+
+<div class="termy">
+
+```shell
+$ dstack apply -f qwen36.dstack.yml
+```
+
+</div>
+
+If no gateway is created, the service endpoint will be available at
+`<dstack server URL>/proxy/services/<project name>/<run name>/`.
+
+<div class="termy">
+
+```shell
+curl http://127.0.0.1:3000/proxy/services/main/qwen36/v1/chat/completions \
+    -X POST \
+    -H 'Authorization: Bearer &lt;dstack token&gt;' \
+    -H 'Content-Type: application/json' \
+    -d '{
+      "model": "Qwen/Qwen3.6-27B",
+      "messages": [
+        {
+          "role": "user",
+          "content": "A bat and a ball cost $1.10 total. The bat costs $1.00 more than the ball. How much does the ball cost? Answer with just the dollar amount."
+        }
+      ],
+      "max_tokens": 1024
+    }'
+```
+
+</div>
+
+## Thinking mode
+
+Qwen3.6 uses thinking mode by default. With SGLang, the reasoning stream is
+returned separately as `reasoning_content`.
+
+To disable thinking, pass `chat_template_kwargs` in the request body.
+
+<div class="termy">
+
+```shell
+curl http://127.0.0.1:3000/proxy/services/main/qwen36/v1/chat/completions \
+    -X POST \
+    -H 'Authorization: Bearer &lt;dstack token&gt;' \
+    -H 'Content-Type: application/json' \
+    -d '{
+      "model": "Qwen/Qwen3.6-27B",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Summarize the benefits of container images in one sentence."
+        }
+      ],
+      "max_tokens": 256,
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      }
+    }'
+```
+
+</div>
+
+## What's next?
+
+1. Read the [Qwen/Qwen3.6-27B model card](https://huggingface.co/Qwen/Qwen3.6-27B)
+2. Read the [Qwen 3.6 SGLang cookbook](https://docs.sglang.io/cookbook/autoregressive/Qwen/Qwen3.6)
+3. Read the [Qwen 3.5 & 3.6 vLLM recipe](https://docs.vllm.ai/projects/recipes/en/latest/Qwen/Qwen3.5.html)
+4. Browse the dedicated [SGLang](../inference/sglang.md)
+   and [vLLM](../inference/vllm.md) examples
+5. Check the [AMD](../accelerators/amd.md) example for
+   more AMD deployment and training configurations
 
 
+# docs/examples/accelerators/amd.md
 
-# examples/models/qwen36/index.md
+---
+title: AMD
+description: Deploying and fine-tuning models on AMD MI300X GPUs using SGLang, vLLM, TRL, and Axolotl
+---
+
+# AMD
+
+`dstack` supports running dev environments, tasks, and services on AMD GPUs.
+You can do that by setting up an [SSH fleet](../../concepts/fleets.md#ssh-fleets)
+with on-prem AMD GPUs or configuring a backend that offers AMD GPUs such as the `runpod` backend.
+
+## Deployment
+
+Here are examples of a [service](../../concepts/services.md) that deploy
+`Qwen/Qwen3.6-27B` on AMD MI300X GPUs using
+[SGLang](https://github.com/sgl-project/sglang) and
+[vLLM](https://docs.vllm.ai/en/latest/).
+
+=== "SGLang"
+
+    <div editor-title="service.dstack.yml">
+
+    ```yaml
+    type: service
+    name: qwen36-service-sglang-amd
+
+    image: lmsysorg/sglang:v0.5.10-rocm720-mi30x
+
+    commands:
+      - |
+        sglang serve \
+          --model-path Qwen/Qwen3.6-27B \
+          --host 0.0.0.0 \
+          --port 30000 \
+          --tp $DSTACK_GPUS_NUM \
+          --reasoning-parser qwen3 \
+          --mem-fraction-static 0.8 \
+          --context-length 262144
+
+    port: 30000
+    model: Qwen/Qwen3.6-27B
+
+    volumes:
+      - instance_path: /root/.cache
+        path: /root/.cache
+        optional: true
+
+    resources:
+      cpu: 52..
+      memory: 896GB..
+      shm_size: 16GB
+      disk: 450GB..
+      gpu: MI300X:4
+    ```
+
+    </div>
+
+=== "vLLM"
+
+    <div editor-title="service.dstack.yml">
+
+    ```yaml
+    type: service
+    name: qwen36-service-vllm-amd
+
+    image: vllm/vllm-openai-rocm:v0.19.1
+
+    commands:
+      - |
+        vllm serve Qwen/Qwen3.6-27B \
+          --host 0.0.0.0 \
+          --port 8000 \
+          --tensor-parallel-size $DSTACK_GPUS_NUM \
+          --max-model-len 262144 \
+          --reasoning-parser qwen3
+
+    port: 8000
+    model: Qwen/Qwen3.6-27B
+
+    volumes:
+      - instance_path: /root/.cache
+        path: /root/.cache
+        optional: true
+
+    resources:
+      cpu: 52..
+      memory: 896GB..
+      shm_size: 16GB
+      disk: 450GB..
+      gpu: MI300X:4
+    ```
+
+    </div>
+
+!!! info "Docker image"
+    AMD deployments require specifying an image that already includes ROCm
+    drivers. The SGLang and vLLM examples above use pinned ROCm images.
+
+To request multiple GPUs, specify the quantity after the GPU name, separated by a colon, e.g., `MI300X:4`.
+
+## Fine-tuning
+
+> If you're planning multi-node AMD training, validate cluster networking first
+with the [NCCL/RCCL tests](../clusters/nccl-rccl-tests.md)
+example.
+
+=== "TRL"
+
+    Below is an example of LoRA fine-tuning Llama 3.1 8B using [TRL](https://rocm.docs.amd.com/en/latest/how-to/llm-fine-tuning-optimization/single-gpu-fine-tuning-and-inference.html)
+    and the [`mlabonne/guanaco-llama2-1k`](https://huggingface.co/datasets/mlabonne/guanaco-llama2-1k)
+    dataset.
+
+    <div editor-title="train.dstack.yml">
+
+    ```yaml
+    type: task
+    name: trl-amd-llama31-train
+
+    # Using Runpod's ROCm Docker image
+    image: runpod/pytorch:2.1.2-py3.10-rocm6.1-ubuntu22.04
+
+    # Required environment variables
+    env:
+      - HF_TOKEN
+    # Mount files
+    files:
+      - train.py
+    # Commands of the task
+    commands:
+      - export PATH=/opt/conda/envs/py_3.10/bin:$PATH
+      - git clone https://github.com/ROCm/bitsandbytes
+      - cd bitsandbytes
+      - git checkout rocm_enabled
+      - pip install -r requirements-dev.txt
+      - cmake -DBNB_ROCM_ARCH="gfx942" -DCOMPUTE_BACKEND=hip -S  .
+      - make
+      - pip install .
+      - pip install trl
+      - pip install peft
+      - pip install transformers datasets huggingface-hub scipy
+      - cd ..
+      - python train.py
+
+    # Uncomment to leverage spot instances
+    #spot_policy: auto
+
+    resources:
+      gpu: MI300X
+      disk: 150GB
+    ```
+
+    </div>
+
+=== "Axolotl"
+    Below is an example of fine-tuning Llama 3.1 8B using [Axolotl](https://rocm.blogs.amd.com/artificial-intelligence/axolotl/README.html)
+    and the [tatsu-lab/alpaca](https://huggingface.co/datasets/tatsu-lab/alpaca)
+    dataset.
+
+    <div editor-title="train.dstack.yml">
+
+    ```yaml
+    type: task
+    # The name is optional, if not specified, generated randomly
+    name: axolotl-amd-llama31-train
+
+    # Using Runpod's ROCm Docker image
+    image: runpod/pytorch:2.1.2-py3.10-rocm6.0.2-ubuntu22.04
+    # Required environment variables
+    env:
+      - HF_TOKEN
+      - WANDB_API_KEY
+      - WANDB_PROJECT
+      - WANDB_NAME=axolotl-amd-llama31-train
+      - HUB_MODEL_ID
+    # Commands of the task
+    commands:
+      - export PATH=/opt/conda/envs/py_3.10/bin:$PATH
+      - pip uninstall torch torchvision torchaudio -y
+      - python3 -m pip install --pre torch==2.3.0 torchvision torchaudio --index-url https://download.pytorch.org/whl/rocm6.0/
+      - git clone https://github.com/OpenAccess-AI-Collective/axolotl
+      - cd axolotl
+      - git checkout d4f6c65
+      - pip install -e .
+      # Latest pynvml is not compatible with axolotl commit d4f6c65, so we need to fall back to version 11.5.3
+      - pip uninstall pynvml -y
+      - pip install pynvml==11.5.3
+      - cd ..
+      - wget https://dstack-binaries.s3.amazonaws.com/flash_attn-2.0.4-cp310-cp310-linux_x86_64.whl
+      - pip install flash_attn-2.0.4-cp310-cp310-linux_x86_64.whl
+      - wget https://dstack-binaries.s3.amazonaws.com/xformers-0.0.26-cp310-cp310-linux_x86_64.whl
+      - pip install xformers-0.0.26-cp310-cp310-linux_x86_64.whl
+      - git clone --recurse https://github.com/ROCm/bitsandbytes
+      - cd bitsandbytes
+      - git checkout rocm_enabled
+      - pip install -r requirements-dev.txt
+      - cmake -DBNB_ROCM_ARCH="gfx942" -DCOMPUTE_BACKEND=hip -S  .
+      - make
+      - pip install .
+      - cd ..
+      - accelerate launch -m axolotl.cli.train -- axolotl/examples/llama-3/fft-8b.yaml
+              --wandb-project "$WANDB_PROJECT"
+              --wandb-name "$WANDB_NAME"
+              --hub-model-id "$HUB_MODEL_ID"
+
+    resources:
+      gpu: MI300X
+      disk: 150GB
+    ```
+    </div>
+
+    Note, to support ROCm, we need to checkout to commit `d4f6c65`. This commit eliminates the need to manually modify the Axolotl source code to make xformers compatible with ROCm, as described in the [xformers workaround](https://docs.axolotl.ai/docs/amd_hpc.html#apply-xformers-workaround). This installation approach is also followed for building Axolotl ROCm docker image. [(See Dockerfile)](https://github.com/ROCm/rocm-blogs/blob/release/blogs/artificial-intelligence/axolotl/src/Dockerfile.rocm).
+
+    > To speed up installation of `flash-attention` and `xformers`, we use pre-built binaries uploaded to S3.
+
+## Running a configuration
+
+Once a configuration is ready, save it to a `.dstack.yml` file. If your
+configuration references environment variables such as `HF_TOKEN` or
+`WANDB_API_KEY`, export them first. Then run
+`dstack apply -f <configuration file>`, and `dstack` will automatically
+provision the cloud resources and run the configuration.
+
+<div class="termy">
+
+```shell
+$ dstack apply -f <configuration file>
+```
+
+</div>
+
+## What's next?
+
+1. Browse the dedicated [SGLang](../inference/sglang.md)
+   and [vLLM](../inference/vllm.md) examples, plus
+   [Axolotl](https://github.com/ROCm/rocm-blogs/tree/release/blogs/artificial-intelligence/axolotl),
+   [TRL](https://rocm.docs.amd.com/en/latest/how-to/llm-fine-tuning-optimization/fine-tuning-and-inference.html),
+   and [ROCm Bitsandbytes](https://github.com/ROCm/bitsandbytes)
+2. For multi-node training, run
+   [NCCL/RCCL tests](../clusters/nccl-rccl-tests.md)
+   to validate AMD cluster networking.
+3. Check [dev environments](../../concepts/dev-environments.md),
+   [tasks](../../concepts/tasks.md), and
+   [services](../../concepts/services.md).
 
 
+# docs/examples/accelerators/tpu.md
 
-# examples/accelerators/amd/index.md
+---
+title: TPU
+description: Deploying and fine-tuning models on Google Cloud TPUs using Optimum TPU and vLLM
+---
+
+# TPU
+
+If you've configured the `gcp` backend in `dstack`, you can run dev environments, tasks, and services on [TPUs](https://cloud.google.com/tpu/docs/intro-to-tpu).
+Choose a TPU instance by specifying the TPU version and the number of cores (e.g. `v5litepod-8`) in the `gpu` property under `resources`,
+or request TPUs by specifying `tpu` as `vendor` ([see examples](../../guides/protips.md#gpu)).
+
+Below are a few examples on using TPUs for deployment and fine-tuning.
+
+!!! info "Multi-host TPUs"
+    Currently, `dstack` supports only single-host TPUs, which means that
+    the maximum supported number of cores is `8` (e.g. `v2-8`, `v3-8`, `v5litepod-8`, `v5p-8`, `v6e-8`).
+    Multi-host TPU support is on the roadmap.
+
+!!! info "TPU storage"
+    By default, each TPU VM contains a 100GB boot disk and its size cannot be changed.
+    If you need more storage, attach additional disks using [Volumes](../../concepts/volumes.md).
+
+## Deployment
+
+Many serving frameworks including vLLM and TGI have TPU support.
+Here's an example of a [service](../../concepts/services.md) that deploys Llama 3.1 8B using
+[Optimum TPU](https://github.com/huggingface/optimum-tpu)
+and [vLLM](https://github.com/vllm-project/vllm).
+
+=== "Optimum TPU"
+
+    <div editor-title="service.dstack.yml">
+
+    ```yaml
+    type: service
+    name: llama31-service-optimum-tpu
+
+    image: dstackai/optimum-tpu:llama31
+    env:
+      - HF_TOKEN
+      - MODEL_ID=meta-llama/Meta-Llama-3.1-8B-Instruct
+      - MAX_TOTAL_TOKENS=4096
+      - MAX_BATCH_PREFILL_TOKENS=4095
+    commands:
+      - text-generation-launcher --port 8000
+    port: 8000
+    # Register the model
+    model: meta-llama/Meta-Llama-3.1-8B-Instruct
+
+    resources:
+      gpu: v5litepod-4
+    ```
+    </div>
+
+    Note that for Optimum TPU `MAX_INPUT_TOKEN` is set to 4095 by default. We must also set `MAX_BATCH_PREFILL_TOKENS` to 4095.
+
+    ??? info "Docker image"
+        The official Docker image `huggingface/optimum-tpu:latest` doesn’t support Llama 3.1-8B.
+        We’ve created a custom image with the fix: `dstackai/optimum-tpu:llama31`.
+        Once the [pull request](https://github.com/huggingface/optimum-tpu/pull/92) is merged,
+        the official Docker image can be used.
+
+=== "vLLM"
+    <div editor-title="service.dstack.yml">
+
+    ```yaml
+    type: service
+    name: llama31-service-vllm-tpu
+
+    env:
+      - MODEL_ID=meta-llama/Meta-Llama-3.1-8B-Instruct
+      - HF_TOKEN
+      - DATE=20240828
+      - TORCH_VERSION=2.5.0
+      - VLLM_TARGET_DEVICE=tpu
+      - MAX_MODEL_LEN=4096
+    commands:
+      - pip install https://storage.googleapis.com/pytorch-xla-releases/wheels/tpuvm/torch-${TORCH_VERSION}.dev${DATE}-cp311-cp311-linux_x86_64.whl
+      - pip3 install https://storage.googleapis.com/pytorch-xla-releases/wheels/tpuvm/torch_xla-${TORCH_VERSION}.dev${DATE}-cp311-cp311-linux_x86_64.whl
+      - pip install torch_xla[tpu] -f https://storage.googleapis.com/libtpu-releases/index.html
+      - pip install torch_xla[pallas] -f https://storage.googleapis.com/jax-releases/jax_nightly_releases.html -f https://storage.googleapis.com/jax-releases/jaxlib_nightly_releases.html
+      - git clone https://github.com/vllm-project/vllm.git
+      - cd vllm
+      - pip install -r requirements-tpu.txt
+      - apt-get install -y libopenblas-base libopenmpi-dev libomp-dev
+      - python setup.py develop
+      - vllm serve $MODEL_ID
+          --tensor-parallel-size 4
+          --max-model-len $MAX_MODEL_LEN
+          --port 8000
+    port: 8000
+    # Register the model
+    model: meta-llama/Meta-Llama-3.1-8B-Instruct
+
+    # Uncomment to leverage spot instances
+    #spot_policy: auto
+
+    resources:
+      gpu: v5litepod-4
+    ```
+    </div>
+
+    Note, when using Llama 3.1 8B with a `v5litepod` which has 16GB memory per core, we must limit the context size to 4096 tokens to fit the memory.
+
+### Memory requirements
+
+Below are the approximate memory requirements for serving LLMs with the minimal required TPU configuration:
+
+| Model size | bfloat16 | TPU          | int8  | TPU            |
+|------------|----------|--------------|-------|----------------|
+| **8B**     | 16GB     | v5litepod-4  | 8GB   | v5litepod-4    |
+| **70B**    | 140GB    | v5litepod-16 | 70GB  | v5litepod-16   |
+| **405B**   | 810GB    | v5litepod-64 | 405GB | v5litepod-64   |
+
+Note, `v5litepod` is optimized for serving transformer-based models. Each core is equipped with 16GB of memory.
+
+### Supported frameworks
+
+| Framework | Quantization   | Note                                                                                                                                                                                                                                                                                             |
+|-----------|----------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **TGI**   | bfloat16       | To deploy with TGI, Optimum TPU must be used.                                                                                                                                                                                                                                                    |
+| **vLLM**  | int8, bfloat16 | int8 quantization still requires the same memory because the weights are first moved to the TPU in bfloat16, and then converted to int8. See the [pull request](https://github.com/vllm-project/vllm/pull/7005) for more details. |
+
+### Running a configuration
+
+Once the configuration is ready, run `dstack apply -f <configuration file>`, and `dstack` will automatically provision the
+cloud resources and run the configuration.
+
+## Fine-tuning with Optimum TPU
+
+Below is an example of fine-tuning Llama 3.1 8B using [Optimum TPU](https://github.com/huggingface/optimum-tpu)
+and the [`Abirate/english_quotes`](https://huggingface.co/datasets/Abirate/english_quotes)
+dataset.
+
+<div editor-title="examples/single-node-training/optimum-tpu/llama31/.dstack.yml">
+
+```yaml
+type: task
+name: optimum-tpu-llama-train
+
+python: "3.11"
+env:
+  - HF_TOKEN
+files:
+  - train.py
+  - config.yaml
+commands:
+  - git clone -b add_llama_31_support https://github.com/dstackai/optimum-tpu.git
+  - mkdir -p optimum-tpu/examples/custom/
+  - cp train.py optimum-tpu/examples/custom/train.py
+  - cp config.yaml optimum-tpu/examples/custom/config.yaml
+  - cd optimum-tpu
+  - pip install -e . -f https://storage.googleapis.com/libtpu-releases/index.html
+  - pip install datasets evaluate
+  - pip install accelerate -U
+  - pip install peft
+  - python examples/custom/train.py examples/custom/config.yaml
+
+resources:
+  gpu: v5litepod-8
+```
+
+</div>
+
+[//]: # (### Fine-Tuning with TRL)
+[//]: # (Use the example `examples/single-node-training/optimum-tpu/gemma/train.dstack.yml` to Finetune `Gemma-2B` model using `trl` with `dstack` and `optimum-tpu`. )
+
+### Memory requirements
+
+Below are the approximate memory requirements for fine-tuning LLMs with the minimal required TPU configuration:
+
+| Model size | LoRA  | TPU          |
+|------------|-------|--------------|
+| **8B**     | 16GB  | v5litepod-8  |
+| **70B**    | 160GB | v5litepod-16 |
+| **405B**   | 950GB | v5litepod-64 |
+
+Note, `v5litepod` is optimized for fine-tuning transformer-based models. Each core is equipped with 16GB of memory.
+
+### Supported frameworks
+
+| Framework       | Quantization | Note                                                                                              |
+|-----------------|--------------|---------------------------------------------------------------------------------------------------|
+| **TRL**         | bfloat16     | To fine-tune using TRL, Optimum TPU is recommended. TRL doesn't support Llama 3.1 out of the box. |
+| **Pytorch XLA** | bfloat16     |                                                                                                   |
+
+## What's next?
+
+1. Browse [Optimum TPU](https://github.com/huggingface/optimum-tpu),
+   [Optimum TPU TGI](https://github.com/huggingface/optimum-tpu/tree/main/text-generation-inference) and
+   [vLLM](https://docs.vllm.ai/en/latest/getting_started/tpu-installation.html).
+2. Check [dev environments](../../concepts/dev-environments.md), [tasks](../../concepts/tasks.md),
+   [services](../../concepts/services.md), and [fleets](../../concepts/fleets.md).
 
 
+# docs/examples/accelerators/tenstorrent.md
 
-# examples/accelerators/tpu/index.md
+---
+title: Tenstorrent
+description: Running dev environments, tasks, and services on Tenstorrent Wormhole accelerators
+---
+
+# Tenstorrent
+
+`dstack` supports running dev environments, tasks, and services on Tenstorrent
+[Wormwhole](https://tenstorrent.com/en/hardware/wormhole) accelerators via SSH fleets.
 
 
+??? info "SSH fleets"
+    <div editor-title="tt-fleet.dstack.yml"> 
 
-# examples/accelerators/tenstorrent/index.md
+    ```yaml
+    type: fleet
+    name: tt-fleet
 
+    ssh_config:
+      user: root
+      identity_file: ~/.ssh/id_rsa
+      # Configure any number of hosts with n150 or n300 PCEe boards 
+      hosts:
+        - 192.168.2.108
+    ```
+
+    </div>
+
+    > Hosts should be pre-installed with [Tenstorrent software](https://docs.tenstorrent.com/getting-started/README.html#software-installation).
+    This should include the drivers, `tt-smi`, and HugePages.
+
+    To apply the fleet configuration, run:
+
+    <div class="termy">
+
+    ```bash
+    $ dstack apply -f tt-fleet.dstack.yml
+
+     FLEET     RESOURCES                             PRICE  STATUS  CREATED
+     tt-fleet  cpu=12 mem=32GB disk=243GB n150:12GB  $0     idle    18 sec ago
+    ```
+
+    </div>
+
+    For more details on fleet configuration, refer to [SSH fleets](../../concepts/fleets.md#ssh-fleets).
+
+## Services
+
+Here's an example of a service that deploys
+[`Llama-3.2-1B-Instruct`](https://huggingface.co/meta-llama/Llama-3.2-1B) 
+using [Tenstorrent Inference Service](https://github.com/tenstorrent/tt-inference-server).
+
+<div editor-title="service.dstack.yml"> 
+
+```yaml
+type: service
+name: tt-inference-server
+
+env:
+  - HF_TOKEN
+  - HF_MODEL_REPO_ID=meta-llama/Llama-3.2-1B-Instruct
+image: ghcr.io/tenstorrent/tt-inference-server/vllm-tt-metal-src-release-ubuntu-20.04-amd64:0.0.4-v0.56.0-rc47-e2e0002ac7dc
+commands:
+  - | 
+    . ${PYTHON_ENV_DIR}/bin/activate
+    pip install "huggingface_hub[cli]"
+    export LLAMA_DIR="/data/models--$(echo "$HF_MODEL_REPO_ID" | sed 's/\//--/g')/"
+    huggingface-cli download $HF_MODEL_REPO_ID --local-dir $LLAMA_DIR
+    python /home/container_app_user/app/src/run_vllm_api_server.py
+port: 7000
+
+model: meta-llama/Llama-3.2-1B-Instruct
+
+# Cache downloaded model
+volumes:
+  - /mnt/data/tt-inference-server/data:/data
+
+resources:
+  gpu: n150:1
+```
+
+</div>
+
+Go ahead and run configuration using `dstack apply`:
+
+<div class="termy">
+
+    ```bash
+    $ dstack apply -f service.dstack.yml
+    ```
+</div>
+
+Once the service is up, it will be available via the service endpoint
+at `<dstack server URL>/proxy/services/<project name>/<run name>/`.
+
+<div class="termy">
+
+```shell
+$ curl http://127.0.0.1:3000/proxy/services/main/tt-inference-server/v1/chat/completions \
+    -X POST \
+    -H 'Authorization: Bearer &lt;dstack token&gt;' \
+    -H 'Content-Type: application/json' \
+    -d '{
+      "model": "meta-llama/Llama-3.2-1B-Instruct",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are a helpful assistant."
+        },
+        {
+          "role": "user",
+          "content": "What is Deep Learning?"
+        }
+      ],
+      "stream": true,
+      "max_tokens": 512
+    }'
+```
+
+</div>
+
+Additionally, the model is available via `dstack`'s control plane UI:
+
+![](https://dstack.ai/static-assets/static-assets/images/dstack-tenstorrent-model-ui.png){ width=800 }
+
+When a [gateway](../../concepts/gateways.md) is configured, the service endpoint 
+is available at `https://<run name>.<gateway domain>/`.
+
+> Services support many options, including authentication, auto-scaling policies, etc. To learn more, refer to [Services](../../concepts/services.md).
+
+## Tasks
+
+Below is a task that simply runs `tt-smi -s`. Tasks can be used for training, fine-tuning, batch inference, or antything else.
+
+<div editor-title="tt-task.dstack.yml"> 
+
+```yaml
+type: task
+# The name is optional, if not specified, generated randomly
+name: tt-smi
+
+env:
+  - HF_TOKEN
+
+# (Required) Use any image with TT drivers 
+image: dstackai/tt-smi:latest
+
+# Use any commands
+commands:
+  - tt-smi -s
+
+# Specify the number of accelerators, model, etc
+resources:
+  gpu: n150:1
+
+# Uncomment if you want to run on a cluster of nodes
+#nodes: 2
+```
+
+</div>
+
+> Tasks support many options, including multi-node configuration, max duration, etc. To learn more, refer to [Tasks](../../concepts/tasks.md).
+
+## Dev environments
+
+Below is an example of a dev environment configuration. It can be used to provision a dev environemnt that can be accessed via your desktop IDE. 
+
+<div editor-title=".dstack.yml"> 
+
+```yaml
+type: dev-environment
+# The name is optional, if not specified, generated randomly
+name: cursor
+
+# (Optional) List required env variables
+env:
+  - HF_TOKEN
+
+image: dstackai/tt-smi:latest
+
+# Can be `vscode` or `cursor`
+ide: cursor
+
+resources:
+  gpu: n150:1
+```
+
+</div>
+
+If you run it via `dstack apply`, it will output the URL to access it via your desktop IDE.
+
+![](https://dstack.ai/static-assets/static-assets/images/dstack-tenstorrent-cursor.png){ width=800 }
+
+> Dev nevironments support many options, including inactivity and max duration, IDE configuration, etc. To learn more, refer to [Dev environments](../../concepts/tasks.md).
+
+??? info "Feedback"
+    Found a bug, or want to request a feature? File it in the [issue tracker](https://github.com/dstackai/dstack/issues),
+    or share via [Discord](https://discord.gg/u8SmfwPpMd).
 
 

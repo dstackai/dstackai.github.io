@@ -134,6 +134,11 @@ The `service` configuration type allows running [services](../../concepts/servic
 ###### [`scaling`](#scaling) - (Optional) `object` The auto-scaling rules. Required if `count` is set to a range. { #_scaling data-toc-label='scaling' class='reference-item' }
 ###### [`resources`](#resources) - (Optional) `object` The resources requirements for replicas in this group. { #_resources data-toc-label='resources' class='reference-item' }
 ###### `commands` - (Optional) `list[str]` The shell commands to run for replicas in this group. { #commands data-toc-label='commands' class='reference-item' }
+###### `image` - (Optional) `str` The name of the Docker image to run for replicas in this group. Mutually exclusive with group-level `docker` and `python`.. { #image data-toc-label='image' class='reference-item' }
+###### `python` - (Optional) `"3.10" | "3.11" | "3.12" | "3.13" | "3.9"` The major version of Python for replicas in this group. Mutually exclusive with group-level `image` and `docker`.. { #python data-toc-label='python' class='reference-item' }
+###### `nvcc` - (Optional) `bool` Use the image with NVIDIA CUDA Compiler (NVCC) included for replicas in this group. Mutually exclusive with group-level `docker`.. { #nvcc data-toc-label='nvcc' class='reference-item' }
+###### `docker` - (Optional) `bool` Use the docker-in-docker image for this group (injects `start-dockerd` and runs privileged). Mutually exclusive with group-level `image`, `python`, and `nvcc`.. { #docker data-toc-label='docker' class='reference-item' }
+###### `privileged` - (Optional) `bool` Run replicas in this group in privileged mode.. { #privileged data-toc-label='privileged' class='reference-item' }
 ###### [`router`](#router) - (Optional) `object` When set, replicas in this group run the in-service HTTP router (e.g. SGLang).. { #_router data-toc-label='router' class='reference-item' }
 
 
