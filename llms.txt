@@ -28,6 +28,7 @@
 
 ## Guides
 
+- [CLI & API](https://dstack.ai/docs/guides/cli-api.md): How to use the dstack CLI and HTTP API
 - [Server deployment](https://dstack.ai/docs/guides/server-deployment.md): Deploying the dstack server
 - [Troubleshooting](https://dstack.ai/docs/guides/troubleshooting.md): Common issues and how to resolve them
 

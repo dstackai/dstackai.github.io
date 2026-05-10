@@ -250,7 +250,7 @@ to configure [backends](../../concepts/backends.md) and other [server-level sett
 
 ###### `type` - (Required) `"kubernetes"` The type of backend. Must be `kubernetes`. { #type data-toc-label='type' class='reference-item' }
 ###### [`proxy_jump`](#kubernetes-proxy_jump) - (Optional) `object` The SSH proxy jump configuration. { #_proxy_jump data-toc-label='proxy_jump' class='reference-item' }
-###### `namespace` - (Optional) `str` The namespace for resources managed by `dstack`. Defaults to `default`. { #namespace data-toc-label='namespace' class='reference-item' }
+###### `namespace` - (Optional) `str` The namespace for resources managed by `dstack`. Always overrides the namespace set in the kubeconfig, even if not set.  Deprecated and will be eventually removed in futute versions, but in the current version must be set unless equals to `default`. Future versions will use the namespace from the kubeconfig instead. To prepare for future versions, set the same value in the kubeconfig. Defaults to `default`. { #namespace data-toc-label='namespace' class='reference-item' }
 ###### [`kubeconfig`](#kubernetes-kubeconfig) - (Required) `object` The kubeconfig configuration. { #_kubeconfig data-toc-label='kubeconfig' class='reference-item' }
 
 

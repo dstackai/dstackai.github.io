@@ -5,7 +5,7 @@ The `service` configuration type allows running [services](../../concepts/servic
 ## Root reference
 
 ###### `port` - (Required) `int | str | object` The port the application listens on. { #port data-toc-label='port' class='reference-item' }
-###### `gateway` - (Optional) `bool | str` The name of the gateway. Specify boolean `false` to run without a gateway. Specify boolean `true` to run with the default gateway. Omit to run with the default gateway if there is one, or without a gateway otherwise. { #gateway data-toc-label='gateway' class='reference-item' }
+###### `gateway` - (Optional) `bool | str | object` The name of the gateway. Specify boolean `false` to run without a gateway. Specify boolean `true` to run with the default gateway. Omit to run with the default gateway if there is one, or without a gateway otherwise. { #gateway data-toc-label='gateway' class='reference-item' }
 ###### `strip_prefix` - (Optional) `bool` Strip the `/proxy/services/<project name>/<run name>/` path prefix when forwarding requests to the service. Only takes effect when running the service without a gateway. Defaults to `true`. { #strip_prefix data-toc-label='strip_prefix' class='reference-item' }
 ###### [`model`](#model) - (Optional) `str | object` Mapping of the model for the OpenAI-compatible endpoint provided by `dstack`. Can be a full model format definition or just a model name. If it's a name, the service is expected to expose an OpenAI-compatible API at the `/v1` path. { #_model data-toc-label='model' class='reference-item' }
 ###### `https` - (Optional) `bool | "auto"` Enable HTTPS if running with a gateway. Set to `auto` to determine automatically based on gateway configuration. Defaults to `true`. { #https data-toc-label='https' class='reference-item' }
