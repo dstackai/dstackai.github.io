@@ -5179,8 +5179,8 @@ the run. To only see the plan, answer <code>n</code> at the prompt:</p>
 <div class="admonition info">
 <p class="admonition-title">Attached by default</p>
 <p>For run configurations, <code>dstack apply</code> automatically attaches after
-submitting the run. This streams logs, forwards declared ports, and
-configures SSH access. See <a href="#attach-to-runs">Attach to runs</a>.</p>
+submitting the run. This configures SSH access, forwards declared ports, and
+streams logs. See <a href="#attach-to-runs">Attach to runs</a>.</p>
 <p>Use <code>-d</code> to submit in detached mode.</p>
 </div>
 <h3 id="attach-to-runs">Attach to runs<a class="headerlink" href="#attach-to-runs" title="Permanent link">&para;</a></h3>
@@ -5198,19 +5198,23 @@ a multi-job run, use <code>dstack attach</code>:</p>
 <p>During <code>dstack apply</code> in attached mode and during
 <code>dstack attach &lt;run name&gt;</code>, the CLI downloads the current user's built-in
 private SSH key if needed and stores it under <code>~/.dstack/ssh/</code>.</p>
-<p>While attached, the CLI updates <code>~/.dstack/ssh/config</code> with the run name as
-an SSH host alias and ensures this file is included from <code>~/.ssh/config</code>:</p>
+<p>While attached, the CLI updates <code>~/.dstack/ssh/config</code> and ensures this file
+is included from <code>~/.ssh/config</code>. The file contains a <code>Host &lt;run name&gt;</code>
+alias used by <code>ssh &lt;run name&gt;</code> to SSH into the run container:</p>
 <div editor-title="~/.dstack/ssh/config">
-<div class="highlight"><pre><span></span><code>Host &amp;lt;run name&amp;gt;
-    HostName localhost
-    Port &amp;lt;local SSH port&amp;gt;
-    User root
-    IdentityFile ~/.dstack/ssh/&amp;lt;key&amp;gt;
+<div class="highlight"><pre><span></span><code>Host &lt;run name&gt;
+    HostName &lt;host&gt;
+    Port &lt;ssh port&gt;
+    User &lt;user&gt;
+    IdentityFile &lt;private user SSH key&gt;
     IdentitiesOnly yes
 </code></pre></div>
 </div>
-<p>For VM-based and SSH fleets, <code>dstack</code> may also configure the
-<code>&lt;run name&gt;-host</code> alias for SSH access to the host.</p>
+<blockquote>
+<p>For <a href="../../concepts/backends/#vm-based">VM-based backends</a> and
+<a href="../../concepts/fleets/">SSH fleets</a>, <code>dstack</code> may add an additional alias
+<code>&lt;run name&gt;-host</code> and use it as a proxy jump for <code>ssh &lt;run name&gt;</code>.</p>
+</blockquote>
 <p>While attached, connect to the run with:</p>
 <div class="termy">
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>ssh<span class="w"> </span><span class="p">&amp;</span>lt<span class="p">;</span>run<span class="w"> </span>name<span class="p">&amp;</span>gt<span class="p">;</span>
