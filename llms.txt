@@ -62,7 +62,7 @@
 ### Inference
 
 - [SGLang](https://dstack.ai/docs/examples/inference/sglang.md): Deploying Qwen3.6-27B using SGLang on NVIDIA and AMD GPUs
-- [Dynamo](https://dstack.ai/docs/examples/inference/dynamo.md): Deploying zai-org/GLM-4.5-Air-FP8 using NVIDIA Dynamo
+- [Dynamo](https://dstack.ai/docs/examples/inference/dynamo.md): Deploying zai-org/GLM-4.5-Air-FP8 using NVIDIA Dynamo with Prefill-Decode disaggregation.
 - [vLLM](https://dstack.ai/docs/examples/inference/vllm.md): Deploying Qwen3.6-27B using vLLM on NVIDIA and AMD GPUs
 - [NIM](https://dstack.ai/docs/examples/inference/nim.md): Deploying Nemotron-3-Super-120B-A12B using NVIDIA NIM
 - [TensorRT-LLM](https://dstack.ai/docs/examples/inference/trtllm.md): Deploying Qwen3-235B-A22B-FP8 using NVIDIA TensorRT-LLM on NVIDIA GPUs
