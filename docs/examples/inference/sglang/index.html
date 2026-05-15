@@ -18,7 +18,7 @@
         <link rel="prev" href="../../clusters/nccl-rccl-tests/">
       
       
-        <link rel="next" href="../vllm/">
+        <link rel="next" href="../dynamo/">
       
       
         
@@ -2146,6 +2146,34 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dynamo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dynamo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -4918,8 +4946,7 @@
 </div>
 <p>The AMD example keeps the deployment close to the upstream Qwen and SGLang
 guidance: a pinned ROCm image, tensor parallelism across all four GPUs, and the
-standard <code>qwen3</code> reasoning parser without extra ROCm-specific tuning flags.
-The first startup on MI300X can take longer while SGLang compiles ROCm kernels.</p>
+standard <code>qwen3</code> reasoning parser without extra ROCm-specific tuning flags.</p>
 <p>Save one of the configurations above as <code>service.dstack.yml</code>, then use the
 <a href="../../../reference/cli/dstack/apply/"><code>dstack apply</code></a> command.</p>
 <div class="termy">
@@ -4982,10 +5009,10 @@ enable tool calling, add <code>--tool-call-parser qwen3_coder</code> to the serv
 <span class="w">          </span><span class="no">--port 8000 \</span>
 <span class="w">          </span><span class="no">--pd-disaggregation \</span>
 <span class="w">          </span><span class="no">--prefill-policy cache_aware</span>
-<span class="w">    </span><span class="nt">router</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sglang</span>
 <span class="w">    </span><span class="nt">resources</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4</span>
+<span class="w">    </span><span class="nt">router</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sglang</span>
 
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">count</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1..4</span>
 <span class="w">    </span><span class="nt">scaling</span><span class="p">:</span>
@@ -5031,6 +5058,9 @@ enable tool calling, add <code>--tool-call-parser qwen3_coder</code> to the serv
 </div>
 </div>
 </div>
+<blockquote>
+<p>With the <code>sglang</code> router, you can use SGLang prefill and decode workers. Support for vLLM and TensorRT-LLM workers is coming soon.</p>
+</blockquote>
 <p>Currently, auto-scaling only supports <code>rps</code> as the metric. TTFT and ITL metrics are coming soon.</p>
 <div class="admonition info">
 <p class="admonition-title">Cluster</p>
@@ -5082,13 +5112,13 @@ enable tool calling, add <code>--tool-call-parser qwen3_coder</code> to the serv
             
             
               
-              <a href="../vllm/" class="md-footer__link md-footer__link--next" aria-label="Next: vLLM">
+              <a href="../dynamo/" class="md-footer__link md-footer__link--next" aria-label="Next: Dynamo">
                 <div class="md-footer__title">
                   <span class="md-footer__direction">
                     Next
                   </span>
                   <div class="md-ellipsis">
-                    vLLM
+                    Dynamo
                   </div>
                 </div>
                 <div class="md-footer__button md-icon">
@@ -5122,7 +5152,7 @@ enable tool calling, add <code>--tool-call-parser qwen3_coder</code> to the serv
                     <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      © 2025 dstack
+      © 2026 dstack Inc.
     </div>
   
   

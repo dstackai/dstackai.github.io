@@ -2049,6 +2049,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../../examples/inference/dynamo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dynamo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../../examples/inference/vllm/" class="md-nav__link">
         
   
@@ -4810,7 +4838,7 @@
 <h6 class="reference-item" id="region"><code>region</code> - (Required) <code>str</code> The gateway region.<a class="headerlink" href="#region" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="instance_type"><code>instance_type</code> - (Optional) <code>str</code> Backend-specific instance type to use for the gateway instance. Omit to use the backend's default, which is typically a small non-GPU instance.<a class="headerlink" href="#instance_type" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="_router"><a href="#router"><code>router</code></a> - (Optional) <code>object</code> The router configuration for this gateway. E.g. <code>{ type: sglang, policy: round_robin }</code>..<a class="headerlink" href="#_router" title="Permanent link">&para;</a></h6>
-<h6 class="reference-item" id="domain"><code>domain</code> - (Optional) <code>str</code> The gateway domain, e.g. <code>example.com</code>.<a class="headerlink" href="#domain" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="domain"><code>domain</code> - (Optional) <code>str</code> The gateway wildcard domain name, e.g. <code>example.com</code>. Service domain names are constructed as <code>&lt;run name&gt;.&lt;gateway domain</code>. The domain name can use the <code>${{ run.project_name }}</code> variable to include the service’s project name.<a class="headerlink" href="#domain" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="public_ip"><code>public_ip</code> - (Optional) <code>bool</code> Allocate public IP for the gateway. Defaults to <code>true</code>.<a class="headerlink" href="#public_ip" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="_certificate"><a href="#certificate"><code>certificate</code></a> - (Optional) <code>object</code> The SSL certificate configuration. Set to <code>null</code> to disable. Defaults to <code>type: lets-encrypt</code>.<a class="headerlink" href="#_certificate" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="tags"><code>tags</code> - (Optional) <code>dict</code> The custom tags to associate with the gateway. The tags are also propagated to the underlying backend resources. If there is a conflict with backend-level tags, does not override them.<a class="headerlink" href="#tags" title="Permanent link">&para;</a></h6>
@@ -4913,7 +4941,7 @@
                     <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      © 2025 dstack
+      © 2026 dstack Inc.
     </div>
   
   

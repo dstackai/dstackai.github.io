@@ -2398,6 +2398,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../examples/inference/dynamo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dynamo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../examples/inference/vllm/" class="md-nav__link">
         
   
@@ -5604,12 +5632,10 @@ case <code>dstack</code> adjusts the number of replicas (scales up or down) auto
 <h3 id="pd-disaggregation">PD disaggregation<a class="headerlink" href="#pd-disaggregation" title="Permanent link">&para;</a></h3>
 <!-- NOTE: this section is referenced from the CLI, keep the URL unchanged -->
 
-<p>Since 0.20.17, <code>dstack</code> supports serving a model using PD disaggregation. To use it, configure three replica groups: one for <a href="https://docs.sglang.io/advanced_features/sgl_model_gateway.html">Shepherd Model Gateway (SMG)</a>, one for prefill workers, and one for decode workers.</p>
-<blockquote>
-<p>Currently, Prefill-Decode disaggregation is supported only for SGLang.</p>
-</blockquote>
+<p>Since 0.20.17, <code>dstack</code> supports serving a model using Prefill-Decode disaggregation. To use it, configure three replica groups: one for the router, one for prefill workers, and one for decode workers.</p>
+<p><code>dstack</code> integrates with two routers for PD disaggregation: <a href="https://docs.sglang.io/advanced_features/sgl_model_gateway.html">Shepherd Model Gateway (SMG)</a> and <a href="https://github.com/ai-dynamo/dynamo">NVIDIA Dynamo</a>.</p>
 <p>Below is an example for running <code>zai-org/GLM-4.5-Air-FP8</code>:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="3:1"><input checked="checked" id="nvidia_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="nvidia_2">NVIDIA</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="smg" name="__tabbed_3" type="radio" /><input id="dynamo" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="smg">SMG</label><label for="dynamo">Dynamo</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div editor-title="pd.dstack.yml">
@@ -5632,10 +5658,10 @@ case <code>dstack</code> adjusts the number of replicas (scales up or down) auto
 <span class="w">          </span><span class="no">--port 8000 \</span>
 <span class="w">          </span><span class="no">--pd-disaggregation \</span>
 <span class="w">          </span><span class="no">--prefill-policy cache_aware</span>
-<span class="w">    </span><span class="nt">router</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sglang</span>
 <span class="w">    </span><span class="nt">resources</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4</span>
+<span class="w">    </span><span class="nt">router</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sglang</span>
 
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">count</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1..4</span>
 <span class="w">    </span><span class="nt">scaling</span><span class="p">:</span>
@@ -5676,6 +5702,109 @@ case <code>dstack</code> adjusts the number of replicas (scales up or down) auto
 <span class="w">    </span><span class="nt">interval</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">15s</span>
 </code></pre></div>
 </div>
+<blockquote>
+<p>With the <code>sglang</code> router, you can use SGLang prefill and decode workers. Support for vLLM and TensorRT-LLM workers is coming soon.</p>
+</blockquote>
+</div>
+<div class="tabbed-block">
+<div editor-title="pd.dstack.yml">
+<div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service</span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dynamo-pd</span>
+
+<span class="nt">env</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HF_TOKEN</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MODEL_ID=zai-org/GLM-4.5-Air-FP8</span>
+
+<span class="nt">replicas</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">count</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">    </span><span class="nt">docker</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">commands</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apt-get update</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apt-get install -y python3-dev python3-venv</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python3 -m venv ~/dyn-venv</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">source ~/dyn-venv/bin/activate</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip install -U pip</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip install &quot;ai-dynamo[sglang]==1.1.1&quot;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">git clone https://github.com/ai-dynamo/dynamo.git</span>
+<span class="w">      </span><span class="c1"># Brings up the NATS / etcd compose stack and runs the Dynamo HTTP frontend.</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker compose -f dynamo/deploy/docker-compose.yml up -d</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">        </span><span class="no">python3 -m dynamo.frontend \</span>
+<span class="w">          </span><span class="no">--http-host 0.0.0.0 --http-port 8000 \</span>
+<span class="w">          </span><span class="no">--discovery-backend etcd --router-mode kv \</span>
+<span class="w">          </span><span class="no">--kv-cache-block-size 64</span>
+<span class="w">    </span><span class="nt">resources</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4</span>
+<span class="w">    </span><span class="nt">router</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dynamo</span>
+
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">count</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1..4</span>
+<span class="w">    </span><span class="nt">scaling</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">metric</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rps</span>
+<span class="w">      </span><span class="nt">target</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
+<span class="w">    </span><span class="nt">python</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;3.12&quot;</span>
+<span class="w">    </span><span class="nt">nvcc</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">commands</span><span class="p">:</span>
+<span class="w">      </span><span class="c1"># dstack injects DSTACK_ROUTER_INTERNAL_IP after the router replica</span>
+<span class="w">      </span><span class="c1"># is provisioned. Compose the etcd/NATS endpoints from it.</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">export ETCD_ENDPOINTS=&quot;http://$DSTACK_ROUTER_INTERNAL_IP:2379&quot;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">export NATS_SERVER=&quot;nats://$DSTACK_ROUTER_INTERNAL_IP:4222&quot;</span>
+<span class="w">      </span><span class="c1"># Set to enable /health endpoint required by dstack probes.</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">export DYN_SYSTEM_PORT=&quot;8000&quot;</span>
+<span class="w">      </span><span class="c1"># Wait until the router&#39;s etcd and NATS ports are actually accepting connections.</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">        </span><span class="no">until (echo &gt; /dev/tcp/$DSTACK_ROUTER_INTERNAL_IP/2379) 2&gt;/dev/null \</span>
+<span class="w">           </span><span class="no">&amp;&amp; (echo &gt; /dev/tcp/$DSTACK_ROUTER_INTERNAL_IP/4222) 2&gt;/dev/null; do</span>
+<span class="w">          </span><span class="no">echo &quot;waiting for etcd/NATS on $DSTACK_ROUTER_INTERNAL_IP...&quot;; sleep 3</span>
+<span class="w">        </span><span class="no">done</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip install &quot;ai-dynamo[sglang]==1.1.1&quot;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">        </span><span class="no">python3 -m dynamo.sglang \</span>
+<span class="w">          </span><span class="no">--model-path $MODEL_ID --served-model-name $MODEL_ID \</span>
+<span class="w">          </span><span class="no">--discovery-backend etcd --host 0.0.0.0 \</span>
+<span class="w">          </span><span class="no">--page-size 64 \</span>
+<span class="w">          </span><span class="no">--disaggregation-mode prefill --disaggregation-transfer-backend nixl</span>
+<span class="w">    </span><span class="nt">resources</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">H200</span>
+
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">count</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1..8</span>
+<span class="w">    </span><span class="nt">scaling</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">metric</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rps</span>
+<span class="w">      </span><span class="nt">target</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
+<span class="w">    </span><span class="nt">python</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;3.12&quot;</span>
+<span class="w">    </span><span class="nt">nvcc</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">commands</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">export ETCD_ENDPOINTS=&quot;http://$DSTACK_ROUTER_INTERNAL_IP:2379&quot;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">export NATS_SERVER=&quot;nats://$DSTACK_ROUTER_INTERNAL_IP:4222&quot;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">export DYN_SYSTEM_PORT=&quot;8000&quot;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">        </span><span class="no">until (echo &gt; /dev/tcp/$DSTACK_ROUTER_INTERNAL_IP/2379) 2&gt;/dev/null \</span>
+<span class="w">           </span><span class="no">&amp;&amp; (echo &gt; /dev/tcp/$DSTACK_ROUTER_INTERNAL_IP/4222) 2&gt;/dev/null; do</span>
+<span class="w">          </span><span class="no">echo &quot;waiting for etcd/NATS on $DSTACK_ROUTER_INTERNAL_IP...&quot;; sleep 3</span>
+<span class="w">        </span><span class="no">done</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip install &quot;ai-dynamo[sglang]==1.1.1&quot;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">        </span><span class="no">python3 -m dynamo.sglang \</span>
+<span class="w">          </span><span class="no">--model-path $MODEL_ID --served-model-name $MODEL_ID \</span>
+<span class="w">          </span><span class="no">--discovery-backend etcd --host 0.0.0.0 \</span>
+<span class="w">          </span><span class="no">--page-size 64 \</span>
+<span class="w">          </span><span class="no">--disaggregation-mode decode --disaggregation-transfer-backend nixl</span>
+<span class="w">    </span><span class="nt">resources</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">H200</span>
+
+<span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8000</span>
+<span class="nt">model</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">zai-org/GLM-4.5-Air-FP8</span>
+
+<span class="c1"># Custom probe is required for PD disaggregation.</span>
+<span class="nt">probes</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http</span>
+<span class="w">    </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/health</span>
+<span class="w">    </span><span class="nt">interval</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">15s</span>
+</code></pre></div>
+</div>
+<blockquote>
+<p>With the the <code>dynamo</code> router, you can use SGLang, vLLM, and TensorRT-LLM prefill and decode workers.</p>
+</blockquote>
 </div>
 </div>
 </div>
@@ -6594,7 +6723,7 @@ Pass <code>--diagnose</code> or <code>-d</code> to view diagnostic logs, which c
                     <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      © 2025 dstack
+      © 2026 dstack Inc.
     </div>
   
   

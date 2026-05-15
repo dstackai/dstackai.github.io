@@ -1276,17 +1276,30 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#global-exports" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Global exports
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#access-imported-fleets" class="md-nav__link">
+  <a href="#access-imported-resources" class="md-nav__link">
     <span class="md-ellipsis">
       
         <span class="md-typeset">
-          Access imported fleets
+          Access imported resources
         </span>
       
     </span>
@@ -2164,6 +2177,34 @@
     
   
     SGLang
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/inference/dynamo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dynamo
   
 
     
@@ -4763,17 +4804,30 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#global-exports" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Global exports
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#access-imported-fleets" class="md-nav__link">
+  <a href="#access-imported-resources" class="md-nav__link">
     <span class="md-ellipsis">
       
         <span class="md-typeset">
-          Access imported fleets
+          Access imported resources
         </span>
       
     </span>
@@ -4886,7 +4940,7 @@ the specified importer projects can see and use it as if it were their own.</p>
 <div class="admonition warning">
 <p class="admonition-title">Experimental</p>
 <p>Exports are an experimental feature.
-Currently, only <a href="../fleets/#ssh-fleets">SSH fleets</a> can be exported.</p>
+Currently, <a href="../fleets/#ssh-fleets">SSH fleets</a> and <a href="../gateways/">gateways</a> can be exported.</p>
 </div>
 <p>An export is created in the exporter project and specifies the resources to export and the
 importer projects that will gain access to them.</p>
@@ -4901,22 +4955,22 @@ any importer project they add. Alternatively, a global admin can add any project
 <h2 id="manage-exports">Manage exports<a class="headerlink" href="#manage-exports" title="Permanent link">&para;</a></h2>
 <h3 id="create-exports">Create exports<a class="headerlink" href="#create-exports" title="Permanent link">&para;</a></h3>
 <p>Use the <code>dstack export create</code> command to create a new export. Specify the fleets to export
-with <code>--fleet</code> and the importer projects with <code>--importer</code>:</p>
+with <code>--fleet</code>, the gateways to export with <code>--gateway</code>, and the importer projects with <code>--importer</code>:</p>
 <div class="termy">
 
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>dstack<span class="w"> </span><span class="nb">export</span><span class="w"> </span>create<span class="w"> </span>my-export<span class="w"> </span>--fleet<span class="w"> </span>my-fleet<span class="w"> </span>--importer<span class="w"> </span>team-b
-<span class="w"> </span>NAME<span class="w">        </span>FLEETS<span class="w">    </span>IMPORTERS
-<span class="w"> </span>my-export<span class="w">   </span>my-fleet<span class="w">  </span>team-b
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>dstack<span class="w"> </span><span class="nb">export</span><span class="w"> </span>create<span class="w"> </span>my-export<span class="w"> </span>--fleet<span class="w"> </span>my-fleet<span class="w"> </span>--gateway<span class="w"> </span>my-gateway<span class="w"> </span>--importer<span class="w"> </span>team-b
+<span class="w"> </span>NAME<span class="w">        </span>FLEETS<span class="w">    </span>GATEWAYS<span class="w">    </span>IMPORTERS
+<span class="w"> </span>my-export<span class="w">   </span>my-fleet<span class="w">  </span>my-gateway<span class="w">  </span>team-b
 </code></pre></div>
 
 </div>
 
-<p>Both <code>--fleet</code> and <code>--importer</code> can be specified multiple times:</p>
+<p><code>--fleet</code>, <code>--gateway</code>, and <code>--importer</code> can be specified multiple times:</p>
 <div class="termy">
 
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>dstack<span class="w"> </span><span class="nb">export</span><span class="w"> </span>create<span class="w"> </span>shared-gpus<span class="w"> </span>--fleet<span class="w"> </span>gpu-fleet-1<span class="w"> </span>--fleet<span class="w"> </span>gpu-fleet-2<span class="w"> </span>--importer<span class="w"> </span>team-b<span class="w"> </span>--importer<span class="w"> </span>team-c
-<span class="w"> </span>NAME<span class="w">         </span>FLEETS<span class="w">                    </span>IMPORTERS
-<span class="w"> </span>shared-gpus<span class="w">  </span>gpu-fleet-1,<span class="w"> </span>gpu-fleet-2<span class="w">  </span>team-b,<span class="w"> </span>team-c
+<span class="w"> </span>NAME<span class="w">         </span>FLEETS<span class="w">                    </span>GATEWAYS<span class="w">  </span>IMPORTERS
+<span class="w"> </span>shared-gpus<span class="w">  </span>gpu-fleet-1,<span class="w"> </span>gpu-fleet-2<span class="w">  </span>-<span class="w">         </span>team-b,<span class="w"> </span>team-c
 </code></pre></div>
 
 </div>
@@ -4926,30 +4980,30 @@ with <code>--fleet</code> and the importer projects with <code>--importer</code>
 <div class="termy">
 
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>dstack<span class="w"> </span><span class="nb">export</span><span class="w"> </span>list
-<span class="w"> </span>NAME<span class="w">         </span>FLEETS<span class="w">                    </span>IMPORTERS
-<span class="w"> </span>my-export<span class="w">    </span>my-fleet<span class="w">                  </span>team-b
-<span class="w"> </span>shared-gpus<span class="w">  </span>gpu-fleet-1,<span class="w"> </span>gpu-fleet-2<span class="w">  </span>team-b,<span class="w"> </span>team-c
+<span class="w"> </span>NAME<span class="w">         </span>FLEETS<span class="w">                    </span>GATEWAYS<span class="w">    </span>IMPORTERS
+<span class="w"> </span>my-export<span class="w">    </span>my-fleet<span class="w">                  </span>my-gateway<span class="w">  </span>team-b
+<span class="w"> </span>shared-gpus<span class="w">  </span>gpu-fleet-1,<span class="w"> </span>gpu-fleet-2<span class="w">  </span>-<span class="w">           </span>team-b,<span class="w"> </span>team-c
 </code></pre></div>
 
 </div>
 
 <h3 id="update-exports">Update exports<a class="headerlink" href="#update-exports" title="Permanent link">&para;</a></h3>
-<p>Use the <code>dstack export update</code> command to add or remove fleets and importers from an existing export:</p>
+<p>Use the <code>dstack export update</code> command to add or remove fleets, gateways, and importers from an existing export:</p>
 <div class="termy">
 
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>dstack<span class="w"> </span><span class="nb">export</span><span class="w"> </span>update<span class="w"> </span>my-export<span class="w"> </span>--add-fleet<span class="w"> </span>another-fleet<span class="w"> </span>--add-importer<span class="w"> </span>team-c
-<span class="w"> </span>NAME<span class="w">        </span>FLEETS<span class="w">                   </span>IMPORTERS
-<span class="w"> </span>my-export<span class="w">   </span>my-fleet,<span class="w"> </span>another-fleet<span class="w">  </span>team-b,<span class="w"> </span>team-c
+<span class="w"> </span>NAME<span class="w">        </span>FLEETS<span class="w">                   </span>GATEWAYS<span class="w">    </span>IMPORTERS
+<span class="w"> </span>my-export<span class="w">   </span>my-fleet,<span class="w"> </span>another-fleet<span class="w">  </span>my-gateway<span class="w">  </span>team-b,<span class="w"> </span>team-c
 </code></pre></div>
 
 </div>
 
-<p>To remove a fleet or importer:</p>
+<p>To remove a fleet, gateway, or importer:</p>
 <div class="termy">
 
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>dstack<span class="w"> </span><span class="nb">export</span><span class="w"> </span>update<span class="w"> </span>my-export<span class="w"> </span>--remove-importer<span class="w"> </span>team-b
-<span class="w"> </span>NAME<span class="w">        </span>FLEETS<span class="w">                   </span>IMPORTERS
-<span class="w"> </span>my-export<span class="w">   </span>my-fleet,<span class="w"> </span>another-fleet<span class="w">  </span>team-c
+<span class="w"> </span>NAME<span class="w">        </span>FLEETS<span class="w">                   </span>GATEWAYS<span class="w">    </span>IMPORTERS
+<span class="w"> </span>my-export<span class="w">   </span>my-fleet,<span class="w"> </span>another-fleet<span class="w">  </span>my-gateway<span class="w">  </span>team-c
 </code></pre></div>
 
 </div>
@@ -4966,18 +5020,31 @@ Export<span class="w"> </span>my-export<span class="w"> </span>deleted
 </div>
 
 <p>Use <code>-y</code> to skip the confirmation prompt.</p>
-<h2 id="access-imported-fleets">Access imported fleets<a class="headerlink" href="#access-imported-fleets" title="Permanent link">&para;</a></h2>
+<h3 id="global-exports">Global exports<a class="headerlink" href="#global-exports" title="Permanent link">&para;</a></h3>
+<p>Users with the global admin role can mark any export as a global export. Global exports are automatically imported into all projects, and their imports cannot be deleted.</p>
+<div class="termy">
+
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>dstack<span class="w"> </span><span class="nb">export</span><span class="w"> </span>create<span class="w"> </span>global-export<span class="w"> </span>--gateway<span class="w"> </span>shared-gateway<span class="w"> </span>--global
+<span class="w"> </span>NAME<span class="w">           </span>FLEETS<span class="w">  </span>GATEWAYS<span class="w">        </span>IMPORTERS
+<span class="w"> </span>global-export<span class="w">  </span>-<span class="w">       </span>shared-gateway<span class="w">  </span>*
+</code></pre></div>
+
+Only promoting an export to global requires the global admin role. Regular project admins can add or remove resources, remove global status, or delete the export.
+
+</div>
+
+<h2 id="access-imported-resources">Access imported resources<a class="headerlink" href="#access-imported-resources" title="Permanent link">&para;</a></h2>
 <p>From the importer project's perspective, use <code>dstack import list</code> (or simply <code>dstack import</code>) to list all imports in the project — i.e., all exports from other projects that this project has been granted access to:</p>
 <div class="termy">
 
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>dstack<span class="w"> </span>import<span class="w"> </span>list
-<span class="w"> </span>NAME<span class="w">              </span>FLEETS
-<span class="w"> </span>team-a/my-export<span class="w">  </span>my-fleet,<span class="w"> </span>another-fleet
+<span class="w"> </span>NAME<span class="w">              </span>FLEETS<span class="w">                   </span>GATEWAYS
+<span class="w"> </span>team-a/my-export<span class="w">  </span>my-fleet,<span class="w"> </span>another-fleet<span class="w">  </span>my-gateway
 </code></pre></div>
 
 </div>
 
-<p>Imported fleets also appear in <code>dstack fleet list</code> in the <code>&lt;project&gt;/&lt;fleet&gt;</code> format:</p>
+<p>Imported fleets and gateways also appear in <code>dstack fleet list</code> and <code>dstack gateway list</code> in the <code>&lt;project&gt;/&lt;name&gt;</code> format:</p>
 <div class="termy">
 
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>dstack<span class="w"> </span>fleet<span class="w"> </span>list
@@ -4985,15 +5052,22 @@ Export<span class="w"> </span>my-export<span class="w"> </span>deleted
 <span class="w"> </span>my-local-fleet<span class="w">        </span><span class="m">1</span><span class="w">      </span>-<span class="w">            </span>-<span class="w">     </span>ssh<span class="w">      </span>-<span class="w">      </span>active<span class="w">  </span><span class="m">3</span><span class="w"> </span>days<span class="w"> </span>ago
 <span class="w"> </span>team-a/my-fleet<span class="w">       </span><span class="m">2</span><span class="w">      </span>A100:80GB:8<span class="w">  </span>-<span class="w">     </span>ssh<span class="w">      </span>-<span class="w">      </span>active<span class="w">  </span><span class="m">1</span><span class="w"> </span>week<span class="w"> </span>ago
 <span class="w"> </span>team-a/another-fleet<span class="w">  </span><span class="m">1</span><span class="w">      </span>H100:80GB:4<span class="w">  </span>-<span class="w">     </span>ssh<span class="w">      </span>-<span class="w">      </span>active<span class="w">  </span><span class="m">2</span><span class="w"> </span>days<span class="w"> </span>ago
+
+$<span class="w"> </span>dstack<span class="w"> </span>gateway<span class="w"> </span>list
+<span class="w"> </span>NAME<span class="w">               </span>BACKEND<span class="w">          </span>HOSTNAME<span class="w">  </span>DOMAIN<span class="w">                 </span>DEFAULT<span class="w">  </span>STATUS
+<span class="w"> </span>team-a/my-gateway<span class="w">  </span>aws<span class="w"> </span><span class="o">(</span>eu-west-1<span class="o">)</span><span class="w">  </span><span class="m">10</span>.0.0.4<span class="w">  </span>gtw.mycompany.example<span class="w">           </span>running
 </code></pre></div>
 
 </div>
 
-<p>Imported fleets can be used for runs just like the project's own fleets.</p>
+<p>Imported resources can be used for runs just like the project's own resources.</p>
 <div editor-title=".dstack.yml">
 
-<div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dev-environment</span>
-<span class="nt">ide</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vscode</span>
+<div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service</span>
+<span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx</span>
+<span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">80</span>
+
+<span class="nt">gateway</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">team-a/my-gateway</span>
 
 <span class="nt">fleets</span><span class="p">:</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my-local-fleet</span>
@@ -5012,6 +5086,7 @@ Export<span class="w"> </span>my-export<span class="w"> </span>deleted
 <li>Check the <a href="../../reference/cli/dstack/export/"><code>dstack export</code> CLI reference</a></li>
 <li>Check the <a href="../../reference/cli/dstack/import/"><code>dstack import</code> CLI reference</a></li>
 <li>Learn how to manage <a href="../fleets/">fleets</a></li>
+<li>Learn how to manage <a href="../gateways/">gateways</a></li>
 <li>Read about <a href="../projects/">projects</a> and project roles</li>
 </ol>
 </div>
@@ -5095,7 +5170,7 @@ Export<span class="w"> </span>my-export<span class="w"> </span>deleted
                     <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      © 2025 dstack
+      © 2026 dstack Inc.
     </div>
   
   

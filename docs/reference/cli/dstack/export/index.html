@@ -2049,6 +2049,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../../../examples/inference/dynamo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dynamo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../../../examples/inference/vllm/" class="md-nav__link">
         
   
@@ -4838,7 +4866,7 @@ Options:
 
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>dstack<span class="w"> </span><span class="nb">export</span><span class="w"> </span>create<span class="w"> </span>--help
 Usage:<span class="w"> </span>dstack<span class="w"> </span><span class="nb">export</span><span class="w"> </span>create<span class="w"> </span><span class="o">[</span>-h<span class="o">]</span><span class="w"> </span><span class="o">[</span>--importer<span class="w"> </span>IMPORTERS<span class="o">]</span><span class="w"> </span><span class="o">[</span>--fleet<span class="w"> </span>FLEETS<span class="o">]</span>
-<span class="w">                            </span><span class="o">[</span>--gateway<span class="w"> </span>GATEWAYS<span class="o">]</span>
+<span class="w">                            </span><span class="o">[</span>--gateway<span class="w"> </span>GATEWAYS<span class="o">]</span><span class="w"> </span><span class="o">[</span>--global<span class="o">]</span>
 <span class="w">                            </span>name
 
 Positional<span class="w"> </span>Arguments:
@@ -4851,6 +4879,8 @@ Options:
 <span class="w">  </span>--fleet<span class="w"> </span>FLEETS<span class="w">        </span>Fleet<span class="w"> </span>name<span class="w"> </span>to<span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="o">(</span>can<span class="w"> </span>be<span class="w"> </span>specified<span class="w"> </span>multiple<span class="w"> </span><span class="nb">times</span><span class="o">)</span>
 <span class="w">  </span>--gateway<span class="w"> </span>GATEWAYS<span class="w">    </span>Gateway<span class="w"> </span>name<span class="w"> </span>to<span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="o">(</span>can<span class="w"> </span>be<span class="w"> </span>specified<span class="w"> </span>multiple
 <span class="w">                        </span><span class="nb">times</span><span class="o">)</span>
+<span class="w">  </span>--global<span class="w">              </span>Make<span class="w"> </span>this<span class="w"> </span><span class="nb">export</span><span class="w"> </span>global<span class="w"> </span><span class="o">(</span>automatically<span class="w"> </span>imported<span class="w"> </span>into
+<span class="w">                        </span>all<span class="w"> </span>projects<span class="o">)</span>
 </code></pre></div>
 
 </div>
@@ -4867,6 +4897,7 @@ Usage:<span class="w"> </span>dstack<span class="w"> </span><span class="nb">exp
 <span class="w">                            </span><span class="o">[</span>--remove-fleet<span class="w"> </span>REMOVE_FLEETS<span class="o">]</span>
 <span class="w">                            </span><span class="o">[</span>--add-gateway<span class="w"> </span>ADD_GATEWAYS<span class="o">]</span>
 <span class="w">                            </span><span class="o">[</span>--remove-gateway<span class="w"> </span>REMOVE_GATEWAYS<span class="o">]</span>
+<span class="w">                            </span><span class="o">[</span>--set-global<span class="w"> </span><span class="p">|</span><span class="w"> </span>--unset-global<span class="o">]</span>
 <span class="w">                            </span>name
 
 Positional<span class="w"> </span>Arguments:
@@ -4889,6 +4920,9 @@ Options:
 <span class="w">  </span>--remove-gateway<span class="w"> </span>REMOVE_GATEWAYS
 <span class="w">                        </span>Gateway<span class="w"> </span>name<span class="w"> </span>to<span class="w"> </span>remove<span class="w"> </span><span class="o">(</span>can<span class="w"> </span>be<span class="w"> </span>specified<span class="w"> </span>multiple
 <span class="w">                        </span><span class="nb">times</span><span class="o">)</span>
+<span class="w">  </span>--set-global<span class="w">          </span>Make<span class="w"> </span>this<span class="w"> </span><span class="nb">export</span><span class="w"> </span>global<span class="w"> </span><span class="o">(</span>automatically<span class="w"> </span>imported<span class="w"> </span>into
+<span class="w">                        </span>all<span class="w"> </span>projects<span class="o">)</span>
+<span class="w">  </span>--unset-global<span class="w">        </span>Remove<span class="w"> </span>the<span class="w"> </span>global<span class="w"> </span>flag<span class="w"> </span>from<span class="w"> </span>this<span class="w"> </span><span class="nb">export</span>
 </code></pre></div>
 
 </div>
@@ -4987,7 +5021,7 @@ Options:
                     <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      © 2025 dstack
+      © 2026 dstack Inc.
     </div>
   
   
