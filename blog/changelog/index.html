@@ -4479,6 +4479,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#deploying-inference-endpoints-with-pd-disaggregation-on-amd-gpus" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Deploying inference endpoints with PD disaggregation on AMD GPUs
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#deploying-sglang-with-pd-disaggregation-via-shepherd-model-gateway" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -4571,17 +4582,6 @@
     <span class="md-ellipsis">
       
         Introducing service probes
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#introducing-passive-gpu-health-checks" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Introducing passive GPU health checks
       
     </span>
   </a>
@@ -4730,6 +4730,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#deploying-inference-endpoints-with-pd-disaggregation-on-amd-gpus" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Deploying inference endpoints with PD disaggregation on AMD GPUs
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#deploying-sglang-with-pd-disaggregation-via-shepherd-model-gateway" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -4828,17 +4839,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#introducing-passive-gpu-health-checks" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Introducing passive GPU health checks
-      
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -4853,6 +4853,50 @@
       <header class="md-typeset">
         <h1 id="changelog">Changelog<a class="headerlink" href="#changelog" title="Permanent link">&para;</a></h1>
       </header>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2026-05-21 00:00:00+00:00">May 21, 2026</time></li>
+        
+          <li class="md-meta__item">
+            in
+            
+              <a href="./" class="md-meta__link">Changelog</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              5 min read
+            
+          </li>
+        
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="deploying-inference-endpoints-with-pd-disaggregation-on-amd-gpus"><a class="toclink" href="../amd-pd-disaggregation/">Deploying inference endpoints with PD disaggregation on AMD GPUs</a></h2>
+<p><code>dstack</code> is an open-source, AI-native orchestrator that works across clouds, Kubernetes clusters, on-prem fleets, hardware vendors, and frameworks. Alongside training, inference is one of the primary use cases <code>dstack</code> supports out of the box.</p>
+<p><img src="https://dstack.ai/static-assets/static-assets/images/amd-pd-disaggregation.png" width="630" /></p>
+<p><code>dstack</code> recently added native support for Prefill–Decode (PD) disaggregation. It works with <a href="../smg/">Shepherd Model Gateway</a> (SMG) — a high-performance inference gateway evolved from the SGLang Router — on both NVIDIA and AMD, and with <a href="https://docs.nvidia.com/dynamo/">NVIDIA Dynamo</a> on NVIDIA. This post walks through deploying it on AMD GPUs with SMG.</p>
+
+    
+      <nav class="md-post__action">
+        <a href="../amd-pd-disaggregation/">
+            <span>Continue reading</span>
+            <span class="icon"><svg viewBox="0 0 13 10" xmlns="http://www.w3.org/2000/svg"><path d="M12.823 4.164L8.954.182a.592.592 0 0 0-.854 0 .635.635 0 0 0 0 .88l2.836 2.92H.604A.614.614 0 0 0 0 4.604c0 .344.27.622.604.622h10.332L8.1 8.146a.635.635 0 0 0 0 .88.594.594 0 0 0 .854 0l3.869-3.982a.635.635 0 0 0 0-.88z" fill-rule="nonzero" fill="currentColor" class="fill-main"></path></svg></span>
+        </a>
+      </nav>
+    
+    
+  </div>
+</article>
       
         <article class="md-post md-post--excerpt">
   <header class="md-post__header">
@@ -5243,50 +5287,6 @@ to offer on-demand and spot GPUs, including clusters.</p>
     
       <nav class="md-post__action">
         <a href="../probes/">
-            <span>Continue reading</span>
-            <span class="icon"><svg viewBox="0 0 13 10" xmlns="http://www.w3.org/2000/svg"><path d="M12.823 4.164L8.954.182a.592.592 0 0 0-.854 0 .635.635 0 0 0 0 .88l2.836 2.92H.604A.614.614 0 0 0 0 4.604c0 .344.27.622.604.622h10.332L8.1 8.146a.635.635 0 0 0 0 .88.594.594 0 0 0 .854 0l3.869-3.982a.635.635 0 0 0 0-.88z" fill-rule="nonzero" fill="currentColor" class="fill-main"></path></svg></span>
-        </a>
-      </nav>
-    
-    
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2025-08-12 00:00:00+00:00">August 12, 2025</time></li>
-        
-          <li class="md-meta__item">
-            in
-            
-              <a href="./" class="md-meta__link">Changelog</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              3 min read
-            
-          </li>
-        
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="introducing-passive-gpu-health-checks"><a class="toclink" href="../gpu-helth-checks/">Introducing passive GPU health checks</a></h2>
-<p>In large-scale training, a single bad GPU can derail progress. Sometimes the failure is obvious — jobs crash outright. Other times it’s subtle: correctable memory errors, intermittent instability, or thermal throttling that quietly drags down throughput. In big experiments, these issues can go unnoticed for hours or days, wasting compute and delaying results.</p>
-<p><code>dstack</code> already supports GPU telemetry monitoring through NVIDIA DCGM <a href="../../docs/concepts/metrics/">metrics</a>, covering utilization, memory, and temperature. This release extends that capability with passive hardware health checks powered by DCGM <a href="https://docs.nvidia.com/datacenter/dcgm/latest/user-guide/feature-overview.html#background-health-checks">background health checks</a>. With these, <code>dstack</code> continuously evaluates fleet GPUs for hardware reliability and displays their status before scheduling workloads.</p>
-<p><img src="https://dstack.ai/static-assets/static-assets/images/gpu-health-checks.png" width="630"/></p>
-
-    
-      <nav class="md-post__action">
-        <a href="../gpu-helth-checks/">
             <span>Continue reading</span>
             <span class="icon"><svg viewBox="0 0 13 10" xmlns="http://www.w3.org/2000/svg"><path d="M12.823 4.164L8.954.182a.592.592 0 0 0-.854 0 .635.635 0 0 0 0 .88l2.836 2.92H.604A.614.614 0 0 0 0 4.604c0 .344.27.622.604.622h10.332L8.1 8.146a.635.635 0 0 0 0 .88.594.594 0 0 0 .854 0l3.869-3.982a.635.635 0 0 0 0-.88z" fill-rule="nonzero" fill="currentColor" class="fill-main"></path></svg></span>
         </a>

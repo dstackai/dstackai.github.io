@@ -4477,6 +4477,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#introducing-passive-gpu-health-checks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Introducing passive GPU health checks
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#supporting-hot-aisle-amd-ai-developer-cloud" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -4569,17 +4580,6 @@
     <span class="md-ellipsis">
       
         Supporting Intel Gaudi AI accelerators with SSH fleets
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#auto-shutdown-for-inactive-dev-environmentsno-idle-gpus" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Auto-shutdown for inactive dev environments—no idle GPUs
       
     </span>
   </a>
@@ -4728,6 +4728,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#introducing-passive-gpu-health-checks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Introducing passive GPU health checks
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#supporting-hot-aisle-amd-ai-developer-cloud" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -4826,17 +4837,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#auto-shutdown-for-inactive-dev-environmentsno-idle-gpus" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Auto-shutdown for inactive dev environments—no idle GPUs
-      
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -4851,6 +4851,50 @@
       <header class="md-typeset">
         <h1 id="changelog">Changelog<a class="headerlink" href="#changelog" title="Permanent link">&para;</a></h1>
       </header>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2025-08-12 00:00:00+00:00">August 12, 2025</time></li>
+        
+          <li class="md-meta__item">
+            in
+            
+              <a href="../../" class="md-meta__link">Changelog</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              3 min read
+            
+          </li>
+        
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="introducing-passive-gpu-health-checks"><a class="toclink" href="../../../gpu-helth-checks/">Introducing passive GPU health checks</a></h2>
+<p>In large-scale training, a single bad GPU can derail progress. Sometimes the failure is obvious — jobs crash outright. Other times it’s subtle: correctable memory errors, intermittent instability, or thermal throttling that quietly drags down throughput. In big experiments, these issues can go unnoticed for hours or days, wasting compute and delaying results.</p>
+<p><code>dstack</code> already supports GPU telemetry monitoring through NVIDIA DCGM <a href="../../../../docs/concepts/metrics/">metrics</a>, covering utilization, memory, and temperature. This release extends that capability with passive hardware health checks powered by DCGM <a href="https://docs.nvidia.com/datacenter/dcgm/latest/user-guide/feature-overview.html#background-health-checks">background health checks</a>. With these, <code>dstack</code> continuously evaluates fleet GPUs for hardware reliability and displays their status before scheduling workloads.</p>
+<p><img src="https://dstack.ai/static-assets/static-assets/images/gpu-health-checks.png" width="630"/></p>
+
+    
+      <nav class="md-post__action">
+        <a href="../../../gpu-helth-checks/">
+            <span>Continue reading</span>
+            <span class="icon"><svg viewBox="0 0 13 10" xmlns="http://www.w3.org/2000/svg"><path d="M12.823 4.164L8.954.182a.592.592 0 0 0-.854 0 .635.635 0 0 0 0 .88l2.836 2.92H.604A.614.614 0 0 0 0 4.604c0 .344.27.622.604.622h10.332L8.1 8.146a.635.635 0 0 0 0 .88.594.594 0 0 0 .854 0l3.869-3.982a.635.635 0 0 0 0-.88z" fill-rule="nonzero" fill="currentColor" class="fill-main"></path></svg></span>
+        </a>
+      </nav>
+    
+    
+  </div>
+</article>
       
         <article class="md-post md-post--excerpt">
   <header class="md-post__header">
@@ -5289,54 +5333,6 @@ for Intel Gaudi AI Accelerator and launching a new partnership with Intel.</p>
     
       <nav class="md-post__action">
         <a href="../../../intel-gaudi/">
-            <span>Continue reading</span>
-            <span class="icon"><svg viewBox="0 0 13 10" xmlns="http://www.w3.org/2000/svg"><path d="M12.823 4.164L8.954.182a.592.592 0 0 0-.854 0 .635.635 0 0 0 0 .88l2.836 2.92H.604A.614.614 0 0 0 0 4.604c0 .344.27.622.604.622h10.332L8.1 8.146a.635.635 0 0 0 0 .88.594.594 0 0 0 .854 0l3.869-3.982a.635.635 0 0 0 0-.88z" fill-rule="nonzero" fill="currentColor" class="fill-main"></path></svg></span>
-        </a>
-      </nav>
-    
-    
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2025-02-19 00:00:00+00:00">February 19, 2025</time></li>
-        
-          <li class="md-meta__item">
-            in
-            
-              <a href="../../" class="md-meta__link">Changelog</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              2 min read
-            
-          </li>
-        
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="auto-shutdown-for-inactive-dev-environmentsno-idle-gpus"><a class="toclink" href="../../../inactivity-duration/">Auto-shutdown for inactive dev environments—no idle GPUs</a></h2>
-<p>Whether you’re using cloud or on-prem compute, you may want to test your code before launching a
-training task or deploying a service. <code>dstack</code>’s <a href="../../../../docs/concepts/dev-environments/">dev environments</a>
-make this easy by setting up a remote machine, cloning your repository, and configuring your IDE —all within 
-a container that has GPU access.</p>
-<p>One issue with dev environments is forgetting to stop them or closing your laptop, leaving the GPU idle and costly. With
-our latest update, <code>dstack</code> now detects inactive environments and automatically shuts them down, saving you money.</p>
-<p><img src="https://dstack.ai/static-assets/static-assets/images/inactive-dev-environments-auto-shutdown.png" width="630"/></p>
-
-    
-      <nav class="md-post__action">
-        <a href="../../../inactivity-duration/">
             <span>Continue reading</span>
             <span class="icon"><svg viewBox="0 0 13 10" xmlns="http://www.w3.org/2000/svg"><path d="M12.823 4.164L8.954.182a.592.592 0 0 0-.854 0 .635.635 0 0 0 0 .88l2.836 2.92H.604A.614.614 0 0 0 0 4.604c0 .344.27.622.604.622h10.332L8.1 8.146a.635.635 0 0 0 0 .88.594.594 0 0 0 .854 0l3.869-3.982a.635.635 0 0 0 0-.88z" fill-rule="nonzero" fill="currentColor" class="fill-main"></path></svg></span>
         </a>

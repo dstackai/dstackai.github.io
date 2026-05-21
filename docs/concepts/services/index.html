@@ -5335,7 +5335,7 @@
 <h2 id="apply-a-configuration">Apply a configuration<a class="headerlink" href="#apply-a-configuration" title="Permanent link">&para;</a></h2>
 <p>First, define a service configuration as a YAML file in your project folder.
 The filename must end with <code>.dstack.yml</code> (e.g. <code>.dstack.yml</code> or <code>dev.dstack.yml</code> are both acceptable).</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="nvidia" name="__tabbed_1" type="radio" /><input id="amd" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="nvidia">NVIDIA</label><label for="amd">AMD</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="nvidia_1" name="__tabbed_1" type="radio" /><input id="amd_1" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="nvidia_1">NVIDIA</label><label for="amd_1">AMD</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div editor-title=".dstack.yml">
@@ -5492,7 +5492,7 @@ a gateway is already pre-configured for you. -->
 <h3 id="replicas-and-scaling">Replicas and scaling<a class="headerlink" href="#replicas-and-scaling" title="Permanent link">&para;</a></h3>
 <p>By default, <code>dstack</code> runs a single replica of the service.
 You can configure the number of replicas as well as the auto-scaling rules.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="nvidia_1" name="__tabbed_2" type="radio" /><input id="amd_1" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="nvidia_1">NVIDIA</label><label for="amd_1">AMD</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="nvidia_2" name="__tabbed_2" type="radio" /><input id="amd_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="nvidia_2">NVIDIA</label><label for="amd_2">AMD</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div editor-title="service.dstack.yml">
@@ -5634,7 +5634,8 @@ case <code>dstack</code> adjusts the number of replicas (scales up or down) auto
 
 <p>Since 0.20.17, <code>dstack</code> supports serving a model using Prefill-Decode disaggregation. To use it, configure three replica groups: one for the router, one for prefill workers, and one for decode workers.</p>
 <p><code>dstack</code> integrates with two routers for PD disaggregation: <a href="https://docs.sglang.io/advanced_features/sgl_model_gateway.html">Shepherd Model Gateway (SMG)</a> and <a href="https://github.com/ai-dynamo/dynamo">NVIDIA Dynamo</a>.</p>
-<p>Below is an example for running <code>zai-org/GLM-4.5-Air-FP8</code>:</p>
+<h4 id="nvidia">NVIDIA<a class="headerlink" href="#nvidia" title="Permanent link">&para;</a></h4>
+<p>Below is an example for running <code>zai-org/GLM-4.5-Air-FP8</code> on <code>H200</code>:</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="smg" name="__tabbed_3" type="radio" /><input id="dynamo" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="smg">SMG</label><label for="dynamo">Dynamo</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -5803,10 +5804,115 @@ case <code>dstack</code> adjusts the number of replicas (scales up or down) auto
 </code></pre></div>
 </div>
 <blockquote>
-<p>With the the <code>dynamo</code> router, you can use SGLang, vLLM, and TensorRT-LLM prefill and decode workers.</p>
+<p>With the <code>dynamo</code> router, you can use SGLang, vLLM, and TensorRT-LLM prefill and decode workers.</p>
 </blockquote>
 </div>
 </div>
+</div>
+<h4 id="amd">AMD<a class="headerlink" href="#amd" title="Permanent link">&para;</a></h4>
+<p>The example below deploys <code>Qwen/Qwen2.5-72B-Instruct</code> on a multi-node cluster with AMD MI300X GPUs:</p>
+<div editor-title="amd-pd.dstack.yml">
+
+<div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service</span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">amd-sglang-pd-service</span>
+
+<span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rocm/sgl-dev:v0.5.10.post1-rocm720-mi30x-20260427</span>
+<span class="nt">privileged</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+
+<span class="nt">env</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MODEL_ID=Qwen/Qwen2.5-72B-Instruct</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HF_TOKEN</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SGLANG_USE_AITER=0</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SGLANG_ROCM_FUSED_DECODE_MLA=0</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SGLANG_DISAGGREGATION_BOOTSTRAP_TIMEOUT=600</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SGLANG_DISAGGREGATION_WAITING_TIMEOUT=600</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">RDMA_DEVICES=bnxt_re0,bnxt_re1,bnxt_re2,bnxt_re3,bnxt_re4,bnxt_re5,bnxt_re6,bnxt_re7</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NCCL_IB_DISABLE=1</span>
+
+<span class="nt">replicas</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">count</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">    </span><span class="nt">commands</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip install smg</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">        </span><span class="no">smg launch \</span>
+<span class="w">          </span><span class="no">--pd-disaggregation \</span>
+<span class="w">          </span><span class="no">--host 0.0.0.0 \</span>
+<span class="w">          </span><span class="no">--port 30000</span>
+<span class="w">    </span><span class="nt">resources</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4..</span>
+<span class="w">    </span><span class="nt">router</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sglang</span>
+
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">count</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1..2</span>
+<span class="w">    </span><span class="nt">scaling</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">metric</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rps</span>
+<span class="w">      </span><span class="nt">target</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">300</span>
+<span class="w">    </span><span class="nt">commands</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">        </span><span class="no">python3 -m sglang.launch_server \</span>
+<span class="w">          </span><span class="no">--model $MODEL_ID \</span>
+<span class="w">          </span><span class="no">--disaggregation-mode prefill \</span>
+<span class="w">          </span><span class="no">--disaggregation-transfer-backend mooncake \</span>
+<span class="w">          </span><span class="no">--host 0.0.0.0 \</span>
+<span class="w">          </span><span class="no">--port 30000 \</span>
+<span class="w">          </span><span class="no">--tp $DSTACK_GPUS_NUM \</span>
+<span class="w">          </span><span class="no">--trust-remote-code \</span>
+<span class="w">          </span><span class="no">--disaggregation-ib-device $RDMA_DEVICES \</span>
+<span class="w">          </span><span class="no">--disaggregation-bootstrap-port 8998 \</span>
+<span class="w">          </span><span class="no">--disable-radix-cache \</span>
+<span class="w">          </span><span class="no">--disable-cuda-graph \</span>
+<span class="w">          </span><span class="no">--disable-overlap-schedule \</span>
+<span class="w">          </span><span class="no">--mem-fraction-static 0.8 \</span>
+<span class="w">          </span><span class="no">--max-running-requests 1024</span>
+<span class="w">    </span><span class="nt">resources</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MI300X:8</span>
+<span class="w">      </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">96..</span>
+<span class="w">      </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">512GB..</span>
+
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">count</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1..4</span>
+<span class="w">    </span><span class="nt">scaling</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">metric</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rps</span>
+<span class="w">      </span><span class="nt">target</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">300</span>
+<span class="w">    </span><span class="nt">commands</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">        </span><span class="no">python3 -m sglang.launch_server \</span>
+<span class="w">          </span><span class="no">--model $MODEL_ID \</span>
+<span class="w">          </span><span class="no">--disaggregation-mode decode \</span>
+<span class="w">          </span><span class="no">--disaggregation-transfer-backend mooncake \</span>
+<span class="w">          </span><span class="no">--host 0.0.0.0 \</span>
+<span class="w">          </span><span class="no">--port 30000 \</span>
+<span class="w">          </span><span class="no">--tp $DSTACK_GPUS_NUM \</span>
+<span class="w">          </span><span class="no">--trust-remote-code \</span>
+<span class="w">          </span><span class="no">--disaggregation-ib-device $RDMA_DEVICES \</span>
+<span class="w">          </span><span class="no">--disable-radix-cache \</span>
+<span class="w">          </span><span class="no">--disable-cuda-graph \</span>
+<span class="w">          </span><span class="no">--disable-overlap-schedule \</span>
+<span class="w">          </span><span class="no">--decode-attention-backend triton \</span>
+<span class="w">          </span><span class="no">--mem-fraction-static 0.8 \</span>
+<span class="w">          </span><span class="no">--max-running-requests 1024</span>
+<span class="w">    </span><span class="nt">resources</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MI300X:8</span>
+<span class="w">      </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">96..</span>
+<span class="w">      </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">512GB..</span>
+
+<span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30000</span>
+<span class="nt">model</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Qwen/Qwen2.5-72B-Instruct</span>
+
+<span class="c1"># Custom probe is required for PD disaggregation.</span>
+<span class="nt">probes</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http</span>
+<span class="w">    </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/health</span>
+<span class="w">    </span><span class="nt">interval</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">15s</span>
+
+<span class="nt">volumes</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/usr/lib64/libibverbs/libbnxt_re-rdmav34.so:/usr/lib/x86_64-linux-gnu/libibverbs/libbnxt_re-rdmav34.so</span>
+</code></pre></div>
+
+</div>
+
+<div class="admonition info">
+<p class="admonition-title">RoCE library</p>
+<p>Mooncake uses the RDMA/RoCE interconnect for KV Cache transfer. To use the RDMA/RoCE interconnect on Broadcom <code>bnxt_re</code> devices, Mooncake requires the Broadcom-specific userspace provider library <code>libbnxt_re-rdmav34.so</code> to be available inside the container at <code>/usr/lib/x86_64-linux-gnu/libibverbs/libbnxt_re-rdmav34.so</code>. We make this library available by mounting the host provider library from <code>/usr/lib64/libibverbs/libbnxt_re-rdmav34.so</code>.</p>
 </div>
 <div class="admonition info">
 <p class="admonition-title">Cluster</p>

@@ -4386,6 +4386,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#deploying-inference-endpoints-with-pd-disaggregation-on-amd-gpus" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Deploying inference endpoints with PD disaggregation on AMD GPUs
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#deploying-sglang-with-pd-disaggregation-via-shepherd-model-gateway" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -4478,17 +4489,6 @@
     <span class="md-ellipsis">
       
         Orchestrating GPUs on Kubernetes clusters
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#benchmarking-prefilldecode-ratios-fixed-vs-dynamic" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Benchmarking Prefill–Decode ratios: fixed vs dynamic
       
     </span>
   </a>
@@ -4724,6 +4724,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#deploying-inference-endpoints-with-pd-disaggregation-on-amd-gpus" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Deploying inference endpoints with PD disaggregation on AMD GPUs
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#deploying-sglang-with-pd-disaggregation-via-shepherd-model-gateway" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -4822,17 +4833,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#benchmarking-prefilldecode-ratios-fixed-vs-dynamic" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Benchmarking Prefill–Decode ratios: fixed vs dynamic
-      
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -4853,6 +4853,50 @@
 
 <h1 id="blog">Blog<a class="headerlink" href="#blog" title="Permanent link">&para;</a></h1>
       </header>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2026-05-21 00:00:00+00:00">May 21, 2026</time></li>
+        
+          <li class="md-meta__item">
+            in
+            
+              <a href="changelog/" class="md-meta__link">Changelog</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              5 min read
+            
+          </li>
+        
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="deploying-inference-endpoints-with-pd-disaggregation-on-amd-gpus"><a class="toclink" href="amd-pd-disaggregation/">Deploying inference endpoints with PD disaggregation on AMD GPUs</a></h2>
+<p><code>dstack</code> is an open-source, AI-native orchestrator that works across clouds, Kubernetes clusters, on-prem fleets, hardware vendors, and frameworks. Alongside training, inference is one of the primary use cases <code>dstack</code> supports out of the box.</p>
+<p><img src="https://dstack.ai/static-assets/static-assets/images/amd-pd-disaggregation.png" width="630" /></p>
+<p><code>dstack</code> recently added native support for Prefill–Decode (PD) disaggregation. It works with <a href="smg/">Shepherd Model Gateway</a> (SMG) — a high-performance inference gateway evolved from the SGLang Router — on both NVIDIA and AMD, and with <a href="https://docs.nvidia.com/dynamo/">NVIDIA Dynamo</a> on NVIDIA. This post walks through deploying it on AMD GPUs with SMG.</p>
+
+    
+      <nav class="md-post__action">
+        <a href="amd-pd-disaggregation/">
+            <span>Continue reading</span>
+            <span class="icon"><svg viewBox="0 0 13 10" xmlns="http://www.w3.org/2000/svg"><path d="M12.823 4.164L8.954.182a.592.592 0 0 0-.854 0 .635.635 0 0 0 0 .88l2.836 2.92H.604A.614.614 0 0 0 0 4.604c0 .344.27.622.604.622h10.332L8.1 8.146a.635.635 0 0 0 0 .88.594.594 0 0 0 .854 0l3.869-3.982a.635.635 0 0 0 0-.88z" fill-rule="nonzero" fill="currentColor" class="fill-main"></path></svg></span>
+        </a>
+      </nav>
+    
+    
+  </div>
+</article>
       
         <article class="md-post md-post--excerpt">
   <header class="md-post__header">
@@ -5233,50 +5277,6 @@ At the same time, many organizations rely on Kubernetes as the foundation of the
     
       <nav class="md-post__action">
         <a href="kubernetes-beta/">
-            <span>Continue reading</span>
-            <span class="icon"><svg viewBox="0 0 13 10" xmlns="http://www.w3.org/2000/svg"><path d="M12.823 4.164L8.954.182a.592.592 0 0 0-.854 0 .635.635 0 0 0 0 .88l2.836 2.92H.604A.614.614 0 0 0 0 4.604c0 .344.27.622.604.622h10.332L8.1 8.146a.635.635 0 0 0 0 .88.594.594 0 0 0 .854 0l3.869-3.982a.635.635 0 0 0 0-.88z" fill-rule="nonzero" fill="currentColor" class="fill-main"></path></svg></span>
-        </a>
-      </nav>
-    
-    
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2025-09-25 00:00:00+00:00">September 25, 2025</time></li>
-        
-          <li class="md-meta__item">
-            in
-            
-              <a href="benchmarks/" class="md-meta__link">Benchmarks</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              6 min read
-            
-          </li>
-        
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="benchmarking-prefilldecode-ratios-fixed-vs-dynamic"><a class="toclink" href="benchmarking-pd-ratios/">Benchmarking Prefill–Decode ratios: fixed vs dynamic</a></h2>
-<p>This benchmark investigates whether the Prefill–Decode worker ratio needs to be managed dynamically at runtime, or if a fixed split can deliver the same performance with simpler orchestration.<br />
-We evaluate different ratios across workload profiles and concurrency levels to measure their impact on TTFT, ITL, and throughput, and to see whether fixing the ratio in advance is a practical alternative to dynamic adjustment.</p>
-<p><img src="https://dstack.ai/static-assets/static-assets/images/benchmarking-pd-ratios.png" width="630" /></p>
-
-    
-      <nav class="md-post__action">
-        <a href="benchmarking-pd-ratios/">
             <span>Continue reading</span>
             <span class="icon"><svg viewBox="0 0 13 10" xmlns="http://www.w3.org/2000/svg"><path d="M12.823 4.164L8.954.182a.592.592 0 0 0-.854 0 .635.635 0 0 0 0 .88l2.836 2.92H.604A.614.614 0 0 0 0 4.604c0 .344.27.622.604.622h10.332L8.1 8.146a.635.635 0 0 0 0 .88.594.594 0 0 0 .854 0l3.869-3.982a.635.635 0 0 0 0-.88z" fill-rule="nonzero" fill="currentColor" class="fill-main"></path></svg></span>
         </a>

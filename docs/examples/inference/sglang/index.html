@@ -4986,7 +4986,7 @@ enable tool calling, add <code>--tool-call-parser qwen3_coder</code> to the serv
 <h2 id="configuration-options">Configuration options<a class="headerlink" href="#configuration-options" title="Permanent link">&para;</a></h2>
 <h3 id="pd-disaggregation">PD disaggregation<a class="headerlink" href="#pd-disaggregation" title="Permanent link">&para;</a></h3>
 <p>To run SGLang with <a href="https://docs.sglang.io/advanced_features/pd_disaggregation.html">PD disaggregation</a>, use replica groups: one for <a href="https://docs.sglang.io/advanced_features/sgl_model_gateway.html">Shepherd Model Gateway (SMG)</a>, one for prefill workers, and one for decode workers.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="2:1"><input checked="checked" id="nvidia_1" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="nvidia_1">NVIDIA</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="nvidia_1" name="__tabbed_2" type="radio" /><input id="amd_1" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="nvidia_1">NVIDIA</label><label for="amd_1">AMD</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div editor-title="pd.dstack.yml">
@@ -5055,12 +5055,115 @@ enable tool calling, add <code>--tool-call-parser qwen3_coder</code> to the serv
 <span class="w">    </span><span class="nt">interval</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">15s</span>
 </code></pre></div>
 </div>
-</div>
-</div>
-</div>
 <blockquote>
 <p>With the <code>sglang</code> router, you can use SGLang prefill and decode workers. Support for vLLM and TensorRT-LLM workers is coming soon.</p>
 </blockquote>
+</div>
+<div class="tabbed-block">
+<p>The example below deploys <code>Qwen/Qwen2.5-72B-Instruct</code> on a multi-node cluster with AMD MI300X GPUs:</p>
+<div editor-title="amd-pd.dstack.yml">
+<div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service</span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">amd-sglang-pd-service</span>
+
+<span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rocm/sgl-dev:v0.5.10.post1-rocm720-mi30x-20260427</span>
+<span class="nt">privileged</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+
+<span class="nt">env</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MODEL_ID=Qwen/Qwen2.5-72B-Instruct</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HF_TOKEN</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SGLANG_USE_AITER=0</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SGLANG_ROCM_FUSED_DECODE_MLA=0</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SGLANG_DISAGGREGATION_BOOTSTRAP_TIMEOUT=600</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SGLANG_DISAGGREGATION_WAITING_TIMEOUT=600</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">RDMA_DEVICES=bnxt_re0,bnxt_re1,bnxt_re2,bnxt_re3,bnxt_re4,bnxt_re5,bnxt_re6,bnxt_re7</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NCCL_IB_DISABLE=1</span>
+
+<span class="nt">replicas</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">count</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">    </span><span class="nt">commands</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip install smg</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">        </span><span class="no">smg launch \</span>
+<span class="w">          </span><span class="no">--pd-disaggregation \</span>
+<span class="w">          </span><span class="no">--host 0.0.0.0 \</span>
+<span class="w">          </span><span class="no">--port 30000</span>
+<span class="w">    </span><span class="nt">resources</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4..</span>
+<span class="w">    </span><span class="nt">router</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sglang</span>
+
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">count</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1..2</span>
+<span class="w">    </span><span class="nt">scaling</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">metric</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rps</span>
+<span class="w">      </span><span class="nt">target</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">300</span>
+<span class="w">    </span><span class="nt">commands</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">        </span><span class="no">python3 -m sglang.launch_server \</span>
+<span class="w">          </span><span class="no">--model $MODEL_ID \</span>
+<span class="w">          </span><span class="no">--disaggregation-mode prefill \</span>
+<span class="w">          </span><span class="no">--disaggregation-transfer-backend mooncake \</span>
+<span class="w">          </span><span class="no">--host 0.0.0.0 \</span>
+<span class="w">          </span><span class="no">--port 30000 \</span>
+<span class="w">          </span><span class="no">--tp $DSTACK_GPUS_NUM \</span>
+<span class="w">          </span><span class="no">--trust-remote-code \</span>
+<span class="w">          </span><span class="no">--disaggregation-ib-device $RDMA_DEVICES \</span>
+<span class="w">          </span><span class="no">--disaggregation-bootstrap-port 8998 \</span>
+<span class="w">          </span><span class="no">--disable-radix-cache \</span>
+<span class="w">          </span><span class="no">--disable-cuda-graph \</span>
+<span class="w">          </span><span class="no">--disable-overlap-schedule \</span>
+<span class="w">          </span><span class="no">--mem-fraction-static 0.8 \</span>
+<span class="w">          </span><span class="no">--max-running-requests 1024</span>
+<span class="w">    </span><span class="nt">resources</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MI300X:8</span>
+<span class="w">      </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">96..</span>
+<span class="w">      </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">512GB..</span>
+
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">count</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1..4</span>
+<span class="w">    </span><span class="nt">scaling</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">metric</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rps</span>
+<span class="w">      </span><span class="nt">target</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">300</span>
+<span class="w">    </span><span class="nt">commands</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">        </span><span class="no">python3 -m sglang.launch_server \</span>
+<span class="w">          </span><span class="no">--model $MODEL_ID \</span>
+<span class="w">          </span><span class="no">--disaggregation-mode decode \</span>
+<span class="w">          </span><span class="no">--disaggregation-transfer-backend mooncake \</span>
+<span class="w">          </span><span class="no">--host 0.0.0.0 \</span>
+<span class="w">          </span><span class="no">--port 30000 \</span>
+<span class="w">          </span><span class="no">--tp $DSTACK_GPUS_NUM \</span>
+<span class="w">          </span><span class="no">--trust-remote-code \</span>
+<span class="w">          </span><span class="no">--disaggregation-ib-device $RDMA_DEVICES \</span>
+<span class="w">          </span><span class="no">--disable-radix-cache \</span>
+<span class="w">          </span><span class="no">--disable-cuda-graph \</span>
+<span class="w">          </span><span class="no">--disable-overlap-schedule \</span>
+<span class="w">          </span><span class="no">--decode-attention-backend triton \</span>
+<span class="w">          </span><span class="no">--mem-fraction-static 0.8 \</span>
+<span class="w">          </span><span class="no">--max-running-requests 1024</span>
+<span class="w">    </span><span class="nt">resources</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MI300X:8</span>
+<span class="w">      </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">96..</span>
+<span class="w">      </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">512GB..</span>
+
+<span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30000</span>
+<span class="nt">model</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Qwen/Qwen2.5-72B-Instruct</span>
+
+<span class="c1"># Custom probe is required for PD disaggregation.</span>
+<span class="nt">probes</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http</span>
+<span class="w">    </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/health</span>
+<span class="w">    </span><span class="nt">interval</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">15s</span>
+
+<span class="nt">volumes</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/usr/lib64/libibverbs/libbnxt_re-rdmav34.so:/usr/lib/x86_64-linux-gnu/libibverbs/libbnxt_re-rdmav34.so</span>
+</code></pre></div>
+</div>
+<div class="admonition info">
+<p class="admonition-title">RoCE library</p>
+<p>Mooncake uses the RDMA/RoCE interconnect for KV Cache transer. To use the RDMA/RoCE interconnect on Broadcom <code>bnxt_re</code> devices, Mooncake requires the Broadcom-specific userspace provider library <code>libbnxt_re-rdmav34.so</code> to be available inside the container at <code>/usr/lib/x86_64-linux-gnu/libibverbs/libbnxt_re-rdmav34.so</code>. We make this library available by mounting the host provider library from <code>/usr/lib64/libibverbs/libbnxt_re-rdmav34.so</code>.</p>
+</div>
+</div>
+</div>
+</div>
 <p>Currently, auto-scaling only supports <code>rps</code> as the metric. TTFT and ITL metrics are coming soon.</p>
 <div class="admonition info">
 <p class="admonition-title">Cluster</p>
