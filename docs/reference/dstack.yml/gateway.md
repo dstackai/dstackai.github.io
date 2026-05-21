@@ -6,7 +6,7 @@ The `gateway` configuration type allows creating and updating [gateways](../../c
 
 ###### `name` - (Optional) `str` The gateway name. { #name data-toc-label='name' class='reference-item' }
 ###### `default` - (Optional) `bool` Make the gateway default. Defaults to `false`. { #default data-toc-label='default' class='reference-item' }
-###### `backend` - (Required) `"amddevcloud" | "aws" | "azure" | "cloudrift" | "crusoe" | "cudo" | "datacrunch" | "digitalocean" | "dstack" | "gcp" | "hotaisle" | "kubernetes" | "lambda" | "local" | "remote" | "nebius" | "oci" | "runpod" | "tensordock" | "vastai" | "verda" | "vultr"` The gateway backend. { #backend data-toc-label='backend' class='reference-item' }
+###### `backend` - (Required) `"amddevcloud" | "aws" | "azure" | "cloudrift" | "crusoe" | "cudo" | "datacrunch" | "digitalocean" | "dstack" | "gcp" | "hotaisle" | "jarvislabs" | "kubernetes" | "lambda" | "local" | "remote" | "nebius" | "oci" | "runpod" | "tensordock" | "vastai" | "verda" | "vultr"` The gateway backend. { #backend data-toc-label='backend' class='reference-item' }
 ###### `region` - (Required) `str` The gateway region. { #region data-toc-label='region' class='reference-item' }
 ###### `instance_type` - (Optional) `str` Backend-specific instance type to use for the gateway instance. Omit to use the backend's default, which is typically a small non-GPU instance. { #instance_type data-toc-label='instance_type' class='reference-item' }
 ###### [`router`](#router) - (Optional) `object` The router configuration for this gateway. E.g. `{ type: sglang, policy: round_robin }`.. { #_router data-toc-label='router' class='reference-item' }

@@ -4,7 +4,7 @@ The `volume` configuration type allows creating, registering, and updating [volu
 
 === "AWS"
 
-    ###### `backend` - (Required) `"aws"` The volume backend. Must be `BackendType.AWS`. { #backend data-toc-label='backend' class='reference-item' }
+    ###### `backend` - (Required) `"aws"` The volume backend. Must be `aws`. { #backend data-toc-label='backend' class='reference-item' }
     ###### `name` - (Optional) `str` The volume name. { #name data-toc-label='name' class='reference-item' }
     ###### `size` - (Optional) `str` The volume size. Must be specified when creating new volumes. { #size data-toc-label='size' class='reference-item' }
     ###### `auto_cleanup_duration` - (Optional) `int | str` Time to wait after volume is no longer used by any job before deleting it. Defaults to keep the volume indefinitely. Use the value `off` or `-1` to disable auto-cleanup. { #auto_cleanup_duration data-toc-label='auto_cleanup_duration' class='reference-item' }
@@ -16,7 +16,7 @@ The `volume` configuration type allows creating, registering, and updating [volu
 
 === "GCP"
 
-    ###### `backend` - (Required) `"gcp"` The volume backend. Must be `BackendType.GCP`. { #backend data-toc-label='backend' class='reference-item' }
+    ###### `backend` - (Required) `"gcp"` The volume backend. Must be `gcp`. { #backend data-toc-label='backend' class='reference-item' }
     ###### `name` - (Optional) `str` The volume name. { #name data-toc-label='name' class='reference-item' }
     ###### `size` - (Optional) `str` The volume size. Must be specified when creating new volumes. { #size data-toc-label='size' class='reference-item' }
     ###### `auto_cleanup_duration` - (Optional) `int | str` Time to wait after volume is no longer used by any job before deleting it. Defaults to keep the volume indefinitely. Use the value `off` or `-1` to disable auto-cleanup. { #auto_cleanup_duration data-toc-label='auto_cleanup_duration' class='reference-item' }
@@ -28,7 +28,7 @@ The `volume` configuration type allows creating, registering, and updating [volu
 
 === "Runpod"
 
-    ###### `backend` - (Required) `"runpod"` The volume backend. Must be `BackendType.RUNPOD`. { #backend data-toc-label='backend' class='reference-item' }
+    ###### `backend` - (Required) `"runpod"` The volume backend. Must be `runpod`. { #backend data-toc-label='backend' class='reference-item' }
     ###### `name` - (Optional) `str` The volume name. { #name data-toc-label='name' class='reference-item' }
     ###### `size` - (Optional) `str` The volume size. Must be specified when creating new volumes. { #size data-toc-label='size' class='reference-item' }
     ###### `auto_cleanup_duration` - (Optional) `int | str` Time to wait after volume is no longer used by any job before deleting it. Defaults to keep the volume indefinitely. Use the value `off` or `-1` to disable auto-cleanup. { #auto_cleanup_duration data-toc-label='auto_cleanup_duration' class='reference-item' }
@@ -66,11 +66,12 @@ The `volume` configuration type allows creating, registering, and updating [volu
     claim_name: existing-pvc
     ```
 
-    ###### `backend` - (Required) `"kubernetes"` The volume backend. Must be `BackendType.KUBERNETES`. { #backend data-toc-label='backend' class='reference-item' }
+    ###### `backend` - (Required) `"kubernetes"` The volume backend. Must be `kubernetes`. { #backend data-toc-label='backend' class='reference-item' }
     ###### `name` - (Optional) `str` The volume name. { #name data-toc-label='name' class='reference-item' }
     ###### `size` - (Optional) `str` The requested volume size. Must be specified when creating new PVCs. Ignored if `claim_name` is set. { #size data-toc-label='size' class='reference-item' }
     ###### `auto_cleanup_duration` - (Optional) `int | str` Time to wait after volume is no longer used by any job before deleting it. Defaults to keep the volume indefinitely. Use the value `off` or `-1` to disable auto-cleanup. { #auto_cleanup_duration data-toc-label='auto_cleanup_duration' class='reference-item' }
     ###### `tags` - (Optional) `dict` The custom tags to associate with the volume. The tags are also propagated to the underlying backend resources. If there is a conflict with backend-level tags, does not override them. { #tags data-toc-label='tags' class='reference-item' }
+    ###### `region` - (Required) `str` The volume region (cluster). { #region data-toc-label='region' class='reference-item' }
     ###### `claim_name` - (Optional) `str` The `PersistentVolumeClaim` name. Must be specified when registering the existing PVC instead of creating a new one. { #claim_name data-toc-label='claim_name' class='reference-item' }
     ###### `storage_class_name` - (Optional) `str` The `StorageClass` name. Ignored if `claim_name` is set. { #storage_class_name data-toc-label='storage_class_name' class='reference-item' }
     ###### `access_modes` - (Optional) `list[str]` A list of accepted access modes. Ignored if `claim_name` is set. Defaults to `["ReadWriteOnce"]`. { #access_modes data-toc-label='access_modes' class='reference-item' }

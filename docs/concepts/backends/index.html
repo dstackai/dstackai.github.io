@@ -988,6 +988,19 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#jarvislabs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          JarvisLabs
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#cloudrift" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -5025,6 +5038,19 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#jarvislabs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          JarvisLabs
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#cloudrift" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -6006,6 +6032,22 @@ Create a new team and generate an API key for the member in the team.</p>
 </code></pre></div>
 </div>
 </details>
+<h3 id="jarvislabs">JarvisLabs<a class="headerlink" href="#jarvislabs" title="Permanent link">&para;</a></h3>
+<p>Log into your <a href="https://cloud.jarvislabs.ai/">JarvisLabs</a> account and create an API key.</p>
+<p>Then, go ahead and configure the backend:</p>
+<div editor-title="~/.dstack/server/config.yml">
+
+<div class="highlight"><pre><span></span><code><span class="nt">projects</span><span class="p">:</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">main</span>
+<span class="w">  </span><span class="nt">backends</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">jarvislabs</span>
+<span class="w">      </span><span class="nt">creds</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">api_key</span>
+<span class="w">        </span><span class="nt">api_key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+</code></pre></div>
+
+</div>
+
 <h3 id="cloudrift">CloudRift<a class="headerlink" href="#cloudrift" title="Permanent link">&para;</a></h3>
 <p>Log into your <a href="https://console.cloudrift.ai/">CloudRift</a> console, click <code>API Keys</code> in the sidebar and click the button to create a new API key.</p>
 <p>Ensure you've created a project with CloudRift.</p>
@@ -6114,8 +6156,8 @@ In this case, <code>dstack</code> delegates provisioning to the cloud provider o
 <!-- TODO: Explain what features aren't supported with container-based backends, such as idle_duration, min and target number of nodes when fleet provisioning, instance volumes, Docker-in-Docker, etc. -->
 
 <h3 id="kubernetes">Kubernetes<a class="headerlink" href="#kubernetes" title="Permanent link">&para;</a></h3>
-<p>Regardless of whether it’s on-prem Kubernetes or managed, <code>dstack</code> can orchestrate container-based runs across your clusters.</p>
-<p>To use the <code>kubernetes</code> backend with <code>dstack</code>, you need to configure it with the path to the kubeconfig file, the IP address of any node in the cluster, and the port that <code>dstack</code> will use for proxying SSH traffic. </p>
+<p>Regardless of whether it’s on-prem Kubernetes or managed, <code>dstack</code> can orchestrate container-based runs across your clusters. A single <code>kubernetes</code> backend can manage one or many clusters — each cluster is selected via a kubeconfig <a href="https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/#context">context</a>.</p>
+<p>The recommended way is to enable clusters explicitly via the <code>contexts</code> property:</p>
 <div editor-title="~/.dstack/server/config.yml">
 
 <div class="highlight"><pre><span></span><code><span class="nt">projects</span><span class="p">:</span>
@@ -6126,22 +6168,42 @@ In this case, <code>dstack</code> delegates provisioning to the cloud provider o
 <span class="w">    </span><span class="nt">kubeconfig</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">filename</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">~/.kube/config</span>
 
-<span class="w">    </span><span class="nt">proxy_jump</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">hostname</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">204.12.171.137</span>
-<span class="w">      </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">32000</span>
+<span class="w">    </span><span class="nt">contexts</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gpu-cluster-a</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gpu-cluster-b</span>
 </code></pre></div>
 
 </div>
 
 <div class="admonition info">
 <p class="admonition-title">Proxy jump</p>
-<p>To allow the <code>dstack</code> server and CLI to access runs via SSH, <code>dstack</code> requires a node that acts as a jump host to proxy SSH traffic into containers.  </p>
-<p>To configure this node, specify <code>hostname</code> and <code>port</code> under the <code>proxy_jump</code> property:  </p>
+<p>To allow the <code>dstack</code> server and CLI to access runs via SSH, <code>dstack</code> uses a node in each cluster as a jump host to proxy SSH traffic into containers. No additional setup is required — <code>dstack</code> configures and manages the proxy automatically.</p>
+<p>By default, <code>dstack</code> autodetects the jump host:</p>
 <ul>
-<li><code>hostname</code> — the IP address of any cluster node selected as the jump host. Both the <code>dstack</code> server and CLI must be able to reach it. This node can be either a GPU node or a CPU-only node — it makes no difference.  </li>
-<li><code>port</code> — any accessible port on that node, which <code>dstack</code> uses to forward SSH traffic.  </li>
+<li><code>hostname</code> — picks the <code>ExternalIP</code> of the jump pod's node, or a random node <code>ExternalIP</code> from the cluster if the jump pod's node has none. If no node in the cluster has an <code>ExternalIP</code>, provisioning fails and you must set <code>hostname</code> explicitly.</li>
+<li><code>port</code> — Kubernetes allocates a port from the cluster's NodePort range.</li>
 </ul>
-<p>No additional setup is required — <code>dstack</code> configures and manages the proxy automatically.</p>
+<p>Set <code>proxy_jump.hostname</code> and <code>proxy_jump.port</code> per context to override autodetection — useful when nodes lack <code>ExternalIP</code>s, or when you want a stable, firewall-friendly port:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">contexts</span><span class="p">:</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gpu-cluster-a</span>
+<span class="w">  </span><span class="nt">proxy_jump</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">hostname</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">204.12.171.137</span>
+<span class="w">    </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">32000</span>
+</code></pre></div>
+<p>Both fields are independent — you can set just one.</p>
+<p>The jump host can be a GPU node or a CPU-only node — it makes no difference. The only requirement is that both the <code>dstack</code> server and CLI can reach <code>hostname:port</code>.</p>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Region and namespace</p>
+<p>Each enabled context becomes its own <code>dstack</code> region, named after the context. When creating a <code>dstack</code> <a href="../volumes/">volume</a> or <a href="../gateways/">gateway</a>, the <code>region</code> field selects which cluster the resource is provisioned in.</p>
+<p>The namespace <code>dstack</code> uses for managed resources is taken from each kubeconfig context's <code>namespace</code> property, defaulting to <code>default</code> if not set:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">contexts</span><span class="p">:</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gpu-cluster-a</span>
+<span class="w">  </span><span class="nt">context</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">cluster</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gpu-cluster-a</span>
+<span class="w">    </span><span class="nt">user</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kubernetes-admin</span>
+<span class="w">    </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dstack</span>
+</code></pre></div>
 </div>
 <details class="info">
 <summary>User interface</summary>
@@ -6154,12 +6216,11 @@ specify the contents of the <code>kubeconfig</code> file in <code>data</code>:</
 <span class="w">  </span><span class="nt">data</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
 <span class="w">    </span><span class="no">apiVersion: v1</span>
 <span class="w">    </span><span class="no">kind: Config</span>
-<span class="w">    </span><span class="no">current-context: kubernetes-admin@gpu-cluster</span>
 
 <span class="w">    </span><span class="no">clusters:</span>
-<span class="w">    </span><span class="no">- name: gpu-cluster</span>
+<span class="w">    </span><span class="no">- name: gpu-cluster-a</span>
 <span class="w">      </span><span class="no">cluster:</span>
-<span class="w">        </span><span class="no">server: https://gpu-cluster.internal.example.com:6443</span>
+<span class="w">        </span><span class="no">server: https://gpu-cluster-a.internal.example.com:6443</span>
 <span class="w">        </span><span class="no">certificate-authority-data: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0t...LS0tLQo=</span>
 
 <span class="w">    </span><span class="no">users:</span>
@@ -6169,15 +6230,44 @@ specify the contents of the <code>kubeconfig</code> file in <code>data</code>:</
 <span class="w">        </span><span class="no">client-key-data: LS0tLS1CRUdJTiBQUklWQVRFIEtFWS0tLS0t...LS0tLQo=</span>
 
 <span class="w">    </span><span class="no">contexts:</span>
-<span class="w">    </span><span class="no">- name: kubernetes-admin@gpu-cluster</span>
+<span class="w">    </span><span class="no">- name: gpu-cluster-a</span>
 <span class="w">      </span><span class="no">context:</span>
-<span class="w">        </span><span class="no">cluster: gpu-cluster</span>
+<span class="w">        </span><span class="no">cluster: gpu-cluster-a</span>
 <span class="w">        </span><span class="no">user: kubernetes-admin</span>
+<span class="w">        </span><span class="no">namespace: dstack</span>
 
-<span class="nt">proxy_jump</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">hostname</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">204.12.171.137</span>
-<span class="w">  </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">32000</span>
+<span class="nt">contexts</span><span class="p">:</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gpu-cluster-a</span>
+<span class="w">  </span><span class="nt">proxy_jump</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">hostname</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">204.12.171.137</span>
+<span class="w">    </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">32000</span>
 </code></pre></div>
+</div>
+</details>
+<details class="warning">
+<summary>Legacy configuration (without <code>contexts</code>)</summary>
+<p>If <code>contexts</code> is not set, <code>dstack</code> falls back to using the kubeconfig's <code>current-context</code> as the only cluster, and the top-level <code>proxy_jump</code> and <code>namespace</code> properties apply:</p>
+<div editor-title="~/.dstack/server/config.yml">
+<div class="highlight"><pre><span></span><code><span class="nt">projects</span><span class="p">:</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">main</span>
+<span class="w">  </span><span class="nt">backends</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kubernetes</span>
+
+<span class="w">    </span><span class="nt">kubeconfig</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">filename</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">~/.kube/config</span>
+
+<span class="w">    </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dstack</span>
+
+<span class="w">    </span><span class="nt">proxy_jump</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">hostname</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">204.12.171.137</span>
+<span class="w">      </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">32000</span>
+</code></pre></div>
+</div>
+<p>This mode is not recommended and may be deprecated and removed in the future. It also has a namespace-handling quirk: the top-level <code>namespace</code> property <strong>overrides</strong> the kubeconfig context's namespace (defaulting to <code>default</code> if not set in the config), unlike the <code>contexts</code> mode where the kubeconfig is authoritative. A warning is logged when the two disagree. To prepare for a possible future change, set the same value in both your kubeconfig context and the backend config.</p>
+<p>With this configuration, the cluster's region is an empty string. When creating a <code>dstack</code> volume or gateway, set <code>region: ''</code> explicitly in the configuration.</p>
+<div class="admonition warning">
+<p class="admonition-title">Migrating from legacy to <code>contexts</code></p>
+<p>Switching an existing backend from the legacy mode to <code>contexts</code> is not transparent for already-provisioned resources: their region changes from an empty string to the context name, so <code>dstack</code> can no longer terminate them. Terminate all jobs, gateways, and volumes managed by the backend before changing the configuration.</p>
 </div>
 </details>
 <details class="info">
@@ -6244,7 +6334,7 @@ specify the contents of the <code>kubeconfig</code> file in <code>data</code>:</
 <span class="w">    </span><span class="nt">verbs</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;get&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;create&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;delete&quot;</span><span class="p p-Indicator">]</span>
 </code></pre></div></li>
 </ul>
-<p>Ensure you've created a ClusterRoleBinding to grant the role to the user or the service account you're using.</p>
+<p>Ensure you've created a ClusterRoleBinding and RoleBinding to grant the roles to the user or the service account you're using.</p>
 </details>
 <details class="info">
 <summary>Resources and offers</summary>

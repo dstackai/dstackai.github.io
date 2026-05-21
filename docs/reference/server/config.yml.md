@@ -14,7 +14,7 @@ to configure [backends](../../concepts/backends.md) and other [server-level sett
 ### `projects[n]` { #projects data-toc-label="projects" }
 
 ###### `name` - (Required) `str` The name of the project. { #name data-toc-label='name' class='reference-item' }
-###### [`backends`](#backends) - (Optional) `list[object]` The list of backends. { #_backends data-toc-label='backends' class='reference-item' }
+###### `backends` - (Optional) `list[object]` The list of backends. { #backends data-toc-label='backends' class='reference-item' }
 
 
 #### `projects[n].backends` { #backends data-toc-label="backends" }
@@ -249,8 +249,9 @@ to configure [backends](../../concepts/backends.md) and other [server-level sett
 ##### `projects[n].backends[type=kubernetes]` { #kubernetes data-toc-label="kubernetes" }
 
 ###### `type` - (Required) `"kubernetes"` The type of backend. Must be `kubernetes`. { #type data-toc-label='type' class='reference-item' }
-###### [`proxy_jump`](#kubernetes-proxy_jump) - (Optional) `object` The SSH proxy jump configuration. { #_proxy_jump data-toc-label='proxy_jump' class='reference-item' }
-###### `namespace` - (Optional) `str` The namespace for resources managed by `dstack`. Always overrides the namespace set in the kubeconfig, even if not set.  Deprecated and will be eventually removed in futute versions, but in the current version must be set unless equals to `default`. Future versions will use the namespace from the kubeconfig instead. To prepare for future versions, set the same value in the kubeconfig. Defaults to `default`. { #namespace data-toc-label='namespace' class='reference-item' }
+###### `contexts` - (Optional) `list[str | object]` Enabled contexts (clusters). Each context should map to a separate cluster. The context name becomes the region name. If `contexts` is set, top-level `proxy_jump` and `namespace` must not be set. `proxy_jump`, if necessary, should be configured per-context; `namespace` is taken from the corresponding kubeconfig context's property. If `contexts` is not set (not recommended), the kubeconfig's `current-context` is used as the only context, with an empty string as the region name. { #contexts data-toc-label='contexts' class='reference-item' }
+###### [`proxy_jump`](#kubernetes-proxy_jump) - (Optional) `object` Only used if `contexts` is not set; must not be set otherwise. The SSH proxy jump configuration. { #_proxy_jump data-toc-label='proxy_jump' class='reference-item' }
+###### `namespace` - (Optional) `str` Only used if `contexts` is not set; must not be set otherwise. The namespace for resources managed by `dstack`. If `contexts` is not set, overrides the namespace set in the kubeconfig, even if not set. Defaults to `default`. Deprecated; will eventually be removed in future versions, but in the current version must be set if `contexts` is not set and the value is not equal to `default`. Future versions will use the namespace from the kubeconfig instead. To prepare for future versions, set the same value in the kubeconfig. { #namespace data-toc-label='namespace' class='reference-item' }
 ###### [`kubeconfig`](#kubernetes-kubeconfig) - (Required) `object` The kubeconfig configuration. { #_kubeconfig data-toc-label='kubeconfig' class='reference-item' }
 
 
@@ -266,6 +267,18 @@ to configure [backends](../../concepts/backends.md) and other [server-level sett
     ```shell
     yq -o=json ~/.kube/config | jq -c | jq -R
     ```
+
+###### `projects[n].backends[type=kubernetes].contexts[n]` { #kubernetes-contexts data-toc-label="contexts" }
+
+###### `name` - (Required) `str` The name of the context. { #name data-toc-label='name' class='reference-item' }
+###### [`proxy_jump`](#proxy_jump) - (Optional) `object` The SSH proxy jump configuration. { #_proxy_jump data-toc-label='proxy_jump' class='reference-item' }
+
+
+###### `projects[n].backends[type=kubernetes].contexts[n].proxy_jump` { #kubernetes-contexts-proxy_jump data-toc-label="proxy_jump" }
+
+###### `hostname` - (Optional) `str` The external IP address or hostname of any node. { #hostname data-toc-label='hostname' class='reference-item' }
+###### `port` - (Optional) `int` Any port accessible outside of the cluster. { #port data-toc-label='port' class='reference-item' }
+
 
 ###### `projects[n].backends[type=kubernetes].proxy_jump` { #kubernetes-proxy_jump data-toc-label="proxy_jump" }
 
@@ -343,6 +356,19 @@ to configure [backends](../../concepts/backends.md) and other [server-level sett
 ###### `api_key` - (Required) `str` The Hot Aisle API key. { #api_key data-toc-label='api_key' class='reference-item' }
 
 
+##### `projects[n].backends[type=jarvislabs]` { #jarvislabs data-toc-label="jarvislabs" }
+
+###### `type` - (Required) `"jarvislabs"` The type of backend. Must be `jarvislabs`. { #type data-toc-label='type' class='reference-item' }
+###### `regions` - (Optional) `list[str]` The list of JarvisLabs regions. Omit to use all regions. { #regions data-toc-label='regions' class='reference-item' }
+###### [`creds`](#jarvislabs-creds) - (Required) `object` The credentials. { #_creds data-toc-label='creds' class='reference-item' }
+
+
+###### `projects[n].backends[type=jarvislabs].creds` { #jarvislabs-creds data-toc-label="creds" }
+
+###### `type` - (Required) `"api_key"` The type of credentials. Must be `api_key`. { #type data-toc-label='type' class='reference-item' }
+###### `api_key` - (Required) `str` The JarvisLabs API key. { #api_key data-toc-label='api_key' class='reference-item' }
+
+
 ##### `projects[n].backends[type=cloudrift]` { #cloudrift data-toc-label="cloudrift" }
 
 ###### `type` - (Required) `"cloudrift"` The type of backend. Must be `cloudrift`. { #type data-toc-label='type' class='reference-item' }
@@ -358,7 +384,7 @@ to configure [backends](../../concepts/backends.md) and other [server-level sett
 
 ### `encryption` { #encryption data-toc-label="encryption" }
 
-###### [`keys`](#keys) - (Required) `list[object]` The encryption keys. { #_keys data-toc-label='keys' class='reference-item' }
+###### `keys` - (Required) `list[object]` The encryption keys. { #keys data-toc-label='keys' class='reference-item' }
 
 
 #### `encryption.keys` { #encryption-keys data-toc-label="keys" }
