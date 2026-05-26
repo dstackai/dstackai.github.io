@@ -1726,6 +1726,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/training/miles/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Miles
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -4845,7 +4873,7 @@
 <h6 class="reference-item" id="backends"><code>backends</code> - (Optional) <code>list["amddevcloud" | "aws" | "azure" | "cloudrift" | "crusoe" | "cudo" | "datacrunch" | "digitalocean" | "dstack" | "gcp" | "hotaisle" | "jarvislabs" | "kubernetes" | "lambda" | "local" | "remote" | "nebius" | "oci" | "runpod" | "tensordock" | "vastai" | "verda" | "vultr"]</code> The backends to consider for provisioning (e.g., <code>[aws, gcp]</code>).<a class="headerlink" href="#backends" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="regions"><code>regions</code> - (Optional) <code>list[str]</code> The regions to consider for provisioning (e.g., <code>[eu-west-1, us-west4, westeurope]</code>).<a class="headerlink" href="#regions" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="availability_zones"><code>availability_zones</code> - (Optional) <code>list[str]</code> The availability zones to consider for provisioning (e.g., <code>[eu-west-1a, us-west4-a]</code>).<a class="headerlink" href="#availability_zones" title="Permanent link">&para;</a></h6>
-<h6 class="reference-item" id="instance_types"><code>instance_types</code> - (Optional) <code>list[str]</code> The cloud-specific instance types to consider for provisioning (e.g., <code>[p3.8xlarge, n1-standard-4]</code>).<a class="headerlink" href="#instance_types" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="instance_types"><code>instance_types</code> - (Optional) <code>list[str]</code> The cloud-specific instance types to consider for provisioning (e.g., <code>[g6e.24xlarge, n1-standard-4]</code>).<a class="headerlink" href="#instance_types" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="reservation"><code>reservation</code> - (Optional) <code>str</code> The existing reservation to use for instance provisioning. Supports AWS Capacity Reservations, AWS Capacity Blocks, and GCP reservations.<a class="headerlink" href="#reservation" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="spot_policy"><code>spot_policy</code> - (Optional) <code>"auto" | "on-demand" | "spot"</code> The policy for provisioning spot or on-demand instances: <code>spot</code>, <code>on-demand</code>, <code>auto</code>. Defaults to <code>on-demand</code>.<a class="headerlink" href="#spot_policy" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="_retry"><a href="#retry"><code>retry</code></a> - (Optional) <code>bool | object</code> The policy for resubmitting the run. Defaults to <code>false</code>.<a class="headerlink" href="#_retry" title="Permanent link">&para;</a></h6>

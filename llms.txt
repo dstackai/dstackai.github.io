@@ -49,6 +49,7 @@
 - [TRL](https://dstack.ai/docs/examples/training/trl.md): Fine-tuning Llama with TRL — single-node SFT with QLoRA, or distributed across multiple nodes with FSDP and DeepSpeed
 - [Axolotl](https://dstack.ai/docs/examples/training/axolotl.md): Fine-tuning Llama models with Axolotl — single-node SFT with FSDP and QLoRA, or distributed across multiple nodes
 - [Ray+RAGEN](https://dstack.ai/docs/examples/training/ray-ragen.md): Multi-node agent fine-tuning using RAGEN with Ray and verl for reinforcement learning
+- [Miles](https://dstack.ai/docs/examples/training/miles.md): RL post-training Qwen2.5-32B with Miles, SGLang, Megatron-LM, and Ray across two 8xH100 nodes
 
 ### Clusters
 
@@ -74,6 +75,6 @@
 
 ### Accelerators
 
-- [AMD](https://dstack.ai/docs/examples/accelerators/amd.md): Deploying and fine-tuning models on AMD MI300X GPUs using SGLang, vLLM, TRL, and Axolotl
+- [AMD](https://dstack.ai/docs/examples/accelerators/amd.md): Running dev environments, tasks, and services on AMD GPUs
 - [TPU](https://dstack.ai/docs/examples/accelerators/tpu.md): Deploying and fine-tuning models on Google Cloud TPUs using Optimum TPU and vLLM
 - [Tenstorrent](https://dstack.ai/docs/examples/accelerators/tenstorrent.md): Running dev environments, tasks, and services on Tenstorrent Wormhole accelerators
