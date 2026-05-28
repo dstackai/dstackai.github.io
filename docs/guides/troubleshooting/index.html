@@ -2605,14 +2605,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../examples/accelerators/tpu/" class="md-nav__link">
+      <a href="../../examples/accelerators/tenstorrent/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    TPU
+    Tenstorrent
   
 
     
@@ -2633,14 +2633,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../examples/accelerators/tenstorrent/" class="md-nav__link">
+      <a href="../../examples/accelerators/tpu/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Tenstorrent
+    TPU
   
 
     
@@ -5165,7 +5165,7 @@ properties in your configuration.</p>
 If you want to use non-NVIDIA GPUs or multi-GPU instances, set the <code>gpu</code> property
 in your configuration.</p>
 <p>Examples: <code>gpu: amd</code> (one AMD GPU), <code>gpu: A10:4..8</code> (4 to 8 A10 GPUs),
-<code>gpu: 8:Gaudi2</code> (8 Gaudi2 accelerators).</p>
+<code>gpu: tt:32</code> (32 Tenstorrent devices).</p>
 <blockquote>
 <p>If you don't specify the number of GPUs, <code>dstack</code> will only select single-GPU instances.</p>
 </blockquote>

@@ -2335,14 +2335,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../examples/accelerators/tpu/" class="md-nav__link">
+      <a href="../../../examples/accelerators/tenstorrent/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    TPU
+    Tenstorrent
   
 
     
@@ -2363,14 +2363,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../examples/accelerators/tenstorrent/" class="md-nav__link">
+      <a href="../../../examples/accelerators/tpu/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Tenstorrent
+    TPU
   
 
     
@@ -6048,6 +6048,7 @@ the user's credentials. Ignored for other repo types.</p>
 <h6 class="reference-item" id="_schedule"><a href="#schedule"><code>schedule</code></a> - (Optional) <code>object</code> The schedule for starting the run at specified time.<a class="headerlink" href="#_schedule" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="fleets"><code>fleets</code> - (Optional) <code>list[str | object]</code> The fleets considered for reuse. For fleets owned by the current project, specify fleet names. For imported fleets, specify <code>&lt;project name&gt;/&lt;fleet name&gt;</code>.<a class="headerlink" href="#fleets" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="tags"><code>tags</code> - (Optional) <code>dict</code> The custom tags to associate with the resource. The tags are also propagated to the underlying backend resources. If there is a conflict with backend-level tags, does not override them.<a class="headerlink" href="#tags" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="backend_options"><code>backend_options</code> - (Optional) <code>list[object]</code> Backend-specific options, applied only to offers from that backend.<a class="headerlink" href="#backend_options" title="Permanent link">&para;</a></h6>
 <h3 id="dstack.api.Service"><code>dstack.api.Service</code><a class="headerlink" href="#dstack.api.Service" title="Permanent link">&para;</a></h3>
 <h6 class="reference-item" id="port"><code>port</code> - (Required) <code>int | str | object</code> The port the application listens on.<a class="headerlink" href="#port" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="gateway"><code>gateway</code> - (Optional) <code>bool | str | object</code> The name of the gateway. Specify boolean <code>false</code> to run without a gateway. Specify boolean <code>true</code> to run with the default gateway. Omit to run with the default gateway if there is one, or without a gateway otherwise.<a class="headerlink" href="#gateway" title="Permanent link">&para;</a></h6>
@@ -6097,6 +6098,7 @@ the user's credentials. Ignored for other repo types.</p>
 <h6 class="reference-item" id="_schedule"><a href="#schedule"><code>schedule</code></a> - (Optional) <code>object</code> The schedule for starting the run at specified time.<a class="headerlink" href="#_schedule" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="fleets"><code>fleets</code> - (Optional) <code>list[str | object]</code> The fleets considered for reuse. For fleets owned by the current project, specify fleet names. For imported fleets, specify <code>&lt;project name&gt;/&lt;fleet name&gt;</code>.<a class="headerlink" href="#fleets" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="tags"><code>tags</code> - (Optional) <code>dict</code> The custom tags to associate with the resource. The tags are also propagated to the underlying backend resources. If there is a conflict with backend-level tags, does not override them.<a class="headerlink" href="#tags" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="backend_options"><code>backend_options</code> - (Optional) <code>list[object]</code> Backend-specific options, applied only to offers from that backend.<a class="headerlink" href="#backend_options" title="Permanent link">&para;</a></h6>
 <h3 id="dstack.api.DevEnvironment"><code>dstack.api.DevEnvironment</code><a class="headerlink" href="#dstack.api.DevEnvironment" title="Permanent link">&para;</a></h3>
 <h6 class="reference-item" id="ide"><code>ide</code> - (Optional) <code>"cursor" | "vscode" | "windsurf"</code> The IDE to pre-install. Supported values include <code>vscode</code>, <code>cursor</code>, and <code>windsurf</code>. Defaults to no IDE (SSH only).<a class="headerlink" href="#ide" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="version"><code>version</code> - (Optional) <code>str</code> The version of the IDE. For <code>windsurf</code>, the version is in the format <code>version@commit</code>.<a class="headerlink" href="#version" title="Permanent link">&para;</a></h6>
@@ -6139,6 +6141,7 @@ the user's credentials. Ignored for other repo types.</p>
 <h6 class="reference-item" id="_schedule"><a href="#schedule"><code>schedule</code></a> - (Optional) <code>object</code> The schedule for starting the run at specified time.<a class="headerlink" href="#_schedule" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="fleets"><code>fleets</code> - (Optional) <code>list[str | object]</code> The fleets considered for reuse. For fleets owned by the current project, specify fleet names. For imported fleets, specify <code>&lt;project name&gt;/&lt;fleet name&gt;</code>.<a class="headerlink" href="#fleets" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="tags"><code>tags</code> - (Optional) <code>dict</code> The custom tags to associate with the resource. The tags are also propagated to the underlying backend resources. If there is a conflict with backend-level tags, does not override them.<a class="headerlink" href="#tags" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="backend_options"><code>backend_options</code> - (Optional) <code>list[object]</code> Backend-specific options, applied only to offers from that backend.<a class="headerlink" href="#backend_options" title="Permanent link">&para;</a></h6>
 <h3 id="dstack.api.Run"><code>dstack.api.Run</code><a class="headerlink" href="#dstack.api.Run" title="Permanent link">&para;</a></h3>
 
 

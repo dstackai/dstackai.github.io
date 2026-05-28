@@ -2671,14 +2671,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../examples/accelerators/tpu/" class="md-nav__link">
+      <a href="../../examples/accelerators/tenstorrent/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    TPU
+    Tenstorrent
   
 
     
@@ -2699,14 +2699,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../examples/accelerators/tenstorrent/" class="md-nav__link">
+      <a href="../../examples/accelerators/tpu/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Tenstorrent
+    TPU
   
 
     
@@ -5523,11 +5523,12 @@ This means it streams the logs as they come in and, in the case of a task, forwa
 <p>If you detached the CLI, you can always re-attach to a run via <a href="../../reference/cli/dstack/attach/"><code>dstack attach</code></a>.</p>
 </blockquote>
 <h2 id="gpu-specification">GPU specification<a class="headerlink" href="#gpu-specification" title="Permanent link">&para;</a></h2>
-<p><code>dstack</code> natively supports NVIDIA GPU, AMD GPU, and Google Cloud TPU accelerator chips.</p>
+<p><code>dstack</code> natively supports NVIDIA GPUs, AMD GPUs, TPUs, and Tenstorrent
+devices.</p>
 <p>The <code>gpu</code> property within <a href="../../reference/dstack.yml/dev-environment/#resources"><code>resources</code></a> (or the <code>--gpu</code> option with <a href="../../reference/cli/dstack/apply/"><code>dstack apply</code></a> or
 <a href="../../reference/cli/dstack/offer/"><code>dstack offer</code></a>)
 allows specifying not only memory size but also GPU vendor, names, their memory, and quantity.</p>
-<p>The general format is: <code>&lt;vendor&gt;:&lt;comma-sparated names&gt;:&lt;memory range&gt;:&lt;quantity range&gt;</code>.</p>
+<p>The general format is: <code>&lt;vendor&gt;:&lt;comma-separated names&gt;:&lt;memory range&gt;:&lt;quantity range&gt;</code>.</p>
 <p>Each component is optional. </p>
 <!-- TODO: Mention, if count is not specified, it's set to `1..` -->
 
@@ -5549,13 +5550,18 @@ allows specifying not only memory size but also GPU vendor, names, their memory,
 <li><code>A100:2</code> (two A100)</li>
 <li><code>MI300X:4</code> (four MI300X)</li>
 <li><code>A100:40GB:2</code> (two A100 40GB)</li>
-<li><code>tpu:v2-8</code> (<code>v2</code> Google Cloud TPU with 8 cores)</li>
+<li><code>tpu:v2-8</code> (<code>v2</code> TPU with 8 cores)</li>
+<li><code>tt:32</code> (32 Tenstorrent devices)</li>
+<li><code>tt-galaxy-wh:32</code> (32 Galaxy Wormhole chips)</li>
+<li><code>tt-galaxy-bh:32</code> (32 Galaxy Blackhole chips)</li>
+<li><code>p150:8</code> (eight Tenstorrent Blackhole P150 devices)</li>
 </ul>
 <p>The GPU vendor is indicated by one of the following case-insensitive values:</p>
 <ul>
 <li><code>nvidia</code> (NVIDIA GPUs)</li>
 <li><code>amd</code> (AMD GPUs)</li>
-<li><code>tpu</code> (Google Cloud TPUs)</li>
+<li><code>tpu</code> (TPUs)</li>
+<li><code>tt</code> (Tenstorrent devices)</li>
 </ul>
 <details class="info">
 <summary>AMD</summary>

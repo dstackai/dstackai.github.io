@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Running dev environments, tasks, and services on Tenstorrent Wormhole accelerators">
+        <meta name="description" content="Running inference, training, and dev environments on Tenstorrent Wormhole and Blackhole accelerators">
       
       
         <meta name="author" content="dstack GmbH">
@@ -15,10 +15,10 @@
         <link rel="canonical" href="https://dstack.ai/docs/examples/accelerators/tenstorrent/">
       
       
-        <link rel="prev" href="../tpu/">
+        <link rel="prev" href="../amd/">
       
       
-        <link rel="next" href="../../../reference/dstack.yml/dev-environment/">
+        <link rel="next" href="../tpu/">
       
       
         
@@ -135,7 +135,7 @@
   
 <meta property="og:type" content="website" />
 <meta property="og:title" content="Tenstorrent - dstack" />
-<meta property="og:description" content="Running dev environments, tasks, and services on Tenstorrent Wormhole accelerators" />
+<meta property="og:description" content="Running inference, training, and dev environments on Tenstorrent Wormhole and Blackhole accelerators" />
 <meta property="og:image" content="https://dstack.ai/assets/images/social/docs/examples/accelerators/tenstorrent.png" />
 <meta property="og:image:type" content="image/png" />
 <meta property="og:image:width" content="1200" />
@@ -143,7 +143,7 @@
 <meta property="og:url" content="https://dstack.ai/docs/examples/accelerators/tenstorrent/" />
 <meta property="twitter:card" content="summary_large_image" />
 <meta property="twitter.title" content="Tenstorrent - dstack" />
-<meta property="twitter:description" content="Running dev environments, tasks, and services on Tenstorrent Wormhole accelerators" />
+<meta property="twitter:description" content="Running inference, training, and dev environments on Tenstorrent Wormhole and Blackhole accelerators" />
 <meta property="twitter:image" content="https://dstack.ai/assets/images/social/docs/examples/accelerators/tenstorrent.png" />
 </head>
   
@@ -2394,34 +2394,6 @@
                 
   
   
-  
-  
-    <li class="md-nav__item">
-      <a href="../tpu/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    TPU
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
     
   
   
@@ -2485,11 +2457,11 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#services" class="md-nav__link">
+  <a href="#fleets" class="md-nav__link">
     <span class="md-ellipsis">
       
         <span class="md-typeset">
-          Services
+          Fleets
         </span>
       
     </span>
@@ -2498,11 +2470,24 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#tasks" class="md-nav__link">
+  <a href="#inference" class="md-nav__link">
     <span class="md-ellipsis">
       
         <span class="md-typeset">
-          Tasks
+          Inference
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#training" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Training
         </span>
       
     </span>
@@ -2523,10 +2508,64 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#gpu-specification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          GPU specification
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#whats-next" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          What's next?
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tpu/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TPU
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -4709,11 +4748,11 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#services" class="md-nav__link">
+  <a href="#fleets" class="md-nav__link">
     <span class="md-ellipsis">
       
         <span class="md-typeset">
-          Services
+          Fleets
         </span>
       
     </span>
@@ -4722,11 +4761,24 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#tasks" class="md-nav__link">
+  <a href="#inference" class="md-nav__link">
     <span class="md-ellipsis">
       
         <span class="md-typeset">
-          Tasks
+          Inference
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#training" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Training
         </span>
       
     </span>
@@ -4740,6 +4792,32 @@
       
         <span class="md-typeset">
           Dev environments
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gpu-specification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          GPU specification
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#whats-next" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          What's next?
         </span>
       
     </span>
@@ -4854,170 +4932,273 @@
 
 
 <h1 id="tenstorrent">Tenstorrent<a class="headerlink" href="#tenstorrent" title="Permanent link">&para;</a></h1>
-<p><code>dstack</code> supports running dev environments, tasks, and services on Tenstorrent
-<a href="https://tenstorrent.com/en/hardware/wormhole">Wormwhole</a> accelerators via SSH fleets.</p>
-<details class="info">
-<summary>SSH fleets</summary>
-<p><div editor-title="tt-fleet.dstack.yml"> </p>
+<p><code>dstack</code> supports running inference, training, and dev environments on
+Tenstorrent Wormhole and Blackhole accelerators, including
+<a href="https://tenstorrent.com/en/hardware/cards">PCIe cards</a> and systems such as
+<a href="https://tenstorrent.com/en/hardware/tt-loudbox">TT-LoudBox</a>,
+<a href="https://tenstorrent.com/en/hardware/tt-quietbox">TT-QuietBox and TT-QuietBox 2</a>,
+and <a href="https://tenstorrent.com/hardware/galaxy">Tenstorrent Galaxy</a>.</p>
+<h2 id="fleets">Fleets<a class="headerlink" href="#fleets" title="Permanent link">&para;</a></h2>
+<p>Currently, Tenstorrent accelerators are supported via
+<a href="../../../concepts/fleets/#ssh-fleets">SSH fleets</a>.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:1"><input checked="checked" id="ssh-fleets" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="ssh-fleets">SSH fleets</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>To configure an SSH fleet, create a fleet configuration and list hostnames of the hosts along with the private key and username.</p>
+<div editor-title="tt-fleet.dstack.yml">
 <div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">fleet</span>
 <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tt-fleet</span>
 
 <span class="nt">ssh_config</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">user</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">root</span>
 <span class="w">  </span><span class="nt">identity_file</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">~/.ssh/id_rsa</span>
-<span class="w">  </span><span class="c1"># Configure any number of hosts with n150 or n300 PCEe boards </span>
 <span class="w">  </span><span class="nt">hosts</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">192.168.2.108</span>
 </code></pre></div>
 </div>
-<blockquote>
-<p>Hosts should be pre-installed with <a href="https://docs.tenstorrent.com/getting-started/README.html#software-installation">Tenstorrent software</a>.
-This should include the drivers, <code>tt-smi</code>, and HugePages.</p>
-</blockquote>
+<details class="info">
+<summary>Host requirements</summary>
+<p>Before creating the fleet, make sure each host:</p>
+<ul>
+<li>Has Docker installed.</li>
+<li>Has <a href="https://docs.tenstorrent.com/getting-started/README.html#software-installation">Tenstorrent software</a>
+  installed, including the drivers and HugePages.</li>
+<li>Can be accessed by the configured SSH user with passwordless <code>sudo</code>.</li>
+<li>Runs an SSH server with <code>AllowTcpForwarding yes</code>.</li>
+<li>Allows SSH through the firewall and should block other external
+  inbound traffic.</li>
+</ul>
+<p>If <code>placement</code> is set to <code>cluster</code>, hosts can communicate with each other.</p>
+</details>
 <p>To apply the fleet configuration, run:</p>
 <div class="termy">
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>dstack<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>tt-fleet.dstack.yml
 
-<span class="w"> </span>FLEET<span class="w">     </span>RESOURCES<span class="w">                             </span>PRICE<span class="w">  </span>STATUS<span class="w">  </span>CREATED
-<span class="w"> </span>tt-fleet<span class="w">  </span><span class="nv">cpu</span><span class="o">=</span><span class="m">12</span><span class="w"> </span><span class="nv">mem</span><span class="o">=</span>32GB<span class="w"> </span><span class="nv">disk</span><span class="o">=</span>243GB<span class="w"> </span>n150:12GB<span class="w">  </span><span class="nv">$0</span><span class="w">     </span>idle<span class="w">    </span><span class="m">18</span><span class="w"> </span>sec<span class="w"> </span>ago
+<span class="w"> </span>FLEET<span class="w">     </span>RESOURCES<span class="w">                                                          </span>PRICE<span class="w">  </span>STATUS<span class="w">  </span>CREATED
+<span class="w"> </span>tt-fleet<span class="w">  </span><span class="nv">cpu</span><span class="o">=</span><span class="m">64</span><span class="w"> </span><span class="nv">mem</span><span class="o">=</span><span class="m">566</span>.1GB<span class="w"> </span><span class="nv">disk</span><span class="o">=</span><span class="m">749</span>.6GB<span class="w"> </span><span class="nv">gpu</span><span class="o">=</span>tt-galaxy-wh:12GB:32<span class="w">           </span><span class="nv">$0</span><span class="w">     </span>idle<span class="w">    </span><span class="m">18</span><span class="w"> </span>sec<span class="w"> </span>ago
 </code></pre></div>
 </div>
-<p>For more details on fleet configuration, refer to <a href="../../../concepts/fleets/#ssh-fleets">SSH fleets</a>.</p>
-</details>
-<h2 id="services">Services<a class="headerlink" href="#services" title="Permanent link">&para;</a></h2>
-<p>Here's an example of a service that deploys
-<a href="https://huggingface.co/meta-llama/Llama-3.2-1B"><code>Llama-3.2-1B-Instruct</code></a> 
-using <a href="https://github.com/tenstorrent/tt-inference-server">Tenstorrent Inference Service</a>.</p>
-<div editor-title="service.dstack.yml"> 
+</div>
+</div>
+</div>
+<h2 id="inference">Inference<a class="headerlink" href="#inference" title="Permanent link">&para;</a></h2>
+<p>Below is a <a href="../../../concepts/services/">service</a> that deploys
+<a href="https://huggingface.co/openai/gpt-oss-120b"><code>gpt-oss-120b</code></a> on a
+Tenstorrent Galaxy system using
+<a href="https://github.com/tenstorrent/tt-inference-server">Tenstorrent Inference Server</a>.</p>
+<div editor-title="service.dstack.yml">
 
 <div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service</span>
-<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tt-inference-server</span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gpt-oss-120b</span>
+
+<span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ghcr.io/tenstorrent/tt-inference-server/vllm-tt-metal-src-release-ubuntu-22.04-amd64:0.12.0-805f43d-a45c614</span>
 
 <span class="nt">env</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HF_TOKEN</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HF_MODEL_REPO_ID=meta-llama/Llama-3.2-1B-Instruct</span>
-<span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ghcr.io/tenstorrent/tt-inference-server/vllm-tt-metal-src-release-ubuntu-20.04-amd64:0.0.4-v0.56.0-rc47-e2e0002ac7dc</span>
+
 <span class="nt">commands</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span><span class="w"> </span>
-<span class="w">    </span><span class="no">. ${PYTHON_ENV_DIR}/bin/activate</span>
-<span class="w">    </span><span class="no">pip install &quot;huggingface_hub[cli]&quot;</span>
-<span class="w">    </span><span class="no">export LLAMA_DIR=&quot;/data/models--$(echo &quot;$HF_MODEL_REPO_ID&quot; | sed &#39;s/\//--/g&#39;)/&quot;</span>
-<span class="w">    </span><span class="no">huggingface-cli download $HF_MODEL_REPO_ID --local-dir $LLAMA_DIR</span>
-<span class="w">    </span><span class="no">python /home/container_app_user/app/src/run_vllm_api_server.py</span>
-<span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">7000</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">    </span><span class="no">ulimit -n 65535</span>
+<span class="w">    </span><span class="no">/home/container_app_user/tt-metal/python_env/bin/python /home/container_app_user/app/src/run_vllm_api_server.py \</span>
+<span class="w">      </span><span class="no">--model gpt-oss-120b \</span>
+<span class="w">      </span><span class="no">--tt-device galaxy</span>
 
-<span class="nt">model</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">meta-llama/Llama-3.2-1B-Instruct</span>
+<span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8000</span>
 
-<span class="c1"># Cache downloaded model</span>
+<span class="nt">model</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">openai/gpt-oss-120b</span>
+
 <span class="nt">volumes</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/mnt/data/tt-inference-server/data:/data</span>
+<span class="w">  </span><span class="c1"># Cache model weights and TT runtime artifacts on the host.</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/mnt/data/gpt-oss-120b/cache_root:/home/container_app_user/cache_root</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/mnt/data/gpt-oss-120b/dot-cache:/home/container_app_user/.cache</span>
 
 <span class="nt">resources</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">n150:1</span>
+<span class="w">  </span><span class="nt">shm_size</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">32GB</span>
+<span class="w">  </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tt-galaxy-wh:32</span>
 </code></pre></div>
 
 </div>
 
-<p>Go ahead and run configuration using <code>dstack apply</code>:</p>
+<p>Go ahead and run the configuration using <code>dstack apply</code>:</p>
 <div class="termy">
 
-    <div class="highlight"><pre><span></span><code>$<span class="w"> </span>dstack<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>service.dstack.yml
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">HF_TOKEN</span><span class="o">=</span>&lt;your-hf-token&gt;
+$<span class="w"> </span>dstack<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>service.dstack.yml
 </code></pre></div>
+
 </div>
 
 <p>Once the service is up, it will be available via the service endpoint
 at <code>&lt;dstack server URL&gt;/proxy/services/&lt;project name&gt;/&lt;run name&gt;/</code>.</p>
 <div class="termy">
 
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>curl<span class="w"> </span>http://127.0.0.1:3000/proxy/services/main/tt-inference-server/v1/chat/completions<span class="w"> </span><span class="se">\</span>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>curl<span class="w"> </span>http://127.0.0.1:3000/proxy/services/main/gpt-oss-120b/v1/chat/completions<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-X<span class="w"> </span>POST<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-H<span class="w"> </span><span class="s1">&#39;Authorization: Bearer &amp;lt;user token&amp;gt;&#39;</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-H<span class="w"> </span><span class="s1">&#39;Content-Type: application/json&#39;</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-d<span class="w"> </span><span class="s1">&#39;{</span>
-<span class="s1">      &quot;model&quot;: &quot;meta-llama/Llama-3.2-1B-Instruct&quot;,</span>
+<span class="s1">      &quot;model&quot;: &quot;openai/gpt-oss-120b&quot;,</span>
 <span class="s1">      &quot;messages&quot;: [</span>
 <span class="s1">        {</span>
-<span class="s1">          &quot;role&quot;: &quot;system&quot;,</span>
-<span class="s1">          &quot;content&quot;: &quot;You are a helpful assistant.&quot;</span>
-<span class="s1">        },</span>
-<span class="s1">        {</span>
 <span class="s1">          &quot;role&quot;: &quot;user&quot;,</span>
-<span class="s1">          &quot;content&quot;: &quot;What is Deep Learning?&quot;</span>
+<span class="s1">          &quot;content&quot;: &quot;What is 17 + 25? Answer with just the number.&quot;</span>
 <span class="s1">        }</span>
 <span class="s1">      ],</span>
-<span class="s1">      &quot;stream&quot;: true,</span>
-<span class="s1">      &quot;max_tokens&quot;: 512</span>
+<span class="s1">      &quot;max_tokens&quot;: 128</span>
 <span class="s1">    }&#39;</span>
 </code></pre></div>
 
 </div>
 
+<p>The response includes both the final answer and the model's reasoning fields
+(<code>reasoning</code> and <code>reasoning_content</code>).</p>
 <p>Additionally, the model is available via <code>dstack</code>'s control plane UI:</p>
 <p><img alt="" src="https://dstack.ai/static-assets/static-assets/images/dstack-tenstorrent-model-ui.png" width="800" /></p>
-<p>When a <a href="../../../concepts/gateways/">gateway</a> is configured, the service endpoint 
+<p>When a <a href="../../../concepts/gateways/">gateway</a> is configured, the service endpoint
 is available at <code>https://&lt;run name&gt;.&lt;gateway domain&gt;/</code>.</p>
-<blockquote>
-<p>Services support many options, including authentication, auto-scaling policies, etc. To learn more, refer to <a href="../../../concepts/services/">Services</a>.</p>
-</blockquote>
-<h2 id="tasks">Tasks<a class="headerlink" href="#tasks" title="Permanent link">&para;</a></h2>
-<p>Below is a task that simply runs <code>tt-smi -s</code>. Tasks can be used for training, fine-tuning, batch inference, or antything else.</p>
-<div editor-title="tt-task.dstack.yml"> 
+<h2 id="training">Training<a class="headerlink" href="#training" title="Permanent link">&para;</a></h2>
+<p>Below is a minimal <a href="../../../concepts/tasks/">task</a> that runs a TT-XLA training
+smoke test.</p>
+<div editor-title="tt-task.dstack.yml">
 
 <div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">task</span>
-<span class="c1"># The name is optional, if not specified, generated randomly</span>
-<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tt-smi</span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tt-xla-train</span>
 
-<span class="nt">env</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HF_TOKEN</span>
+<span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ghcr.io/tenstorrent/tt-xla-slim:latest</span>
 
-<span class="c1"># (Required) Use any image with TT drivers </span>
-<span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dstackai/tt-smi:latest</span>
-
-<span class="c1"># Use any commands</span>
 <span class="nt">commands</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tt-smi -s</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">    </span><span class="no">python - &lt;&lt;&#39;PY&#39;</span>
+<span class="w">    </span><span class="no">import jax</span>
+<span class="w">    </span><span class="no">import jax.numpy as jnp</span>
 
-<span class="c1"># Specify the number of accelerators, model, etc</span>
+<span class="w">    </span><span class="no">devices = jax.devices(&quot;tt&quot;)</span>
+<span class="w">    </span><span class="no">print(&quot;TT devices:&quot;, devices)</span>
+<span class="w">    </span><span class="no">if not devices:</span>
+<span class="w">        </span><span class="no">raise SystemExit(&quot;No Tenstorrent devices found by JAX&quot;)</span>
+
+<span class="w">    </span><span class="no">with jax.default_device(devices[0]):</span>
+<span class="w">        </span><span class="no">params = {</span>
+<span class="w">            </span><span class="no">&quot;w&quot;: jnp.ones((32, 32), dtype=jnp.bfloat16),</span>
+<span class="w">            </span><span class="no">&quot;b&quot;: jnp.zeros((32,), dtype=jnp.bfloat16),</span>
+<span class="w">        </span><span class="no">}</span>
+<span class="w">        </span><span class="no">x = jnp.ones((32, 32), dtype=jnp.bfloat16)</span>
+<span class="w">        </span><span class="no">y = jnp.zeros((32, 32), dtype=jnp.bfloat16)</span>
+
+<span class="w">    </span><span class="no">def loss_fn(params, x, y):</span>
+<span class="w">        </span><span class="no">pred = x @ params[&quot;w&quot;] + params[&quot;b&quot;]</span>
+<span class="w">        </span><span class="no">err = (pred - y).astype(jnp.float32)</span>
+<span class="w">        </span><span class="no">return jnp.mean(err * err)</span>
+
+<span class="w">    </span><span class="no">@jax.jit</span>
+<span class="w">    </span><span class="no">def train_step(params, x, y):</span>
+<span class="w">        </span><span class="no">loss, grads = jax.value_and_grad(loss_fn)(params, x, y)</span>
+<span class="w">        </span><span class="no">next_params = jax.tree_util.tree_map(</span>
+<span class="w">            </span><span class="no">lambda p, g: p - jnp.asarray(0.01, dtype=p.dtype) * g.astype(p.dtype),</span>
+<span class="w">            </span><span class="no">params,</span>
+<span class="w">            </span><span class="no">grads,</span>
+<span class="w">        </span><span class="no">)</span>
+<span class="w">        </span><span class="no">return next_params, loss</span>
+
+<span class="w">    </span><span class="no">for step in range(3):</span>
+<span class="w">        </span><span class="no">params, loss = train_step(params, x, y)</span>
+<span class="w">        </span><span class="no">loss.block_until_ready()</span>
+<span class="w">        </span><span class="no">print(f&quot;step={step} loss={float(jax.device_get(loss)):.6f}&quot;)</span>
+
+<span class="w">    </span><span class="no">print(&quot;tiny training smoke test passed&quot;)</span>
+<span class="w">    </span><span class="no">PY</span>
+
 <span class="nt">resources</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">n150:1</span>
-
-<span class="c1"># Uncomment if you want to run on a cluster of nodes</span>
-<span class="c1">#nodes: 2</span>
+<span class="w">  </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tt-galaxy-wh:32</span>
 </code></pre></div>
 
 </div>
 
-<blockquote>
-<p>Tasks support many options, including multi-node configuration, max duration, etc. To learn more, refer to <a href="../../../concepts/tasks/">Tasks</a>.</p>
-</blockquote>
+<p>For a single Wormhole PCIe card, use <code>gpu: n150:1</code>.</p>
+<details class="info">
+<summary>Files and repos</summary>
+<p>For longer commands, put the Python code in <code>train.py</code> next to
+<code>tt-task.dstack.yml</code> and upload it with <code>files</code>:</p>
+<div editor-title="tt-task.dstack.yml">
+<div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">task</span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tt-xla-train</span>
+
+<span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ghcr.io/tenstorrent/tt-xla-slim:latest</span>
+
+<span class="nt">files</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">train.py</span>
+
+<span class="nt">commands</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python train.py</span>
+
+<span class="nt">resources</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tt-galaxy-wh:32</span>
+</code></pre></div>
+</div>
+<p>If the script is part of a Git repository, use <code>repos</code> instead:</p>
+<div editor-title="tt-task.dstack.yml">
+<div class="highlight"><pre><span></span><code><span class="nt">working_dir</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/workspace</span>
+
+<span class="nt">repos</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">.:/workspace</span>
+
+<span class="nt">commands</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python train.py</span>
+</code></pre></div>
+</div>
+<p>For more details, refer to <a href="../../../concepts/tasks/#files">Files</a> and
+<a href="../../../concepts/tasks/#repos">Repos</a>.</p>
+</details>
 <h2 id="dev-environments">Dev environments<a class="headerlink" href="#dev-environments" title="Permanent link">&para;</a></h2>
-<p>Below is an example of a dev environment configuration. It can be used to provision a dev environemnt that can be accessed via your desktop IDE. </p>
-<div editor-title=".dstack.yml"> 
+<p>Below is an example <a href="../../../concepts/dev-environments/">dev environment</a>
+configuration. It can be used to provision a dev environment that can be
+accessed via your desktop IDE.</p>
+<div editor-title=".dstack.yml">
 
 <div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dev-environment</span>
 <span class="c1"># The name is optional, if not specified, generated randomly</span>
-<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cursor</span>
-
-<span class="c1"># (Optional) List required env variables</span>
-<span class="nt">env</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HF_TOKEN</span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vscode</span>
 
 <span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dstackai/tt-smi:latest</span>
 
 <span class="c1"># Can be `vscode` or `cursor`</span>
-<span class="nt">ide</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cursor</span>
+<span class="nt">ide</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vscode</span>
 
 <span class="nt">resources</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">n150:1</span>
+<span class="w">  </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tt-galaxy-wh:32</span>
 </code></pre></div>
 
 </div>
 
 <p>If you run it via <code>dstack apply</code>, it will output the URL to access it via your desktop IDE.</p>
-<p><img alt="" src="https://dstack.ai/static-assets/static-assets/images/dstack-tenstorrent-cursor.png" width="800" /></p>
-<blockquote>
-<p>Dev nevironments support many options, including inactivity and max duration, IDE configuration, etc. To learn more, refer to <a href="../../../concepts/tasks/">Dev environments</a>.</p>
-</blockquote>
+<p><img alt="" src="https://dstack.ai/static-assets/static-assets/images/dstack-tenstorrent-vscode.png" width="800" /></p>
+<h2 id="gpu-specification">GPU specification<a class="headerlink" href="#gpu-specification" title="Permanent link">&para;</a></h2>
+<p><code>resources.gpu</code> uses the usual <code>name:count</code> format. For Tenstorrent, <code>count</code>
+is the number of devices reported from the TT-SMI topology. On Galaxy systems,
+this corresponds to chips. On PCIe systems, this is usually the card count, but
+dual-chip cards can also be reported as per-chip devices.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">resources</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tt-galaxy-wh:32</span><span class="w">  </span><span class="c1"># Galaxy Wormhole, 32 chips</span>
+<span class="w">  </span><span class="c1"># gpu: tt-galaxy-bh:32  # Galaxy Blackhole, 32 chips</span>
+<span class="w">  </span><span class="c1"># gpu: n300:4           # TT-LoudBox or TT-QuietBox Wormhole, 4 n300 cards</span>
+<span class="w">  </span><span class="c1"># gpu: p150:4           # TT-QuietBox Blackhole, 4 p150 cards</span>
+<span class="w">  </span><span class="c1"># gpu: p300:64GB:2      # TT-QuietBox 2 Blackhole, 2 p300 cards</span>
+<span class="w">  </span><span class="c1"># gpu: p300:32GB:4      # TT-QuietBox 2 Blackhole, if exposed per chip</span>
+</code></pre></div>
+<p>Use <code>tt:&lt;count&gt;</code> only when the workload can run on any Tenstorrent device type.
+Use a model name when placement depends on the hardware family: <code>n150</code> or
+<code>n300</code> for Wormhole PCIe cards, <code>tt-galaxy-wh</code> for Galaxy Wormhole, <code>p100a</code>,
+<code>p150</code>, or <code>p300</code> for Blackhole PCIe cards, and <code>tt-galaxy-bh</code> for Galaxy
+Blackhole.</p>
+<h2 id="whats-next">What's next?<a class="headerlink" href="#whats-next" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Check <a href="../../../concepts/services/">Services</a>,
+   <a href="../../../concepts/tasks/">Tasks</a>, <a href="../../../concepts/dev-environments/">Dev environments</a>,
+   and <a href="../../../concepts/fleets/#ssh-fleets">SSH fleets</a>.</li>
+<li>Browse <a href="https://github.com/tenstorrent/tt-inference-server">Tenstorrent Inference Server</a>,
+   <a href="https://github.com/tenstorrent/tt-xla">TT-XLA</a>, and
+   <a href="https://github.com/tenstorrent/tt-metal">TT-Metalium</a>.</li>
+</ol>
 <details class="info">
 <summary>Feedback</summary>
 <p>Found a bug, or want to request a feature? File it in the <a href="https://github.com/dstackai/dstack/issues">issue tracker</a>,
@@ -5046,7 +5227,7 @@ or share via <a href="https://discord.gg/u8SmfwPpMd">Discord</a>.</p>
           <nav class="md-footer__inner md-grid" aria-label="Footer" >
             
               
-              <a href="../tpu/" class="md-footer__link md-footer__link--prev" aria-label="Previous: TPU">
+              <a href="../amd/" class="md-footer__link md-footer__link--prev" aria-label="Previous: AMD">
                 <div class="md-footer__button md-icon">
                   
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -5056,20 +5237,20 @@ or share via <a href="https://discord.gg/u8SmfwPpMd">Discord</a>.</p>
                     Previous
                   </span>
                   <div class="md-ellipsis">
-                    TPU
+                    AMD
                   </div>
                 </div>
               </a>
             
             
               
-              <a href="../../../reference/dstack.yml/dev-environment/" class="md-footer__link md-footer__link--next" aria-label="Next: dev-environment">
+              <a href="../tpu/" class="md-footer__link md-footer__link--next" aria-label="Next: TPU">
                 <div class="md-footer__title">
                   <span class="md-footer__direction">
                     Next
                   </span>
                   <div class="md-ellipsis">
-                    dev-environment
+                    TPU
                   </div>
                 </div>
                 <div class="md-footer__button md-icon">

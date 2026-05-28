@@ -2670,14 +2670,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../examples/accelerators/tpu/" class="md-nav__link">
+      <a href="../../examples/accelerators/tenstorrent/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    TPU
+    Tenstorrent
   
 
     
@@ -2698,14 +2698,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../examples/accelerators/tenstorrent/" class="md-nav__link">
+      <a href="../../examples/accelerators/tpu/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Tenstorrent
+    TPU
   
 
     
@@ -5290,7 +5290,7 @@ Provisioning...
 <details class="info">
 <summary>Host requirements</summary>
 <p>1.&nbsp;Hosts must be pre-installed with Docker.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="2:4"><input checked="checked" id="nvidia" name="__tabbed_2" type="radio" /><input id="amd" name="__tabbed_2" type="radio" /><input id="intel-gaudi" name="__tabbed_2" type="radio" /><input id="tenstorrent" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="nvidia">NVIDIA</label><label for="amd">AMD</label><label for="intel-gaudi">Intel Gaudi</label><label for="tenstorrent">Tenstorrent</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:3"><input checked="checked" id="nvidia" name="__tabbed_2" type="radio" /><input id="amd" name="__tabbed_2" type="radio" /><input id="tenstorrent" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="nvidia">NVIDIA</label><label for="amd">AMD</label><label for="tenstorrent">Tenstorrent</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>2.&nbsp;Hosts with NVIDIA GPUs must also be pre-installed with CUDA 12.1 and
@@ -5302,18 +5302,15 @@ Provisioning...
 or <a href="https://rocm.docs.amd.com/projects/install-on-linux/en/latest/install/amdgpu-install.html">AMDGPU installer</a>.)</p>
 </div>
 <div class="tabbed-block">
-<p>2.&nbsp;Hosts with Intel Gaudi accelerators must be pre-installed with <a href="https://docs.habana.ai/en/latest/Installation_Guide/Driver_Installation.html#driver-installation">Gaudi software and drivers</a>.
-This must include the drivers, <code>hl-smi</code>, and Habana Container Runtime.</p>
-</div>
-<div class="tabbed-block">
 <p>2.&nbsp;Hosts with Tenstorrent accelerators must be pre-installed with <a href="https://docs.tenstorrent.com/getting-started/README.html#software-installation">Tenstorrent software</a>.
-This must include the drivers, <code>tt-smi</code>, and HugePages.</p>
+This must include the drivers and HugePages.</p>
 </div>
 </div>
 </div>
 <p>3.&nbsp;The user specified must have passwordless <code>sudo</code> access.</p>
 <p>4.&nbsp;The SSH server must be running and configured with <code>AllowTcpForwarding yes</code> in <code>/etc/ssh/sshd_config</code>.</p>
-<p>5.&nbsp;The firewall must allow SSH and should forbid any other connections from external networks. For <code>placement: cluster</code> fleets, it should also allow any communication between fleet nodes.</p>
+<p>5.&nbsp;The firewall must allow SSH and should forbid any other connections from external networks.</p>
+<p>6.&nbsp;If <code>placement</code> is set to <code>cluster</code>, hosts must be able to communicate with each other.</p>
 </details>
 </div>
 </div>

@@ -15,7 +15,7 @@
         <link rel="canonical" href="https://dstack.ai/docs/reference/dstack.yml/dev-environment/">
       
       
-        <link rel="prev" href="../../../examples/accelerators/tenstorrent/">
+        <link rel="prev" href="../../../examples/accelerators/tpu/">
       
       
         <link rel="next" href="../task/">
@@ -2393,14 +2393,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../examples/accelerators/tpu/" class="md-nav__link">
+      <a href="../../../examples/accelerators/tenstorrent/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    TPU
+    Tenstorrent
   
 
     
@@ -2421,14 +2421,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../examples/accelerators/tenstorrent/" class="md-nav__link">
+      <a href="../../../examples/accelerators/tpu/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Tenstorrent
+    TPU
   
 
     
@@ -2731,6 +2731,17 @@
     <span class="md-ellipsis">
       
         files
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#backend_options_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        backend_options
       
     </span>
   </a>
@@ -4878,6 +4889,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#backend_options_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        backend_options
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -5033,6 +5055,7 @@
 <h6 class="reference-item" id="_schedule"><a href="#schedule"><code>schedule</code></a> - (Optional) <code>object</code> The schedule for starting the run at specified time.<a class="headerlink" href="#_schedule" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="fleets"><code>fleets</code> - (Optional) <code>list[str | object]</code> The fleets considered for reuse. For fleets owned by the current project, specify fleet names. For imported fleets, specify <code>&lt;project name&gt;/&lt;fleet name&gt;</code>.<a class="headerlink" href="#fleets" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="tags"><code>tags</code> - (Optional) <code>dict</code> The custom tags to associate with the resource. The tags are also propagated to the underlying backend resources. If there is a conflict with backend-level tags, does not override them.<a class="headerlink" href="#tags" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="backend_options"><code>backend_options</code> - (Optional) <code>list[object]</code> Backend-specific options, applied only to offers from that backend.<a class="headerlink" href="#backend_options" title="Permanent link">&para;</a></h6>
 <h3 id="retry"><code>retry</code><a class="headerlink" href="#retry" title="Permanent link">&para;</a></h3>
 <h6 class="reference-item" id="on_events"><code>on_events</code> - (Optional) <code>list["no-capacity" | "interruption" | "error"]</code> The list of events that should be handled with retry. Supported events are <code>no-capacity</code>, <code>interruption</code>, <code>error</code>. Omit to retry on all events.<a class="headerlink" href="#on_events" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="duration"><code>duration</code> - (Optional) <code>int | str</code> The maximum period of retrying the run, e.g., <code>4h</code> or <code>1d</code>. The period is calculated as a run age for <code>no-capacity</code> event and as a time passed since the last <code>interruption</code> and <code>error</code> for <code>interruption</code> and <code>error</code> events..<a class="headerlink" href="#duration" title="Permanent link">&para;</a></h6>
@@ -5130,6 +5153,12 @@ cannot be ignored with the <code>skip</code> action.</p>
 <li><code>libs/patched_libibverbs.so.1:/lib/x86_64-linux-gnu/libibverbs.so.1</code></li>
 </ul>
 </details>
+<h3 id="backend_options_1"><code>backend_options</code><a class="headerlink" href="#backend_options_1" title="Permanent link">&para;</a></h3>
+<p>Backend-specific options that only take effect for offers of the respective backend.</p>
+<h4 id="backend_options-vastai"><code>backend_options[n][type=vastai]</code><a class="headerlink" href="#backend_options-vastai" title="Permanent link">&para;</a></h4>
+<h6 class="reference-item" id="offer_order"><code>offer_order</code> - (Optional) <code>"price" | "score"</code> Controls the order in which offers are considered for provisioning. Use <code>score</code> to prioritize the highest overall score first (the default order in the Vast.ai console), or <code>price</code> to prioritize the lowest-cost offers first. Lower-cost offers are often less reliable, so consider applying stricter filters when using <code>price</code>. Defaults to <code>score</code>.<a class="headerlink" href="#offer_order" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="min_reliability"><code>min_reliability</code> - (Optional) <code>float</code> The minimum reliability threshold for offers, on a scale from <code>0</code> to <code>1</code>. Defaults to <code>0.9</code>.<a class="headerlink" href="#min_reliability" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="min_score"><code>min_score</code> - (Optional) <code>int</code> The minimum overall score required for offers to be considered. The scoring scale varies and may require experimentation. Starting with a value in the low hundreds is generally recommended.<a class="headerlink" href="#min_score" title="Permanent link">&para;</a></h6>
 
 
 
@@ -5150,7 +5179,7 @@ cannot be ignored with the <code>skip</code> action.</p>
           <nav class="md-footer__inner md-grid" aria-label="Footer" >
             
               
-              <a href="../../../examples/accelerators/tenstorrent/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Tenstorrent">
+              <a href="../../../examples/accelerators/tpu/" class="md-footer__link md-footer__link--prev" aria-label="Previous: TPU">
                 <div class="md-footer__button md-icon">
                   
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -5160,7 +5189,7 @@ cannot be ignored with the <code>skip</code> action.</p>
                     Previous
                   </span>
                   <div class="md-ellipsis">
-                    Tenstorrent
+                    TPU
                   </div>
                 </div>
               </a>

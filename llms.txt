@@ -76,5 +76,5 @@
 ### Accelerators
 
 - [AMD](https://dstack.ai/docs/examples/accelerators/amd.md): Running dev environments, tasks, and services on AMD GPUs
+- [Tenstorrent](https://dstack.ai/docs/examples/accelerators/tenstorrent.md): Running inference, training, and dev environments on Tenstorrent Wormhole and Blackhole accelerators
 - [TPU](https://dstack.ai/docs/examples/accelerators/tpu.md): Deploying and fine-tuning models on Google Cloud TPUs using Optimum TPU and vLLM
-- [Tenstorrent](https://dstack.ai/docs/examples/accelerators/tenstorrent.md): Running dev environments, tasks, and services on Tenstorrent Wormhole accelerators

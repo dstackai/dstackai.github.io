@@ -48,6 +48,7 @@ The profile configuration supports most properties that a run configuration supp
 ###### [`schedule`](#schedule) - (Optional) `object` The schedule for starting the run at specified time. { #_schedule data-toc-label='schedule' class='reference-item' }
 ###### `fleets` - (Optional) `list[str | object]` The fleets considered for reuse. For fleets owned by the current project, specify fleet names. For imported fleets, specify `<project name>/<fleet name>`. { #fleets data-toc-label='fleets' class='reference-item' }
 ###### `tags` - (Optional) `dict` The custom tags to associate with the resource. The tags are also propagated to the underlying backend resources. If there is a conflict with backend-level tags, does not override them. { #tags data-toc-label='tags' class='reference-item' }
+###### `backend_options` - (Optional) `list[object]` Backend-specific options, applied only to offers from that backend. { #backend_options data-toc-label='backend_options' class='reference-item' }
 ###### `name` - (Optional) `str` The name of the profile that can be passed as `--profile` to `dstack apply`. { #name data-toc-label='name' class='reference-item' }
 ###### `default` - (Optional) `bool` If set to true, `dstack apply` will use this profile by default.. Defaults to `false`. { #default data-toc-label='default' class='reference-item' }
 
