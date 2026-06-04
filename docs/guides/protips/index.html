@@ -1660,6 +1660,19 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#pull-progress" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Pull progress
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#service-quotas" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -5111,6 +5124,19 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#pull-progress" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Pull progress
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#service-quotas" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -5626,6 +5652,26 @@ The <code>region</code> value can only be used together with <code>backend</code
 <p>The <code>offer</code> command allows you to filter and group offers with various <a href="../../reference/cli/dstack/offer/#usage">advanced options</a>.</p>
 <h2 id="metrics">Metrics<a class="headerlink" href="#metrics" title="Permanent link">&para;</a></h2>
 <p><code>dstack</code> tracks essential metrics accessible via the CLI and UI. To access advanced metrics like DCGM, configure the server to export metrics to Prometheus. See <a href="../../concepts/metrics/">Metrics</a> for details.</p>
+<h2 id="pull-progress">Pull progress<a class="headerlink" href="#pull-progress" title="Permanent link">&para;</a></h2>
+<p>When using a VM-based backend or an SSH instance, you can see the Docker image pull progress in the CLI while the job is in the <code>pulling</code> state.</p>
+<div class="termy">
+
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>dstack<span class="w"> </span>apply<span class="w"> </span>-y
+
+Launching<span class="w"> </span>orange-yak-1...
+<span class="w"> </span>NAME<span class="w">          </span>BACKEND<span class="w">          </span>STATUS<span class="w">                    </span>SUBMITTED<span class="w">  </span>
+<span class="w"> </span>orange-yak-1<span class="w">  </span>aws<span class="w"> </span><span class="o">(</span>eu-west-3<span class="o">)</span><span class="w">  </span>pulling<span class="w"> </span><span class="m">1</span>.19/3.44/4.76GB<span class="w">  </span><span class="m">3</span><span class="w"> </span>mins<span class="w"> </span>ago
+</code></pre></div>
+
+</div>
+
+<p>The three slash-separated indicators represent:</p>
+<ul>
+<li>Image data already extracted.</li>
+<li>Image data already downloaded.</li>
+<li>Total target image size.</li>
+</ul>
+<p>The exact total size is not always known initially, in which case a lower estimate is displayed with the <code>≥</code> sign. All values exclude any image layers already cached on the host prior to the pull.</p>
 <h2 id="service-quotas">Service quotas<a class="headerlink" href="#service-quotas" title="Permanent link">&para;</a></h2>
 <p>If you're using your own AWS, GCP, Azure, or OCI accounts, before you can use GPUs or spot instances, you have to request the
 corresponding service quotas for each type of instance in each region.</p>
