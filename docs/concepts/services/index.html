@@ -5756,7 +5756,7 @@ case <code>dstack</code> adjusts the number of replicas (scales up or down) auto
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip install &quot;ai-dynamo[sglang]==1.1.1&quot;</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">git clone https://github.com/ai-dynamo/dynamo.git</span>
 <span class="w">      </span><span class="c1"># Brings up the NATS / etcd compose stack and runs the Dynamo HTTP frontend.</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker compose -f dynamo/deploy/docker-compose.yml up -d</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker compose -f dynamo/dev/docker-compose.yml up -d</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
 <span class="w">        </span><span class="no">python3 -m dynamo.frontend \</span>
 <span class="w">          </span><span class="no">--http-host 0.0.0.0 --http-port 8000 \</span>

@@ -2043,7 +2043,7 @@ To create a fleet, define its configuration in a YAML file. The filename must en
     `dstack apply` automatically connects to on-prem servers, installs the required dependencies, and adds them to the created fleet.
 
     ??? info "Host requirements"
-        1.&nbsp;Hosts must be pre-installed with Docker.
+        1.&nbsp;Hosts must be Linux-based and have Docker pre-installed.
 
         === "NVIDIA"
             2.&nbsp;Hosts with NVIDIA GPUs must also be pre-installed with CUDA 12.1 and
@@ -2543,6 +2543,8 @@ To connect via SSH, use: `ssh vscode`
 </div>
 
 `dstack apply` automatically provisions an instance and sets up an IDE on it.
+
+The `ide` property supports `vscode`, `cursor`, `windsurf`, and `zed`.
 
 ??? info "SSH-only"
     The `ide` property is optional. If omitted, no IDE is pre-installed, but the dev environment
@@ -4473,7 +4475,7 @@ Below is an example for running `zai-org/GLM-4.5-Air-FP8` on `H200`:
           - pip install "ai-dynamo[sglang]==1.1.1"
           - git clone https://github.com/ai-dynamo/dynamo.git
           # Brings up the NATS / etcd compose stack and runs the Dynamo HTTP frontend.
-          - docker compose -f dynamo/deploy/docker-compose.yml up -d
+          - docker compose -f dynamo/dev/docker-compose.yml up -d
           - |
             python3 -m dynamo.frontend \
               --http-host 0.0.0.0 --http-port 8000 \
@@ -13508,7 +13510,7 @@ replicas:
       - pip install "ai-dynamo[sglang]==1.1.1"
       - git clone https://github.com/ai-dynamo/dynamo.git
       # Brings up the NATS / etcd compose stack and runs the Dynamo HTTP frontend.
-      - docker compose -f dynamo/deploy/docker-compose.yml up -d
+      - docker compose -f dynamo/dev/docker-compose.yml up -d
       - |
         python3 -m dynamo.frontend \
           --http-host 0.0.0.0 --http-port 8000 \

@@ -4965,6 +4965,7 @@ via <code>dstack server</code> or deployed using Docker.</p>
 <li><code id="DSTACK_SERVER_DEFAULT_DOCKER_REGISTRY">DSTACK_SERVER_DEFAULT_DOCKER_REGISTRY</code> – A default Docker registry to use for job images that do not specify an explicit registry. E.g., if set to <code>registry.example</code>, then <code>image: ubuntu</code> becomes equivalent to <code>image: registry.example/ubuntu</code>. <strong>Note</strong>: This setting should only be used for configuring registries that act as a pull-through cache for Docker Hub. The default <code>dstack</code> images are also pulled from the configured registry.</li>
 <li><code id="DSTACK_SERVER_DEFAULT_DOCKER_REGISTRY_USERNAME">DSTACK_SERVER_DEFAULT_DOCKER_REGISTRY_USERNAME</code> – Username for authenticating with the default Docker registry. See <code>DSTACK_SERVER_DEFAULT_DOCKER_REGISTRY_PASSWORD</code>.</li>
 <li><code id="DSTACK_SERVER_DEFAULT_DOCKER_REGISTRY_PASSWORD">DSTACK_SERVER_DEFAULT_DOCKER_REGISTRY_PASSWORD</code> – Password for authenticating with the default Docker registry. Applied only when the image has no explicit registry and the run configuration does not specify <code>registry_auth</code>. <strong>Note</strong>: The value may be visible to anyone who can SSH into instances managed by <code>dstack</code>, which usually includes all users of that <code>dstack</code> server.</li>
+<li><code id="DSTACK_SERVER_SSH_CONNECT_TIMEOUT">DSTACK_SERVER_SSH_CONNECT_TIMEOUT</code> – The SSH <code>ConnectTimeout</code> for server-instance connections, in seconds. Defaults to <code>3</code>. Increase if there are high-latency links between the server and instances.</li>
 </ul>
 <details class="info">
 <summary>Internal environment variables</summary>
@@ -4981,7 +4982,6 @@ via <code>dstack server</code> or deployed using Docker.</p>
 <li><code>DSTACK_SHIM_DOWNLOAD_URL</code> – Overrides <code>dstack-shim</code> binary download URL. The URL can contain <code>{version}</code> and/or <code>{arch}</code> placeholders,
   see <code>DSTACK_RUNNER_DOWNLOAD_URL</code> for the details.</li>
 <li><code>DSTACK_DEFAULT_CREDS_DISABLED</code> – Disables default credentials detection if set. Defaults to <code>None</code>.</li>
-<li><code>DSTACK_LOCAL_BACKEND_ENABLED</code> – Enables local backend for debug if set. Defaults to <code>None</code>.</li>
 </ul>
 </details>
 <h2 id="cli">CLI<a class="headerlink" href="#cli" title="Permanent link">&para;</a></h2>

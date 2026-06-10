@@ -4414,6 +4414,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#deploying-nvidia-dynamo-pd-disaggregation-with-dstack" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Deploying NVIDIA Dynamo PD disaggregation with dstack
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#deploying-inference-endpoints-with-pd-disaggregation-on-amd-gpus" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -4506,17 +4517,6 @@
     <span class="md-ellipsis">
       
         Orchestrating workloads on NVIDIA DGX Spark
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#orchestrating-gpus-on-kubernetes-clusters" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Orchestrating GPUs on Kubernetes clusters
       
     </span>
   </a>
@@ -4752,6 +4752,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#deploying-nvidia-dynamo-pd-disaggregation-with-dstack" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Deploying NVIDIA Dynamo PD disaggregation with dstack
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#deploying-inference-endpoints-with-pd-disaggregation-on-amd-gpus" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -4850,17 +4861,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#orchestrating-gpus-on-kubernetes-clusters" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Orchestrating GPUs on Kubernetes clusters
-      
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -4881,6 +4881,50 @@
 
 <h1 id="blog">Blog<a class="headerlink" href="#blog" title="Permanent link">&para;</a></h1>
       </header>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2026-06-10 00:00:00+00:00">June 10, 2026</time></li>
+        
+          <li class="md-meta__item">
+            in
+            
+              <a href="changelog/" class="md-meta__link">Changelog</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              5 min read
+            
+          </li>
+        
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="deploying-nvidia-dynamo-pd-disaggregation-with-dstack"><a class="toclink" href="nvidia-dynamo/">Deploying NVIDIA Dynamo PD disaggregation with dstack</a></h2>
+<p><code>dstack</code> is an open-source, AI-native orchestrator that works across clouds, Kubernetes clusters, on-prem fleets, hardware vendors, and frameworks. Alongside training, inference is one of the primary use cases <code>dstack</code> supports out of the box.</p>
+<p>With the latest update, <code>dstack</code> added native support for NVIDIA Dynamo with Prefill-Decode (PD) disaggregation, letting a service run a Dynamo router, prefill workers, and decode workers as separate replica groups.</p>
+<p><img src="https://dstack.ai/static-assets/static-assets/images/nvidia-dynamo.png" width="630" /></p>
+
+    
+      <nav class="md-post__action">
+        <a href="nvidia-dynamo/">
+            <span>Continue reading</span>
+            <span class="icon"><svg viewBox="0 0 13 10" xmlns="http://www.w3.org/2000/svg"><path d="M12.823 4.164L8.954.182a.592.592 0 0 0-.854 0 .635.635 0 0 0 0 .88l2.836 2.92H.604A.614.614 0 0 0 0 4.604c0 .344.27.622.604.622h10.332L8.1 8.146a.635.635 0 0 0 0 .88.594.594 0 0 0 .854 0l3.869-3.982a.635.635 0 0 0 0-.88z" fill-rule="nonzero" fill="currentColor" class="fill-main"></path></svg></span>
+        </a>
+      </nav>
+    
+    
+  </div>
+</article>
       
         <article class="md-post md-post--excerpt">
   <header class="md-post__header">
@@ -5260,51 +5304,6 @@
     
       <nav class="md-post__action">
         <a href="nvidia-dgx-spark/">
-            <span>Continue reading</span>
-            <span class="icon"><svg viewBox="0 0 13 10" xmlns="http://www.w3.org/2000/svg"><path d="M12.823 4.164L8.954.182a.592.592 0 0 0-.854 0 .635.635 0 0 0 0 .88l2.836 2.92H.604A.614.614 0 0 0 0 4.604c0 .344.27.622.604.622h10.332L8.1 8.146a.635.635 0 0 0 0 .88.594.594 0 0 0 .854 0l3.869-3.982a.635.635 0 0 0 0-.88z" fill-rule="nonzero" fill="currentColor" class="fill-main"></path></svg></span>
-        </a>
-      </nav>
-    
-    
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2025-10-08 00:00:00+00:00">October 8, 2025</time></li>
-        
-          <li class="md-meta__item">
-            in
-            
-              <a href="changelog/" class="md-meta__link">Changelog</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              5 min read
-            
-          </li>
-        
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="orchestrating-gpus-on-kubernetes-clusters"><a class="toclink" href="kubernetes-beta/">Orchestrating GPUs on Kubernetes clusters</a></h2>
-<p><code>dstack</code> gives teams a unified way to run and manage GPU-native containers across clouds and on-prem environments — without requiring Kubernetes.
-At the same time, many organizations rely on Kubernetes as the foundation of their infrastructure.</p>
-<p>To support these users, <code>dstack</code> is releasing the beta of its native Kubernetes integration.</p>
-<p><img src="https://dstack.ai/static-assets/static-assets/images/dstack-kubernetes.png" width="630"/></p>
-
-    
-      <nav class="md-post__action">
-        <a href="kubernetes-beta/">
             <span>Continue reading</span>
             <span class="icon"><svg viewBox="0 0 13 10" xmlns="http://www.w3.org/2000/svg"><path d="M12.823 4.164L8.954.182a.592.592 0 0 0-.854 0 .635.635 0 0 0 0 .88l2.836 2.92H.604A.614.614 0 0 0 0 4.604c0 .344.27.622.604.622h10.332L8.1 8.146a.635.635 0 0 0 0 .88.594.594 0 0 0 .854 0l3.869-3.982a.635.635 0 0 0 0-.88z" fill-rule="nonzero" fill="currentColor" class="fill-main"></path></svg></span>
         </a>

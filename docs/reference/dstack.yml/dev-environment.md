@@ -4,7 +4,7 @@ The `dev-environment` configuration type allows running [dev environments](../..
 
 ## Root reference
 
-###### `ide` - (Optional) `"cursor" | "vscode" | "windsurf"` The IDE to pre-install. Supported values include `vscode`, `cursor`, and `windsurf`. Defaults to no IDE (SSH only). { #ide data-toc-label='ide' class='reference-item' }
+###### `ide` - (Optional) `"cursor" | "vscode" | "windsurf" | "zed"` The IDE to pre-install. Supported values include `vscode`, `cursor`, `windsurf`, and `zed`. Defaults to no IDE (SSH only). { #ide data-toc-label='ide' class='reference-item' }
 ###### `version` - (Optional) `str` The version of the IDE. For `windsurf`, the version is in the format `version@commit`. { #version data-toc-label='version' class='reference-item' }
 ###### `init` - (Optional) `list[str]` The shell commands to run on startup. { #init data-toc-label='init' class='reference-item' }
 ###### `inactivity_duration` - (Optional) `bool | int | str | "off"` The maximum amount of time the dev environment can be inactive (e.g., `2h`, `1d`, etc). After it elapses, the dev environment is automatically stopped. Inactivity is defined as the absence of SSH connections to the dev environment, including VS Code connections, `ssh <run name>` shells, and attached `dstack apply` or `dstack attach` commands. Use `off` for unlimited duration. Can be updated in-place. Defaults to `off`. { #inactivity_duration data-toc-label='inactivity_duration' class='reference-item' }
@@ -27,7 +27,7 @@ The `dev-environment` configuration type allows running [dev environments](../..
 ###### `docker` - (Optional) `bool` Use Docker inside the container. Mutually exclusive with `image`, `python`, and `nvcc`. Overrides `privileged`. { #docker data-toc-label='docker' class='reference-item' }
 ###### [`repos`](#repos) - (Optional) `list[object]` The list of Git repos. { #_repos data-toc-label='repos' class='reference-item' }
 ###### [`files`](#files) - (Optional) `list[object]` The local to container file path mappings. { #_files data-toc-label='files' class='reference-item' }
-###### `backends` - (Optional) `list["amddevcloud" | "aws" | "azure" | "cloudrift" | "crusoe" | "cudo" | "datacrunch" | "digitalocean" | "dstack" | "gcp" | "hotaisle" | "jarvislabs" | "kubernetes" | "lambda" | "local" | "remote" | "nebius" | "oci" | "runpod" | "tensordock" | "vastai" | "verda" | "vultr"]` The backends to consider for provisioning (e.g., `[aws, gcp]`). { #backends data-toc-label='backends' class='reference-item' }
+###### `backends` - (Optional) `list["amddevcloud" | "aws" | "azure" | "cloudrift" | "crusoe" | "cudo" | "datacrunch" | "digitalocean" | "dstack" | "gcp" | "hotaisle" | "jarvislabs" | "kubernetes" | "lambda" | "remote" | "nebius" | "oci" | "runpod" | "tensordock" | "vastai" | "verda" | "vultr"]` The backends to consider for provisioning (e.g., `[aws, gcp]`). { #backends data-toc-label='backends' class='reference-item' }
 ###### `regions` - (Optional) `list[str]` The regions to consider for provisioning (e.g., `[eu-west-1, us-west4, westeurope]`). { #regions data-toc-label='regions' class='reference-item' }
 ###### `availability_zones` - (Optional) `list[str]` The availability zones to consider for provisioning (e.g., `[eu-west-1a, us-west4-a]`). { #availability_zones data-toc-label='availability_zones' class='reference-item' }
 ###### `instance_types` - (Optional) `list[str]` The cloud-specific instance types to consider for provisioning (e.g., `[g6e.24xlarge, n1-standard-4]`). { #instance_types data-toc-label='instance_types' class='reference-item' }

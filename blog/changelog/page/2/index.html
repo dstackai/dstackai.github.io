@@ -4505,6 +4505,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#introducing-service-probes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Introducing service probes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#introducing-passive-gpu-health-checks" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -4597,17 +4608,6 @@
     <span class="md-ellipsis">
       
         Accessing dev environments with Cursor
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#supporting-intel-gaudi-ai-accelerators-with-ssh-fleets" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Supporting Intel Gaudi AI accelerators with SSH fleets
       
     </span>
   </a>
@@ -4756,6 +4756,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#introducing-service-probes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Introducing service probes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#introducing-passive-gpu-health-checks" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -4854,17 +4865,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#supporting-intel-gaudi-ai-accelerators-with-ssh-fleets" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Supporting Intel Gaudi AI accelerators with SSH fleets
-      
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -4879,6 +4879,50 @@
       <header class="md-typeset">
         <h1 id="changelog">Changelog<a class="headerlink" href="#changelog" title="Permanent link">&para;</a></h1>
       </header>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2025-08-14 00:00:00+00:00">August 14, 2025</time></li>
+        
+          <li class="md-meta__item">
+            in
+            
+              <a href="../../" class="md-meta__link">Changelog</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              2 min read
+            
+          </li>
+        
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="introducing-service-probes"><a class="toclink" href="../../../probes/">Introducing service probes</a></h2>
+<p><code>dstack</code> services are long-running workloads—most often inference endpoints and sometimes web apps—that run continuously on GPU or CPU instances. They can scale across replicas and support rolling deployments.</p>
+<p>This release adds HTTP probes inspired by Kubernetes readiness probes. Probes periodically call an endpoint on each replica (for example, <code>/health</code>) to confirm it responds as expected. The result gives clear visibility into startup progress and, during rolling deployments, ensures traffic only shifts to a replacement replica after all configured probes have proven ready.</p>
+<p><img src="https://dstack.ai/static-assets/static-assets/images/dstack-service-probes.png" width="630"/></p>
+
+    
+      <nav class="md-post__action">
+        <a href="../../../probes/">
+            <span>Continue reading</span>
+            <span class="icon"><svg viewBox="0 0 13 10" xmlns="http://www.w3.org/2000/svg"><path d="M12.823 4.164L8.954.182a.592.592 0 0 0-.854 0 .635.635 0 0 0 0 .88l2.836 2.92H.604A.614.614 0 0 0 0 4.604c0 .344.27.622.604.622h10.332L8.1 8.146a.635.635 0 0 0 0 .88.594.594 0 0 0 .854 0l3.869-3.982a.635.635 0 0 0 0-.88z" fill-rule="nonzero" fill="currentColor" class="fill-main"></path></svg></span>
+        </a>
+      </nav>
+    
+    
+  </div>
+</article>
       
         <article class="md-post md-post--excerpt">
   <header class="md-post__header">
@@ -5324,52 +5368,6 @@ we’ve expanded compatibility. With this update, dev environments now offer eff
   </div>
 </article>
       
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2025-02-21 00:00:00+00:00">February 21, 2025</time></li>
-        
-          <li class="md-meta__item">
-            in
-            
-              <a href="../../" class="md-meta__link">Changelog</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              3 min read
-            
-          </li>
-        
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="supporting-intel-gaudi-ai-accelerators-with-ssh-fleets"><a class="toclink" href="../../../intel-gaudi/">Supporting Intel Gaudi AI accelerators with SSH fleets</a></h2>
-<p>At <code>dstack</code>, our goal is to make AI container orchestration simpler and fully vendor-agnostic. That’s why we support not
-just leading cloud providers and on-prem environments but also a wide range of accelerators.</p>
-<p>With our latest release, we’re adding support
-for Intel Gaudi AI Accelerator and launching a new partnership with Intel.</p>
-<p><img src="https://dstack.ai/static-assets/static-assets/images/dstack-intel-gaudi-and-intel-tiber-cloud-v2.png" width="630"/></p>
-
-    
-      <nav class="md-post__action">
-        <a href="../../../intel-gaudi/">
-            <span>Continue reading</span>
-            <span class="icon"><svg viewBox="0 0 13 10" xmlns="http://www.w3.org/2000/svg"><path d="M12.823 4.164L8.954.182a.592.592 0 0 0-.854 0 .635.635 0 0 0 0 .88l2.836 2.92H.604A.614.614 0 0 0 0 4.604c0 .344.27.622.604.622h10.332L8.1 8.146a.635.635 0 0 0 0 .88.594.594 0 0 0 .854 0l3.869-3.982a.635.635 0 0 0 0-.88z" fill-rule="nonzero" fill="currentColor" class="fill-main"></path></svg></span>
-        </a>
-      </nav>
-    
-    
-  </div>
-</article>
-      
       
         
           
@@ -5377,7 +5375,7 @@ for Intel Gaudi AI Accelerator and launching a new partnership with Intel.</p>
 
 
 <nav class="md-pagination">
-  <a class="md-pagination__link" href="../../">1</a> <span class="md-pagination__current">2</span> <a class="md-pagination__link" href="../3/">3</a>
+  <a class="md-pagination__link" href="../../">1</a> <span class="md-pagination__current">2</span> <a class="md-pagination__link" href="../3/">3</a> <a class="md-pagination__link" href="../4/">4</a>
 </nav>
         
       
