@@ -1485,6 +1485,25 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="SSH proxy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#deployment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Deployment
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1734,6 +1753,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../tenant-isolation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tenant isolation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../upgrade/" class="md-nav__link">
         
   
@@ -1775,10 +1822,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3_4_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3_4_4" >
         
           
-          <label class="md-nav__link" for="__nav_2_3_4_3" id="__nav_2_3_4_3_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_2_3_4_4" id="__nav_2_3_4_4_label" tabindex="0">
             
   
   
@@ -1796,8 +1843,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_3_4_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2_3_4_3">
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_3_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3_4_4">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -5099,6 +5146,25 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="SSH proxy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#deployment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Deployment
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -5449,6 +5515,10 @@ pgloader<span class="w"> </span>sqlite_to_psql.load
 </ol>
 <p>If you encounter errors, please <a href="https://github.com/dstackai/dstack/issues/new/choose">submit an issue</a>.</p>
 </details>
+<blockquote>
+<p>For a local setup running PostgreSQL and the <a href="#ssh-proxy">SSH proxy</a> together, see the example
+<a href="https://github.com/dstackai/dstack/blob/master/docker/server/docker-compose.yml"><code>docker-compose.yml</code></a>.</p>
+</blockquote>
 <h2 id="logs-storage">Logs storage<a class="headerlink" href="#logs-storage" title="Permanent link">&para;</a></h2>
 <p>By default, <code>dstack</code> stores workload logs locally in <code>~/.dstack/server/projects/&lt;project_name&gt;/logs</code>.
 For multi-replica server deployments, it's required to store logs externally.
@@ -5615,15 +5685,28 @@ storage.objects.update
 </code></pre></div>
 </details>
 <h2 id="ssh-proxy">SSH proxy<a class="headerlink" href="#ssh-proxy" title="Permanent link">&para;</a></h2>
-<p><a href="https://github.com/dstackai/sshproxy"><code>dstack-sshproxy</code></a> is an optional component that provides direct SSH access to workloads.</p>
-<p>Without SSH proxy, in order to connect to a job via SSH or use an IDE URL, the <code>dstack attach</code> CLI command must be used, which configures user's SSH client in a backend-specific way for each job.</p>
-<p>When SSH proxy is deployed, there is one well-known entry point – a proxy address – for all <code>dstack</code> jobs, which can be used for SSH access without any additional steps on the user's side (such as installing <code>dstack</code> and executing <code>dstack attach</code> each time). All the user has to do is to upload their public key to the <code>dstack</code> server once – there is a dedicated “SSH keys” tab on the user's page of the control plane UI.</p>
-<p>To deploy SSH proxy, see <code>dstack-sshproxy</code> <a href="https://github.com/dstackai/sshproxy/blob/main/DEPLOYMENT.md">Deployment guide</a>.</p>
-<p>To enable SSH proxy integration on the <code>dstack</code> server side, set the following environment variables:</p>
+<p>To connect to a run over SSH, <code>dstack</code> establishes a connection to the job's container, routed through the job's host and, for <a href="../../concepts/fleets/#ssh-fleets">SSH fleets</a> with a head node, through that head node.</p>
+<p><a href="https://github.com/dstackai/sshproxy"><code>dstack-sshproxy</code></a> is an optional service that you deploy alongside the <code>dstack</code> server. When it's enabled, <code>dstack attach</code> connects to the proxy instead of to the job's host (and the head node if the SSH fleet has one).</p>
+<p>This lets you:</p>
 <ul>
-<li><code>DSTACK_SSHPROXY_API_TOKEN</code> – a token used to authenticate SSH proxy API requests, must be the same value as when deploying <code>dstack-sshproxy</code>.</li>
-<li><code>DSTACK_SERVER_SSHPROXY_ADDRESS</code> – an address where SSH proxy is available to <code>dstack</code> users, in the <code>HOSTNAME[:PORT]</code> form, where <code>HOSTNAME</code> is a domain name or an IP address, and <code>PORT</code>, if not specified, defaults to 22.</li>
+<li>Restrict users to the job's container. Without the proxy, an attached user can SSH into the host, not just the container.</li>
+<li>Reach runs on SSH fleets with a head node without giving users the head node's SSH key.</li>
+<li>Let users connect to runs without <code>dstack attach</code>. This requires uploading their public SSH key(s) to the <code>dstack</code> server.</li>
 </ul>
+<!-- TODO: once connecting through the proxy without `dstack attach` is exposed in the UI/CLI, document the steps in this section. -->
+
+<h3 id="deployment">Deployment<a class="headerlink" href="#deployment" title="Permanent link">&para;</a></h3>
+<p>To deploy the SSH proxy, follow its <a href="https://github.com/dstackai/sshproxy/blob/main/DEPLOYMENT.md">deployment guide</a>. Then connect the <code>dstack</code> server to it by setting the following environment variables:</p>
+<ul>
+<li><code>DSTACK_SSHPROXY_API_TOKEN</code> – the token used to authenticate requests to the SSH proxy. It must match the token the SSH proxy is deployed with.</li>
+<li><code>DSTACK_SERVER_SSHPROXY_ADDRESS</code> – the address where users reach the SSH proxy, in the <code>HOSTNAME[:PORT]</code> form (<code>PORT</code> defaults to 22).</li>
+</ul>
+<!-- TODO: once the Tenant isolation guide (#3913) is merged, document blocking host SSH access here (DSTACK_SERVER_SSHPROXY_ENFORCED) with a link to that guide. -->
+
+<blockquote>
+<p>For a local setup running <a href="#postgresql">PostgreSQL</a> and the SSH proxy together, see the example
+<a href="https://github.com/dstackai/dstack/blob/master/docker/server/docker-compose.yml"><code>docker-compose.yml</code></a>.</p>
+</blockquote>
 <h2 id="encryption">Encryption<a class="headerlink" href="#encryption" title="Permanent link">&para;</a></h2>
 <p>By default, <code>dstack</code> stores data in plaintext. To enforce encryption, you 
 specify one or more encryption keys.</p>

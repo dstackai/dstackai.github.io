@@ -971,16 +971,30 @@ There are two ways to configure Azure: using a client secret or using the defaul
           - type: azure
             creds:
               type: default
-        regions: [westeurope]
-        vpc_ids:
-          westeurope: myNetworkResourceGroup/myNetworkName
+            regions: [westeurope]
+            vpc_ids:
+              westeurope: myNetworkResourceGroup/myNetworkName
+    ```
+
+    Alternatively, specify `subnet_ids` to target specific subnets:
+
+    ```yaml
+    projects:
+      - name: main
+        backends:
+          - type: azure
+            creds:
+              type: default
+            regions: [westeurope]
+            subnet_ids:
+              westeurope: myNetworkResourceGroup/myNetworkName/mySubnetName
     ```
 
 
 ??? info "Private subnets"
     By default, `dstack` provisions instances with public IPs and permits inbound SSH traffic.
     If you want `dstack` to use private subnets and provision instances without public IPs,
-    specify custom networks using `vpc_ids` and set `public_ips` to `false`.
+    specify custom networks using `vpc_ids` or `subnet_ids`, and set `public_ips` to `false`.
 
     ```yaml
     projects:
@@ -2402,15 +2416,6 @@ ssh_config:
 
 !!! info "Reference"
     The fleet configuration file supports additional options, including [`instance_types`](../reference/dstack.yml/fleet.md#instance_types), [`max_price`](../reference/dstack.yml/fleet.md#max_price), [`regions`](../reference/dstack.yml/fleet.md#max_price), among others. For the complete list, see the [reference](../reference/dstack.yml/fleet.md).
-
-## Tenant isolation
-
-Users running workloads on a fleet have access to the host, including the folders that may be used as instance volumes,
-and containers use host network mode unless the host has multiple [blocks](#blocks) configured and the job uses only a subset of them.
-
-Tighter isolation is on the roadmap, including [SSH reverse proxy](https://github.com/dstackai/dstack/issues/3644){:target="_blank"} and rootless access to the host.
-
-When [exporting fleets](exports.md) to other projects, the same access model applies to members of the importer projects.
 
 ## Export fleets
 
@@ -6083,6 +6088,50 @@ domain: example.com
 
 </div>
 
+### Replicas
+
+A gateway can have multiple replicas for improved availability.
+
+<div editor-title="gateway.dstack.yml">
+
+```yaml
+type: gateway
+name: example-gateway
+
+backend: aws
+region: eu-west-1
+
+domain: example.com
+
+certificate: null
+replicas: 2
+```
+
+</div>
+
+To balance requests between gateway replicas, add DNS records for each replica or set up a load balancer outside of `dstack`. Replica hostnames are displayed in `dstack` CLI and UI.
+
+<div class="termy">
+
+```shell
+$ dstack gateway list
+ NAME             BACKEND          HOSTNAME        DOMAIN       DEFAULT  STATUS
+ example-gateway                                   example.com  ✓        running
+    replica=0     aws (eu-west-1)  34.244.128.46
+    replica=1     aws (eu-west-1)  18.201.201.174
+```
+
+</div>
+
+!!! warning "Experimental"
+    Replicated gateways are an experimental feature and currently have limitations:
+
+    - Changing the number of replicas or redeploying replicas is not supported.
+    - HTTPS is not supported. Use an external load balancer for TLS termination.
+    - An unavailable gateway replica prevents any new services or service replicas from being added.
+    - All replicas are bound to the same backend and region.
+    - At most 3 replicas are allowed per gateway.
+
 !!! info "Reference"
     For all gateway configuration options, refer to the [reference](../reference/dstack.yml/gateway.md).
 
@@ -6804,7 +6853,7 @@ fleets:
 </div>
 
 !!! info "Tenant isolation"
-    Exported fleets share the same access model as regular fleets. See [Tenant isolation](fleets.md#tenant-isolation) for details.
+    Exported fleets share the same access model as regular fleets. See [Tenant isolation](../guides/tenant-isolation.md) for details.
 
 !!! info "What's next?"
     1. Check the [`dstack export` CLI reference](../reference/cli/dstack/export.md)
@@ -7466,6 +7515,9 @@ If you're using a smaller DB instance, you may need to set lower `DSTACK_DB_POOL
        
        If you encounter errors, please [submit an issue](https://github.com/dstackai/dstack/issues/new/choose).
 
+> For a local setup running PostgreSQL and the [SSH proxy](#ssh-proxy) together, see the example
+> [`docker-compose.yml`](https://github.com/dstackai/dstack/blob/master/docker/server/docker-compose.yml).
+
 ## Logs storage
 
 By default, `dstack` stores workload logs locally in `~/.dstack/server/projects/<project_name>/logs`.
@@ -7657,19 +7709,29 @@ The bucket must be created beforehand. `dstack` won't try to create it.
 
 ## SSH proxy
 
-[`dstack-sshproxy`](https://github.com/dstackai/sshproxy) is an optional component that provides direct SSH access to workloads.
+To connect to a run over SSH, `dstack` establishes a connection to the job's container, routed through the job's host and, for [SSH fleets](../concepts/fleets.md#ssh-fleets) with a head node, through that head node.
 
-Without SSH proxy, in order to connect to a job via SSH or use an IDE URL, the `dstack attach` CLI command must be used, which configures user's SSH client in a backend-specific way for each job.
+[`dstack-sshproxy`](https://github.com/dstackai/sshproxy) is an optional service that you deploy alongside the `dstack` server. When it's enabled, `dstack attach` connects to the proxy instead of to the job's host (and the head node if the SSH fleet has one).
 
-When SSH proxy is deployed, there is one well-known entry point – a proxy address – for all `dstack` jobs, which can be used for SSH access without any additional steps on the user's side (such as installing `dstack` and executing `dstack attach` each time). All the user has to do is to upload their public key to the `dstack` server once – there is a dedicated “SSH keys” tab on the user's page of the control plane UI.
+This lets you:
 
+- Restrict users to the job's container. Without the proxy, an attached user can SSH into the host, not just the container.
+- Reach runs on SSH fleets with a head node without giving users the head node's SSH key.
+- Let users connect to runs without `dstack attach`. This requires uploading their public SSH key(s) to the `dstack` server.
 
-To deploy SSH proxy, see `dstack-sshproxy` [Deployment guide](https://github.com/dstackai/sshproxy/blob/main/DEPLOYMENT.md).
+<!-- TODO: once connecting through the proxy without `dstack attach` is exposed in the UI/CLI, document the steps in this section. -->
 
-To enable SSH proxy integration on the `dstack` server side, set the following environment variables:
+### Deployment
 
-* `DSTACK_SSHPROXY_API_TOKEN` – a token used to authenticate SSH proxy API requests, must be the same value as when deploying `dstack-sshproxy`.
-* `DSTACK_SERVER_SSHPROXY_ADDRESS` – an address where SSH proxy is available to `dstack` users, in the `HOSTNAME[:PORT]` form, where `HOSTNAME` is a domain name or an IP address, and `PORT`, if not specified, defaults to 22.
+To deploy the SSH proxy, follow its [deployment guide](https://github.com/dstackai/sshproxy/blob/main/DEPLOYMENT.md). Then connect the `dstack` server to it by setting the following environment variables:
+
+* `DSTACK_SSHPROXY_API_TOKEN` – the token used to authenticate requests to the SSH proxy. It must match the token the SSH proxy is deployed with.
+* `DSTACK_SERVER_SSHPROXY_ADDRESS` – the address where users reach the SSH proxy, in the `HOSTNAME[:PORT]` form (`PORT` defaults to 22).
+
+<!-- TODO: once the Tenant isolation guide (#3913) is merged, document blocking host SSH access here (DSTACK_SERVER_SSHPROXY_ENFORCED) with a link to that guide. -->
+
+> For a local setup running [PostgreSQL](#postgresql) and the SSH proxy together, see the example
+> [`docker-compose.yml`](https://github.com/dstackai/dstack/blob/master/docker/server/docker-compose.yml).
 
 ## Encryption
 
@@ -8637,6 +8699,87 @@ corresponding service quotas for each type of instance in each region.
 Note, for AWS, GCP, and Azure, service quota values are measured with the number of CPUs rather than GPUs.
 
 [//]: # (TODO: Mention spot policy)
+
+
+# docs/guides/tenant-isolation.md
+
+---
+title: Tenant isolation
+description: Restricting access to hosts managed by dstack
+---
+
+# Tenant isolation
+
+`dstack` assumes mutual trust between users of the same project. While users' jobs run in Docker containers, users and their containers may have broad access to the underlying hosts. This guide explains how to restrict access to the host when stronger boundaries are required.
+
+!!! info "Isolation guarantees"
+    The methods described in this guide should be treated as best-effort hardening measures, not as a guarantee of isolation between users, as isolation ultimately depends on the underlying hardware and software. For the strongest isolation, place users in separate `dstack` projects and avoid sharing hardware between them.
+
+
+## Host SSH access
+
+While attached to a run, users can SSH directly into the host machine — not just the container — using:
+
+```shell
+ssh <run-name>-host
+```
+
+This gives unrestricted access to the underlying instance, bypassing container boundaries.
+
+If desired, host SSH access can be disabled server-wide by configuring the [SSH proxy](server-deployment.md#ssh-proxy) and setting the following environment variable when starting the `dstack` server:
+
+```shell
+DSTACK_SERVER_SSHPROXY_ENFORCED=1
+```
+
+With this setting, all users' SSH connections go through the SSH proxy, which only allows connections into the container and not into the host.
+
+## Privileged mode
+
+Running a container in privileged mode gives it full access to the host kernel, making container escape straightforward. `dstack` supports requesting privileged mode through several configuration properties:
+
+| Property | Applies to |
+|---|---|
+| `privileged: true` | Tasks, dev environments, services |
+| `docker: true` | Tasks, dev environments, services |
+| `replicas[i].privileged: true` | Services with replica groups |
+| `replicas[i].docker: true` | Services with replica groups |
+
+To block runs that request privileged mode, write a [REST plugin](../reference/plugins/rest/index.md) or a [Python plugin](../reference/plugins/python/index.md) with an apply policy.
+
+## Instance volumes
+
+[Instance volumes](../concepts/volumes.md#instance-volumes) mount a path from the host filesystem directly into the container. A user with access to this feature can mount arbitrary host paths — including sensitive directories such as `/etc`, `/proc`, or `/var`.
+
+You can disallow instance volumes or restrict access to certain paths by writing a [REST plugin](../reference/plugins/rest/index.md) or a [Python plugin](../reference/plugins/python/index.md).
+
+## Host network access
+
+By default, most `dstack` jobs run in host networking mode. This allows them to listen on any host network interface and communicate with other jobs over the internal network, which facilitates workloads such as [distributed tasks](../concepts/tasks.md#distributed-tasks) or [services with routers](../concepts/services.md#pd-disaggregation).
+
+However, exposing the host network to the job also exposes internal `dstack` APIs used to manage containers and SSH authorized keys on the host. If this is not acceptable, bridge networking should be used, which isolates the job from the host network. Bridge networking, however, breaks workloads that do need inter-job communication.
+
+The `DSTACK_SERVER_JOB_NETWORK_MODE` environment variable controls which jobs get host vs. bridge networking:
+
+| Value | Name | Behavior |
+|---|---|---|
+| `1` | `HOST_FOR_MULTINODE_ONLY` | Host for distributed tasks, bridge otherwise |
+| `2` | `HOST_WHEN_POSSIBLE` | Host whenever the job occupies a full instance (default) |
+| `3` | `FORCED_BRIDGE` | Always bridge, including distributed tasks |
+
+### No distributed tasks
+
+If you don't need distributed tasks or other runs with inter-job communication, you can set `DSTACK_SERVER_JOB_NETWORK_MODE=3` when starting the server:
+
+```shell
+DSTACK_SERVER_JOB_NETWORK_MODE=3
+```
+
+This forces bridge networking for all jobs on the server without exception, preventing access to internal `dstack` APIs, as well as communication between jobs.
+
+### Allow distributed tasks in selected projects
+
+If you want distributed tasks or other runs with inter-job communication to be available in some projects but not others, use `DSTACK_SERVER_JOB_NETWORK_MODE=1` instead. With this mode, single-node jobs get bridge networking, while distributed tasks still run with host networking. Distributed tasks can then be selectively blocked per project or user by writing a [REST plugin](../reference/plugins/rest/index.md) or a [Python plugin](../reference/plugins/python/index.md).
 
 
 # docs/guides/upgrade.md

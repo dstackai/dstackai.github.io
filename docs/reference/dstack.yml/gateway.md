@@ -13,6 +13,7 @@ The `gateway` configuration type allows creating and updating [gateways](../../c
 ###### `domain` - (Optional) `str` The gateway wildcard domain name, e.g. `example.com`. Service domain names are constructed as `<run name>.<gateway domain`. The domain name can use the `${{ run.project_name }}` variable to include the service’s project name. { #domain data-toc-label='domain' class='reference-item' }
 ###### `public_ip` - (Optional) `bool` Allocate public IP for the gateway. Defaults to `true`. { #public_ip data-toc-label='public_ip' class='reference-item' }
 ###### [`certificate`](#certificate) - (Optional) `object` The SSL certificate configuration. Set to `null` to disable. Defaults to `type: lets-encrypt`. { #_certificate data-toc-label='certificate' class='reference-item' }
+###### `replicas` - (Optional) `int` The number of gateway replicas. Defaults to `1`. { #replicas data-toc-label='replicas' class='reference-item' }
 ###### `tags` - (Optional) `dict` The custom tags to associate with the gateway. The tags are also propagated to the underlying backend resources. If there is a conflict with backend-level tags, does not override them. { #tags data-toc-label='tags' class='reference-item' }
 
 

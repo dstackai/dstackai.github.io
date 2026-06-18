@@ -1405,6 +1405,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../guides/tenant-isolation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tenant isolation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../guides/upgrade/" class="md-nav__link">
         
   
@@ -1446,10 +1474,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3_4_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3_4_4" >
         
           
-          <label class="md-nav__link" for="__nav_2_3_4_3" id="__nav_2_3_4_3_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_2_3_4_4" id="__nav_2_3_4_4_label" tabindex="0">
             
   
   
@@ -1467,8 +1495,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_3_4_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2_3_4_3">
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_3_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3_4_4">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -4965,6 +4993,10 @@ via <code>dstack server</code> or deployed using Docker.</p>
 <li><code id="DSTACK_SERVER_DEFAULT_DOCKER_REGISTRY">DSTACK_SERVER_DEFAULT_DOCKER_REGISTRY</code> – A default Docker registry to use for job images that do not specify an explicit registry. E.g., if set to <code>registry.example</code>, then <code>image: ubuntu</code> becomes equivalent to <code>image: registry.example/ubuntu</code>. <strong>Note</strong>: This setting should only be used for configuring registries that act as a pull-through cache for Docker Hub. The default <code>dstack</code> images are also pulled from the configured registry.</li>
 <li><code id="DSTACK_SERVER_DEFAULT_DOCKER_REGISTRY_USERNAME">DSTACK_SERVER_DEFAULT_DOCKER_REGISTRY_USERNAME</code> – Username for authenticating with the default Docker registry. See <code>DSTACK_SERVER_DEFAULT_DOCKER_REGISTRY_PASSWORD</code>.</li>
 <li><code id="DSTACK_SERVER_DEFAULT_DOCKER_REGISTRY_PASSWORD">DSTACK_SERVER_DEFAULT_DOCKER_REGISTRY_PASSWORD</code> – Password for authenticating with the default Docker registry. Applied only when the image has no explicit registry and the run configuration does not specify <code>registry_auth</code>. <strong>Note</strong>: The value may be visible to anyone who can SSH into instances managed by <code>dstack</code>, which usually includes all users of that <code>dstack</code> server.</li>
+<li><code id="DSTACK_SSHPROXY_API_TOKEN">DSTACK_SSHPROXY_API_TOKEN</code> – Authentication token for the SSH proxy API. Required to enable SSH proxy integration; must match the token configured when deploying <a href="https://github.com/dstackai/sshproxy"><code>dstack-sshproxy</code></a>.</li>
+<li><code id="DSTACK_SERVER_SSHPROXY_ADDRESS">DSTACK_SERVER_SSHPROXY_ADDRESS</code> – Address of the SSH proxy exposed to users, in <code>HOSTNAME[:PORT]</code> form. <code>PORT</code> defaults to <code>22</code> if omitted. Required together with <code>DSTACK_SSHPROXY_API_TOKEN</code> to enable SSH proxy integration.</li>
+<li><code id="DSTACK_SERVER_SSHPROXY_ENFORCED">DSTACK_SERVER_SSHPROXY_ENFORCED</code> – When set to any value, restricts all SSH connections to go through the SSH proxy.</li>
+<li><code id="DSTACK_SERVER_JOB_NETWORK_MODE">DSTACK_SERVER_JOB_NETWORK_MODE</code> – Controls the network mode assigned to jobs. Accepts an integer value: <code>1</code> forces bridge networking for single-node jobs while distributed tasks still use host networking; <code>2</code> uses host networking whenever the job occupies a full instance (default); <code>3</code> forces bridge networking for all jobs including distributed tasks.</li>
 <li><code id="DSTACK_SERVER_SSH_CONNECT_TIMEOUT">DSTACK_SERVER_SSH_CONNECT_TIMEOUT</code> – The SSH <code>ConnectTimeout</code> for server-instance connections, in seconds. Defaults to <code>3</code>. Increase if there are high-latency links between the server and instances.</li>
 </ul>
 <details class="info">

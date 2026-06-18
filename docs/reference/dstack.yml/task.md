@@ -42,6 +42,7 @@ The `task` configuration type allows running [tasks](../../concepts/tasks.md).
 ###### `stop_criteria` - (Optional) `"all-done" | "master-done"` The criteria determining when a multi-node run should be considered finished: `all-done`, `master-done`. Defaults to `all-done`. { #stop_criteria data-toc-label='stop_criteria' class='reference-item' }
 ###### [`schedule`](#schedule) - (Optional) `object` The schedule for starting the run at specified time. { #_schedule data-toc-label='schedule' class='reference-item' }
 ###### `fleets` - (Optional) `list[str | object]` The fleets considered for reuse. For fleets owned by the current project, specify fleet names. For imported fleets, specify `<project name>/<fleet name>`. { #fleets data-toc-label='fleets' class='reference-item' }
+###### `instances` - (Optional) `list` The specific fleet instances to consider for reuse. Each value can be an instance name string, or an object with `name`, `hostname`, or `fleet` and `instance`. When set, the run is only placed on matching existing instances.. { #instances data-toc-label='instances' class='reference-item' }
 ###### `tags` - (Optional) `dict` The custom tags to associate with the resource. The tags are also propagated to the underlying backend resources. If there is a conflict with backend-level tags, does not override them. { #tags data-toc-label='tags' class='reference-item' }
 ###### `backend_options` - (Optional) `list[object]` Backend-specific options, applied only to offers from that backend. { #backend_options data-toc-label='backend_options' class='reference-item' }
 
@@ -62,6 +63,32 @@ The `task` configuration type allows running [tasks](../../concepts/tasks.md).
 
 ###### `cron` - (Required) `str | list[str]` A cron expression or a list of cron expressions specifying the UTC time when the run needs to be started. { #cron data-toc-label='cron' class='reference-item' }
 
+
+### `instances[n]` { #_instances data-toc-label="instances" }
+
+When `instances` is set, the run is placed only on matching existing fleet instances.
+
+=== "By name"
+
+    ###### `name` - (Required) `str` The fleet instance name. { #name data-toc-label='name' class='reference-item' }
+
+
+=== "By hostname"
+
+    ###### `hostname` - (Required) `str` The fleet instance hostname or IP address. { #hostname data-toc-label='hostname' class='reference-item' }
+
+
+=== "By fleet and instance number"
+
+    ###### [`fleet`](#fleet) - (Required) `str | object` The fleet reference. For fleets owned by the current project, specify the fleet name. For a fleet from another project, specify `<project name>/<fleet name>` or an object with `project` and `name`.. { #_fleet data-toc-label='fleet' class='reference-item' }
+    ###### `instance` - (Required) `int` The fleet instance number. { #instance data-toc-label='instance' class='reference-item' }
+
+
+??? info "Short syntax"
+
+    The short syntax for instances is an instance name string.
+
+    * `my-fleet-1`, same as `{name: my-fleet-1}`
 
 ### `resources`
 

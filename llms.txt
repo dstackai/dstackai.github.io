@@ -35,6 +35,7 @@
 ### More
 
 - [Protips](https://dstack.ai/docs/guides/protips.md): Tips and tricks for using dstack efficiently
+- [Tenant isolation](https://dstack.ai/docs/guides/tenant-isolation.md): Restricting access to hosts managed by dstack
 - [Upgrade](https://dstack.ai/docs/guides/upgrade.md): Upgrading to newer versions of dstack
 
 ### Migration

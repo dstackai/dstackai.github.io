@@ -1410,6 +1410,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../../guides/tenant-isolation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tenant isolation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../../guides/upgrade/" class="md-nav__link">
         
   
@@ -1451,10 +1479,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3_4_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3_4_4" >
         
           
-          <label class="md-nav__link" for="__nav_2_3_4_3" id="__nav_2_3_4_3_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_2_3_4_4" id="__nav_2_3_4_4_label" tabindex="0">
             
   
   
@@ -1472,8 +1500,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_3_4_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2_3_4_3">
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_3_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3_4_4">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -2676,6 +2704,17 @@
     <span class="md-ellipsis">
       
         schedule
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_instances" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        instances
       
     </span>
   </a>
@@ -4835,6 +4874,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#_instances" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        instances
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#resources" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -5054,6 +5104,7 @@
 <h6 class="reference-item" id="stop_criteria"><code>stop_criteria</code> - (Optional) <code>"all-done" | "master-done"</code> The criteria determining when a multi-node run should be considered finished: <code>all-done</code>, <code>master-done</code>. Defaults to <code>all-done</code>.<a class="headerlink" href="#stop_criteria" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="_schedule"><a href="#schedule"><code>schedule</code></a> - (Optional) <code>object</code> The schedule for starting the run at specified time.<a class="headerlink" href="#_schedule" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="fleets"><code>fleets</code> - (Optional) <code>list[str | object]</code> The fleets considered for reuse. For fleets owned by the current project, specify fleet names. For imported fleets, specify <code>&lt;project name&gt;/&lt;fleet name&gt;</code>.<a class="headerlink" href="#fleets" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="instances"><code>instances</code> - (Optional) <code>list</code> The specific fleet instances to consider for reuse. Each value can be an instance name string, or an object with <code>name</code>, <code>hostname</code>, or <code>fleet</code> and <code>instance</code>. When set, the run is only placed on matching existing instances..<a class="headerlink" href="#instances" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="tags"><code>tags</code> - (Optional) <code>dict</code> The custom tags to associate with the resource. The tags are also propagated to the underlying backend resources. If there is a conflict with backend-level tags, does not override them.<a class="headerlink" href="#tags" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="backend_options"><code>backend_options</code> - (Optional) <code>list[object]</code> Backend-specific options, applied only to offers from that backend.<a class="headerlink" href="#backend_options" title="Permanent link">&para;</a></h6>
 <h3 id="retry"><code>retry</code><a class="headerlink" href="#retry" title="Permanent link">&para;</a></h3>
@@ -5064,6 +5115,29 @@
 <h6 class="reference-item" id="time_window"><code>time_window</code> - (Required) <code>int | str</code> The time window of metric samples taking into account to measure utilization (e.g., <code>30m</code>, <code>1h</code>). Minimum is <code>5m</code>.<a class="headerlink" href="#time_window" title="Permanent link">&para;</a></h6>
 <h3 id="schedule"><code>schedule</code><a class="headerlink" href="#schedule" title="Permanent link">&para;</a></h3>
 <h6 class="reference-item" id="cron"><code>cron</code> - (Required) <code>str | list[str]</code> A cron expression or a list of cron expressions specifying the UTC time when the run needs to be started.<a class="headerlink" href="#cron" title="Permanent link">&para;</a></h6>
+<h3 id="_instances"><code>instances[n]</code><a class="headerlink" href="#_instances" title="Permanent link">&para;</a></h3>
+<p>When <code>instances</code> is set, the run is placed only on matching existing fleet instances.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="by-name" name="__tabbed_1" type="radio" /><input id="by-hostname" name="__tabbed_1" type="radio" /><input id="by-fleet-and-instance-number" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="by-name">By name</label><label for="by-hostname">By hostname</label><label for="by-fleet-and-instance-number">By fleet and instance number</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<h6 class="reference-item" id="name"><code>name</code> - (Required) <code>str</code> The fleet instance name.<a class="headerlink" href="#name" title="Permanent link">&para;</a></h6>
+</div>
+<div class="tabbed-block">
+<h6 class="reference-item" id="hostname"><code>hostname</code> - (Required) <code>str</code> The fleet instance hostname or IP address.<a class="headerlink" href="#hostname" title="Permanent link">&para;</a></h6>
+</div>
+<div class="tabbed-block">
+<h6 class="reference-item" id="_fleet"><a href="#fleet"><code>fleet</code></a> - (Required) <code>str | object</code> The fleet reference. For fleets owned by the current project, specify the fleet name. For a fleet from another project, specify <code>&lt;project name&gt;/&lt;fleet name&gt;</code> or an object with <code>project</code> and <code>name</code>..<a class="headerlink" href="#_fleet" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="instance"><code>instance</code> - (Required) <code>int</code> The fleet instance number.<a class="headerlink" href="#instance" title="Permanent link">&para;</a></h6>
+</div>
+</div>
+</div>
+<details class="info">
+<summary>Short syntax</summary>
+<p>The short syntax for instances is an instance name string.</p>
+<ul>
+<li><code>my-fleet-1</code>, same as <code>{name: my-fleet-1}</code></li>
+</ul>
+</details>
 <h3 id="resources"><code>resources</code><a class="headerlink" href="#resources" title="Permanent link">&para;</a></h3>
 <h6 class="reference-item" id="_cpu"><a href="#resources-cpu"><code>cpu</code></a> - (Optional) <code>int | str | object</code> The CPU requirements.<a class="headerlink" href="#_cpu" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="memory"><code>memory</code> - (Optional) <code>int | str</code> The RAM size (e.g., <code>8GB</code>). Defaults to <code>8GB..</code>.<a class="headerlink" href="#memory" title="Permanent link">&para;</a></h6>
@@ -5086,7 +5160,7 @@
 <h6 class="reference-item" id="username"><code>username</code> - (Required) <code>str</code> The username.<a class="headerlink" href="#username" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="password"><code>password</code> - (Required) <code>str</code> The password or access token.<a class="headerlink" href="#password" title="Permanent link">&para;</a></h6>
 <h3 id="_volumes"><code>volumes[n]</code><a class="headerlink" href="#_volumes" title="Permanent link">&para;</a></h3>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="network-volumes" name="__tabbed_1" type="radio" /><input id="instance-volumes" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="network-volumes">Network volumes</label><label for="instance-volumes">Instance volumes</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="network-volumes" name="__tabbed_2" type="radio" /><input id="instance-volumes" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="network-volumes">Network volumes</label><label for="instance-volumes">Instance volumes</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <h6 class="reference-item" id="name"><code>name</code> - (Required) <code>str | list[str]</code> The network volume name or the list of network volume names to mount. If a list is specified, one of the volumes in the list will be mounted. Specify volumes from different backends/regions to increase availability.<a class="headerlink" href="#name" title="Permanent link">&para;</a></h6>
