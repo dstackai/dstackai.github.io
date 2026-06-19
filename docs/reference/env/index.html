@@ -4998,6 +4998,8 @@ via <code>dstack server</code> or deployed using Docker.</p>
 <li><code id="DSTACK_SERVER_SSHPROXY_ENFORCED">DSTACK_SERVER_SSHPROXY_ENFORCED</code> – When set to any value, restricts all SSH connections to go through the SSH proxy.</li>
 <li><code id="DSTACK_SERVER_JOB_NETWORK_MODE">DSTACK_SERVER_JOB_NETWORK_MODE</code> – Controls the network mode assigned to jobs. Accepts an integer value: <code>1</code> forces bridge networking for single-node jobs while distributed tasks still use host networking; <code>2</code> uses host networking whenever the job occupies a full instance (default); <code>3</code> forces bridge networking for all jobs including distributed tasks.</li>
 <li><code id="DSTACK_SERVER_SSH_CONNECT_TIMEOUT">DSTACK_SERVER_SSH_CONNECT_TIMEOUT</code> – The SSH <code>ConnectTimeout</code> for server-instance connections, in seconds. Defaults to <code>3</code>. Increase if there are high-latency links between the server and instances.</li>
+<li><code id="DSTACK_SERVER_SSH_POOL_DISABLED">DSTACK_SERVER_SSH_POOL_DISABLED</code> – Disables the reuse of server SSH connections to instances. If set, significantly decreases server RAM usage, but
+slows down processing and may cause CPU spikes due to frequent SSH-connection establishment.</li>
 </ul>
 <details class="info">
 <summary>Internal environment variables</summary>
