@@ -5375,12 +5375,7 @@
   <h1>Server deployment</h1>
 
 <p>The <code>dstack</code> server can run on your laptop or any environment with access to the cloud and on-prem clusters you plan to use.</p>
-<details class="info">
-<summary>Hardware requirements</summary>
-<p>The minimum hardware requirements for running the server are 1 CPU and 1GB of RAM. The recommended RAM is
-"8MB × number of active instances". For example, a server with 1000 active instances should have 8GB of RAM.
-You can set the <code>DSTACK_SERVER_SSH_POOL_DISABLED</code> env var to minimize RAM usage at the expense of slower processing.</p>
-</details>
+<p>The minimum hardware requirements for running the server are 1 CPU and 1GB of RAM.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="pip" name="__tabbed_1" type="radio" /><input id="uv" name="__tabbed_1" type="radio" /><input id="docker" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="pip">pip</label><label for="uv">uv</label><label for="docker">Docker</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -5415,7 +5410,7 @@ The<span class="w"> </span>server<span class="w"> </span>is<span class="w"> </sp
 </div>
 <div class="tabbed-block">
 <blockquote>
-<p>For production deployments, it's recommended to use <code>dstackai/dstack</code> Docker image.</p>
+<p>To deploy the server most reliably, it's recommended to use <code>dstackai/dstack</code> Docker image.</p>
 </blockquote>
 <div class="termy">
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </span>-p<span class="w"> </span><span class="m">3000</span>:3000<span class="w"> </span><span class="se">\</span>
