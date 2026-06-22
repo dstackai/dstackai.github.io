@@ -92,7 +92,22 @@
   
 
     
-    
+    <script>
+  // dark → slate (palette index 1); light → default (index 0). setScheme also flips the live
+  // <body> attribute (for runtime toggles); omit it at first paint (Material's inline palette
+  // script applies the scheme from __palette during parse — flash-free).
+  window.__dstackApplyTheme = function (dark, setScheme) {
+    try {
+      if (typeof __md_set === 'function') {
+        __md_set('__palette', { index: dark ? 1 : 0, color: { media: '', scheme: dark ? 'slate' : 'default', primary: 'white', accent: 'lilac' } });
+      }
+      var radio = document.getElementById('__palette_' + (dark ? 1 : 0));
+      if (radio) radio.checked = true;
+      if (setScheme) document.body.setAttribute('data-md-color-scheme', dark ? 'slate' : 'default');
+    } catch (e) {}
+  };
+  try { window.__dstackApplyTheme(localStorage.getItem('dstack-theme') === 'dark', false); } catch (e) {}
+</script>
 <link rel="preload" href="../../../assets/fonts/Geist-Variable.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../../../assets/fonts/GeistMono-Variable.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../../../assets/fonts/GeistPixel-Square.woff2" as="font" type="font/woff2" crossorigin>
@@ -228,7 +243,21 @@
     
     
     
-    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="lilac"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="lilac"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="white" data-md-color-accent="lilac"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
     
   
 </form>
@@ -236,7 +265,9 @@
     
     
       <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
-    
+    <script>
+      try { window.__dstackApplyTheme(localStorage.getItem('dstack-theme') === 'dark', false); } catch (e) {}
+    </script>
     
 
     
@@ -436,6 +467,13 @@
     -->
 
     <div class="md-header__buttons">
+      
+      <button type="button" class="cs-theme-toggle cs-theme-toggle--header" data-cs-theme-toggle aria-label="Toggle light/dark theme">
+        <span class="cs-theme-toggle__track" aria-hidden="true"><span class="cs-theme-toggle__thumb"></span></span>
+        <svg class="cs-theme-toggle__moon" viewBox="0 0 16 16" width="16" height="16" fill="none" aria-hidden="true" focusable="false">
+          <path d="M12.8166 9.79921C12.8417 9.75608 12.7942 9.70771 12.7497 9.73041C11.9008 10.164 10.9392 10.4085 9.92054 10.4085C6.48046 10.4085 3.69172 7.61979 3.69172 4.17971C3.69172 3.16099 3.93628 2.19938 4.36989 1.3504C4.39259 1.30596 4.34423 1.25842 4.3011 1.28351C2.44675 2.36242 1.2002 4.37123 1.2002 6.67119C1.2002 10.1113 3.98893 12.9 7.42901 12.9C9.72893 12.9 11.7377 11.6535 12.8166 9.79921Z" fill="currentColor" stroke="currentColor" stroke-width="2"/>
+        </svg>
+      </button>
       <a href="https://github.com/dstackai/dstack" target="_blank" class="md-button md-button--primary github external-skip">GitHub</a>
       <div class="cs-get-started">
         <button type="button" class="md-button md-button--primary cs-get-started__main" aria-haspopup="true" aria-expanded="false">Get started</button>
@@ -5207,12 +5245,6 @@
     </div>
 
     <div class="tx-footer__bar">
-      <button type="button" class="cs-theme-toggle" data-cs-theme-toggle aria-label="Toggle light/dark theme">
-        <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false">
-          <circle cx="8" cy="8" r="6.5" fill="none" stroke="currentColor" stroke-width="1.5"/>
-          <path d="M8 1.5 A6.5 6.5 0 0 0 8 14.5 Z" fill="currentColor"/>
-        </svg>
-      </button>
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
@@ -5221,6 +5253,14 @@
   
   
 </div>
+      
+      <button type="button" class="cs-theme-toggle cs-theme-toggle--footer" data-cs-theme-toggle aria-label="Toggle light/dark theme">
+        
+        <span class="cs-theme-toggle__track" aria-hidden="true"><span class="cs-theme-toggle__thumb"></span></span>
+        <svg class="cs-theme-toggle__moon" viewBox="0 0 16 16" width="16" height="16" fill="none" aria-hidden="true" focusable="false">
+          <path d="M12.8166 9.79921C12.8417 9.75608 12.7942 9.70771 12.7497 9.73041C11.9008 10.164 10.9392 10.4085 9.92054 10.4085C6.48046 10.4085 3.69172 7.61979 3.69172 4.17971C3.69172 3.16099 3.93628 2.19938 4.36989 1.3504C4.39259 1.30596 4.34423 1.25842 4.3011 1.28351C2.44675 2.36242 1.2002 4.37123 1.2002 6.67119C1.2002 10.1113 3.98893 12.9 7.42901 12.9C9.72893 12.9 11.7377 11.6535 12.8166 9.79921Z" fill="currentColor" stroke="currentColor" stroke-width="2"/>
+        </svg>
+      </button>
     </div>
   </div>
 </footer>
@@ -5263,7 +5303,11 @@
       
         <script src="../../../assets/javascripts/pricing.js"></script>
       
-    
+    <script>
+  window.addEventListener('storage', function (e) {
+    if (e.key === 'dstack-theme') window.__dstackApplyTheme(e.newValue === 'dark', true);
+  });
+</script>
 <script src="https://widget.kapa.ai/kapa-widget.bundle.js"
         data-website-id="1c028b8e-609e-40e3-b792-f3939a461850"
         data-project-name="dstack"
