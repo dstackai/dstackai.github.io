@@ -398,6 +398,25 @@
   
   
   
+    <li class="md-tabs__item">
+      <a href="../../../../blog/benchmarks/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Benchmarks
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
     
     
       <li class="md-tabs__item">
@@ -410,6 +429,25 @@
         </a>
       </li>
     
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="https://discord.gg/u8SmfwPpMd" target="_blank" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Discord
+
+      </a>
+    </li>
   
 
       
@@ -441,7 +479,31 @@
         </svg>
       </button>
       <a href="https://github.com/dstackai/dstack" target="_blank" class="md-button md-button--primary github external-skip">GitHub</a>
-      <a href="https://sky.dstack.ai" target="_blank" class="md-button md-button--primary cs-try-sky external-skip">dstack Sky</a>
+      <div class="cs-get-started">
+        <button type="button" class="md-button md-button--primary cs-get-started__main" aria-haspopup="true" aria-expanded="false">Get started</button>
+        <button type="button" class="md-button md-button--primary cs-get-started__toggle" aria-label="Get started options" aria-expanded="false" aria-haspopup="true">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m7 10 5 5 5-5z"/></svg>
+        </button>
+        <div class="cs-get-started__menu" hidden>
+          <span class="cs-get-started__group">Products</span>
+          <a href="../../../installation/">
+            <span class="cs-get-started__item-title">dstack</span>
+            <span class="cs-get-started__item-desc">The open-source control plane that works across clouds, Kubernetes, and on-prem.</span>
+          </a>
+          <a href="https://sky.dstack.ai" target="_blank">
+            <span class="cs-get-started__item-title">dstack Sky</span>
+            <span class="cs-get-started__item-desc">Access GPU marketplace, or bring your own clouds. Hosted by us.</span>
+          </a>
+          <a href="https://calendly.com/dstackai/discovery-call" target="_blank">
+            <span class="cs-get-started__item-title">dstack Enterprise</span>
+            <span class="cs-get-started__item-desc">Self-hosted with SSO, air-gapped setup, dedicated support, and more.</span>
+          </a>
+          <span class="cs-get-started__group">Login</span>
+          <a href="https://sky.dstack.ai" target="_blank">
+            <span class="cs-get-started__item-title">dstack Sky</span>
+          </a>
+        </div>
+      </div>
     </div>
     <script>
       (function () {
@@ -450,6 +512,19 @@
             document.body.classList.toggle('cs-nav-collapsed');
             // The content column reflows (792↔960), so re-align the right rail's TOC offset.
             window.dispatchEvent(new Event('resize'));
+            return;
+          }
+          var menu = document.querySelector('.cs-get-started__menu');
+          if (!menu) return;
+          var triggers = document.querySelectorAll('.cs-get-started__main, .cs-get-started__toggle');
+          // Both segments open the popup (no default navigation).
+          if (e.target.closest('.cs-get-started__main, .cs-get-started__toggle')) {
+            var hidden = menu.hasAttribute('hidden');
+            menu.toggleAttribute('hidden', !hidden);
+            triggers.forEach(function (t) { t.setAttribute('aria-expanded', String(hidden)); });
+          } else if (!e.target.closest('.cs-get-started__menu')) {
+            menu.setAttribute('hidden', '');
+            triggers.forEach(function (t) { t.setAttribute('aria-expanded', 'false'); });
           }
         });
       })();
@@ -4475,6 +4550,37 @@
   
   
   
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../blog/benchmarks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    <span class="md-typeset">
+      Benchmarks
+    </span>
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
   
     
     
@@ -4490,10 +4596,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
         
           
-          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
             
   
   
@@ -4511,8 +4617,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -4574,10 +4680,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" >
         
           
-          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
             
   
   
@@ -4595,8 +4701,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4_2">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -4713,6 +4819,33 @@
           </ul>
         </nav>
       
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://discord.gg/u8SmfwPpMd" target="_blank" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Discord
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
