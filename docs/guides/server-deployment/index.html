@@ -393,25 +393,6 @@
   
   
   
-    <li class="md-tabs__item">
-      <a href="../../../blog/benchmarks/" class="md-tabs__link">
-        
-  
-  
-    
-  
-  Benchmarks
-
-      </a>
-    </li>
-  
-
-      
-        
-  
-  
-  
-  
     
     
       <li class="md-tabs__item">
@@ -424,25 +405,6 @@
         </a>
       </li>
     
-  
-
-      
-        
-  
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="https://discord.gg/u8SmfwPpMd" target="_blank" class="md-tabs__link">
-        
-  
-  
-    
-  
-  Discord
-
-      </a>
-    </li>
   
 
       
@@ -474,31 +436,7 @@
         </svg>
       </button>
       <a href="https://github.com/dstackai/dstack" target="_blank" class="md-button md-button--primary github external-skip">GitHub</a>
-      <div class="cs-get-started">
-        <button type="button" class="md-button md-button--primary cs-get-started__main" aria-haspopup="true" aria-expanded="false">Get started</button>
-        <button type="button" class="md-button md-button--primary cs-get-started__toggle" aria-label="Get started options" aria-expanded="false" aria-haspopup="true">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m7 10 5 5 5-5z"/></svg>
-        </button>
-        <div class="cs-get-started__menu" hidden>
-          <span class="cs-get-started__group">Products</span>
-          <a href="../../installation/">
-            <span class="cs-get-started__item-title">dstack</span>
-            <span class="cs-get-started__item-desc">The open-source control plane that works across clouds, Kubernetes, and on-prem.</span>
-          </a>
-          <a href="https://sky.dstack.ai" target="_blank">
-            <span class="cs-get-started__item-title">dstack Sky</span>
-            <span class="cs-get-started__item-desc">Access GPU marketplace, or bring your own clouds. Hosted by us.</span>
-          </a>
-          <a href="https://calendly.com/dstackai/discovery-call" target="_blank">
-            <span class="cs-get-started__item-title">dstack Enterprise</span>
-            <span class="cs-get-started__item-desc">Self-hosted with SSO, air-gapped setup, dedicated support, and more.</span>
-          </a>
-          <span class="cs-get-started__group">Login</span>
-          <a href="https://sky.dstack.ai" target="_blank">
-            <span class="cs-get-started__item-title">dstack Sky</span>
-          </a>
-        </div>
-      </div>
+      <a href="https://sky.dstack.ai" target="_blank" class="md-button md-button--primary cs-try-sky external-skip">dstack Sky</a>
     </div>
     <script>
       (function () {
@@ -507,19 +445,6 @@
             document.body.classList.toggle('cs-nav-collapsed');
             // The content column reflows (792↔960), so re-align the right rail's TOC offset.
             window.dispatchEvent(new Event('resize'));
-            return;
-          }
-          var menu = document.querySelector('.cs-get-started__menu');
-          if (!menu) return;
-          var triggers = document.querySelectorAll('.cs-get-started__main, .cs-get-started__toggle');
-          // Both segments open the popup (no default navigation).
-          if (e.target.closest('.cs-get-started__main, .cs-get-started__toggle')) {
-            var hidden = menu.hasAttribute('hidden');
-            menu.toggleAttribute('hidden', !hidden);
-            triggers.forEach(function (t) { t.setAttribute('aria-expanded', String(hidden)); });
-          } else if (!e.target.closest('.cs-get-started__menu')) {
-            menu.setAttribute('hidden', '');
-            triggers.forEach(function (t) { t.setAttribute('aria-expanded', 'false'); });
           }
         });
       })();
@@ -4747,37 +4672,6 @@
   
   
   
-    
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../blog/benchmarks/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    <span class="md-typeset">
-      Benchmarks
-    </span>
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
   
     
     
@@ -4793,10 +4687,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
         
           
-          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
             
   
   
@@ -4814,8 +4708,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_5">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -4877,10 +4771,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
         
           
-          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
             
   
   
@@ -4898,8 +4792,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_5_2">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -5016,33 +4910,6 @@
           </ul>
         </nav>
       
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="https://discord.gg/u8SmfwPpMd" target="_blank" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Discord
-  
-
-    
-  </span>
-  
-  
-
-      </a>
     </li>
   
 
@@ -5464,7 +5331,12 @@
   <h1>Server deployment</h1>
 
 <p>The <code>dstack</code> server can run on your laptop or any environment with access to the cloud and on-prem clusters you plan to use.</p>
-<p>The minimum hardware requirements for running the server are 1 CPU and 1GB of RAM.</p>
+<details class="info">
+<summary>Hardware requirements</summary>
+<p>The minimum hardware requirements for running the server are 1 CPU and 1GB of RAM. The recommended RAM is
+"8MB × number of active instances". For example, a server with 1000 active instances should have 8GB of RAM.
+You can set the <code>DSTACK_SERVER_SSH_POOL_DISABLED</code> env var to minimize RAM usage at the expense of slower processing.</p>
+</details>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="pip" name="__tabbed_1" type="radio" /><input id="uv" name="__tabbed_1" type="radio" /><input id="docker" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="pip">pip</label><label for="uv">uv</label><label for="docker">Docker</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -5499,7 +5371,7 @@ The<span class="w"> </span>server<span class="w"> </span>is<span class="w"> </sp
 </div>
 <div class="tabbed-block">
 <blockquote>
-<p>To deploy the server most reliably, it's recommended to use <code>dstackai/dstack</code> Docker image.</p>
+<p>For production deployments, it's recommended to use <code>dstackai/dstack</code> Docker image.</p>
 </blockquote>
 <div class="termy">
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </span>-p<span class="w"> </span><span class="m">3000</span>:3000<span class="w"> </span><span class="se">\</span>
