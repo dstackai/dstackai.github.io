@@ -1190,6 +1190,19 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#instances" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Instances
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#idle-duration" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -5121,6 +5134,19 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#instances" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Instances
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#idle-duration" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -6071,6 +6097,31 @@ it does not block other runs with lower priority from scheduling.</p>
 <h3 id="spot-policy">Spot policy<a class="headerlink" href="#spot-policy" title="Permanent link">&para;</a></h3>
 <p>By default, <code>dstack</code> uses on-demand instances. However, you can change that
 via the <a href="../../reference/dstack.yml/task/#spot_policy"><code>spot_policy</code></a> property. It accepts <code>spot</code>, <code>on-demand</code>, and <code>auto</code>.</p>
+<h3 id="instances">Instances<a class="headerlink" href="#instances" title="Permanent link">&para;</a></h3>
+<p>Use <code>instances</code> to restrict a run to particular existing fleet instances. You can specify
+instance names, hostnames or IP addresses, or a fleet name with an instance number.
+For the <code>fleet</code> form, use <code>&lt;project&gt;/&lt;fleet&gt;</code> when the fleet belongs to another project:</p>
+<div editor-title=".dstack.yml">
+
+<div class="highlight"><pre><span></span><code><span class="nt">instances</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my-fleet-3</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">hostname</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">203.0.113.10</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">fleet</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my-fleet</span>
+<span class="w">    </span><span class="nt">instance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
+</code></pre></div>
+
+</div>
+
+<details class="info">
+<summary>Short syntax</summary>
+<p>To match by instance name, you can use the string shorthand:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">instances</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my-fleet-3</span>
+</code></pre></div>
+</details>
+<p>When <code>instances</code> is set, the run is only placed on a matching existing instance and <code>dstack</code>
+never provisions new instances. If no matching instance is available, the run fails with a
+no-capacity error (use <code>retry</code> to wait for a targeted instance to free up).</p>
 <h3 id="idle-duration">Idle duration<a class="headerlink" href="#idle-duration" title="Permanent link">&para;</a></h3>
 <p>If the run is submitted to a fleet with <code>nodes</code> set to a range and a new instance is provisioned,
 the shorter of the fleet's and run's <code>idle_duration</code> is used.
