@@ -19,7 +19,7 @@ It streamlines development, training, and inference, and is compatible with any 
 <!-- Architecture diagram — ported from the new landing's <ArchitectureDiagram> component.
      Styles live in mkdocs/assets/stylesheets/cloudscape-docs.css (.arch-*). If the landing
      diagram changes (website/src/components/ArchitectureDiagram.tsx), update this markup + CSS. -->
-<div class="arch-diagram-wrap"><div class="arch-diagram" role="img" aria-label="dstack architecture: an orchestration layer between AI frameworks, data, and models on top, and GPU clouds, Kubernetes, on-prem clusters, and hardware below."><div class="arch-row"><div class="arch-cell"><svg class="arch-dash" aria-hidden="true"><rect/></svg><span class="arch-cell__label">Any framework</span><span class="arch-logos"><span class="arch-logo arch-logo--pytorch" role="img" aria-label="PyTorch"></span><span class="arch-logo arch-logo--vllm" role="img" aria-label="vLLM"></span><span class="arch-logo arch-logo--sglang" role="img" aria-label="SGLang"></span><span class="arch-logo arch-logo--meta" role="img" aria-label="Meta"></span><span class="arch-logo arch-logo--huggingface" role="img" aria-label="Hugging Face"></span></span></div><div class="arch-cell arch-cell--center"><svg class="arch-dash" aria-hidden="true"><rect/></svg><span class="arch-cell__label">Your data</span></div><div class="arch-cell arch-cell--center"><svg class="arch-dash" aria-hidden="true"><rect/></svg><span class="arch-cell__label">Any models</span></div></div><div class="arch-orchestration"><div class="arch-orchestration__title">The AI-native orchestration stack</div><div class="arch-orchestration__cells"><div class="arch-subcell"><svg class="arch-dash" aria-hidden="true"><rect/></svg>Fleets</div><div class="arch-subcell"><svg class="arch-dash" aria-hidden="true"><rect/></svg>Dev environments</div><div class="arch-subcell"><svg class="arch-dash" aria-hidden="true"><rect/></svg>Tasks</div><div class="arch-subcell"><svg class="arch-dash" aria-hidden="true"><rect/></svg>Services</div><div class="arch-subcell"><svg class="arch-dash" aria-hidden="true"><rect/></svg>Volumes</div></div></div><div class="arch-row"><div class="arch-cell arch-cell--gpu"><svg class="arch-dash" aria-hidden="true"><rect/></svg><span class="arch-logos"><span class="arch-logo arch-logo--aws" role="img" aria-label="AWS"></span><span class="arch-logo arch-logo--gcp" role="img" aria-label="Google Cloud"></span><span class="arch-logo arch-logo--lambda" role="img" aria-label="Lambda"></span><span class="arch-logo arch-logo--nebius" role="img" aria-label="Nebius"></span><span class="arch-logo arch-logo--runpod" role="img" aria-label="RunPod"></span></span><span class="arch-cell__label">Any cloud</span></div><div class="arch-cell"><svg class="arch-dash" aria-hidden="true"><rect/></svg><span class="arch-logos"><span class="arch-logo arch-logo--kubernetes" role="img" aria-label="Kubernetes"></span></span><span class="arch-cell__label">Kubernetes</span></div><div class="arch-cell arch-cell--center"><svg class="arch-dash" aria-hidden="true"><rect/></svg><span class="arch-cell__label">On-prem clusters</span></div></div><div class="arch-cell arch-cell--full arch-cell--hw"><svg class="arch-dash" aria-hidden="true"><rect/></svg><span class="arch-cell__label">Any hardware</span><span class="arch-logos"><span class="arch-logo arch-logo--nvidia" role="img" aria-label="NVIDIA"></span><span class="arch-logo arch-logo--amd" role="img" aria-label="AMD"></span><span class="arch-logo arch-logo--tenstorrent" role="img" aria-label="Tenstorrent"></span><span class="arch-logo arch-logo--tpu" role="img" aria-label="Google TPU"></span></span></div></div></div>
+<div class="arch-diagram-wrap"><div class="arch-diagram" role="img" aria-label="dstack architecture: an orchestration layer between AI frameworks and models on top, and GPU clouds, Kubernetes, on-prem clusters, and hardware below."><div class="arch-row"><div class="arch-cell"><svg class="arch-dash" aria-hidden="true"><rect/></svg><span class="arch-cell__label">Any framework</span><span class="arch-logos"><span class="arch-logo arch-logo--pytorch" role="img" aria-label="PyTorch"></span><span class="arch-logo arch-logo--vllm" role="img" aria-label="vLLM"></span><span class="arch-logo arch-logo--sglang" role="img" aria-label="SGLang"></span><span class="arch-logo arch-logo--meta" role="img" aria-label="Meta"></span><span class="arch-logo arch-logo--huggingface" role="img" aria-label="Hugging Face"></span></span></div><div class="arch-cell arch-cell--model"><svg class="arch-dash" aria-hidden="true"><rect/></svg><span class="arch-cell__label">Any model</span><span class="arch-logos"><span class="arch-logo arch-logo--glm" role="img" aria-label="GLM"></span><span class="arch-logo arch-logo--deepseek" role="img" aria-label="DeepSeek"></span><span class="arch-logo arch-logo--qwen" role="img" aria-label="Qwen"></span><span class="arch-logo arch-logo--kimi" role="img" aria-label="Kimi"></span></span></div></div><div class="arch-orchestration"><div class="arch-orchestration__title"><span>dstack orchestration</span><span class="arch-logo arch-logo--docker" role="img" aria-label="Docker"></span></div><div class="arch-orchestration__cells"><div class="arch-subcell"><svg class="arch-dash" aria-hidden="true"><rect/></svg>Fleets</div><div class="arch-subcell"><svg class="arch-dash" aria-hidden="true"><rect/></svg>Dev environments</div><div class="arch-subcell"><svg class="arch-dash" aria-hidden="true"><rect/></svg>Tasks</div><div class="arch-subcell"><svg class="arch-dash" aria-hidden="true"><rect/></svg>Services</div><div class="arch-subcell"><svg class="arch-dash" aria-hidden="true"><rect/></svg>Volumes</div></div></div><div class="arch-row"><div class="arch-cell arch-cell--gpu"><svg class="arch-dash" aria-hidden="true"><rect/></svg><span class="arch-logos"><span class="arch-logo arch-logo--aws" role="img" aria-label="AWS"></span><span class="arch-logo arch-logo--gcp" role="img" aria-label="Google Cloud"></span><span class="arch-logo arch-logo--lambda" role="img" aria-label="Lambda"></span><span class="arch-logo arch-logo--nebius" role="img" aria-label="Nebius"></span><span class="arch-logo arch-logo--runpod" role="img" aria-label="RunPod"></span></span><span class="arch-cell__label">Any cloud</span></div><div class="arch-cell"><svg class="arch-dash" aria-hidden="true"><rect/></svg><span class="arch-logos"><span class="arch-logo arch-logo--kubernetes" role="img" aria-label="Kubernetes"></span></span><span class="arch-cell__label">Kubernetes</span></div><div class="arch-cell arch-cell--center"><svg class="arch-dash" aria-hidden="true"><rect/></svg><span class="arch-cell__label">On-prem clusters</span></div></div><div class="arch-cell arch-cell--full arch-cell--hw"><svg class="arch-dash" aria-hidden="true"><rect/></svg><span class="arch-cell__label">Any hardware</span><span class="arch-logos"><span class="arch-logo arch-logo--nvidia" role="img" aria-label="NVIDIA"></span><span class="arch-logo arch-logo--amd" role="img" aria-label="AMD"></span><span class="arch-logo arch-logo--tenstorrent" role="img" aria-label="Tenstorrent"></span><span class="arch-logo arch-logo--tpu" role="img" aria-label="Google TPU"></span></span></div></div></div>
 
 ### Set up the server
 
@@ -4457,7 +4457,10 @@ Below is an example for running `zai-org/GLM-4.5-Air-FP8` on `H200`:
 
     </div>
 
-    > With the `sglang` router, you can use SGLang prefill and decode workers. Support for vLLM and TensorRT-LLM workers is coming soon.
+    > SMG workers connect to the router over HTTP or gRPC. The example above uses HTTP. SGLang workers support both modes; vLLM workers support gRPC only.
+
+    ??? info "gRPC mode"
+        Over gRPC, workers run from SMG images that bundle a specific backend version (SGLang or vLLM), and `smg launch` needs `--enable-igw` and `--model-path` so the router can register the workers. See the full configurations in [SGLang PD disaggregation](../examples/inference/sglang.md#pd-disaggregation) and [vLLM PD disaggregation](../examples/inference/vllm.md#pd-disaggregation).
 
 === "Dynamo"
 
@@ -13533,7 +13536,80 @@ To run SGLang with [PD disaggregation](https://docs.sglang.io/advanced_features/
 
     </div>
 
-    > With the `sglang` router, you can use SGLang prefill and decode workers. Support for vLLM and TensorRT-LLM workers is coming soon.
+    ??? info "gRPC mode"
+
+        SGLang workers can also connect to the SMG router over gRPC. Run the workers from an SMG image that bundles the SGLang version, pass `--grpc-mode`, and add `--enable-igw` and `--model-path` to `smg launch` so the router can register them.
+
+        <div editor-title="pd-grpc.dstack.yml">
+
+        ```yaml
+        type: service
+        name: prefill-decode
+
+        env:
+          - HF_TOKEN
+          - MODEL_ID=zai-org/GLM-4.5-Air-FP8
+
+        replicas:
+          - count: 1
+            # For now replica group with router must have count: 1
+            python: "3.12"
+            commands:
+              - pip install smg
+              - |
+                smg launch \
+                  --enable-igw \
+                  --pd-disaggregation \
+                  --model-path $MODEL_ID \
+                  --host 0.0.0.0 \
+                  --port 8000 \
+                  --prefill-policy cache_aware
+            router:
+              type: sglang
+            resources:
+              cpu: 4
+
+          - count: 1..4
+            scaling:
+              metric: rps
+              target: 3
+            image: ghcr.io/lightseekorg/smg:1.4.1-sglang-v0.5.10
+            commands:
+              - |
+                python3 -m sglang.launch_server \
+                  --model-path $MODEL_ID \
+                  --host 0.0.0.0 \
+                  --port 8000 \
+                  --grpc-mode \
+                  --disaggregation-mode prefill \
+                  --disaggregation-transfer-backend nixl \
+                  --disaggregation-bootstrap-port 8998
+            resources:
+              gpu: H200
+
+          - count: 1..8
+            scaling:
+              metric: rps
+              target: 2
+            image: ghcr.io/lightseekorg/smg:1.4.1-sglang-v0.5.10
+            commands:
+              - |
+                python3 -m sglang.launch_server \
+                  --model-path $MODEL_ID \
+                  --host 0.0.0.0 \
+                  --port 8000 \
+                  --grpc-mode \
+                  --disaggregation-mode decode \
+                  --disaggregation-transfer-backend nixl
+            resources:
+              gpu: H200
+
+        port: 8000
+        ```
+
+        </div>
+
+        To use the [Mooncake](https://github.com/kvcache-ai/Mooncake) transfer backend, set `--disaggregation-transfer-backend mooncake`.
 
 === "AMD"
 
@@ -13952,6 +14028,84 @@ curl http://127.0.0.1:3000/proxy/services/main/qwen36/v1/chat/completions \
 </div>
 
 > If a [gateway](../../concepts/gateways.md) is configured (e.g. to enable auto-scaling, HTTPS, rate limits, etc.), the service endpoint will be available at `https://qwen36.<gateway domain>/`.
+
+## Configuration options
+
+### PD disaggregation
+
+To run vLLM with [PD disaggregation](https://docs.vllm.ai/en/latest/serving/disagg_prefill.html), use replica groups: one for [Shepherd Model Gateway (SMG)](https://docs.sglang.io/advanced_features/sgl_model_gateway.html), one for prefill workers, and one for decode workers.
+
+<div editor-title="pd.dstack.yml">
+
+```yaml
+type: service
+name: prefill-decode
+
+env:
+  - HF_TOKEN
+  - MODEL_ID=zai-org/GLM-4.5-Air-FP8
+
+replicas:
+  - count: 1
+    python: "3.12"
+    commands:
+      - pip install smg
+      - |
+        smg launch \
+          --pd-disaggregation \
+          --model-path $MODEL_ID \
+          --enable-igw \
+          --host 0.0.0.0 \
+          --port 8000 \
+          --prefill-policy cache_aware
+    router:
+      type: sglang
+    resources:
+      cpu: 4
+
+  - count: 1..4
+    scaling:
+      metric: rps
+      target: 3
+    image: ghcr.io/lightseekorg/smg:1.4.1-vllm-v0.18.0
+    commands:
+      - |
+        python3 -m vllm.entrypoints.grpc_server \
+          --model "$MODEL_ID" \
+          --host 0.0.0.0 \
+          --port 8000 \
+          --kv-transfer-config '{"kv_connector":"NixlConnector","kv_role":"kv_producer"}'
+    resources:
+      gpu: H200
+
+  - count: 1..8
+    scaling:
+      metric: rps
+      target: 2
+    image: ghcr.io/lightseekorg/smg:1.4.1-vllm-v0.18.0
+    commands:
+      - |
+        python3 -m vllm.entrypoints.grpc_server \
+          --model "$MODEL_ID" \
+          --host 0.0.0.0 \
+          --port 8000 \
+          --kv-transfer-config '{"kv_connector":"NixlConnector","kv_role":"kv_consumer"}'
+    resources:
+      gpu: H200
+
+port: 8000
+```
+
+</div>
+
+> To use the [Mooncake Transfer](https://github.com/kvcache-ai/Mooncake) backend, set `"kv_connector": "MooncakeConnector"` in `--kv-transfer-config`.
+
+Currently, auto-scaling only supports `rps` as the metric. TTFT and ITL metrics are coming soon.
+
+!!! info "Cluster"
+    PD disaggregation requires the service to run in a fleet with `placement` set to `cluster`, because the replicas require an interconnect between instances.
+
+    While the prefill and decode replicas run on GPUs, the router replica requires a CPU instance in the same cluster.
 
 ## What's next?
 

@@ -461,22 +461,22 @@
             </span>
           </a>
           <div class="cs-gs-menu__list">
-            <a class="cs-gs-menu__row external-skip" role="menuitem" href="https://sky.dstack.ai" target="_blank" rel="noreferrer">
-              <span class="cs-gs-menu__ic" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14.899A6 6 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 .5 8.973"/><path d="M12 12v8"/><path d="m8 16 4-4 4 4"/></svg>
-              </span>
-              <span class="cs-gs-menu__rbody">
-                <span class="cs-gs-menu__name">dstack Sky</span>
-                <span class="cs-gs-menu__desc">Access GPU marketplace, or bring your own clouds. Hosted and managed by us.</span>
-              </span>
-            </a>
             <a class="cs-gs-menu__row external-skip" role="menuitem" href="https://calendly.com/dstackai/discovery-call" target="_blank" rel="noreferrer">
               <span class="cs-gs-menu__ic" aria-hidden="true">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 10a2 2 0 0 0-2 2c0 1.5.4 3 1 4.3"/><path d="M12 6.5A5.5 5.5 0 0 0 6.5 12c0 2 .4 3.5 1.1 5"/><path d="M12 14v3.5"/><path d="M15.6 8.4A5.5 5.5 0 0 1 17.5 12c0 2.2-.5 4.3-1.3 6"/><path d="M12 3a9 9 0 0 0-9 9"/><path d="M21 12a9 9 0 0 0-3-6.7"/></svg>
               </span>
               <span class="cs-gs-menu__rbody">
-                <span class="cs-gs-menu__name">Enterprise</span>
+                <span class="cs-gs-menu__name">Enterprise<span class="cs-gs-menu__ext" aria-hidden="true"></span></span>
                 <span class="cs-gs-menu__desc">Self-hosted with SSO, air-gapped setup, dedicated support, and more.</span>
+              </span>
+            </a>
+            <a class="cs-gs-menu__row external-skip" role="menuitem" href="https://sky.dstack.ai" target="_blank" rel="noreferrer">
+              <span class="cs-gs-menu__ic" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14.899A6 6 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 .5 8.973"/><path d="M12 12v8"/><path d="m8 16 4-4 4 4"/></svg>
+              </span>
+              <span class="cs-gs-menu__rbody">
+                <span class="cs-gs-menu__name">dstack Sky<span class="cs-gs-menu__ext" aria-hidden="true"></span></span>
+                <span class="cs-gs-menu__desc">Access GPU marketplace, or bring your own clouds. Hosted and managed by us.</span>
               </span>
             </a>
           </div>
@@ -492,6 +492,27 @@
             window.dispatchEvent(new Event('resize'));
           }
         });
+
+        // "Get started" popup: click the trigger to toggle it; click anywhere outside (or the
+        // trigger again, or Escape) to close it.
+        var gsMenu = document.querySelector('.cs-gs-menu');
+        var gsTrigger = gsMenu && gsMenu.querySelector('.cs-gs-menu__trigger');
+        if (gsMenu && gsTrigger) {
+          var gsSetOpen = function (open) {
+            gsMenu.classList.toggle('cs-gs-menu--open', open);
+            gsTrigger.setAttribute('aria-expanded', open ? 'true' : 'false');
+          };
+          gsTrigger.addEventListener('click', function (e) {
+            e.stopPropagation();
+            gsSetOpen(!gsMenu.classList.contains('cs-gs-menu--open'));
+          });
+          document.addEventListener('click', function (e) {
+            if (!gsMenu.contains(e.target)) gsSetOpen(false);
+          });
+          document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') gsSetOpen(false);
+          });
+        }
 
         // Live GitHub star count under the "Get started" popup's open-source icon (mirrors the
         // landing). Best-effort: if the API is rate-limited or errors, the badge stays hidden.
@@ -2272,6 +2293,38 @@
       
     </span>
   </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration-options" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Configuration options
+        </span>
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuration options">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pd-disaggregation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          PD disaggregation
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -4744,6 +4797,38 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#configuration-options" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Configuration options
+        </span>
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuration options">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pd-disaggregation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          PD disaggregation
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#whats-next" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -4977,6 +5062,80 @@ calling, add <code>--enable-auto-tool-choice --tool-call-parser qwen3_coder</cod
 <blockquote>
 <p>If a <a href="../../../concepts/gateways/">gateway</a> is configured (e.g. to enable auto-scaling, HTTPS, rate limits, etc.), the service endpoint will be available at <code>https://qwen36.&lt;gateway domain&gt;/</code>.</p>
 </blockquote>
+<h2 id="configuration-options">Configuration options<a class="headerlink" href="#configuration-options" title="Permanent link">&para;</a></h2>
+<h3 id="pd-disaggregation">PD disaggregation<a class="headerlink" href="#pd-disaggregation" title="Permanent link">&para;</a></h3>
+<p>To run vLLM with <a href="https://docs.vllm.ai/en/latest/serving/disagg_prefill.html">PD disaggregation</a>, use replica groups: one for <a href="https://docs.sglang.io/advanced_features/sgl_model_gateway.html">Shepherd Model Gateway (SMG)</a>, one for prefill workers, and one for decode workers.</p>
+<div editor-title="pd.dstack.yml">
+
+<div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service</span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prefill-decode</span>
+
+<span class="nt">env</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HF_TOKEN</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MODEL_ID=zai-org/GLM-4.5-Air-FP8</span>
+
+<span class="nt">replicas</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">count</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">    </span><span class="nt">python</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;3.12&quot;</span>
+<span class="w">    </span><span class="nt">commands</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip install smg</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">        </span><span class="no">smg launch \</span>
+<span class="w">          </span><span class="no">--pd-disaggregation \</span>
+<span class="w">          </span><span class="no">--model-path $MODEL_ID \</span>
+<span class="w">          </span><span class="no">--enable-igw \</span>
+<span class="w">          </span><span class="no">--host 0.0.0.0 \</span>
+<span class="w">          </span><span class="no">--port 8000 \</span>
+<span class="w">          </span><span class="no">--prefill-policy cache_aware</span>
+<span class="w">    </span><span class="nt">router</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sglang</span>
+<span class="w">    </span><span class="nt">resources</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4</span>
+
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">count</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1..4</span>
+<span class="w">    </span><span class="nt">scaling</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">metric</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rps</span>
+<span class="w">      </span><span class="nt">target</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ghcr.io/lightseekorg/smg:1.4.1-vllm-v0.18.0</span>
+<span class="w">    </span><span class="nt">commands</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">        </span><span class="no">python3 -m vllm.entrypoints.grpc_server \</span>
+<span class="w">          </span><span class="no">--model &quot;$MODEL_ID&quot; \</span>
+<span class="w">          </span><span class="no">--host 0.0.0.0 \</span>
+<span class="w">          </span><span class="no">--port 8000 \</span>
+<span class="w">          </span><span class="no">--kv-transfer-config &#39;{&quot;kv_connector&quot;:&quot;NixlConnector&quot;,&quot;kv_role&quot;:&quot;kv_producer&quot;}&#39;</span>
+<span class="w">    </span><span class="nt">resources</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">H200</span>
+
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">count</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1..8</span>
+<span class="w">    </span><span class="nt">scaling</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">metric</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rps</span>
+<span class="w">      </span><span class="nt">target</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ghcr.io/lightseekorg/smg:1.4.1-vllm-v0.18.0</span>
+<span class="w">    </span><span class="nt">commands</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">        </span><span class="no">python3 -m vllm.entrypoints.grpc_server \</span>
+<span class="w">          </span><span class="no">--model &quot;$MODEL_ID&quot; \</span>
+<span class="w">          </span><span class="no">--host 0.0.0.0 \</span>
+<span class="w">          </span><span class="no">--port 8000 \</span>
+<span class="w">          </span><span class="no">--kv-transfer-config &#39;{&quot;kv_connector&quot;:&quot;NixlConnector&quot;,&quot;kv_role&quot;:&quot;kv_consumer&quot;}&#39;</span>
+<span class="w">    </span><span class="nt">resources</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">H200</span>
+
+<span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8000</span>
+</code></pre></div>
+
+</div>
+
+<blockquote>
+<p>To use the <a href="https://github.com/kvcache-ai/Mooncake">Mooncake Transfer</a> backend, set <code>"kv_connector": "MooncakeConnector"</code> in <code>--kv-transfer-config</code>.</p>
+</blockquote>
+<p>Currently, auto-scaling only supports <code>rps</code> as the metric. TTFT and ITL metrics are coming soon.</p>
+<div class="admonition info">
+<p class="admonition-title">Cluster</p>
+<p>PD disaggregation requires the service to run in a fleet with <code>placement</code> set to <code>cluster</code>, because the replicas require an interconnect between instances.</p>
+<p>While the prefill and decode replicas run on GPUs, the router replica requires a CPU instance in the same cluster.</p>
+</div>
 <h2 id="whats-next">What's next?<a class="headerlink" href="#whats-next" title="Permanent link">&para;</a></h2>
 <ol>
 <li>Read about <a href="../../../concepts/services/">services</a> and <a href="../../../concepts/gateways/">gateways</a></li>
