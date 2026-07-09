@@ -5225,8 +5225,8 @@ The<span class="w"> </span>example-gateway<span class="w"> </span>doesn<span cla
 Provisioning...
 ---&gt;<span class="w"> </span><span class="m">100</span>%
 
-<span class="w"> </span>BACKEND<span class="w">  </span>REGION<span class="w">     </span>NAME<span class="w">             </span>HOSTNAME<span class="w">  </span>DOMAIN<span class="w">       </span>DEFAULT<span class="w">  </span>STATUS
-<span class="w"> </span>aws<span class="w">      </span>eu-west-1<span class="w">  </span>example-gateway<span class="w">            </span>example.com<span class="w">  </span>✓<span class="w">        </span>submitted
+<span class="w"> </span>NAME<span class="w">             </span>BACKEND<span class="w">          </span>HOSTNAME<span class="w">       </span>DOMAIN<span class="w">       </span>DEFAULT<span class="w">  </span>STATUS
+<span class="w"> </span>example-gateway<span class="w">  </span>aws<span class="w"> </span><span class="o">(</span>eu-west-1<span class="o">)</span><span class="w">  </span><span class="m">34</span>.244.128.46<span class="w">  </span>example.com<span class="w">  </span>✓<span class="w">        </span>running
 </code></pre></div>
 
 </div>
@@ -5374,8 +5374,8 @@ If you configure the `sglang` router, [services](../concepts/services.md) can ru
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>dstack<span class="w"> </span>gateway<span class="w"> </span>list
 <span class="w"> </span>NAME<span class="w">             </span>BACKEND<span class="w">          </span>HOSTNAME<span class="w">        </span>DOMAIN<span class="w">       </span>DEFAULT<span class="w">  </span>STATUS
 <span class="w"> </span>example-gateway<span class="w">                                   </span>example.com<span class="w">  </span>✓<span class="w">        </span>running
-<span class="w">    </span><span class="nv">replica</span><span class="o">=</span><span class="m">0</span><span class="w">     </span>aws<span class="w"> </span><span class="o">(</span>eu-west-1<span class="o">)</span><span class="w">  </span><span class="m">34</span>.244.128.46
-<span class="w">    </span><span class="nv">replica</span><span class="o">=</span><span class="m">1</span><span class="w">     </span>aws<span class="w"> </span><span class="o">(</span>eu-west-1<span class="o">)</span><span class="w">  </span><span class="m">18</span>.201.201.174
+<span class="w">    </span><span class="nv">replica</span><span class="o">=</span><span class="m">0</span><span class="w">     </span>aws<span class="w"> </span><span class="o">(</span>eu-west-1<span class="o">)</span><span class="w">  </span><span class="m">34</span>.244.128.46<span class="w">                         </span>running
+<span class="w">    </span><span class="nv">replica</span><span class="o">=</span><span class="m">1</span><span class="w">     </span>aws<span class="w"> </span><span class="o">(</span>eu-west-1<span class="o">)</span><span class="w">  </span><span class="m">18</span>.201.201.174<span class="w">                        </span>running
 </code></pre></div>
 
 </div>

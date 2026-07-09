@@ -1159,6 +1159,19 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#slurm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Slurm
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#runpod" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -5206,6 +5219,19 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#slurm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Slurm
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#runpod" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -6494,6 +6520,103 @@ specify the contents of the <code>kubeconfig</code> file in <code>data</code>:</
 <blockquote>
 <p>To learn more, see the <a href="../examples/clusters/lambda/#kubernetes">Lambda</a> and <a href="../examples/clusters/crusoe/#kubernetes">Crusoe</a> examples.</p>
 </blockquote>
+<h3 id="slurm">Slurm<a class="headerlink" href="#slurm" title="Permanent link">&para;</a></h3>
+<p><code>dstack</code> can orchestrate container-based runs across your <a href="https://slurm.schedmd.com/">Slurm</a> clusters. A single <code>slurm</code> backend can manage one or many clusters — <code>dstack</code> connects to each cluster's login node over SSH and submits runs as Slurm jobs. Each cluster becomes its own <code>dstack</code> region, named after the cluster.</p>
+<div editor-title="~/.dstack/server/config.yml">
+
+<div class="highlight"><pre><span></span><code><span class="nt">projects</span><span class="p">:</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">main</span>
+<span class="w">  </span><span class="nt">backends</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">slurm</span>
+
+<span class="w">    </span><span class="nt">clusters</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gpu-cluster-a</span>
+<span class="w">      </span><span class="nt">hostname</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">login.example.com</span>
+<span class="w">      </span><span class="nt">user</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">admin</span>
+<span class="w">      </span><span class="nt">private_key</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">~/.ssh/id_rsa</span>
+
+<span class="w">      </span><span class="nt">gpu_partitions</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">H100</span>
+<span class="w">        </span><span class="nt">partitions</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">gpu</span><span class="p p-Indicator">]</span>
+</code></pre></div>
+
+</div>
+
+<p><code>dstack</code> logs in to <code>hostname</code> as <code>user</code> using <code>private_key</code>, and uses this login node both to submit jobs and as an SSH jump host to reach the containers — no additional setup is required.</p>
+<div class="admonition info">
+<p class="admonition-title">Prerequisites</p>
+<p><code>dstack</code> runs each job as a Slurm batch job that launches the run's container via the <a href="https://github.com/NVIDIA/pyxis">Pyxis</a> SPANK plugin and the <a href="https://github.com/NVIDIA/enroot">enroot</a> container runtime. Both must be installed and configured on the cluster's compute nodes.</p>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Partitions</p>
+<p><code>dstack</code> selects which Slurm partitions to submit to based on whether a run requests GPUs:</p>
+<ul>
+<li><code>gpu_partitions</code> maps a GPU model, in the <code>[vendor:]name[:memory]</code> format (e.g. <code>H100</code>, <code>A100:40GB</code>, <code>MI300X</code>), to the partitions that provide it. Only partitions listed here are used for GPU runs. If <code>gpu_partitions</code> is not set, GPU runs are not allowed.</li>
+<li><code>cpu_partitions</code> lists the partitions used for CPU-only runs. If not set, it defaults to all cluster partitions except those listed in <code>gpu_partitions</code>.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="nt">clusters</span><span class="p">:</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gpu-cluster-a</span>
+<span class="w">  </span><span class="nt">hostname</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">login.example.com</span>
+<span class="w">  </span><span class="nt">user</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">admin</span>
+<span class="w">  </span><span class="nt">private_key</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">~/.ssh/id_rsa</span>
+<span class="w">  </span><span class="nt">gpu_partitions</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">H100</span>
+<span class="w">    </span><span class="nt">partitions</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">gpu-h100</span><span class="p p-Indicator">]</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">A100:40GB</span>
+<span class="w">    </span><span class="nt">partitions</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">gpu-a100</span><span class="p p-Indicator">]</span>
+<span class="w">  </span><span class="nt">cpu_partitions</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">cpu</span><span class="p p-Indicator">]</span>
+</code></pre></div>
+<p>Partitions are exposed as availability zones, so a run can target specific partitions via the <code>availability_zones</code> property in its configuration:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">task</span>
+<span class="nt">availability_zones</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">gpu-h100</span><span class="p p-Indicator">]</span>
+</code></pre></div>
+<p>The partitions selected by default (the <code>gpu_partitions</code> for a GPU run, or the <code>cpu_partitions</code> for a CPU-only run) act as a bounding set: <code>availability_zones</code> can only narrow this set, not extend it — a partition outside it is never used. When <code>availability_zones</code> is not set, all default-selected partitions are eligible.</p>
+</div>
+<div class="admonition info">
+<p class="admonition-title">GPU model syntax</p>
+<p>The <code>gpu</code> field accepts the <code>[vendor:]name[:memory]</code> format. In most cases the name alone is enough: <code>dstack</code> matches it against its list of known GPU models, inferring the vendor and memory size and normalizing the name so it stays consistent with other backends (e.g. <code>RTX 4090</code> becomes <code>RTX4090</code>).</p>
+<p>Specify the memory size only when a model comes in several memory variants — for example <code>A100:40GB</code> versus <code>A100:80GB</code> — otherwise the name is ambiguous and configuration fails.</p>
+<p>The full <code>vendor:name:memory</code> form (e.g. <code>nvidia:A100:80GB</code>) bypasses this matching and normalization, so it can describe models <code>dstack</code> doesn't know about. It's used verbatim and requires all three fields. Prefer the short form where possible — it's easier and keeps GPU names consistent across backends.</p>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Region</p>
+<p>Each enabled cluster becomes its own <code>dstack</code> region, named after the cluster's <code>name</code>. Use the <code>region</code> field in fleet or run configurations to target a specific cluster.</p>
+</div>
+<details class="info">
+<summary>User interface</summary>
+<p>If you are configuring the <code>slurm</code> backend on the <a href="../projects/#backends">project settings page</a>, specify the contents of the private key in <code>content</code> instead of referencing a <code>path</code>:</p>
+<div editor-title="~/.dstack/server/config.yml">
+<div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">slurm</span>
+
+<span class="nt">clusters</span><span class="p">:</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gpu-cluster-a</span>
+<span class="w">  </span><span class="nt">hostname</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">login.example.com</span>
+<span class="w">  </span><span class="nt">user</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">admin</span>
+<span class="w">  </span><span class="nt">private_key</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">content</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">      </span><span class="no">-----BEGIN OPENSSH PRIVATE KEY-----</span>
+<span class="w">      </span><span class="no">...</span>
+<span class="w">      </span><span class="no">-----END OPENSSH PRIVATE KEY-----</span>
+<span class="w">  </span><span class="nt">gpu_partitions</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">H100</span>
+<span class="w">    </span><span class="nt">partitions</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">gpu</span><span class="p p-Indicator">]</span>
+</code></pre></div>
+</div>
+</details>
+<details class="info">
+<summary>Resources and offers</summary>
+<p>Like the <code>kubernetes</code> backend, if you use ranges with <a href="../tasks/#resources"><code>resources</code></a> (e.g. <code>gpu: 1..8</code> or <code>memory: 64GB..</code>) in fleet or run configurations, the <code>slurm</code> backend only requests the lower limit of each range — the upper limit is ignored. The requested CPU, memory, and GPU counts are passed to Slurm as <code>--cpus-per-task</code>, <code>--mem</code>, and <code>--gres=gpu:&lt;count&gt;</code> respectively.</p>
+</details>
+<div class="admonition warning">
+<p class="admonition-title">Known limitations</p>
+<ul>
+<li><strong>One <code>dstack</code> job per node.</strong> A <code>dstack</code> job can share a node with non-<code>dstack</code> Slurm jobs, but two <code>dstack</code> jobs cannot run on the same node — the second one fails to start and its run eventually fails by provisioning timeout. <code>dstack</code> does not control node placement, so this can happen whenever the Slurm scheduler places a second <code>dstack</code> job on a node that already runs one. This limitation is expected to be lifted in a future release.</li>
+<li><strong>Runs always execute as <code>root</code>.</strong> <code>enroot</code> is a single-user container runtime: it can only map the invoking host user inside the container to either the same UID/GID or to <code>root</code> (<code>0:0</code>). <code>dstack</code> uses the latter, so runs always execute as <code>root</code>, and both the image's default user and the run configuration's <code>user</code> property are ignored. The single-user model is a fundamental <code>enroot</code> limitation, not specific to the <code>dstack</code> integration.</li>
+<li><strong>Private registries via <code>registry_auth</code> are not supported.</strong> The <code>registry_auth</code> run configuration property is rejected. You can still pull images from a private registry by preconfiguring <code>enroot</code> credentials on the cluster's compute nodes — see the <a href="https://github.com/NVIDIA/enroot/blob/main/doc/cmd/import.md#description">enroot import documentation</a>.</li>
+</ul>
+</div>
 <h3 id="runpod">Runpod<a class="headerlink" href="#runpod" title="Permanent link">&para;</a></h3>
 <p>Log into your <a href="https://www.runpod.io/console/">Runpod</a> console, click Settings in the sidebar, expand the <code>API Keys</code> section, and click
 the button to create a Read &amp; Write key.</p>

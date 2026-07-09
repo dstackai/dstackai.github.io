@@ -174,6 +174,35 @@ to configure [backends](../../concepts/backends.md) and other [server-level sett
 ###### `api_key` - (Required) `str` The API key. { #api_key data-toc-label='api_key' class='reference-item' }
 
 
+##### `projects[n].backends[type=slurm]` { #slurm data-toc-label="slurm" }
+
+###### `type` - (Required) `"slurm"` The type of backend. Must be `slurm`. { #type data-toc-label='type' class='reference-item' }
+###### [`clusters`](#slurm-clusters) - (Required) `list[object]` Cluster configurations. { #_clusters data-toc-label='clusters' class='reference-item' }
+
+
+###### `projects[n].backends[type=slurm].clusters[n]` { #slurm-clusters data-toc-label="clusters" }
+
+###### `name` - (Required) `str` The name of the cluster. Used as a region name. { #name data-toc-label='name' class='reference-item' }
+###### `gpu_partitions` - (Optional) `list[object]` The mapping of GPU models to partitions. Only partitions listed here are considered for GPU jobs. If not set, GPU jobs are not allowed. { #gpu_partitions data-toc-label='gpu_partitions' class='reference-item' }
+###### `cpu_partitions` - (Optional) `list[str]` Partitions considered for CPU jobs. Defaults to all cluster partitions except those listed in `gpu_partitions`. { #cpu_partitions data-toc-label='cpu_partitions' class='reference-item' }
+###### `hostname` - (Required) `str` The hostname or IP address of the login node. { #hostname data-toc-label='hostname' class='reference-item' }
+###### `port` - (Optional) `int` The SSH port of the login node. { #port data-toc-label='port' class='reference-item' }
+###### `user` - (Required) `str` The user to log in to the login node. { #user data-toc-label='user' class='reference-item' }
+###### [`private_key`](#slurm-clusters-private_key) - (Required) `object` The private key of the user. { #_private_key data-toc-label='private_key' class='reference-item' }
+
+
+###### `projects[n].backends[type=slurm].clusters[n].gpu_partitions[n]` { #slurm-clusters-gpu_partitions data-toc-label="gpu_partitions" }
+
+###### `gpu` - (Required) `str` The GPU model, in the `[vendor:]name[:memory]` format, e.g., `H200`, `A100:40GB`, `MI300X`. { #gpu data-toc-label='gpu' class='reference-item' }
+###### `partitions` - (Required) `list[str]` The list of partitions with the specified GPU model. { #partitions data-toc-label='partitions' class='reference-item' }
+
+
+###### `projects[n].backends[type=slurm].clusters[n].private_key` { #slurm-clusters-private_key data-toc-label="private_key" }
+
+###### `path` - (Optional) `str` The path to the private key file. { #path data-toc-label='path' class='reference-item' }
+###### `content` - (Optional) `str` The contents of the private key file. When configuring via `server/config.yml`, it's automatically filled from `path`. When configuring via UI, it has to be specified explicitly. { #content data-toc-label='content' class='reference-item' }
+
+
 ##### `projects[n].backends[type=vastai]` { #vastai data-toc-label="vastai" }
 
 ###### `type` - (Required) `"vastai"` The type of backend. Must be `vastai`. { #type data-toc-label='type' class='reference-item' }
