@@ -1089,6 +1089,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../concepts/endpoints/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Endpoints
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../concepts/gateways/" class="md-nav__link">
         
   
@@ -2845,6 +2873,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dstack.yml/endpoint/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    endpoint
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -3396,6 +3452,34 @@
     
   
     dstack secret
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cli/dstack/endpoint/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    dstack endpoint
   
 
     
@@ -5007,9 +5091,20 @@ via <code>dstack server</code> or deployed using Docker.</p>
 <li><code id="DSTACK_SERVER_ELASTICSEARCH_INDEX">DSTACK_SERVER_ELASTICSEARCH_INDEX</code> – The Elasticsearch/OpenSearch index pattern. Defaults to <code>dstack-logs</code>.</li>
 <li><code id="DSTACK_SERVER_ELASTICSEARCH_API_KEY">DSTACK_SERVER_ELASTICSEARCH_API_KEY</code> – The Elasticsearch/OpenSearch API key for authentication.</li>
 <li><code id="DSTACK_ENABLE_PROMETHEUS_METRICS">DSTACK_ENABLE_PROMETHEUS_METRICS</code> — Enables Prometheus metrics collection and export.</li>
+<li><code id="DSTACK_SENTRY_DSN">DSTACK_SENTRY_DSN</code> – The Sentry DSN. If set, enables error reporting and tracing via the Sentry SDK. See <a href="../../guides/server-deployment/#observability">observability</a>.</li>
+<li><code id="DSTACK_SENTRY_TRACES_SAMPLE_RATE">DSTACK_SENTRY_TRACES_SAMPLE_RATE</code> – The Sentry sample rate for API request traces. Defaults to <code>0.1</code>.</li>
+<li><code id="DSTACK_SENTRY_TRACES_BACKGROUND_SAMPLE_RATE">DSTACK_SENTRY_TRACES_BACKGROUND_SAMPLE_RATE</code> – The Sentry sample rate for background task traces. Defaults to <code>0.01</code>.</li>
+<li><code id="DSTACK_SENTRY_PROFILES_SAMPLE_RATE">DSTACK_SENTRY_PROFILES_SAMPLE_RATE</code> – The Sentry profiling sample rate, relative to the traces sample rate. Defaults to <code>0</code>.</li>
+<li><code id="DSTACK_OTEL_TRACES_ENABLED">DSTACK_OTEL_TRACES_ENABLED</code> – Enables OpenTelemetry tracing if set to any value. Requires the <code>otel</code> extra. The exporter is configured via standard <code>OTEL_*</code> env vars such as <code>OTEL_EXPORTER_OTLP_ENDPOINT</code>. See <a href="../../guides/server-deployment/#observability">observability</a>.</li>
+<li><code id="DSTACK_OTEL_TRACES_SAMPLE_RATE">DSTACK_OTEL_TRACES_SAMPLE_RATE</code> – The head sampling rate for API request traces. Defaults to <code>1.0</code>, which assumes sampling is done downstream, e.g. in an OTel collector.</li>
+<li><code id="DSTACK_OTEL_TRACES_BACKGROUND_SAMPLE_RATE">DSTACK_OTEL_TRACES_BACKGROUND_SAMPLE_RATE</code> – The head sampling rate for background task traces. Defaults to <code>1.0</code>.</li>
+<li><code id="DSTACK_OTEL_LOGS_ENABLED">DSTACK_OTEL_LOGS_ENABLED</code> – Enables server log export via OTLP if set to any value. Requires the <code>otel</code> extra.</li>
+<li><code id="DSTACK_OTEL_METRICS_ENABLED">DSTACK_OTEL_METRICS_ENABLED</code> – Enables OpenTelemetry metrics if set to any value. Requires the <code>otel</code> extra.</li>
+<li><code id="DSTACK_OTEL_METRICS_EXPORTERS">DSTACK_OTEL_METRICS_EXPORTERS</code> – A comma-separated list of OpenTelemetry metrics exporters: <code>prometheus</code> (expose on the <code>/metrics</code> endpoint) and/or <code>otlp</code> (push via OTLP). Defaults to <code>prometheus</code> if <code>DSTACK_ENABLE_PROMETHEUS_METRICS</code> is set, otherwise <code>otlp</code>.</li>
 <li><code id="DSTACK_DEFAULT_SERVICE_CLIENT_MAX_BODY_SIZE">DSTACK_DEFAULT_SERVICE_CLIENT_MAX_BODY_SIZE</code> – Request body size limit for services running with a gateway, in bytes. Defaults to 64 MiB.</li>
 <li><code id="DSTACK_SERVICE_CLIENT_TIMEOUT">DSTACK_SERVICE_CLIENT_TIMEOUT</code> – Timeout in seconds for HTTP requests sent from the in-server proxy and gateways to service replicas. Defaults to 60.</li>
 <li><code id="DSTACK_FORBID_SERVICES_WITHOUT_GATEWAY">DSTACK_FORBID_SERVICES_WITHOUT_GATEWAY</code> – Forbids registering new services without a gateway if set to any value.</li>
+<li><code id="DSTACK_FORBID_DSTACK_IN_RUNS">DSTACK_FORBID_DSTACK_IN_RUNS</code> – Forbids submitting runs with <code>dstack: true</code> (dstack server access inside runs) if set to any value.</li>
 <li><code id="DSTACK_SERVER_CODE_UPLOAD_LIMIT">DSTACK_SERVER_CODE_UPLOAD_LIMIT</code> - The repo size limit when uploading diffs or local repos, in bytes. Set to <code>0</code> to disable size limits. Defaults to <code>2MiB</code>.</li>
 <li><code id="DSTACK_SERVER_S3_BUCKET">DSTACK_SERVER_S3_BUCKET</code> - The bucket that repo diffs will be uploaded to if set. If unset, diffs are uploaded to the database.</li>
 <li><code id="DSTACK_SERVER_S3_BUCKET_REGION">DSTACK_SERVER_S3_BUCKET_REGION</code> - The region of the S3 Bucket.</li>
@@ -5055,6 +5150,16 @@ slows down processing and may cause CPU spikes due to frequent SSH-connection es
 <h2 id="cli">CLI<a class="headerlink" href="#cli" title="Permanent link">&para;</a></h2>
 <p>The following environment variables are supported by the CLI.</p>
 <ul>
+<li><code id="DSTACK_TOKEN">DSTACK_TOKEN</code> – The user token used by the CLI. Set <code>DSTACK_TOKEN</code>,
+  <code>DSTACK_SERVER_URL</code>, and <code>DSTACK_PROJECT</code> together to use the CLI without a project in
+  <code>~/.dstack/config.yml</code>, or to override the configured server, project, and user.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="nv">DSTACK_SERVER_URL</span><span class="o">=</span>https://server.example.com<span class="w"> </span><span class="se">\</span>
+<span class="nv">DSTACK_PROJECT</span><span class="o">=</span>main<span class="w"> </span><span class="se">\</span>
+<span class="nv">DSTACK_TOKEN</span><span class="o">=</span>your-token<span class="w"> </span><span class="se">\</span>
+dstack<span class="w"> </span>ps
+</code></pre></div>
+<ul>
 <li><code id="DSTACK_CLI_LOG_LEVEL">DSTACK_CLI_LOG_LEVEL</code> – Sets the logging level for CLI output to stdout. Defaults to <code>INFO</code>.</li>
 </ul>
 <p>Example:</p>
@@ -5080,6 +5185,10 @@ slows down processing and may cause CPU spikes due to frequent SSH-connection es
 
 <ul>
 <li><code id="DSTACK_PROJECT">DSTACK_PROJECT</code> – Has the same effect as <code>--project</code>. Defaults to <code>None</code>.</li>
+<li><code id="DSTACK_AGENT_ANTHROPIC_API_KEY">DSTACK_AGENT_ANTHROPIC_API_KEY</code> – The Anthropic API key used by the endpoint preset agent. If unset, the existing <code>claude</code> login is used.</li>
+<li><code id="DSTACK_AGENT_CLAUDE_PATH">DSTACK_AGENT_CLAUDE_PATH</code> – The <code>claude</code> executable name or path used by the endpoint preset agent. Defaults to <code>claude</code> from <code>PATH</code>.</li>
+<li><code id="DSTACK_AGENT_ANTHROPIC_MODEL">DSTACK_AGENT_ANTHROPIC_MODEL</code> – The Claude model used by the endpoint preset agent. Defaults to <code>claude-opus-4-8</code>.</li>
+<li><code id="DSTACK_AGENT_CLAUDE_EFFORT">DSTACK_AGENT_CLAUDE_EFFORT</code> – The Claude effort level used by the endpoint preset agent. Can be <code>low</code>, <code>medium</code>, <code>high</code>, <code>xhigh</code>, or <code>max</code>. If unset, the <code>claude</code> CLI default is used.</li>
 </ul>
 
 

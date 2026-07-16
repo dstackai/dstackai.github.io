@@ -1410,6 +1410,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../endpoints/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Endpoints
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../gateways/" class="md-nav__link">
         
   
@@ -3164,6 +3192,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/dstack.yml/endpoint/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    endpoint
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -3715,6 +3771,34 @@
     
   
     dstack secret
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/cli/dstack/endpoint/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    dstack endpoint
   
 
     
@@ -6469,7 +6553,7 @@ specify the contents of the <code>kubeconfig</code> file in <code>data</code>:</
 <p>The <code>kubernetes</code> backend handles it differently.</p>
 <ul>
 <li>For <code>gpu</code>, if you specify a range (e.g. <code>gpu: 4..8</code>), the <code>kubernetes</code> backend only provisions pods with the GPU count equal to the lower limit (<code>4</code>). The upper limit of the GPU range is always ignored.</li>
-<li>For other resources such as <code>cpu</code>, <code>memory</code>, and <code>disk</code>, the <code>kubernetes</code> backend passes the lower and upper limits of the range as Kubernetes <a href="https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#requests-and-limits">requests and limits</a> respectively. If the upper limit is not set, the Kubernetes limit is also not set.</li>
+<li>For other resources such as <code>cpu</code>, <code>memory</code>, and <code>disk</code>, the <code>kubernetes</code> backend passes the lower and upper limits of the range as Kubernetes <a href="https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#requests-and-limits">requests and limits</a> respectively. If the lower limit is not set, the Kubernetes request is set to <code>0</code>, unlike Kubernetes, where the request defaults to the limit if not set. If the upper limit is not set, the Kubernetes limit is also not set.</li>
 </ul>
 <p>Example:</p>
 <div editor-title=".dstack.yml">
@@ -6477,7 +6561,7 @@ specify the contents of the <code>kubeconfig</code> file in <code>data</code>:</
 <span class="nt">ide</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vscode</span>
 
 <span class="nt">resources</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">32..64</span>
+<span class="w">  </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">..64</span>
 <span class="w">  </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1024GB</span>
 <span class="w">  </span><span class="nt">disk</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">100GB..</span>
 <span class="w">  </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nvidia:4..8</span>
@@ -6495,7 +6579,7 @@ specify the contents of the <code>kubeconfig</code> file in <code>data</code>:</
 <tbody>
 <tr>
 <td><code>cpu</code></td>
-<td><code>32</code></td>
+<td><code>0</code></td>
 <td><code>64</code></td>
 </tr>
 <tr>

@@ -1818,9 +1818,9 @@ projects:
     If you use ranges with [`resources`](../concepts/tasks.md#resources) (e.g. `gpu: 1..8` or `memory: 64GB..`) in fleet or run configurations, other backends collect and try all offers that satisfy the range.
 
     The `kubernetes` backend handles it differently.
-    
+
     * For `gpu`, if you specify a range (e.g. `gpu: 4..8`), the `kubernetes` backend only provisions pods with the GPU count equal to the lower limit (`4`). The upper limit of the GPU range is always ignored.
-    * For other resources such as `cpu`, `memory`, and `disk`, the `kubernetes` backend passes the lower and upper limits of the range as Kubernetes [requests and limits](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#requests-and-limits) respectively. If the upper limit is not set, the Kubernetes limit is also not set.
+    * For other resources such as `cpu`, `memory`, and `disk`, the `kubernetes` backend passes the lower and upper limits of the range as Kubernetes [requests and limits](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#requests-and-limits) respectively. If the lower limit is not set, the Kubernetes request is set to `0`, unlike Kubernetes, where the request defaults to the limit if not set. If the upper limit is not set, the Kubernetes limit is also not set.
 
     Example:
 
@@ -1831,7 +1831,7 @@ projects:
     ide: vscode
 
     resources:
-      cpu: 32..64
+      cpu: ..64
       memory: 1024GB
       disk: 100GB..
       gpu: nvidia:4..8
@@ -1843,7 +1843,7 @@ projects:
 
     | Resource            | Request  | Limit     |
     |---------------------|----------|-----------|
-    | `cpu`               | `32`     | `64`      |
+    | `cpu`               | `0`      | `64`      |
     | `memory`            | `1024Gi` | `1024Gi`  |
     | `ephemeral-storage` | `100Gi`  | _not set_ |
     | `nvidia.com/gpu`    | `4`      | `4`       |
@@ -3232,6 +3232,28 @@ The `schedule` property can be combined with `max_duration` or `utilization_poli
 By default, `dstack` uses on-demand instances. However, you can change that
 via the [`spot_policy`](../reference/dstack.yml/dev-environment.md#spot_policy) property. It accepts `spot`, `on-demand`, and `auto`.
 
+### `dstack` inside `dstack`
+
+Set `dstack` to `true` when a dev environment needs to use the dstack CLI. dstack configures the
+server and current project automatically. To run authenticated commands, pass `DSTACK_TOKEN`
+explicitly.
+
+<div editor-title=".dstack.yml">
+
+```yaml
+type: dev-environment
+image: dstackai/dstack
+dstack: true
+env:
+  - DSTACK_TOKEN
+init:
+  - dstack ps
+```
+
+</div>
+
+> Besides inspecting runs, you can submit new runs with `dstack apply` and attach to them with `dstack attach`.
+
 --8<-- "docs/concepts/snippets/manage-fleets.ext"
 
 !!! info "Reference"
@@ -4117,6 +4139,27 @@ schedule:
 
 By default, `dstack` uses on-demand instances. However, you can change that
 via the [`spot_policy`](../reference/dstack.yml/task.md#spot_policy) property. It accepts `spot`, `on-demand`, and `auto`.
+
+### `dstack` inside `dstack`
+
+Set `dstack` to `true` when a task needs to use the dstack CLI. dstack configures the server and
+current project automatically. To run authenticated commands, pass `DSTACK_TOKEN` explicitly.
+
+<div editor-title=".dstack.yml">
+
+```yaml
+type: task
+image: dstackai/dstack
+dstack: true
+env:
+  - DSTACK_TOKEN
+commands:
+  - dstack ps
+```
+
+</div>
+
+> Besides inspecting runs, you can submit new runs with `dstack apply` and attach to them with `dstack attach`.
 
 --8<-- "docs/concepts/snippets/manage-fleets.ext"
 
@@ -5188,6 +5231,29 @@ resources:
   gpu: H100:1
 ```
 
+### `dstack` inside `dstack`
+
+Set `dstack` to `true` when a service needs to use the dstack CLI. dstack configures the server and
+current project automatically. To run authenticated commands, pass `DSTACK_TOKEN` explicitly.
+
+<div editor-title=".dstack.yml">
+
+```yaml
+type: service
+image: dstackai/dstack
+dstack: true
+port: 8000
+env:
+  - DSTACK_TOKEN
+commands:
+  - dstack ps
+  - python -m http.server 8000
+```
+
+</div>
+
+> Besides inspecting runs, you can submit new runs with `dstack apply` and attach to them with `dstack attach`.
+
 ### Environment variables
 
 <div editor-title=".dstack.yml">
@@ -6009,6 +6075,190 @@ volumes:
 ```
 
 </div>
+
+
+# docs/concepts/endpoints.md
+
+---
+title: Endpoints
+description: Creating and reusing optimized model inference endpoint configurations
+---
+
+# Endpoints
+
+An endpoint configuration lets you use an agent to create a preset: a validated and optimized model inference configuration. Once created, the preset can be reused to deploy model inference on validated hardware without an agent.
+
+The value of presets comes from combining two fundamental features: agent-driven model inference optimization and the `dstack` [service](services.md) primitive, which can deploy model inference to any cloud, Kubernetes, or on-prem cluster.
+
+> The endpoints feature is experimental and may change.
+
+??? info "Prerequisites"
+    Before using endpoint presets, make sure you’ve [installed](../installation.md) the server and CLI, and created a [fleet](fleets.md).
+
+    Creating an endpoint preset requires the `claude` CLI to be installed on the machine where you create a preset.
+
+## Define an endpoint
+
+Before you can create or reuse an endpoint preset, you first have to define an endpoint configuration. The filename must end with `.dstack.yml`.
+
+<div editor-title="endpoint.dstack.yml">
+
+```yaml
+type: endpoint
+name: qwen25-7b
+
+model:
+  base: Qwen/Qwen2.5-7B-Instruct
+
+env:
+  - HF_TOKEN
+```
+
+</div>
+
+Since `base` is specified, the preset can use any compatible variant of the base model, including a different precision, quantization, or trusted fork.
+
+If you want to deploy an exact model, set `model` directly to the repo of that model:
+
+<div editor-title="endpoint.dstack.yml">
+
+```yaml
+type: endpoint
+name: qwen25-7b
+
+model: Qwen/Qwen2.5-7B-Instruct
+
+env:
+  - HF_TOKEN
+```
+
+</div>
+
+Set `context_length` to require a minimum context length. Placement properties,
+including `fleets`, `backends`, `max_price`, and `spot_policy`, constrain both
+creation and reuse. Environment variables such as `HF_TOKEN` can be passed
+through `env`.
+
+See the [reference](../reference/dstack.yml/endpoint.md) for all supported configuration options.
+
+## Create a preset
+
+To create a preset, pass the configuration file to the `dstack endpoint preset create` command:
+
+<div class="termy">
+
+```shell
+$ dstack endpoint preset create -f endpoint.dstack.yml
+[2026-07-15 11:32:01] Starting endpoint preset creation for Qwen/Qwen2.5-7B-Instruct. Allowed fleets: gpu-fleet.
+[2026-07-15 11:41:06] Prototype task qwen25-7b-a1b2c3-2 verified vLLM on an L4:24GB.
+[2026-07-15 11:52:06] Final service qwen25-7b-a1b2c3-3 verified with context length 32768.
+[2026-07-15 11:52:18] Benchmark via guidellm 0.7.1: 32/32 requests succeeded.
+[2026-07-15 11:52:18] Saved endpoint preset 8f3a12c4 for Qwen/Qwen2.5-7B-Instruct.
+```
+
+</div>
+
+This command executes entirely locally and uses the locally installed `claude` CLI along with `dstack`'s bundled skills. The agent uses a `dstack` task to find the best serving configuration for the available fleet offers. It then submits the configuration as a `dstack` service for a final benchmark. The validated preset is saved locally under `~/.dstack/presets`.
+
+??? info "Claude configuration"
+    Preset creation uses the existing `claude` login. To use an Anthropic API key instead, set:
+
+    ```shell
+    export DSTACK_AGENT_ANTHROPIC_API_KEY=...
+    ```
+
+    By default, the agent uses `claude-opus-4-8` and the default `claude` CLI effort. To override them, set:
+
+    ```shell
+    export DSTACK_AGENT_ANTHROPIC_MODEL=claude-fable-5
+    export DSTACK_AGENT_CLAUDE_EFFORT=high
+    ```
+
+    Supported effort levels are `low`, `medium`, `high`, `xhigh`, and `max`.
+
+## List presets
+
+Use `dstack endpoint preset` to list existing presets:
+
+<div class="termy">
+
+```shell
+$ dstack endpoint preset list
+ MODEL                     GPU                    CONTEXT  BENCHMARK                           CREATED
+ Qwen/Qwen2.5-7B-Instruct
+    preset=8f3a12c4        nvidia:16GB..24GB:1..  32K      concurrency=1 464 tok/s TTFT 312ms  1 hour ago
+```
+
+</div>
+
+Presets are grouped by base model. Each preset contains an optimized serving configuration for a specific model variant, along with its hardware requirements, validation, and benchmark data.
+
+Pass `-v` to include validation resources and all benchmark metrics, or `--json`
+to output complete preset objects.
+
+## Apply a preset
+
+To deploy a preset as a service, pass the endpoint configuration to the `dstack endpoint preset apply` command:
+
+<div class="termy">
+
+```shell
+$ dstack endpoint preset apply -f endpoint.dstack.yml
+ Model          Qwen/Qwen2.5-7B-Instruct (base)
+ Preset         8f3a12c4 (context=32K, concurrency=1 464 tok/s TTFT 312ms)
+
+ #  BACKEND            RESOURCES                      INSTANCE TYPE     PRICE
+ 1  runpod (CA-MTL-1)  cpu=9 mem=50GB disk=200GB      NVIDIA RTX A5000  $0.27
+                       gpu=A5000:24GB:1
+ 2  runpod (CA-MTL-1)  cpu=9 mem=50GB disk=200GB      NVIDIA RTX A5000  $0.27
+                       gpu=A5000:24GB:1 (spot)
+ 3  runpod (US-IL-1)   cpu=12 mem=25GB disk=200GB     NVIDIA RTX A5000  $0.27
+                       gpu=A5000:24GB:1
+    ...
+ Shown 3 of 4 offers, $0.27max
+
+Submit the run qwen25-7b? [y/n]: y
+```
+
+</div>
+
+If you don't pass `--preset ID` or specify `preset` in the endpoint configuration, `dstack` automatically selects a matching preset based on the available fleet offers. It then deploys the preset as a service.
+
+## Delete presets
+
+You can delete a specific preset by ID or all presets for a base model.
+
+<div class="termy">
+
+```shell
+$ dstack endpoint preset delete 8f3a12c4
+```
+
+</div>
+
+To delete all presets for a base model, pass `--model`:
+
+<div class="termy">
+
+```shell
+$ dstack endpoint preset delete --model Qwen/Qwen2.5-7B-Instruct
+```
+
+</div>
+
+For command options and agent settings, see the
+[`dstack endpoint` CLI reference](../reference/cli/dstack/endpoint.md).
+
+!!! info "Roadmap"
+    Here's what's coming soon in endpoint presets:
+
+    1. Support multiple trials, allowing the agent to improve benchmark results based on previous trials.
+    2. Allow the endpoint configuration to define custom agent instructions, such as target metrics and the experimentation approach.
+    3. Control which experiments the agent may perform, including modifying serving framework code and generating custom kernels.
+
+!!! info "What's next?"
+    1. Learn how dstack [services](services.md) work
+    2. Learn how to configure [fleets](fleets.md)
 
 
 # docs/concepts/gateways.md
@@ -7845,6 +8095,70 @@ To deploy the SSH proxy, follow its [deployment guide](https://github.com/dstack
 > For a local setup running [PostgreSQL](#postgresql) and the SSH proxy together, see the example
 > [`docker-compose.yml`](https://github.com/dstackai/dstack/blob/master/docker/server/docker-compose.yml).
 
+## Observability
+
+Besides [workload metrics](../concepts/metrics.md), the `dstack` server can report its own errors, traces, logs,
+and metrics for monitoring the server. Two integrations are supported: Sentry and OpenTelemetry.
+They are independent and can be enabled together, e.g. Sentry for error tracking and OpenTelemetry for tracing.
+
+### Sentry
+
+To report server errors and traces via the Sentry SDK, set the `DSTACK_SENTRY_DSN` environment variable.
+
+The DSN can point to [Sentry :material-arrow-top-right-thin:{.external }](https://sentry.io/)
+or any Sentry-compatible error tracker such as
+[Bugsink :material-arrow-top-right-thin:{.external }](https://www.bugsink.com/) or
+[GlitchTip :material-arrow-top-right-thin:{.external }](https://glitchtip.com/).
+
+The following optional environment variables control sampling:
+
+- `DSTACK_SENTRY_TRACES_SAMPLE_RATE` – The sample rate for API request traces. Defaults to `0.1`.
+- `DSTACK_SENTRY_TRACES_BACKGROUND_SAMPLE_RATE` – The sample rate for background task traces. Defaults to `0.01`.
+- `DSTACK_SENTRY_PROFILES_SAMPLE_RATE` – The profiling sample rate, relative to the traces sample rate. Defaults to `0`.
+
+### OpenTelemetry
+
+The server can export traces, logs, and metrics using OpenTelemetry. Each signal is enabled independently:
+
+- `DSTACK_OTEL_TRACES_ENABLED` – Enables tracing. API requests, DB queries, outgoing HTTP requests, and background tasks are instrumented automatically.
+- `DSTACK_OTEL_LOGS_ENABLED` – Enables server log export. When tracing is also enabled, logs are correlated with traces via `trace_id`.
+- `DSTACK_OTEL_METRICS_ENABLED` – Enables metrics: HTTP server and client request durations, process CPU/memory/GC metrics, etc.
+
+The export destination and protocol are configured via the standard
+[`OTEL_*` environment variables :material-arrow-top-right-thin:{.external }](https://opentelemetry.io/docs/specs/otel/configuration/sdk-environment-variables/).
+Traces and logs are exported via OTLP over HTTP (`OTEL_EXPORTER_OTLP_PROTOCOL` has no effect). Example:
+
+```shell
+$ DSTACK_OTEL_TRACES_ENABLED=1 \
+  DSTACK_OTEL_LOGS_ENABLED=1 \
+  DSTACK_OTEL_METRICS_ENABLED=1 \
+  OTEL_EXPORTER_OTLP_ENDPOINT=http://otel-collector.example.com:4318 \
+  dstack server
+```
+
+??? info "Required dependencies"
+    To use the OpenTelemetry integration, install the `otel` extras:
+
+    ```shell
+    $ pip install "dstack[all]" -U
+    # or
+    $ pip install "dstack[otel]" -U
+    ```
+
+??? info "Trace sampling"
+    By default, all traces are exported (sample rate `1.0`), assuming sampling is done downstream,
+    e.g. in an OTel Collector. To sample in the server instead, set:
+
+    - `DSTACK_OTEL_TRACES_SAMPLE_RATE` – The head sampling rate for API request traces.
+    - `DSTACK_OTEL_TRACES_BACKGROUND_SAMPLE_RATE` – The head sampling rate for background task traces.
+
+??? info "Metrics exporters"
+    By default, if the [Prometheus `/metrics` endpoint](../concepts/metrics.md) is enabled via
+    `DSTACK_ENABLE_PROMETHEUS_METRICS`, OpenTelemetry metrics are exposed there alongside the built-in
+    `dstack` metrics; otherwise they are pushed via OTLP. Set `DSTACK_OTEL_METRICS_EXPORTERS`
+    to a comma-separated list of `prometheus` and/or `otlp` to override, e.g. force OTLP push
+    even when `/metrics` is enabled.
+
 ## Encryption
 
 By default, `dstack` stores data in plaintext. To enforce encryption, you 
@@ -8418,6 +8732,26 @@ Set `docker` to `true` to enable the `docker` CLI in your dev environment, e.g.,
                 path: /var/lib/docker
                 optional: true
         ```
+
+## dstack in dstack
+
+Set `dstack` to `true` when a run needs to use the dstack CLI. dstack configures the server and current project automatically. To run authenticated commands, pass `DSTACK_TOKEN` explicitly.
+
+<div editor-title=".dstack.yml">
+
+```yaml
+type: task
+image: dstackai/dstack
+dstack: true
+env:
+  - DSTACK_TOKEN
+commands:
+  - dstack ps
+```
+
+</div>
+
+> Besides inspecting runs, you can submit new runs with `dstack apply` and attach to them with `dstack attach`.
 
 ## Fleets
 

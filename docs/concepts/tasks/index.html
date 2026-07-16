@@ -1211,6 +1211,19 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#dstack-inside-dstack" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          <code>dstack</code> inside <code>dstack</code>
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#instances" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1370,6 +1383,34 @@
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../endpoints/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Endpoints
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
             
               
                 
@@ -3132,6 +3173,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/dstack.yml/endpoint/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    endpoint
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -3683,6 +3752,34 @@
     
   
     dstack secret
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/cli/dstack/endpoint/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    dstack endpoint
   
 
     
@@ -5155,6 +5252,19 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#dstack-inside-dstack" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          <code>dstack</code> inside <code>dstack</code>
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#instances" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -6118,6 +6228,25 @@ it does not block other runs with lower priority from scheduling.</p>
 <h3 id="spot-policy">Spot policy<a class="headerlink" href="#spot-policy" title="Permanent link">&para;</a></h3>
 <p>By default, <code>dstack</code> uses on-demand instances. However, you can change that
 via the <a href="../../reference/dstack.yml/task/#spot_policy"><code>spot_policy</code></a> property. It accepts <code>spot</code>, <code>on-demand</code>, and <code>auto</code>.</p>
+<h3 id="dstack-inside-dstack"><code>dstack</code> inside <code>dstack</code><a class="headerlink" href="#dstack-inside-dstack" title="Permanent link">&para;</a></h3>
+<p>Set <code>dstack</code> to <code>true</code> when a task needs to use the dstack CLI. dstack configures the server and
+current project automatically. To run authenticated commands, pass <code>DSTACK_TOKEN</code> explicitly.</p>
+<div editor-title=".dstack.yml">
+
+<div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">task</span>
+<span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dstackai/dstack</span>
+<span class="nt">dstack</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="nt">env</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DSTACK_TOKEN</span>
+<span class="nt">commands</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dstack ps</span>
+</code></pre></div>
+
+</div>
+
+<blockquote>
+<p>Besides inspecting runs, you can submit new runs with <code>dstack apply</code> and attach to them with <code>dstack attach</code>.</p>
+</blockquote>
 <h3 id="instances">Instances<a class="headerlink" href="#instances" title="Permanent link">&para;</a></h3>
 <p>Use <code>instances</code> to restrict a run to particular existing fleet instances. You can specify
 instance names, hostnames or IP addresses, or a fleet name with an instance number.

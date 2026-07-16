@@ -1089,6 +1089,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../concepts/endpoints/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Endpoints
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../concepts/gateways/" class="md-nav__link">
         
   
@@ -1581,6 +1609,51 @@
       
         <span class="md-typeset">
           Deployment
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#observability" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Observability
+        </span>
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Observability">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sentry" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Sentry
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#opentelemetry" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          OpenTelemetry
         </span>
       
     </span>
@@ -3191,6 +3264,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/dstack.yml/endpoint/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    endpoint
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -3742,6 +3843,34 @@
     
   
     dstack secret
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/cli/dstack/endpoint/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    dstack endpoint
   
 
     
@@ -5196,6 +5325,51 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#observability" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Observability
+        </span>
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Observability">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sentry" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Sentry
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#opentelemetry" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          OpenTelemetry
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#encryption" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -5746,6 +5920,63 @@ storage.objects.update
 <p>For a local setup running <a href="#postgresql">PostgreSQL</a> and the SSH proxy together, see the example
 <a href="https://github.com/dstackai/dstack/blob/master/docker/server/docker-compose.yml"><code>docker-compose.yml</code></a>.</p>
 </blockquote>
+<h2 id="observability">Observability<a class="headerlink" href="#observability" title="Permanent link">&para;</a></h2>
+<p>Besides <a href="../../concepts/metrics/">workload metrics</a>, the <code>dstack</code> server can report its own errors, traces, logs,
+and metrics for monitoring the server. Two integrations are supported: Sentry and OpenTelemetry.
+They are independent and can be enabled together, e.g. Sentry for error tracking and OpenTelemetry for tracing.</p>
+<h3 id="sentry">Sentry<a class="headerlink" href="#sentry" title="Permanent link">&para;</a></h3>
+<p>To report server errors and traces via the Sentry SDK, set the <code>DSTACK_SENTRY_DSN</code> environment variable.</p>
+<p>The DSN can point to <a href="https://sentry.io/">Sentry <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>
+or any Sentry-compatible error tracker such as
+<a href="https://www.bugsink.com/">Bugsink <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a> or
+<a href="https://glitchtip.com/">GlitchTip <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>.</p>
+<p>The following optional environment variables control sampling:</p>
+<ul>
+<li><code>DSTACK_SENTRY_TRACES_SAMPLE_RATE</code> – The sample rate for API request traces. Defaults to <code>0.1</code>.</li>
+<li><code>DSTACK_SENTRY_TRACES_BACKGROUND_SAMPLE_RATE</code> – The sample rate for background task traces. Defaults to <code>0.01</code>.</li>
+<li><code>DSTACK_SENTRY_PROFILES_SAMPLE_RATE</code> – The profiling sample rate, relative to the traces sample rate. Defaults to <code>0</code>.</li>
+</ul>
+<h3 id="opentelemetry">OpenTelemetry<a class="headerlink" href="#opentelemetry" title="Permanent link">&para;</a></h3>
+<p>The server can export traces, logs, and metrics using OpenTelemetry. Each signal is enabled independently:</p>
+<ul>
+<li><code>DSTACK_OTEL_TRACES_ENABLED</code> – Enables tracing. API requests, DB queries, outgoing HTTP requests, and background tasks are instrumented automatically.</li>
+<li><code>DSTACK_OTEL_LOGS_ENABLED</code> – Enables server log export. When tracing is also enabled, logs are correlated with traces via <code>trace_id</code>.</li>
+<li><code>DSTACK_OTEL_METRICS_ENABLED</code> – Enables metrics: HTTP server and client request durations, process CPU/memory/GC metrics, etc.</li>
+</ul>
+<p>The export destination and protocol are configured via the standard
+<a href="https://opentelemetry.io/docs/specs/otel/configuration/sdk-environment-variables/"><code>OTEL_*</code> environment variables <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a>.
+Traces and logs are exported via OTLP over HTTP (<code>OTEL_EXPORTER_OTLP_PROTOCOL</code> has no effect). Example:</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nv">DSTACK_OTEL_TRACES_ENABLED</span><span class="o">=</span><span class="m">1</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="nv">DSTACK_OTEL_LOGS_ENABLED</span><span class="o">=</span><span class="m">1</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="nv">DSTACK_OTEL_METRICS_ENABLED</span><span class="o">=</span><span class="m">1</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="nv">OTEL_EXPORTER_OTLP_ENDPOINT</span><span class="o">=</span>http://otel-collector.example.com:4318<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>dstack<span class="w"> </span>server
+</code></pre></div>
+<details class="info">
+<summary>Required dependencies</summary>
+<p>To use the OpenTelemetry integration, install the <code>otel</code> extras:</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span><span class="s2">&quot;dstack[all]&quot;</span><span class="w"> </span>-U
+<span class="c1"># or</span>
+$<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span><span class="s2">&quot;dstack[otel]&quot;</span><span class="w"> </span>-U
+</code></pre></div>
+</details>
+<details class="info">
+<summary>Trace sampling</summary>
+<p>By default, all traces are exported (sample rate <code>1.0</code>), assuming sampling is done downstream,
+e.g. in an OTel Collector. To sample in the server instead, set:</p>
+<ul>
+<li><code>DSTACK_OTEL_TRACES_SAMPLE_RATE</code> – The head sampling rate for API request traces.</li>
+<li><code>DSTACK_OTEL_TRACES_BACKGROUND_SAMPLE_RATE</code> – The head sampling rate for background task traces.</li>
+</ul>
+</details>
+<details class="info">
+<summary>Metrics exporters</summary>
+<p>By default, if the <a href="../../concepts/metrics/">Prometheus <code>/metrics</code> endpoint</a> is enabled via
+<code>DSTACK_ENABLE_PROMETHEUS_METRICS</code>, OpenTelemetry metrics are exposed there alongside the built-in
+<code>dstack</code> metrics; otherwise they are pushed via OTLP. Set <code>DSTACK_OTEL_METRICS_EXPORTERS</code>
+to a comma-separated list of <code>prometheus</code> and/or <code>otlp</code> to override, e.g. force OTLP push
+even when <code>/metrics</code> is enabled.</p>
+</details>
 <h2 id="encryption">Encryption<a class="headerlink" href="#encryption" title="Permanent link">&para;</a></h2>
 <p>By default, <code>dstack</code> stores data in plaintext. To enforce encryption, you 
 specify one or more encryption keys.</p>

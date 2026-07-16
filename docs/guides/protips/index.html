@@ -1094,6 +1094,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../concepts/endpoints/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Endpoints
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../concepts/gateways/" class="md-nav__link">
         
   
@@ -1577,6 +1605,19 @@
       
         <span class="md-typeset">
           Docker in Docker
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dstack-in-dstack" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          dstack in dstack
         </span>
       
     </span>
@@ -3152,6 +3193,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/dstack.yml/endpoint/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    endpoint
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -3703,6 +3772,34 @@
     
   
     dstack secret
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/cli/dstack/endpoint/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    dstack endpoint
   
 
     
@@ -5031,6 +5128,19 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#dstack-in-dstack" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          dstack in dstack
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#fleets" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -5493,6 +5603,24 @@ and add attach it in your run configuration.</p>
 </div>
 </div>
 </details>
+<h2 id="dstack-in-dstack">dstack in dstack<a class="headerlink" href="#dstack-in-dstack" title="Permanent link">&para;</a></h2>
+<p>Set <code>dstack</code> to <code>true</code> when a run needs to use the dstack CLI. dstack configures the server and current project automatically. To run authenticated commands, pass <code>DSTACK_TOKEN</code> explicitly.</p>
+<div editor-title=".dstack.yml">
+
+<div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">task</span>
+<span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dstackai/dstack</span>
+<span class="nt">dstack</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="nt">env</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DSTACK_TOKEN</span>
+<span class="nt">commands</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dstack ps</span>
+</code></pre></div>
+
+</div>
+
+<blockquote>
+<p>Besides inspecting runs, you can submit new runs with <code>dstack apply</code> and attach to them with <code>dstack attach</code>.</p>
+</blockquote>
 <h2 id="fleets">Fleets<a class="headerlink" href="#fleets" title="Permanent link">&para;</a></h2>
 <h3 id="creation-policy">Creation policy<a class="headerlink" href="#creation-policy" title="Permanent link">&para;</a></h3>
 <p>By default, when you run <code>dstack apply</code> with a dev environment, task, or service,
