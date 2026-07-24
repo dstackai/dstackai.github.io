@@ -6,37 +6,37 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="dstack is a unified control plane for GPU provisioning and orchestration that works with any GPU cloud, Kubernetes, or on-prem clusters.">
+        <meta name="description" content="Creating and reusing optimized model inference configurations">
       
       
         <meta name="author" content="dstack GmbH">
       
       
-        <link rel="canonical" href="https://dstack.ai/docs/reference/cli/dstack/endpoint/">
+        <link rel="canonical" href="https://dstack.ai/docs/concepts/presets/">
       
       
-        <link rel="prev" href="../secret/">
+        <link rel="prev" href="../volumes/">
       
       
-        <link rel="next" href="../export/">
+        <link rel="next" href="../gateways/">
       
       
         
       
       
-      <link rel="icon" href="../../../../../assets/images/dstack-fav-32.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <link rel="icon" href="../../../assets/images/dstack-fav-32.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
-        <title>dstack endpoint - dstack</title>
+        <title>Presets - dstack</title>
       
     
     
-      <link rel="stylesheet" href="../../../../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
       
         
-        <link rel="stylesheet" href="../../../../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -61,23 +61,23 @@
       
     
     
-      <link rel="stylesheet" href="../../../../../assets/_mkdocstrings.css">
+      <link rel="stylesheet" href="../../../assets/_mkdocstrings.css">
     
       <link rel="stylesheet" href="https://unpkg.com/swagger-ui-dist@5.32.0/swagger-ui.css">
     
-      <link rel="stylesheet" href="../../../../../assets/stylesheets/extra.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/extra.css">
     
-      <link rel="stylesheet" href="../../../../../assets/stylesheets/swagger.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/swagger.css">
     
-      <link rel="stylesheet" href="../../../../../assets/stylesheets/termynal.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/termynal.css">
     
-      <link rel="stylesheet" href="../../../../../assets/stylesheets/landing.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/landing.css">
     
-      <link rel="stylesheet" href="../../../../../assets/stylesheets/pricing.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/pricing.css">
     
-      <link rel="stylesheet" href="../../../../../assets/stylesheets/cloudscape-docs.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/cloudscape-docs.css">
     
-    <script>__md_scope=new URL("../../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
   
@@ -108,10 +108,10 @@
   };
   try { window.__dstackApplyTheme(localStorage.getItem('dstack-theme') === 'dark', false); } catch (e) {}
 </script>
-<link rel="preload" href="../../../../../assets/fonts/Geist-Variable.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="../../../../../assets/fonts/GeistMono-Variable.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="../../../../../assets/fonts/GeistPixel-Square.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="../../../../../assets/fonts/GeistPixel-Circle.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../../../assets/fonts/Geist-Variable.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../../../assets/fonts/GeistMono-Variable.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../../../assets/fonts/GeistPixel-Square.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../../../assets/fonts/GeistPixel-Circle.woff2" as="font" type="font/woff2" crossorigin>
 
 
 
@@ -133,17 +133,17 @@
     },{
       "@type": "ListItem",
       "position": 3,
-      "name": "Reference",
-      "item": "https://dstack.ai/docs/reference/dstack.yml/dev-environment/"
+      "name": "Concepts",
+      "item": "https://dstack.ai/docs/concepts/backends/"
     },{
       "@type": "ListItem",
       "position": 4,
-      "name": "CLI",
-      "item": "https://dstack.ai/docs/reference/cli/dstack/server/"
+      "name": "More",
+      "item": "https://dstack.ai/docs/concepts/presets/"
     },{
       "@type": "ListItem",
       "position": 5,
-      "name": "dstack endpoint"
+      "name": "Presets"
     }]
 }
 </script>
@@ -151,17 +151,17 @@
 
   
 <meta property="og:type" content="website" />
-<meta property="og:title" content="dstack endpoint - dstack" />
-<meta property="og:description" content="dstack is a unified control plane for GPU provisioning and orchestration that works with any GPU cloud, Kubernetes, or on-prem clusters." />
-<meta property="og:image" content="https://dstack.ai/assets/images/social/docs/reference/cli/dstack/endpoint.png" />
+<meta property="og:title" content="Presets - dstack" />
+<meta property="og:description" content="Creating and reusing optimized model inference configurations" />
+<meta property="og:image" content="https://dstack.ai/assets/images/social/docs/concepts/presets.png" />
 <meta property="og:image:type" content="image/png" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
-<meta property="og:url" content="https://dstack.ai/docs/reference/cli/dstack/endpoint/" />
+<meta property="og:url" content="https://dstack.ai/docs/concepts/presets/" />
 <meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter.title" content="dstack endpoint - dstack" />
-<meta property="twitter:description" content="dstack is a unified control plane for GPU provisioning and orchestration that works with any GPU cloud, Kubernetes, or on-prem clusters." />
-<meta property="twitter:image" content="https://dstack.ai/assets/images/social/docs/reference/cli/dstack/endpoint.png" />
+<meta property="twitter.title" content="Presets - dstack" />
+<meta property="twitter:description" content="Creating and reusing optimized model inference configurations" />
+<meta property="twitter:image" content="https://dstack.ai/assets/images/social/docs/concepts/presets.png" />
 </head>
   
   
@@ -181,7 +181,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#dstack-endpoint" class="md-skip">
+        <a href="#presets" class="md-skip">
           Skip to content
         </a>
       
@@ -215,7 +215,7 @@
     
     <a href="/" title="dstack" class="md-header__button md-logo" aria-label="dstack" data-md-component="logo">
       
-  <img src="../../../../../assets/images/dstack-logo-notext.svg" alt="logo">
+  <img src="../../../assets/images/dstack-logo-notext.svg" alt="logo">
 
     </a>
     
@@ -234,7 +234,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              dstack endpoint
+              Presets
             
           </span>
         </div>
@@ -327,7 +327,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../../../.." class="md-tabs__link">
+      <a href="../../.." class="md-tabs__link">
         
   
   
@@ -359,7 +359,7 @@
     
     
       <li class="md-tabs__item md-tabs__item--active">
-        <a href="../../../../" class="md-tabs__link">
+        <a href="../../" class="md-tabs__link">
           
   
   
@@ -380,7 +380,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../../../../blog/case-studies/" class="md-tabs__link">
+      <a href="../../../blog/case-studies/" class="md-tabs__link">
         
   
   
@@ -401,7 +401,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../../../blog/" class="md-tabs__link">
+        <a href="../../../blog/" class="md-tabs__link">
           
   
   
@@ -561,7 +561,7 @@
   <label class="md-nav__title" for="__drawer">
     <a href="/" title="dstack" class="md-nav__button md-logo" aria-label="dstack" data-md-component="logo">
       
-  <img src="../../../../../assets/images/dstack-logo-notext.svg" alt="logo">
+  <img src="../../../assets/images/dstack-logo-notext.svg" alt="logo">
 
     </a>
     dstack
@@ -588,7 +588,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../.." class="md-nav__link">
+      <a href="../../.." class="md-nav__link">
         
   
   
@@ -727,7 +727,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../" class="md-nav__link">
+      <a href="../../" class="md-nav__link">
         
   
   
@@ -755,7 +755,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../installation/" class="md-nav__link">
+      <a href="../../installation/" class="md-nav__link">
         
   
   
@@ -783,7 +783,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../quickstart/" class="md-nav__link">
+      <a href="../../quickstart/" class="md-nav__link">
         
   
   
@@ -816,6 +816,8 @@
                 
   
   
+    
+  
   
   
     
@@ -831,11 +833,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" checked>
         
           
           <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="">
@@ -856,7 +858,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2_2">
             <span class="md-nav__icon md-icon"></span>
             
@@ -874,7 +876,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../concepts/backends/" class="md-nav__link">
+      <a href="../backends/" class="md-nav__link">
         
   
   
@@ -902,7 +904,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../concepts/fleets/" class="md-nav__link">
+      <a href="../fleets/" class="md-nav__link">
         
   
   
@@ -930,7 +932,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../concepts/dev-environments/" class="md-nav__link">
+      <a href="../dev-environments/" class="md-nav__link">
         
   
   
@@ -958,7 +960,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../concepts/tasks/" class="md-nav__link">
+      <a href="../tasks/" class="md-nav__link">
         
   
   
@@ -986,7 +988,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../concepts/services/" class="md-nav__link">
+      <a href="../services/" class="md-nav__link">
         
   
   
@@ -1014,7 +1016,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../concepts/volumes/" class="md-nav__link">
+      <a href="../volumes/" class="md-nav__link">
         
   
   
@@ -1039,8 +1041,10 @@
                 
   
   
+    
   
   
+  
     
     
     
@@ -1051,11 +1055,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2_7" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2_7" checked>
         
           
           <label class="md-nav__link" for="__nav_2_2_7" id="__nav_2_2_7_label" tabindex="0">
@@ -1076,7 +1080,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_7_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_7_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2_2_7">
             <span class="md-nav__icon md-icon"></span>
             
@@ -1091,17 +1095,44 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../../../concepts/endpoints/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Presets
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
   <span class="md-ellipsis">
     
   
-    Endpoints
+    Presets
   
 
     
@@ -1110,6 +1141,181 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#create-a-preset" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Create a preset
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration-options" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Configuration options
+        </span>
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuration options">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Model
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#trials" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Trials
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#context-length" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Context length
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fleets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Fleets
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prompt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Prompt
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#apply-a-preset" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Apply a preset
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#manage-presets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Manage presets
+        </span>
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Manage presets">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#list-presets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          List presets
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delete-presets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Delete presets
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1122,7 +1328,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../concepts/gateways/" class="md-nav__link">
+      <a href="../gateways/" class="md-nav__link">
         
   
   
@@ -1150,7 +1356,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../concepts/secrets/" class="md-nav__link">
+      <a href="../secrets/" class="md-nav__link">
         
   
   
@@ -1178,7 +1384,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../concepts/projects/" class="md-nav__link">
+      <a href="../projects/" class="md-nav__link">
         
   
   
@@ -1206,7 +1412,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../concepts/metrics/" class="md-nav__link">
+      <a href="../metrics/" class="md-nav__link">
         
   
   
@@ -1234,7 +1440,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../concepts/events/" class="md-nav__link">
+      <a href="../events/" class="md-nav__link">
         
   
   
@@ -1262,7 +1468,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../concepts/exports/" class="md-nav__link">
+      <a href="../exports/" class="md-nav__link">
         
   
   
@@ -1361,7 +1567,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../guides/cli-api/" class="md-nav__link">
+      <a href="../../guides/cli-api/" class="md-nav__link">
         
   
   
@@ -1389,7 +1595,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../guides/server-deployment/" class="md-nav__link">
+      <a href="../../guides/server-deployment/" class="md-nav__link">
         
   
   
@@ -1417,7 +1623,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../guides/troubleshooting/" class="md-nav__link">
+      <a href="../../guides/troubleshooting/" class="md-nav__link">
         
   
   
@@ -1497,7 +1703,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../guides/protips/" class="md-nav__link">
+      <a href="../../guides/protips/" class="md-nav__link">
         
   
   
@@ -1525,7 +1731,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../guides/tenant-isolation/" class="md-nav__link">
+      <a href="../../guides/tenant-isolation/" class="md-nav__link">
         
   
   
@@ -1553,7 +1759,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../guides/upgrade/" class="md-nav__link">
+      <a href="../../guides/upgrade/" class="md-nav__link">
         
   
   
@@ -1633,7 +1839,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../guides/migration/slurm/" class="md-nav__link">
+      <a href="../../guides/migration/slurm/" class="md-nav__link">
         
   
   
@@ -1792,7 +1998,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../examples/training/trl/" class="md-nav__link">
+      <a href="../../examples/training/trl/" class="md-nav__link">
         
   
   
@@ -1820,7 +2026,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../examples/training/axolotl/" class="md-nav__link">
+      <a href="../../examples/training/axolotl/" class="md-nav__link">
         
   
   
@@ -1848,7 +2054,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../examples/training/ray-ragen/" class="md-nav__link">
+      <a href="../../examples/training/ray-ragen/" class="md-nav__link">
         
   
   
@@ -1876,7 +2082,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../examples/training/miles/" class="md-nav__link">
+      <a href="../../examples/training/miles/" class="md-nav__link">
         
   
   
@@ -1964,7 +2170,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../examples/clusters/aws/" class="md-nav__link">
+      <a href="../../examples/clusters/aws/" class="md-nav__link">
         
   
   
@@ -1992,7 +2198,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../examples/clusters/gcp/" class="md-nav__link">
+      <a href="../../examples/clusters/gcp/" class="md-nav__link">
         
   
   
@@ -2020,7 +2226,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../examples/clusters/lambda/" class="md-nav__link">
+      <a href="../../examples/clusters/lambda/" class="md-nav__link">
         
   
   
@@ -2048,7 +2254,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../examples/clusters/crusoe/" class="md-nav__link">
+      <a href="../../examples/clusters/crusoe/" class="md-nav__link">
         
   
   
@@ -2076,7 +2282,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../examples/clusters/nebius/" class="md-nav__link">
+      <a href="../../examples/clusters/nebius/" class="md-nav__link">
         
   
   
@@ -2104,7 +2310,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../examples/clusters/nccl-rccl-tests/" class="md-nav__link">
+      <a href="../../examples/clusters/nccl-rccl-tests/" class="md-nav__link">
         
   
   
@@ -2192,7 +2398,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../examples/inference/sglang/" class="md-nav__link">
+      <a href="../../examples/inference/sglang/" class="md-nav__link">
         
   
   
@@ -2220,7 +2426,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../examples/inference/dynamo/" class="md-nav__link">
+      <a href="../../examples/inference/dynamo/" class="md-nav__link">
         
   
   
@@ -2248,7 +2454,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../examples/inference/vllm/" class="md-nav__link">
+      <a href="../../examples/inference/vllm/" class="md-nav__link">
         
   
   
@@ -2276,7 +2482,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../examples/inference/nim/" class="md-nav__link">
+      <a href="../../examples/inference/nim/" class="md-nav__link">
         
   
   
@@ -2304,7 +2510,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../examples/inference/trtllm/" class="md-nav__link">
+      <a href="../../examples/inference/trtllm/" class="md-nav__link">
         
   
   
@@ -2392,7 +2598,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../examples/models/deepseek-v4/" class="md-nav__link">
+      <a href="../../examples/models/deepseek-v4/" class="md-nav__link">
         
   
   
@@ -2420,7 +2626,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../examples/models/qwen36/" class="md-nav__link">
+      <a href="../../examples/models/qwen36/" class="md-nav__link">
         
   
   
@@ -2508,7 +2714,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../examples/accelerators/amd/" class="md-nav__link">
+      <a href="../../examples/accelerators/amd/" class="md-nav__link">
         
   
   
@@ -2536,7 +2742,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../examples/accelerators/tenstorrent/" class="md-nav__link">
+      <a href="../../examples/accelerators/tenstorrent/" class="md-nav__link">
         
   
   
@@ -2564,7 +2770,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../examples/accelerators/tpu/" class="md-nav__link">
+      <a href="../../examples/accelerators/tpu/" class="md-nav__link">
         
   
   
@@ -2605,8 +2811,6 @@
                 
   
   
-    
-  
   
   
     
@@ -2622,11 +2826,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" >
         
           
           <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="">
@@ -2647,7 +2851,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2_5">
             <span class="md-nav__icon md-icon"></span>
             
@@ -2717,7 +2921,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../dstack.yml/dev-environment/" class="md-nav__link">
+      <a href="../../reference/dstack.yml/dev-environment/" class="md-nav__link">
         
   
   
@@ -2745,7 +2949,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../dstack.yml/task/" class="md-nav__link">
+      <a href="../../reference/dstack.yml/task/" class="md-nav__link">
         
   
   
@@ -2773,7 +2977,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../dstack.yml/service/" class="md-nav__link">
+      <a href="../../reference/dstack.yml/service/" class="md-nav__link">
         
   
   
@@ -2801,7 +3005,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../dstack.yml/fleet/" class="md-nav__link">
+      <a href="../../reference/dstack.yml/fleet/" class="md-nav__link">
         
   
   
@@ -2829,7 +3033,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../dstack.yml/gateway/" class="md-nav__link">
+      <a href="../../reference/dstack.yml/gateway/" class="md-nav__link">
         
   
   
@@ -2857,7 +3061,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../dstack.yml/volume/" class="md-nav__link">
+      <a href="../../reference/dstack.yml/volume/" class="md-nav__link">
         
   
   
@@ -2885,14 +3089,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../dstack.yml/endpoint/" class="md-nav__link">
+      <a href="../../reference/dstack.yml/preset/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    endpoint
+    preset
   
 
     
@@ -2921,7 +3125,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../server/config.yml/" class="md-nav__link">
+      <a href="../../reference/server/config.yml/" class="md-nav__link">
         
   
   
@@ -2946,8 +3150,6 @@
                 
   
   
-    
-  
   
   
     
@@ -2960,11 +3162,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5_3" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5_3" >
         
           
           <label class="md-nav__link" for="__nav_2_5_3" id="__nav_2_5_3_label" tabindex="0">
@@ -2985,7 +3187,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_5_3_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_5_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2_5_3">
             <span class="md-nav__icon md-icon"></span>
             
@@ -3003,7 +3205,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../server/" class="md-nav__link">
+      <a href="../../reference/cli/dstack/server/" class="md-nav__link">
         
   
   
@@ -3031,7 +3233,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../init/" class="md-nav__link">
+      <a href="../../reference/cli/dstack/init/" class="md-nav__link">
         
   
   
@@ -3059,7 +3261,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../apply/" class="md-nav__link">
+      <a href="../../reference/cli/dstack/apply/" class="md-nav__link">
         
   
   
@@ -3087,7 +3289,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../delete/" class="md-nav__link">
+      <a href="../../reference/cli/dstack/delete/" class="md-nav__link">
         
   
   
@@ -3115,7 +3317,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../ps/" class="md-nav__link">
+      <a href="../../reference/cli/dstack/ps/" class="md-nav__link">
         
   
   
@@ -3143,7 +3345,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../stop/" class="md-nav__link">
+      <a href="../../reference/cli/dstack/stop/" class="md-nav__link">
         
   
   
@@ -3171,7 +3373,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../attach/" class="md-nav__link">
+      <a href="../../reference/cli/dstack/attach/" class="md-nav__link">
         
   
   
@@ -3199,7 +3401,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../login/" class="md-nav__link">
+      <a href="../../reference/cli/dstack/login/" class="md-nav__link">
         
   
   
@@ -3227,7 +3429,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../logs/" class="md-nav__link">
+      <a href="../../reference/cli/dstack/logs/" class="md-nav__link">
         
   
   
@@ -3255,7 +3457,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../metrics/" class="md-nav__link">
+      <a href="../../reference/cli/dstack/metrics/" class="md-nav__link">
         
   
   
@@ -3283,7 +3485,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../event/" class="md-nav__link">
+      <a href="../../reference/cli/dstack/event/" class="md-nav__link">
         
   
   
@@ -3311,7 +3513,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../project/" class="md-nav__link">
+      <a href="../../reference/cli/dstack/project/" class="md-nav__link">
         
   
   
@@ -3339,7 +3541,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../fleet/" class="md-nav__link">
+      <a href="../../reference/cli/dstack/fleet/" class="md-nav__link">
         
   
   
@@ -3367,7 +3569,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../offer/" class="md-nav__link">
+      <a href="../../reference/cli/dstack/offer/" class="md-nav__link">
         
   
   
@@ -3395,7 +3597,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../volume/" class="md-nav__link">
+      <a href="../../reference/cli/dstack/volume/" class="md-nav__link">
         
   
   
@@ -3423,7 +3625,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../gateway/" class="md-nav__link">
+      <a href="../../reference/cli/dstack/gateway/" class="md-nav__link">
         
   
   
@@ -3451,7 +3653,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../secret/" class="md-nav__link">
+      <a href="../../reference/cli/dstack/secret/" class="md-nav__link">
         
   
   
@@ -3476,44 +3678,17 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    dstack endpoint
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../reference/cli/dstack/preset/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    dstack endpoint
+    dstack preset
   
 
     
@@ -3522,91 +3697,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#dstack-endpoint-preset-list" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        <span class="md-typeset">
-          dstack endpoint preset list
-        </span>
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#dstack-endpoint-preset-create" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        <span class="md-typeset">
-          dstack endpoint preset create
-        </span>
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#dstack-endpoint-preset-get" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        <span class="md-typeset">
-          dstack endpoint preset get
-        </span>
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#dstack-endpoint-preset-apply" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        <span class="md-typeset">
-          dstack endpoint preset apply
-        </span>
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#dstack-endpoint-preset-delete" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        <span class="md-typeset">
-          dstack endpoint preset delete
-        </span>
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -3619,7 +3709,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../export/" class="md-nav__link">
+      <a href="../../reference/cli/dstack/export/" class="md-nav__link">
         
   
   
@@ -3647,7 +3737,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../import/" class="md-nav__link">
+      <a href="../../reference/cli/dstack/import/" class="md-nav__link">
         
   
   
@@ -3735,7 +3825,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../http/users/" class="md-nav__link">
+      <a href="../../reference/http/users/" class="md-nav__link">
         
   
   
@@ -3763,7 +3853,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../http/projects/" class="md-nav__link">
+      <a href="../../reference/http/projects/" class="md-nav__link">
         
   
   
@@ -3791,7 +3881,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../http/backends/" class="md-nav__link">
+      <a href="../../reference/http/backends/" class="md-nav__link">
         
   
   
@@ -3819,7 +3909,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../http/fleets/" class="md-nav__link">
+      <a href="../../reference/http/fleets/" class="md-nav__link">
         
   
   
@@ -3847,7 +3937,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../http/runs/" class="md-nav__link">
+      <a href="../../reference/http/runs/" class="md-nav__link">
         
   
   
@@ -3875,7 +3965,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../http/gateways/" class="md-nav__link">
+      <a href="../../reference/http/gateways/" class="md-nav__link">
         
   
   
@@ -3903,7 +3993,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../http/volumes/" class="md-nav__link">
+      <a href="../../reference/http/volumes/" class="md-nav__link">
         
   
   
@@ -3931,7 +4021,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../http/logs/" class="md-nav__link">
+      <a href="../../reference/http/logs/" class="md-nav__link">
         
   
   
@@ -3959,7 +4049,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../http/events/" class="md-nav__link">
+      <a href="../../reference/http/events/" class="md-nav__link">
         
   
   
@@ -3987,7 +4077,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../http/repos/" class="md-nav__link">
+      <a href="../../reference/http/repos/" class="md-nav__link">
         
   
   
@@ -4015,7 +4105,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../http/files/" class="md-nav__link">
+      <a href="../../reference/http/files/" class="md-nav__link">
         
   
   
@@ -4043,7 +4133,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../http/secrets/" class="md-nav__link">
+      <a href="../../reference/http/secrets/" class="md-nav__link">
         
   
   
@@ -4071,7 +4161,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../http/exports/" class="md-nav__link">
+      <a href="../../reference/http/exports/" class="md-nav__link">
         
   
   
@@ -4099,7 +4189,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../http/metrics/" class="md-nav__link">
+      <a href="../../reference/http/metrics/" class="md-nav__link">
         
   
   
@@ -4127,7 +4217,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../http/gpus/" class="md-nav__link">
+      <a href="../../reference/http/gpus/" class="md-nav__link">
         
   
   
@@ -4155,7 +4245,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../http/templates/" class="md-nav__link">
+      <a href="../../reference/http/templates/" class="md-nav__link">
         
   
   
@@ -4183,7 +4273,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../http/proxy/" class="md-nav__link">
+      <a href="../../reference/http/proxy/" class="md-nav__link">
         
   
   
@@ -4211,7 +4301,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../http/authentication/" class="md-nav__link">
+      <a href="../../reference/http/authentication/" class="md-nav__link">
         
   
   
@@ -4239,7 +4329,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../http/server/" class="md-nav__link">
+      <a href="../../reference/http/server/" class="md-nav__link">
         
   
   
@@ -4275,7 +4365,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../env/" class="md-nav__link">
+      <a href="../../reference/env/" class="md-nav__link">
         
   
   
@@ -4355,7 +4445,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../profiles.yml/" class="md-nav__link">
+      <a href="../../reference/profiles.yml/" class="md-nav__link">
         
   
   
@@ -4435,7 +4525,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../plugins/python/" class="md-nav__link">
+      <a href="../../reference/plugins/python/" class="md-nav__link">
         
   
   
@@ -4463,7 +4553,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../plugins/rest/" class="md-nav__link">
+      <a href="../../reference/plugins/rest/" class="md-nav__link">
         
   
   
@@ -4580,7 +4670,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../blog/case-studies/" class="md-nav__link">
+      <a href="../../../blog/case-studies/" class="md-nav__link">
         
   
   
@@ -4663,7 +4753,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../blog/" class="md-nav__link">
+      <a href="../../../blog/" class="md-nav__link">
         
   
   
@@ -4747,7 +4837,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../blog/changelog/" class="md-nav__link">
+      <a href="../../../blog/changelog/" class="md-nav__link">
         
   
   
@@ -4779,7 +4869,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../blog/case-studies/" class="md-nav__link">
+      <a href="../../../blog/case-studies/" class="md-nav__link">
         
   
   
@@ -4811,7 +4901,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../blog/benchmarks/" class="md-nav__link">
+      <a href="../../../blog/benchmarks/" class="md-nav__link">
         
   
   
@@ -4875,11 +4965,11 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#dstack-endpoint-preset-list" class="md-nav__link">
+  <a href="#create-a-preset" class="md-nav__link">
     <span class="md-ellipsis">
       
         <span class="md-typeset">
-          dstack endpoint preset list
+          Create a preset
         </span>
       
     </span>
@@ -4888,11 +4978,95 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#dstack-endpoint-preset-create" class="md-nav__link">
+  <a href="#configuration-options" class="md-nav__link">
     <span class="md-ellipsis">
       
         <span class="md-typeset">
-          dstack endpoint preset create
+          Configuration options
+        </span>
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuration options">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Model
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#trials" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Trials
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#context-length" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Context length
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fleets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Fleets
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prompt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Prompt
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#apply-a-preset" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Apply a preset
         </span>
       
     </span>
@@ -4901,41 +5075,47 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#dstack-endpoint-preset-get" class="md-nav__link">
+  <a href="#manage-presets" class="md-nav__link">
     <span class="md-ellipsis">
       
         <span class="md-typeset">
-          dstack endpoint preset get
+          Manage presets
+        </span>
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Manage presets">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#list-presets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          List presets
         </span>
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#dstack-endpoint-preset-apply" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#delete-presets" class="md-nav__link">
     <span class="md-ellipsis">
       
         <span class="md-typeset">
-          dstack endpoint preset apply
+          Delete presets
         </span>
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#dstack-endpoint-preset-delete" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        <span class="md-typeset">
-          dstack endpoint preset delete
-        </span>
-      
-    </span>
-  </a>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -4977,7 +5157,7 @@
     
     
       <li class="md-path__item">
-<!--        <a href="../../../../" class="md-path__link">-->
+<!--        <a href="../../" class="md-path__link">-->
         
   <span class="md-ellipsis">
     Docs
@@ -4996,15 +5176,11 @@
   
     
     
-      
-  
-    
-    
       <li class="md-path__item">
-<!--        <a href="../../../dstack.yml/dev-environment/" class="md-path__link">-->
+<!--        <a href="../backends/" class="md-path__link">-->
         
   <span class="md-ellipsis">
-    Reference
+    Concepts
   </span>
 
 <!--        </a>-->
@@ -5012,19 +5188,16 @@
     
   
 
-    
-  
-
       
         
   
     
     
       <li class="md-path__item">
-<!--        <a href="../server/" class="md-path__link">-->
+<!--        <a href="./" class="md-path__link">-->
         
   <span class="md-ellipsis">
-    CLI
+    More
   </span>
 
 <!--        </a>-->
@@ -5042,217 +5215,177 @@
       
 
 
+  
+    <a href="https://github.com/dstackai/dstack/edit/master/mkdocs/docs/concepts/presets.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
+    </a>
+  
+  
 
-<h1 id="dstack-endpoint">dstack endpoint<a class="headerlink" href="#dstack-endpoint" title="Permanent link">&para;</a></h1>
-<p>The <code>dstack endpoint</code> commands create, list, apply, and delete local
-<a href="../../../../concepts/endpoints/">endpoint presets</a>.</p>
-<h2 id="dstack-endpoint-preset-list">dstack endpoint preset list<a class="headerlink" href="#dstack-endpoint-preset-list" title="Permanent link">&para;</a></h2>
-<p>The <code>dstack endpoint preset list</code> command lists locally stored presets.</p>
-<h5 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h5>
-<div class="termy">
 
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>dstack<span class="w"> </span>endpoint<span class="w"> </span>preset<span class="w"> </span>list<span class="w"> </span>--help
-Usage:<span class="w"> </span>dstack<span class="w"> </span>endpoint<span class="w"> </span>preset<span class="w"> </span>list<span class="w"> </span><span class="o">[</span>-h<span class="o">]</span><span class="w"> </span><span class="o">[</span>-v<span class="o">]</span><span class="w"> </span><span class="o">[</span>--json<span class="o">]</span>
+<h1 id="presets">Presets<a class="headerlink" href="#presets" title="Permanent link">&para;</a></h1>
+<p>A preset configuration lets you use an agent to create a preset: a validated and optimized model inference configuration. Once created, the preset can be reused to deploy model inference on validated hardware without an agent.</p>
+<p>The value of presets comes from combining two fundamental features: agent-driven model inference optimization and the <code>dstack</code> <a href="../services/">service</a> primitive, which can deploy model inference to any cloud, Kubernetes, or on-prem cluster.</p>
+<blockquote>
+<p>The presets feature is experimental and may change.</p>
+</blockquote>
+<details class="info">
+<summary>Prerequisites</summary>
+<p>Before using presets, make sure you’ve <a href="../../installation/">installed</a> the server and CLI, and created a <a href="../fleets/">fleet</a>.</p>
+<p>Creating a preset requires the <code>claude</code> CLI to be installed on the machine where you create a preset.</p>
+</details>
+<h2 id="create-a-preset">Create a preset<a class="headerlink" href="#create-a-preset" title="Permanent link">&para;</a></h2>
+<p>First, define a preset configuration as a YAML file in your project folder.
+The filename must end with <code>.dstack.yml</code> (e.g. <code>.dstack.yml</code> or <code>preset.dstack.yml</code> are both acceptable).</p>
+<div editor-title="preset.dstack.yml">
 
-Options:
-<span class="w">  </span>-h,<span class="w"> </span>--help<span class="w">     </span>show<span class="w"> </span>this<span class="w"> </span><span class="nb">help</span><span class="w"> </span>message<span class="w"> </span>and<span class="w"> </span><span class="nb">exit</span>
-<span class="w">  </span>-v,<span class="w"> </span>--verbose
-<span class="w">  </span>--json<span class="w">         </span>Output<span class="w"> </span><span class="k">in</span><span class="w"> </span>JSON<span class="w"> </span>format
+<div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">preset</span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">qwen25-7b</span>
+
+<span class="c1"># The agent picks a compatible variant of the base model</span>
+<span class="nt">base</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Qwen/Qwen2.5-7B-Instruct</span>
+
+<span class="c1"># The number of benchmarked trials</span>
+<span class="nt">max_trials</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
+
+<span class="nt">env</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HF_TOKEN</span>
 </code></pre></div>
 
 </div>
 
-<h2 id="dstack-endpoint-preset-create">dstack endpoint preset create<a class="headerlink" href="#dstack-endpoint-preset-create" title="Permanent link">&para;</a></h2>
-<p>The <code>dstack endpoint preset create</code> command uses an agent to create and save a
-verified preset from an endpoint configuration.</p>
-<h5 id="usage_1">Usage<a class="headerlink" href="#usage_1" title="Permanent link">&para;</a></h5>
+<p>To create the preset, pass the configuration to the <code>dstack preset create</code> command:</p>
 <div class="termy">
 
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>dstack<span class="w"> </span>endpoint<span class="w"> </span>preset<span class="w"> </span>create<span class="w"> </span>--help
-Usage:<span class="w"> </span>dstack<span class="w"> </span>endpoint<span class="w"> </span>preset<span class="w"> </span>create<span class="w"> </span><span class="o">[</span>-h<span class="o">]</span><span class="w"> </span>-f<span class="w"> </span>FILE<span class="w"> </span><span class="o">[</span>-n<span class="w"> </span>NAME<span class="o">]</span><span class="w"> </span><span class="o">[</span>--profile<span class="w"> </span>NAME<span class="o">]</span>
-<span class="w">                                     </span><span class="o">[</span>--max-price<span class="w"> </span>PRICE<span class="o">]</span>
-<span class="w">                                     </span><span class="o">[</span>--max-duration<span class="w"> </span>DURATION<span class="o">]</span><span class="w"> </span><span class="o">[</span>-b<span class="w"> </span>NAME<span class="o">]</span>
-<span class="w">                                     </span><span class="o">[</span>-r<span class="w"> </span>NAME<span class="o">]</span><span class="w"> </span><span class="o">[</span>--instance-type<span class="w"> </span>NAME<span class="o">]</span>
-<span class="w">                                     </span><span class="o">[</span>--fleet<span class="w"> </span>NAME<span class="o">]</span>
-<span class="w">                                     </span><span class="o">[</span>-R<span class="w"> </span><span class="p">|</span><span class="w"> </span>--dont-destroy<span class="w"> </span><span class="p">|</span><span class="w"> </span>--idle-duration<span class="w"> </span>IDLE_DURATION<span class="o">]</span>
-<span class="w">                                     </span><span class="o">[</span>--spot<span class="w"> </span><span class="p">|</span><span class="w"> </span>--on-demand<span class="w"> </span><span class="p">|</span><span class="w"> </span>--spot-auto<span class="w"> </span><span class="p">|</span><span class="w"> </span>--spot-policy<span class="w"> </span>POLICY<span class="o">]</span>
-<span class="w">                                     </span><span class="o">[</span>--retry<span class="w"> </span><span class="p">|</span><span class="w"> </span>--no-retry<span class="w"> </span><span class="p">|</span><span class="w"> </span>--retry-duration<span class="w"> </span>DURATION<span class="o">]</span>
-<span class="w">                                     </span><span class="o">[</span>--keep-service<span class="o">]</span><span class="w"> </span><span class="o">[</span>--debug<span class="o">]</span>
-
-Options:
-<span class="w">  </span>-h,<span class="w"> </span>--help<span class="w">            </span>show<span class="w"> </span>this<span class="w"> </span><span class="nb">help</span><span class="w"> </span>message<span class="w"> </span>and<span class="w"> </span><span class="nb">exit</span>
-<span class="w">  </span>-f,<span class="w"> </span>--file<span class="w"> </span>FILE<span class="w">       </span>The<span class="w"> </span>endpoint<span class="w"> </span>configuration<span class="w"> </span>file
-<span class="w">  </span>-n,<span class="w"> </span>--name<span class="w"> </span>NAME<span class="w">       </span>The<span class="w"> </span>endpoint<span class="w"> </span>name.<span class="w"> </span>Required<span class="w"> </span>when<span class="w"> </span>the<span class="w"> </span>configuration
-<span class="w">                        </span>omits<span class="w"> </span>name
-<span class="w">  </span>--keep-service<span class="w">        </span>Leave<span class="w"> </span>the<span class="w"> </span>verified<span class="w"> </span>service<span class="w"> </span>running
-<span class="w">  </span>--debug<span class="w">               </span>Save<span class="w"> </span>the<span class="w"> </span>agent<span class="w"> </span>prompt<span class="w"> </span>and<span class="w"> </span>raw<span class="w"> </span>trace
-
-Profile:
-<span class="w">  </span>--profile<span class="w"> </span>NAME<span class="w">        </span>The<span class="w"> </span>name<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>profile.<span class="w"> </span>Defaults<span class="w"> </span>to<span class="w"> </span><span class="nv">$DSTACK_PROFILE</span>
-<span class="w">  </span>--max-price<span class="w"> </span>PRICE<span class="w">     </span>The<span class="w"> </span>maximum<span class="w"> </span>price<span class="w"> </span>per<span class="w"> </span>hour,<span class="w"> </span><span class="k">in</span><span class="w"> </span>dollars
-<span class="w">  </span>--max-duration<span class="w"> </span>DURATION
-<span class="w">                        </span>The<span class="w"> </span>maximum<span class="w"> </span>duration<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>run
-<span class="w">  </span>-b,<span class="w"> </span>--backend<span class="w"> </span>NAME<span class="w">    </span>The<span class="w"> </span>backends<span class="w"> </span>that<span class="w"> </span>will<span class="w"> </span>be<span class="w"> </span>tried<span class="w"> </span><span class="k">for</span><span class="w"> </span>provisioning
-<span class="w">  </span>-r,<span class="w"> </span>--region<span class="w"> </span>NAME<span class="w">     </span>The<span class="w"> </span>regions<span class="w"> </span>that<span class="w"> </span>will<span class="w"> </span>be<span class="w"> </span>tried<span class="w"> </span><span class="k">for</span><span class="w"> </span>provisioning
-<span class="w">  </span>--instance-type<span class="w"> </span>NAME<span class="w">  </span>The<span class="w"> </span>cloud-specific<span class="w"> </span>instance<span class="w"> </span>types<span class="w"> </span>that<span class="w"> </span>will<span class="w"> </span>be<span class="w"> </span>tried
-<span class="w">                        </span><span class="k">for</span><span class="w"> </span>provisioning
-
-Fleets:
-<span class="w">  </span>--fleet<span class="w"> </span>NAME<span class="w">          </span>Consider<span class="w"> </span>only<span class="w"> </span>the<span class="w"> </span>specified<span class="w"> </span>fleet<span class="o">(</span>s<span class="o">)</span>
-<span class="w">  </span>-R,<span class="w"> </span>--reuse<span class="w">           </span>Reuse<span class="w"> </span>an<span class="w"> </span>existing<span class="w"> </span>instance<span class="w"> </span>from<span class="w"> </span>fleet<span class="w"> </span><span class="o">(</span><span class="k">do</span><span class="w"> </span>not
-<span class="w">                        </span>provision<span class="w"> </span>a<span class="w"> </span>new<span class="w"> </span>one<span class="o">)</span>
-<span class="w">  </span>--dont-destroy<span class="w">        </span>Do<span class="w"> </span>not<span class="w"> </span>destroy<span class="w"> </span>instance<span class="w"> </span>after<span class="w"> </span>the<span class="w"> </span>run<span class="w"> </span>is<span class="w"> </span>finished<span class="w"> </span><span class="o">(</span><span class="k">if</span>
-<span class="w">                        </span>the<span class="w"> </span>run<span class="w"> </span>provisions<span class="w"> </span>a<span class="w"> </span>new<span class="w"> </span>instance<span class="o">)</span>
-<span class="w">  </span>--idle-duration<span class="w"> </span>IDLE_DURATION
-<span class="w">                        </span>Time<span class="w"> </span>to<span class="w"> </span><span class="nb">wait</span><span class="w"> </span>before<span class="w"> </span>destroying<span class="w"> </span>the<span class="w"> </span>idle<span class="w"> </span>instance<span class="w"> </span><span class="o">(</span><span class="k">if</span>
-<span class="w">                        </span>the<span class="w"> </span>run<span class="w"> </span>provisions<span class="w"> </span>a<span class="w"> </span>new<span class="w"> </span>instance<span class="o">)</span>
-
-Spot<span class="w"> </span>Policy:
-<span class="w">  </span>--spot<span class="w">                </span>Consider<span class="w"> </span>only<span class="w"> </span>spot<span class="w"> </span>instances
-<span class="w">  </span>--on-demand<span class="w">           </span>Consider<span class="w"> </span>only<span class="w"> </span>on-demand<span class="w"> </span>instances
-<span class="w">  </span>--spot-auto<span class="w">           </span>Consider<span class="w"> </span>both<span class="w"> </span>spot<span class="w"> </span>and<span class="w"> </span>on-demand<span class="w"> </span>instances
-<span class="w">  </span>--spot-policy<span class="w"> </span>POLICY<span class="w">  </span>One<span class="w"> </span>of<span class="w"> </span>spot,<span class="w"> </span>on-demand,<span class="w"> </span>auto
-
-Retry<span class="w"> </span>Policy:
-<span class="w">  </span>--retry
-<span class="w">  </span>--no-retry
-<span class="w">  </span>--retry-duration<span class="w"> </span>DURATION
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>dstack<span class="w"> </span>preset<span class="w"> </span>create<span class="w"> </span>-f<span class="w"> </span>preset.dstack.yml
+Create<span class="w"> </span>the<span class="w"> </span>preset<span class="w"> </span>qwen25-7b?<span class="w"> </span><span class="o">[</span>y/n<span class="o">]</span>:<span class="w"> </span>y
+<span class="o">[</span><span class="m">2026</span>-07-15<span class="w"> </span><span class="m">11</span>:32:01<span class="o">]</span><span class="w"> </span>Starting<span class="w"> </span>preset<span class="w"> </span>creation<span class="w"> </span><span class="k">for</span><span class="w"> </span>Qwen/Qwen2.5-7B-Instruct.<span class="w"> </span>Allowed<span class="w"> </span>fleets:<span class="w"> </span>gpu-fleet.
+<span class="o">[</span><span class="m">2026</span>-07-15<span class="w"> </span><span class="m">11</span>:41:06<span class="o">]</span><span class="w"> </span>Prototype<span class="w"> </span>task<span class="w"> </span>qwen25-7b-a1b2c3-2<span class="w"> </span>verified<span class="w"> </span>vLLM<span class="w"> </span>on<span class="w"> </span>an<span class="w"> </span>L4:24GB.
+<span class="o">[</span><span class="m">2026</span>-07-15<span class="w"> </span><span class="m">11</span>:52:06<span class="o">]</span><span class="w"> </span>Final<span class="w"> </span>service<span class="w"> </span>qwen25-7b-a1b2c3-3<span class="w"> </span>verified<span class="w"> </span>with<span class="w"> </span>context<span class="w"> </span>length<span class="w"> </span><span class="m">32768</span>.
+<span class="o">[</span><span class="m">2026</span>-07-15<span class="w"> </span><span class="m">11</span>:52:18<span class="o">]</span><span class="w"> </span>Benchmark<span class="w"> </span>via<span class="w"> </span>guidellm<span class="w"> </span><span class="m">0</span>.7.1:<span class="w"> </span><span class="m">32</span>/32<span class="w"> </span>requests<span class="w"> </span>succeeded.
 </code></pre></div>
 
 </div>
 
-<h5 id="agent-settings">Agent settings<a class="headerlink" href="#agent-settings" title="Permanent link">&para;</a></h5>
-<p>Preset creation uses the existing <code>claude</code> login unless
-<code>DSTACK_AGENT_ANTHROPIC_API_KEY</code> is set.</p>
-<table>
-<thead>
-<tr>
-<th>Variable</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>DSTACK_AGENT_ANTHROPIC_API_KEY</code></td>
-<td>Anthropic API key used by the agent.</td>
-</tr>
-<tr>
-<td><code>DSTACK_AGENT_CLAUDE_PATH</code></td>
-<td><code>claude</code> executable name or path. Defaults to <code>claude</code> from <code>PATH</code>.</td>
-</tr>
-<tr>
-<td><code>DSTACK_AGENT_ANTHROPIC_MODEL</code></td>
-<td>Claude model used by the agent. Defaults to <code>claude-opus-4-8</code>.</td>
-</tr>
-<tr>
-<td><code>DSTACK_AGENT_CLAUDE_EFFORT</code></td>
-<td>Claude effort level: <code>low</code>, <code>medium</code>, <code>high</code>, <code>xhigh</code>, or <code>max</code>. If unset, the <code>claude</code> CLI default is used.</td>
-</tr>
-</tbody>
-</table>
-<p>Agent progress is written to <code>agent.log</code> under
-<code>~/.dstack/agent/&lt;endpoint-name&gt;/&lt;timestamp&gt;-&lt;preset-id&gt;/</code>. Failed attempts use
-the <code>-failed</code> suffix. Pass <code>--debug</code> to also save the effective endpoint
-configuration (<code>endpoint.dstack.yml</code>), agent prompt (<code>prompt.md</code>), and raw trace
-(<code>trace.jsonl</code>).</p>
-<h2 id="dstack-endpoint-preset-get">dstack endpoint preset get<a class="headerlink" href="#dstack-endpoint-preset-get" title="Permanent link">&para;</a></h2>
-<p>The <code>dstack endpoint preset get</code> command outputs one locally stored preset as JSON.</p>
-<h5 id="usage_2">Usage<a class="headerlink" href="#usage_2" title="Permanent link">&para;</a></h5>
+<p>The command executes entirely locally and uses the locally installed <code>claude</code> CLI along with <code>dstack</code>'s bundled skills. The agent uses a <code>dstack</code> task to find the best serving configuration for the available fleet offers, then submits it as a <code>dstack</code> service for a final benchmark. The validated preset is saved locally under <code>~/.dstack/presets</code>.</p>
+<p>You can stop watching with <kbd>Ctrl+C</kbd> at any time. The agent keeps running, and <code>dstack preset logs -f</code> follows it again. Resume an interrupted creation with <code>dstack preset create --resume</code>:</p>
 <div class="termy">
 
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>dstack<span class="w"> </span>endpoint<span class="w"> </span>preset<span class="w"> </span>get<span class="w"> </span>--help
-Usage:<span class="w"> </span>dstack<span class="w"> </span>endpoint<span class="w"> </span>preset<span class="w"> </span>get<span class="w"> </span><span class="o">[</span>-h<span class="o">]</span><span class="w"> </span>--json<span class="w"> </span>ID
-
-Positional<span class="w"> </span>Arguments:
-<span class="w">  </span>ID<span class="w">          </span>The<span class="w"> </span>preset<span class="w"> </span>ID
-
-Options:
-<span class="w">  </span>-h,<span class="w"> </span>--help<span class="w">  </span>show<span class="w"> </span>this<span class="w"> </span><span class="nb">help</span><span class="w"> </span>message<span class="w"> </span>and<span class="w"> </span><span class="nb">exit</span>
-<span class="w">  </span>--json<span class="w">      </span>Output<span class="w"> </span><span class="k">in</span><span class="w"> </span>JSON<span class="w"> </span>format
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>dstack<span class="w"> </span>preset<span class="w"> </span>create<span class="w"> </span>-f<span class="w"> </span>preset.dstack.yml<span class="w"> </span>--resume<span class="w"> </span>a1b2c3d4
 </code></pre></div>
 
 </div>
 
-<h2 id="dstack-endpoint-preset-apply">dstack endpoint preset apply<a class="headerlink" href="#dstack-endpoint-preset-apply" title="Permanent link">&para;</a></h2>
-<p>The <code>dstack endpoint preset apply</code> command selects a matching local preset and
-submits its service.</p>
-<h5 id="usage_3">Usage<a class="headerlink" href="#usage_3" title="Permanent link">&para;</a></h5>
-<div class="termy">
+<p>To stop a creation and its runs, use <code>dstack preset stop</code>.</p>
+<div class="admonition info">
+<p class="admonition-title">Claude configuration</p>
+<p>By default, preset creation uses the existing <code>claude</code> login. To use an Anthropic API key instead, set:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">DSTACK_AGENT_ANTHROPIC_API_KEY</span><span class="o">=</span>...
+</code></pre></div>
+<p>By default, the agent uses <code>claude-opus-4-8</code> and the default <code>claude</code> CLI effort. To override them, set:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">DSTACK_AGENT_ANTHROPIC_MODEL</span><span class="o">=</span>claude-fable-5
+<span class="nb">export</span><span class="w"> </span><span class="nv">DSTACK_AGENT_CLAUDE_EFFORT</span><span class="o">=</span>high
+</code></pre></div>
+<p>Supported effort levels are <code>low</code>, <code>medium</code>, <code>high</code>, <code>xhigh</code>, and <code>max</code>.</p>
+</div>
+<h2 id="configuration-options">Configuration options<a class="headerlink" href="#configuration-options" title="Permanent link">&para;</a></h2>
+<h3 id="model">Model<a class="headerlink" href="#model" title="Permanent link">&para;</a></h3>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="base" name="__tabbed_1" type="radio" /><input id="repo" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="base">Base</label><label for="repo">Repo</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Set <code>base</code> to let the creation agent select any compatible variant of the base model, including a different precision, quantization, or trusted fork.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">base</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Qwen/Qwen2.5-7B-Instruct</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<p>Set <code>repo</code> to deploy an exact model.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">repo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Qwen/Qwen2.5-7B-Instruct</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<h3 id="trials">Trials<a class="headerlink" href="#trials" title="Permanent link">&para;</a></h3>
+<p><code>max_trials</code> is required and sets how many benchmarked trials the agent runs before promoting the best one. Set <code>concurrency</code> to control the benchmark concurrency.</p>
+<h3 id="context-length">Context length<a class="headerlink" href="#context-length" title="Permanent link">&para;</a></h3>
+<p>Set <code>context_length</code> to require a minimum supported context length.</p>
+<h3 id="fleets">Fleets<a class="headerlink" href="#fleets" title="Permanent link">&para;</a></h3>
+<p>Set <code>fleets</code> to restrict creation and reuse to specific <a href="../fleets/">fleets</a>. Placement properties such as <code>backends</code>, <code>max_price</code>, and <code>spot_policy</code> constrain both creation and reuse too.</p>
+<h3 id="prompt">Prompt<a class="headerlink" href="#prompt" title="Permanent link">&para;</a></h3>
+<p>Set <code>prompt</code> to guide the agent with custom objectives, target metrics, or an experimentation approach. It accepts inline text or a file <code>path</code>.</p>
+<div editor-title="preset.dstack.yml">
 
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>dstack<span class="w"> </span>endpoint<span class="w"> </span>preset<span class="w"> </span>apply<span class="w"> </span>--help
-Usage:<span class="w"> </span>dstack<span class="w"> </span>endpoint<span class="w"> </span>preset<span class="w"> </span>apply<span class="w"> </span><span class="o">[</span>-h<span class="o">]</span><span class="w"> </span>-f<span class="w"> </span>FILE<span class="w"> </span><span class="o">[</span>-n<span class="w"> </span>NAME<span class="o">]</span><span class="w"> </span><span class="o">[</span>--profile<span class="w"> </span>NAME<span class="o">]</span>
-<span class="w">                                    </span><span class="o">[</span>--max-price<span class="w"> </span>PRICE<span class="o">]</span>
-<span class="w">                                    </span><span class="o">[</span>--max-duration<span class="w"> </span>DURATION<span class="o">]</span><span class="w"> </span><span class="o">[</span>-b<span class="w"> </span>NAME<span class="o">]</span>
-<span class="w">                                    </span><span class="o">[</span>-r<span class="w"> </span>NAME<span class="o">]</span><span class="w"> </span><span class="o">[</span>--instance-type<span class="w"> </span>NAME<span class="o">]</span>
-<span class="w">                                    </span><span class="o">[</span>--fleet<span class="w"> </span>NAME<span class="o">]</span>
-<span class="w">                                    </span><span class="o">[</span>-R<span class="w"> </span><span class="p">|</span><span class="w"> </span>--dont-destroy<span class="w"> </span><span class="p">|</span><span class="w"> </span>--idle-duration<span class="w"> </span>IDLE_DURATION<span class="o">]</span>
-<span class="w">                                    </span><span class="o">[</span>--spot<span class="w"> </span><span class="p">|</span><span class="w"> </span>--on-demand<span class="w"> </span><span class="p">|</span><span class="w"> </span>--spot-auto<span class="w"> </span><span class="p">|</span><span class="w"> </span>--spot-policy<span class="w"> </span>POLICY<span class="o">]</span>
-<span class="w">                                    </span><span class="o">[</span>--retry<span class="w"> </span><span class="p">|</span><span class="w"> </span>--no-retry<span class="w"> </span><span class="p">|</span><span class="w"> </span>--retry-duration<span class="w"> </span>DURATION<span class="o">]</span>
-<span class="w">                                    </span><span class="o">[</span>--preset<span class="w"> </span>ID<span class="o">]</span><span class="w"> </span><span class="o">[</span>-y<span class="o">]</span><span class="w"> </span><span class="o">[</span>--force<span class="o">]</span><span class="w"> </span><span class="o">[</span>-d<span class="o">]</span><span class="w"> </span><span class="o">[</span>-v<span class="o">]</span>
-
-Options:
-<span class="w">  </span>-h,<span class="w"> </span>--help<span class="w">            </span>show<span class="w"> </span>this<span class="w"> </span><span class="nb">help</span><span class="w"> </span>message<span class="w"> </span>and<span class="w"> </span><span class="nb">exit</span>
-<span class="w">  </span>-f,<span class="w"> </span>--file<span class="w"> </span>FILE<span class="w">       </span>The<span class="w"> </span>endpoint<span class="w"> </span>configuration<span class="w"> </span>file
-<span class="w">  </span>-n,<span class="w"> </span>--name<span class="w"> </span>NAME<span class="w">       </span>The<span class="w"> </span>endpoint<span class="w"> </span>name.<span class="w"> </span>Required<span class="w"> </span>when<span class="w"> </span>the<span class="w"> </span>configuration
-<span class="w">                        </span>omits<span class="w"> </span>name
-<span class="w">  </span>--preset<span class="w"> </span>ID<span class="w">           </span>The<span class="w"> </span>preset<span class="w"> </span>ID<span class="w"> </span>to<span class="w"> </span>use
-<span class="w">  </span>-y,<span class="w"> </span>--yes<span class="w">             </span>Do<span class="w"> </span>not<span class="w"> </span>ask<span class="w"> </span><span class="k">for</span><span class="w"> </span>confirmation
-<span class="w">  </span>--force<span class="w">               </span>Force<span class="w"> </span>apply<span class="w"> </span>when<span class="w"> </span>no<span class="w"> </span>changes<span class="w"> </span>are<span class="w"> </span>detected
-<span class="w">  </span>-d,<span class="w"> </span>--detach<span class="w">          </span>Exit<span class="w"> </span>after<span class="w"> </span>submitting<span class="w"> </span>the<span class="w"> </span>service
-<span class="w">  </span>-v,<span class="w"> </span>--verbose<span class="w">         </span>Show<span class="w"> </span>all<span class="w"> </span>plan<span class="w"> </span>properties
-
-Profile:
-<span class="w">  </span>--profile<span class="w"> </span>NAME<span class="w">        </span>The<span class="w"> </span>name<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>profile.<span class="w"> </span>Defaults<span class="w"> </span>to<span class="w"> </span><span class="nv">$DSTACK_PROFILE</span>
-<span class="w">  </span>--max-price<span class="w"> </span>PRICE<span class="w">     </span>The<span class="w"> </span>maximum<span class="w"> </span>price<span class="w"> </span>per<span class="w"> </span>hour,<span class="w"> </span><span class="k">in</span><span class="w"> </span>dollars
-<span class="w">  </span>--max-duration<span class="w"> </span>DURATION
-<span class="w">                        </span>The<span class="w"> </span>maximum<span class="w"> </span>duration<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>run
-<span class="w">  </span>-b,<span class="w"> </span>--backend<span class="w"> </span>NAME<span class="w">    </span>The<span class="w"> </span>backends<span class="w"> </span>that<span class="w"> </span>will<span class="w"> </span>be<span class="w"> </span>tried<span class="w"> </span><span class="k">for</span><span class="w"> </span>provisioning
-<span class="w">  </span>-r,<span class="w"> </span>--region<span class="w"> </span>NAME<span class="w">     </span>The<span class="w"> </span>regions<span class="w"> </span>that<span class="w"> </span>will<span class="w"> </span>be<span class="w"> </span>tried<span class="w"> </span><span class="k">for</span><span class="w"> </span>provisioning
-<span class="w">  </span>--instance-type<span class="w"> </span>NAME<span class="w">  </span>The<span class="w"> </span>cloud-specific<span class="w"> </span>instance<span class="w"> </span>types<span class="w"> </span>that<span class="w"> </span>will<span class="w"> </span>be<span class="w"> </span>tried
-<span class="w">                        </span><span class="k">for</span><span class="w"> </span>provisioning
-
-Fleets:
-<span class="w">  </span>--fleet<span class="w"> </span>NAME<span class="w">          </span>Consider<span class="w"> </span>only<span class="w"> </span>the<span class="w"> </span>specified<span class="w"> </span>fleet<span class="o">(</span>s<span class="o">)</span>
-<span class="w">  </span>-R,<span class="w"> </span>--reuse<span class="w">           </span>Reuse<span class="w"> </span>an<span class="w"> </span>existing<span class="w"> </span>instance<span class="w"> </span>from<span class="w"> </span>fleet<span class="w"> </span><span class="o">(</span><span class="k">do</span><span class="w"> </span>not
-<span class="w">                        </span>provision<span class="w"> </span>a<span class="w"> </span>new<span class="w"> </span>one<span class="o">)</span>
-<span class="w">  </span>--dont-destroy<span class="w">        </span>Do<span class="w"> </span>not<span class="w"> </span>destroy<span class="w"> </span>instance<span class="w"> </span>after<span class="w"> </span>the<span class="w"> </span>run<span class="w"> </span>is<span class="w"> </span>finished<span class="w"> </span><span class="o">(</span><span class="k">if</span>
-<span class="w">                        </span>the<span class="w"> </span>run<span class="w"> </span>provisions<span class="w"> </span>a<span class="w"> </span>new<span class="w"> </span>instance<span class="o">)</span>
-<span class="w">  </span>--idle-duration<span class="w"> </span>IDLE_DURATION
-<span class="w">                        </span>Time<span class="w"> </span>to<span class="w"> </span><span class="nb">wait</span><span class="w"> </span>before<span class="w"> </span>destroying<span class="w"> </span>the<span class="w"> </span>idle<span class="w"> </span>instance<span class="w"> </span><span class="o">(</span><span class="k">if</span>
-<span class="w">                        </span>the<span class="w"> </span>run<span class="w"> </span>provisions<span class="w"> </span>a<span class="w"> </span>new<span class="w"> </span>instance<span class="o">)</span>
-
-Spot<span class="w"> </span>Policy:
-<span class="w">  </span>--spot<span class="w">                </span>Consider<span class="w"> </span>only<span class="w"> </span>spot<span class="w"> </span>instances
-<span class="w">  </span>--on-demand<span class="w">           </span>Consider<span class="w"> </span>only<span class="w"> </span>on-demand<span class="w"> </span>instances
-<span class="w">  </span>--spot-auto<span class="w">           </span>Consider<span class="w"> </span>both<span class="w"> </span>spot<span class="w"> </span>and<span class="w"> </span>on-demand<span class="w"> </span>instances
-<span class="w">  </span>--spot-policy<span class="w"> </span>POLICY<span class="w">  </span>One<span class="w"> </span>of<span class="w"> </span>spot,<span class="w"> </span>on-demand,<span class="w"> </span>auto
-
-Retry<span class="w"> </span>Policy:
-<span class="w">  </span>--retry
-<span class="w">  </span>--no-retry
-<span class="w">  </span>--retry-duration<span class="w"> </span>DURATION
+<div class="highlight"><pre><span></span><code><span class="nt">prompt</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">  </span><span class="no">Optimize for the lowest TTFT at concurrency 32. Consider FP8 quantization.</span>
 </code></pre></div>
 
 </div>
 
-<h2 id="dstack-endpoint-preset-delete">dstack endpoint preset delete<a class="headerlink" href="#dstack-endpoint-preset-delete" title="Permanent link">&para;</a></h2>
-<p>The <code>dstack endpoint preset delete</code> command deletes one local preset by ID or
-all presets for a base model.</p>
-<h5 id="usage_4">Usage<a class="headerlink" href="#usage_4" title="Permanent link">&para;</a></h5>
+<div class="admonition info">
+<p class="admonition-title">Reference</p>
+<p>The <code>preset</code> configuration supports many more options. See the <a href="../../reference/dstack.yml/preset/"><code>.dstack.yml</code> reference</a>.</p>
+</div>
+<h2 id="apply-a-preset">Apply a preset<a class="headerlink" href="#apply-a-preset" title="Permanent link">&para;</a></h2>
+<p>To deploy a preset as a service, pass the preset configuration and the preset ID to the <code>dstack preset apply</code> command:</p>
 <div class="termy">
 
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>dstack<span class="w"> </span>endpoint<span class="w"> </span>preset<span class="w"> </span>delete<span class="w"> </span>--help
-Usage:<span class="w"> </span>dstack<span class="w"> </span>endpoint<span class="w"> </span>preset<span class="w"> </span>delete<span class="w"> </span><span class="o">[</span>-h<span class="o">]</span><span class="w"> </span><span class="o">[</span>--model<span class="w"> </span>MODEL<span class="o">]</span><span class="w"> </span><span class="o">[</span>-y<span class="o">]</span><span class="w"> </span><span class="o">[</span>ID<span class="o">]</span>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>dstack<span class="w"> </span>preset<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>preset.dstack.yml<span class="w"> </span>--id<span class="w"> </span>532f3f4b
+<span class="w"> </span>Project<span class="w">        </span>main
+<span class="w"> </span>User<span class="w">           </span>admin
+<span class="w"> </span>Type<span class="w">           </span>service
+<span class="w"> </span>Resources<span class="w">      </span><span class="nv">cpu</span><span class="o">=</span><span class="m">2</span>..<span class="w"> </span><span class="nv">mem</span><span class="o">=</span>8GB..<span class="w"> </span><span class="nv">disk</span><span class="o">=</span>100GB..<span class="w"> </span><span class="nv">gpu</span><span class="o">=</span>RTXPRO4500:32GB:1..
+<span class="w"> </span>Spot<span class="w"> </span>policy<span class="w">    </span>on-demand
+<span class="w"> </span>Max<span class="w"> </span>price<span class="w">      </span>off
+<span class="w"> </span>Model<span class="w">          </span>Qwen/Qwen3.5-27B<span class="w"> </span><span class="o">(</span>base<span class="o">)</span>
+<span class="w"> </span>Preset<span class="w">         </span>532f3f4b<span class="w"> </span><span class="o">(</span><span class="nv">ctx</span><span class="o">=</span>8K<span class="w"> </span><span class="nv">con</span><span class="o">=</span><span class="m">8</span><span class="w"> </span><span class="m">387</span><span class="w"> </span>tok/s<span class="w"> </span>TTFT<span class="w"> </span>582ms<span class="o">)</span>
 
-Positional<span class="w"> </span>Arguments:
-<span class="w">  </span>ID<span class="w">             </span>The<span class="w"> </span>preset<span class="w"> </span>ID
+<span class="w"> </span><span class="c1">#  BACKEND           RESOURCES                                         INSTANCE TYPE                  PRICE</span>
+<span class="w"> </span><span class="m">1</span><span class="w">  </span>runpod<span class="w"> </span><span class="o">(</span>EU-RO-1<span class="o">)</span><span class="w">  </span><span class="nv">cpu</span><span class="o">=</span><span class="m">12</span><span class="w"> </span><span class="nv">mem</span><span class="o">=</span>54GB<span class="w"> </span><span class="nv">disk</span><span class="o">=</span>100GB<span class="w"> </span><span class="nv">gpu</span><span class="o">=</span>RTXPRO4500:32GB:1<span class="w">  </span>NVIDIA<span class="w"> </span>RTX<span class="w"> </span>PRO<span class="w"> </span><span class="m">4500</span><span class="w"> </span>Blackwell<span class="w">  </span><span class="nv">$0</span>.74
 
-Options:
-<span class="w">  </span>-h,<span class="w"> </span>--help<span class="w">     </span>show<span class="w"> </span>this<span class="w"> </span><span class="nb">help</span><span class="w"> </span>message<span class="w"> </span>and<span class="w"> </span><span class="nb">exit</span>
-<span class="w">  </span>--model<span class="w"> </span>MODEL<span class="w">  </span>Delete<span class="w"> </span>all<span class="w"> </span>presets<span class="w"> </span><span class="k">for</span><span class="w"> </span>a<span class="w"> </span>base<span class="w"> </span>model
-<span class="w">  </span>-y,<span class="w"> </span>--yes<span class="w">      </span>Do<span class="w"> </span>not<span class="w"> </span>ask<span class="w"> </span><span class="k">for</span><span class="w"> </span>confirmation
+Submit<span class="w"> </span>the<span class="w"> </span>run<span class="w"> </span>qwen35-27b?<span class="w"> </span><span class="o">[</span>y/n<span class="o">]</span>:<span class="w"> </span>y
 </code></pre></div>
 
+</div>
+
+<h2 id="manage-presets">Manage presets<a class="headerlink" href="#manage-presets" title="Permanent link">&para;</a></h2>
+<h3 id="list-presets">List presets<a class="headerlink" href="#list-presets" title="Permanent link">&para;</a></h3>
+<p>Use <code>dstack preset</code> to list presets:</p>
+<div class="termy">
+
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>dstack<span class="w"> </span>preset<span class="w"> </span>list
+<span class="w"> </span>BASE<span class="w">               </span>ID<span class="w">        </span>GPU<span class="w">                  </span>BENCHMARK<span class="w">                    </span>STATUS<span class="w">              </span>SUBMITTED<span class="w">     </span>NAME
+<span class="w"> </span>Qwen/Qwen2.5-0.5B
+<span class="w">                    </span>bc592b38<span class="w">                                                    </span>clauding<span class="w"> </span><span class="o">(</span><span class="m">0</span>/3<span class="o">)</span><span class="w">      </span><span class="m">23</span><span class="w"> </span>sec<span class="w"> </span>ago<span class="w">    </span>qwen05
+<span class="w"> </span>Qwen/Qwen3-32B
+<span class="w">                    </span>f91d6b60<span class="w">  </span>RTX5090:32GB:1<span class="w">       </span><span class="nv">con</span><span class="o">=</span><span class="m">8</span><span class="w"> </span><span class="m">576</span><span class="w"> </span>tok/s<span class="w"> </span>TTFT<span class="w"> </span>368ms<span class="w">   </span>verified<span class="w"> </span><span class="o">(</span><span class="m">10</span>/10<span class="o">)</span><span class="w">    </span><span class="m">2</span><span class="w"> </span>days<span class="w"> </span>ago<span class="w">    </span>qwen3-32b
+<span class="w"> </span>Qwen/Qwen3.5-27B
+<span class="w">                    </span>3c4d5e6f<span class="w">                                                    </span>verifying<span class="w"> </span><span class="o">(</span><span class="m">3</span>/3<span class="o">)</span><span class="w">     </span><span class="m">2</span><span class="w"> </span>min<span class="w"> </span>ago<span class="w">     </span>qwen35-27b-2
+<span class="w">                    </span>532f3f4b<span class="w">  </span>RTXPRO4500:32GB:1..<span class="w">  </span><span class="nv">con</span><span class="o">=</span><span class="m">8</span><span class="w"> </span><span class="m">387</span><span class="w"> </span>tok/s<span class="w"> </span>TTFT<span class="w"> </span>582ms<span class="w">   </span>verified<span class="w"> </span><span class="o">(</span><span class="m">4</span>/4<span class="o">)</span><span class="w">      </span>yesterday<span class="w">     </span>qwen35-27b
+<span class="w">                    </span>d1c2e12b<span class="w">  </span>RTX5090:32GB:1<span class="w">       </span><span class="nv">con</span><span class="o">=</span><span class="m">8</span><span class="w"> </span><span class="m">266</span><span class="w"> </span>tok/s<span class="w"> </span>TTFT<span class="w"> </span><span class="m">2</span>.15s<span class="w">   </span>verified<span class="w"> </span><span class="o">(</span><span class="m">7</span>/10<span class="o">)</span><span class="w">     </span>yesterday
+</code></pre></div>
+
+</div>
+
+<p>Presets are grouped by base model. In-progress creations appear too, with a live status like <code>clauding</code> or <code>verifying</code>. Pass <code>-w</code> to watch in realtime. Pass <code>-v</code> to include validation resources and all benchmark metrics, or <code>--json</code> for complete preset objects. Filter with <code>--base</code> or <code>--repo</code>.</p>
+<h3 id="delete-presets">Delete presets<a class="headerlink" href="#delete-presets" title="Permanent link">&para;</a></h3>
+<p>Delete a preset by ID or name, or all presets for a base model with <code>--base</code>:</p>
+<div class="termy">
+
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>dstack<span class="w"> </span>preset<span class="w"> </span>delete<span class="w"> </span>8f3a12c4
+</code></pre></div>
+
+</div>
+
+<p>For command options and agent settings, see the <a href="../../reference/cli/dstack/preset/"><code>dstack preset</code> CLI reference</a>.</p>
+<blockquote>
+<p>Presets are experimental, and we’d love your feedback. Report bugs and request features on <a href="https://github.com/dstackai/dstack/issues">GitHub</a>, and ask questions on <a href="https://discord.gg/u8SmfwPpMd">Discord</a>.</p>
+</blockquote>
+<div class="admonition info">
+<p class="admonition-title">What's next?</p>
+<ol>
+<li>Learn how dstack <a href="../services/">services</a> work</li>
+<li>Learn how to configure <a href="../fleets/">fleets</a></li>
+</ol>
 </div>
 
 
@@ -5260,6 +5393,9 @@ Options:
 
 
 
+
+  
+  
 
 
 
@@ -5274,7 +5410,7 @@ Options:
           <nav class="md-footer__inner md-grid" aria-label="Footer" >
             
               
-              <a href="../secret/" class="md-footer__link md-footer__link--prev" aria-label="Previous: dstack secret">
+              <a href="../volumes/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Volumes">
                 <div class="md-footer__button md-icon">
                   
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -5284,20 +5420,20 @@ Options:
                     Previous
                   </span>
                   <div class="md-ellipsis">
-                    dstack secret
+                    Volumes
                   </div>
                 </div>
               </a>
             
             
               
-              <a href="../export/" class="md-footer__link md-footer__link--next" aria-label="Next: dstack export">
+              <a href="../gateways/" class="md-footer__link md-footer__link--next" aria-label="Next: Gateways">
                 <div class="md-footer__title">
                   <span class="md-footer__direction">
                     Next
                   </span>
                   <div class="md-ellipsis">
-                    dstack export
+                    Gateways
                   </div>
                 </div>
                 <div class="md-footer__button md-icon">
@@ -5315,7 +5451,7 @@ Options:
     <div class="tx-footer__top">
       <div class="tx-footer__brand">
         <a class="tx-footer__logo" href="/" aria-label="dstack home">
-          <img src="../../../../../assets/images/dstack-logo-notext.svg" alt="">
+          <img src="../../../assets/images/dstack-logo-notext.svg" alt="">
           <span>dstack</span>
         </a>
         
@@ -5447,21 +5583,21 @@ Options:
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../../../..", "features": ["content.tooltips", "navigation.path", "content.code.copy", "content.action.edit", "navigation.tabs", "navigation.sections", "navigation.top", "navigation.tracking", "navigation.footer"], "search": "../../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["content.tooltips", "navigation.path", "content.code.copy", "content.action.edit", "navigation.tabs", "navigation.sections", "navigation.top", "navigation.tracking", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
 <script src="/assets/javascripts/termynal.js"></script>
 <script async src="https://tally.so/widgets/embed.js"></script>
 
-      <script src="../../../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
         <script src="https://unpkg.com/swagger-ui-dist@5.32.0/swagger-ui-bundle.js"></script>
       
-        <script src="../../../../../assets/javascripts/swagger.js"></script>
+        <script src="../../../assets/javascripts/swagger.js"></script>
       
-        <script src="../../../../../assets/javascripts/extra.js"></script>
+        <script src="../../../assets/javascripts/extra.js"></script>
       
-        <script src="../../../../../assets/javascripts/pricing.js"></script>
+        <script src="../../../assets/javascripts/pricing.js"></script>
       
     <script>
   window.addEventListener('storage', function (e) {

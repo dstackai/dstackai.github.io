@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../../assets/images/dstack-fav-32.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -33,7 +33,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -139,7 +139,7 @@
       "@type": "ListItem",
       "position": 4,
       "name": "More",
-      "item": "https://dstack.ai/docs/concepts/endpoints/"
+      "item": "https://dstack.ai/docs/concepts/presets/"
     },{
       "@type": "ListItem",
       "position": 5,
@@ -1098,14 +1098,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../endpoints/" class="md-nav__link">
+      <a href="../presets/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Endpoints
+    Presets
   
 
     
@@ -3031,14 +3031,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../reference/dstack.yml/endpoint/" class="md-nav__link">
+      <a href="../../reference/dstack.yml/preset/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    endpoint
+    preset
   
 
     
@@ -3623,14 +3623,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../reference/cli/dstack/endpoint/" class="md-nav__link">
+      <a href="../../reference/cli/dstack/preset/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    dstack endpoint
+    dstack preset
   
 
     
@@ -5078,7 +5078,7 @@
     
     
       <li class="md-path__item">
-<!--        <a href="../endpoints/" class="md-path__link">-->
+<!--        <a href="../presets/" class="md-path__link">-->
         
   <span class="md-ellipsis">
     More
@@ -5788,75 +5788,9 @@ telemetry, and more.</p>
 </div>
 </div>
 <h3 id="server-health-metrics">Server health metrics<a class="headerlink" href="#server-health-metrics" title="Permanent link">&para;</a></h3>
-<p>These are operational metrics to monitor the health of the dstack server. For now, these only include HTTP metrics, but more will be added later.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="metrics_4" name="__tabbed_4" type="radio" /><input id="labels_3" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="metrics_4">Metrics</label><label for="labels_3">Labels</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Description</th>
-<th>Examples</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>dstack_server_requests_total</code></td>
-<td><em>counter</em></td>
-<td>Total number of HTTP requests</td>
-<td><code>100.0</code></td>
-</tr>
-<tr>
-<td><code>dstack_server_request_duration_seconds</code></td>
-<td><em>histogram</em></td>
-<td>HTTP request duration in seconds</td>
-<td><code>1.0</code></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="tabbed-block">
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th style="text-align: left;">Description</th>
-<th>Examples</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>method</code></td>
-<td><em>string</em></td>
-<td style="text-align: left;">HTTP method</td>
-<td><code>POST</code></td>
-</tr>
-<tr>
-<td><code>endpoint</code></td>
-<td><em>string</em></td>
-<td style="text-align: left;">Endpoint path</td>
-<td><code>/api/project/main/repos/get</code></td>
-</tr>
-<tr>
-<td><code>http_status</code></td>
-<td><em>string</em></td>
-<td style="text-align: left;">HTTP status code</td>
-<td><code>200</code></td>
-</tr>
-<tr>
-<td><code>project_name</code></td>
-<td><em>string?</em></td>
-<td style="text-align: left;">Project name</td>
-<td><code>main</code></td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
+<p>To monitor the health of the <code>dstack</code> server itself (HTTP requests, DB queries, process
+metrics, and more), use the OpenTelemetry integration — see
+<a href="../../guides/server-deployment/#observability">observability</a>.</p>
 <div class="footnote">
 <hr />
 <ol>
@@ -6067,7 +6001,7 @@ telemetry, and more.</p>
 <script src="/assets/javascripts/termynal.js"></script>
 <script async src="https://tally.so/widgets/embed.js"></script>
 
-      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
         <script src="https://unpkg.com/swagger-ui-dist@5.32.0/swagger-ui-bundle.js"></script>
       

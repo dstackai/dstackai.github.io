@@ -1,7 +1,7 @@
-# `endpoint`
+# `preset`
 
-The `endpoint` configuration type describes a model request and the constraints
-used to create or apply an [endpoint preset](../../concepts/endpoints.md).
+The `preset` configuration type describes a model request and the constraints
+used to create or apply a [preset](../../concepts/presets.md).
 
 ## Root reference
 
@@ -25,11 +25,15 @@ used to create or apply an [endpoint preset](../../concepts/endpoints.md).
 ###### `instances` - (Optional) `list` The specific fleet instances to consider for reuse. Each value can be an instance name string, or an object with `name`, `hostname`, or `fleet` and `instance`. When set, the run is only placed on matching existing instances.. { #instances data-toc-label='instances' class='reference-item' }
 ###### `tags` - (Optional) `dict` The custom tags to associate with the resource. The tags are also propagated to the underlying backend resources. If there is a conflict with backend-level tags, does not override them. { #tags data-toc-label='tags' class='reference-item' }
 ###### `backend_options` - (Optional) `list[object]` Backend-specific options, applied only to offers from that backend. { #backend_options data-toc-label='backend_options' class='reference-item' }
-###### `type` - (Required) `"endpoint"` The configuration type. Must be `endpoint`. { #type data-toc-label='type' class='reference-item' }
-###### `name` - (Optional) `str` The endpoint name. Required unless passed with `--name`. { #name data-toc-label='name' class='reference-item' }
-###### [`model`](#model) - (Required) `str | object` The model to serve. Use a string or `repo` for an exact repo/path, or `base` to allow compatible model variants.. { #_model data-toc-label='model' class='reference-item' }
+###### `type` - (Required) `"preset"` The configuration type. Must be `preset`. { #type data-toc-label='type' class='reference-item' }
+###### `name` - (Optional) `str` The service name. Required unless passed with `--name`. { #name data-toc-label='name' class='reference-item' }
+###### [`model`](#model) - (Required) `str | object` The model to serve. Use a string or `repo` for an exact repo/path, or `base` to allow compatible model variants. Prefer the top-level `base`/`repo` shorthand unless a custom client-facing model name is needed. { #_model data-toc-label='model' class='reference-item' }
+###### `base` - (Optional) `str` The base model repo; compatible variants are allowed. Shorthand for `model.base`. { #base data-toc-label='base' class='reference-item' }
+###### `repo` - (Optional) `str` The exact model repo/path to serve. Shorthand for `model.repo`. { #repo data-toc-label='repo' class='reference-item' }
+###### `prompt` - (Optional) `str | object` Additional instructions for the preset creation agent, inline or as a file `path`. { #prompt data-toc-label='prompt' class='reference-item' }
 ###### `context_length` - (Optional) `int` The minimum required context length. { #context_length data-toc-label='context_length' class='reference-item' }
-###### `preset` - (Optional) `str` The preset ID to use when applying the endpoint. { #preset data-toc-label='preset' class='reference-item' }
+###### `max_trials` - (Optional) `int` The maximum number of benchmarked trials during preset creation before the best one is promoted. { #max_trials data-toc-label='max_trials' class='reference-item' }
+###### `concurrency` - (Optional) `int` The number of simultaneous requests used for benchmarks during preset creation. Defaults to `8`. { #concurrency data-toc-label='concurrency' class='reference-item' }
 ###### `gateway` - (Optional) `bool | str | object` The name of the gateway. Specify boolean `false` to run without a gateway. Specify boolean `true` to run with the default gateway. Omit to run with the default gateway if there is one, or without a gateway otherwise. { #gateway data-toc-label='gateway' class='reference-item' }
 ###### [`env`](#env) - (Optional) `list[str] | dict` The mapping or the list of environment variables. { #_env data-toc-label='env' class='reference-item' }
 
@@ -50,6 +54,13 @@ used to create or apply an [endpoint preset](../../concepts/endpoints.md).
 
     ###### `repo` - (Required) `str` The exact model repo or path to deploy. { #repo data-toc-label='repo' class='reference-item' }
     ###### `name` - (Optional) `str` The client-facing model name. Defaults to `repo`. { #name data-toc-label='name' class='reference-item' }
+
+
+### `prompt`
+
+Custom agent instructions. Set to an inline string, or to a file:
+
+###### `path` - (Required) `str` The path to a prompt file, relative to the configuration file. { #path data-toc-label='path' class='reference-item' }
 
 
 ### `retry`

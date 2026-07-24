@@ -6077,91 +6077,80 @@ volumes:
 </div>
 
 
-# docs/concepts/endpoints.md
+# docs/concepts/presets.md
 
 ---
-title: Endpoints
-description: Creating and reusing optimized model inference endpoint configurations
+title: Presets
+description: Creating and reusing optimized model inference configurations
 ---
 
-# Endpoints
+# Presets
 
-An endpoint configuration lets you use an agent to create a preset: a validated and optimized model inference configuration. Once created, the preset can be reused to deploy model inference on validated hardware without an agent.
+A preset configuration lets you use an agent to create a preset: a validated and optimized model inference configuration. Once created, the preset can be reused to deploy model inference on validated hardware without an agent.
 
 The value of presets comes from combining two fundamental features: agent-driven model inference optimization and the `dstack` [service](services.md) primitive, which can deploy model inference to any cloud, Kubernetes, or on-prem cluster.
 
-> The endpoints feature is experimental and may change.
+> The presets feature is experimental and may change.
 
 ??? info "Prerequisites"
-    Before using endpoint presets, make sure you’ve [installed](../installation.md) the server and CLI, and created a [fleet](fleets.md).
+    Before using presets, make sure you’ve [installed](../installation.md) the server and CLI, and created a [fleet](fleets.md).
 
-    Creating an endpoint preset requires the `claude` CLI to be installed on the machine where you create a preset.
-
-## Define an endpoint
-
-Before you can create or reuse an endpoint preset, you first have to define an endpoint configuration. The filename must end with `.dstack.yml`.
-
-<div editor-title="endpoint.dstack.yml">
-
-```yaml
-type: endpoint
-name: qwen25-7b
-
-model:
-  base: Qwen/Qwen2.5-7B-Instruct
-
-env:
-  - HF_TOKEN
-```
-
-</div>
-
-Since `base` is specified, the preset can use any compatible variant of the base model, including a different precision, quantization, or trusted fork.
-
-If you want to deploy an exact model, set `model` directly to the repo of that model:
-
-<div editor-title="endpoint.dstack.yml">
-
-```yaml
-type: endpoint
-name: qwen25-7b
-
-model: Qwen/Qwen2.5-7B-Instruct
-
-env:
-  - HF_TOKEN
-```
-
-</div>
-
-Set `context_length` to require a minimum context length. Placement properties,
-including `fleets`, `backends`, `max_price`, and `spot_policy`, constrain both
-creation and reuse. Environment variables such as `HF_TOKEN` can be passed
-through `env`.
-
-See the [reference](../reference/dstack.yml/endpoint.md) for all supported configuration options.
+    Creating a preset requires the `claude` CLI to be installed on the machine where you create a preset.
 
 ## Create a preset
 
-To create a preset, pass the configuration file to the `dstack endpoint preset create` command:
+First, define a preset configuration as a YAML file in your project folder.
+The filename must end with `.dstack.yml` (e.g. `.dstack.yml` or `preset.dstack.yml` are both acceptable).
+
+<div editor-title="preset.dstack.yml">
+
+```yaml
+type: preset
+name: qwen25-7b
+
+# The agent picks a compatible variant of the base model
+base: Qwen/Qwen2.5-7B-Instruct
+
+# The number of benchmarked trials
+max_trials: 3
+
+env:
+  - HF_TOKEN
+```
+
+</div>
+
+To create the preset, pass the configuration to the `dstack preset create` command:
 
 <div class="termy">
 
 ```shell
-$ dstack endpoint preset create -f endpoint.dstack.yml
-[2026-07-15 11:32:01] Starting endpoint preset creation for Qwen/Qwen2.5-7B-Instruct. Allowed fleets: gpu-fleet.
+$ dstack preset create -f preset.dstack.yml
+Create the preset qwen25-7b? [y/n]: y
+[2026-07-15 11:32:01] Starting preset creation for Qwen/Qwen2.5-7B-Instruct. Allowed fleets: gpu-fleet.
 [2026-07-15 11:41:06] Prototype task qwen25-7b-a1b2c3-2 verified vLLM on an L4:24GB.
 [2026-07-15 11:52:06] Final service qwen25-7b-a1b2c3-3 verified with context length 32768.
 [2026-07-15 11:52:18] Benchmark via guidellm 0.7.1: 32/32 requests succeeded.
-[2026-07-15 11:52:18] Saved endpoint preset 8f3a12c4 for Qwen/Qwen2.5-7B-Instruct.
 ```
 
 </div>
 
-This command executes entirely locally and uses the locally installed `claude` CLI along with `dstack`'s bundled skills. The agent uses a `dstack` task to find the best serving configuration for the available fleet offers. It then submits the configuration as a `dstack` service for a final benchmark. The validated preset is saved locally under `~/.dstack/presets`.
+The command executes entirely locally and uses the locally installed `claude` CLI along with `dstack`'s bundled skills. The agent uses a `dstack` task to find the best serving configuration for the available fleet offers, then submits it as a `dstack` service for a final benchmark. The validated preset is saved locally under `~/.dstack/presets`.
 
-??? info "Claude configuration"
-    Preset creation uses the existing `claude` login. To use an Anthropic API key instead, set:
+You can stop watching with <kbd>Ctrl+C</kbd> at any time. The agent keeps running, and `dstack preset logs -f` follows it again. Resume an interrupted creation with `dstack preset create --resume`:
+
+<div class="termy">
+
+```shell
+$ dstack preset create -f preset.dstack.yml --resume a1b2c3d4
+```
+
+</div>
+
+To stop a creation and its runs, use `dstack preset stop`.
+
+!!! info "Claude configuration"
+    By default, preset creation uses the existing `claude` login. To use an Anthropic API key instead, set:
 
     ```shell
     export DSTACK_AGENT_ANTHROPIC_API_KEY=...
@@ -6176,85 +6165,119 @@ This command executes entirely locally and uses the locally installed `claude` C
 
     Supported effort levels are `low`, `medium`, `high`, `xhigh`, and `max`.
 
-## List presets
+## Configuration options
 
-Use `dstack endpoint preset` to list existing presets:
+### Model
 
-<div class="termy">
+=== "Base"
 
-```shell
-$ dstack endpoint preset list
- MODEL                     GPU                    CONTEXT  BENCHMARK                           CREATED
- Qwen/Qwen2.5-7B-Instruct
-    preset=8f3a12c4        nvidia:16GB..24GB:1..  32K      concurrency=1 464 tok/s TTFT 312ms  1 hour ago
+    Set `base` to let the creation agent select any compatible variant of the base model, including a different precision, quantization, or trusted fork.
+
+    ```yaml
+    base: Qwen/Qwen2.5-7B-Instruct
+    ```
+
+=== "Repo"
+
+    Set `repo` to deploy an exact model.
+
+    ```yaml
+    repo: Qwen/Qwen2.5-7B-Instruct
+    ```
+
+### Trials
+
+`max_trials` is required and sets how many benchmarked trials the agent runs before promoting the best one. Set `concurrency` to control the benchmark concurrency.
+
+### Context length
+
+Set `context_length` to require a minimum supported context length.
+
+### Fleets
+
+Set `fleets` to restrict creation and reuse to specific [fleets](fleets.md). Placement properties such as `backends`, `max_price`, and `spot_policy` constrain both creation and reuse too.
+
+### Prompt
+
+Set `prompt` to guide the agent with custom objectives, target metrics, or an experimentation approach. It accepts inline text or a file `path`.
+
+<div editor-title="preset.dstack.yml">
+
+```yaml
+prompt: |
+  Optimize for the lowest TTFT at concurrency 32. Consider FP8 quantization.
 ```
 
 </div>
 
-Presets are grouped by base model. Each preset contains an optimized serving configuration for a specific model variant, along with its hardware requirements, validation, and benchmark data.
-
-Pass `-v` to include validation resources and all benchmark metrics, or `--json`
-to output complete preset objects.
+!!! info "Reference"
+    The `preset` configuration supports many more options. See the [`.dstack.yml` reference](../reference/dstack.yml/preset.md).
 
 ## Apply a preset
 
-To deploy a preset as a service, pass the endpoint configuration to the `dstack endpoint preset apply` command:
+To deploy a preset as a service, pass the preset configuration and the preset ID to the `dstack preset apply` command:
 
 <div class="termy">
 
 ```shell
-$ dstack endpoint preset apply -f endpoint.dstack.yml
- Model          Qwen/Qwen2.5-7B-Instruct (base)
- Preset         8f3a12c4 (context=32K, concurrency=1 464 tok/s TTFT 312ms)
+$ dstack preset apply -f preset.dstack.yml --id 532f3f4b
+ Project        main
+ User           admin
+ Type           service
+ Resources      cpu=2.. mem=8GB.. disk=100GB.. gpu=RTXPRO4500:32GB:1..
+ Spot policy    on-demand
+ Max price      off
+ Model          Qwen/Qwen3.5-27B (base)
+ Preset         532f3f4b (ctx=8K con=8 387 tok/s TTFT 582ms)
 
- #  BACKEND            RESOURCES                      INSTANCE TYPE     PRICE
- 1  runpod (CA-MTL-1)  cpu=9 mem=50GB disk=200GB      NVIDIA RTX A5000  $0.27
-                       gpu=A5000:24GB:1
- 2  runpod (CA-MTL-1)  cpu=9 mem=50GB disk=200GB      NVIDIA RTX A5000  $0.27
-                       gpu=A5000:24GB:1 (spot)
- 3  runpod (US-IL-1)   cpu=12 mem=25GB disk=200GB     NVIDIA RTX A5000  $0.27
-                       gpu=A5000:24GB:1
-    ...
- Shown 3 of 4 offers, $0.27max
+ #  BACKEND           RESOURCES                                         INSTANCE TYPE                  PRICE
+ 1  runpod (EU-RO-1)  cpu=12 mem=54GB disk=100GB gpu=RTXPRO4500:32GB:1  NVIDIA RTX PRO 4500 Blackwell  $0.74
 
-Submit the run qwen25-7b? [y/n]: y
+Submit the run qwen35-27b? [y/n]: y
 ```
 
 </div>
 
-If you don't pass `--preset ID` or specify `preset` in the endpoint configuration, `dstack` automatically selects a matching preset based on the available fleet offers. It then deploys the preset as a service.
+## Manage presets
 
-## Delete presets
+### List presets
 
-You can delete a specific preset by ID or all presets for a base model.
+Use `dstack preset` to list presets:
 
 <div class="termy">
 
 ```shell
-$ dstack endpoint preset delete 8f3a12c4
+$ dstack preset list
+ BASE               ID        GPU                  BENCHMARK                    STATUS              SUBMITTED     NAME
+ Qwen/Qwen2.5-0.5B
+                    bc592b38                                                    clauding (0/3)      23 sec ago    qwen05
+ Qwen/Qwen3-32B
+                    f91d6b60  RTX5090:32GB:1       con=8 576 tok/s TTFT 368ms   verified (10/10)    2 days ago    qwen3-32b
+ Qwen/Qwen3.5-27B
+                    3c4d5e6f                                                    verifying (3/3)     2 min ago     qwen35-27b-2
+                    532f3f4b  RTXPRO4500:32GB:1..  con=8 387 tok/s TTFT 582ms   verified (4/4)      yesterday     qwen35-27b
+                    d1c2e12b  RTX5090:32GB:1       con=8 266 tok/s TTFT 2.15s   verified (7/10)     yesterday
 ```
 
 </div>
 
-To delete all presets for a base model, pass `--model`:
+Presets are grouped by base model. In-progress creations appear too, with a live status like `clauding` or `verifying`. Pass `-w` to watch in realtime. Pass `-v` to include validation resources and all benchmark metrics, or `--json` for complete preset objects. Filter with `--base` or `--repo`.
+
+### Delete presets
+
+Delete a preset by ID or name, or all presets for a base model with `--base`:
 
 <div class="termy">
 
 ```shell
-$ dstack endpoint preset delete --model Qwen/Qwen2.5-7B-Instruct
+$ dstack preset delete 8f3a12c4
 ```
 
 </div>
 
-For command options and agent settings, see the
-[`dstack endpoint` CLI reference](../reference/cli/dstack/endpoint.md).
+For command options and agent settings, see the [`dstack preset` CLI reference](../reference/cli/dstack/preset.md).
 
-!!! info "Roadmap"
-    Here's what's coming soon in endpoint presets:
-
-    1. Support multiple trials, allowing the agent to improve benchmark results based on previous trials.
-    2. Allow the endpoint configuration to define custom agent instructions, such as target metrics and the experimentation approach.
-    3. Control which experiments the agent may perform, including modifying serving framework code and generating custom kernels.
+> Presets are experimental, and we’d love your feedback. Report bugs and request features on [GitHub](https://github.com/dstackai/dstack/issues), and ask questions on [Discord](https://discord.gg/u8SmfwPpMd).
 
 !!! info "What's next?"
     1. Learn how dstack [services](services.md) work
@@ -6928,21 +6951,9 @@ telemetry, and more.
 
 ### Server health metrics
 
-These are operational metrics to monitor the health of the dstack server. For now, these only include HTTP metrics, but more will be added later.
-
-=== "Metrics"
-    | Name                                     | Type      | Description                       | Examples     |
-    |------------------------------------------|-----------|-----------------------------------|--------------|
-    | `dstack_server_requests_total` | *counter* | Total number of HTTP requests | `100.0` |
-    | `dstack_server_request_duration_seconds` | *histogram*   | HTTP request duration in seconds  | `1.0`|
-
-=== "Labels"
-    | Name                   | Type      | Description   | Examples                               |
-    |------------------------|-----------|:--------------|----------------------------------------|
-    | `method`  | *string*  | HTTP method  | `POST`                                 |
-    | `endpoint`    | *string* | Endpoint path    | `/api/project/main/repos/get`                             |
-    | `http_status`      | *string* | HTTP status code      | `200` |
-    | `project_name` | *string?*  | Project name  | `main`                           |
+To monitor the health of the `dstack` server itself (HTTP requests, DB queries, process
+metrics, and more), use the OpenTelemetry integration — see
+[observability](../guides/server-deployment.md#observability).
 
 
 # docs/concepts/events.md
@@ -8153,11 +8164,20 @@ $ DSTACK_OTEL_TRACES_ENABLED=1 \
     - `DSTACK_OTEL_TRACES_BACKGROUND_SAMPLE_RATE` – The head sampling rate for background task traces.
 
 ??? info "Metrics exporters"
-    By default, if the [Prometheus `/metrics` endpoint](../concepts/metrics.md) is enabled via
-    `DSTACK_ENABLE_PROMETHEUS_METRICS`, OpenTelemetry metrics are exposed there alongside the built-in
-    `dstack` metrics; otherwise they are pushed via OTLP. Set `DSTACK_OTEL_METRICS_EXPORTERS`
-    to a comma-separated list of `prometheus` and/or `otlp` to override, e.g. force OTLP push
-    even when `/metrics` is enabled.
+    By default, metrics are pushed via OTLP like traces and logs. Set
+    `DSTACK_OTEL_METRICS_EXPORTERS=prometheus` to instead expose them on the
+    [Prometheus `/metrics` endpoint](../concepts/metrics.md) alongside the built-in `dstack`
+    metrics (a comma-separated list enables both exporters at once).
+
+    If you run multiple server replicas, only use the `prometheus` exporter if Prometheus
+    scrapes each replica directly. Scraping through a load balancer interleaves the
+    replicas' counters into the same series and silently corrupts all rates.
+
+    When pushed metrics end up in Prometheus (e.g. via an OTel Collector), the sample
+    cadence is set by `OTEL_METRIC_EXPORT_INTERVAL` (milliseconds; defaults to `60000`).
+    If it's much larger than Prometheus' configured `timeInterval` (defaults to 15s),
+    `rate()` queries may be empty. Set e.g. `OTEL_METRIC_EXPORT_INTERVAL=30000`,
+    and make sure the datasource's `timeInterval` reflects the cadence you choose.
 
 ## Encryption
 

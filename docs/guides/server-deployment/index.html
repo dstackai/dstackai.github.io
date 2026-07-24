@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../../assets/images/dstack-fav-32.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -33,7 +33,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -1089,14 +1089,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../concepts/endpoints/" class="md-nav__link">
+      <a href="../../concepts/presets/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Endpoints
+    Presets
   
 
     
@@ -3271,14 +3271,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../reference/dstack.yml/endpoint/" class="md-nav__link">
+      <a href="../../reference/dstack.yml/preset/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    endpoint
+    preset
   
 
     
@@ -3863,14 +3863,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../reference/cli/dstack/endpoint/" class="md-nav__link">
+      <a href="../../reference/cli/dstack/preset/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    dstack endpoint
+    dstack preset
   
 
     
@@ -5971,11 +5971,18 @@ e.g. in an OTel Collector. To sample in the server instead, set:</p>
 </details>
 <details class="info">
 <summary>Metrics exporters</summary>
-<p>By default, if the <a href="../../concepts/metrics/">Prometheus <code>/metrics</code> endpoint</a> is enabled via
-<code>DSTACK_ENABLE_PROMETHEUS_METRICS</code>, OpenTelemetry metrics are exposed there alongside the built-in
-<code>dstack</code> metrics; otherwise they are pushed via OTLP. Set <code>DSTACK_OTEL_METRICS_EXPORTERS</code>
-to a comma-separated list of <code>prometheus</code> and/or <code>otlp</code> to override, e.g. force OTLP push
-even when <code>/metrics</code> is enabled.</p>
+<p>By default, metrics are pushed via OTLP like traces and logs. Set
+<code>DSTACK_OTEL_METRICS_EXPORTERS=prometheus</code> to instead expose them on the
+<a href="../../concepts/metrics/">Prometheus <code>/metrics</code> endpoint</a> alongside the built-in <code>dstack</code>
+metrics (a comma-separated list enables both exporters at once).</p>
+<p>If you run multiple server replicas, only use the <code>prometheus</code> exporter if Prometheus
+scrapes each replica directly. Scraping through a load balancer interleaves the
+replicas' counters into the same series and silently corrupts all rates.</p>
+<p>When pushed metrics end up in Prometheus (e.g. via an OTel Collector), the sample
+cadence is set by <code>OTEL_METRIC_EXPORT_INTERVAL</code> (milliseconds; defaults to <code>60000</code>).
+If it's much larger than Prometheus' configured <code>timeInterval</code> (defaults to 15s),
+<code>rate()</code> queries may be empty. Set e.g. <code>OTEL_METRIC_EXPORT_INTERVAL=30000</code>,
+and make sure the datasource's <code>timeInterval</code> reflects the cadence you choose.</p>
 </details>
 <h2 id="encryption">Encryption<a class="headerlink" href="#encryption" title="Permanent link">&para;</a></h2>
 <p>By default, <code>dstack</code> stores data in plaintext. To enforce encryption, you 
@@ -6302,7 +6309,7 @@ such as <a href="#aws-cloudwatch">AWS CloudWatch</a>, <a href="#gcp-logging">GCP
 <script src="/assets/javascripts/termynal.js"></script>
 <script async src="https://tally.so/widgets/embed.js"></script>
 
-      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
         <script src="https://unpkg.com/swagger-ui-dist@5.32.0/swagger-ui-bundle.js"></script>
       

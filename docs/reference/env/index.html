@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../../assets/images/dstack-fav-32.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -33,7 +33,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -1089,14 +1089,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../concepts/endpoints/" class="md-nav__link">
+      <a href="../../concepts/presets/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Endpoints
+    Presets
   
 
     
@@ -2880,14 +2880,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../dstack.yml/endpoint/" class="md-nav__link">
+      <a href="../dstack.yml/preset/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    endpoint
+    preset
   
 
     
@@ -3472,14 +3472,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../cli/dstack/endpoint/" class="md-nav__link">
+      <a href="../cli/dstack/preset/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    dstack endpoint
+    dstack preset
   
 
     
@@ -5100,7 +5100,7 @@ via <code>dstack server</code> or deployed using Docker.</p>
 <li><code id="DSTACK_OTEL_TRACES_BACKGROUND_SAMPLE_RATE">DSTACK_OTEL_TRACES_BACKGROUND_SAMPLE_RATE</code> – The head sampling rate for background task traces. Defaults to <code>1.0</code>.</li>
 <li><code id="DSTACK_OTEL_LOGS_ENABLED">DSTACK_OTEL_LOGS_ENABLED</code> – Enables server log export via OTLP if set to any value. Requires the <code>otel</code> extra.</li>
 <li><code id="DSTACK_OTEL_METRICS_ENABLED">DSTACK_OTEL_METRICS_ENABLED</code> – Enables OpenTelemetry metrics if set to any value. Requires the <code>otel</code> extra.</li>
-<li><code id="DSTACK_OTEL_METRICS_EXPORTERS">DSTACK_OTEL_METRICS_EXPORTERS</code> – A comma-separated list of OpenTelemetry metrics exporters: <code>prometheus</code> (expose on the <code>/metrics</code> endpoint) and/or <code>otlp</code> (push via OTLP). Defaults to <code>prometheus</code> if <code>DSTACK_ENABLE_PROMETHEUS_METRICS</code> is set, otherwise <code>otlp</code>.</li>
+<li><code id="DSTACK_OTEL_METRICS_EXPORTERS">DSTACK_OTEL_METRICS_EXPORTERS</code> – A comma-separated list of OpenTelemetry metrics exporters: <code>otlp</code> (push via OTLP) and/or <code>prometheus</code> (expose on the <code>/metrics</code> endpoint). Defaults to <code>otlp</code>.</li>
 <li><code id="DSTACK_DEFAULT_SERVICE_CLIENT_MAX_BODY_SIZE">DSTACK_DEFAULT_SERVICE_CLIENT_MAX_BODY_SIZE</code> – Request body size limit for services running with a gateway, in bytes. Defaults to 64 MiB.</li>
 <li><code id="DSTACK_SERVICE_CLIENT_TIMEOUT">DSTACK_SERVICE_CLIENT_TIMEOUT</code> – Timeout in seconds for HTTP requests sent from the in-server proxy and gateways to service replicas. Defaults to 60.</li>
 <li><code id="DSTACK_FORBID_SERVICES_WITHOUT_GATEWAY">DSTACK_FORBID_SERVICES_WITHOUT_GATEWAY</code> – Forbids registering new services without a gateway if set to any value.</li>
@@ -5185,10 +5185,10 @@ dstack<span class="w"> </span>ps
 
 <ul>
 <li><code id="DSTACK_PROJECT">DSTACK_PROJECT</code> – Has the same effect as <code>--project</code>. Defaults to <code>None</code>.</li>
-<li><code id="DSTACK_AGENT_ANTHROPIC_API_KEY">DSTACK_AGENT_ANTHROPIC_API_KEY</code> – The Anthropic API key used by the endpoint preset agent. If unset, the existing <code>claude</code> login is used.</li>
-<li><code id="DSTACK_AGENT_CLAUDE_PATH">DSTACK_AGENT_CLAUDE_PATH</code> – The <code>claude</code> executable name or path used by the endpoint preset agent. Defaults to <code>claude</code> from <code>PATH</code>.</li>
-<li><code id="DSTACK_AGENT_ANTHROPIC_MODEL">DSTACK_AGENT_ANTHROPIC_MODEL</code> – The Claude model used by the endpoint preset agent. Defaults to <code>claude-opus-4-8</code>.</li>
-<li><code id="DSTACK_AGENT_CLAUDE_EFFORT">DSTACK_AGENT_CLAUDE_EFFORT</code> – The Claude effort level used by the endpoint preset agent. Can be <code>low</code>, <code>medium</code>, <code>high</code>, <code>xhigh</code>, or <code>max</code>. If unset, the <code>claude</code> CLI default is used.</li>
+<li><code id="DSTACK_AGENT_ANTHROPIC_API_KEY">DSTACK_AGENT_ANTHROPIC_API_KEY</code> – The Anthropic API key used by the preset agent. If unset, the existing <code>claude</code> login is used.</li>
+<li><code id="DSTACK_AGENT_CLAUDE_PATH">DSTACK_AGENT_CLAUDE_PATH</code> – The <code>claude</code> executable name or path used by the preset agent. Defaults to <code>claude</code> from <code>PATH</code>.</li>
+<li><code id="DSTACK_AGENT_ANTHROPIC_MODEL">DSTACK_AGENT_ANTHROPIC_MODEL</code> – The Claude model used by the preset agent. Defaults to <code>claude-opus-4-8</code>.</li>
+<li><code id="DSTACK_AGENT_CLAUDE_EFFORT">DSTACK_AGENT_CLAUDE_EFFORT</code> – The Claude effort level used by the preset agent. Can be <code>low</code>, <code>medium</code>, <code>high</code>, <code>xhigh</code>, or <code>max</code>. If unset, the <code>claude</code> CLI default is used.</li>
 </ul>
 
 
@@ -5389,7 +5389,7 @@ dstack<span class="w"> </span>ps
 <script src="/assets/javascripts/termynal.js"></script>
 <script async src="https://tally.so/widgets/embed.js"></script>
 
-      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
         <script src="https://unpkg.com/swagger-ui-dist@5.32.0/swagger-ui-bundle.js"></script>
       

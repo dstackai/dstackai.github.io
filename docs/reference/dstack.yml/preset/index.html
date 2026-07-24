@@ -6,37 +6,37 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Creating and reusing optimized model inference endpoint configurations">
+        <meta name="description" content="dstack is a unified control plane for GPU provisioning and orchestration that works with any GPU cloud, Kubernetes, or on-prem clusters.">
       
       
         <meta name="author" content="dstack GmbH">
       
       
-        <link rel="canonical" href="https://dstack.ai/docs/concepts/endpoints/">
+        <link rel="canonical" href="https://dstack.ai/docs/reference/dstack.yml/preset/">
       
       
-        <link rel="prev" href="../volumes/">
+        <link rel="prev" href="../volume/">
       
       
-        <link rel="next" href="../gateways/">
+        <link rel="next" href="../../server/config.yml/">
       
       
         
       
       
-      <link rel="icon" href="../../../assets/images/dstack-fav-32.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <link rel="icon" href="../../../../assets/images/dstack-fav-32.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
-        <title>Endpoints - dstack</title>
+        <title>preset - dstack</title>
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.ec1eaa64.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -61,23 +61,23 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/_mkdocstrings.css">
+      <link rel="stylesheet" href="../../../../assets/_mkdocstrings.css">
     
       <link rel="stylesheet" href="https://unpkg.com/swagger-ui-dist@5.32.0/swagger-ui.css">
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/extra.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/extra.css">
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/swagger.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/swagger.css">
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/termynal.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/termynal.css">
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/landing.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/landing.css">
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/pricing.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/pricing.css">
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/cloudscape-docs.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/cloudscape-docs.css">
     
-    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
   
@@ -108,10 +108,10 @@
   };
   try { window.__dstackApplyTheme(localStorage.getItem('dstack-theme') === 'dark', false); } catch (e) {}
 </script>
-<link rel="preload" href="../../../assets/fonts/Geist-Variable.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="../../../assets/fonts/GeistMono-Variable.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="../../../assets/fonts/GeistPixel-Square.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="../../../assets/fonts/GeistPixel-Circle.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../../../../assets/fonts/Geist-Variable.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../../../../assets/fonts/GeistMono-Variable.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../../../../assets/fonts/GeistPixel-Square.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../../../../assets/fonts/GeistPixel-Circle.woff2" as="font" type="font/woff2" crossorigin>
 
 
 
@@ -133,17 +133,17 @@
     },{
       "@type": "ListItem",
       "position": 3,
-      "name": "Concepts",
-      "item": "https://dstack.ai/docs/concepts/backends/"
+      "name": "Reference",
+      "item": "https://dstack.ai/docs/reference/dstack.yml/dev-environment/"
     },{
       "@type": "ListItem",
       "position": 4,
-      "name": "More",
-      "item": "https://dstack.ai/docs/concepts/endpoints/"
+      "name": ".dstack.yml",
+      "item": "https://dstack.ai/docs/reference/dstack.yml/dev-environment/"
     },{
       "@type": "ListItem",
       "position": 5,
-      "name": "Endpoints"
+      "name": "preset"
     }]
 }
 </script>
@@ -151,17 +151,17 @@
 
   
 <meta property="og:type" content="website" />
-<meta property="og:title" content="Endpoints - dstack" />
-<meta property="og:description" content="Creating and reusing optimized model inference endpoint configurations" />
-<meta property="og:image" content="https://dstack.ai/assets/images/social/docs/concepts/endpoints.png" />
+<meta property="og:title" content="preset - dstack" />
+<meta property="og:description" content="dstack is a unified control plane for GPU provisioning and orchestration that works with any GPU cloud, Kubernetes, or on-prem clusters." />
+<meta property="og:image" content="https://dstack.ai/assets/images/social/docs/reference/dstack.yml/preset.png" />
 <meta property="og:image:type" content="image/png" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
-<meta property="og:url" content="https://dstack.ai/docs/concepts/endpoints/" />
+<meta property="og:url" content="https://dstack.ai/docs/reference/dstack.yml/preset/" />
 <meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter.title" content="Endpoints - dstack" />
-<meta property="twitter:description" content="Creating and reusing optimized model inference endpoint configurations" />
-<meta property="twitter:image" content="https://dstack.ai/assets/images/social/docs/concepts/endpoints.png" />
+<meta property="twitter.title" content="preset - dstack" />
+<meta property="twitter:description" content="dstack is a unified control plane for GPU provisioning and orchestration that works with any GPU cloud, Kubernetes, or on-prem clusters." />
+<meta property="twitter:image" content="https://dstack.ai/assets/images/social/docs/reference/dstack.yml/preset.png" />
 </head>
   
   
@@ -181,7 +181,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#endpoints" class="md-skip">
+        <a href="#preset" class="md-skip">
           Skip to content
         </a>
       
@@ -215,7 +215,7 @@
     
     <a href="/" title="dstack" class="md-header__button md-logo" aria-label="dstack" data-md-component="logo">
       
-  <img src="../../../assets/images/dstack-logo-notext.svg" alt="logo">
+  <img src="../../../../assets/images/dstack-logo-notext.svg" alt="logo">
 
     </a>
     
@@ -234,7 +234,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Endpoints
+              preset
             
           </span>
         </div>
@@ -327,7 +327,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../.." class="md-tabs__link">
+      <a href="../../../.." class="md-tabs__link">
         
   
   
@@ -359,7 +359,7 @@
     
     
       <li class="md-tabs__item md-tabs__item--active">
-        <a href="../../" class="md-tabs__link">
+        <a href="../../../" class="md-tabs__link">
           
   
   
@@ -380,7 +380,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../../blog/case-studies/" class="md-tabs__link">
+      <a href="../../../../blog/case-studies/" class="md-tabs__link">
         
   
   
@@ -401,7 +401,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../blog/" class="md-tabs__link">
+        <a href="../../../../blog/" class="md-tabs__link">
           
   
   
@@ -561,7 +561,7 @@
   <label class="md-nav__title" for="__drawer">
     <a href="/" title="dstack" class="md-nav__button md-logo" aria-label="dstack" data-md-component="logo">
       
-  <img src="../../../assets/images/dstack-logo-notext.svg" alt="logo">
+  <img src="../../../../assets/images/dstack-logo-notext.svg" alt="logo">
 
     </a>
     dstack
@@ -588,7 +588,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../.." class="md-nav__link">
+      <a href="../../../.." class="md-nav__link">
         
   
   
@@ -727,7 +727,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../" class="md-nav__link">
+      <a href="../../../" class="md-nav__link">
         
   
   
@@ -755,7 +755,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../installation/" class="md-nav__link">
+      <a href="../../../installation/" class="md-nav__link">
         
   
   
@@ -783,7 +783,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../quickstart/" class="md-nav__link">
+      <a href="../../../quickstart/" class="md-nav__link">
         
   
   
@@ -816,8 +816,6 @@
                 
   
   
-    
-  
   
   
     
@@ -833,11 +831,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
         
           
           <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="">
@@ -858,7 +856,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2_2">
             <span class="md-nav__icon md-icon"></span>
             
@@ -876,7 +874,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../backends/" class="md-nav__link">
+      <a href="../../../concepts/backends/" class="md-nav__link">
         
   
   
@@ -904,7 +902,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../fleets/" class="md-nav__link">
+      <a href="../../../concepts/fleets/" class="md-nav__link">
         
   
   
@@ -932,7 +930,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../dev-environments/" class="md-nav__link">
+      <a href="../../../concepts/dev-environments/" class="md-nav__link">
         
   
   
@@ -960,7 +958,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../tasks/" class="md-nav__link">
+      <a href="../../../concepts/tasks/" class="md-nav__link">
         
   
   
@@ -988,7 +986,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../services/" class="md-nav__link">
+      <a href="../../../concepts/services/" class="md-nav__link">
         
   
   
@@ -1016,7 +1014,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../volumes/" class="md-nav__link">
+      <a href="../../../concepts/volumes/" class="md-nav__link">
         
   
   
@@ -1041,8 +1039,6 @@
                 
   
   
-    
-  
   
   
     
@@ -1055,11 +1051,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2_7" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2_7" >
         
           
           <label class="md-nav__link" for="__nav_2_2_7" id="__nav_2_2_7_label" tabindex="0">
@@ -1080,7 +1076,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_7_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_7_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2_2_7">
             <span class="md-nav__icon md-icon"></span>
             
@@ -1095,44 +1091,17 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Endpoints
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../../concepts/presets/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Endpoints
+    Presets
   
 
     
@@ -1141,91 +1110,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#define-an-endpoint" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        <span class="md-typeset">
-          Define an endpoint
-        </span>
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#create-a-preset" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        <span class="md-typeset">
-          Create a preset
-        </span>
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#list-presets" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        <span class="md-typeset">
-          List presets
-        </span>
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#apply-a-preset" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        <span class="md-typeset">
-          Apply a preset
-        </span>
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#delete-presets" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        <span class="md-typeset">
-          Delete presets
-        </span>
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1238,7 +1122,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../gateways/" class="md-nav__link">
+      <a href="../../../concepts/gateways/" class="md-nav__link">
         
   
   
@@ -1266,7 +1150,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../secrets/" class="md-nav__link">
+      <a href="../../../concepts/secrets/" class="md-nav__link">
         
   
   
@@ -1294,7 +1178,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../projects/" class="md-nav__link">
+      <a href="../../../concepts/projects/" class="md-nav__link">
         
   
   
@@ -1322,7 +1206,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../metrics/" class="md-nav__link">
+      <a href="../../../concepts/metrics/" class="md-nav__link">
         
   
   
@@ -1350,7 +1234,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../events/" class="md-nav__link">
+      <a href="../../../concepts/events/" class="md-nav__link">
         
   
   
@@ -1378,7 +1262,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../exports/" class="md-nav__link">
+      <a href="../../../concepts/exports/" class="md-nav__link">
         
   
   
@@ -1477,7 +1361,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/cli-api/" class="md-nav__link">
+      <a href="../../../guides/cli-api/" class="md-nav__link">
         
   
   
@@ -1505,7 +1389,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/server-deployment/" class="md-nav__link">
+      <a href="../../../guides/server-deployment/" class="md-nav__link">
         
   
   
@@ -1533,7 +1417,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/troubleshooting/" class="md-nav__link">
+      <a href="../../../guides/troubleshooting/" class="md-nav__link">
         
   
   
@@ -1613,7 +1497,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/protips/" class="md-nav__link">
+      <a href="../../../guides/protips/" class="md-nav__link">
         
   
   
@@ -1641,7 +1525,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/tenant-isolation/" class="md-nav__link">
+      <a href="../../../guides/tenant-isolation/" class="md-nav__link">
         
   
   
@@ -1669,7 +1553,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/upgrade/" class="md-nav__link">
+      <a href="../../../guides/upgrade/" class="md-nav__link">
         
   
   
@@ -1749,7 +1633,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/migration/slurm/" class="md-nav__link">
+      <a href="../../../guides/migration/slurm/" class="md-nav__link">
         
   
   
@@ -1908,7 +1792,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../examples/training/trl/" class="md-nav__link">
+      <a href="../../../examples/training/trl/" class="md-nav__link">
         
   
   
@@ -1936,7 +1820,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../examples/training/axolotl/" class="md-nav__link">
+      <a href="../../../examples/training/axolotl/" class="md-nav__link">
         
   
   
@@ -1964,7 +1848,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../examples/training/ray-ragen/" class="md-nav__link">
+      <a href="../../../examples/training/ray-ragen/" class="md-nav__link">
         
   
   
@@ -1992,7 +1876,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../examples/training/miles/" class="md-nav__link">
+      <a href="../../../examples/training/miles/" class="md-nav__link">
         
   
   
@@ -2080,7 +1964,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../examples/clusters/aws/" class="md-nav__link">
+      <a href="../../../examples/clusters/aws/" class="md-nav__link">
         
   
   
@@ -2108,7 +1992,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../examples/clusters/gcp/" class="md-nav__link">
+      <a href="../../../examples/clusters/gcp/" class="md-nav__link">
         
   
   
@@ -2136,7 +2020,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../examples/clusters/lambda/" class="md-nav__link">
+      <a href="../../../examples/clusters/lambda/" class="md-nav__link">
         
   
   
@@ -2164,7 +2048,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../examples/clusters/crusoe/" class="md-nav__link">
+      <a href="../../../examples/clusters/crusoe/" class="md-nav__link">
         
   
   
@@ -2192,7 +2076,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../examples/clusters/nebius/" class="md-nav__link">
+      <a href="../../../examples/clusters/nebius/" class="md-nav__link">
         
   
   
@@ -2220,7 +2104,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../examples/clusters/nccl-rccl-tests/" class="md-nav__link">
+      <a href="../../../examples/clusters/nccl-rccl-tests/" class="md-nav__link">
         
   
   
@@ -2308,7 +2192,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../examples/inference/sglang/" class="md-nav__link">
+      <a href="../../../examples/inference/sglang/" class="md-nav__link">
         
   
   
@@ -2336,7 +2220,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../examples/inference/dynamo/" class="md-nav__link">
+      <a href="../../../examples/inference/dynamo/" class="md-nav__link">
         
   
   
@@ -2364,7 +2248,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../examples/inference/vllm/" class="md-nav__link">
+      <a href="../../../examples/inference/vllm/" class="md-nav__link">
         
   
   
@@ -2392,7 +2276,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../examples/inference/nim/" class="md-nav__link">
+      <a href="../../../examples/inference/nim/" class="md-nav__link">
         
   
   
@@ -2420,7 +2304,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../examples/inference/trtllm/" class="md-nav__link">
+      <a href="../../../examples/inference/trtllm/" class="md-nav__link">
         
   
   
@@ -2508,7 +2392,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../examples/models/deepseek-v4/" class="md-nav__link">
+      <a href="../../../examples/models/deepseek-v4/" class="md-nav__link">
         
   
   
@@ -2536,7 +2420,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../examples/models/qwen36/" class="md-nav__link">
+      <a href="../../../examples/models/qwen36/" class="md-nav__link">
         
   
   
@@ -2624,7 +2508,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../examples/accelerators/amd/" class="md-nav__link">
+      <a href="../../../examples/accelerators/amd/" class="md-nav__link">
         
   
   
@@ -2652,7 +2536,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../examples/accelerators/tenstorrent/" class="md-nav__link">
+      <a href="../../../examples/accelerators/tenstorrent/" class="md-nav__link">
         
   
   
@@ -2680,7 +2564,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../examples/accelerators/tpu/" class="md-nav__link">
+      <a href="../../../examples/accelerators/tpu/" class="md-nav__link">
         
   
   
@@ -2721,6 +2605,8 @@
                 
   
   
+    
+  
   
   
     
@@ -2736,11 +2622,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" checked>
         
           
           <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="">
@@ -2761,7 +2647,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2_5">
             <span class="md-nav__icon md-icon"></span>
             
@@ -2776,8 +2662,10 @@
                 
   
   
+    
   
   
+  
     
     
     
@@ -2788,11 +2676,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5_1" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5_1" checked>
         
           
           <label class="md-nav__link" for="__nav_2_5_1" id="__nav_2_5_1_label" tabindex="0">
@@ -2813,7 +2701,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_5_1_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_5_1_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2_5_1">
             <span class="md-nav__icon md-icon"></span>
             
@@ -2831,7 +2719,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../reference/dstack.yml/dev-environment/" class="md-nav__link">
+      <a href="../dev-environment/" class="md-nav__link">
         
   
   
@@ -2859,7 +2747,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../reference/dstack.yml/task/" class="md-nav__link">
+      <a href="../task/" class="md-nav__link">
         
   
   
@@ -2887,7 +2775,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../reference/dstack.yml/service/" class="md-nav__link">
+      <a href="../service/" class="md-nav__link">
         
   
   
@@ -2915,7 +2803,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../reference/dstack.yml/fleet/" class="md-nav__link">
+      <a href="../fleet/" class="md-nav__link">
         
   
   
@@ -2943,7 +2831,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../reference/dstack.yml/gateway/" class="md-nav__link">
+      <a href="../gateway/" class="md-nav__link">
         
   
   
@@ -2971,7 +2859,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../reference/dstack.yml/volume/" class="md-nav__link">
+      <a href="../volume/" class="md-nav__link">
         
   
   
@@ -2996,17 +2884,44 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../reference/dstack.yml/endpoint/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    preset
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
   <span class="md-ellipsis">
     
   
-    endpoint
+    preset
   
 
     
@@ -3015,6 +2930,122 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#root-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Root reference
+        </span>
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Root reference">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        model
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prompt_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        prompt
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#retry" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        retry
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#utilization_policy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        utilization_policy
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#schedule" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        schedule
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_instances" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        instances
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#backend_options_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        backend_options
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -3035,7 +3066,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../reference/server/config.yml/" class="md-nav__link">
+      <a href="../../server/config.yml/" class="md-nav__link">
         
   
   
@@ -3115,7 +3146,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../reference/cli/dstack/server/" class="md-nav__link">
+      <a href="../../cli/dstack/server/" class="md-nav__link">
         
   
   
@@ -3143,7 +3174,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../reference/cli/dstack/init/" class="md-nav__link">
+      <a href="../../cli/dstack/init/" class="md-nav__link">
         
   
   
@@ -3171,7 +3202,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../reference/cli/dstack/apply/" class="md-nav__link">
+      <a href="../../cli/dstack/apply/" class="md-nav__link">
         
   
   
@@ -3199,7 +3230,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../reference/cli/dstack/delete/" class="md-nav__link">
+      <a href="../../cli/dstack/delete/" class="md-nav__link">
         
   
   
@@ -3227,7 +3258,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../reference/cli/dstack/ps/" class="md-nav__link">
+      <a href="../../cli/dstack/ps/" class="md-nav__link">
         
   
   
@@ -3255,7 +3286,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../reference/cli/dstack/stop/" class="md-nav__link">
+      <a href="../../cli/dstack/stop/" class="md-nav__link">
         
   
   
@@ -3283,7 +3314,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../reference/cli/dstack/attach/" class="md-nav__link">
+      <a href="../../cli/dstack/attach/" class="md-nav__link">
         
   
   
@@ -3311,7 +3342,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../reference/cli/dstack/login/" class="md-nav__link">
+      <a href="../../cli/dstack/login/" class="md-nav__link">
         
   
   
@@ -3339,7 +3370,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../reference/cli/dstack/logs/" class="md-nav__link">
+      <a href="../../cli/dstack/logs/" class="md-nav__link">
         
   
   
@@ -3367,7 +3398,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../reference/cli/dstack/metrics/" class="md-nav__link">
+      <a href="../../cli/dstack/metrics/" class="md-nav__link">
         
   
   
@@ -3395,7 +3426,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../reference/cli/dstack/event/" class="md-nav__link">
+      <a href="../../cli/dstack/event/" class="md-nav__link">
         
   
   
@@ -3423,7 +3454,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../reference/cli/dstack/project/" class="md-nav__link">
+      <a href="../../cli/dstack/project/" class="md-nav__link">
         
   
   
@@ -3451,7 +3482,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../reference/cli/dstack/fleet/" class="md-nav__link">
+      <a href="../../cli/dstack/fleet/" class="md-nav__link">
         
   
   
@@ -3479,7 +3510,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../reference/cli/dstack/offer/" class="md-nav__link">
+      <a href="../../cli/dstack/offer/" class="md-nav__link">
         
   
   
@@ -3507,7 +3538,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../reference/cli/dstack/volume/" class="md-nav__link">
+      <a href="../../cli/dstack/volume/" class="md-nav__link">
         
   
   
@@ -3535,7 +3566,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../reference/cli/dstack/gateway/" class="md-nav__link">
+      <a href="../../cli/dstack/gateway/" class="md-nav__link">
         
   
   
@@ -3563,7 +3594,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../reference/cli/dstack/secret/" class="md-nav__link">
+      <a href="../../cli/dstack/secret/" class="md-nav__link">
         
   
   
@@ -3591,14 +3622,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../reference/cli/dstack/endpoint/" class="md-nav__link">
+      <a href="../../cli/dstack/preset/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    dstack endpoint
+    dstack preset
   
 
     
@@ -3619,7 +3650,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../reference/cli/dstack/export/" class="md-nav__link">
+      <a href="../../cli/dstack/export/" class="md-nav__link">
         
   
   
@@ -3647,7 +3678,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../reference/cli/dstack/import/" class="md-nav__link">
+      <a href="../../cli/dstack/import/" class="md-nav__link">
         
   
   
@@ -3735,7 +3766,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../reference/http/users/" class="md-nav__link">
+      <a href="../../http/users/" class="md-nav__link">
         
   
   
@@ -3763,7 +3794,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../reference/http/projects/" class="md-nav__link">
+      <a href="../../http/projects/" class="md-nav__link">
         
   
   
@@ -3791,7 +3822,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../reference/http/backends/" class="md-nav__link">
+      <a href="../../http/backends/" class="md-nav__link">
         
   
   
@@ -3819,7 +3850,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../reference/http/fleets/" class="md-nav__link">
+      <a href="../../http/fleets/" class="md-nav__link">
         
   
   
@@ -3847,7 +3878,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../reference/http/runs/" class="md-nav__link">
+      <a href="../../http/runs/" class="md-nav__link">
         
   
   
@@ -3875,7 +3906,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../reference/http/gateways/" class="md-nav__link">
+      <a href="../../http/gateways/" class="md-nav__link">
         
   
   
@@ -3903,7 +3934,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../reference/http/volumes/" class="md-nav__link">
+      <a href="../../http/volumes/" class="md-nav__link">
         
   
   
@@ -3931,7 +3962,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../reference/http/logs/" class="md-nav__link">
+      <a href="../../http/logs/" class="md-nav__link">
         
   
   
@@ -3959,7 +3990,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../reference/http/events/" class="md-nav__link">
+      <a href="../../http/events/" class="md-nav__link">
         
   
   
@@ -3987,7 +4018,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../reference/http/repos/" class="md-nav__link">
+      <a href="../../http/repos/" class="md-nav__link">
         
   
   
@@ -4015,7 +4046,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../reference/http/files/" class="md-nav__link">
+      <a href="../../http/files/" class="md-nav__link">
         
   
   
@@ -4043,7 +4074,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../reference/http/secrets/" class="md-nav__link">
+      <a href="../../http/secrets/" class="md-nav__link">
         
   
   
@@ -4071,7 +4102,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../reference/http/exports/" class="md-nav__link">
+      <a href="../../http/exports/" class="md-nav__link">
         
   
   
@@ -4099,7 +4130,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../reference/http/metrics/" class="md-nav__link">
+      <a href="../../http/metrics/" class="md-nav__link">
         
   
   
@@ -4127,7 +4158,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../reference/http/gpus/" class="md-nav__link">
+      <a href="../../http/gpus/" class="md-nav__link">
         
   
   
@@ -4155,7 +4186,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../reference/http/templates/" class="md-nav__link">
+      <a href="../../http/templates/" class="md-nav__link">
         
   
   
@@ -4183,7 +4214,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../reference/http/proxy/" class="md-nav__link">
+      <a href="../../http/proxy/" class="md-nav__link">
         
   
   
@@ -4211,7 +4242,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../reference/http/authentication/" class="md-nav__link">
+      <a href="../../http/authentication/" class="md-nav__link">
         
   
   
@@ -4239,7 +4270,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../reference/http/server/" class="md-nav__link">
+      <a href="../../http/server/" class="md-nav__link">
         
   
   
@@ -4275,7 +4306,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../reference/env/" class="md-nav__link">
+      <a href="../../env/" class="md-nav__link">
         
   
   
@@ -4355,7 +4386,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../reference/profiles.yml/" class="md-nav__link">
+      <a href="../../profiles.yml/" class="md-nav__link">
         
   
   
@@ -4435,7 +4466,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../reference/plugins/python/" class="md-nav__link">
+      <a href="../../plugins/python/" class="md-nav__link">
         
   
   
@@ -4463,7 +4494,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../reference/plugins/rest/" class="md-nav__link">
+      <a href="../../plugins/rest/" class="md-nav__link">
         
   
   
@@ -4580,7 +4611,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../blog/case-studies/" class="md-nav__link">
+      <a href="../../../../blog/case-studies/" class="md-nav__link">
         
   
   
@@ -4663,7 +4694,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../blog/" class="md-nav__link">
+      <a href="../../../../blog/" class="md-nav__link">
         
   
   
@@ -4747,7 +4778,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../blog/changelog/" class="md-nav__link">
+      <a href="../../../../blog/changelog/" class="md-nav__link">
         
   
   
@@ -4779,7 +4810,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../blog/case-studies/" class="md-nav__link">
+      <a href="../../../../blog/case-studies/" class="md-nav__link">
         
   
   
@@ -4811,7 +4842,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../blog/benchmarks/" class="md-nav__link">
+      <a href="../../../../blog/benchmarks/" class="md-nav__link">
         
   
   
@@ -4875,67 +4906,98 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#define-an-endpoint" class="md-nav__link">
+  <a href="#root-reference" class="md-nav__link">
     <span class="md-ellipsis">
       
         <span class="md-typeset">
-          Define an endpoint
+          Root reference
         </span>
       
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#create-a-preset" class="md-nav__link">
+    <nav class="md-nav" aria-label="Root reference">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#model" class="md-nav__link">
     <span class="md-ellipsis">
       
-        <span class="md-typeset">
-          Create a preset
-        </span>
+        model
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#list-presets" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#prompt_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        <span class="md-typeset">
-          List presets
-        </span>
+        prompt
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#apply-a-preset" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#retry" class="md-nav__link">
     <span class="md-ellipsis">
       
-        <span class="md-typeset">
-          Apply a preset
-        </span>
+        retry
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#delete-presets" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#utilization_policy" class="md-nav__link">
     <span class="md-ellipsis">
       
-        <span class="md-typeset">
-          Delete presets
-        </span>
+        utilization_policy
       
     </span>
   </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#schedule" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        schedule
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_instances" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        instances
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#backend_options_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        backend_options
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -4977,7 +5039,7 @@
     
     
       <li class="md-path__item">
-<!--        <a href="../../" class="md-path__link">-->
+<!--        <a href="../../../" class="md-path__link">-->
         
   <span class="md-ellipsis">
     Docs
@@ -4996,15 +5058,22 @@
   
     
     
+      
+  
+    
+    
       <li class="md-path__item">
-<!--        <a href="../backends/" class="md-path__link">-->
+<!--        <a href="../dev-environment/" class="md-path__link">-->
         
   <span class="md-ellipsis">
-    Concepts
+    Reference
   </span>
 
 <!--        </a>-->
       </li>
+    
+  
+
     
   
 
@@ -5014,10 +5083,10 @@
     
     
       <li class="md-path__item">
-<!--        <a href="./" class="md-path__link">-->
+<!--        <a href="../dev-environment/" class="md-path__link">-->
         
   <span class="md-ellipsis">
-    More
+    .dstack.yml
   </span>
 
 <!--        </a>-->
@@ -5036,7 +5105,7 @@
 
 
   
-    <a href="https://github.com/dstackai/dstack/edit/master/mkdocs/docs/concepts/endpoints.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+    <a href="https://github.com/dstackai/dstack/edit/master/mkdocs/docs/reference/dstack.yml/preset.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
     </a>
@@ -5044,162 +5113,102 @@
   
 
 
-<h1 id="endpoints">Endpoints<a class="headerlink" href="#endpoints" title="Permanent link">&para;</a></h1>
-<p>An endpoint configuration lets you use an agent to create a preset: a validated and optimized model inference configuration. Once created, the preset can be reused to deploy model inference on validated hardware without an agent.</p>
-<p>The value of presets comes from combining two fundamental features: agent-driven model inference optimization and the <code>dstack</code> <a href="../services/">service</a> primitive, which can deploy model inference to any cloud, Kubernetes, or on-prem cluster.</p>
-<blockquote>
-<p>The endpoints feature is experimental and may change.</p>
-</blockquote>
+<h1 id="preset"><code>preset</code><a class="headerlink" href="#preset" title="Permanent link">&para;</a></h1>
+<p>The <code>preset</code> configuration type describes a model request and the constraints
+used to create or apply a <a href="../../../concepts/presets/">preset</a>.</p>
+<h2 id="root-reference">Root reference<a class="headerlink" href="#root-reference" title="Permanent link">&para;</a></h2>
+<h6 class="reference-item" id="backends"><code>backends</code> - (Optional) <code>list["amddevcloud" | "aws" | "azure" | "cloudrift" | "crusoe" | "cudo" | "datacrunch" | "digitalocean" | "dstack" | "gcp" | "hotaisle" | "jarvislabs" | "kubernetes" | "lambda" | "remote" | "nebius" | "oci" | "runpod" | "tensordock" | "vastai" | "verda" | "vultr" | "slurm"]</code> The backends to consider for provisioning (e.g., <code>[aws, gcp]</code>).<a class="headerlink" href="#backends" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="regions"><code>regions</code> - (Optional) <code>list[str]</code> The regions to consider for provisioning (e.g., <code>[eu-west-1, us-west4, westeurope]</code>).<a class="headerlink" href="#regions" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="availability_zones"><code>availability_zones</code> - (Optional) <code>list[str]</code> The availability zones to consider for provisioning (e.g., <code>[eu-west-1a, us-west4-a]</code>).<a class="headerlink" href="#availability_zones" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="instance_types"><code>instance_types</code> - (Optional) <code>list[str]</code> The cloud-specific instance types to consider for provisioning (e.g., <code>[g6e.24xlarge, n1-standard-4]</code>).<a class="headerlink" href="#instance_types" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="reservation"><code>reservation</code> - (Optional) <code>str</code> The existing reservation to use for instance provisioning. Supports AWS Capacity Reservations, AWS Capacity Blocks, and GCP reservations.<a class="headerlink" href="#reservation" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="spot_policy"><code>spot_policy</code> - (Optional) <code>"auto" | "on-demand" | "spot"</code> The policy for provisioning spot or on-demand instances: <code>spot</code>, <code>on-demand</code>, <code>auto</code>. Defaults to <code>on-demand</code>.<a class="headerlink" href="#spot_policy" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="_retry"><a href="#retry"><code>retry</code></a> - (Optional) <code>bool | object</code> The policy for resubmitting the run. Defaults to <code>false</code>.<a class="headerlink" href="#_retry" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="max_duration"><code>max_duration</code> - (Optional) <code>int | str | "off"</code> The maximum duration of a run (e.g., <code>2h</code>, <code>1d</code>, etc) in a running state, excluding provisioning and pulling. After it elapses, the run is automatically stopped. Use <code>off</code> for unlimited duration. Defaults to <code>off</code>.<a class="headerlink" href="#max_duration" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="stop_duration"><code>stop_duration</code> - (Optional) <code>int | str | "off"</code> The maximum duration of a run graceful stopping. After it elapses, the run is automatically forced stopped. This includes force detaching volumes used by the run. Use <code>off</code> for unlimited duration. Defaults to <code>5m</code>.<a class="headerlink" href="#stop_duration" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="max_price"><code>max_price</code> - (Optional) <code>float</code> The maximum instance price per hour, in dollars.<a class="headerlink" href="#max_price" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="creation_policy"><code>creation_policy</code> - (Optional) <code>"reuse" | "reuse-or-create"</code> The policy for using instances from fleets: <code>reuse</code>, <code>reuse-or-create</code>. Defaults to <code>reuse-or-create</code>.<a class="headerlink" href="#creation_policy" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="idle_duration"><code>idle_duration</code> - (Optional) <code>int | str</code> Time to wait before terminating idle instances. When the run reuses an existing fleet instance, the fleet's <code>idle_duration</code> applies. When the run provisions a new instance, the shorter of the fleet's and run's values is used. Defaults to <code>5m</code> for runs and <code>3d</code> for fleets. Use <code>off</code> for unlimited duration. Only applied for VM-based backends.<a class="headerlink" href="#idle_duration" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="_utilization_policy"><a href="#utilization_policy"><code>utilization_policy</code></a> - (Optional) <code>object</code> Run termination policy based on utilization.<a class="headerlink" href="#_utilization_policy" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="startup_order"><code>startup_order</code> - (Optional) <code>"any" | "master-first" | "workers-first"</code> The order in which master and workers jobs are started: <code>any</code>, <code>master-first</code>, <code>workers-first</code>. Defaults to <code>any</code>.<a class="headerlink" href="#startup_order" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="stop_criteria"><code>stop_criteria</code> - (Optional) <code>"all-done" | "master-done"</code> The criteria determining when a multi-node run should be considered finished: <code>all-done</code>, <code>master-done</code>. Defaults to <code>all-done</code>.<a class="headerlink" href="#stop_criteria" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="_schedule"><a href="#schedule"><code>schedule</code></a> - (Optional) <code>object</code> The schedule for starting the run at specified time.<a class="headerlink" href="#_schedule" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="fleets"><code>fleets</code> - (Optional) <code>list[str | object]</code> The fleets considered for reuse. For fleets owned by the current project, specify fleet names. For imported fleets, specify <code>&lt;project name&gt;/&lt;fleet name&gt;</code>.<a class="headerlink" href="#fleets" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="instances"><code>instances</code> - (Optional) <code>list</code> The specific fleet instances to consider for reuse. Each value can be an instance name string, or an object with <code>name</code>, <code>hostname</code>, or <code>fleet</code> and <code>instance</code>. When set, the run is only placed on matching existing instances..<a class="headerlink" href="#instances" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="tags"><code>tags</code> - (Optional) <code>dict</code> The custom tags to associate with the resource. The tags are also propagated to the underlying backend resources. If there is a conflict with backend-level tags, does not override them.<a class="headerlink" href="#tags" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="backend_options"><code>backend_options</code> - (Optional) <code>list[object]</code> Backend-specific options, applied only to offers from that backend.<a class="headerlink" href="#backend_options" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="type"><code>type</code> - (Required) <code>"preset"</code> The configuration type. Must be <code>preset</code>.<a class="headerlink" href="#type" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="name"><code>name</code> - (Optional) <code>str</code> The service name. Required unless passed with <code>--name</code>.<a class="headerlink" href="#name" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="_model"><a href="#model"><code>model</code></a> - (Required) <code>str | object</code> The model to serve. Use a string or <code>repo</code> for an exact repo/path, or <code>base</code> to allow compatible model variants. Prefer the top-level <code>base</code>/<code>repo</code> shorthand unless a custom client-facing model name is needed.<a class="headerlink" href="#_model" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="base"><code>base</code> - (Optional) <code>str</code> The base model repo; compatible variants are allowed. Shorthand for <code>model.base</code>.<a class="headerlink" href="#base" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="repo"><code>repo</code> - (Optional) <code>str</code> The exact model repo/path to serve. Shorthand for <code>model.repo</code>.<a class="headerlink" href="#repo" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="prompt"><code>prompt</code> - (Optional) <code>str | object</code> Additional instructions for the preset creation agent, inline or as a file <code>path</code>.<a class="headerlink" href="#prompt" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="context_length"><code>context_length</code> - (Optional) <code>int</code> The minimum required context length.<a class="headerlink" href="#context_length" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="max_trials"><code>max_trials</code> - (Optional) <code>int</code> The maximum number of benchmarked trials during preset creation before the best one is promoted.<a class="headerlink" href="#max_trials" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="concurrency"><code>concurrency</code> - (Optional) <code>int</code> The number of simultaneous requests used for benchmarks during preset creation. Defaults to <code>8</code>.<a class="headerlink" href="#concurrency" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="gateway"><code>gateway</code> - (Optional) <code>bool | str | object</code> The name of the gateway. Specify boolean <code>false</code> to run without a gateway. Specify boolean <code>true</code> to run with the default gateway. Omit to run with the default gateway if there is one, or without a gateway otherwise.<a class="headerlink" href="#gateway" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="_env"><a href="#env"><code>env</code></a> - (Optional) <code>list[str] | dict</code> The mapping or the list of environment variables.<a class="headerlink" href="#_env" title="Permanent link">&para;</a></h6>
+<h3 id="model"><code>model</code><a class="headerlink" href="#model" title="Permanent link">&para;</a></h3>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="base-model" name="__tabbed_1" type="radio" /><input id="exact-model" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="base-model">Base model</label><label for="exact-model">Exact model</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Allows the creation agent to select a compatible model variant.</p>
+<h6 class="reference-item" id="base"><code>base</code> - (Required) <code>str</code> The base model for which the agent may select a compatible variant.<a class="headerlink" href="#base" title="Permanent link">&para;</a></h6>
+</div>
+<div class="tabbed-block">
+<p>Requires an exact model repo or path and optionally sets another
+client-facing model name.</p>
+<h6 class="reference-item" id="repo"><code>repo</code> - (Required) <code>str</code> The exact model repo or path to deploy.<a class="headerlink" href="#repo" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="name"><code>name</code> - (Optional) <code>str</code> The client-facing model name. Defaults to <code>repo</code>.<a class="headerlink" href="#name" title="Permanent link">&para;</a></h6>
+</div>
+</div>
+</div>
+<h3 id="prompt_1"><code>prompt</code><a class="headerlink" href="#prompt_1" title="Permanent link">&para;</a></h3>
+<p>Custom agent instructions. Set to an inline string, or to a file:</p>
+<h6 class="reference-item" id="path"><code>path</code> - (Required) <code>str</code> The path to a prompt file, relative to the configuration file.<a class="headerlink" href="#path" title="Permanent link">&para;</a></h6>
+<h3 id="retry"><code>retry</code><a class="headerlink" href="#retry" title="Permanent link">&para;</a></h3>
+<h6 class="reference-item" id="on_events"><code>on_events</code> - (Optional) <code>list["no-capacity" | "interruption" | "error"]</code> The list of events that should be handled with retry. Supported events are <code>no-capacity</code>, <code>interruption</code>, <code>error</code>. Omit to retry on all events.<a class="headerlink" href="#on_events" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="duration"><code>duration</code> - (Optional) <code>int | str</code> The maximum period of retrying the run, e.g., <code>4h</code> or <code>1d</code>. The period is calculated as a run age for <code>no-capacity</code> event and as a time passed since the last <code>interruption</code> and <code>error</code> for <code>interruption</code> and <code>error</code> events..<a class="headerlink" href="#duration" title="Permanent link">&para;</a></h6>
+<h3 id="utilization_policy"><code>utilization_policy</code><a class="headerlink" href="#utilization_policy" title="Permanent link">&para;</a></h3>
+<h6 class="reference-item" id="min_gpu_utilization"><code>min_gpu_utilization</code> - (Required) <code>int</code> Minimum required GPU utilization, percent. If any GPU has utilization below specified value during the whole time window, the run is terminated.<a class="headerlink" href="#min_gpu_utilization" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="time_window"><code>time_window</code> - (Required) <code>int | str</code> The time window of metric samples taking into account to measure utilization (e.g., <code>30m</code>, <code>1h</code>). Minimum is <code>5m</code>.<a class="headerlink" href="#time_window" title="Permanent link">&para;</a></h6>
+<h3 id="schedule"><code>schedule</code><a class="headerlink" href="#schedule" title="Permanent link">&para;</a></h3>
+<h6 class="reference-item" id="cron"><code>cron</code> - (Required) <code>str | list[str]</code> A cron expression or a list of cron expressions specifying the UTC time when the run needs to be started.<a class="headerlink" href="#cron" title="Permanent link">&para;</a></h6>
+<h3 id="_instances"><code>instances[n]</code><a class="headerlink" href="#_instances" title="Permanent link">&para;</a></h3>
+<p>When <code>instances</code> is set, the run is placed only on matching existing fleet instances.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:3"><input checked="checked" id="by-name" name="__tabbed_2" type="radio" /><input id="by-hostname" name="__tabbed_2" type="radio" /><input id="by-fleet-and-instance-number" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="by-name">By name</label><label for="by-hostname">By hostname</label><label for="by-fleet-and-instance-number">By fleet and instance number</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<h6 class="reference-item" id="name"><code>name</code> - (Required) <code>str</code> The fleet instance name.<a class="headerlink" href="#name" title="Permanent link">&para;</a></h6>
+</div>
+<div class="tabbed-block">
+<h6 class="reference-item" id="hostname"><code>hostname</code> - (Required) <code>str</code> The fleet instance hostname or IP address.<a class="headerlink" href="#hostname" title="Permanent link">&para;</a></h6>
+</div>
+<div class="tabbed-block">
+<h6 class="reference-item" id="_fleet"><a href="#fleet"><code>fleet</code></a> - (Required) <code>str | object</code> The fleet reference. For fleets owned by the current project, specify the fleet name. For a fleet from another project, specify <code>&lt;project name&gt;/&lt;fleet name&gt;</code> or an object with <code>project</code> and <code>name</code>..<a class="headerlink" href="#_fleet" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="instance"><code>instance</code> - (Required) <code>int</code> The fleet instance number.<a class="headerlink" href="#instance" title="Permanent link">&para;</a></h6>
+</div>
+</div>
+</div>
 <details class="info">
-<summary>Prerequisites</summary>
-<p>Before using endpoint presets, make sure you’ve <a href="../../installation/">installed</a> the server and CLI, and created a <a href="../fleets/">fleet</a>.</p>
-<p>Creating an endpoint preset requires the <code>claude</code> CLI to be installed on the machine where you create a preset.</p>
+<summary>Short syntax</summary>
+<p>The short syntax for instances is an instance name string.</p>
+<ul>
+<li><code>my-fleet-1</code>, same as <code>{name: my-fleet-1}</code></li>
+</ul>
 </details>
-<h2 id="define-an-endpoint">Define an endpoint<a class="headerlink" href="#define-an-endpoint" title="Permanent link">&para;</a></h2>
-<p>Before you can create or reuse an endpoint preset, you first have to define an endpoint configuration. The filename must end with <code>.dstack.yml</code>.</p>
-<div editor-title="endpoint.dstack.yml">
-
-<div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">endpoint</span>
-<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">qwen25-7b</span>
-
-<span class="nt">model</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">base</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Qwen/Qwen2.5-7B-Instruct</span>
-
-<span class="nt">env</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HF_TOKEN</span>
-</code></pre></div>
-
-</div>
-
-<p>Since <code>base</code> is specified, the preset can use any compatible variant of the base model, including a different precision, quantization, or trusted fork.</p>
-<p>If you want to deploy an exact model, set <code>model</code> directly to the repo of that model:</p>
-<div editor-title="endpoint.dstack.yml">
-
-<div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">endpoint</span>
-<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">qwen25-7b</span>
-
-<span class="nt">model</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Qwen/Qwen2.5-7B-Instruct</span>
-
-<span class="nt">env</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HF_TOKEN</span>
-</code></pre></div>
-
-</div>
-
-<p>Set <code>context_length</code> to require a minimum context length. Placement properties,
-including <code>fleets</code>, <code>backends</code>, <code>max_price</code>, and <code>spot_policy</code>, constrain both
-creation and reuse. Environment variables such as <code>HF_TOKEN</code> can be passed
-through <code>env</code>.</p>
-<p>See the <a href="../../reference/dstack.yml/endpoint/">reference</a> for all supported configuration options.</p>
-<h2 id="create-a-preset">Create a preset<a class="headerlink" href="#create-a-preset" title="Permanent link">&para;</a></h2>
-<p>To create a preset, pass the configuration file to the <code>dstack endpoint preset create</code> command:</p>
-<div class="termy">
-
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>dstack<span class="w"> </span>endpoint<span class="w"> </span>preset<span class="w"> </span>create<span class="w"> </span>-f<span class="w"> </span>endpoint.dstack.yml
-<span class="o">[</span><span class="m">2026</span>-07-15<span class="w"> </span><span class="m">11</span>:32:01<span class="o">]</span><span class="w"> </span>Starting<span class="w"> </span>endpoint<span class="w"> </span>preset<span class="w"> </span>creation<span class="w"> </span><span class="k">for</span><span class="w"> </span>Qwen/Qwen2.5-7B-Instruct.<span class="w"> </span>Allowed<span class="w"> </span>fleets:<span class="w"> </span>gpu-fleet.
-<span class="o">[</span><span class="m">2026</span>-07-15<span class="w"> </span><span class="m">11</span>:41:06<span class="o">]</span><span class="w"> </span>Prototype<span class="w"> </span>task<span class="w"> </span>qwen25-7b-a1b2c3-2<span class="w"> </span>verified<span class="w"> </span>vLLM<span class="w"> </span>on<span class="w"> </span>an<span class="w"> </span>L4:24GB.
-<span class="o">[</span><span class="m">2026</span>-07-15<span class="w"> </span><span class="m">11</span>:52:06<span class="o">]</span><span class="w"> </span>Final<span class="w"> </span>service<span class="w"> </span>qwen25-7b-a1b2c3-3<span class="w"> </span>verified<span class="w"> </span>with<span class="w"> </span>context<span class="w"> </span>length<span class="w"> </span><span class="m">32768</span>.
-<span class="o">[</span><span class="m">2026</span>-07-15<span class="w"> </span><span class="m">11</span>:52:18<span class="o">]</span><span class="w"> </span>Benchmark<span class="w"> </span>via<span class="w"> </span>guidellm<span class="w"> </span><span class="m">0</span>.7.1:<span class="w"> </span><span class="m">32</span>/32<span class="w"> </span>requests<span class="w"> </span>succeeded.
-<span class="o">[</span><span class="m">2026</span>-07-15<span class="w"> </span><span class="m">11</span>:52:18<span class="o">]</span><span class="w"> </span>Saved<span class="w"> </span>endpoint<span class="w"> </span>preset<span class="w"> </span>8f3a12c4<span class="w"> </span><span class="k">for</span><span class="w"> </span>Qwen/Qwen2.5-7B-Instruct.
-</code></pre></div>
-
-</div>
-
-<p>This command executes entirely locally and uses the locally installed <code>claude</code> CLI along with <code>dstack</code>'s bundled skills. The agent uses a <code>dstack</code> task to find the best serving configuration for the available fleet offers. It then submits the configuration as a <code>dstack</code> service for a final benchmark. The validated preset is saved locally under <code>~/.dstack/presets</code>.</p>
-<details class="info">
-<summary>Claude configuration</summary>
-<p>Preset creation uses the existing <code>claude</code> login. To use an Anthropic API key instead, set:</p>
-<div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">DSTACK_AGENT_ANTHROPIC_API_KEY</span><span class="o">=</span>...
-</code></pre></div>
-<p>By default, the agent uses <code>claude-opus-4-8</code> and the default <code>claude</code> CLI effort. To override them, set:</p>
-<div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">DSTACK_AGENT_ANTHROPIC_MODEL</span><span class="o">=</span>claude-fable-5
-<span class="nb">export</span><span class="w"> </span><span class="nv">DSTACK_AGENT_CLAUDE_EFFORT</span><span class="o">=</span>high
-</code></pre></div>
-<p>Supported effort levels are <code>low</code>, <code>medium</code>, <code>high</code>, <code>xhigh</code>, and <code>max</code>.</p>
-</details>
-<h2 id="list-presets">List presets<a class="headerlink" href="#list-presets" title="Permanent link">&para;</a></h2>
-<p>Use <code>dstack endpoint preset</code> to list existing presets:</p>
-<div class="termy">
-
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>dstack<span class="w"> </span>endpoint<span class="w"> </span>preset<span class="w"> </span>list
-<span class="w"> </span>MODEL<span class="w">                     </span>GPU<span class="w">                    </span>CONTEXT<span class="w">  </span>BENCHMARK<span class="w">                           </span>CREATED
-<span class="w"> </span>Qwen/Qwen2.5-7B-Instruct
-<span class="w">    </span><span class="nv">preset</span><span class="o">=</span>8f3a12c4<span class="w">        </span>nvidia:16GB..24GB:1..<span class="w">  </span>32K<span class="w">      </span><span class="nv">concurrency</span><span class="o">=</span><span class="m">1</span><span class="w"> </span><span class="m">464</span><span class="w"> </span>tok/s<span class="w"> </span>TTFT<span class="w"> </span>312ms<span class="w">  </span><span class="m">1</span><span class="w"> </span>hour<span class="w"> </span>ago
-</code></pre></div>
-
-</div>
-
-<p>Presets are grouped by base model. Each preset contains an optimized serving configuration for a specific model variant, along with its hardware requirements, validation, and benchmark data.</p>
-<p>Pass <code>-v</code> to include validation resources and all benchmark metrics, or <code>--json</code>
-to output complete preset objects.</p>
-<h2 id="apply-a-preset">Apply a preset<a class="headerlink" href="#apply-a-preset" title="Permanent link">&para;</a></h2>
-<p>To deploy a preset as a service, pass the endpoint configuration to the <code>dstack endpoint preset apply</code> command:</p>
-<div class="termy">
-
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>dstack<span class="w"> </span>endpoint<span class="w"> </span>preset<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>endpoint.dstack.yml
-<span class="w"> </span>Model<span class="w">          </span>Qwen/Qwen2.5-7B-Instruct<span class="w"> </span><span class="o">(</span>base<span class="o">)</span>
-<span class="w"> </span>Preset<span class="w">         </span>8f3a12c4<span class="w"> </span><span class="o">(</span><span class="nv">context</span><span class="o">=</span>32K,<span class="w"> </span><span class="nv">concurrency</span><span class="o">=</span><span class="m">1</span><span class="w"> </span><span class="m">464</span><span class="w"> </span>tok/s<span class="w"> </span>TTFT<span class="w"> </span>312ms<span class="o">)</span>
-
-<span class="w"> </span><span class="c1">#  BACKEND            RESOURCES                      INSTANCE TYPE     PRICE</span>
-<span class="w"> </span><span class="m">1</span><span class="w">  </span>runpod<span class="w"> </span><span class="o">(</span>CA-MTL-1<span class="o">)</span><span class="w">  </span><span class="nv">cpu</span><span class="o">=</span><span class="m">9</span><span class="w"> </span><span class="nv">mem</span><span class="o">=</span>50GB<span class="w"> </span><span class="nv">disk</span><span class="o">=</span>200GB<span class="w">      </span>NVIDIA<span class="w"> </span>RTX<span class="w"> </span>A5000<span class="w">  </span><span class="nv">$0</span>.27
-<span class="w">                       </span><span class="nv">gpu</span><span class="o">=</span>A5000:24GB:1
-<span class="w"> </span><span class="m">2</span><span class="w">  </span>runpod<span class="w"> </span><span class="o">(</span>CA-MTL-1<span class="o">)</span><span class="w">  </span><span class="nv">cpu</span><span class="o">=</span><span class="m">9</span><span class="w"> </span><span class="nv">mem</span><span class="o">=</span>50GB<span class="w"> </span><span class="nv">disk</span><span class="o">=</span>200GB<span class="w">      </span>NVIDIA<span class="w"> </span>RTX<span class="w"> </span>A5000<span class="w">  </span><span class="nv">$0</span>.27
-<span class="w">                       </span><span class="nv">gpu</span><span class="o">=</span>A5000:24GB:1<span class="w"> </span><span class="o">(</span>spot<span class="o">)</span>
-<span class="w"> </span><span class="m">3</span><span class="w">  </span>runpod<span class="w"> </span><span class="o">(</span>US-IL-1<span class="o">)</span><span class="w">   </span><span class="nv">cpu</span><span class="o">=</span><span class="m">12</span><span class="w"> </span><span class="nv">mem</span><span class="o">=</span>25GB<span class="w"> </span><span class="nv">disk</span><span class="o">=</span>200GB<span class="w">     </span>NVIDIA<span class="w"> </span>RTX<span class="w"> </span>A5000<span class="w">  </span><span class="nv">$0</span>.27
-<span class="w">                       </span><span class="nv">gpu</span><span class="o">=</span>A5000:24GB:1
-<span class="w">    </span>...
-<span class="w"> </span>Shown<span class="w"> </span><span class="m">3</span><span class="w"> </span>of<span class="w"> </span><span class="m">4</span><span class="w"> </span>offers,<span class="w"> </span><span class="nv">$0</span>.27max
-
-Submit<span class="w"> </span>the<span class="w"> </span>run<span class="w"> </span>qwen25-7b?<span class="w"> </span><span class="o">[</span>y/n<span class="o">]</span>:<span class="w"> </span>y
-</code></pre></div>
-
-</div>
-
-<p>If you don't pass <code>--preset ID</code> or specify <code>preset</code> in the endpoint configuration, <code>dstack</code> automatically selects a matching preset based on the available fleet offers. It then deploys the preset as a service.</p>
-<h2 id="delete-presets">Delete presets<a class="headerlink" href="#delete-presets" title="Permanent link">&para;</a></h2>
-<p>You can delete a specific preset by ID or all presets for a base model.</p>
-<div class="termy">
-
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>dstack<span class="w"> </span>endpoint<span class="w"> </span>preset<span class="w"> </span>delete<span class="w"> </span>8f3a12c4
-</code></pre></div>
-
-</div>
-
-<p>To delete all presets for a base model, pass <code>--model</code>:</p>
-<div class="termy">
-
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>dstack<span class="w"> </span>endpoint<span class="w"> </span>preset<span class="w"> </span>delete<span class="w"> </span>--model<span class="w"> </span>Qwen/Qwen2.5-7B-Instruct
-</code></pre></div>
-
-</div>
-
-<p>For command options and agent settings, see the
-<a href="../../reference/cli/dstack/endpoint/"><code>dstack endpoint</code> CLI reference</a>.</p>
-<div class="admonition info">
-<p class="admonition-title">Roadmap</p>
-<p>Here's what's coming soon in endpoint presets:</p>
-<ol>
-<li>Support multiple trials, allowing the agent to improve benchmark results based on previous trials.</li>
-<li>Allow the endpoint configuration to define custom agent instructions, such as target metrics and the experimentation approach.</li>
-<li>Control which experiments the agent may perform, including modifying serving framework code and generating custom kernels.</li>
-</ol>
-</div>
-<div class="admonition info">
-<p class="admonition-title">What's next?</p>
-<ol>
-<li>Learn how dstack <a href="../services/">services</a> work</li>
-<li>Learn how to configure <a href="../fleets/">fleets</a></li>
-</ol>
-</div>
+<h3 id="backend_options_1"><code>backend_options</code><a class="headerlink" href="#backend_options_1" title="Permanent link">&para;</a></h3>
+<p>Backend-specific options that only take effect for offers of the respective backend.</p>
+<h4 id="backend_options-vastai"><code>backend_options[n][type=vastai]</code><a class="headerlink" href="#backend_options-vastai" title="Permanent link">&para;</a></h4>
+<h6 class="reference-item" id="offer_order"><code>offer_order</code> - (Optional) <code>"price" | "score"</code> Controls the order in which offers are considered for provisioning. Use <code>score</code> to prioritize the highest overall score first (the default order in the Vast.ai console), or <code>price</code> to prioritize the lowest-cost offers first. Lower-cost offers are often less reliable, so consider applying stricter filters when using <code>price</code>. Defaults to <code>score</code>.<a class="headerlink" href="#offer_order" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="min_reliability"><code>min_reliability</code> - (Optional) <code>float</code> The minimum reliability threshold for offers, on a scale from <code>0</code> to <code>1</code>. Defaults to <code>0.9</code>.<a class="headerlink" href="#min_reliability" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="min_score"><code>min_score</code> - (Optional) <code>int</code> The minimum overall score required for offers to be considered. The scoring scale varies and may require experimentation. Starting with a value in the low hundreds is generally recommended.<a class="headerlink" href="#min_score" title="Permanent link">&para;</a></h6>
 
 
 
 
 
 
-
-  
-  
 
 
 
@@ -5214,7 +5223,7 @@ Submit<span class="w"> </span>the<span class="w"> </span>run<span class="w"> </s
           <nav class="md-footer__inner md-grid" aria-label="Footer" >
             
               
-              <a href="../volumes/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Volumes">
+              <a href="../volume/" class="md-footer__link md-footer__link--prev" aria-label="Previous: volume">
                 <div class="md-footer__button md-icon">
                   
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -5224,20 +5233,20 @@ Submit<span class="w"> </span>the<span class="w"> </span>run<span class="w"> </s
                     Previous
                   </span>
                   <div class="md-ellipsis">
-                    Volumes
+                    volume
                   </div>
                 </div>
               </a>
             
             
               
-              <a href="../gateways/" class="md-footer__link md-footer__link--next" aria-label="Next: Gateways">
+              <a href="../../server/config.yml/" class="md-footer__link md-footer__link--next" aria-label="Next: server/config.yml">
                 <div class="md-footer__title">
                   <span class="md-footer__direction">
                     Next
                   </span>
                   <div class="md-ellipsis">
-                    Gateways
+                    server/config.yml
                   </div>
                 </div>
                 <div class="md-footer__button md-icon">
@@ -5255,7 +5264,7 @@ Submit<span class="w"> </span>the<span class="w"> </span>run<span class="w"> </s
     <div class="tx-footer__top">
       <div class="tx-footer__brand">
         <a class="tx-footer__logo" href="/" aria-label="dstack home">
-          <img src="../../../assets/images/dstack-logo-notext.svg" alt="">
+          <img src="../../../../assets/images/dstack-logo-notext.svg" alt="">
           <span>dstack</span>
         </a>
         
@@ -5387,21 +5396,21 @@ Submit<span class="w"> </span>the<span class="w"> </span>run<span class="w"> </s
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["content.tooltips", "navigation.path", "content.code.copy", "content.action.edit", "navigation.tabs", "navigation.sections", "navigation.top", "navigation.tracking", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../..", "features": ["content.tooltips", "navigation.path", "content.code.copy", "content.action.edit", "navigation.tabs", "navigation.sections", "navigation.top", "navigation.tracking", "navigation.footer"], "search": "../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
 <script src="/assets/javascripts/termynal.js"></script>
 <script async src="https://tally.so/widgets/embed.js"></script>
 
-      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
         <script src="https://unpkg.com/swagger-ui-dist@5.32.0/swagger-ui-bundle.js"></script>
       
-        <script src="../../../assets/javascripts/swagger.js"></script>
+        <script src="../../../../assets/javascripts/swagger.js"></script>
       
-        <script src="../../../assets/javascripts/extra.js"></script>
+        <script src="../../../../assets/javascripts/extra.js"></script>
       
-        <script src="../../../assets/javascripts/pricing.js"></script>
+        <script src="../../../../assets/javascripts/pricing.js"></script>
       
     <script>
   window.addEventListener('storage', function (e) {

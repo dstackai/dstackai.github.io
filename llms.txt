@@ -19,7 +19,7 @@
 
 ### More
 
-- [Endpoints](https://dstack.ai/docs/concepts/endpoints.md): Creating and reusing optimized model inference endpoint configurations
+- [Presets](https://dstack.ai/docs/concepts/presets.md): Creating and reusing optimized model inference configurations
 - [Gateways](https://dstack.ai/docs/concepts/gateways.md): Managing ingress traffic and endpoints for services
 - [Secrets](https://dstack.ai/docs/concepts/secrets.md): Managing sensitive values and credentials
 - [Projects](https://dstack.ai/docs/concepts/projects.md): Organizing teams and isolating resources
