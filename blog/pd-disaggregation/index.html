@@ -4859,7 +4859,7 @@
 </blockquote>
 <div class="admonition note">
 <p class="admonition-title">Deprecation notice</p>
-<p>Configuring the SGLang router in a gateway is deprecated and will be disallowed in a future release. To run router and workers as separate replica groups, see <a href="../../docs/examples/inference/sglang/#pd-disaggregation">SGLang PD disaggregation (router as replica group)</a>.</p>
+<p>The router configuration approach described in this blog post is no longer supported. For the modern approach, see <a href="../../docs/examples/inference/sglang/#pd-disaggregation">SGLang PD disaggregation (router as replica group)</a>.</p>
 </div>
 <h2 id="services">Services<a class="headerlink" href="#services" title="Permanent link">&para;</a></h2>
 <p>With <code>dstack</code> <code>0.20.10</code>, you can define a service with separate replica groups for Prefill and Decode workers and enable PD disaggregation directly in the <code>router</code> configuration.</p>

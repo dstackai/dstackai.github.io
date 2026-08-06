@@ -2899,7 +2899,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#backend_options_1" class="md-nav__link">
+  <a href="#backend_options" class="md-nav__link">
     <span class="md-ellipsis">
       
         backend_options
@@ -4928,7 +4928,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#backend_options_1" class="md-nav__link">
+  <a href="#backend_options" class="md-nav__link">
     <span class="md-ellipsis">
       
         backend_options
@@ -5104,13 +5104,13 @@
 <h6 class="reference-item" id="spot_policy"><code>spot_policy</code> - (Optional) <code>"auto" | "on-demand" | "spot"</code> The policy for provisioning spot or on-demand instances: <code>spot</code>, <code>on-demand</code>, <code>auto</code>. Defaults to <code>on-demand</code>.<a class="headerlink" href="#spot_policy" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="_retry"><a href="#retry"><code>retry</code></a> - (Optional) <code>bool | object</code> The policy for provisioning retry. Defaults to <code>false</code>.<a class="headerlink" href="#_retry" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="max_price"><code>max_price</code> - (Optional) <code>float</code> The maximum instance price per hour, in dollars.<a class="headerlink" href="#max_price" title="Permanent link">&para;</a></h6>
-<h6 class="reference-item" id="idle_duration"><code>idle_duration</code> - (Optional) <code>int | str</code> Time to wait before terminating idle instances. Instances are not terminated if the fleet is already at <code>nodes.min</code>. Defaults to <code>5m</code> for runs and <code>3d</code> for fleets. Use <code>off</code> for unlimited duration.<a class="headerlink" href="#idle_duration" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="idle_duration"><code>idle_duration</code> - (Optional) <code>bool | int | str | "off"</code> Time to wait before terminating idle instances. Instances are not terminated if the fleet is already at <code>nodes.min</code>. Defaults to <code>5m</code> for runs and <code>3d</code> for fleets. Use <code>off</code> for unlimited duration.<a class="headerlink" href="#idle_duration" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="tags"><code>tags</code> - (Optional) <code>dict</code> The custom tags to associate with the resource. The tags are also propagated to the underlying backend resources. If there is a conflict with backend-level tags, does not override them.<a class="headerlink" href="#tags" title="Permanent link">&para;</a></h6>
-<h6 class="reference-item" id="backend_options"><code>backend_options</code> - (Optional) <code>list[object]</code> Backend-specific options, applied only to offers from that backend.<a class="headerlink" href="#backend_options" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="_backend_options"><a href="#backend_options"><code>backend_options</code></a> - (Optional) <code>list[object]</code> Backend-specific options, applied only to offers from that backend.<a class="headerlink" href="#_backend_options" title="Permanent link">&para;</a></h6>
 <h3 id="resources"><code>resources</code><a class="headerlink" href="#resources" title="Permanent link">&para;</a></h3>
 <h6 class="reference-item" id="_cpu"><a href="#resources-cpu"><code>cpu</code></a> - (Optional) <code>int | str | object</code> The CPU requirements.<a class="headerlink" href="#_cpu" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="memory"><code>memory</code> - (Optional) <code>int | str</code> The RAM size (e.g., <code>8GB</code>). Defaults to <code>8GB..</code>.<a class="headerlink" href="#memory" title="Permanent link">&para;</a></h6>
-<h6 class="reference-item" id="shm_size"><code>shm_size</code> - (Optional) <code>int | str</code> The size of shared memory (e.g., <code>8GB</code>). If you are using parallel communicating processes (e.g., dataloaders in PyTorch), you may need to configure this.<a class="headerlink" href="#shm_size" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="shm_size"><code>shm_size</code> - (Optional) <code>int | float | str</code> The size of shared memory (e.g., <code>8GB</code>). If you are using parallel communicating processes (e.g., dataloaders in PyTorch), you may need to configure this.<a class="headerlink" href="#shm_size" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="_gpu"><a href="#resources-gpu"><code>gpu</code></a> - (Optional) <code>int | str | object</code> The GPU requirements.<a class="headerlink" href="#_gpu" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="_disk"><a href="#resources-disk"><code>disk</code></a> - (Optional) <code>int | str | object</code> The disk resources.<a class="headerlink" href="#_disk" title="Permanent link">&para;</a></h6>
 <h4 id="resources-cpu"><code>resources.cpu</code><a class="headerlink" href="#resources-cpu" title="Permanent link">&para;</a></h4>
@@ -5118,17 +5118,17 @@
 <h6 class="reference-item" id="count"><code>count</code> - (Optional) <code>int | str</code> The number of CPU cores. Defaults to <code>2..</code>.<a class="headerlink" href="#count" title="Permanent link">&para;</a></h6>
 <h4 id="resources-gpu"><code>resources.gpu</code><a class="headerlink" href="#resources-gpu" title="Permanent link">&para;</a></h4>
 <h6 class="reference-item" id="vendor"><code>vendor</code> - (Optional) <code>"amd" | "google" | "intel" | "nvidia" | "tenstorrent"</code> The vendor of the GPU/accelerator, one of: <code>nvidia</code>, <code>amd</code>, <code>google</code> (alias: <code>tpu</code>), <code>intel</code>.<a class="headerlink" href="#vendor" title="Permanent link">&para;</a></h6>
-<h6 class="reference-item" id="name"><code>name</code> - (Optional) <code>str | list[str]</code> The name of the GPU (e.g., <code>A100</code> or <code>H100</code>).<a class="headerlink" href="#name" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="name"><code>name</code> - (Optional) <code>list[str]</code> The name of the GPU (e.g., <code>A100</code> or <code>H100</code>).<a class="headerlink" href="#name" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="count"><code>count</code> - (Optional) <code>int | str</code> The number of GPUs. Defaults to <code>1..</code>.<a class="headerlink" href="#count" title="Permanent link">&para;</a></h6>
-<h6 class="reference-item" id="memory"><code>memory</code> - (Optional) <code>int | str</code> The RAM size (e.g., <code>16GB</code>). Can be set to a range (e.g. <code>16GB..</code>, or <code>16GB..80GB</code>).<a class="headerlink" href="#memory" title="Permanent link">&para;</a></h6>
-<h6 class="reference-item" id="total_memory"><code>total_memory</code> - (Optional) <code>int | str</code> The total RAM size (e.g., <code>32GB</code>). Can be set to a range (e.g. <code>16GB..</code>, or <code>16GB..80GB</code>).<a class="headerlink" href="#total_memory" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="memory"><code>memory</code> - (Optional) <code>str</code> The RAM size (e.g., <code>16GB</code>). Can be set to a range (e.g. <code>16GB..</code>, or <code>16GB..80GB</code>).<a class="headerlink" href="#memory" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="total_memory"><code>total_memory</code> - (Optional) <code>str</code> The total RAM size (e.g., <code>32GB</code>). Can be set to a range (e.g. <code>16GB..</code>, or <code>16GB..80GB</code>).<a class="headerlink" href="#total_memory" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="compute_capability"><code>compute_capability</code> - (Optional) <code>float | str</code> The minimum compute capability of the GPU (e.g., <code>7.5</code>).<a class="headerlink" href="#compute_capability" title="Permanent link">&para;</a></h6>
 <h4 id="resources-disk"><code>resources.disk</code><a class="headerlink" href="#resources-disk" title="Permanent link">&para;</a></h4>
-<h6 class="reference-item" id="size"><code>size</code> - (Required) <code>int | str</code> Disk size.<a class="headerlink" href="#size" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="size"><code>size</code> - (Required) <code>str</code> Disk size.<a class="headerlink" href="#size" title="Permanent link">&para;</a></h6>
 <h3 id="retry"><code>retry</code><a class="headerlink" href="#retry" title="Permanent link">&para;</a></h3>
 <h6 class="reference-item" id="on_events"><code>on_events</code> - (Optional) <code>list["no-capacity" | "interruption" | "error"]</code> The list of events that should be handled with retry. Supported events are <code>no-capacity</code>, <code>interruption</code>, <code>error</code>. Omit to retry on all events.<a class="headerlink" href="#on_events" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="duration"><code>duration</code> - (Optional) <code>int | str</code> The maximum period of retrying the run, e.g., <code>4h</code> or <code>1d</code>. The period is calculated as a run age for <code>no-capacity</code> event and as a time passed since the last <code>interruption</code> and <code>error</code> for <code>interruption</code> and <code>error</code> events..<a class="headerlink" href="#duration" title="Permanent link">&para;</a></h6>
-<h3 id="backend_options_1"><code>backend_options</code><a class="headerlink" href="#backend_options_1" title="Permanent link">&para;</a></h3>
+<h3 id="backend_options"><code>backend_options</code><a class="headerlink" href="#backend_options" title="Permanent link">&para;</a></h3>
 <p>Backend-specific options that only take effect for offers of the respective backend.</p>
 <h4 id="backend_options-vastai"><code>backend_options[n][type=vastai]</code><a class="headerlink" href="#backend_options-vastai" title="Permanent link">&para;</a></h4>
 <h6 class="reference-item" id="offer_order"><code>offer_order</code> - (Optional) <code>"price" | "score"</code> Controls the order in which offers are considered for provisioning. Use <code>score</code> to prioritize the highest overall score first (the default order in the Vast.ai console), or <code>price</code> to prioritize the lowest-cost offers first. Lower-cost offers are often less reliable, so consider applying stricter filters when using <code>price</code>. Defaults to <code>score</code>.<a class="headerlink" href="#offer_order" title="Permanent link">&para;</a></h6>

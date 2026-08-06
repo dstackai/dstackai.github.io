@@ -2905,17 +2905,6 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#router" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        router
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#certificate" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -4865,17 +4854,6 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#router" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        router
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#certificate" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -5011,24 +4989,14 @@
 <h6 class="reference-item" id="backend"><code>backend</code> - (Required) <code>"amddevcloud" | "aws" | "azure" | "cloudrift" | "crusoe" | "cudo" | "datacrunch" | "digitalocean" | "dstack" | "gcp" | "hotaisle" | "jarvislabs" | "kubernetes" | "lambda" | "remote" | "nebius" | "oci" | "runpod" | "tensordock" | "vastai" | "verda" | "vultr" | "slurm"</code> The gateway backend.<a class="headerlink" href="#backend" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="region"><code>region</code> - (Required) <code>str</code> The gateway region.<a class="headerlink" href="#region" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="instance_type"><code>instance_type</code> - (Optional) <code>str</code> Backend-specific instance type to use for the gateway instance. Omit to use the backend's default, which is typically a small non-GPU instance.<a class="headerlink" href="#instance_type" title="Permanent link">&para;</a></h6>
-<h6 class="reference-item" id="_router"><a href="#router"><code>router</code></a> - (Optional) <code>object</code> The router configuration for this gateway. E.g. <code>{ type: sglang, policy: round_robin }</code>..<a class="headerlink" href="#_router" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="domain"><code>domain</code> - (Optional) <code>str</code> The gateway wildcard domain name, e.g. <code>example.com</code>. Service domain names are constructed as <code>&lt;run name&gt;.&lt;gateway domain</code>. The domain name can use the <code>${{ run.project_name }}</code> variable to include the service’s project name. Can be updated in-place. Updates do not affect existing services.<a class="headerlink" href="#domain" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="public_ip"><code>public_ip</code> - (Optional) <code>bool</code> Allocate public IP for the gateway. Defaults to <code>true</code>.<a class="headerlink" href="#public_ip" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="_certificate"><a href="#certificate"><code>certificate</code></a> - (Optional) <code>object</code> The SSL certificate configuration. Set to <code>null</code> to disable. Defaults to <code>type: lets-encrypt</code>.<a class="headerlink" href="#_certificate" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="replicas"><code>replicas</code> - (Optional) <code>int</code> The number of gateway replicas. Defaults to <code>1</code>.<a class="headerlink" href="#replicas" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="tags"><code>tags</code> - (Optional) <code>dict</code> The custom tags to associate with the gateway. The tags are also propagated to the underlying backend resources. If there is a conflict with backend-level tags, does not override them.<a class="headerlink" href="#tags" title="Permanent link">&para;</a></h6>
-<h3 id="router"><code>router</code><a class="headerlink" href="#router" title="Permanent link">&para;</a></h3>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:1"><input checked="checked" id="sglang-model-gateway" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="sglang-model-gateway">SGLang Model Gateway</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<h6 class="reference-item" id="type"><code>type</code> - (Required) <code>"sglang"</code> The router type enabled on this gateway.. Must be <code>sglang</code>.<a class="headerlink" href="#type" title="Permanent link">&para;</a></h6>
-<h6 class="reference-item" id="policy"><code>policy</code> - (Optional) <code>"random" | "round_robin" | "cache_aware" | "power_of_two"</code> The routing policy. Deprecated: prefer setting policy in the service's router config. Options: <code>random</code>, <code>round_robin</code>, <code>cache_aware</code>, <code>power_of_two</code>. Defaults to <code>cache_aware</code>.<a class="headerlink" href="#policy" title="Permanent link">&para;</a></h6>
-</div>
-</div>
-</div>
 <h3 id="certificate"><code>certificate</code><a class="headerlink" href="#certificate" title="Permanent link">&para;</a></h3>
 <p>Set to <code>null</code> to disable certificates (e.g. for <a href="../../../concepts/gateways/#public-ip">private gateways</a>).</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="lets-encrypt" name="__tabbed_2" type="radio" /><input id="acm" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="lets-encrypt">Let's encrypt</label><label for="acm">ACM</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="lets-encrypt" name="__tabbed_1" type="radio" /><input id="acm" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="lets-encrypt">Let's encrypt</label><label for="acm">ACM</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <h6 class="reference-item" id="type"><code>type</code> - (Required) <code>"lets-encrypt"</code> Automatic certificates by Let's Encrypt. Must be <code>lets-encrypt</code>.<a class="headerlink" href="#type" title="Permanent link">&para;</a></h6>

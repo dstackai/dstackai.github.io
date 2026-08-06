@@ -4955,6 +4955,10 @@ $<span class="w"> </span>dstack<span class="w"> </span>apply<span class="w"> </s
 <p>Once the gateway has a hostname, update your domain’s DNS settings by adding a record for <code>*.&lt;gateway domain&gt;</code>.</p>
 <p>After that, if you configure <a href="../../docs/concepts/services/#replicas-and-scaling">replicas and scaling</a>, the gateway will automatically scale the number of replicas and route traffic across them.</p>
 <h3 id="router">Router<a class="headerlink" href="#router" title="Permanent link">&para;</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Deprecation notice</p>
+<p>The router configuration approach described in this section is no longer supported. For the modern approach, see <a href="../../docs/examples/inference/sglang/#pd-disaggregation">SGLang PD disaggregation (router as replica group)</a>.</p>
+</div>
 <p>By default, the gateway uses its built-in load balancer to route traffic across replicas. With the latest release, you can instead delegate traffic routing to the <a href="https://docs.sglang.ai/advanced_features/router.html">SGLang Model Gateway</a> by setting the <code>router</code> property to <code>sglang</code>:</p>
 <div editor-title="gateway.dstack.yml">
 

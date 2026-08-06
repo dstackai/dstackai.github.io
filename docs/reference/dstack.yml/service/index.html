@@ -2849,7 +2849,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#model_1" class="md-nav__link">
+  <a href="#model" class="md-nav__link">
     <span class="md-ellipsis">
       
         model
@@ -2882,7 +2882,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#probes_1" class="md-nav__link">
+  <a href="#probes" class="md-nav__link">
     <span class="md-ellipsis">
       
         probes
@@ -2893,7 +2893,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#replicas_1" class="md-nav__link">
+  <a href="#replicas" class="md-nav__link">
     <span class="md-ellipsis">
       
         replicas
@@ -3003,7 +3003,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#backend_options_1" class="md-nav__link">
+  <a href="#backend_options" class="md-nav__link">
     <span class="md-ellipsis">
       
         backend_options
@@ -5008,7 +5008,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#model_1" class="md-nav__link">
+  <a href="#model" class="md-nav__link">
     <span class="md-ellipsis">
       
         model
@@ -5041,7 +5041,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#probes_1" class="md-nav__link">
+  <a href="#probes" class="md-nav__link">
     <span class="md-ellipsis">
       
         probes
@@ -5052,7 +5052,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#replicas_1" class="md-nav__link">
+  <a href="#replicas" class="md-nav__link">
     <span class="md-ellipsis">
       
         replicas
@@ -5162,7 +5162,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#backend_options_1" class="md-nav__link">
+  <a href="#backend_options" class="md-nav__link">
     <span class="md-ellipsis">
       
         backend_options
@@ -5292,17 +5292,16 @@
 <h1 id="service"><code>service</code><a class="headerlink" href="#service" title="Permanent link">&para;</a></h1>
 <p>The <code>service</code> configuration type allows running <a href="../../../concepts/services/">services</a>.</p>
 <h2 id="root-reference">Root reference<a class="headerlink" href="#root-reference" title="Permanent link">&para;</a></h2>
-<h6 class="reference-item" id="port"><code>port</code> - (Required) <code>int | str | object</code> The port the application listens on.<a class="headerlink" href="#port" title="Permanent link">&para;</a></h6>
-<h6 class="reference-item" id="gateway"><code>gateway</code> - (Optional) <code>bool | str | object</code> The name of the gateway. Specify boolean <code>false</code> to run without a gateway. Specify boolean <code>true</code> to run with the default gateway. Omit to run with the default gateway if there is one, or without a gateway otherwise.<a class="headerlink" href="#gateway" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="_port"><a href="#port"><code>port</code></a> - (Required) <code>int | str | object</code> The port the application listens on.<a class="headerlink" href="#_port" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="_gateway"><a href="#gateway"><code>gateway</code></a> - (Optional) <code>bool | str | object</code> The name of the gateway. Specify boolean <code>false</code> to run without a gateway. Specify boolean <code>true</code> to run with the default gateway. Omit to run with the default gateway if there is one, or without a gateway otherwise.<a class="headerlink" href="#_gateway" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="strip_prefix"><code>strip_prefix</code> - (Optional) <code>bool</code> Strip the <code>/proxy/services/&lt;project name&gt;/&lt;run name&gt;/</code> path prefix when forwarding requests to the service. Only takes effect when running the service without a gateway. Defaults to <code>true</code>.<a class="headerlink" href="#strip_prefix" title="Permanent link">&para;</a></h6>
-<h6 class="reference-item" id="model"><code>model</code> - (Optional) <code>str | object</code> Mapping of the model for the OpenAI-compatible endpoint provided by <code>dstack</code>. Can be a full model format definition or just a model name. If it's a name, the service is expected to expose an OpenAI-compatible API at the <code>/v1</code> path.<a class="headerlink" href="#model" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="_model"><a href="#model"><code>model</code></a> - (Optional) <code>str | object</code> Mapping of the model for the OpenAI-compatible endpoint provided by <code>dstack</code>. Can be a full model format definition or just a model name. If it's a name, the service is expected to expose an OpenAI-compatible API at the <code>/v1</code> path.<a class="headerlink" href="#_model" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="https"><code>https</code> - (Optional) <code>bool | "auto"</code> Enable HTTPS if running with a gateway. Set to <code>auto</code> to determine automatically based on gateway configuration. Defaults to <code>true</code>.<a class="headerlink" href="#https" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="auth"><code>auth</code> - (Optional) <code>bool</code> Enable the authorization. Defaults to <code>true</code>.<a class="headerlink" href="#auth" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="_scaling"><a href="#scaling"><code>scaling</code></a> - (Optional) <code>object</code> The auto-scaling rules. Required if <code>replicas</code> is set to a range.<a class="headerlink" href="#_scaling" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="_rate_limits"><a href="#rate_limits"><code>rate_limits</code></a> - (Optional) <code>list[object]</code> Rate limiting rules.<a class="headerlink" href="#_rate_limits" title="Permanent link">&para;</a></h6>
-<h6 class="reference-item" id="probes"><code>probes</code> - (Optional) <code>list[object]</code> The list of probes to determine service health. If <code>model</code> is set, defaults to a <code>/v1/chat/completions</code> probe. Set explicitly to override.<a class="headerlink" href="#probes" title="Permanent link">&para;</a></h6>
-<h6 class="reference-item" id="replicas"><code>replicas</code> - (Optional) <code>int | str | list[object]</code> The number of replicas or a list of replica groups. Can be an integer (e.g., <code>2</code>), a range (e.g., <code>0..4</code>), or a list of replica groups. Each replica group defines replicas with shared configuration (commands, resources, scaling). When <code>replicas</code> is a list of replica groups, top-level <code>scaling</code>, <code>commands</code>, and <code>resources</code> are not allowed and must be specified in each replica group instead. .<a class="headerlink" href="#replicas" title="Permanent link">&para;</a></h6>
-<h6 class="reference-item" id="_router"><a href="#router"><code>router</code></a> - (Optional) <code>object</code> Router configuration for the service. Requires a gateway with matching router enabled. .<a class="headerlink" href="#_router" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="_probes"><a href="#probes"><code>probes</code></a> - (Optional) <code>list[object]</code> The list of probes to determine service health. If <code>model</code> is set, defaults to a <code>/v1/chat/completions</code> probe. Set explicitly to override.<a class="headerlink" href="#_probes" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="_replicas"><a href="#replicas"><code>replicas</code></a> - (Optional) <code>int | str | list[object]</code> The number of replicas or a list of replica groups. Can be an integer (e.g., <code>2</code>), a range (e.g., <code>0..4</code>), or a list of replica groups. Each replica group defines replicas with shared configuration (commands, resources, scaling). When <code>replicas</code> is a list of replica groups, top-level <code>scaling</code>, <code>commands</code>, and <code>resources</code> are not allowed and must be specified in each replica group instead. .<a class="headerlink" href="#_replicas" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="commands"><code>commands</code> - (Optional) <code>list[str]</code> The shell commands to run.<a class="headerlink" href="#commands" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="name"><code>name</code> - (Optional) <code>str</code> The run name. If not specified, a random name is generated.<a class="headerlink" href="#name" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="image"><code>image</code> - (Optional) <code>str</code> The name of the Docker image to run. If no <code>image</code> is specified, <code>dstack</code> uses an Ubuntu 24.04-based Docker image that comes pre-configured with <code>uv</code>, <code>python</code>, <code>pip</code>, the CUDA 13.0 runtime, InfiniBand, NCCL, and NCCL tests. It may also include provider-specific components such as EFA support on AWS. For non-Nvidia accelerators or NVidia GPUs unsupported by CUDA 13.0 (e.g. V100, P100), specify a custom Docker image..<a class="headerlink" href="#image" title="Permanent link">&para;</a></h6>
@@ -5311,7 +5310,7 @@
 <h6 class="reference-item" id="entrypoint"><code>entrypoint</code> - (Optional) <code>str</code> The Docker entrypoint.<a class="headerlink" href="#entrypoint" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="working_dir"><code>working_dir</code> - (Optional) <code>str</code> The absolute path to the working directory inside the container. Defaults to the <code>image</code>'s default working directory.<a class="headerlink" href="#working_dir" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="_registry_auth"><a href="#registry_auth"><code>registry_auth</code></a> - (Optional) <code>object</code> Credentials for pulling a private Docker image.<a class="headerlink" href="#_registry_auth" title="Permanent link">&para;</a></h6>
-<h6 class="reference-item" id="python"><code>python</code> - (Optional) <code>"3.10" | "3.11" | "3.12" | "3.13" | "3.9"</code> The major version of Python. Mutually exclusive with <code>image</code> and <code>docker</code>.<a class="headerlink" href="#python" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="python"><code>python</code> - (Optional) <code>"3.10" | "3.11" | "3.12" | "3.13" | "3.14" | "3.9"</code> The major version of Python. Mutually exclusive with <code>image</code> and <code>docker</code>.<a class="headerlink" href="#python" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="nvcc"><code>nvcc</code> - (Optional) <code>bool</code> Use image with NVIDIA CUDA Compiler (NVCC) included. Mutually exclusive with <code>image</code> and <code>docker</code>.<a class="headerlink" href="#nvcc" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="single_branch"><code>single_branch</code> - (Optional) <code>bool</code> Whether to clone and track only the current branch or all remote branches. Relevant only when using remote Git repos. Defaults to <code>false</code> for dev environments and to <code>true</code> for tasks and services.<a class="headerlink" href="#single_branch" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="_env"><a href="#env"><code>env</code></a> - (Optional) <code>list[str] | dict</code> The mapping or the list of environment variables.<a class="headerlink" href="#_env" title="Permanent link">&para;</a></h6>
@@ -5320,8 +5319,8 @@
 <h6 class="reference-item" id="priority"><code>priority</code> - (Optional) <code>int</code> The priority of the run, an integer between <code>0</code> and <code>100</code>. <code>dstack</code> tries to provision runs with higher priority first. Defaults to <code>0</code>.<a class="headerlink" href="#priority" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="_volumes"><a href="#volumes"><code>volumes</code></a> - (Optional) <code>list[object]</code> The volumes mount points.<a class="headerlink" href="#_volumes" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="docker"><code>docker</code> - (Optional) <code>bool</code> Use Docker inside the container. Mutually exclusive with <code>image</code>, <code>python</code>, and <code>nvcc</code>. Overrides <code>privileged</code>.<a class="headerlink" href="#docker" title="Permanent link">&para;</a></h6>
-<h6 class="reference-item" id="_repos"><a href="#repos"><code>repos</code></a> - (Optional) <code>list[object]</code> The list of Git repos.<a class="headerlink" href="#_repos" title="Permanent link">&para;</a></h6>
-<h6 class="reference-item" id="_files"><a href="#files"><code>files</code></a> - (Optional) <code>list[object]</code> The local to container file path mappings.<a class="headerlink" href="#_files" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="_repos"><a href="#repos"><code>repos</code></a> - (Optional) <code>list[str | object]</code> The list of Git repos.<a class="headerlink" href="#_repos" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="_files"><a href="#files"><code>files</code></a> - (Optional) <code>list[str | object]</code> The local to container file path mappings.<a class="headerlink" href="#_files" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="dstack"><code>dstack</code> - (Optional) <code>bool</code> Make the dstack server accessible inside the run. No authentication credentials are provided. Defaults to <code>false</code>.<a class="headerlink" href="#dstack" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="backends"><code>backends</code> - (Optional) <code>list["amddevcloud" | "aws" | "azure" | "cloudrift" | "crusoe" | "cudo" | "datacrunch" | "digitalocean" | "dstack" | "gcp" | "hotaisle" | "jarvislabs" | "kubernetes" | "lambda" | "remote" | "nebius" | "oci" | "runpod" | "tensordock" | "vastai" | "verda" | "vultr" | "slurm"]</code> The backends to consider for provisioning (e.g., <code>[aws, gcp]</code>).<a class="headerlink" href="#backends" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="regions"><code>regions</code> - (Optional) <code>list[str]</code> The regions to consider for provisioning (e.g., <code>[eu-west-1, us-west4, westeurope]</code>).<a class="headerlink" href="#regions" title="Permanent link">&para;</a></h6>
@@ -5330,20 +5329,20 @@
 <h6 class="reference-item" id="reservation"><code>reservation</code> - (Optional) <code>str</code> The existing reservation to use for instance provisioning. Supports AWS Capacity Reservations, AWS Capacity Blocks, and GCP reservations.<a class="headerlink" href="#reservation" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="spot_policy"><code>spot_policy</code> - (Optional) <code>"auto" | "on-demand" | "spot"</code> The policy for provisioning spot or on-demand instances: <code>spot</code>, <code>on-demand</code>, <code>auto</code>. Defaults to <code>on-demand</code>.<a class="headerlink" href="#spot_policy" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="_retry"><a href="#retry"><code>retry</code></a> - (Optional) <code>bool | object</code> The policy for resubmitting the run. Defaults to <code>false</code>.<a class="headerlink" href="#_retry" title="Permanent link">&para;</a></h6>
-<h6 class="reference-item" id="max_duration"><code>max_duration</code> - (Optional) <code>int | str | "off"</code> The maximum duration of a run (e.g., <code>2h</code>, <code>1d</code>, etc) in a running state, excluding provisioning and pulling. After it elapses, the run is automatically stopped. Use <code>off</code> for unlimited duration. Defaults to <code>off</code>.<a class="headerlink" href="#max_duration" title="Permanent link">&para;</a></h6>
-<h6 class="reference-item" id="stop_duration"><code>stop_duration</code> - (Optional) <code>int | str | "off"</code> The maximum duration of a run graceful stopping. After it elapses, the run is automatically forced stopped. This includes force detaching volumes used by the run. Use <code>off</code> for unlimited duration. Defaults to <code>5m</code>.<a class="headerlink" href="#stop_duration" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="max_duration"><code>max_duration</code> - (Optional) <code>bool | int | str | "off"</code> The maximum duration of a run (e.g., <code>2h</code>, <code>1d</code>, etc) in a running state, excluding provisioning and pulling. After it elapses, the run is automatically stopped. Use <code>off</code> for unlimited duration. Defaults to <code>off</code>.<a class="headerlink" href="#max_duration" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="stop_duration"><code>stop_duration</code> - (Optional) <code>bool | int | str | "off"</code> The maximum duration of a run graceful stopping. After it elapses, the run is automatically forced stopped. This includes force detaching volumes used by the run. Use <code>off</code> for unlimited duration. Defaults to <code>5m</code>.<a class="headerlink" href="#stop_duration" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="max_price"><code>max_price</code> - (Optional) <code>float</code> The maximum instance price per hour, in dollars.<a class="headerlink" href="#max_price" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="creation_policy"><code>creation_policy</code> - (Optional) <code>"reuse" | "reuse-or-create"</code> The policy for using instances from fleets: <code>reuse</code>, <code>reuse-or-create</code>. Defaults to <code>reuse-or-create</code>.<a class="headerlink" href="#creation_policy" title="Permanent link">&para;</a></h6>
-<h6 class="reference-item" id="idle_duration"><code>idle_duration</code> - (Optional) <code>int | str</code> Time to wait before terminating idle instances. When the run reuses an existing fleet instance, the fleet's <code>idle_duration</code> applies. When the run provisions a new instance, the shorter of the fleet's and run's values is used. Defaults to <code>5m</code> for runs and <code>3d</code> for fleets. Use <code>off</code> for unlimited duration. Only applied for VM-based backends.<a class="headerlink" href="#idle_duration" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="idle_duration"><code>idle_duration</code> - (Optional) <code>bool | int | str | "off"</code> Time to wait before terminating idle instances. When the run reuses an existing fleet instance, the fleet's <code>idle_duration</code> applies. When the run provisions a new instance, the shorter of the fleet's and run's values is used. Defaults to <code>5m</code> for runs and <code>3d</code> for fleets. Use <code>off</code> for unlimited duration. Only applied for VM-based backends.<a class="headerlink" href="#idle_duration" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="_utilization_policy"><a href="#utilization_policy"><code>utilization_policy</code></a> - (Optional) <code>object</code> Run termination policy based on utilization.<a class="headerlink" href="#_utilization_policy" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="startup_order"><code>startup_order</code> - (Optional) <code>"any" | "master-first" | "workers-first"</code> The order in which master and workers jobs are started: <code>any</code>, <code>master-first</code>, <code>workers-first</code>. Defaults to <code>any</code>.<a class="headerlink" href="#startup_order" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="stop_criteria"><code>stop_criteria</code> - (Optional) <code>"all-done" | "master-done"</code> The criteria determining when a multi-node run should be considered finished: <code>all-done</code>, <code>master-done</code>. Defaults to <code>all-done</code>.<a class="headerlink" href="#stop_criteria" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="_schedule"><a href="#schedule"><code>schedule</code></a> - (Optional) <code>object</code> The schedule for starting the run at specified time.<a class="headerlink" href="#_schedule" title="Permanent link">&para;</a></h6>
-<h6 class="reference-item" id="fleets"><code>fleets</code> - (Optional) <code>list[str | object]</code> The fleets considered for reuse. For fleets owned by the current project, specify fleet names. For imported fleets, specify <code>&lt;project name&gt;/&lt;fleet name&gt;</code>.<a class="headerlink" href="#fleets" title="Permanent link">&para;</a></h6>
-<h6 class="reference-item" id="instances"><code>instances</code> - (Optional) <code>list</code> The specific fleet instances to consider for reuse. Each value can be an instance name string, or an object with <code>name</code>, <code>hostname</code>, or <code>fleet</code> and <code>instance</code>. When set, the run is only placed on matching existing instances..<a class="headerlink" href="#instances" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="_fleets"><a href="#fleets"><code>fleets</code></a> - (Optional) <code>list[str | object]</code> The fleets considered for reuse. For fleets owned by the current project, specify fleet names. For imported fleets, specify <code>&lt;project name&gt;/&lt;fleet name&gt;</code>.<a class="headerlink" href="#_fleets" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="_instances"><a href="#instances"><code>instances</code></a> - (Optional) <code>list[object]</code> The specific fleet instances to consider for reuse. Each value can be an instance name string, or an object with <code>name</code>, <code>hostname</code>, or <code>fleet</code> and <code>instance</code>. When set, the run is only placed on matching existing instances..<a class="headerlink" href="#_instances" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="tags"><code>tags</code> - (Optional) <code>dict</code> The custom tags to associate with the resource. The tags are also propagated to the underlying backend resources. If there is a conflict with backend-level tags, does not override them.<a class="headerlink" href="#tags" title="Permanent link">&para;</a></h6>
-<h6 class="reference-item" id="backend_options"><code>backend_options</code> - (Optional) <code>list[object]</code> Backend-specific options, applied only to offers from that backend.<a class="headerlink" href="#backend_options" title="Permanent link">&para;</a></h6>
-<h3 id="model_1"><code>model</code><a class="headerlink" href="#model_1" title="Permanent link">&para;</a></h3>
+<h6 class="reference-item" id="_backend_options"><a href="#backend_options"><code>backend_options</code></a> - (Optional) <code>list[object]</code> Backend-specific options, applied only to offers from that backend.<a class="headerlink" href="#_backend_options" title="Permanent link">&para;</a></h6>
+<h3 id="model"><code>model</code><a class="headerlink" href="#model" title="Permanent link">&para;</a></h3>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:1"><input checked="checked" id="openai" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="openai">OpenAI</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -5380,12 +5379,12 @@
 </div>
 </div>
 </div>
-<h3 id="probes_1"><code>probes</code><a class="headerlink" href="#probes_1" title="Permanent link">&para;</a></h3>
+<h3 id="probes"><code>probes</code><a class="headerlink" href="#probes" title="Permanent link">&para;</a></h3>
 <h4 id="probesn"><code>probes[n]</code><a class="headerlink" href="#probesn" title="Permanent link">&para;</a></h4>
 <h6 class="reference-item" id="type"><code>type</code> - (Required) <code>"http"</code> The probe type. Must be <code>http</code>.<a class="headerlink" href="#type" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="url"><code>url</code> - (Optional) <code>str</code> The URL to request. Defaults to <code>/</code>.<a class="headerlink" href="#url" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="method"><code>method</code> - (Optional) <code>"delete" | "get" | "head" | "patch" | "post" | "put"</code> The HTTP method to use for the probe (e.g., <code>get</code>, <code>post</code>, etc.). Defaults to <code>get</code>.<a class="headerlink" href="#method" title="Permanent link">&para;</a></h6>
-<h6 class="reference-item" id="headers"><code>headers</code> - (Optional) <code>list</code> A list of HTTP headers to include in the request.<a class="headerlink" href="#headers" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="_headers"><a href="#headers"><code>headers</code></a> - (Optional) <code>list[object]</code> A list of HTTP headers to include in the request.<a class="headerlink" href="#_headers" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="body"><code>body</code> - (Optional) <code>str</code> The HTTP request body to send with the probe.<a class="headerlink" href="#body" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="timeout"><code>timeout</code> - (Optional) <code>int | str</code> Maximum amount of time the HTTP request is allowed to take. Defaults to <code>10s</code>.<a class="headerlink" href="#timeout" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="interval"><code>interval</code> - (Optional) <code>int | str</code> Minimum amount of time between the end of one probe execution and the start of the next. Defaults to <code>15s</code>.<a class="headerlink" href="#interval" title="Permanent link">&para;</a></h6>
@@ -5395,7 +5394,7 @@
 <h6 id="probesnheadersm"><code>probes[n].headers[m]</code><a class="headerlink" href="#probesnheadersm" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="name"><code>name</code> - (Required) <code>str</code> The name of the HTTP header.<a class="headerlink" href="#name" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="value"><code>value</code> - (Required) <code>str</code> The value of the HTTP header.<a class="headerlink" href="#value" title="Permanent link">&para;</a></h6>
-<h3 id="replicas_1"><code>replicas</code><a class="headerlink" href="#replicas_1" title="Permanent link">&para;</a></h3>
+<h3 id="replicas"><code>replicas</code><a class="headerlink" href="#replicas" title="Permanent link">&para;</a></h3>
 <h4 id="replicasn"><code>replicas[n]</code><a class="headerlink" href="#replicasn" title="Permanent link">&para;</a></h4>
 <h6 class="reference-item" id="name"><code>name</code> - (Optional) <code>str</code> The name of the replica group. If not provided, defaults to '0', '1', etc. based on position..<a class="headerlink" href="#name" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="count"><code>count</code> - (Required) <code>int | str</code> The number of replicas. Can be a number (e.g. <code>2</code>) or a range (<code>0..4</code> or <code>1..8</code>). If it's a range, the <code>scaling</code> property is required.<a class="headerlink" href="#count" title="Permanent link">&para;</a></h6>
@@ -5405,7 +5404,7 @@
 <h6 class="reference-item" id="reservation"><code>reservation</code> - (Optional) <code>str</code> The existing reservation to use for replicas in this group. Supports AWS Capacity Reservations, AWS Capacity Blocks, and GCP reservations.<a class="headerlink" href="#reservation" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="commands"><code>commands</code> - (Optional) <code>list[str]</code> The shell commands to run for replicas in this group.<a class="headerlink" href="#commands" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="image"><code>image</code> - (Optional) <code>str</code> The name of the Docker image to run for replicas in this group. Mutually exclusive with group-level <code>docker</code> and <code>python</code>..<a class="headerlink" href="#image" title="Permanent link">&para;</a></h6>
-<h6 class="reference-item" id="python"><code>python</code> - (Optional) <code>"3.10" | "3.11" | "3.12" | "3.13" | "3.9"</code> The major version of Python for replicas in this group. Mutually exclusive with group-level <code>image</code> and <code>docker</code>..<a class="headerlink" href="#python" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="python"><code>python</code> - (Optional) <code>"3.10" | "3.11" | "3.12" | "3.13" | "3.14" | "3.9"</code> The major version of Python for replicas in this group. Mutually exclusive with group-level <code>image</code> and <code>docker</code>..<a class="headerlink" href="#python" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="nvcc"><code>nvcc</code> - (Optional) <code>bool</code> Use the image with NVIDIA CUDA Compiler (NVCC) included for replicas in this group. Mutually exclusive with group-level <code>docker</code>..<a class="headerlink" href="#nvcc" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="docker"><code>docker</code> - (Optional) <code>bool</code> Use the docker-in-docker image for this group (injects <code>start-dockerd</code> and runs privileged). Mutually exclusive with group-level <code>image</code>, <code>python</code>, and <code>nvcc</code>..<a class="headerlink" href="#docker" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="privileged"><code>privileged</code> - (Optional) <code>bool</code> Run replicas in this group in privileged mode..<a class="headerlink" href="#privileged" title="Permanent link">&para;</a></h6>
@@ -5444,7 +5443,7 @@
 <h3 id="resources"><code>resources</code><a class="headerlink" href="#resources" title="Permanent link">&para;</a></h3>
 <h6 class="reference-item" id="_cpu"><a href="#resources-cpu"><code>cpu</code></a> - (Optional) <code>int | str | object</code> The CPU requirements.<a class="headerlink" href="#_cpu" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="memory"><code>memory</code> - (Optional) <code>int | str</code> The RAM size (e.g., <code>8GB</code>). Defaults to <code>8GB..</code>.<a class="headerlink" href="#memory" title="Permanent link">&para;</a></h6>
-<h6 class="reference-item" id="shm_size"><code>shm_size</code> - (Optional) <code>int | str</code> The size of shared memory (e.g., <code>8GB</code>). If you are using parallel communicating processes (e.g., dataloaders in PyTorch), you may need to configure this.<a class="headerlink" href="#shm_size" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="shm_size"><code>shm_size</code> - (Optional) <code>int | float | str</code> The size of shared memory (e.g., <code>8GB</code>). If you are using parallel communicating processes (e.g., dataloaders in PyTorch), you may need to configure this.<a class="headerlink" href="#shm_size" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="_gpu"><a href="#resources-gpu"><code>gpu</code></a> - (Optional) <code>int | str | object</code> The GPU requirements.<a class="headerlink" href="#_gpu" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="_disk"><a href="#resources-disk"><code>disk</code></a> - (Optional) <code>int | str | object</code> The disk resources.<a class="headerlink" href="#_disk" title="Permanent link">&para;</a></h6>
 <h4 id="resources-cpu"><code>resources.cpu</code><a class="headerlink" href="#resources-cpu" title="Permanent link">&para;</a></h4>
@@ -5452,13 +5451,13 @@
 <h6 class="reference-item" id="count"><code>count</code> - (Optional) <code>int | str</code> The number of CPU cores. Defaults to <code>2..</code>.<a class="headerlink" href="#count" title="Permanent link">&para;</a></h6>
 <h4 id="resources-gpu"><code>resources.gpu</code><a class="headerlink" href="#resources-gpu" title="Permanent link">&para;</a></h4>
 <h6 class="reference-item" id="vendor"><code>vendor</code> - (Optional) <code>"amd" | "google" | "intel" | "nvidia" | "tenstorrent"</code> The vendor of the GPU/accelerator, one of: <code>nvidia</code>, <code>amd</code>, <code>google</code> (alias: <code>tpu</code>), <code>intel</code>.<a class="headerlink" href="#vendor" title="Permanent link">&para;</a></h6>
-<h6 class="reference-item" id="name"><code>name</code> - (Optional) <code>str | list[str]</code> The name of the GPU (e.g., <code>A100</code> or <code>H100</code>).<a class="headerlink" href="#name" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="name"><code>name</code> - (Optional) <code>list[str]</code> The name of the GPU (e.g., <code>A100</code> or <code>H100</code>).<a class="headerlink" href="#name" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="count"><code>count</code> - (Optional) <code>int | str</code> The number of GPUs. Defaults to <code>1..</code>.<a class="headerlink" href="#count" title="Permanent link">&para;</a></h6>
-<h6 class="reference-item" id="memory"><code>memory</code> - (Optional) <code>int | str</code> The RAM size (e.g., <code>16GB</code>). Can be set to a range (e.g. <code>16GB..</code>, or <code>16GB..80GB</code>).<a class="headerlink" href="#memory" title="Permanent link">&para;</a></h6>
-<h6 class="reference-item" id="total_memory"><code>total_memory</code> - (Optional) <code>int | str</code> The total RAM size (e.g., <code>32GB</code>). Can be set to a range (e.g. <code>16GB..</code>, or <code>16GB..80GB</code>).<a class="headerlink" href="#total_memory" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="memory"><code>memory</code> - (Optional) <code>str</code> The RAM size (e.g., <code>16GB</code>). Can be set to a range (e.g. <code>16GB..</code>, or <code>16GB..80GB</code>).<a class="headerlink" href="#memory" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="total_memory"><code>total_memory</code> - (Optional) <code>str</code> The total RAM size (e.g., <code>32GB</code>). Can be set to a range (e.g. <code>16GB..</code>, or <code>16GB..80GB</code>).<a class="headerlink" href="#total_memory" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="compute_capability"><code>compute_capability</code> - (Optional) <code>float | str</code> The minimum compute capability of the GPU (e.g., <code>7.5</code>).<a class="headerlink" href="#compute_capability" title="Permanent link">&para;</a></h6>
 <h4 id="resources-disk"><code>resources.disk</code><a class="headerlink" href="#resources-disk" title="Permanent link">&para;</a></h4>
-<h6 class="reference-item" id="size"><code>size</code> - (Required) <code>int | str</code> Disk size.<a class="headerlink" href="#size" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="size"><code>size</code> - (Required) <code>str</code> Disk size.<a class="headerlink" href="#size" title="Permanent link">&para;</a></h6>
 <h3 id="registry_auth"><code>registry_auth</code><a class="headerlink" href="#registry_auth" title="Permanent link">&para;</a></h3>
 <h6 class="reference-item" id="username"><code>username</code> - (Required) <code>str</code> The username.<a class="headerlink" href="#username" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="password"><code>password</code> - (Required) <code>str</code> The password or access token.<a class="headerlink" href="#password" title="Permanent link">&para;</a></h6>
@@ -5530,7 +5529,7 @@ cannot be ignored with the <code>skip</code> action.</p>
 <li><code>libs/patched_libibverbs.so.1:/lib/x86_64-linux-gnu/libibverbs.so.1</code></li>
 </ul>
 </details>
-<h3 id="backend_options_1"><code>backend_options</code><a class="headerlink" href="#backend_options_1" title="Permanent link">&para;</a></h3>
+<h3 id="backend_options"><code>backend_options</code><a class="headerlink" href="#backend_options" title="Permanent link">&para;</a></h3>
 <p>Backend-specific options that only take effect for offers of the respective backend.</p>
 <h4 id="backend_options-vastai"><code>backend_options[n][type=vastai]</code><a class="headerlink" href="#backend_options-vastai" title="Permanent link">&para;</a></h4>
 <h6 class="reference-item" id="offer_order"><code>offer_order</code> - (Optional) <code>"price" | "score"</code> Controls the order in which offers are considered for provisioning. Use <code>score</code> to prioritize the highest overall score first (the default order in the Vast.ai console), or <code>price</code> to prioritize the lowest-cost offers first. Lower-cost offers are often less reliable, so consider applying stricter filters when using <code>price</code>. Defaults to <code>score</code>.<a class="headerlink" href="#offer_order" title="Permanent link">&para;</a></h6>

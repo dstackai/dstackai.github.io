@@ -20,16 +20,16 @@ The `fleet` configuration type allows creating and updating fleets.
     ###### `spot_policy` - (Optional) `"auto" | "on-demand" | "spot"` The policy for provisioning spot or on-demand instances: `spot`, `on-demand`, `auto`. Defaults to `on-demand`. { #spot_policy data-toc-label='spot_policy' class='reference-item' }
     ###### [`retry`](#retry) - (Optional) `bool | object` The policy for provisioning retry. Defaults to `false`. { #_retry data-toc-label='retry' class='reference-item' }
     ###### `max_price` - (Optional) `float` The maximum instance price per hour, in dollars. { #max_price data-toc-label='max_price' class='reference-item' }
-    ###### `idle_duration` - (Optional) `int | str` Time to wait before terminating idle instances. Instances are not terminated if the fleet is already at `nodes.min`. Defaults to `5m` for runs and `3d` for fleets. Use `off` for unlimited duration. { #idle_duration data-toc-label='idle_duration' class='reference-item' }
+    ###### `idle_duration` - (Optional) `bool | int | str | "off"` Time to wait before terminating idle instances. Instances are not terminated if the fleet is already at `nodes.min`. Defaults to `5m` for runs and `3d` for fleets. Use `off` for unlimited duration. { #idle_duration data-toc-label='idle_duration' class='reference-item' }
     ###### `tags` - (Optional) `dict` The custom tags to associate with the resource. The tags are also propagated to the underlying backend resources. If there is a conflict with backend-level tags, does not override them. { #tags data-toc-label='tags' class='reference-item' }
-    ###### `backend_options` - (Optional) `list[object]` Backend-specific options, applied only to offers from that backend. { #backend_options data-toc-label='backend_options' class='reference-item' }
+    ###### [`backend_options`](#backend_options) - (Optional) `list[object]` Backend-specific options, applied only to offers from that backend. { #_backend_options data-toc-label='backend_options' class='reference-item' }
 
 
     ### `resources`
 
     ###### [`cpu`](#resources-cpu) - (Optional) `int | str | object` The CPU requirements. { #_cpu data-toc-label='cpu' class='reference-item' }
     ###### `memory` - (Optional) `int | str` The RAM size (e.g., `8GB`). Defaults to `8GB..`. { #memory data-toc-label='memory' class='reference-item' }
-    ###### `shm_size` - (Optional) `int | str` The size of shared memory (e.g., `8GB`). If you are using parallel communicating processes (e.g., dataloaders in PyTorch), you may need to configure this. { #shm_size data-toc-label='shm_size' class='reference-item' }
+    ###### `shm_size` - (Optional) `int | float | str` The size of shared memory (e.g., `8GB`). If you are using parallel communicating processes (e.g., dataloaders in PyTorch), you may need to configure this. { #shm_size data-toc-label='shm_size' class='reference-item' }
     ###### [`gpu`](#resources-gpu) - (Optional) `int | str | object` The GPU requirements. { #_gpu data-toc-label='gpu' class='reference-item' }
     ###### [`disk`](#resources-disk) - (Optional) `int | str | object` The disk resources. { #_disk data-toc-label='disk' class='reference-item' }
 
@@ -43,16 +43,16 @@ The `fleet` configuration type allows creating and updating fleets.
     #### `resources.gpu` { #resources-gpu data-toc-label="gpu" }
 
     ###### `vendor` - (Optional) `"amd" | "google" | "intel" | "nvidia" | "tenstorrent"` The vendor of the GPU/accelerator, one of: `nvidia`, `amd`, `google` (alias: `tpu`), `intel`. { #vendor data-toc-label='vendor' class='reference-item' }
-    ###### `name` - (Optional) `str | list[str]` The name of the GPU (e.g., `A100` or `H100`). { #name data-toc-label='name' class='reference-item' }
+    ###### `name` - (Optional) `list[str]` The name of the GPU (e.g., `A100` or `H100`). { #name data-toc-label='name' class='reference-item' }
     ###### `count` - (Optional) `int | str` The number of GPUs. Defaults to `1..`. { #count data-toc-label='count' class='reference-item' }
-    ###### `memory` - (Optional) `int | str` The RAM size (e.g., `16GB`). Can be set to a range (e.g. `16GB..`, or `16GB..80GB`). { #memory data-toc-label='memory' class='reference-item' }
-    ###### `total_memory` - (Optional) `int | str` The total RAM size (e.g., `32GB`). Can be set to a range (e.g. `16GB..`, or `16GB..80GB`). { #total_memory data-toc-label='total_memory' class='reference-item' }
+    ###### `memory` - (Optional) `str` The RAM size (e.g., `16GB`). Can be set to a range (e.g. `16GB..`, or `16GB..80GB`). { #memory data-toc-label='memory' class='reference-item' }
+    ###### `total_memory` - (Optional) `str` The total RAM size (e.g., `32GB`). Can be set to a range (e.g. `16GB..`, or `16GB..80GB`). { #total_memory data-toc-label='total_memory' class='reference-item' }
     ###### `compute_capability` - (Optional) `float | str` The minimum compute capability of the GPU (e.g., `7.5`). { #compute_capability data-toc-label='compute_capability' class='reference-item' }
 
 
     #### `resources.disk` { #resources-disk data-toc-label="disk" }
 
-    ###### `size` - (Required) `int | str` Disk size. { #size data-toc-label='size' class='reference-item' }
+    ###### `size` - (Required) `str` Disk size. { #size data-toc-label='size' class='reference-item' }
 
 
     ### `retry`

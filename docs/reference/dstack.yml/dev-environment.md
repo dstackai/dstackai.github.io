@@ -8,7 +8,7 @@ The `dev-environment` configuration type allows running [dev environments](../..
 ###### `version` - (Optional) `str` The version of the IDE. For `windsurf`, the version is in the format `version@commit`. { #version data-toc-label='version' class='reference-item' }
 ###### `init` - (Optional) `list[str]` The shell commands to run on startup. { #init data-toc-label='init' class='reference-item' }
 ###### `inactivity_duration` - (Optional) `bool | int | str | "off"` The maximum amount of time the dev environment can be inactive (e.g., `2h`, `1d`, etc). After it elapses, the dev environment is automatically stopped. Inactivity is defined as the absence of SSH connections to the dev environment, including VS Code connections, `ssh <run name>` shells, and attached `dstack apply` or `dstack attach` commands. Use `off` for unlimited duration. Can be updated in-place. Defaults to `off`. { #inactivity_duration data-toc-label='inactivity_duration' class='reference-item' }
-###### [`ports`](#ports) - (Optional) `list[int | str | object]` Port numbers/mapping to expose. { #_ports data-toc-label='ports' class='reference-item' }
+###### [`ports`](#ports) - (Optional) `list[object]` Port numbers/mapping to expose. { #_ports data-toc-label='ports' class='reference-item' }
 ###### `name` - (Optional) `str` The run name. If not specified, a random name is generated. { #name data-toc-label='name' class='reference-item' }
 ###### `image` - (Optional) `str` The name of the Docker image to run. If no `image` is specified, `dstack` uses an Ubuntu 24.04-based Docker image that comes pre-configured with `uv`, `python`, `pip`, the CUDA 13.0 runtime, InfiniBand, NCCL, and NCCL tests. It may also include provider-specific components such as EFA support on AWS. For non-Nvidia accelerators or NVidia GPUs unsupported by CUDA 13.0 (e.g. V100, P100), specify a custom Docker image.. { #image data-toc-label='image' class='reference-item' }
 ###### `user` - (Optional) `str` The user inside the container, `user_name_or_id[:group_name_or_id]` (e.g., `ubuntu`, `1000:1000`). Defaults to the default user from the `image`. { #user data-toc-label='user' class='reference-item' }
@@ -16,7 +16,7 @@ The `dev-environment` configuration type allows running [dev environments](../..
 ###### `entrypoint` - (Optional) `str` The Docker entrypoint. { #entrypoint data-toc-label='entrypoint' class='reference-item' }
 ###### `working_dir` - (Optional) `str` The absolute path to the working directory inside the container. Defaults to the `image`'s default working directory. { #working_dir data-toc-label='working_dir' class='reference-item' }
 ###### [`registry_auth`](#registry_auth) - (Optional) `object` Credentials for pulling a private Docker image. { #_registry_auth data-toc-label='registry_auth' class='reference-item' }
-###### `python` - (Optional) `"3.10" | "3.11" | "3.12" | "3.13" | "3.9"` The major version of Python. Mutually exclusive with `image` and `docker`. { #python data-toc-label='python' class='reference-item' }
+###### `python` - (Optional) `"3.10" | "3.11" | "3.12" | "3.13" | "3.14" | "3.9"` The major version of Python. Mutually exclusive with `image` and `docker`. { #python data-toc-label='python' class='reference-item' }
 ###### `nvcc` - (Optional) `bool` Use image with NVIDIA CUDA Compiler (NVCC) included. Mutually exclusive with `image` and `docker`. { #nvcc data-toc-label='nvcc' class='reference-item' }
 ###### `single_branch` - (Optional) `bool` Whether to clone and track only the current branch or all remote branches. Relevant only when using remote Git repos. Defaults to `false` for dev environments and to `true` for tasks and services. { #single_branch data-toc-label='single_branch' class='reference-item' }
 ###### [`env`](#env) - (Optional) `list[str] | dict` The mapping or the list of environment variables. { #_env data-toc-label='env' class='reference-item' }
@@ -25,8 +25,8 @@ The `dev-environment` configuration type allows running [dev environments](../..
 ###### `priority` - (Optional) `int` The priority of the run, an integer between `0` and `100`. `dstack` tries to provision runs with higher priority first. Defaults to `0`. { #priority data-toc-label='priority' class='reference-item' }
 ###### [`volumes`](#volumes) - (Optional) `list[object]` The volumes mount points. { #_volumes data-toc-label='volumes' class='reference-item' }
 ###### `docker` - (Optional) `bool` Use Docker inside the container. Mutually exclusive with `image`, `python`, and `nvcc`. Overrides `privileged`. { #docker data-toc-label='docker' class='reference-item' }
-###### [`repos`](#repos) - (Optional) `list[object]` The list of Git repos. { #_repos data-toc-label='repos' class='reference-item' }
-###### [`files`](#files) - (Optional) `list[object]` The local to container file path mappings. { #_files data-toc-label='files' class='reference-item' }
+###### [`repos`](#repos) - (Optional) `list[str | object]` The list of Git repos. { #_repos data-toc-label='repos' class='reference-item' }
+###### [`files`](#files) - (Optional) `list[str | object]` The local to container file path mappings. { #_files data-toc-label='files' class='reference-item' }
 ###### `dstack` - (Optional) `bool` Make the dstack server accessible inside the run. No authentication credentials are provided. Defaults to `false`. { #dstack data-toc-label='dstack' class='reference-item' }
 ###### `backends` - (Optional) `list["amddevcloud" | "aws" | "azure" | "cloudrift" | "crusoe" | "cudo" | "datacrunch" | "digitalocean" | "dstack" | "gcp" | "hotaisle" | "jarvislabs" | "kubernetes" | "lambda" | "remote" | "nebius" | "oci" | "runpod" | "tensordock" | "vastai" | "verda" | "vultr" | "slurm"]` The backends to consider for provisioning (e.g., `[aws, gcp]`). { #backends data-toc-label='backends' class='reference-item' }
 ###### `regions` - (Optional) `list[str]` The regions to consider for provisioning (e.g., `[eu-west-1, us-west4, westeurope]`). { #regions data-toc-label='regions' class='reference-item' }
@@ -35,19 +35,19 @@ The `dev-environment` configuration type allows running [dev environments](../..
 ###### `reservation` - (Optional) `str` The existing reservation to use for instance provisioning. Supports AWS Capacity Reservations, AWS Capacity Blocks, and GCP reservations. { #reservation data-toc-label='reservation' class='reference-item' }
 ###### `spot_policy` - (Optional) `"auto" | "on-demand" | "spot"` The policy for provisioning spot or on-demand instances: `spot`, `on-demand`, `auto`. Defaults to `on-demand`. { #spot_policy data-toc-label='spot_policy' class='reference-item' }
 ###### [`retry`](#retry) - (Optional) `bool | object` The policy for resubmitting the run. Defaults to `false`. { #_retry data-toc-label='retry' class='reference-item' }
-###### `max_duration` - (Optional) `int | str | "off"` The maximum duration of a run (e.g., `2h`, `1d`, etc) in a running state, excluding provisioning and pulling. After it elapses, the run is automatically stopped. Use `off` for unlimited duration. Defaults to `off`. { #max_duration data-toc-label='max_duration' class='reference-item' }
-###### `stop_duration` - (Optional) `int | str | "off"` The maximum duration of a run graceful stopping. After it elapses, the run is automatically forced stopped. This includes force detaching volumes used by the run. Use `off` for unlimited duration. Defaults to `5m`. { #stop_duration data-toc-label='stop_duration' class='reference-item' }
+###### `max_duration` - (Optional) `bool | int | str | "off"` The maximum duration of a run (e.g., `2h`, `1d`, etc) in a running state, excluding provisioning and pulling. After it elapses, the run is automatically stopped. Use `off` for unlimited duration. Defaults to `off`. { #max_duration data-toc-label='max_duration' class='reference-item' }
+###### `stop_duration` - (Optional) `bool | int | str | "off"` The maximum duration of a run graceful stopping. After it elapses, the run is automatically forced stopped. This includes force detaching volumes used by the run. Use `off` for unlimited duration. Defaults to `5m`. { #stop_duration data-toc-label='stop_duration' class='reference-item' }
 ###### `max_price` - (Optional) `float` The maximum instance price per hour, in dollars. { #max_price data-toc-label='max_price' class='reference-item' }
 ###### `creation_policy` - (Optional) `"reuse" | "reuse-or-create"` The policy for using instances from fleets: `reuse`, `reuse-or-create`. Defaults to `reuse-or-create`. { #creation_policy data-toc-label='creation_policy' class='reference-item' }
-###### `idle_duration` - (Optional) `int | str` Time to wait before terminating idle instances. When the run reuses an existing fleet instance, the fleet's `idle_duration` applies. When the run provisions a new instance, the shorter of the fleet's and run's values is used. Defaults to `5m` for runs and `3d` for fleets. Use `off` for unlimited duration. Only applied for VM-based backends. { #idle_duration data-toc-label='idle_duration' class='reference-item' }
+###### `idle_duration` - (Optional) `bool | int | str | "off"` Time to wait before terminating idle instances. When the run reuses an existing fleet instance, the fleet's `idle_duration` applies. When the run provisions a new instance, the shorter of the fleet's and run's values is used. Defaults to `5m` for runs and `3d` for fleets. Use `off` for unlimited duration. Only applied for VM-based backends. { #idle_duration data-toc-label='idle_duration' class='reference-item' }
 ###### [`utilization_policy`](#utilization_policy) - (Optional) `object` Run termination policy based on utilization. { #_utilization_policy data-toc-label='utilization_policy' class='reference-item' }
 ###### `startup_order` - (Optional) `"any" | "master-first" | "workers-first"` The order in which master and workers jobs are started: `any`, `master-first`, `workers-first`. Defaults to `any`. { #startup_order data-toc-label='startup_order' class='reference-item' }
 ###### `stop_criteria` - (Optional) `"all-done" | "master-done"` The criteria determining when a multi-node run should be considered finished: `all-done`, `master-done`. Defaults to `all-done`. { #stop_criteria data-toc-label='stop_criteria' class='reference-item' }
 ###### [`schedule`](#schedule) - (Optional) `object` The schedule for starting the run at specified time. { #_schedule data-toc-label='schedule' class='reference-item' }
-###### `fleets` - (Optional) `list[str | object]` The fleets considered for reuse. For fleets owned by the current project, specify fleet names. For imported fleets, specify `<project name>/<fleet name>`. { #fleets data-toc-label='fleets' class='reference-item' }
-###### `instances` - (Optional) `list` The specific fleet instances to consider for reuse. Each value can be an instance name string, or an object with `name`, `hostname`, or `fleet` and `instance`. When set, the run is only placed on matching existing instances.. { #instances data-toc-label='instances' class='reference-item' }
+###### [`fleets`](#fleets) - (Optional) `list[str | object]` The fleets considered for reuse. For fleets owned by the current project, specify fleet names. For imported fleets, specify `<project name>/<fleet name>`. { #_fleets data-toc-label='fleets' class='reference-item' }
+###### [`instances`](#instances) - (Optional) `list[object]` The specific fleet instances to consider for reuse. Each value can be an instance name string, or an object with `name`, `hostname`, or `fleet` and `instance`. When set, the run is only placed on matching existing instances.. { #_instances data-toc-label='instances' class='reference-item' }
 ###### `tags` - (Optional) `dict` The custom tags to associate with the resource. The tags are also propagated to the underlying backend resources. If there is a conflict with backend-level tags, does not override them. { #tags data-toc-label='tags' class='reference-item' }
-###### `backend_options` - (Optional) `list[object]` Backend-specific options, applied only to offers from that backend. { #backend_options data-toc-label='backend_options' class='reference-item' }
+###### [`backend_options`](#backend_options) - (Optional) `list[object]` Backend-specific options, applied only to offers from that backend. { #_backend_options data-toc-label='backend_options' class='reference-item' }
 
 
 ### `retry`
@@ -97,7 +97,7 @@ When `instances` is set, the run is placed only on matching existing fleet insta
 
 ###### [`cpu`](#resources-cpu) - (Optional) `int | str | object` The CPU requirements. { #_cpu data-toc-label='cpu' class='reference-item' }
 ###### `memory` - (Optional) `int | str` The RAM size (e.g., `8GB`). Defaults to `8GB..`. { #memory data-toc-label='memory' class='reference-item' }
-###### `shm_size` - (Optional) `int | str` The size of shared memory (e.g., `8GB`). If you are using parallel communicating processes (e.g., dataloaders in PyTorch), you may need to configure this. { #shm_size data-toc-label='shm_size' class='reference-item' }
+###### `shm_size` - (Optional) `int | float | str` The size of shared memory (e.g., `8GB`). If you are using parallel communicating processes (e.g., dataloaders in PyTorch), you may need to configure this. { #shm_size data-toc-label='shm_size' class='reference-item' }
 ###### [`gpu`](#resources-gpu) - (Optional) `int | str | object` The GPU requirements. { #_gpu data-toc-label='gpu' class='reference-item' }
 ###### [`disk`](#resources-disk) - (Optional) `int | str | object` The disk resources. { #_disk data-toc-label='disk' class='reference-item' }
 
@@ -111,16 +111,16 @@ When `instances` is set, the run is placed only on matching existing fleet insta
 #### `resources.gpu` { #resources-gpu data-toc-label="gpu" }
 
 ###### `vendor` - (Optional) `"amd" | "google" | "intel" | "nvidia" | "tenstorrent"` The vendor of the GPU/accelerator, one of: `nvidia`, `amd`, `google` (alias: `tpu`), `intel`. { #vendor data-toc-label='vendor' class='reference-item' }
-###### `name` - (Optional) `str | list[str]` The name of the GPU (e.g., `A100` or `H100`). { #name data-toc-label='name' class='reference-item' }
+###### `name` - (Optional) `list[str]` The name of the GPU (e.g., `A100` or `H100`). { #name data-toc-label='name' class='reference-item' }
 ###### `count` - (Optional) `int | str` The number of GPUs. Defaults to `1..`. { #count data-toc-label='count' class='reference-item' }
-###### `memory` - (Optional) `int | str` The RAM size (e.g., `16GB`). Can be set to a range (e.g. `16GB..`, or `16GB..80GB`). { #memory data-toc-label='memory' class='reference-item' }
-###### `total_memory` - (Optional) `int | str` The total RAM size (e.g., `32GB`). Can be set to a range (e.g. `16GB..`, or `16GB..80GB`). { #total_memory data-toc-label='total_memory' class='reference-item' }
+###### `memory` - (Optional) `str` The RAM size (e.g., `16GB`). Can be set to a range (e.g. `16GB..`, or `16GB..80GB`). { #memory data-toc-label='memory' class='reference-item' }
+###### `total_memory` - (Optional) `str` The total RAM size (e.g., `32GB`). Can be set to a range (e.g. `16GB..`, or `16GB..80GB`). { #total_memory data-toc-label='total_memory' class='reference-item' }
 ###### `compute_capability` - (Optional) `float | str` The minimum compute capability of the GPU (e.g., `7.5`). { #compute_capability data-toc-label='compute_capability' class='reference-item' }
 
 
 #### `resources.disk` { #resources-disk data-toc-label="disk" }
 
-###### `size` - (Required) `int | str` Disk size. { #size data-toc-label='size' class='reference-item' }
+###### `size` - (Required) `str` Disk size. { #size data-toc-label='size' class='reference-item' }
 
 
 ### `registry_auth`

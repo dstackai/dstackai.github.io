@@ -1239,19 +1239,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#router" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        <span class="md-typeset">
-          Router
-        </span>
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#certificate" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -5044,19 +5031,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#router" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        <span class="md-typeset">
-          Router
-        </span>
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#certificate" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -5336,53 +5310,6 @@ Provisioning...
 <p>Gateways in <code>kubernetes</code> backend require an external load balancer. Managed Kubernetes solutions usually include a load balancer.
 For self-hosted Kubernetes, you must provide a load balancer by yourself.</p>
 </details>
-<h3 id="router">Router<a class="headerlink" href="#router" title="Permanent link">&para;</a></h3>
-<blockquote>
-<p>In previous releases, <code>dstack</code> allowed configuring <code>router</code> the gateway, which was required for PD disaggregation. Since 0.20.17, the <code>router</code> configuration has moved to <a href="../services/#pd-disaggregation">services</a>, and the gateway no longer needs to configure router.</p>
-</blockquote>
-<!-- ### Router
-
-By default, the gateway uses its own load balancer to route traffic between replicas. However, you can delegate this responsibility to a specific router by setting the `router` property. Currently, the only supported external router is `sglang`.
-
-#### SGLang
-
-The `sglang` router delegates routing logic to the [SGLang Model Gateway](https://docs.sglang.ai/advanced_features/router.html#).
-
-To enable it, set `type` field under `router` to `sglang`:
-
-<div editor-title="gateway.dstack.yml">
-
-<div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gateway</span>
-<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sglang-gateway</span>
-
-<span class="nt">backend</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">aws</span>
-<span class="nt">region</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">eu-west-1</span>
-
-<span class="nt">domain</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">example.com</span>
-
-<span class="nt">router</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sglang</span>
-<span class="w">  </span><span class="nt">policy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cache_aware</span>
-</code></pre></div>
-
-</div>
-
-If you configure the `sglang` router, [services](../concepts/services.md) can run either [standard SGLang workers](../examples/inference/sglang.md) or [Prefill-Decode workers](../examples/inference/sglang.md#pd-disaggregation) (aka PD disaggregation).
-
-!!! note "PD disaggregation"
-    To run services with PD disaggregation see [SGLang PD disaggregation](../examples/inference/sglang.md#pd-disaggregation).
-
-!!! note "Deprecation"
-    Configuring the SGLang router in a gateway is deprecated and will be disallowed in a future release.
-
-??? info "Policy"
-    The `policy` property allows you to configure the routing policy:
-
-    * `cache_aware` &mdash; Default policy; combines cache locality with load balancing, falling back to shortest queue. 
-    * `power_of_two` &mdash; Samples two workers and picks the lighter one.                                               
-    * `random` &mdash; Uniform random selection.                                                                    
-    * `round_robin` &mdash; Cycles through workers in order.                                                              -->
-
 <h3 id="certificate">Certificate<a class="headerlink" href="#certificate" title="Permanent link">&para;</a></h3>
 <p>By default, when you run a service with a gateway, <code>dstack</code> provisions an SSL certificate via Let's Encrypt for the configured domain. This automatically enables HTTPS for the service endpoint.</p>
 <p>If you disable <a href="#public-ip">public IP</a> (e.g. to make the gateway private) or if you simply don't need HTTPS, you can set <code>certificate</code> to <code>null</code>. </p>
@@ -5469,7 +5396,7 @@ If you configure the `sglang` router, [services](../concepts/services.md) can ru
 <p>Replicated gateways are an experimental feature and currently have limitations:</p>
 <ul>
 <li>Changing the number of replicas or redeploying replicas is not supported.</li>
-<li>HTTPS is not supported. Use an external load balancer for TLS termination.</li>
+<li>HTTPS is only supported for AWS gateways with the <code>acm</code> <a href="#certificate">certificate type</a>. For other gateways, use an external load balancer for TLS termination.</li>
 <li>An unavailable gateway replica prevents any new services or service replicas from being added.</li>
 <li>All replicas are bound to the same backend and region.</li>
 <li>At most 3 replicas are allowed per gateway.</li>

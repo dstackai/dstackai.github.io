@@ -2972,7 +2972,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#prompt_1" class="md-nav__link">
+  <a href="#prompt" class="md-nav__link">
     <span class="md-ellipsis">
       
         prompt
@@ -3027,7 +3027,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#backend_options_1" class="md-nav__link">
+  <a href="#backend_options" class="md-nav__link">
     <span class="md-ellipsis">
       
         backend_options
@@ -4931,7 +4931,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#prompt_1" class="md-nav__link">
+  <a href="#prompt" class="md-nav__link">
     <span class="md-ellipsis">
       
         prompt
@@ -4986,7 +4986,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#backend_options_1" class="md-nav__link">
+  <a href="#backend_options" class="md-nav__link">
     <span class="md-ellipsis">
       
         backend_options
@@ -5124,29 +5124,34 @@ used to create or apply a <a href="../../../concepts/presets/">preset</a>.</p>
 <h6 class="reference-item" id="reservation"><code>reservation</code> - (Optional) <code>str</code> The existing reservation to use for instance provisioning. Supports AWS Capacity Reservations, AWS Capacity Blocks, and GCP reservations.<a class="headerlink" href="#reservation" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="spot_policy"><code>spot_policy</code> - (Optional) <code>"auto" | "on-demand" | "spot"</code> The policy for provisioning spot or on-demand instances: <code>spot</code>, <code>on-demand</code>, <code>auto</code>. Defaults to <code>on-demand</code>.<a class="headerlink" href="#spot_policy" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="_retry"><a href="#retry"><code>retry</code></a> - (Optional) <code>bool | object</code> The policy for resubmitting the run. Defaults to <code>false</code>.<a class="headerlink" href="#_retry" title="Permanent link">&para;</a></h6>
-<h6 class="reference-item" id="max_duration"><code>max_duration</code> - (Optional) <code>int | str | "off"</code> The maximum duration of a run (e.g., <code>2h</code>, <code>1d</code>, etc) in a running state, excluding provisioning and pulling. After it elapses, the run is automatically stopped. Use <code>off</code> for unlimited duration. Defaults to <code>off</code>.<a class="headerlink" href="#max_duration" title="Permanent link">&para;</a></h6>
-<h6 class="reference-item" id="stop_duration"><code>stop_duration</code> - (Optional) <code>int | str | "off"</code> The maximum duration of a run graceful stopping. After it elapses, the run is automatically forced stopped. This includes force detaching volumes used by the run. Use <code>off</code> for unlimited duration. Defaults to <code>5m</code>.<a class="headerlink" href="#stop_duration" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="max_duration"><code>max_duration</code> - (Optional) <code>bool | int | str | "off"</code> The maximum duration of a run (e.g., <code>2h</code>, <code>1d</code>, etc) in a running state, excluding provisioning and pulling. After it elapses, the run is automatically stopped. Use <code>off</code> for unlimited duration. Defaults to <code>off</code>.<a class="headerlink" href="#max_duration" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="stop_duration"><code>stop_duration</code> - (Optional) <code>bool | int | str | "off"</code> The maximum duration of a run graceful stopping. After it elapses, the run is automatically forced stopped. This includes force detaching volumes used by the run. Use <code>off</code> for unlimited duration. Defaults to <code>5m</code>.<a class="headerlink" href="#stop_duration" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="max_price"><code>max_price</code> - (Optional) <code>float</code> The maximum instance price per hour, in dollars.<a class="headerlink" href="#max_price" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="creation_policy"><code>creation_policy</code> - (Optional) <code>"reuse" | "reuse-or-create"</code> The policy for using instances from fleets: <code>reuse</code>, <code>reuse-or-create</code>. Defaults to <code>reuse-or-create</code>.<a class="headerlink" href="#creation_policy" title="Permanent link">&para;</a></h6>
-<h6 class="reference-item" id="idle_duration"><code>idle_duration</code> - (Optional) <code>int | str</code> Time to wait before terminating idle instances. When the run reuses an existing fleet instance, the fleet's <code>idle_duration</code> applies. When the run provisions a new instance, the shorter of the fleet's and run's values is used. Defaults to <code>5m</code> for runs and <code>3d</code> for fleets. Use <code>off</code> for unlimited duration. Only applied for VM-based backends.<a class="headerlink" href="#idle_duration" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="idle_duration"><code>idle_duration</code> - (Optional) <code>bool | int | str | "off"</code> Time to wait before terminating idle instances. When the run reuses an existing fleet instance, the fleet's <code>idle_duration</code> applies. When the run provisions a new instance, the shorter of the fleet's and run's values is used. Defaults to <code>5m</code> for runs and <code>3d</code> for fleets. Use <code>off</code> for unlimited duration. Only applied for VM-based backends.<a class="headerlink" href="#idle_duration" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="_utilization_policy"><a href="#utilization_policy"><code>utilization_policy</code></a> - (Optional) <code>object</code> Run termination policy based on utilization.<a class="headerlink" href="#_utilization_policy" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="startup_order"><code>startup_order</code> - (Optional) <code>"any" | "master-first" | "workers-first"</code> The order in which master and workers jobs are started: <code>any</code>, <code>master-first</code>, <code>workers-first</code>. Defaults to <code>any</code>.<a class="headerlink" href="#startup_order" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="stop_criteria"><code>stop_criteria</code> - (Optional) <code>"all-done" | "master-done"</code> The criteria determining when a multi-node run should be considered finished: <code>all-done</code>, <code>master-done</code>. Defaults to <code>all-done</code>.<a class="headerlink" href="#stop_criteria" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="_schedule"><a href="#schedule"><code>schedule</code></a> - (Optional) <code>object</code> The schedule for starting the run at specified time.<a class="headerlink" href="#_schedule" title="Permanent link">&para;</a></h6>
-<h6 class="reference-item" id="fleets"><code>fleets</code> - (Optional) <code>list[str | object]</code> The fleets considered for reuse. For fleets owned by the current project, specify fleet names. For imported fleets, specify <code>&lt;project name&gt;/&lt;fleet name&gt;</code>.<a class="headerlink" href="#fleets" title="Permanent link">&para;</a></h6>
-<h6 class="reference-item" id="instances"><code>instances</code> - (Optional) <code>list</code> The specific fleet instances to consider for reuse. Each value can be an instance name string, or an object with <code>name</code>, <code>hostname</code>, or <code>fleet</code> and <code>instance</code>. When set, the run is only placed on matching existing instances..<a class="headerlink" href="#instances" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="_fleets"><a href="#fleets"><code>fleets</code></a> - (Optional) <code>list[str | object]</code> The fleets considered for reuse. For fleets owned by the current project, specify fleet names. For imported fleets, specify <code>&lt;project name&gt;/&lt;fleet name&gt;</code>.<a class="headerlink" href="#_fleets" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="_instances"><a href="#instances"><code>instances</code></a> - (Optional) <code>list[object]</code> The specific fleet instances to consider for reuse. Each value can be an instance name string, or an object with <code>name</code>, <code>hostname</code>, or <code>fleet</code> and <code>instance</code>. When set, the run is only placed on matching existing instances..<a class="headerlink" href="#_instances" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="tags"><code>tags</code> - (Optional) <code>dict</code> The custom tags to associate with the resource. The tags are also propagated to the underlying backend resources. If there is a conflict with backend-level tags, does not override them.<a class="headerlink" href="#tags" title="Permanent link">&para;</a></h6>
-<h6 class="reference-item" id="backend_options"><code>backend_options</code> - (Optional) <code>list[object]</code> Backend-specific options, applied only to offers from that backend.<a class="headerlink" href="#backend_options" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="_backend_options"><a href="#backend_options"><code>backend_options</code></a> - (Optional) <code>list[object]</code> Backend-specific options, applied only to offers from that backend.<a class="headerlink" href="#_backend_options" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="type"><code>type</code> - (Required) <code>"preset"</code> The configuration type. Must be <code>preset</code>.<a class="headerlink" href="#type" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="name"><code>name</code> - (Optional) <code>str</code> The service name. Required unless passed with <code>--name</code>.<a class="headerlink" href="#name" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="_model"><a href="#model"><code>model</code></a> - (Required) <code>str | object</code> The model to serve. Use a string or <code>repo</code> for an exact repo/path, or <code>base</code> to allow compatible model variants. Prefer the top-level <code>base</code>/<code>repo</code> shorthand unless a custom client-facing model name is needed.<a class="headerlink" href="#_model" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="base"><code>base</code> - (Optional) <code>str</code> The base model repo; compatible variants are allowed. Shorthand for <code>model.base</code>.<a class="headerlink" href="#base" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="repo"><code>repo</code> - (Optional) <code>str</code> The exact model repo/path to serve. Shorthand for <code>model.repo</code>.<a class="headerlink" href="#repo" title="Permanent link">&para;</a></h6>
-<h6 class="reference-item" id="prompt"><code>prompt</code> - (Optional) <code>str | object</code> Additional instructions for the preset creation agent, inline or as a file <code>path</code>.<a class="headerlink" href="#prompt" title="Permanent link">&para;</a></h6>
-<h6 class="reference-item" id="context_length"><code>context_length</code> - (Optional) <code>int</code> The minimum required context length.<a class="headerlink" href="#context_length" title="Permanent link">&para;</a></h6>
-<h6 class="reference-item" id="max_trials"><code>max_trials</code> - (Optional) <code>int</code> The maximum number of benchmarked trials during preset creation before the best one is promoted.<a class="headerlink" href="#max_trials" title="Permanent link">&para;</a></h6>
-<h6 class="reference-item" id="concurrency"><code>concurrency</code> - (Optional) <code>int</code> The number of simultaneous requests used for benchmarks during preset creation. Defaults to <code>8</code>.<a class="headerlink" href="#concurrency" title="Permanent link">&para;</a></h6>
-<h6 class="reference-item" id="gateway"><code>gateway</code> - (Optional) <code>bool | str | object</code> The name of the gateway. Specify boolean <code>false</code> to run without a gateway. Specify boolean <code>true</code> to run with the default gateway. Omit to run with the default gateway if there is one, or without a gateway otherwise.<a class="headerlink" href="#gateway" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="_prompt"><a href="#prompt"><code>prompt</code></a> - (Optional) <code>str | object</code> Additional instructions for the preset creation agent, inline or as a file <code>path</code>.<a class="headerlink" href="#_prompt" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="min_context_length"><code>min_context_length</code> - (Optional) <code>int</code> The minimum required context length.<a class="headerlink" href="#min_context_length" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="max_ttft"><code>max_ttft</code> - (Optional) <code>int</code> The maximum p50 time to first token, in milliseconds, that any benchmark may report.<a class="headerlink" href="#max_ttft" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="trials"><code>trials</code> - (Optional) <code>int</code> The number of benchmarked trials during preset creation before the best one is promoted.<a class="headerlink" href="#trials" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="concurrency"><code>concurrency</code> - (Optional) <code>int</code> The number of simultaneous requests used for benchmarks during preset creation.<a class="headerlink" href="#concurrency" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="input_tokens"><code>input_tokens</code> - (Optional) <code>int</code> The number of input tokens per request used for benchmarks during preset creation. Defaults to <code>1024</code>.<a class="headerlink" href="#input_tokens" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="output_tokens"><code>output_tokens</code> - (Optional) <code>int</code> The number of output tokens per request used for benchmarks during preset creation. Defaults to <code>1024</code>.<a class="headerlink" href="#output_tokens" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="shared_prefix_tokens"><code>shared_prefix_tokens</code> - (Optional) <code>int</code> How many of <code>input_tokens</code> are a prefix identical in every benchmark request, as a repeated system prompt or conversation history would be. Defaults to <code>0</code>, meaning every request is fully unique.<a class="headerlink" href="#shared_prefix_tokens" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="baseline"><code>baseline</code> - (Optional) <code>bool</code> Whether the first trial must be a baseline that serves the model with the serving framework's recommended defaults instead of an optimization attempt. Defaults to <code>false</code>.<a class="headerlink" href="#baseline" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="_gateway"><a href="#gateway"><code>gateway</code></a> - (Optional) <code>bool | str | object</code> The name of the gateway. Specify boolean <code>false</code> to run without a gateway. Specify boolean <code>true</code> to run with the default gateway. Omit to run with the default gateway if there is one, or without a gateway otherwise.<a class="headerlink" href="#_gateway" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="_env"><a href="#env"><code>env</code></a> - (Optional) <code>list[str] | dict</code> The mapping or the list of environment variables.<a class="headerlink" href="#_env" title="Permanent link">&para;</a></h6>
 <h3 id="model"><code>model</code><a class="headerlink" href="#model" title="Permanent link">&para;</a></h3>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="base-model" name="__tabbed_1" type="radio" /><input id="exact-model" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="base-model">Base model</label><label for="exact-model">Exact model</label></div>
@@ -5163,7 +5168,7 @@ client-facing model name.</p>
 </div>
 </div>
 </div>
-<h3 id="prompt_1"><code>prompt</code><a class="headerlink" href="#prompt_1" title="Permanent link">&para;</a></h3>
+<h3 id="prompt"><code>prompt</code><a class="headerlink" href="#prompt" title="Permanent link">&para;</a></h3>
 <p>Custom agent instructions. Set to an inline string, or to a file:</p>
 <h6 class="reference-item" id="path"><code>path</code> - (Required) <code>str</code> The path to a prompt file, relative to the configuration file.<a class="headerlink" href="#path" title="Permanent link">&para;</a></h6>
 <h3 id="retry"><code>retry</code><a class="headerlink" href="#retry" title="Permanent link">&para;</a></h3>
@@ -5197,7 +5202,7 @@ client-facing model name.</p>
 <li><code>my-fleet-1</code>, same as <code>{name: my-fleet-1}</code></li>
 </ul>
 </details>
-<h3 id="backend_options_1"><code>backend_options</code><a class="headerlink" href="#backend_options_1" title="Permanent link">&para;</a></h3>
+<h3 id="backend_options"><code>backend_options</code><a class="headerlink" href="#backend_options" title="Permanent link">&para;</a></h3>
 <p>Backend-specific options that only take effect for offers of the respective backend.</p>
 <h4 id="backend_options-vastai"><code>backend_options[n][type=vastai]</code><a class="headerlink" href="#backend_options-vastai" title="Permanent link">&para;</a></h4>
 <h6 class="reference-item" id="offer_order"><code>offer_order</code> - (Optional) <code>"price" | "score"</code> Controls the order in which offers are considered for provisioning. Use <code>score</code> to prioritize the highest overall score first (the default order in the Vast.ai console), or <code>price</code> to prioritize the lowest-cost offers first. Lower-cost offers are often less reliable, so consider applying stricter filters when using <code>price</code>. Defaults to <code>score</code>.<a class="headerlink" href="#offer_order" title="Permanent link">&para;</a></h6>

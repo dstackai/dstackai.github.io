@@ -4945,15 +4945,19 @@
 <div class="termy">
 
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>dstack<span class="w"> </span>metrics<span class="w"> </span>--help
-Usage:<span class="w"> </span>dstack<span class="w"> </span>metrics<span class="w"> </span><span class="o">[</span>-h<span class="o">]</span><span class="w"> </span><span class="o">[</span>--project<span class="w"> </span>NAME<span class="o">]</span><span class="w"> </span><span class="o">[</span>-w<span class="o">]</span><span class="w"> </span>run_name
+Usage:<span class="w"> </span>dstack<span class="w"> </span>metrics<span class="w"> </span><span class="o">[</span>-h<span class="o">]</span><span class="w"> </span><span class="o">[</span>--project<span class="w"> </span>NAME<span class="o">]</span><span class="w"> </span><span class="o">[</span>-w<span class="o">]</span><span class="w"> </span><span class="o">[</span>--replica<span class="w"> </span>REPLICA<span class="o">]</span>
+<span class="w">                      </span><span class="o">[</span>--job<span class="w"> </span>JOB<span class="o">]</span>
+<span class="w">                      </span>run_name
 
 Positional<span class="w"> </span>Arguments:
 <span class="w">  </span>run_name
 
 Options:
-<span class="w">  </span>-h,<span class="w"> </span>--help<span class="w">      </span>Show<span class="w"> </span>this<span class="w"> </span><span class="nb">help</span><span class="w"> </span>message<span class="w"> </span>and<span class="w"> </span><span class="nb">exit</span>
-<span class="w">  </span>--project<span class="w"> </span>NAME<span class="w">  </span>The<span class="w"> </span>name<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>project.<span class="w"> </span>Defaults<span class="w"> </span>to<span class="w"> </span><span class="nv">$DSTACK_PROJECT</span>
-<span class="w">  </span>-w,<span class="w"> </span>--watch<span class="w">     </span>Watch<span class="w"> </span>run<span class="w"> </span>metrics<span class="w"> </span><span class="k">in</span><span class="w"> </span>realtime
+<span class="w">  </span>-h,<span class="w"> </span>--help<span class="w">         </span>Show<span class="w"> </span>this<span class="w"> </span><span class="nb">help</span><span class="w"> </span>message<span class="w"> </span>and<span class="w"> </span><span class="nb">exit</span>
+<span class="w">  </span>--project<span class="w"> </span>NAME<span class="w">     </span>The<span class="w"> </span>name<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>project.<span class="w"> </span>Defaults<span class="w"> </span>to<span class="w"> </span><span class="nv">$DSTACK_PROJECT</span>
+<span class="w">  </span>-w,<span class="w"> </span>--watch<span class="w">        </span>Watch<span class="w"> </span>run<span class="w"> </span>metrics<span class="w"> </span><span class="k">in</span><span class="w"> </span>realtime
+<span class="w">  </span>--replica<span class="w"> </span>REPLICA<span class="w">  </span>The<span class="w"> </span>replica<span class="w"> </span>number.<span class="w"> </span>Defaults<span class="w"> </span>to<span class="w"> </span><span class="m">0</span>.
+<span class="w">  </span>--job<span class="w"> </span>JOB<span class="w">          </span>The<span class="w"> </span>job<span class="w"> </span>number<span class="w"> </span>inside<span class="w"> </span>the<span class="w"> </span>replica.<span class="w"> </span>Defaults<span class="w"> </span>to<span class="w"> </span><span class="m">0</span>.
 </code></pre></div>
 
 </div>

@@ -14,7 +14,7 @@ to configure [backends](../../concepts/backends.md) and other [server-level sett
 ### `projects[n]` { #projects data-toc-label="projects" }
 
 ###### `name` - (Required) `str` The name of the project. { #name data-toc-label='name' class='reference-item' }
-###### `backends` - (Optional) `list[object]` The list of backends. { #backends data-toc-label='backends' class='reference-item' }
+###### [`backends`](#backends) - (Optional) `list[object]` The list of backends. { #_backends data-toc-label='backends' class='reference-item' }
 
 
 #### `projects[n].backends` { #backends data-toc-label="backends" }
@@ -30,6 +30,7 @@ to configure [backends](../../concepts/backends.md) and other [server-level sett
 ###### `iam_instance_profile` - (Optional) `str` The name of the IAM instance profile to associate with EC2 instances. You can also specify the IAM role name for roles created via the AWS console. AWS automatically creates an instance profile and gives it the same name as the role. { #iam_instance_profile data-toc-label='iam_instance_profile' class='reference-item' }
 ###### `tags` - (Optional) `dict` The tags that will be assigned to resources created by `dstack`. { #tags data-toc-label='tags' class='reference-item' }
 ###### [`os_images`](#aws-os_images) - (Optional) `object` The mapping of instance categories (CPU, NVIDIA GPU) to AMI configurations. { #_os_images data-toc-label='os_images' class='reference-item' }
+###### `experimental_instance_types` - (Optional) `list[str]` The list of instance type names to allow provisioning in addition to the standard supported instance families. Only works for instance types included in `dstack`'s pricing catalog (`gpuhunt`). { #experimental_instance_types data-toc-label='experimental_instance_types' class='reference-item' }
 ###### [`creds`](#aws-creds) - (Required) `object` The credentials. { #_creds data-toc-label='creds' class='reference-item' }
 
 
@@ -99,13 +100,13 @@ to configure [backends](../../concepts/backends.md) and other [server-level sett
 ###### `regions` - (Optional) `list[str]` The list of GCP regions. Omit to use all regions. { #regions data-toc-label='regions' class='reference-item' }
 ###### `vpc_name` - (Optional) `str` The name of a custom VPC. If not specified, the default VPC is used. { #vpc_name data-toc-label='vpc_name' class='reference-item' }
 ###### `extra_vpcs` - (Optional) `list[str]` The names of additional VPCs used for multi-NIC instances, such as those that support GPUDirect. Specify eight VPCs to maximize bandwidth in clusters with eight-GPU instances. Each VPC must have a subnet and a firewall rule allowing internal traffic across all subnets. { #extra_vpcs data-toc-label='extra_vpcs' class='reference-item' }
-###### `roce_vpcs` - (Optional) `list` The names of additional VPCs with the RoCE network profile. Used for RDMA on GPU instances that support the MRDMA interface type. A VPC should have eight subnets to maximize the bandwidth in clusters with eight-GPU instances.. { #roce_vpcs data-toc-label='roce_vpcs' class='reference-item' }
+###### `roce_vpcs` - (Optional) `list[str]` The names of additional VPCs with the RoCE network profile. Used for RDMA on GPU instances that support the MRDMA interface type. A VPC should have eight subnets to maximize the bandwidth in clusters with eight-GPU instances.. { #roce_vpcs data-toc-label='roce_vpcs' class='reference-item' }
 ###### `vpc_project_id` - (Optional) `str` The shared VPC hosted project ID. Required for shared VPC only. { #vpc_project_id data-toc-label='vpc_project_id' class='reference-item' }
 ###### `public_ips` - (Optional) `bool` A flag to enable/disable public IP assigning on instances. Defaults to `true`. { #public_ips data-toc-label='public_ips' class='reference-item' }
 ###### `nat_check` - (Optional) `bool` A flag to enable/disable a check that Cloud NAT is configured for the VPC. This should be set to `false` when `public_ips: false` and outbound internet connectivity is provided by a mechanism other than Cloud NAT such as a third-party NAT appliance. Defaults to `true`. { #nat_check data-toc-label='nat_check' class='reference-item' }
 ###### `vm_service_account` - (Optional) `str` The service account to associate with provisioned VMs. { #vm_service_account data-toc-label='vm_service_account' class='reference-item' }
 ###### `tags` - (Optional) `dict` The tags (labels) that will be assigned to resources created by `dstack`. { #tags data-toc-label='tags' class='reference-item' }
-###### `preview_features` - (Optional) `list` The list of preview GCP features to enable. There are currently no preview features. { #preview_features data-toc-label='preview_features' class='reference-item' }
+###### `preview_features` - (Optional) `list["g4"]` The list of preview GCP features to enable. There are currently no preview features. { #preview_features data-toc-label='preview_features' class='reference-item' }
 ###### [`creds`](#gcp-creds) - (Required) `object` The credentials. { #_creds data-toc-label='creds' class='reference-item' }
 
 
@@ -149,7 +150,7 @@ to configure [backends](../../concepts/backends.md) and other [server-level sett
 ###### `regions` - (Optional) `list[str]` The list of allowed Nebius regions. Omit to allow all regions. { #regions data-toc-label='regions' class='reference-item' }
 ###### `fabrics` - (Optional) `list[str]` The list of allowed fabrics for InfiniBand clusters. Omit to allow all fabrics. { #fabrics data-toc-label='fabrics' class='reference-item' }
 ###### `tags` - (Optional) `dict` The tags (labels) that will be assigned to resources created by `dstack`. { #tags data-toc-label='tags' class='reference-item' }
-###### `creds` - (Required) `object` The credentials. { #creds data-toc-label='creds' class='reference-item' }
+###### [`creds`](#nebius-creds) - (Required) `object` The credentials. { #_creds data-toc-label='creds' class='reference-item' }
 
 
 ###### `projects[n].backends[type=nebius].creds` { #nebius-creds data-toc-label="creds" }
@@ -183,7 +184,7 @@ to configure [backends](../../concepts/backends.md) and other [server-level sett
 ###### `projects[n].backends[type=slurm].clusters[n]` { #slurm-clusters data-toc-label="clusters" }
 
 ###### `name` - (Required) `str` The name of the cluster. Used as a region name. { #name data-toc-label='name' class='reference-item' }
-###### `gpu_partitions` - (Optional) `list[object]` The mapping of GPU models to partitions. Only partitions listed here are considered for GPU jobs. If not set, GPU jobs are not allowed. { #gpu_partitions data-toc-label='gpu_partitions' class='reference-item' }
+###### [`gpu_partitions`](#slurm-clusters-gpu_partitions) - (Optional) `list[object]` The mapping of GPU models to partitions. Only partitions listed here are considered for GPU jobs. If not set, GPU jobs are not allowed. { #_gpu_partitions data-toc-label='gpu_partitions' class='reference-item' }
 ###### `cpu_partitions` - (Optional) `list[str]` Partitions considered for CPU jobs. Defaults to all cluster partitions except those listed in `gpu_partitions`. { #cpu_partitions data-toc-label='cpu_partitions' class='reference-item' }
 ###### `hostname` - (Required) `str` The hostname or IP address of the login node. { #hostname data-toc-label='hostname' class='reference-item' }
 ###### `port` - (Optional) `int` The SSH port of the login node. { #port data-toc-label='port' class='reference-item' }
@@ -279,7 +280,7 @@ to configure [backends](../../concepts/backends.md) and other [server-level sett
 ##### `projects[n].backends[type=kubernetes]` { #kubernetes data-toc-label="kubernetes" }
 
 ###### `type` - (Required) `"kubernetes"` The type of backend. Must be `kubernetes`. { #type data-toc-label='type' class='reference-item' }
-###### `contexts` - (Optional) `list[str | object]` Enabled contexts (clusters). Each context should map to a separate cluster. The context name becomes the region name. If `contexts` is set, top-level `proxy_jump` and `namespace` must not be set. `proxy_jump`, if necessary, should be configured per-context; `namespace` is taken from the corresponding kubeconfig context's property. If `contexts` is not set (not recommended), the kubeconfig's `current-context` is used as the only context, with an empty string as the region name. { #contexts data-toc-label='contexts' class='reference-item' }
+###### [`contexts`](#kubernetes-contexts) - (Optional) `list[str | object]` Enabled contexts (clusters). Each context should map to a separate cluster. The context name becomes the region name. If `contexts` is set, top-level `proxy_jump` and `namespace` must not be set. `proxy_jump`, if necessary, should be configured per-context; `namespace` is taken from the corresponding kubeconfig context's property. If `contexts` is not set (not recommended), the kubeconfig's `current-context` is used as the only context, with an empty string as the region name. { #_contexts data-toc-label='contexts' class='reference-item' }
 ###### [`proxy_jump`](#kubernetes-proxy_jump) - (Optional) `object` Only used if `contexts` is not set; must not be set otherwise. The SSH proxy jump configuration. { #_proxy_jump data-toc-label='proxy_jump' class='reference-item' }
 ###### `namespace` - (Optional) `str` Only used if `contexts` is not set; must not be set otherwise. The namespace for resources managed by `dstack`. If `contexts` is not set, overrides the namespace set in the kubeconfig, even if not set. Defaults to `default`. Deprecated; will eventually be removed in future versions, but in the current version must be set if `contexts` is not set and the value is not equal to `default`. Future versions will use the namespace from the kubeconfig instead. To prepare for future versions, set the same value in the kubeconfig. { #namespace data-toc-label='namespace' class='reference-item' }
 ###### [`kubeconfig`](#kubernetes-kubeconfig) - (Required) `object` The kubeconfig configuration. { #_kubeconfig data-toc-label='kubeconfig' class='reference-item' }
@@ -414,7 +415,7 @@ to configure [backends](../../concepts/backends.md) and other [server-level sett
 
 ### `encryption` { #encryption data-toc-label="encryption" }
 
-###### `keys` - (Required) `list[object]` The encryption keys. { #keys data-toc-label='keys' class='reference-item' }
+###### [`keys`](#keys) - (Required) `list[object]` The encryption keys. { #_keys data-toc-label='keys' class='reference-item' }
 
 
 #### `encryption.keys` { #encryption-keys data-toc-label="keys" }

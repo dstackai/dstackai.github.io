@@ -5856,7 +5856,7 @@ case <code>dstack</code> adjusts the number of replicas (scales up or down) auto
 </blockquote>
 </details>
 <h3 id="pd-disaggregation">PD disaggregation<a class="headerlink" href="#pd-disaggregation" title="Permanent link">&para;</a></h3>
-<!-- NOTE: this section is referenced from the CLI, keep the URL unchanged -->
+<!-- NOTE: this section is referenced from pre-0.21.0 CLIs. Prefer to keep the URL unchanged -->
 
 <p>Since 0.20.17, <code>dstack</code> supports serving a model using Prefill-Decode disaggregation. To use it, configure three replica groups: one for the router, one for prefill workers, and one for decode workers.</p>
 <p><code>dstack</code> integrates with two routers for PD disaggregation: <a href="https://docs.sglang.io/advanced_features/sgl_model_gateway.html">Shepherd Model Gateway (SMG)</a> and <a href="https://github.com/ai-dynamo/dynamo">NVIDIA Dynamo</a>.</p>
