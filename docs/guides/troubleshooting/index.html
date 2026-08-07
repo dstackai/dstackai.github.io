@@ -187,7 +187,7 @@
           <div class="md-banner__inner md-grid md-typeset">
             
             
-<a href="/blog/agentic-orchestration/" target="_blank">Infrastructure orchestration is an agent skill<span class="icon"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15"/><path d="m12.5 5.5 6.5 6.5-6.5 6.5"/></svg></span></a>
+<a href="/docs/concepts/presets/">Presets: agent-driven inference optimization<span class="icon"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15"/><path d="m12.5 5.5 6.5 6.5-6.5 6.5"/></svg></span></a>
 
           </div>
           
@@ -1009,14 +1009,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../concepts/volumes/" class="md-nav__link">
+      <a href="../../concepts/presets/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Volumes
+    Presets
   
 
     
@@ -1089,14 +1089,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../concepts/presets/" class="md-nav__link">
+      <a href="../../concepts/volumes/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Presets
+    Volumes
   
 
     
@@ -5345,8 +5345,14 @@ or use <a href="../../concepts/fleets/#ssh-fleets">SSH fleets</a>.</p>
 <p>In certain cases, running <code>dstack apply</code> may show instance offers,
 but then produce the following output:</p>
 <div class="highlight"><pre><span></span><code>wet-mangust-1<span class="w"> </span>provisioning<span class="w"> </span>completed<span class="w"> </span><span class="o">(</span>failed<span class="o">)</span>
-All<span class="w"> </span>provisioning<span class="w"> </span>attempts<span class="w"> </span>failed.<span class="w"> </span>This<span class="w"> </span>is<span class="w"> </span>likely<span class="w"> </span>due<span class="w"> </span>to<span class="w"> </span>cloud<span class="w"> </span>providers<span class="w"> </span>not<span class="w"> </span>having<span class="w"> </span>enough<span class="w"> </span>capacity.<span class="w"> </span>Check<span class="w"> </span>CLI<span class="w"> </span>and<span class="w"> </span>server<span class="w"> </span>logs<span class="w"> </span><span class="k">for</span><span class="w"> </span>more<span class="w"> </span>details.
+No<span class="w"> </span>capacity
+Failed<span class="w"> </span>to<span class="w"> </span>provision<span class="w"> </span><span class="k">in</span><span class="w"> </span>fleet<span class="w"> </span><span class="s1">&#39;aws-main&#39;</span>:<span class="w"> </span>tried<span class="w"> </span><span class="m">5</span><span class="w"> </span>of<span class="w"> </span><span class="m">12</span><span class="w"> </span>offers<span class="w"> </span><span class="o">(</span>attempt<span class="w"> </span>limit<span class="w"> </span>reached<span class="o">)</span>,<span class="w"> </span>all<span class="w"> </span>failed.
+Errors:<span class="w"> </span>g5.xlarge<span class="w"> </span><span class="k">in</span><span class="w"> </span>aws/us-east-1:<span class="w"> </span>InsufficientInstanceCapacity<span class="p">;</span><span class="w"> </span>g5.xlarge<span class="w"> </span><span class="k">in</span><span class="w"> </span>aws/eu-west-1:<span class="w"> </span>RequestLimitExceeded
 </code></pre></div>
+<p><code>dstack</code> only tries offers from the fleet it selected for the run, so the message names that
+fleet, how many of its offers were tried, and what each attempt returned. Repeated errors are
+reported once; every attempt is logged by the server, so check the <a href="#server-logs">server logs</a>
+for the full list.</p>
 <h4 id="cause-1-insufficient-service-quotas">Cause 1: Insufficient service quotas<a class="headerlink" href="#cause-1-insufficient-service-quotas" title="Permanent link">&para;</a></h4>
 <p>If some runs fail to provision, it may be due to an insufficient service quota. For cloud providers like AWS, GCP,
 Azure, and OCI, you often need to request an increased <a href="../protips/#service-quotas">service quota</a> before you can use

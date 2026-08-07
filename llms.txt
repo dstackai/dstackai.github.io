@@ -15,11 +15,11 @@
 - [Dev environments](https://dstack.ai/docs/concepts/dev-environments.md): Provisioning remote instances for cloud-based development
 - [Tasks](https://dstack.ai/docs/concepts/tasks.md): Running commands for training and batch processing
 - [Services](https://dstack.ai/docs/concepts/services.md): Deploying models and web apps as endpoints
-- [Volumes](https://dstack.ai/docs/concepts/volumes.md): Managing persistent data storage
+- [Presets](https://dstack.ai/docs/concepts/presets.md): Creating and reusing optimized model inference configurations
 
 ### More
 
-- [Presets](https://dstack.ai/docs/concepts/presets.md): Creating and reusing optimized model inference configurations
+- [Volumes](https://dstack.ai/docs/concepts/volumes.md): Managing persistent data storage
 - [Gateways](https://dstack.ai/docs/concepts/gateways.md): Managing ingress traffic and endpoints for services
 - [Secrets](https://dstack.ai/docs/concepts/secrets.md): Managing sensitive values and credentials
 - [Projects](https://dstack.ai/docs/concepts/projects.md): Organizing teams and isolating resources
