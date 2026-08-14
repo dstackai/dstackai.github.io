@@ -5117,32 +5117,29 @@ You can also configure the <code>dstack</code> server to export metrics to Prome
 <p>This tab displays key CPU, memory, and GPU metrics collected during the last hour of the run or job.</p>
 <h2 id="cli">CLI<a class="headerlink" href="#cli" title="Permanent link">&para;</a></h2>
 <p>As an alternative to the UI, you can track essential metrics via the CLI.
-The <code>dstack metrics</code> command charts CPU, memory, and GPU utilization over the last hour of the
-job, with the latest value beside each chart.</p>
+The <code>dstack metrics</code> command charts CPU, memory, and GPU utilization over the last hour.</p>
 <div class="termy">
 
 <div class="highlight"><pre><span></span><code>dstack<span class="w"> </span>metrics<span class="w"> </span>gentle-mayfly-1
 
-<span class="w">        </span>UTILIZATION<span class="w">                             </span>MEMORY
-<span class="w"> </span>cpu<span class="w">    </span>▅▄▄▄▃▃▃▃▃▃▃▃▃▃▃▃▅▅▄▃▃▃▃▃▃▃▃<span class="w"> </span><span class="m">41</span>%<span class="w"> </span>of<span class="w"> </span><span class="m">128</span><span class="w">  </span>▃▃▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄<span class="w"> </span>581GB/960GB
+<span class="w">               </span>UTILIZATION<span class="w">                     </span>MEMORY
+<span class="w"> </span><span class="nv">job</span><span class="o">=</span><span class="m">0</span><span class="w">  </span>cpu<span class="w">    </span>▁▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▁▂▂▂▂▂▂▂▂▂<span class="w"> </span><span class="m">33</span>%<span class="w">  </span>▃▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄<span class="w"> </span>579GB/960GB
+<span class="w">        </span><span class="nv">gpu</span><span class="o">=</span><span class="m">0</span><span class="w">  </span>▁▄▆▆▆▆▆▆▆▆▆▆▆▆▆▆▁▆▆▆▆▆▆▆▆▆<span class="w"> </span><span class="m">93</span>%<span class="w">  </span>▄▅▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆<span class="w"> </span>71GB/80GB
+<span class="w">        </span><span class="nv">gpu</span><span class="o">=</span><span class="m">1</span><span class="w">  </span>▂▅▆▆▆▆▆▆▆▆▆▆▆▆▆▆▁▆▆▆▆▆▆▆▆▆<span class="w"> </span><span class="m">93</span>%<span class="w">  </span>▄▅▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆<span class="w"> </span>71GB/80GB
+<span class="w">        </span><span class="nv">gpu</span><span class="o">=</span><span class="m">2</span><span class="w">  </span>▃▆▆▆▆▆▆▆▆▆▆▆▆▆▆▁▆▆▆▆▆▆▆▆▆▆<span class="w"> </span><span class="m">93</span>%<span class="w">  </span>▄▅▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆<span class="w"> </span>71GB/80GB
+<span class="w">        </span><span class="nv">gpu</span><span class="o">=</span><span class="m">3</span><span class="w">  </span>▅▆▆▆▆▆▆▆▆▆▆▆▆▆▆▁▆▆▆▆▆▆▆▆▆▆<span class="w"> </span><span class="m">93</span>%<span class="w">  </span>▄▅▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆<span class="w"> </span>71GB/80GB
+<span class="w">        </span><span class="nv">gpu</span><span class="o">=</span><span class="m">4</span><span class="w">  </span>▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆<span class="w"> </span><span class="m">93</span>%<span class="w">  </span>▄▅▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆<span class="w"> </span>71GB/80GB
+<span class="w">        </span><span class="nv">gpu</span><span class="o">=</span><span class="m">5</span><span class="w">  </span>▆▆▆▆▆▆▆▆▆▆▆▆▆▆▁▆▆▆▆▆▆▆▆▆▆▆<span class="w"> </span><span class="m">93</span>%<span class="w">  </span>▄▅▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆<span class="w"> </span>71GB/80GB
+<span class="w">        </span><span class="nv">gpu</span><span class="o">=</span><span class="m">6</span><span class="w">  </span>▆▆▆▆▆▆▆▆▆▆▆▆▆▆▁▆▆▆▆▆▆▆▆▆▆▆<span class="w"> </span><span class="m">93</span>%<span class="w">  </span>▄▅▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆<span class="w"> </span>71GB/80GB
+<span class="w">        </span><span class="nv">gpu</span><span class="o">=</span><span class="m">7</span><span class="w">  </span>▆▆▆▆▆▆▆▆▆▆▆▆▆▁▆▆▆▆▆▆▆▆▆▆▆▆<span class="w"> </span><span class="m">93</span>%<span class="w">  </span>▄▅▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆<span class="w"> </span>71GB/80GB
 
-<span class="w"> </span><span class="nv">gpu</span><span class="o">=</span><span class="m">0</span><span class="w">  </span>▁▂▃▆▆▆▆▆▆▆▆▆▆▆▆▆▆▁▆▆▆▆▆▆▆▆▆<span class="w"> </span><span class="m">89</span>%<span class="w">         </span>▄▅▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆<span class="w"> </span>71GB/80GB
-<span class="w"> </span><span class="nv">gpu</span><span class="o">=</span><span class="m">1</span><span class="w">  </span>▁▂▆▆▆▅▆▆▆▆▆▆▆▆▆▆▁▁▅▆▆▅▆▆▆▆▆<span class="w"> </span><span class="m">84</span>%<span class="w">         </span>▄▅▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆<span class="w"> </span>71GB/80GB
-<span class="w"> </span><span class="nv">gpu</span><span class="o">=</span><span class="m">2</span><span class="w">  </span>▁▂▆▆▆▆▆▆▆▆▆▆▆▆▆▆▁▆▆▆▆▆▆▆▆▆▆<span class="w"> </span><span class="m">87</span>%<span class="w">         </span>▄▅▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆<span class="w"> </span>71GB/80GB
-<span class="w"> </span><span class="nv">gpu</span><span class="o">=</span><span class="m">3</span><span class="w">  </span>▂▃▆▅▅▅▅▅▅▆▅▅▆▆▆▆▁▅▅▅▅▅▆▅▅▅▅<span class="w"> </span><span class="m">82</span>%<span class="w">         </span>▄▅▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆<span class="w"> </span>71GB/80GB
-<span class="w"> </span><span class="nv">gpu</span><span class="o">=</span><span class="m">4</span><span class="w">  </span>▂▆▆▆▆▆▆▆▆▆▆▆▆▆▆▁▁▆▆▆▆▆▆▆▆▆▆<span class="w"> </span><span class="m">90</span>%<span class="w">         </span>▄▅▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆<span class="w"> </span>71GB/80GB
-<span class="w"> </span><span class="nv">gpu</span><span class="o">=</span><span class="m">5</span><span class="w">  </span>▂▆▆▆▆▆▆▆▆▆▆▆▆▆▆▁▆▆▆▆▆▆▆▆▆▆▆<span class="w"> </span><span class="m">85</span>%<span class="w">         </span>▄▅▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆<span class="w"> </span>71GB/80GB
-<span class="w"> </span><span class="nv">gpu</span><span class="o">=</span><span class="m">6</span><span class="w">  </span>▃▆▆▅▅▆▆▆▆▆▆▆▆▆▆▁▅▅▅▅▆▆▆▅▅▅▅<span class="w"> </span><span class="m">83</span>%<span class="w">         </span>▄▅▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆<span class="w"> </span>71GB/80GB
-<span class="w"> </span><span class="nv">gpu</span><span class="o">=</span><span class="m">7</span><span class="w">  </span>▃▆▆▆▆▆▆▆▆▆▆▆▆▆▁▁▆▆▆▆▆▆▆▆▆▆▆<span class="w"> </span><span class="m">88</span>%<span class="w">         </span>▄▅▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆<span class="w"> </span>71GB/80GB
-
-<span class="w">        </span><span class="m">4</span><span class="w"> </span>Aug<span class="w"> </span><span class="m">14</span>:10<span class="w"> </span>┄┄┄┄┄┄┄┄┄┄┄<span class="w"> </span>now<span class="w">             </span><span class="m">4</span><span class="w"> </span>Aug<span class="w"> </span><span class="m">14</span>:10<span class="w"> </span>┄┄┄┄┄┄┄┄┄┄┄<span class="w"> </span>now
+<span class="w">               </span><span class="m">6</span><span class="w"> </span>Aug<span class="w"> </span><span class="m">13</span>:14<span class="w"> </span>┄┄┄┄┄┄┄┄┄┄<span class="w"> </span>now<span class="w">      </span><span class="m">6</span><span class="w"> </span>Aug<span class="w"> </span><span class="m">13</span>:14<span class="w"> </span>┄┄┄┄┄┄┄┄┄┄<span class="w"> </span>now
 </code></pre></div>
 
 </div>
 
-<p>Like <a href="../../reference/cli/dstack/logs/"><code>dstack logs</code></a>, the command shows a single job.
-Use <code>--replica</code> and <code>--job</code> to select one; both default to <code>0</code>.
-Pass <code>-w</code> to keep the charts updating.</p>
+<p>By default, metrics are shown for all jobs and replicas. Use <code>--replica</code> or <code>--job</code> to
+show a single one, and <code>-w</code> to keep the charts updating.</p>
 <h2 id="prometheus">Prometheus<a class="headerlink" href="#prometheus" title="Permanent link">&para;</a></h2>
 <p>To enable exporting metrics to Prometheus, set the
 <code>DSTACK_ENABLE_PROMETHEUS_METRICS</code> environment variable and configure Prometheus to scrape metrics from

@@ -5,7 +5,7 @@ The `gateway` configuration type allows creating and updating [gateways](../../c
 ## Root reference
 
 ###### `name` - (Optional) `str` The gateway name. { #name data-toc-label='name' class='reference-item' }
-###### `default` - (Optional) `bool` Make the gateway default. Defaults to `false`. { #default data-toc-label='default' class='reference-item' }
+###### `default` - (Optional) `bool` Whether the gateway is the project's default. Can be updated in-place. If unset when creating a new gateway, the gateway will become the default unless there is already a default gateway. If unset when updating the gateway in-place, the gateway's default status will not change. { #default data-toc-label='default' class='reference-item' }
 ###### `backend` - (Required) `"amddevcloud" | "aws" | "azure" | "cloudrift" | "crusoe" | "cudo" | "datacrunch" | "digitalocean" | "dstack" | "gcp" | "hotaisle" | "jarvislabs" | "kubernetes" | "lambda" | "remote" | "nebius" | "oci" | "runpod" | "tensordock" | "vastai" | "verda" | "vultr" | "slurm"` The gateway backend. { #backend data-toc-label='backend' class='reference-item' }
 ###### `region` - (Required) `str` The gateway region. { #region data-toc-label='region' class='reference-item' }
 ###### `instance_type` - (Optional) `str` Backend-specific instance type to use for the gateway instance. Omit to use the backend's default, which is typically a small non-GPU instance. { #instance_type data-toc-label='instance_type' class='reference-item' }

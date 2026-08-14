@@ -1124,11 +1124,11 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#shared-prefix" class="md-nav__link">
+  <a href="#previous-sessions" class="md-nav__link">
     <span class="md-ellipsis">
       
         <span class="md-typeset">
-          Shared prefix
+          Previous sessions
         </span>
       
     </span>
@@ -1142,6 +1142,19 @@
       
         <span class="md-typeset">
           Prompt
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dataset" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Dataset
         </span>
       
     </span>
@@ -1222,6 +1235,32 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Troubleshooting
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#limitations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Limitations
+        </span>
+      
+    </span>
+  </a>
   
 </li>
       
@@ -5011,11 +5050,11 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#shared-prefix" class="md-nav__link">
+  <a href="#previous-sessions" class="md-nav__link">
     <span class="md-ellipsis">
       
         <span class="md-typeset">
-          Shared prefix
+          Previous sessions
         </span>
       
     </span>
@@ -5029,6 +5068,19 @@
       
         <span class="md-typeset">
           Prompt
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dataset" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Dataset
         </span>
       
     </span>
@@ -5109,6 +5161,32 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Troubleshooting
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#limitations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Limitations
+        </span>
+      
+    </span>
+  </a>
   
 </li>
       
@@ -5203,6 +5281,7 @@
 <h1 id="presets">Presets<a class="headerlink" href="#presets" title="Permanent link">&para;</a></h1>
 <p>A preset configuration lets you use an agent to create a preset: a verified and optimized model inference configuration. Once created, the preset can be reused to deploy model inference on verified hardware without an agent.</p>
 <p>The value of presets comes from combining two fundamental features: agent-driven model inference optimization and the <code>dstack</code> <a href="../services/">service</a> primitive, which can deploy model inference to any cloud, Kubernetes, or on-prem cluster.</p>
+<p>To get the best performance for the given model, hardware, and other constraints, the agent selects the serving framework, quantization, and serving parameters, and can patch the framework's source code, generate custom kernels, and patch drivers.</p>
 <blockquote>
 <p>The presets feature is experimental and may change.</p>
 </blockquote>
@@ -5310,32 +5389,53 @@ creation. Configure them on the fleet instead.</p>
 </div>
 </div>
 </div>
-<h3 id="shared-prefix">Shared prefix<a class="headerlink" href="#shared-prefix" title="Permanent link">&para;</a></h3>
-<p>By default every request is unique, so the cache hit rate is near zero. Set <code>shared_prefix_tokens</code> to control how much of each request the serving framework can serve from its prefix cache.</p>
+<h3 id="previous-sessions">Previous sessions<a class="headerlink" href="#previous-sessions" title="Permanent link">&para;</a></h3>
+<p>Set <code>previous</code> to a list of preset IDs to give the agent the results of earlier creation sessions. It analyzes what they tried and how it worked, and aims to improve on them instead of rediscovering it.</p>
 <div editor-title="preset.dstack.yml">
 
+<div class="highlight"><pre><span></span><code><span class="nt">previous</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">c83375b4</span>
+</code></pre></div>
+
+</div>
+
+<p>Alternatively, pass <code>--previous</code> (repeatable) to <code>dstack preset create</code>.</p>
+<h3 id="prompt">Prompt<a class="headerlink" href="#prompt" title="Permanent link">&para;</a></h3>
+<p>Set <code>prompt</code> to steer what the agent explores: which frameworks or model variants to try, or how deep to go before settling. It accepts inline text or a file <code>path</code>. Constraints such as <code>concurrency</code> and <code>max_ttft</code> can't be changed this way.</p>
+<div editor-title="preset.dstack.yml">
+
+<div class="highlight"><pre><span></span><code><span class="nt">prompt</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">  </span><span class="no">Profile the engine before each trial and report how far it is from the</span>
+<span class="w">  </span><span class="no">memory-bandwidth roofline. While that gap is large, prefer patching the</span>
+<span class="w">  </span><span class="no">serving framework over tuning flags.</span>
+</code></pre></div>
+
+</div>
+
+<h3 id="dataset">Dataset<a class="headerlink" href="#dataset" title="Permanent link">&para;</a></h3>
+<p>The requests every benchmark measures.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="random" name="__tabbed_2" type="radio" /><input id="custom" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="random">Random</label><label for="custom">Custom</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>By default, benchmarks use synthetic prompts shaped by <code>input_tokens</code> and <code>output_tokens</code>. Set <code>shared_prefix_tokens</code> to make part of every request identical, such as a system prompt or conversation history, so the serving framework can serve it from its prefix cache. It must be less than <code>input_tokens</code>.</p>
 <div class="highlight"><pre><span></span><code><span class="nt">input_tokens</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8192</span>
 <span class="nt">output_tokens</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1024</span>
 
 <span class="c1"># Roughly 90% of prompt tokens can be served from cache</span>
 <span class="nt">shared_prefix_tokens</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">7360</span>
 </code></pre></div>
-
 </div>
-
-<p>The <code>shared_prefix_tokens</code> value is the part of <code>input_tokens</code> that is identical across requests, such as a system prompt or conversation history, and must be less than <code>input_tokens</code>.</p>
-<h3 id="prompt">Prompt<a class="headerlink" href="#prompt" title="Permanent link">&para;</a></h3>
-<p>The <code>prompt</code> property is optional. Set it to guide the agent with custom objectives, target metrics, or an experimentation approach. It accepts inline text or a file <code>path</code>.</p>
-<div editor-title="preset.dstack.yml">
-
-<div class="highlight"><pre><span></span><code><span class="nt">prompt</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
-<span class="w">  </span><span class="no">Optimize for the lowest TTFT at concurrency 32. Consider FP8 quantization.</span>
+<div class="tabbed-block">
+<p>Set <code>dataset</code> to benchmark on real text instead: a dataset the benchmark tool supports, or a Hugging Face dataset ID.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">dataset</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sharegpt</span>
 </code></pre></div>
-
+<p>The dataset provides the requests, so <code>input_tokens</code>, <code>output_tokens</code>, and <code>shared_prefix_tokens</code> can't be set with it, and the preset records the measured means. A gated dataset requires <code>HF_TOKEN</code> in <code>env</code>.</p>
 </div>
-
+</div>
+</div>
 <h3 id="baseline">Baseline<a class="headerlink" href="#baseline" title="Permanent link">&para;</a></h3>
-<p>Set <code>baseline: true</code> to make the first trial a baseline: the agent serves the model the way the chosen serving framework recommends, without tuning it for performance. Later trials are optimization attempts.</p>
+<p>By default, the first trial is a baseline: the agent serves the model the way the chosen serving framework recommends, without tuning it for performance. Later trials are optimization attempts. Set <code>baseline: false</code> to make every trial an optimization attempt.</p>
+<p>When the session builds on <code>previous</code>, the baseline trial reproduces the best comparable previous result instead, to confirm it still holds before optimizing further.</p>
 <div class="admonition info">
 <p class="admonition-title">Reference</p>
 <p>The <code>preset</code> configuration supports many more options. See the <a href="../../reference/dstack.yml/preset/"><code>.dstack.yml</code> reference</a>.</p>
@@ -5402,18 +5502,30 @@ Submit<span class="w"> </span>the<span class="w"> </span>run<span class="w"> </s
 
 </div>
 
-<p>For command options and agent settings, see the <a href="../../reference/cli/dstack/preset/"><code>dstack preset</code> CLI reference</a>.</p>
 <div class="admonition info">
-<p class="admonition-title">Roadmap and feedback</p>
-<p>Here's what is coming soon:</p>
-<ul>
-<li>Allow the agent to change the source code, compile binaries, etc.</li>
-<li>Support for PD disaggregation</li>
-<li>Allow passing multiple <code>--previous &lt;preset ID&gt;</code> to <code>dstack preset create</code> to reuse the insights from previous sessions</li>
-<li>Allow passing ranges to <code>concurrency</code></li>
-</ul>
-<p>Report bugs and request features on <a href="https://github.com/dstackai/dstack/issues">GitHub</a>, and ask questions on <a href="https://discord.gg/u8SmfwPpMd">Discord</a>.</p>
+<p class="admonition-title">Reference</p>
+<p>For command options and agent settings, see the <a href="../../reference/cli/dstack/preset/"><code>dstack preset</code> CLI reference</a>.</p>
 </div>
+<h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h2>
+<p>To trace the agent's activity, pass <code>--debug</code> to <code>dstack preset create</code>:</p>
+<div class="termy">
+
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>dstack<span class="w"> </span>preset<span class="w"> </span>create<span class="w"> </span>-f<span class="w"> </span>preset.dstack.yml<span class="w"> </span>--debug
+</code></pre></div>
+
+</div>
+
+<p>The trace is written to <code>~/.dstack/presets/&lt;id&gt;/trace.jsonl</code> while the session runs. It contains the agent's messages and every tool call with its result.</p>
+<h2 id="limitations">Limitations<a class="headerlink" href="#limitations" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Currently, the agent doesn't upload compiled binaries anywhere; patches compile at runtime</li>
+<li>Doesn't support PD disaggregation (coming soon)</li>
+<li>Presets are saved locally (a preset registry is coming soon)</li>
+<li>Doesn't support ranges for <code>concurrency</code></li>
+</ul>
+<blockquote>
+<p>Report bugs and request features on <a href="https://github.com/dstackai/dstack/issues">GitHub</a>, and ask questions on <a href="https://discord.gg/u8SmfwPpMd">Discord</a>.</p>
+</blockquote>
 <div class="admonition info">
 <p class="admonition-title">What's next?</p>
 <ol>

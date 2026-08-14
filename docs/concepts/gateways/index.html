@@ -5395,9 +5395,7 @@ For self-hosted Kubernetes, you must provide a load balancer by yourself.</p>
 <p class="admonition-title">Experimental</p>
 <p>Replicated gateways are an experimental feature and currently have limitations:</p>
 <ul>
-<li>Changing the number of replicas or redeploying replicas is not supported.</li>
 <li>HTTPS is only supported for AWS gateways with the <code>acm</code> <a href="#certificate">certificate type</a>. For other gateways, use an external load balancer for TLS termination.</li>
-<li>An unavailable gateway replica prevents any new services or service replicas from being added.</li>
 <li>All replicas are bound to the same backend and region.</li>
 <li>At most 3 replicas are allowed per gateway.</li>
 </ul>
