@@ -5127,18 +5127,18 @@ calling, add <code>--enable-auto-tool-choice --tool-call-parser qwen3_coder</cod
 
 <div class="highlight"><pre><span></span><code>curl<span class="w"> </span>http://127.0.0.1:3000/proxy/services/main/qwen36/v1/chat/completions<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-X<span class="w"> </span>POST<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-H<span class="w"> </span><span class="s1">&#39;Authorization: Bearer &amp;lt;user token&amp;gt;&#39;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-H<span class="w"> </span><span class="s1">&#39;Content-Type: application/json&#39;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-d<span class="w"> </span><span class="s1">&#39;{</span>
-<span class="s1">      &quot;model&quot;: &quot;Qwen/Qwen3.6-27B&quot;,</span>
-<span class="s1">      &quot;messages&quot;: [</span>
+<span class="w">    </span>-H<span class="w"> </span><span class="s1">'Authorization: Bearer &amp;lt;user token&amp;gt;'</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-H<span class="w"> </span><span class="s1">'Content-Type: application/json'</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-d<span class="w"> </span><span class="s1">'{</span>
+<span class="s1">      "model": "Qwen/Qwen3.6-27B",</span>
+<span class="s1">      "messages": [</span>
 <span class="s1">        {</span>
-<span class="s1">          &quot;role&quot;: &quot;user&quot;,</span>
-<span class="s1">          &quot;content&quot;: &quot;A bat and a ball cost $1.10 total. The bat costs $1.00 more than the ball. How much does the ball cost?&quot;</span>
+<span class="s1">          "role": "user",</span>
+<span class="s1">          "content": "A bat and a ball cost $1.10 total. The bat costs $1.00 more than the ball. How much does the ball cost?"</span>
 <span class="s1">        }</span>
 <span class="s1">      ],</span>
-<span class="s1">      &quot;max_tokens&quot;: 1024</span>
-<span class="s1">    }&#39;</span>
+<span class="s1">      "max_tokens": 1024</span>
+<span class="s1">    }'</span>
 </code></pre></div>
 
 </div>
@@ -5160,7 +5160,7 @@ calling, add <code>--enable-auto-tool-choice --tool-call-parser qwen3_coder</cod
 
 <span class="nt">replicas</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">count</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
-<span class="w">    </span><span class="nt">python</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;3.12&quot;</span>
+<span class="w">    </span><span class="nt">python</span><span class="p">:</span><span class="w"> </span><span class="s">"3.12"</span>
 <span class="w">    </span><span class="nt">commands</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip install smg</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
@@ -5184,10 +5184,10 @@ calling, add <code>--enable-auto-tool-choice --tool-call-parser qwen3_coder</cod
 <span class="w">    </span><span class="nt">commands</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
 <span class="w">        </span><span class="no">python3 -m vllm.entrypoints.grpc_server \</span>
-<span class="w">          </span><span class="no">--model &quot;$MODEL_ID&quot; \</span>
+<span class="w">          </span><span class="no">--model "$MODEL_ID" \</span>
 <span class="w">          </span><span class="no">--host 0.0.0.0 \</span>
 <span class="w">          </span><span class="no">--port 8000 \</span>
-<span class="w">          </span><span class="no">--kv-transfer-config &#39;{&quot;kv_connector&quot;:&quot;NixlConnector&quot;,&quot;kv_role&quot;:&quot;kv_producer&quot;}&#39;</span>
+<span class="w">          </span><span class="no">--kv-transfer-config '{"kv_connector":"NixlConnector","kv_role":"kv_producer"}'</span>
 <span class="w">    </span><span class="nt">resources</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">H200</span>
 
@@ -5199,10 +5199,10 @@ calling, add <code>--enable-auto-tool-choice --tool-call-parser qwen3_coder</cod
 <span class="w">    </span><span class="nt">commands</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
 <span class="w">        </span><span class="no">python3 -m vllm.entrypoints.grpc_server \</span>
-<span class="w">          </span><span class="no">--model &quot;$MODEL_ID&quot; \</span>
+<span class="w">          </span><span class="no">--model "$MODEL_ID" \</span>
 <span class="w">          </span><span class="no">--host 0.0.0.0 \</span>
 <span class="w">          </span><span class="no">--port 8000 \</span>
-<span class="w">          </span><span class="no">--kv-transfer-config &#39;{&quot;kv_connector&quot;:&quot;NixlConnector&quot;,&quot;kv_role&quot;:&quot;kv_consumer&quot;}&#39;</span>
+<span class="w">          </span><span class="no">--kv-transfer-config '{"kv_connector":"NixlConnector","kv_role":"kv_consumer"}'</span>
 <span class="w">    </span><span class="nt">resources</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">H200</span>
 

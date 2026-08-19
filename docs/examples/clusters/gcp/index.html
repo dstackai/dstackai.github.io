@@ -5187,7 +5187,7 @@ VPCs and filewall rules. </p>
 <p><h4>Create extra VPCs</h4></p>
 <p>Create the VPC networks for GPUDirect in your project, each with a subnet and a firewall rule:</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Specify the region where you intend to deploy the cluster</span>
-<span class="nv">REGION</span><span class="o">=</span><span class="s2">&quot;europe-west4&quot;</span>
+<span class="nv">REGION</span><span class="o">=</span><span class="s2">"europe-west4"</span>
 
 <span class="k">for</span><span class="w"> </span>N<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="k">$(</span>seq<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">8</span><span class="k">)</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
 gcloud<span class="w"> </span>compute<span class="w"> </span>networks<span class="w"> </span>create<span class="w"> </span>dstack-gpu-data-net-<span class="nv">$N</span><span class="w"> </span><span class="se">\</span>
@@ -5236,7 +5236,7 @@ gcloud<span class="w"> </span>compute<span class="w"> </span>firewall-rules<span
 <p><h4>Create extra VPCs</h4></p>
 <p>Create the VPC networks for GPUDirect in your project, each with a subnet and a firewall rule:</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Specify the region where you intend to deploy the cluster</span>
-<span class="nv">REGION</span><span class="o">=</span><span class="s2">&quot;europe-west4&quot;</span>
+<span class="nv">REGION</span><span class="o">=</span><span class="s2">"europe-west4"</span>
 
 <span class="k">for</span><span class="w"> </span>N<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="k">$(</span>seq<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">4</span><span class="k">)</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
 gcloud<span class="w"> </span>compute<span class="w"> </span>networks<span class="w"> </span>create<span class="w"> </span>dstack-gpu-data-net-<span class="nv">$N</span><span class="w"> </span><span class="se">\</span>
@@ -5260,11 +5260,11 @@ gcloud<span class="w"> </span>compute<span class="w"> </span>firewall-rules<span
 <div class="highlight"><pre><span></span><code><span class="nv">PROJECT_ID</span><span class="o">=</span><span class="k">$(</span>gcloud<span class="w"> </span>config<span class="w"> </span>get-value<span class="w"> </span>project<span class="k">)</span>
 
 gcloud<span class="w"> </span>iam<span class="w"> </span>service-accounts<span class="w"> </span>create<span class="w"> </span>a3cluster-sa<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--display-name<span class="w"> </span><span class="s2">&quot;Service Account for pulling GCR images&quot;</span>
+<span class="w">    </span>--display-name<span class="w"> </span><span class="s2">"Service Account for pulling GCR images"</span>
 
 gcloud<span class="w"> </span>projects<span class="w"> </span>add-iam-policy-binding<span class="w"> </span><span class="nv">$PROJECT_ID</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--member<span class="o">=</span><span class="s2">&quot;serviceAccount:a3cluster-sa@</span><span class="si">${</span><span class="nv">PROJECT_ID</span><span class="si">}</span><span class="s2">.iam.gserviceaccount.com&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--role<span class="o">=</span><span class="s2">&quot;roles/artifactregistry.reader&quot;</span>
+<span class="w">    </span>--member<span class="o">=</span><span class="s2">"serviceAccount:a3cluster-sa@</span><span class="si">${</span><span class="nv">PROJECT_ID</span><span class="si">}</span><span class="s2">.iam.gserviceaccount.com"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--role<span class="o">=</span><span class="s2">"roles/artifactregistry.reader"</span>
 </code></pre></div>
 </div>
 </div>
@@ -5414,17 +5414,17 @@ Avg<span class="w"> </span>bus<span class="w"> </span>bandwidth<span class="w"> 
 <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nccl-tests</span>
 <span class="nt">nodes</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
 <span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nvcr.io/nvidia/pytorch:24.04-py3</span>
-<span class="nt">entrypoint</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;bash</span><span class="nv"> </span><span class="s">-c&quot;</span><span class="w"> </span><span class="c1"># Need to use bash instead of default dash for nccl-env-profile.sh</span>
+<span class="nt">entrypoint</span><span class="p">:</span><span class="w"> </span><span class="s">"bash</span><span class="nv"> </span><span class="s">-c"</span><span class="w"> </span><span class="c1"># Need to use bash instead of default dash for nccl-env-profile.sh</span>
 <span class="nt">commands</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
 <span class="w">    </span><span class="no"># Setup TCPXO NCCL env variables</span>
-<span class="w">    </span><span class="no">NCCL_LIB_DIR=&quot;/var/lib/tcpxo/lib64&quot;</span>
+<span class="w">    </span><span class="no">NCCL_LIB_DIR="/var/lib/tcpxo/lib64"</span>
 <span class="w">    </span><span class="no">source ${NCCL_LIB_DIR}/nccl-env-profile-ll128.sh</span>
 <span class="w">    </span><span class="no">export NCCL_FASTRAK_CTRL_DEV=enp0s12</span>
 <span class="w">    </span><span class="no">export NCCL_FASTRAK_IFNAME=enp6s0,enp7s0,enp13s0,enp14s0,enp134s0,enp135s0,enp141s0,enp142s0</span>
 <span class="w">    </span><span class="no">export NCCL_SOCKET_IFNAME=enp0s12</span>
-<span class="w">    </span><span class="no">export NCCL_FASTRAK_LLCM_DEVICE_DIRECTORY=&quot;/dev/aperture_devices&quot;</span>
-<span class="w">    </span><span class="no">export LD_LIBRARY_PATH=&quot;${NCCL_LIB_DIR}:${LD_LIBRARY_PATH}&quot;</span>
+<span class="w">    </span><span class="no">export NCCL_FASTRAK_LLCM_DEVICE_DIRECTORY="/dev/aperture_devices"</span>
+<span class="w">    </span><span class="no">export LD_LIBRARY_PATH="${NCCL_LIB_DIR}:${LD_LIBRARY_PATH}"</span>
 <span class="w">    </span><span class="no"># Build NCCL Tests</span>
 <span class="w">    </span><span class="no">git clone https://github.com/NVIDIA/nccl-tests.git</span>
 <span class="w">    </span><span class="no">cd nccl-tests</span>
@@ -5434,24 +5434,24 @@ Avg<span class="w"> </span>bus<span class="w"> </span>bandwidth<span class="w"> 
 <span class="w">    </span><span class="no">FIFO=/tmp/dstack_job</span>
 <span class="w">    </span><span class="no">if [ ${DSTACK_NODE_RANK} -eq 0 ]; then</span>
 <span class="w">      </span><span class="no">sleep 10</span>
-<span class="w">      </span><span class="no">echo &quot;${DSTACK_NODES_IPS}&quot; &gt; hostfile</span>
-<span class="w">      </span><span class="no">MPIRUN=&#39;mpirun --allow-run-as-root --hostfile hostfile&#39;</span>
+<span class="w">      </span><span class="no">echo "${DSTACK_NODES_IPS}" &gt; hostfile</span>
+<span class="w">      </span><span class="no">MPIRUN='mpirun --allow-run-as-root --hostfile hostfile'</span>
 <span class="w">      </span><span class="no"># Wait for other nodes</span>
 <span class="w">      </span><span class="no">while true; do</span>
 <span class="w">        </span><span class="no">if ${MPIRUN} -n ${DSTACK_NODES_NUM} -N 1 true &gt;/dev/null 2&gt;&amp;1; then</span>
 <span class="w">          </span><span class="no">break</span>
 <span class="w">        </span><span class="no">fi</span>
-<span class="w">        </span><span class="no">echo &#39;Waiting for nodes...&#39;</span>
+<span class="w">        </span><span class="no">echo 'Waiting for nodes...'</span>
 <span class="w">        </span><span class="no">sleep 5</span>
 <span class="w">      </span><span class="no">done</span>
 <span class="w">      </span><span class="no"># Run NCCL Tests</span>
 <span class="w">      </span><span class="no">${MPIRUN} \</span>
 <span class="w">        </span><span class="no">-n ${DSTACK_GPUS_NUM} -N ${DSTACK_GPUS_PER_NODE} \</span>
 <span class="w">        </span><span class="no">--mca btl tcp,self --mca btl_tcp_if_exclude lo,docker0 \</span>
-<span class="w">        </span><span class="no">$(env | awk -F= &#39;{print &quot;-x&quot;, $1}&#39; | xargs) \</span>
+<span class="w">        </span><span class="no">$(env | awk -F= '{print "-x", $1}' | xargs) \</span>
 <span class="w">        </span><span class="no">./all_gather_perf -b 8M -e 8G -f 2 -g 1 -w 5 --iters 200 -c 0;</span>
 <span class="w">      </span><span class="no"># Notify nodes the job is done</span>
-<span class="w">      </span><span class="no">${MPIRUN} -n ${DSTACK_NODES_NUM} -N 1 sh -c &quot;echo done &gt; ${FIFO}&quot;</span>
+<span class="w">      </span><span class="no">${MPIRUN} -n ${DSTACK_NODES_NUM} -N 1 sh -c "echo done &gt; ${FIFO}"</span>
 <span class="w">    </span><span class="no">else</span>
 <span class="w">      </span><span class="no">mkfifo ${FIFO}</span>
 <span class="w">      </span><span class="no"># Wait for a message from the first node</span>
@@ -5469,7 +5469,7 @@ Avg<span class="w"> </span>bus<span class="w"> </span>bandwidth<span class="w"> 
 nccl-tests<span class="w"> </span>provisioning<span class="w"> </span>completed<span class="w"> </span><span class="o">(</span>running<span class="o">)</span>
 nThread<span class="w"> </span><span class="m">1</span><span class="w"> </span>nGpus<span class="w"> </span><span class="m">1</span><span class="w"> </span>minBytes<span class="w"> </span><span class="m">8388608</span><span class="w"> </span>maxBytes<span class="w"> </span><span class="m">8589934592</span><span class="w"> </span>step:<span class="w"> </span><span class="m">2</span><span class="o">(</span>factor<span class="o">)</span><span class="w"> </span>warmup<span class="w"> </span>iters:<span class="w"> </span><span class="m">5</span><span class="w"> </span>iters:<span class="w"> </span><span class="m">200</span><span class="w"> </span>agg<span class="w"> </span>iters:<span class="w"> </span><span class="m">1</span><span class="w"> </span>validation:<span class="w"> </span><span class="m">0</span><span class="w"> </span>graph:<span class="w"> </span><span class="m">0</span>
 
-<span class="w">                                                             </span>out-of-place<span class="w">                       </span><span class="k">in</span>-place<span class="w">          </span>
+<span class="w">                                                             </span>out-of-place<span class="w">                       </span>in-place<span class="w">          </span>
 <span class="w">      </span>size<span class="w">         </span>count<span class="w">      </span><span class="nb">type</span><span class="w">   </span>redop<span class="w">    </span>root<span class="w">     </span><span class="nb">time</span><span class="w">   </span>algbw<span class="w">   </span>busbw<span class="w"> </span><span class="c1">#wrong     time   algbw   busbw #wrong</span>
 <span class="w">       </span><span class="o">(</span>B<span class="o">)</span><span class="w">    </span><span class="o">(</span>elements<span class="o">)</span><span class="w">                               </span><span class="o">(</span>us<span class="o">)</span><span class="w">  </span><span class="o">(</span>GB/s<span class="o">)</span><span class="w">  </span><span class="o">(</span>GB/s<span class="o">)</span><span class="w">            </span><span class="o">(</span>us<span class="o">)</span><span class="w">  </span><span class="o">(</span>GB/s<span class="o">)</span><span class="w">  </span><span class="o">(</span>GB/s<span class="o">)</span><span class="w">       </span>
 <span class="w">     </span><span class="m">8388608</span><span class="w">        </span><span class="m">131072</span><span class="w">     </span>float<span class="w">    </span>none<span class="w">      </span>-1<span class="w">    </span><span class="m">166</span>.6<span class="w">   </span><span class="m">50</span>.34<span class="w">   </span><span class="m">47</span>.19<span class="w">    </span>N/A<span class="w">    </span><span class="m">164</span>.1<span class="w">   </span><span class="m">51</span>.11<span class="w">   </span><span class="m">47</span>.92<span class="w">    </span>N/A
@@ -5504,21 +5504,21 @@ Avg<span class="w"> </span>bus<span class="w"> </span>bandwidth<span class="w"> 
 <span class="w">      </span><span class="no">mkdir -p /scripts/hostfiles2</span>
 <span class="w">      </span><span class="no">: &gt; /scripts/hostfiles2/hostfile8</span>
 <span class="w">      </span><span class="no">for ip in ${DSTACK_NODES_IPS}; do</span>
-<span class="w">        </span><span class="no">echo &quot;${ip} slots=${DSTACK_GPUS_PER_NODE}&quot; &gt;&gt; /scripts/hostfiles2/hostfile8</span>
+<span class="w">        </span><span class="no">echo "${ip} slots=${DSTACK_GPUS_PER_NODE}" &gt;&gt; /scripts/hostfiles2/hostfile8</span>
 <span class="w">      </span><span class="no">done</span>
-<span class="w">      </span><span class="no">MPIRUN=&#39;mpirun --allow-run-as-root --hostfile /scripts/hostfiles2/hostfile8&#39;</span>
+<span class="w">      </span><span class="no">MPIRUN='mpirun --allow-run-as-root --hostfile /scripts/hostfiles2/hostfile8'</span>
 <span class="w">      </span><span class="no"># Wait for other nodes</span>
 <span class="w">      </span><span class="no">while true; do</span>
 <span class="w">        </span><span class="no">if ${MPIRUN} -n ${DSTACK_NODES_NUM} -N 1 true &gt;/dev/null 2&gt;&amp;1; then</span>
 <span class="w">          </span><span class="no">break</span>
 <span class="w">        </span><span class="no">fi</span>
-<span class="w">        </span><span class="no">echo &#39;Waiting for nodes...&#39;</span>
+<span class="w">        </span><span class="no">echo 'Waiting for nodes...'</span>
 <span class="w">        </span><span class="no">sleep 5</span>
 <span class="w">      </span><span class="no">done</span>
 <span class="w">      </span><span class="no"># Run NCCL Tests</span>
 <span class="w">      </span><span class="no">NCCL_GPUDIRECTTCPX_FORCE_ACK=0 /scripts/run-allgather.sh 8 eth1,eth2,eth3,eth4 8M 8GB 2</span>
 <span class="w">      </span><span class="no"># Notify nodes the job is done</span>
-<span class="w">      </span><span class="no">${MPIRUN} -n ${DSTACK_NODES_NUM} -N 1 sh -c &quot;echo done &gt; ${FIFO}&quot;</span>
+<span class="w">      </span><span class="no">${MPIRUN} -n ${DSTACK_NODES_NUM} -N 1 sh -c "echo done &gt; ${FIFO}"</span>
 <span class="w">    </span><span class="no">else</span>
 <span class="w">      </span><span class="no">mkfifo ${FIFO}</span>
 <span class="w">      </span><span class="no"># Wait for a message from the first node</span>
@@ -5536,7 +5536,7 @@ Avg<span class="w"> </span>bus<span class="w"> </span>bandwidth<span class="w"> 
 nccl-tests<span class="w"> </span>provisioning<span class="w"> </span>completed<span class="w"> </span><span class="o">(</span>running<span class="o">)</span>
 nThread<span class="w"> </span><span class="m">1</span><span class="w"> </span>nGpus<span class="w"> </span><span class="m">1</span><span class="w"> </span>minBytes<span class="w"> </span><span class="m">8388608</span><span class="w"> </span>maxBytes<span class="w"> </span><span class="m">8589934592</span><span class="w"> </span>step:<span class="w"> </span><span class="m">2</span><span class="o">(</span>factor<span class="o">)</span><span class="w"> </span>warmup<span class="w"> </span>iters:<span class="w"> </span><span class="m">5</span><span class="w"> </span>iters:<span class="w"> </span><span class="m">200</span><span class="w"> </span>agg<span class="w"> </span>iters:<span class="w"> </span><span class="m">1</span><span class="w"> </span>validation:<span class="w"> </span><span class="m">0</span><span class="w"> </span>graph:<span class="w"> </span><span class="m">0</span>
 
-<span class="w">                                                              </span>out-of-place<span class="w">                       </span><span class="k">in</span>-place<span class="w">          </span>
+<span class="w">                                                              </span>out-of-place<span class="w">                       </span>in-place<span class="w">          </span>
 <span class="w">       </span>size<span class="w">         </span>count<span class="w">      </span><span class="nb">type</span><span class="w">   </span>redop<span class="w">    </span>root<span class="w">     </span><span class="nb">time</span><span class="w">   </span>algbw<span class="w">   </span>busbw<span class="w"> </span><span class="c1">#wrong     time   algbw   busbw #wrong</span>
 <span class="w">        </span><span class="o">(</span>B<span class="o">)</span><span class="w">    </span><span class="o">(</span>elements<span class="o">)</span><span class="w">                               </span><span class="o">(</span>us<span class="o">)</span><span class="w">  </span><span class="o">(</span>GB/s<span class="o">)</span><span class="w">  </span><span class="o">(</span>GB/s<span class="o">)</span><span class="w">            </span><span class="o">(</span>us<span class="o">)</span><span class="w">  </span><span class="o">(</span>GB/s<span class="o">)</span><span class="w">  </span><span class="o">(</span>GB/s<span class="o">)</span><span class="w">       </span>
 <span class="w">     </span><span class="m">8388608</span><span class="w">        </span><span class="m">131072</span><span class="w">     </span>float<span class="w">    </span>none<span class="w">      </span>-1<span class="w">    </span><span class="m">784</span>.9<span class="w">   </span><span class="m">10</span>.69<span class="w">   </span><span class="m">10</span>.02<span class="w">      </span><span class="m">0</span><span class="w">    </span><span class="m">775</span>.9<span class="w">   </span><span class="m">10</span>.81<span class="w">   </span><span class="m">10</span>.14<span class="w">      </span><span class="m">0</span>
@@ -5569,13 +5569,13 @@ Avg<span class="w"> </span>bus<span class="w"> </span>bandwidth<span class="w"> 
 
 commands:<span class="w"> </span>
 -<span class="w"> </span><span class="p">|</span><span class="w"> </span>
-<span class="w">  </span><span class="nv">NCCL_LIB_DIR</span><span class="o">=</span><span class="s2">&quot;/var/lib/tcpxo/lib64&quot;</span>
+<span class="w">  </span><span class="nv">NCCL_LIB_DIR</span><span class="o">=</span><span class="s2">"/var/lib/tcpxo/lib64"</span>
 <span class="w">  </span><span class="nb">source</span><span class="w"> </span><span class="si">${</span><span class="nv">NCCL_LIB_DIR</span><span class="si">}</span>/nccl-env-profile-ll128.sh
 <span class="w">  </span><span class="nb">export</span><span class="w"> </span><span class="nv">NCCL_FASTRAK_CTRL_DEV</span><span class="o">=</span>enp0s12
 <span class="w">  </span><span class="nb">export</span><span class="w"> </span><span class="nv">NCCL_FASTRAK_IFNAME</span><span class="o">=</span>enp6s0,enp7s0,enp13s0,enp14s0,enp134s0,enp135s0,enp141s0,enp142s0
 <span class="w">  </span><span class="nb">export</span><span class="w"> </span><span class="nv">NCCL_SOCKET_IFNAME</span><span class="o">=</span>enp0s12
-<span class="w">  </span><span class="nb">export</span><span class="w"> </span><span class="nv">NCCL_FASTRAK_LLCM_DEVICE_DIRECTORY</span><span class="o">=</span><span class="s2">&quot;/dev/aperture_devices&quot;</span>
-<span class="w">  </span><span class="nb">export</span><span class="w"> </span><span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">NCCL_LIB_DIR</span><span class="si">}</span><span class="s2">:</span><span class="si">${</span><span class="nv">LD_LIBRARY_PATH</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="w">  </span><span class="nb">export</span><span class="w"> </span><span class="nv">NCCL_FASTRAK_LLCM_DEVICE_DIRECTORY</span><span class="o">=</span><span class="s2">"/dev/aperture_devices"</span>
+<span class="w">  </span><span class="nb">export</span><span class="w"> </span><span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span><span class="s2">"</span><span class="si">${</span><span class="nv">NCCL_LIB_DIR</span><span class="si">}</span><span class="s2">:</span><span class="si">${</span><span class="nv">LD_LIBRARY_PATH</span><span class="si">}</span><span class="s2">"</span>
 
 <span class="c1"># ...</span>
 </code></pre></div>
@@ -5587,8 +5587,8 @@ commands:<span class="w"> </span>
 commands:<span class="w"> </span>
 -<span class="w"> </span><span class="p">|</span><span class="w"> </span>
 <span class="w">  </span><span class="nb">export</span><span class="w"> </span><span class="nv">NCCL_DEBUG</span><span class="o">=</span>INFO
-<span class="w">  </span><span class="nv">NCCL_LIB_DIR</span><span class="o">=</span><span class="s2">&quot;/usr/local/tcpx/lib64&quot;</span>
-<span class="w">  </span><span class="nb">export</span><span class="w"> </span><span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">NCCL_LIB_DIR</span><span class="si">}</span><span class="s2">:</span><span class="si">${</span><span class="nv">LD_LIBRARY_PATH</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="w">  </span><span class="nv">NCCL_LIB_DIR</span><span class="o">=</span><span class="s2">"/usr/local/tcpx/lib64"</span>
+<span class="w">  </span><span class="nb">export</span><span class="w"> </span><span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span><span class="s2">"</span><span class="si">${</span><span class="nv">NCCL_LIB_DIR</span><span class="si">}</span><span class="s2">:</span><span class="si">${</span><span class="nv">LD_LIBRARY_PATH</span><span class="si">}</span><span class="s2">"</span>
 <span class="w">  </span><span class="nb">export</span><span class="w"> </span><span class="nv">NCCL_SOCKET_IFNAME</span><span class="o">=</span>eth0
 <span class="w">  </span><span class="nb">export</span><span class="w"> </span><span class="nv">NCCL_CROSS_NIC</span><span class="o">=</span><span class="m">0</span>
 <span class="w">  </span><span class="nb">export</span><span class="w"> </span><span class="nv">NCCL_ALGO</span><span class="o">=</span>Ring
@@ -5604,10 +5604,10 @@ commands:<span class="w"> </span>
 <span class="w">  </span><span class="nb">export</span><span class="w"> </span><span class="nv">NCCL_P2P_PCI_CHUNKSIZE</span><span class="o">=</span><span class="m">524288</span>
 <span class="w">  </span><span class="nb">export</span><span class="w"> </span><span class="nv">NCCL_P2P_NVL_CHUNKSIZE</span><span class="o">=</span><span class="m">1048576</span>
 <span class="w">  </span><span class="nb">export</span><span class="w"> </span><span class="nv">NCCL_BUFFSIZE</span><span class="o">=</span><span class="m">4194304</span>
-<span class="w">  </span><span class="nb">export</span><span class="w"> </span><span class="nv">NCCL_GPUDIRECTTCPX_TX_BINDINGS</span><span class="o">=</span><span class="s2">&quot;eth1:8-21,112-125;eth2:8-21,112-125;eth3:60-73,164-177;eth4:60-73,164-177&quot;</span>
-<span class="w">  </span><span class="nb">export</span><span class="w"> </span><span class="nv">NCCL_GPUDIRECTTCPX_RX_BINDINGS</span><span class="o">=</span><span class="s2">&quot;eth1:22-35,126-139;eth2:22-35,126-139;eth3:74-87,178-191;eth4:74-87,178-191&quot;</span>
+<span class="w">  </span><span class="nb">export</span><span class="w"> </span><span class="nv">NCCL_GPUDIRECTTCPX_TX_BINDINGS</span><span class="o">=</span><span class="s2">"eth1:8-21,112-125;eth2:8-21,112-125;eth3:60-73,164-177;eth4:60-73,164-177"</span>
+<span class="w">  </span><span class="nb">export</span><span class="w"> </span><span class="nv">NCCL_GPUDIRECTTCPX_RX_BINDINGS</span><span class="o">=</span><span class="s2">"eth1:22-35,126-139;eth2:22-35,126-139;eth3:74-87,178-191;eth4:74-87,178-191"</span>
 <span class="w">  </span><span class="nb">export</span><span class="w"> </span><span class="nv">NCCL_GPUDIRECTTCPX_PROGRAM_FLOW_STEERING_WAIT_MICROS</span><span class="o">=</span><span class="m">50000</span>
-<span class="w">  </span><span class="nb">export</span><span class="w"> </span><span class="nv">NCCL_GPUDIRECTTCPX_UNIX_CLIENT_PREFIX</span><span class="o">=</span><span class="s2">&quot;/run/tcpx&quot;</span>
+<span class="w">  </span><span class="nb">export</span><span class="w"> </span><span class="nv">NCCL_GPUDIRECTTCPX_UNIX_CLIENT_PREFIX</span><span class="o">=</span><span class="s2">"/run/tcpx"</span>
 
 <span class="c1"># ...</span>
 </code></pre></div>

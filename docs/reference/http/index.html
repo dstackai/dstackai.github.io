@@ -4772,43 +4772,43 @@
 <span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
 
-<span class="n">url</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;DSTACK_URL&quot;</span><span class="p">]</span>
-<span class="n">token</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;DSTACK_TOKEN&quot;</span><span class="p">]</span>
-<span class="n">project</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;DSTACK_PROJECT&quot;</span><span class="p">]</span>
-<span class="n">ssh_public_key</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;SSH_PUBLIC_KEY_PATH&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">read_text</span><span class="p">()</span>
+<span class="n">url</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">"DSTACK_URL"</span><span class="p">]</span>
+<span class="n">token</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">"DSTACK_TOKEN"</span><span class="p">]</span>
+<span class="n">project</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">"DSTACK_PROJECT"</span><span class="p">]</span>
+<span class="n">ssh_public_key</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">"SSH_PUBLIC_KEY_PATH"</span><span class="p">])</span><span class="o">.</span><span class="n">read_text</span><span class="p">()</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Submitting task&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Submitting task"</span><span class="p">)</span>
 <span class="n">resp</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>
-    <span class="n">url</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">url</span><span class="si">}</span><span class="s2">/api/project/</span><span class="si">{</span><span class="n">project</span><span class="si">}</span><span class="s2">/runs/apply&quot;</span><span class="p">,</span>
-    <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;Authorization&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;Bearer </span><span class="si">{</span><span class="n">token</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">},</span>
+    <span class="n">url</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">url</span><span class="si">}</span><span class="s2">/api/project/</span><span class="si">{</span><span class="n">project</span><span class="si">}</span><span class="s2">/runs/apply"</span><span class="p">,</span>
+    <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s2">"Authorization"</span><span class="p">:</span> <span class="sa">f</span><span class="s2">"Bearer </span><span class="si">{</span><span class="n">token</span><span class="si">}</span><span class="s2">"</span><span class="p">},</span>
     <span class="n">json</span><span class="o">=</span><span class="p">{</span>
-        <span class="s2">&quot;plan&quot;</span><span class="p">:{</span>
-            <span class="s2">&quot;run_spec&quot;</span><span class="p">:</span> <span class="p">{</span>
-                <span class="s2">&quot;configuration&quot;</span><span class="p">:</span> <span class="p">{</span>
-                    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;task&quot;</span><span class="p">,</span>
-                    <span class="s2">&quot;commands&quot;</span><span class="p">:</span> <span class="p">[</span>
-                        <span class="s2">&quot;echo Start&quot;</span><span class="p">,</span>
-                        <span class="s2">&quot;sleep 10&quot;</span><span class="p">,</span> <span class="c1"># do some work here</span>
-                        <span class="s2">&quot;echo Finish&quot;</span>
+        <span class="s2">"plan"</span><span class="p">:{</span>
+            <span class="s2">"run_spec"</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">"configuration"</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"task"</span><span class="p">,</span>
+                    <span class="s2">"commands"</span><span class="p">:</span> <span class="p">[</span>
+                        <span class="s2">"echo Start"</span><span class="p">,</span>
+                        <span class="s2">"sleep 10"</span><span class="p">,</span> <span class="c1"># do some work here</span>
+                        <span class="s2">"echo Finish"</span>
                     <span class="p">],</span>
                 <span class="p">},</span>
-                <span class="s2">&quot;ssh_key_pub&quot;</span><span class="p">:</span> <span class="n">ssh_public_key</span><span class="p">,</span>
+                <span class="s2">"ssh_key_pub"</span><span class="p">:</span> <span class="n">ssh_public_key</span><span class="p">,</span>
             <span class="p">}</span>
         <span class="p">},</span>
-        <span class="s2">&quot;force&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="s2">"force"</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
     <span class="p">},</span>
 <span class="p">)</span>
-<span class="n">run_name</span> <span class="o">=</span> <span class="n">resp</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">&quot;run_spec&quot;</span><span class="p">][</span><span class="s2">&quot;run_name&quot;</span><span class="p">]</span>
+<span class="n">run_name</span> <span class="o">=</span> <span class="n">resp</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">"run_spec"</span><span class="p">][</span><span class="s2">"run_name"</span><span class="p">]</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Waiting for task completion&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Waiting for task completion"</span><span class="p">)</span>
 <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
     <span class="n">resp</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>
-        <span class="n">url</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">url</span><span class="si">}</span><span class="s2">/api/project/</span><span class="si">{</span><span class="n">project</span><span class="si">}</span><span class="s2">/runs/get&quot;</span><span class="p">,</span>
-        <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;Authorization&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;Bearer </span><span class="si">{</span><span class="n">token</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">},</span>
-        <span class="n">json</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;run_name&quot;</span><span class="p">:</span> <span class="n">run_name</span><span class="p">}</span>
+        <span class="n">url</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">url</span><span class="si">}</span><span class="s2">/api/project/</span><span class="si">{</span><span class="n">project</span><span class="si">}</span><span class="s2">/runs/get"</span><span class="p">,</span>
+        <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s2">"Authorization"</span><span class="p">:</span> <span class="sa">f</span><span class="s2">"Bearer </span><span class="si">{</span><span class="n">token</span><span class="si">}</span><span class="s2">"</span><span class="p">},</span>
+        <span class="n">json</span><span class="o">=</span><span class="p">{</span><span class="s2">"run_name"</span><span class="p">:</span> <span class="n">run_name</span><span class="p">}</span>
     <span class="p">)</span>
-    <span class="k">if</span> <span class="n">resp</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">&quot;status&quot;</span><span class="p">]</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;terminated&quot;</span><span class="p">,</span> <span class="s2">&quot;aborted&quot;</span><span class="p">,</span> <span class="s2">&quot;failed&quot;</span><span class="p">,</span> <span class="s2">&quot;done&quot;</span><span class="p">]:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Run finished with status </span><span class="si">{</span><span class="n">resp</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s1">&#39;status&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">resp</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">"status"</span><span class="p">]</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">"terminated"</span><span class="p">,</span> <span class="s2">"aborted"</span><span class="p">,</span> <span class="s2">"failed"</span><span class="p">,</span> <span class="s2">"done"</span><span class="p">]:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Run finished with status </span><span class="si">{</span><span class="n">resp</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s1">'status'</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
         <span class="k">break</span>
     <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 </code></pre></div>

@@ -26,16 +26,16 @@ used to create or apply a [preset](../../concepts/presets.md).
 ###### `tags` - (Optional) `dict` The custom tags to associate with the resource. The tags are also propagated to the underlying backend resources. If there is a conflict with backend-level tags, does not override them. { #tags data-toc-label='tags' class='reference-item' }
 ###### [`backend_options`](#backend_options) - (Optional) `list[object]` Backend-specific options, applied only to offers from that backend. { #_backend_options data-toc-label='backend_options' class='reference-item' }
 ###### `type` - (Required) `"preset"` The configuration type. Must be `preset`. { #type data-toc-label='type' class='reference-item' }
-###### `name` - (Optional) `str` The service name. Required unless passed with `--name`. { #name data-toc-label='name' class='reference-item' }
+###### `name` - (Optional) `str` The preset name. { #name data-toc-label='name' class='reference-item' }
 ###### [`model`](#model) - (Required) `str | object` The model to serve. Use a string or `repo` for an exact repo/path, or `base` to allow compatible model variants. Prefer the top-level `base`/`repo` shorthand unless a custom client-facing model name is needed. { #_model data-toc-label='model' class='reference-item' }
 ###### `base` - (Optional) `str` The base model repo; compatible variants are allowed. Shorthand for `model.base`. { #base data-toc-label='base' class='reference-item' }
 ###### `repo` - (Optional) `str` The exact model repo/path to serve. Shorthand for `model.repo`. { #repo data-toc-label='repo' class='reference-item' }
 ###### [`prompt`](#prompt) - (Optional) `str | object` Additional instructions for the preset creation agent, inline or as a file `path`. { #_prompt data-toc-label='prompt' class='reference-item' }
-###### `min_context_length` - (Optional) `int` The minimum required context length. { #min_context_length data-toc-label='min_context_length' class='reference-item' }
-###### `max_ttft` - (Optional) `int` The maximum p50 time to first token, in milliseconds, that any benchmark may report. { #max_ttft data-toc-label='max_ttft' class='reference-item' }
-###### `trials` - (Optional) `int` The number of benchmarked trials during preset creation before the best one is promoted. { #trials data-toc-label='trials' class='reference-item' }
+###### `min_context_length` - (Optional) `int` The minimum required context length. Required for creation. { #min_context_length data-toc-label='min_context_length' class='reference-item' }
+###### `max_ttft` - (Optional) `int` The maximum p50 time to first token, in milliseconds, that any benchmark may report. Required for creation. { #max_ttft data-toc-label='max_ttft' class='reference-item' }
+###### `trials` - (Optional) `int` The number of benchmarked trials during preset creation before the best one is promoted. Required for creation. { #trials data-toc-label='trials' class='reference-item' }
 ###### `previous` - (Optional) `list[str]` The IDs of previous presets whose creation results the agent analyzes and improves on. { #previous data-toc-label='previous' class='reference-item' }
-###### `concurrency` - (Optional) `int` The number of simultaneous requests used for benchmarks during preset creation. { #concurrency data-toc-label='concurrency' class='reference-item' }
+###### `concurrency` - (Optional) `int` The number of simultaneous requests used for benchmarks during preset creation. Required for creation. { #concurrency data-toc-label='concurrency' class='reference-item' }
 ###### `input_tokens` - (Optional) `int` The number of input tokens per request used for benchmarks during preset creation. Defaults to `1024`. { #input_tokens data-toc-label='input_tokens' class='reference-item' }
 ###### `output_tokens` - (Optional) `int` The number of output tokens per request used for benchmarks during preset creation. Defaults to `1024`. { #output_tokens data-toc-label='output_tokens' class='reference-item' }
 ###### `shared_prefix_tokens` - (Optional) `int` How many of `input_tokens` are a prefix identical in every benchmark request, as a repeated system prompt or conversation history would be. Defaults to `0`, meaning every request is fully unique. { #shared_prefix_tokens data-toc-label='shared_prefix_tokens' class='reference-item' }

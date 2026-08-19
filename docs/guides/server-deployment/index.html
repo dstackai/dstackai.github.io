@@ -5596,12 +5596,12 @@ You can set the <code>DSTACK_SERVER_SSH_POOL_DISABLED</code> env var to minimize
 <p>The server can be set up via <code>pip</code> on Linux, macOS, and Windows (via WSL 2). It requires Git and OpenSSH.</p>
 </blockquote>
 <div class="termy">
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span><span class="s2">&quot;dstack[all]&quot;</span><span class="w"> </span>-U
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span><span class="s2">"dstack[all]"</span><span class="w"> </span>-U
 $<span class="w"> </span>dstack<span class="w"> </span>server
 
 Applying<span class="w"> </span>~/.dstack/server/config.yml...
 
-The<span class="w"> </span>admin<span class="w"> </span>token<span class="w"> </span>is<span class="w"> </span><span class="s2">&quot;bbae0f28-d3dd-4820-bf61-8f4bb40815da&quot;</span>
+The<span class="w"> </span>admin<span class="w"> </span>token<span class="w"> </span>is<span class="w"> </span><span class="s2">"bbae0f28-d3dd-4820-bf61-8f4bb40815da"</span>
 The<span class="w"> </span>server<span class="w"> </span>is<span class="w"> </span>running<span class="w"> </span>at<span class="w"> </span>http://127.0.0.1:3000/
 </code></pre></div>
 </div>
@@ -5611,12 +5611,12 @@ The<span class="w"> </span>server<span class="w"> </span>is<span class="w"> </sp
 <p>The server can be set up via <code>uv</code> on Linux, macOS, and Windows (via WSL 2). It requires Git and OpenSSH.</p>
 </blockquote>
 <div class="termy">
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>uv<span class="w"> </span>tool<span class="w"> </span>install<span class="w"> </span><span class="s1">&#39;dstack[all]&#39;</span><span class="w"> </span>-U
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>uv<span class="w"> </span>tool<span class="w"> </span>install<span class="w"> </span><span class="s1">'dstack[all]'</span><span class="w"> </span>-U
 $<span class="w"> </span>dstack<span class="w"> </span>server
 
 Applying<span class="w"> </span>~/.dstack/server/config.yml...
 
-The<span class="w"> </span>admin<span class="w"> </span>token<span class="w"> </span>is<span class="w"> </span><span class="s2">&quot;bbae0f28-d3dd-4820-bf61-8f4bb40815da&quot;</span>
+The<span class="w"> </span>admin<span class="w"> </span>token<span class="w"> </span>is<span class="w"> </span><span class="s2">"bbae0f28-d3dd-4820-bf61-8f4bb40815da"</span>
 The<span class="w"> </span>server<span class="w"> </span>is<span class="w"> </span>running<span class="w"> </span>at<span class="w"> </span>http://127.0.0.1:3000/
 </code></pre></div>
 </div>
@@ -5632,7 +5632,7 @@ The<span class="w"> </span>server<span class="w"> </span>is<span class="w"> </sp
 
 Applying<span class="w"> </span>~/.dstack/server/config.yml...
 
-The<span class="w"> </span>admin<span class="w"> </span>token<span class="w"> </span>is<span class="w"> </span><span class="s2">&quot;bbae0f28-d3dd-4820-bf61-8f4bb40815da&quot;</span>
+The<span class="w"> </span>admin<span class="w"> </span>token<span class="w"> </span>is<span class="w"> </span><span class="s2">"bbae0f28-d3dd-4820-bf61-8f4bb40815da"</span>
 The<span class="w"> </span>server<span class="w"> </span>is<span class="w"> </span>running<span class="w"> </span>at<span class="w"> </span>http://127.0.0.1:3000/
 </code></pre></div>
 </div>
@@ -5713,7 +5713,7 @@ If you're using a smaller DB instance, you may need to set lower <code>DSTACK_DB
    Ensure you've checked out the tag that corresponds to your server version (e.g. <code>git checkout 0.18.10</code>).</li>
 <li>Apply database migrations to the new database:
   <div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>src/dstack/_internal/server/
-<span class="nb">export</span><span class="w"> </span><span class="nv">DSTACK_DATABASE_URL</span><span class="o">=</span><span class="s2">&quot;postgresql+asyncpg://...&quot;</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">DSTACK_DATABASE_URL</span><span class="o">=</span><span class="s2">"postgresql+asyncpg://..."</span>
 alembic<span class="w"> </span>upgrade<span class="w"> </span>head
 </code></pre></div></li>
 <li>Install <a href="https://github.com/dimitri/pgloader">pgloader <span class="twemoji external"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m11.93 5 2.83 2.83L5 17.59 6.42 19l9.76-9.75L19 12.07V5z"/></svg></span></a></li>
@@ -5743,20 +5743,20 @@ the <code>DSTACK_SERVER_CLOUDWATCH_LOG_REGION</code> environment variables. </p>
 <details class="info">
 <summary>Required permissions</summary>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;Version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2012-10-17&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;Statement&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">  </span><span class="nt">"Version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-10-17"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"Statement"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">      </span><span class="p">{</span>
-<span class="w">          </span><span class="nt">&quot;Sid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;DstackLogStorageAllow&quot;</span><span class="p">,</span>
-<span class="w">          </span><span class="nt">&quot;Effect&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Allow&quot;</span><span class="p">,</span>
-<span class="w">          </span><span class="nt">&quot;Action&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">              </span><span class="s2">&quot;logs:DescribeLogStreams&quot;</span><span class="p">,</span>
-<span class="w">              </span><span class="s2">&quot;logs:CreateLogStream&quot;</span><span class="p">,</span>
-<span class="w">              </span><span class="s2">&quot;logs:GetLogEvents&quot;</span><span class="p">,</span>
-<span class="w">              </span><span class="s2">&quot;logs:PutLogEvents&quot;</span>
+<span class="w">          </span><span class="nt">"Sid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DstackLogStorageAllow"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"Effect"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Allow"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"Action"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">              </span><span class="s2">"logs:DescribeLogStreams"</span><span class="p">,</span>
+<span class="w">              </span><span class="s2">"logs:CreateLogStream"</span><span class="p">,</span>
+<span class="w">              </span><span class="s2">"logs:GetLogEvents"</span><span class="p">,</span>
+<span class="w">              </span><span class="s2">"logs:PutLogEvents"</span>
 <span class="w">          </span><span class="p">],</span>
-<span class="w">          </span><span class="nt">&quot;Resource&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">              </span><span class="s2">&quot;arn:aws:logs:::log-group:&lt;group name&gt;&quot;</span><span class="p">,</span>
-<span class="w">              </span><span class="s2">&quot;arn:aws:logs:::log-group:&lt;group name&gt;:*&quot;</span>
+<span class="w">          </span><span class="nt">"Resource"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">              </span><span class="s2">"arn:aws:logs:::log-group:&lt;group name&gt;"</span><span class="p">,</span>
+<span class="w">              </span><span class="s2">"arn:aws:logs:::log-group:&lt;group name&gt;:*"</span>
 <span class="w">          </span><span class="p">]</span>
 <span class="w">      </span><span class="p">}</span>
 <span class="w">  </span><span class="p">]</span>
@@ -5779,11 +5779,11 @@ If you want to set up a custom retention policy for <code>dstack</code> logs, cr
 <div class="termy">
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>gcloud<span class="w"> </span>logging<span class="w"> </span>buckets<span class="w"> </span>create<span class="w"> </span>dstack-bucket<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--location<span class="o">=</span>global<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--description<span class="o">=</span><span class="s2">&quot;Bucket for storing dstack run logs&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--description<span class="o">=</span><span class="s2">"Bucket for storing dstack run logs"</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--retention-days<span class="o">=</span><span class="m">10</span>
 $<span class="w"> </span>gcloud<span class="w"> </span>logging<span class="w"> </span>sinks<span class="w"> </span>create<span class="w"> </span>dstack-sink<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>logging.googleapis.com/projects/<span class="o">[</span>PROJECT<span class="o">]</span>/locations/global/buckets/dstack-bucket<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--log-filter<span class="o">=</span><span class="s1">&#39;logName = &quot;projects/[PROJECT]/logs/dstack-run-logs&quot;&#39;</span>
+<span class="w">    </span>--log-filter<span class="o">=</span><span class="s1">'logName = "projects/[PROJECT]/logs/dstack-run-logs"'</span>
 </code></pre></div>
 </div>
 </details>
@@ -5850,9 +5850,9 @@ The dstack UI/CLI will show empty logs. Use this mode when:</p>
 <details class="info">
 <summary>Required dependencies</summary>
 <p>To use Fluent-bit log storage, install the <code>fluentbit</code> extras:</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span><span class="s2">&quot;dstack[all]&quot;</span><span class="w"> </span>-U
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span><span class="s2">"dstack[all]"</span><span class="w"> </span>-U
 <span class="c1"># or</span>
-$<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span><span class="s2">&quot;dstack[fluentbit]&quot;</span><span class="w"> </span>-U
+$<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span><span class="s2">"dstack[fluentbit]"</span><span class="w"> </span>-U
 </code></pre></div>
 </details>
 <h2 id="file-storage">File storage<a class="headerlink" href="#file-storage" title="Permanent link">&para;</a></h2>
@@ -5863,19 +5863,19 @@ The bucket must be created beforehand. <code>dstack</code> won't try to create i
 <details class="info">
 <summary>Required permissions</summary>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;Version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2012-10-17&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;Statement&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="nt">"Version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-10-17"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"Statement"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">        </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;Effect&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Allow&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;Action&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">            </span><span class="s2">&quot;s3:GetObject&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;s3:PutObject&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;s3:DeleteObject&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;s3:ListBucket&quot;</span>
+<span class="w">        </span><span class="nt">"Effect"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Allow"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"Action"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="s2">"s3:GetObject"</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">"s3:PutObject"</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">"s3:DeleteObject"</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">"s3:ListBucket"</span>
 <span class="w">        </span><span class="p">],</span>
-<span class="w">        </span><span class="nt">&quot;Resource&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">            </span><span class="s2">&quot;arn:aws:s3:::&lt;bucket-name&gt;&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">&quot;arn:aws:s3:::&lt;bucket-name&gt;/*&quot;</span>
+<span class="w">        </span><span class="nt">"Resource"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="s2">"arn:aws:s3:::&lt;bucket-name&gt;"</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">"arn:aws:s3:::&lt;bucket-name&gt;/*"</span>
 <span class="w">        </span><span class="p">]</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">]</span>
@@ -5955,9 +5955,9 @@ Traces and logs are exported via OTLP over HTTP (<code>OTEL_EXPORTER_OTLP_PROTOC
 <details class="info">
 <summary>Required dependencies</summary>
 <p>To use the OpenTelemetry integration, install the <code>otel</code> extras:</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span><span class="s2">&quot;dstack[all]&quot;</span><span class="w"> </span>-U
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span><span class="s2">"dstack[all]"</span><span class="w"> </span>-U
 <span class="c1"># or</span>
-$<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span><span class="s2">&quot;dstack[otel]&quot;</span><span class="w"> </span>-U
+$<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span><span class="s2">"dstack[otel]"</span><span class="w"> </span>-U
 </code></pre></div>
 </details>
 <details class="info">

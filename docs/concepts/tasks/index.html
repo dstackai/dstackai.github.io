@@ -1068,6 +1068,19 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#node-groups" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Node groups
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#resources" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -5109,6 +5122,19 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#node-groups" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Node groups
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#resources" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -5450,7 +5476,7 @@ Submit<span class="w"> </span>the<span class="w"> </span>run<span class="w"> </s
 Launching<span class="w"> </span><span class="sb">`</span>axolotl-train<span class="sb">`</span>...
 ---&gt;<span class="w"> </span><span class="m">100</span>%
 
-<span class="o">{</span><span class="s1">&#39;loss&#39;</span>:<span class="w"> </span><span class="m">1</span>.4967,<span class="w"> </span><span class="s1">&#39;grad_norm&#39;</span>:<span class="w"> </span><span class="m">1</span>.2734375,<span class="w"> </span><span class="s1">&#39;learning_rate&#39;</span>:<span class="w"> </span><span class="m">1</span>.0000000000000002e-06,<span class="w"> </span><span class="s1">&#39;epoch&#39;</span>:<span class="w"> </span><span class="m">0</span>.0<span class="o">}</span>
+<span class="o">{</span><span class="s1">'loss'</span>:<span class="w"> </span><span class="m">1</span>.4967,<span class="w"> </span><span class="s1">'grad_norm'</span>:<span class="w"> </span><span class="m">1</span>.2734375,<span class="w"> </span><span class="s1">'learning_rate'</span>:<span class="w"> </span><span class="m">1</span>.0000000000000002e-06,<span class="w"> </span><span class="s1">'epoch'</span>:<span class="w"> </span><span class="m">0</span>.0<span class="o">}</span>
 <span class="w">  </span><span class="m">0</span>%<span class="w"> </span><span class="m">1</span>/24680<span class="w"> </span><span class="o">[</span><span class="m">00</span>:13&lt;<span class="m">95</span>:34:17,<span class="w"> </span><span class="m">13</span>.94s/it<span class="o">]</span>
 <span class="w">  </span><span class="m">6</span>%<span class="w"> </span><span class="m">73</span>/1300<span class="w"> </span><span class="o">[</span><span class="m">00</span>:48&lt;<span class="m">13</span>:57,<span class="w">  </span><span class="m">1</span>.47it/s<span class="o">]</span>
 </code></pre></div>
@@ -5541,9 +5567,9 @@ to add these commands to tell NCCL to use the private interface:</p>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apt-get install -y iproute2</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">&gt;</span>
 <span class="w">    </span><span class="no">if [[ $DSTACK_NODE_RANK == 0 ]]; then</span>
-<span class="w">      </span><span class="no">export NCCL_SOCKET_IFNAME=$(ip -4 -o addr show | fgrep $DSTACK_MASTER_NODE_IP | awk &#39;{print $2}&#39;)</span>
+<span class="w">      </span><span class="no">export NCCL_SOCKET_IFNAME=$(ip -4 -o addr show | fgrep $DSTACK_MASTER_NODE_IP | awk '{print $2}')</span>
 <span class="w">    </span><span class="no">else</span>
-<span class="w">      </span><span class="no">export NCCL_SOCKET_IFNAME=$(ip route get $DSTACK_MASTER_NODE_IP | sed -E &#39;s/.*?dev (\S+) .*/\1/;t;d&#39;)</span>
+<span class="w">      </span><span class="no">export NCCL_SOCKET_IFNAME=$(ip route get $DSTACK_MASTER_NODE_IP | sed -E 's/.*?dev (\S+) .*/\1/;t;d')</span>
 <span class="w">    </span><span class="no">fi</span>
 <span class="w">  </span><span class="c1"># ... The rest of the commands</span>
 </code></pre></div>
@@ -5554,6 +5580,112 @@ to add these commands to tell NCCL to use the private interface:</p>
 For convenience, <code>~/.ssh/config</code> is preconfigured with these options, so a simple <code>ssh &lt;node_ip&gt;</code> is enough.
 For a list of nodes IPs check the <code>DSTACK_NODES_IPS</code> environment variable.</p>
 </details>
+<h3 id="node-groups">Node groups<a class="headerlink" href="#node-groups" title="Permanent link">&para;</a></h3>
+<p>A task can define multiple node groups. Each group has its own <code>nodes</code> count,
+<code>resources</code>, <code>commands</code>, and <code>ports</code>.</p>
+<div editor-title=".dstack.yml"> 
+
+<div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">task</span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ray-cluster</span>
+
+<span class="nt">python</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.12</span>
+
+<span class="nt">groups</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">head</span>
+<span class="w">    </span><span class="nt">nodes</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">    </span><span class="nt">commands</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip uninstall -y ray &amp;&amp; pip install -U "ray[default]"</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ray start --head --port=6379 --block</span>
+<span class="w">    </span><span class="nt">resources</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
+<span class="w">      </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4GB..</span>
+<span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8265</span>
+
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">workers</span>
+<span class="w">    </span><span class="nt">nodes</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
+<span class="w">    </span><span class="nt">commands</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip uninstall -y ray &amp;&amp; pip install -U "ray[default]"</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ray start --address=${{ groups[0].nodes[0].IP_ADDRESS }}:6379 --block</span>
+<span class="w">    </span><span class="nt">resources</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">H100:8</span>
+</code></pre></div>
+
+</div>
+
+<p>Commands in any group can reference the internal IP address of any node in the run via
+<code>${{ groups[i].nodes[j].IP_ADDRESS }}</code>, where <code>i</code> is the index of the group in <code>groups</code> and <code>j</code> is
+the index of the node within that group.</p>
+<blockquote>
+<p><code>groups[0].nodes[0]</code> is the run's master node — it is what <code>DSTACK_MASTER_NODE_IP</code> resolves to.</p>
+</blockquote>
+<p>Currently, only <code>resources</code>, <code>commands</code>, and <code>ports</code> can be configured per node group. <a href="../../reference/dstack.yml/task/#groups"><code>groups</code></a> and top-level <code>nodes</code> are mutually exclusive.Support for other properties is coming soon.</p>
+<details class="info">
+<summary>Prefill/decode example</summary>
+<p>Node groups can mix CPU and GPU roles. This SGLang prefill/decode split uses a CPU
+router (<code>groups[0]</code>, the master) and GPU workers. <code>startup_order: workers-first</code>
+starts prefill and decode before the router.</p>
+<div editor-title=".dstack.yml">
+<div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">task</span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prefill-decode</span>
+<span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">lmsysorg/sglang:v0.5.10.post1</span>
+<span class="nt">env</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HF_TOKEN</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MODEL_ID=zai-org/GLM-4.5-Air-FP8</span>
+
+<span class="nt">startup_order</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">workers-first</span>
+<span class="nt">groups</span><span class="p">:</span>
+<span class="w">  </span><span class="c1"># Router (CPU) — master node; wires prefill + decode by IP</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">router</span>
+<span class="w">    </span><span class="nt">nodes</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">    </span><span class="nt">commands</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip install smg</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">        </span><span class="no">echo "prefill=${{ groups[1].nodes[0].IP_ADDRESS }}"</span>
+<span class="w">        </span><span class="no">echo "decode=${{ groups[2].nodes[0].IP_ADDRESS }}"</span>
+<span class="w">        </span><span class="no">smg launch \</span>
+<span class="w">          </span><span class="no">--pd-disaggregation \</span>
+<span class="w">          </span><span class="no">--prefill http://${{ groups[1].nodes[0].IP_ADDRESS }}:8000 8998 \</span>
+<span class="w">          </span><span class="no">--decode  http://${{ groups[2].nodes[0].IP_ADDRESS }}:8000 \</span>
+<span class="w">          </span><span class="no">--prefill-policy cache_aware \</span>
+<span class="w">          </span><span class="no">--host 0.0.0.0 --port 8000</span>
+<span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8000</span>
+<span class="w">    </span><span class="nt">resources</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4</span>
+
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prefill</span>
+<span class="w">    </span><span class="nt">nodes</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">    </span><span class="nt">commands</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">        </span><span class="no">python -m sglang.launch_server \</span>
+<span class="w">          </span><span class="no">--model-path $MODEL_ID \</span>
+<span class="w">          </span><span class="no">--disaggregation-mode prefill \</span>
+<span class="w">          </span><span class="no">--disaggregation-transfer-backend nixl \</span>
+<span class="w">          </span><span class="no">--host 0.0.0.0 --port 8000 \</span>
+<span class="w">          </span><span class="no">--disaggregation-bootstrap-port 8998</span>
+<span class="w">    </span><span class="nt">resources</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">H200</span>
+
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">decode</span>
+<span class="w">    </span><span class="nt">nodes</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">    </span><span class="nt">commands</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">        </span><span class="no">python -m sglang.launch_server \</span>
+<span class="w">          </span><span class="no">--model-path $MODEL_ID \</span>
+<span class="w">          </span><span class="no">--disaggregation-mode decode \</span>
+<span class="w">          </span><span class="no">--disaggregation-transfer-backend nixl \</span>
+<span class="w">          </span><span class="no">--host 0.0.0.0 --port 8000</span>
+<span class="w">    </span><span class="nt">resources</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">H200</span>
+</code></pre></div>
+</div>
+</details>
+<div class="admonition info">
+<p class="admonition-title">Examples</p>
+<p>See the <a href="../../examples/training/ray-ragen/">Ray+RAGEN</a> example for running a Ray cluster,
+and the <a href="../../examples/clusters/nccl-rccl-tests/">NCCL/RCCL tests</a> example for running <code>mpirun</code> with node groups.</p>
+</div>
 <h3 id="resources">Resources<a class="headerlink" href="#resources" title="Permanent link">&para;</a></h3>
 <p>When you specify a resource value like <code>cpu</code> or <code>memory</code>,
 you can either use an exact value (e.g. <code>24GB</code>) or a 
@@ -5592,7 +5724,8 @@ range (e.g. <code>24GB..</code>, or <code>24GB..80GB</code>, or <code>..80GB</co
 </div>
 
 <p>The <code>cpu</code> property lets you set the architecture (<code>x86</code> or <code>arm</code>) and core count — e.g., <code>x86:16</code> (16 x86 cores), <code>arm:8..</code> (at least 8 ARM cores). 
-If not set, <code>dstack</code> infers it from the GPU or defaults to <code>x86</code>.</p>
+If the architecture is not set, <code>dstack</code> allows any architecture supported by the <code>image</code>, or <code>x86</code> if no <code>image</code> is set.
+Since the default <code>dstack</code> image only supports <code>x86</code>, requesting <code>arm</code> requires setting <code>image</code> and is not compatible with <code>docker: true</code>.</p>
 <p>The <code>gpu</code> property lets you specify vendor, model, memory, and count — e.g., <code>nvidia</code> (one NVIDIA GPU), <code>A100</code> (one A100), <code>A10G,A100</code> (either), <code>A100:80GB</code> (one 80GB A100), <code>A100:2</code> (two A100), <code>24GB..40GB:2</code> (two GPUs with 24–40GB), <code>A100:40GB:2</code> (two 40GB A100s). </p>
 <p>If vendor is omitted, <code>dstack</code> infers it from the model or defaults to <code>nvidia</code>.</p>
 <!-- ??? info "Google Cloud TPU"
@@ -5834,7 +5967,7 @@ If you need <code>nvcc</code>, set the <a href="../../reference/dstack.yml/dev-e
 </tr>
 <tr>
 <td><code>DSTACK_MPI_HOSTFILE</code></td>
-<td>The path to a pre-populated MPI hostfile</td>
+<td>The path to a pre-populated MPI hostfile. The file lists GPU nodes as <code>&lt;ip&gt; slots=&lt;gpus&gt;</code> and CPU nodes as <code>&lt;ip&gt;</code></td>
 </tr>
 <tr>
 <td><code>DSTACK_WORKING_DIR</code></td>
@@ -6172,7 +6305,7 @@ it does not block other runs with lower priority from scheduling.</p>
 <span class="w">  </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">H100:8</span>
 
 <span class="nt">schedule</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">cron</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;15</span><span class="nv"> </span><span class="s">23</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*&quot;</span><span class="w"> </span><span class="c1"># everyday at 23:15 UTC</span>
+<span class="w">  </span><span class="nt">cron</span><span class="p">:</span><span class="w"> </span><span class="s">"15</span><span class="nv"> </span><span class="s">23</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*"</span><span class="w"> </span><span class="c1"># everyday at 23:15 UTC</span>
 </code></pre></div>
 
 </div>

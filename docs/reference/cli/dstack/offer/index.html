@@ -5128,7 +5128,7 @@ Resources:
 
 Profile:
 <span class="w">  </span>--profile<span class="w"> </span>NAME<span class="w">        </span>The<span class="w"> </span>name<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>profile.<span class="w"> </span>Defaults<span class="w"> </span>to<span class="w"> </span><span class="nv">$DSTACK_PROFILE</span>
-<span class="w">  </span>--no-profile<span class="w">          </span>Don<span class="err">&#39;</span>t<span class="w"> </span>load<span class="w"> </span>any<span class="w"> </span>profile.<span class="w"> </span>Enabled<span class="w"> </span>by<span class="w"> </span>default<span class="w"> </span><span class="k">if</span>
+<span class="w">  </span>--no-profile<span class="w">          </span>Don<span class="err">'</span>t<span class="w"> </span>load<span class="w"> </span>any<span class="w"> </span>profile.<span class="w"> </span>Enabled<span class="w"> </span>by<span class="w"> </span>default<span class="w"> </span><span class="k">if</span>
 <span class="w">                        </span><span class="nv">$DSTACK_NO_PROFILE</span><span class="w"> </span>is<span class="w"> </span><span class="nb">set</span><span class="w"> </span>and<span class="w"> </span>--profile<span class="w"> </span>is<span class="w"> </span>not
 <span class="w">                        </span>specified
 <span class="w">  </span>--max-price<span class="w"> </span>PRICE<span class="w">     </span>The<span class="w"> </span>maximum<span class="w"> </span>price<span class="w"> </span>per<span class="w"> </span>hour,<span class="w"> </span><span class="k">in</span><span class="w"> </span>dollars
@@ -5254,66 +5254,66 @@ The <code>region</code> value can only be used together with <code>backend</code
 
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>dstack<span class="w"> </span>offer<span class="w"> </span>--gpu<span class="w"> </span>amd<span class="w"> </span>--json
 <span class="o">{</span>
-<span class="w">  </span><span class="s2">&quot;project&quot;</span>:<span class="w"> </span><span class="s2">&quot;main&quot;</span>,
-<span class="w">  </span><span class="s2">&quot;user&quot;</span>:<span class="w"> </span><span class="s2">&quot;admin&quot;</span>,
-<span class="w">  </span><span class="s2">&quot;resources&quot;</span>:<span class="w"> </span><span class="o">{</span>
-<span class="w">    </span><span class="s2">&quot;cpu&quot;</span>:<span class="w"> </span><span class="o">{</span>
-<span class="w">      </span><span class="s2">&quot;min&quot;</span>:<span class="w"> </span><span class="m">2</span>,
-<span class="w">      </span><span class="s2">&quot;max&quot;</span>:<span class="w"> </span>null
+<span class="w">  </span><span class="s2">"project"</span>:<span class="w"> </span><span class="s2">"main"</span>,
+<span class="w">  </span><span class="s2">"user"</span>:<span class="w"> </span><span class="s2">"admin"</span>,
+<span class="w">  </span><span class="s2">"resources"</span>:<span class="w"> </span><span class="o">{</span>
+<span class="w">    </span><span class="s2">"cpu"</span>:<span class="w"> </span><span class="o">{</span>
+<span class="w">      </span><span class="s2">"min"</span>:<span class="w"> </span><span class="m">2</span>,
+<span class="w">      </span><span class="s2">"max"</span>:<span class="w"> </span>null
 <span class="w">    </span><span class="o">}</span>,
-<span class="w">    </span><span class="s2">&quot;memory&quot;</span>:<span class="w"> </span><span class="o">{</span>
-<span class="w">      </span><span class="s2">&quot;min&quot;</span>:<span class="w"> </span><span class="m">8</span>.0,
-<span class="w">      </span><span class="s2">&quot;max&quot;</span>:<span class="w"> </span>null
+<span class="w">    </span><span class="s2">"memory"</span>:<span class="w"> </span><span class="o">{</span>
+<span class="w">      </span><span class="s2">"min"</span>:<span class="w"> </span><span class="m">8</span>.0,
+<span class="w">      </span><span class="s2">"max"</span>:<span class="w"> </span>null
 <span class="w">    </span><span class="o">}</span>,
-<span class="w">    </span><span class="s2">&quot;shm_size&quot;</span>:<span class="w"> </span>null,
-<span class="w">    </span><span class="s2">&quot;gpu&quot;</span>:<span class="w"> </span><span class="o">{</span>
-<span class="w">      </span><span class="s2">&quot;vendor&quot;</span>:<span class="w"> </span><span class="s2">&quot;amd&quot;</span>,
-<span class="w">      </span><span class="s2">&quot;name&quot;</span>:<span class="w"> </span>null,
-<span class="w">      </span><span class="s2">&quot;count&quot;</span>:<span class="w"> </span><span class="o">{</span>
-<span class="w">        </span><span class="s2">&quot;min&quot;</span>:<span class="w"> </span><span class="m">1</span>,
-<span class="w">        </span><span class="s2">&quot;max&quot;</span>:<span class="w"> </span><span class="m">1</span>
+<span class="w">    </span><span class="s2">"shm_size"</span>:<span class="w"> </span>null,
+<span class="w">    </span><span class="s2">"gpu"</span>:<span class="w"> </span><span class="o">{</span>
+<span class="w">      </span><span class="s2">"vendor"</span>:<span class="w"> </span><span class="s2">"amd"</span>,
+<span class="w">      </span><span class="s2">"name"</span>:<span class="w"> </span>null,
+<span class="w">      </span><span class="s2">"count"</span>:<span class="w"> </span><span class="o">{</span>
+<span class="w">        </span><span class="s2">"min"</span>:<span class="w"> </span><span class="m">1</span>,
+<span class="w">        </span><span class="s2">"max"</span>:<span class="w"> </span><span class="m">1</span>
 <span class="w">      </span><span class="o">}</span>,
-<span class="w">      </span><span class="s2">&quot;memory&quot;</span>:<span class="w"> </span>null,
-<span class="w">      </span><span class="s2">&quot;total_memory&quot;</span>:<span class="w"> </span>null,
-<span class="w">      </span><span class="s2">&quot;compute_capability&quot;</span>:<span class="w"> </span>null
+<span class="w">      </span><span class="s2">"memory"</span>:<span class="w"> </span>null,
+<span class="w">      </span><span class="s2">"total_memory"</span>:<span class="w"> </span>null,
+<span class="w">      </span><span class="s2">"compute_capability"</span>:<span class="w"> </span>null
 <span class="w">    </span><span class="o">}</span>,
-<span class="w">    </span><span class="s2">&quot;disk&quot;</span>:<span class="w"> </span><span class="o">{</span>
-<span class="w">      </span><span class="s2">&quot;size&quot;</span>:<span class="w"> </span><span class="o">{</span>
-<span class="w">        </span><span class="s2">&quot;min&quot;</span>:<span class="w"> </span><span class="m">100</span>.0,
-<span class="w">        </span><span class="s2">&quot;max&quot;</span>:<span class="w"> </span>null
+<span class="w">    </span><span class="s2">"disk"</span>:<span class="w"> </span><span class="o">{</span>
+<span class="w">      </span><span class="s2">"size"</span>:<span class="w"> </span><span class="o">{</span>
+<span class="w">        </span><span class="s2">"min"</span>:<span class="w"> </span><span class="m">100</span>.0,
+<span class="w">        </span><span class="s2">"max"</span>:<span class="w"> </span>null
 <span class="w">      </span><span class="o">}</span>
 <span class="w">    </span><span class="o">}</span>
 <span class="w">  </span><span class="o">}</span>,
-<span class="w">  </span><span class="s2">&quot;max_price&quot;</span>:<span class="w"> </span>null,
-<span class="w">  </span><span class="s2">&quot;spot&quot;</span>:<span class="w"> </span>null,
-<span class="w">  </span><span class="s2">&quot;reservation&quot;</span>:<span class="w"> </span>null,
-<span class="w">  </span><span class="s2">&quot;offers&quot;</span>:<span class="w"> </span><span class="o">[</span>
+<span class="w">  </span><span class="s2">"max_price"</span>:<span class="w"> </span>null,
+<span class="w">  </span><span class="s2">"spot"</span>:<span class="w"> </span>null,
+<span class="w">  </span><span class="s2">"reservation"</span>:<span class="w"> </span>null,
+<span class="w">  </span><span class="s2">"offers"</span>:<span class="w"> </span><span class="o">[</span>
 <span class="w">    </span><span class="o">{</span>
-<span class="w">      </span><span class="s2">&quot;backend&quot;</span>:<span class="w"> </span><span class="s2">&quot;runpod&quot;</span>,
-<span class="w">      </span><span class="s2">&quot;region&quot;</span>:<span class="w"> </span><span class="s2">&quot;EU-RO-1&quot;</span>,
-<span class="w">      </span><span class="s2">&quot;instance_type&quot;</span>:<span class="w"> </span><span class="s2">&quot;AMD Instinct MI300X OAM&quot;</span>,
-<span class="w">      </span><span class="s2">&quot;resources&quot;</span>:<span class="w"> </span><span class="o">{</span>
-<span class="w">        </span><span class="s2">&quot;cpus&quot;</span>:<span class="w"> </span><span class="m">24</span>,
-<span class="w">        </span><span class="s2">&quot;memory_mib&quot;</span>:<span class="w"> </span><span class="m">289792</span>,
-<span class="w">        </span><span class="s2">&quot;gpus&quot;</span>:<span class="w"> </span><span class="o">[</span>
+<span class="w">      </span><span class="s2">"backend"</span>:<span class="w"> </span><span class="s2">"runpod"</span>,
+<span class="w">      </span><span class="s2">"region"</span>:<span class="w"> </span><span class="s2">"EU-RO-1"</span>,
+<span class="w">      </span><span class="s2">"instance_type"</span>:<span class="w"> </span><span class="s2">"AMD Instinct MI300X OAM"</span>,
+<span class="w">      </span><span class="s2">"resources"</span>:<span class="w"> </span><span class="o">{</span>
+<span class="w">        </span><span class="s2">"cpus"</span>:<span class="w"> </span><span class="m">24</span>,
+<span class="w">        </span><span class="s2">"memory_mib"</span>:<span class="w"> </span><span class="m">289792</span>,
+<span class="w">        </span><span class="s2">"gpus"</span>:<span class="w"> </span><span class="o">[</span>
 <span class="w">          </span><span class="o">{</span>
-<span class="w">            </span><span class="s2">&quot;name&quot;</span>:<span class="w"> </span><span class="s2">&quot;MI300X&quot;</span>,
-<span class="w">            </span><span class="s2">&quot;memory_mib&quot;</span>:<span class="w"> </span><span class="m">196608</span>,
-<span class="w">            </span><span class="s2">&quot;vendor&quot;</span>:<span class="w"> </span><span class="s2">&quot;amd&quot;</span>
+<span class="w">            </span><span class="s2">"name"</span>:<span class="w"> </span><span class="s2">"MI300X"</span>,
+<span class="w">            </span><span class="s2">"memory_mib"</span>:<span class="w"> </span><span class="m">196608</span>,
+<span class="w">            </span><span class="s2">"vendor"</span>:<span class="w"> </span><span class="s2">"amd"</span>
 <span class="w">          </span><span class="o">}</span>
 <span class="w">        </span><span class="o">]</span>,
-<span class="w">        </span><span class="s2">&quot;spot&quot;</span>:<span class="w"> </span>false,
-<span class="w">        </span><span class="s2">&quot;disk&quot;</span>:<span class="w"> </span><span class="o">{</span>
-<span class="w">          </span><span class="s2">&quot;size_mib&quot;</span>:<span class="w"> </span><span class="m">102400</span>
+<span class="w">        </span><span class="s2">"spot"</span>:<span class="w"> </span>false,
+<span class="w">        </span><span class="s2">"disk"</span>:<span class="w"> </span><span class="o">{</span>
+<span class="w">          </span><span class="s2">"size_mib"</span>:<span class="w"> </span><span class="m">102400</span>
 <span class="w">        </span><span class="o">}</span>,
-<span class="w">        </span><span class="s2">&quot;description&quot;</span>:<span class="w"> </span><span class="s2">&quot;24xCPU, 283GB, 1xMI300X (192GB), 100.0GB (disk)&quot;</span>
+<span class="w">        </span><span class="s2">"description"</span>:<span class="w"> </span><span class="s2">"24xCPU, 283GB, 1xMI300X (192GB), 100.0GB (disk)"</span>
 <span class="w">      </span><span class="o">}</span>,
-<span class="w">      </span><span class="s2">&quot;spot&quot;</span>:<span class="w"> </span>false,
-<span class="w">      </span><span class="s2">&quot;price&quot;</span>:<span class="w"> </span><span class="m">2</span>.49,
-<span class="w">      </span><span class="s2">&quot;availability&quot;</span>:<span class="w"> </span><span class="s2">&quot;available&quot;</span>
+<span class="w">      </span><span class="s2">"spot"</span>:<span class="w"> </span>false,
+<span class="w">      </span><span class="s2">"price"</span>:<span class="w"> </span><span class="m">2</span>.49,
+<span class="w">      </span><span class="s2">"availability"</span>:<span class="w"> </span><span class="s2">"available"</span>
 <span class="w">    </span><span class="o">}</span>
 <span class="w">  </span><span class="o">]</span>,
-<span class="w">  </span><span class="s2">&quot;total_offers&quot;</span>:<span class="w"> </span><span class="m">1</span>
+<span class="w">  </span><span class="s2">"total_offers"</span>:<span class="w"> </span><span class="m">1</span>
 <span class="o">}</span>
 </code></pre></div>
 

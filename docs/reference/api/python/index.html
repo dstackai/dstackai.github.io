@@ -4955,14 +4955,14 @@
 <span class="n">client</span> <span class="o">=</span> <span class="n">Client</span><span class="o">.</span><span class="n">from_config</span><span class="p">()</span>
 
 <span class="n">task</span> <span class="o">=</span> <span class="n">Task</span><span class="p">(</span>
-    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;my-awesome-run&quot;</span><span class="p">,</span>  <span class="c1"># If not specified, a random name is assigned</span>
-    <span class="n">image</span><span class="o">=</span><span class="s2">&quot;ghcr.io/huggingface/text-generation-inference:latest&quot;</span><span class="p">,</span>
-    <span class="n">env</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;MODEL_ID&quot;</span><span class="p">:</span> <span class="s2">&quot;TheBloke/Llama-2-13B-chat-GPTQ&quot;</span><span class="p">},</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">"my-awesome-run"</span><span class="p">,</span>  <span class="c1"># If not specified, a random name is assigned</span>
+    <span class="n">image</span><span class="o">=</span><span class="s2">"ghcr.io/huggingface/text-generation-inference:latest"</span><span class="p">,</span>
+    <span class="n">env</span><span class="o">=</span><span class="p">{</span><span class="s2">"MODEL_ID"</span><span class="p">:</span> <span class="s2">"TheBloke/Llama-2-13B-chat-GPTQ"</span><span class="p">},</span>
     <span class="n">commands</span><span class="o">=</span><span class="p">[</span>
-        <span class="s2">&quot;text-generation-launcher --trust-remote-code --quantize gptq&quot;</span><span class="p">,</span>
+        <span class="s2">"text-generation-launcher --trust-remote-code --quantize gptq"</span><span class="p">,</span>
     <span class="p">],</span>
-    <span class="n">ports</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;80&quot;</span><span class="p">],</span>
-    <span class="n">resources</span><span class="o">=</span><span class="n">Resources</span><span class="p">(</span><span class="n">gpu</span><span class="o">=</span><span class="n">GPU</span><span class="p">(</span><span class="n">memory</span><span class="o">=</span><span class="s2">&quot;24GB&quot;</span><span class="p">)),</span>
+    <span class="n">ports</span><span class="o">=</span><span class="p">[</span><span class="s2">"80"</span><span class="p">],</span>
+    <span class="n">resources</span><span class="o">=</span><span class="n">Resources</span><span class="p">(</span><span class="n">gpu</span><span class="o">=</span><span class="n">GPU</span><span class="p">(</span><span class="n">memory</span><span class="o">=</span><span class="s2">"24GB"</span><span class="p">)),</span>
 <span class="p">)</span>
 
 <span class="n">run</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">runs</span><span class="o">.</span><span class="n">apply_configuration</span><span class="p">(</span>
@@ -6026,8 +6026,8 @@ not a real run submission.</p>
 Must be invoked before mounting the repo to a run.</p>
 <p>Example:</p>
 <div class="highlight"><pre><span></span><code><span class="n">repo</span> <span class="o">=</span> <span class="n">RemoteRepo</span><span class="o">.</span><span class="n">from_url</span><span class="p">(</span>
-    <span class="n">repo_url</span><span class="o">=</span><span class="s2">&quot;https://github.com/dstackai/dstack-examples&quot;</span><span class="p">,</span>
-    <span class="n">repo_branch</span><span class="o">=</span><span class="s2">&quot;main&quot;</span><span class="p">,</span>
+    <span class="n">repo_url</span><span class="o">=</span><span class="s2">"https://github.com/dstackai/dstack-examples"</span><span class="p">,</span>
+    <span class="n">repo_branch</span><span class="o">=</span><span class="s2">"main"</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="n">client</span><span class="o">.</span><span class="n">repos</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">repo</span><span class="p">)</span>
 </code></pre></div>
@@ -6221,7 +6221,8 @@ the user's credentials. Ignored for other repo types.</p>
     </div>
 
 </div><h3 id="dstack.api.Task"><code>dstack.api.Task</code><a class="headerlink" href="#dstack.api.Task" title="Permanent link">&para;</a></h3>
-<h6 class="reference-item" id="nodes"><code>nodes</code> - (Optional) <code>int</code> Number of nodes. Defaults to <code>1</code>.<a class="headerlink" href="#nodes" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="nodes"><code>nodes</code> - (Optional) <code>int</code> The number of nodes for homogeneous multi-node tasks.<a class="headerlink" href="#nodes" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="_groups"><a href="#groups"><code>groups</code></a> - (Optional) <code>list[object]</code> A list of node groups for heterogeneous multi-node tasks. Mutually exclusive with <code>nodes</code>. When <code>groups</code> is set, top-level <code>commands</code>, <code>ports</code>, and <code>entrypoint</code> are not allowed; specify <code>commands</code> and <code>ports</code> in each node group instead. Top-level <code>resources</code> is not rejected (same as replica groups; see server defaults), but each group's <code>resources</code> is used for provisioning — omit means default empty resources, not inheritance from the top level..<a class="headerlink" href="#_groups" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="_ports"><a href="#ports"><code>ports</code></a> - (Optional) <code>list[object]</code> Port numbers/mapping to expose.<a class="headerlink" href="#_ports" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="commands"><code>commands</code> - (Optional) <code>list[str]</code> The shell commands to run.<a class="headerlink" href="#commands" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="name"><code>name</code> - (Optional) <code>str</code> The run name. If not specified, a random name is generated.<a class="headerlink" href="#name" title="Permanent link">&para;</a></h6>
@@ -6761,12 +6762,12 @@ the user's credentials. Ignored for other repo types.</p>
 
         <p>Creates an instance of a remote Git repo for mounting to a submitted run.</p>
 <p>Using a locally checked-out remote Git repo:</p>
-<div class="highlight"><pre><span></span><code><span class="n">repo</span><span class="o">=</span><span class="n">RemoteRepo</span><span class="o">.</span><span class="n">from_dir</span><span class="p">(</span><span class="n">repo_dir</span><span class="o">=</span><span class="s2">&quot;.&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">repo</span><span class="o">=</span><span class="n">RemoteRepo</span><span class="o">.</span><span class="n">from_dir</span><span class="p">(</span><span class="n">repo_dir</span><span class="o">=</span><span class="s2">"."</span><span class="p">)</span>
 </code></pre></div>
 <p>Using a remote Git repo by a URL:</p>
 <div class="highlight"><pre><span></span><code><span class="n">repo</span> <span class="o">=</span> <span class="n">RemoteRepo</span><span class="o">.</span><span class="n">from_url</span><span class="p">(</span>
-    <span class="n">repo_url</span><span class="o">=</span><span class="s2">&quot;https://github.com/dstackai/dstack-examples&quot;</span><span class="p">,</span>
-    <span class="n">repo_branch</span><span class="o">=</span><span class="s2">&quot;main&quot;</span>
+    <span class="n">repo_url</span><span class="o">=</span><span class="s2">"https://github.com/dstackai/dstack-examples"</span><span class="p">,</span>
+    <span class="n">repo_branch</span><span class="o">=</span><span class="s2">"main"</span>
 <span class="p">)</span>
 </code></pre></div>
 <p>Initialize the repo before mounting it.</p>
@@ -7006,9 +7007,9 @@ You can override these credentials via the <code>git_identity_file</code> or <co
 
         <p>Allows mounting a repo created programmatically.</p>
 <p>Example:</p>
-<div class="highlight"><pre><span></span><code><span class="n">virtual_repo</span> <span class="o">=</span> <span class="n">VirtualRepo</span><span class="p">(</span><span class="n">repo_id</span><span class="o">=</span><span class="s2">&quot;some-unique-repo-id&quot;</span><span class="p">)</span>
-<span class="n">virtual_repo</span><span class="o">.</span><span class="n">add_file_from_package</span><span class="p">(</span><span class="n">package</span><span class="o">=</span><span class="n">some_package</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="s2">&quot;requirements.txt&quot;</span><span class="p">)</span>
-<span class="n">virtual_repo</span><span class="o">.</span><span class="n">add_file_from_package</span><span class="p">(</span><span class="n">package</span><span class="o">=</span><span class="n">some_package</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="s2">&quot;train.py&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">virtual_repo</span> <span class="o">=</span> <span class="n">VirtualRepo</span><span class="p">(</span><span class="n">repo_id</span><span class="o">=</span><span class="s2">"some-unique-repo-id"</span><span class="p">)</span>
+<span class="n">virtual_repo</span><span class="o">.</span><span class="n">add_file_from_package</span><span class="p">(</span><span class="n">package</span><span class="o">=</span><span class="n">some_package</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="s2">"requirements.txt"</span><span class="p">)</span>
+<span class="n">virtual_repo</span><span class="o">.</span><span class="n">add_file_from_package</span><span class="p">(</span><span class="n">package</span><span class="o">=</span><span class="n">some_package</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="s2">"train.py"</span><span class="p">)</span>
 
 <span class="n">run</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">runs</span><span class="o">.</span><span class="n">apply_configuration</span><span class="p">(</span>
     <span class="n">configuration</span><span class="o">=...</span><span class="p">,</span>
@@ -7275,7 +7276,7 @@ You can override these credentials via the <code>git_identity_file</code> or <co
             </td>
           </tr>
           <tr class="doc-section-item">
-            <td><code><a class="autorefs autorefs-internal" title="&lt;code class=&quot;highlight language-python&quot;&gt;&lt;span class=&quot;n&quot;&gt;DATACRUNCH&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;datacrunch&amp;#39;&lt;/span&gt;&lt;/code&gt;
+            <td><code><a class="autorefs autorefs-internal" title="&lt;code class=&quot;highlight language-python&quot;&gt;&lt;span class=&quot;n&quot;&gt;DATACRUNCH&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#x27;datacrunch&#x27;&lt;/span&gt;&lt;/code&gt;
 
   &lt;span class=&quot;doc doc-labels&quot;&gt;
       &lt;small class=&quot;doc doc-label doc-label-class-attribute&quot;&gt;&lt;code&gt;class-attribute&lt;/code&gt;&lt;/small&gt;
@@ -7481,7 +7482,7 @@ You can override these credentials via the <code>git_identity_file</code> or <co
 
 
 <h4 id="dstack.api.BackendType.DATACRUNCH" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">DATACRUNCH</span> <span class="o">=</span> <span class="s1">&#39;datacrunch&#39;</span></code>
+            <code class="highlight language-python"><span class="n">DATACRUNCH</span> <span class="o">=</span> <span class="s1">'datacrunch'</span></code>
 
   <span class="doc doc-labels">
       <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>

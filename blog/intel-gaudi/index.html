@@ -4955,9 +4955,9 @@ the <a href="https://huggingface.co/datasets/lvwerra/stack-exchange-paired"><cod
 <span class="w">   </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip install wandb</span>
 <span class="w">   </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DEEPSPEED_HPU_ZERO3_SYNC_MARK_STEP_REQUIRED=1 python ../gaudi_spawn.py --world_size $DSTACK_GPUS_NUM --use_deepspeed sft.py</span>
 <span class="w">       </span><span class="l l-Scalar l-Scalar-Plain">--model_name_or_path $MODEL_ID</span>
-<span class="w">       </span><span class="l l-Scalar l-Scalar-Plain">--dataset_name &quot;lvwerra/stack-exchange-paired&quot;</span>
+<span class="w">       </span><span class="l l-Scalar l-Scalar-Plain">--dataset_name "lvwerra/stack-exchange-paired"</span>
 <span class="w">       </span><span class="l l-Scalar l-Scalar-Plain">--deepspeed ../language-modeling/llama2_ds_zero3_config.json</span>
-<span class="w">       </span><span class="l l-Scalar l-Scalar-Plain">--output_dir=&quot;./sft&quot;</span>
+<span class="w">       </span><span class="l l-Scalar l-Scalar-Plain">--output_dir="./sft"</span>
 <span class="w">       </span><span class="l l-Scalar l-Scalar-Plain">--do_train</span>
 <span class="w">       </span><span class="l l-Scalar l-Scalar-Plain">--max_steps=500</span>
 <span class="w">       </span><span class="l l-Scalar l-Scalar-Plain">--logging_steps=10</span>
@@ -4966,15 +4966,15 @@ the <a href="https://huggingface.co/datasets/lvwerra/stack-exchange-paired"><cod
 <span class="w">       </span><span class="l l-Scalar l-Scalar-Plain">--per_device_eval_batch_size=1</span>
 <span class="w">       </span><span class="l l-Scalar l-Scalar-Plain">--gradient_accumulation_steps=2</span>
 <span class="w">       </span><span class="l l-Scalar l-Scalar-Plain">--learning_rate=1e-4</span>
-<span class="w">       </span><span class="l l-Scalar l-Scalar-Plain">--lr_scheduler_type=&quot;cosine&quot;</span>
+<span class="w">       </span><span class="l l-Scalar l-Scalar-Plain">--lr_scheduler_type="cosine"</span>
 <span class="w">       </span><span class="l l-Scalar l-Scalar-Plain">--warmup_steps=100</span>
 <span class="w">       </span><span class="l l-Scalar l-Scalar-Plain">--weight_decay=0.05</span>
-<span class="w">       </span><span class="l l-Scalar l-Scalar-Plain">--optim=&quot;paged_adamw_32bit&quot;</span>
-<span class="w">       </span><span class="l l-Scalar l-Scalar-Plain">--lora_target_modules &quot;q_proj&quot; &quot;v_proj&quot;</span>
+<span class="w">       </span><span class="l l-Scalar l-Scalar-Plain">--optim="paged_adamw_32bit"</span>
+<span class="w">       </span><span class="l l-Scalar l-Scalar-Plain">--lora_target_modules "q_proj" "v_proj"</span>
 <span class="w">       </span><span class="l l-Scalar l-Scalar-Plain">--bf16</span>
 <span class="w">       </span><span class="l l-Scalar l-Scalar-Plain">--remove_unused_columns=False</span>
-<span class="w">       </span><span class="l l-Scalar l-Scalar-Plain">--run_name=&quot;sft_deepseek_70&quot;</span>
-<span class="w">       </span><span class="l l-Scalar l-Scalar-Plain">--report_to=&quot;wandb&quot;</span>
+<span class="w">       </span><span class="l l-Scalar l-Scalar-Plain">--run_name="sft_deepseek_70"</span>
+<span class="w">       </span><span class="l l-Scalar l-Scalar-Plain">--report_to="wandb"</span>
 <span class="w">       </span><span class="l l-Scalar l-Scalar-Plain">--use_habana</span>
 <span class="w">       </span><span class="l l-Scalar l-Scalar-Plain">--use_lazy_mode</span>
 

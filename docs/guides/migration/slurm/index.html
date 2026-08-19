@@ -6706,18 +6706,18 @@ srun<span class="w"> </span>--container-image<span class="o">=</span>docker://py
 <span class="c1">#SBATCH --partition=gpu</span>
 
 <span class="c1"># Set up distributed training environment</span>
-<span class="nv">MASTER_ADDR</span><span class="o">=</span><span class="k">$(</span>scontrol<span class="w"> </span>show<span class="w"> </span>hostnames<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$SLURM_JOB_NODELIST</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-n<span class="w"> </span><span class="m">1</span><span class="k">)</span>
+<span class="nv">MASTER_ADDR</span><span class="o">=</span><span class="k">$(</span>scontrol<span class="w"> </span>show<span class="w"> </span>hostnames<span class="w"> </span><span class="s2">"</span><span class="nv">$SLURM_JOB_NODELIST</span><span class="s2">"</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-n<span class="w"> </span><span class="m">1</span><span class="k">)</span>
 <span class="nv">MASTER_PORT</span><span class="o">=</span><span class="m">12345</span>
 
 <span class="nb">export</span><span class="w"> </span>MASTER_ADDR<span class="w"> </span>MASTER_PORT
 
 <span class="c1"># Launch training with torchrun (torch.distributed.launch is deprecated)</span>
 srun<span class="w"> </span>torchrun<span class="w"> </span><span class="se">\</span>
---nnodes<span class="o">=</span><span class="s2">&quot;</span><span class="nv">$SLURM_JOB_NUM_NODES</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
+--nnodes<span class="o">=</span><span class="s2">"</span><span class="nv">$SLURM_JOB_NUM_NODES</span><span class="s2">"</span><span class="w"> </span><span class="se">\</span>
 --nproc_per_node<span class="o">=</span><span class="m">8</span><span class="w"> </span><span class="se">\</span>
---node_rank<span class="o">=</span><span class="s2">&quot;</span><span class="nv">$SLURM_NODEID</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
+--node_rank<span class="o">=</span><span class="s2">"</span><span class="nv">$SLURM_NODEID</span><span class="s2">"</span><span class="w"> </span><span class="se">\</span>
 --rdzv_backend<span class="o">=</span>c10d<span class="w"> </span><span class="se">\</span>
---rdzv_endpoint<span class="o">=</span><span class="s2">&quot;</span><span class="nv">$MASTER_ADDR</span><span class="s2">:</span><span class="nv">$MASTER_PORT</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
+--rdzv_endpoint<span class="o">=</span><span class="s2">"</span><span class="nv">$MASTER_ADDR</span><span class="s2">:</span><span class="nv">$MASTER_PORT</span><span class="s2">"</span><span class="w"> </span><span class="se">\</span>
 train.py<span class="w"> </span><span class="se">\</span>
 --model<span class="w"> </span>llama-7b<span class="w"> </span><span class="se">\</span>
 --batch-size<span class="o">=</span><span class="m">32</span><span class="w"> </span><span class="se">\</span>
@@ -6737,7 +6737,7 @@ train.py<span class="w"> </span><span class="se">\</span>
 
 <span class="c1"># Convert SLURM_JOB_NODELIST to hostfile format</span>
 <span class="nv">HOSTFILE</span><span class="o">=</span><span class="k">$(</span>mktemp<span class="k">)</span>
-scontrol<span class="w"> </span>show<span class="w"> </span>hostnames<span class="w"> </span><span class="nv">$SLURM_JOB_NODELIST</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span>-v<span class="w"> </span><span class="nv">slots</span><span class="o">=</span><span class="nv">$SLURM_NTASKS_PER_NODE</span><span class="w"> </span><span class="s1">&#39;{print $0&quot; slots=&quot;slots}&#39;</span><span class="w"> </span>&gt;<span class="w"> </span><span class="nv">$HOSTFILE</span>
+scontrol<span class="w"> </span>show<span class="w"> </span>hostnames<span class="w"> </span><span class="nv">$SLURM_JOB_NODELIST</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span>-v<span class="w"> </span><span class="nv">slots</span><span class="o">=</span><span class="nv">$SLURM_NTASKS_PER_NODE</span><span class="w"> </span><span class="s1">'{print $0" slots="slots}'</span><span class="w"> </span>&gt;<span class="w"> </span><span class="nv">$HOSTFILE</span>
 
 <span class="c1"># MPI with NCCL tests or custom MPI application</span>
 mpirun<span class="w"> </span><span class="se">\</span>
@@ -7077,7 +7077,7 @@ $<span class="w"> </span>sacctmgr<span class="w"> </span>modify<span class="w"> 
 <span class="w">  </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">32GB</span>
 
 <span class="nt">schedule</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">cron</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;15</span><span class="nv"> </span><span class="s">23</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*&quot;</span><span class="w"> </span><span class="c1"># everyday at 23:15 UTC</span>
+<span class="w">  </span><span class="nt">cron</span><span class="p">:</span><span class="w"> </span><span class="s">"15</span><span class="nv"> </span><span class="s">23</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*"</span><span class="w"> </span><span class="c1"># everyday at 23:15 UTC</span>
 </code></pre></div>
 
 </div>
@@ -7709,7 +7709,7 @@ $<span class="w"> </span><span class="nb">exit</span>
 
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="k">for</span><span class="w"> </span>i<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="o">{</span><span class="m">1</span>..100<span class="o">}</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
 <span class="w">    </span>dstack<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>train.dstack.yml<span class="w"> </span><span class="se">\</span>
-<span class="w">      </span>--name<span class="w"> </span><span class="s2">&quot;train-array-task-</span><span class="si">${</span><span class="nv">i</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>--name<span class="w"> </span><span class="s2">"train-array-task-</span><span class="si">${</span><span class="nv">i</span><span class="si">}</span><span class="s2">"</span><span class="w"> </span><span class="se">\</span>
 <span class="w">      </span>--env<span class="w"> </span><span class="nv">TASK_ID</span><span class="o">=</span><span class="si">${</span><span class="nv">i</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
 <span class="w">      </span>--detach
 <span class="w">  </span><span class="k">done</span>
@@ -8068,10 +8068,10 @@ srun<span class="w"> </span>python<span class="w"> </span>train.py
 <span class="c1">#SBATCH --time=48:00:00</span>
 <span class="c1">#SBATCH --signal=B:USR1@300  # Send USR1 5 minutes before time limit</span>
 
-<span class="nb">trap</span><span class="w"> </span><span class="s1">&#39;python save_checkpoint.py --checkpoint-dir=/shared/checkpoints&#39;</span><span class="w"> </span>USR1
+<span class="nb">trap</span><span class="w"> </span><span class="s1">'python save_checkpoint.py --checkpoint-dir=/shared/checkpoints'</span><span class="w"> </span>USR1
 
 <span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-f<span class="w"> </span>/shared/checkpoints/latest.pt<span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
-<span class="w">  </span><span class="nv">RESUME_FLAG</span><span class="o">=</span><span class="s2">&quot;--resume /shared/checkpoints/latest.pt&quot;</span>
+<span class="w">  </span><span class="nv">RESUME_FLAG</span><span class="o">=</span><span class="s2">"--resume /shared/checkpoints/latest.pt"</span>
 <span class="k">fi</span>
 
 srun<span class="w"> </span>python<span class="w"> </span>train.py<span class="w"> </span><span class="se">\</span>
@@ -8125,7 +8125,7 @@ dcgmi<span class="w"> </span>diag<span class="w"> </span>-r<span class="w"> </sp
 <span class="nt">commands</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
 <span class="w">    </span><span class="no">if [ -f /checkpoints/latest.pt ]; then</span>
-<span class="w">      </span><span class="no">RESUME_FLAG=&quot;--resume /checkpoints/latest.pt&quot;</span>
+<span class="w">      </span><span class="no">RESUME_FLAG="--resume /checkpoints/latest.pt"</span>
 <span class="w">    </span><span class="no">fi</span>
 <span class="w">    </span><span class="no">python train.py \</span>
 <span class="w">      </span><span class="no">--checkpoint-dir=/checkpoints \</span>
@@ -8264,7 +8264,7 @@ dcgmi<span class="w"> </span>diag<span class="w"> </span>-r<span class="w"> </sp
 <p>Submit a job that depends on another job completing successfully:</p>
 <div class="termy">
 
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nv">JOB_TRAIN</span><span class="o">=</span><span class="k">$(</span>sbatch<span class="w"> </span>train.sh<span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;{print $4}&#39;</span><span class="k">)</span>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nv">JOB_TRAIN</span><span class="o">=</span><span class="k">$(</span>sbatch<span class="w"> </span>train.sh<span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">'{print $4}'</span><span class="k">)</span>
 <span class="w">  </span>Submitted<span class="w"> </span>batch<span class="w"> </span>job<span class="w"> </span><span class="m">1001</span>
 
 $<span class="w"> </span>sbatch<span class="w"> </span>--dependency<span class="o">=</span>afterok:<span class="nv">$JOB_TRAIN</span><span class="w"> </span>evaluate.sh
@@ -8292,18 +8292,18 @@ $<span class="w"> </span>sbatch<span class="w"> </span>--dependency<span class="
 
 <span class="nd">@task</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">train_model</span><span class="p">():</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Submit training job and wait for completion&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""Submit training job and wait for completion"""</span>
     <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
-        <span class="p">[</span><span class="s2">&quot;dstack&quot;</span><span class="p">,</span> <span class="s2">&quot;apply&quot;</span><span class="p">,</span> <span class="s2">&quot;-f&quot;</span><span class="p">,</span> <span class="s2">&quot;train.dstack.yml&quot;</span><span class="p">,</span> <span class="s2">&quot;--name&quot;</span><span class="p">,</span> <span class="s2">&quot;train-run&quot;</span><span class="p">],</span>
+        <span class="p">[</span><span class="s2">"dstack"</span><span class="p">,</span> <span class="s2">"apply"</span><span class="p">,</span> <span class="s2">"-f"</span><span class="p">,</span> <span class="s2">"train.dstack.yml"</span><span class="p">,</span> <span class="s2">"--name"</span><span class="p">,</span> <span class="s2">"train-run"</span><span class="p">],</span>
         <span class="n">check</span><span class="o">=</span><span class="kc">True</span>  <span class="c1"># Raises exception if training fails</span>
     <span class="p">)</span>
-    <span class="k">return</span> <span class="s2">&quot;train-run&quot;</span>
+    <span class="k">return</span> <span class="s2">"train-run"</span>
 
 <span class="nd">@task</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">evaluate_model</span><span class="p">(</span><span class="n">run_name</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Submit evaluation job after training succeeds&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""Submit evaluation job after training succeeds"""</span>
     <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
-        <span class="p">[</span><span class="s2">&quot;dstack&quot;</span><span class="p">,</span> <span class="s2">&quot;apply&quot;</span><span class="p">,</span> <span class="s2">&quot;-f&quot;</span><span class="p">,</span> <span class="s2">&quot;evaluate.dstack.yml&quot;</span><span class="p">,</span> <span class="s2">&quot;--name&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;eval-</span><span class="si">{</span><span class="n">run_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">],</span>
+        <span class="p">[</span><span class="s2">"dstack"</span><span class="p">,</span> <span class="s2">"apply"</span><span class="p">,</span> <span class="s2">"-f"</span><span class="p">,</span> <span class="s2">"evaluate.dstack.yml"</span><span class="p">,</span> <span class="s2">"--name"</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"eval-</span><span class="si">{</span><span class="n">run_name</span><span class="si">}</span><span class="s2">"</span><span class="p">],</span>
         <span class="n">check</span><span class="o">=</span><span class="kc">True</span>
     <span class="p">)</span>
 
@@ -8322,20 +8322,20 @@ $<span class="w"> </span>sbatch<span class="w"> </span>--dependency<span class="
 <span class="k">def</span><span class="w"> </span><span class="nf">ml_training_pipeline</span><span class="p">():</span>
     <span class="nd">@task</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">train</span><span class="p">(</span><span class="n">context</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Submit training job and wait for completion&quot;&quot;&quot;</span>
-        <span class="n">run_name</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;train-</span><span class="si">{</span><span class="n">context</span><span class="p">[</span><span class="s1">&#39;ds&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="w">        </span><span class="sd">"""Submit training job and wait for completion"""</span>
+        <span class="n">run_name</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"train-</span><span class="si">{</span><span class="n">context</span><span class="p">[</span><span class="s1">'ds'</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span>
         <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
-            <span class="p">[</span><span class="s2">&quot;dstack&quot;</span><span class="p">,</span> <span class="s2">&quot;apply&quot;</span><span class="p">,</span> <span class="s2">&quot;-f&quot;</span><span class="p">,</span> <span class="s2">&quot;train.dstack.yml&quot;</span><span class="p">,</span> <span class="s2">&quot;--name&quot;</span><span class="p">,</span> <span class="n">run_name</span><span class="p">],</span>
+            <span class="p">[</span><span class="s2">"dstack"</span><span class="p">,</span> <span class="s2">"apply"</span><span class="p">,</span> <span class="s2">"-f"</span><span class="p">,</span> <span class="s2">"train.dstack.yml"</span><span class="p">,</span> <span class="s2">"--name"</span><span class="p">,</span> <span class="n">run_name</span><span class="p">],</span>
             <span class="n">check</span><span class="o">=</span><span class="kc">True</span>  <span class="c1"># Raises exception if training fails</span>
         <span class="p">)</span>
         <span class="k">return</span> <span class="n">run_name</span>
 
     <span class="nd">@task</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">evaluate</span><span class="p">(</span><span class="n">run_name</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Submit evaluation job after training succeeds&quot;&quot;&quot;</span>
-        <span class="n">eval_name</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;eval-</span><span class="si">{</span><span class="n">run_name</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="w">        </span><span class="sd">"""Submit evaluation job after training succeeds"""</span>
+        <span class="n">eval_name</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"eval-</span><span class="si">{</span><span class="n">run_name</span><span class="si">}</span><span class="s2">"</span>
         <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
-            <span class="p">[</span><span class="s2">&quot;dstack&quot;</span><span class="p">,</span> <span class="s2">&quot;apply&quot;</span><span class="p">,</span> <span class="s2">&quot;-f&quot;</span><span class="p">,</span> <span class="s2">&quot;evaluate.dstack.yml&quot;</span><span class="p">,</span> <span class="s2">&quot;--name&quot;</span><span class="p">,</span> <span class="n">eval_name</span><span class="p">],</span>
+            <span class="p">[</span><span class="s2">"dstack"</span><span class="p">,</span> <span class="s2">"apply"</span><span class="p">,</span> <span class="s2">"-f"</span><span class="p">,</span> <span class="s2">"evaluate.dstack.yml"</span><span class="p">,</span> <span class="s2">"--name"</span><span class="p">,</span> <span class="n">eval_name</span><span class="p">],</span>
             <span class="n">check</span><span class="o">=</span><span class="kc">True</span>
         <span class="p">)</span>
 
@@ -8359,9 +8359,9 @@ $<span class="w"> </span>sbatch<span class="w"> </span>--dependency<span class="
 <span class="c1">#SBATCH --het-group=1 --nodes=1 --mem=500G --partition=highmem</span>
 
 <span class="c1"># Use SLURM_JOB_COMPONENT_ID to identify the component</span>
-<span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$SLURM_JOB_COMPONENT_ID</span><span class="s2">&quot;</span><span class="w"> </span>-eq<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="s2">"</span><span class="nv">$SLURM_JOB_COMPONENT_ID</span><span class="s2">"</span><span class="w"> </span>-eq<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
 <span class="w">    </span>srun<span class="w"> </span>python<span class="w"> </span>train.py
-<span class="k">elif</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$SLURM_JOB_COMPONENT_ID</span><span class="s2">&quot;</span><span class="w"> </span>-eq<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="k">elif</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="s2">"</span><span class="nv">$SLURM_JOB_COMPONENT_ID</span><span class="s2">"</span><span class="w"> </span>-eq<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
 <span class="w">    </span>srun<span class="w"> </span>python<span class="w"> </span>preprocess.py
 <span class="k">fi</span>
 </code></pre></div>

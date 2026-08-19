@@ -1071,11 +1071,11 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#create-a-preset" class="md-nav__link">
+  <a href="#apply-a-configuration" class="md-nav__link">
     <span class="md-ellipsis">
       
         <span class="md-typeset">
-          Create a preset
+          Apply a configuration
         </span>
       
     </span>
@@ -1181,11 +1181,11 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#apply-a-preset" class="md-nav__link">
+  <a href="#export-a-preset" class="md-nav__link">
     <span class="md-ellipsis">
       
         <span class="md-typeset">
-          Apply a preset
+          Export a preset
         </span>
       
     </span>
@@ -4997,11 +4997,11 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#create-a-preset" class="md-nav__link">
+  <a href="#apply-a-configuration" class="md-nav__link">
     <span class="md-ellipsis">
       
         <span class="md-typeset">
-          Create a preset
+          Apply a configuration
         </span>
       
     </span>
@@ -5107,11 +5107,11 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#apply-a-preset" class="md-nav__link">
+  <a href="#export-a-preset" class="md-nav__link">
     <span class="md-ellipsis">
       
         <span class="md-typeset">
-          Apply a preset
+          Export a preset
         </span>
       
     </span>
@@ -5290,7 +5290,7 @@
 <p>Before using presets, make sure you’ve <a href="../../installation/">installed</a> the server and CLI, and created a <a href="../fleets/">fleet</a>.</p>
 <p>Creating a preset requires the <code>claude</code> CLI to be installed on the machine where you create a preset.</p>
 </details>
-<h2 id="create-a-preset">Create a preset<a class="headerlink" href="#create-a-preset" title="Permanent link">&para;</a></h2>
+<h2 id="apply-a-configuration">Apply a configuration<a class="headerlink" href="#apply-a-configuration" title="Permanent link">&para;</a></h2>
 <p>First, define a preset configuration as a YAML file in your project folder.
 The filename must end with <code>.dstack.yml</code> (e.g. <code>.dstack.yml</code> or <code>preset.dstack.yml</code> are both acceptable).</p>
 <div editor-title="preset.dstack.yml">
@@ -5322,10 +5322,10 @@ The filename must end with <code>.dstack.yml</code> (e.g. <code>.dstack.yml</cod
 
 </div>
 
-<p>To create the preset, pass the configuration to the <code>dstack preset create</code> command:</p>
+<p>To create the preset, pass the configuration to the <code>dstack apply</code> command:</p>
 <div class="termy">
 
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>dstack<span class="w"> </span>preset<span class="w"> </span>create<span class="w"> </span>-f<span class="w"> </span>preset.dstack.yml<span class="w"> </span>--fleet<span class="w"> </span>b200-fleet
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>dstack<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>preset.dstack.yml<span class="w"> </span>--fleet<span class="w"> </span>b200-fleet
 Create<span class="w"> </span>the<span class="w"> </span>preset<span class="w"> </span>dsv4-flash?<span class="w"> </span><span class="o">[</span>y/n<span class="o">]</span>:<span class="w"> </span>y
 <span class="o">[</span><span class="m">2026</span>-08-04<span class="w"> </span><span class="m">11</span>:38:34<span class="o">]</span><span class="w"> </span>Starting<span class="w"> </span>preset<span class="w"> </span>creation<span class="w"> </span><span class="k">for</span><span class="w"> </span>deepseek-ai/DeepSeek-V4-Flash.<span class="w"> </span>Allowed<span class="w"> </span>fleets:<span class="w"> </span>b200-fleet.
 <span class="o">[</span><span class="m">2026</span>-08-04<span class="w"> </span><span class="m">12</span>:31:19<span class="o">]</span><span class="w"> </span>Trial<span class="w"> </span><span class="m">3</span><span class="w"> </span>switched<span class="w"> </span>from<span class="w"> </span>vLLM<span class="w"> </span>to<span class="w"> </span>SGLang:<span class="w"> </span><span class="m">319</span><span class="w"> </span>tok/s<span class="w"> </span>per<span class="w"> </span>user,<span class="w"> </span><span class="m">2</span>.2x<span class="w"> </span>the<span class="w"> </span>baseline.
@@ -5337,19 +5337,19 @@ Create<span class="w"> </span>the<span class="w"> </span>preset<span class="w"> 
 
 <blockquote>
 <p>It's highly recommended to specify the exact hardware you want the preset to use, so that the
-optimization is done against that hardware. Point <code>dstack preset create</code> to a fleet configured
+optimization is done against that hardware. Point <code>dstack apply</code> to a fleet configured
 correspondingly, via <code>fleets</code> inside the preset configuration or via <code>--fleet</code> in the CLI.</p>
 </blockquote>
 <p>The command executes entirely locally and uses the locally installed <code>claude</code> CLI along with <code>dstack</code>'s bundled skills. The agent uses a <code>dstack</code> task to find the best serving configuration for the available fleet offers, then submits it as a <code>dstack</code> service for a final benchmark.</p>
-<p>You can stop watching with <code>Ctrl</code>+<code>C</code> at any time. The agent keeps running, and <code>dstack preset logs -f</code> follows it again. Resume an interrupted creation with <code>dstack preset create --resume</code>:</p>
+<p>You can stop watching with <code>Ctrl</code>+<code>C</code> at any time. The agent keeps running, and <code>dstack preset logs -f</code> follows it again. Resume an interrupted creation with <code>dstack preset resume</code>:</p>
 <div class="termy">
 
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>dstack<span class="w"> </span>preset<span class="w"> </span>create<span class="w"> </span>-f<span class="w"> </span>preset.dstack.yml<span class="w"> </span>--resume<span class="w"> </span>a1b2c3d4
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>dstack<span class="w"> </span>preset<span class="w"> </span>resume<span class="w"> </span>a1b2c3d4
 </code></pre></div>
 
 </div>
 
-<p>When resuming, the constraints are read from the original session, not from the configuration file. Editing them and resuming has no effect. To change any of them, create a new preset.</p>
+<p>When resuming, the configuration and constraints are read from the original session. To change any of them, create a new preset.</p>
 <p>To stop a creation and its runs, use <code>dstack preset stop</code>.</p>
 <details class="info">
 <summary>Claude configuration</summary>
@@ -5369,7 +5369,7 @@ correspondingly, via <code>fleets</code> inside the preset configuration or via 
 <h2 id="configuration-options">Configuration options<a class="headerlink" href="#configuration-options" title="Permanent link">&para;</a></h2>
 <h3 id="fleets">Fleets<a class="headerlink" href="#fleets" title="Permanent link">&para;</a></h3>
 <p>Set <code>fleets</code> to restrict creation and reuse to specific <a href="../fleets/">fleets</a>. It's highly recommended to specify a fleet with exactly the hardware that you'd like the preset to use.</p>
-<p>Alternatively, pass <code>--fleet</code> to <code>dstack preset create</code> or <code>dstack preset apply</code>.</p>
+<p>Alternatively, pass <code>--fleet</code> to <code>dstack apply</code>.</p>
 <blockquote>
 <p>Profile settings such as <code>spot_policy</code>, <code>max_price</code>, and <code>backends</code> are ignored during preset
 creation. Configure them on the fleet instead.</p>
@@ -5399,7 +5399,7 @@ creation. Configure them on the fleet instead.</p>
 
 </div>
 
-<p>Alternatively, pass <code>--previous</code> (repeatable) to <code>dstack preset create</code>.</p>
+<p>Alternatively, pass <code>--previous</code> (repeatable) to <code>dstack apply</code>.</p>
 <h3 id="prompt">Prompt<a class="headerlink" href="#prompt" title="Permanent link">&para;</a></h3>
 <p>Set <code>prompt</code> to steer what the agent explores: which frameworks or model variants to try, or how deep to go before settling. It accepts inline text or a file <code>path</code>. Constraints such as <code>concurrency</code> and <code>max_ttft</code> can't be changed this way.</p>
 <div editor-title="preset.dstack.yml">
@@ -5440,11 +5440,20 @@ creation. Configure them on the fleet instead.</p>
 <p class="admonition-title">Reference</p>
 <p>The <code>preset</code> configuration supports many more options. See the <a href="../../reference/dstack.yml/preset/"><code>.dstack.yml</code> reference</a>.</p>
 </div>
-<h2 id="apply-a-preset">Apply a preset<a class="headerlink" href="#apply-a-preset" title="Permanent link">&para;</a></h2>
-<p>To deploy a preset as a service, pass the preset configuration and the preset ID to the <code>dstack preset apply</code> command:</p>
+<h2 id="export-a-preset">Export a preset<a class="headerlink" href="#export-a-preset" title="Permanent link">&para;</a></h2>
+<p>To deploy a preset, export it as a service configuration with <code>dstack preset export</code>:</p>
 <div class="termy">
 
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>dstack<span class="w"> </span>preset<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>preset.dstack.yml<span class="w"> </span>--id<span class="w"> </span>c83375b4
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>dstack<span class="w"> </span>preset<span class="w"> </span><span class="nb">export</span><span class="w"> </span>c83375b4<span class="w"> </span>-f<span class="w"> </span>qwen.dstack.yml
+Preset<span class="w"> </span>c83375b4<span class="w"> </span>exported<span class="w"> </span>to<span class="w"> </span>qwen.dstack.yml<span class="w"> </span><span class="o">(</span><span class="m">16</span><span class="w"> </span>files<span class="o">)</span>.<span class="w"> </span>Deploy<span class="w"> </span>it<span class="w"> </span>with<span class="w"> </span><span class="sb">`</span>dstack<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>qwen.dstack.yml<span class="sb">`</span>
+</code></pre></div>
+
+</div>
+
+<p>The command writes the service configuration along with any files it references, such as patches. The service is named after the preset; pass <code>-n</code> to override. Optionally, set a <a href="../gateways/">gateway</a> in the exported configuration, then submit it with <code>dstack apply</code>:</p>
+<div class="termy">
+
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>dstack<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>qwen.dstack.yml
 <span class="w"> </span>Project<span class="w">        </span>main
 <span class="w"> </span>User<span class="w">           </span>admin
 <span class="w"> </span>Type<span class="w">           </span>service
@@ -5454,8 +5463,6 @@ creation. Configure them on the fleet instead.</p>
 <span class="w"> </span>Retry<span class="w"> </span>policy<span class="w">   </span>off
 <span class="w"> </span>Idle<span class="w"> </span>duration<span class="w">  </span>5m
 <span class="w"> </span>Max<span class="w"> </span>duration<span class="w">   </span>off
-<span class="w"> </span>Model<span class="w">          </span>deepseek-ai/DeepSeek-V4-Flash<span class="w"> </span><span class="o">(</span>base<span class="o">)</span>
-<span class="w"> </span>Preset<span class="w">         </span>c83375b4<span class="w"> </span><span class="o">(</span><span class="nv">io</span><span class="o">=</span><span class="m">10000</span>/1500<span class="w"> </span><span class="nv">conc</span><span class="o">=</span><span class="m">1</span><span class="w"> </span>tok/s/user<span class="o">=</span><span class="m">309</span><span class="w"> </span>tok/s<span class="o">=</span><span class="m">296</span><span class="w"> </span><span class="nv">ttft</span><span class="o">=</span>213ms<span class="w"> </span><span class="nv">ctx</span><span class="o">=</span>1M<span class="o">)</span>
 
 <span class="w"> </span><span class="c1">#  BACKEND           RESOURCES                                    INSTANCE TYPE  PRICE</span>
 <span class="w"> </span><span class="m">1</span><span class="w">  </span>runpod<span class="w"> </span><span class="o">(</span>US-CA-2<span class="o">)</span><span class="w">  </span><span class="nv">cpu</span><span class="o">=</span><span class="m">48</span><span class="w"> </span><span class="nv">mem</span><span class="o">=</span>502GB<span class="w"> </span><span class="nv">disk</span><span class="o">=</span>500GB<span class="w"> </span><span class="nv">gpu</span><span class="o">=</span>B200:180GB:2<span class="w">  </span>NVIDIA<span class="w"> </span>B200<span class="w">    </span><span class="nv">$11</span>.78
@@ -5471,8 +5478,8 @@ Submit<span class="w"> </span>the<span class="w"> </span>run<span class="w"> </s
 <div class="termy">
 
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>dstack<span class="w"> </span>preset<span class="w"> </span>list
-<span class="w"> </span>ID<span class="w">        </span>BASE<span class="w">                           </span>GPU<span class="w">           </span>CONSTRAINTS<span class="w">           </span>BENCHMARK<span class="w">                                </span>STATUS<span class="w">          </span>SUBMITTED
-<span class="w"> </span>c83375b4<span class="w">  </span>deepseek-ai/DeepSeek-V4-Flash<span class="w">  </span>B200:180GB:2<span class="w">  </span><span class="nv">io</span><span class="o">=</span><span class="m">10000</span>/1500<span class="w"> </span><span class="nv">conc</span><span class="o">=</span><span class="m">1</span><span class="w">  </span>tok/s/user<span class="o">=</span><span class="m">309</span><span class="w"> </span><span class="nv">ttft</span><span class="o">=</span>213ms<span class="w"> </span><span class="nv">ctx</span><span class="o">=</span>1M<span class="w">  </span>▂▁██▇<span class="w">  </span>trialing<span class="w"> </span><span class="o">(</span><span class="m">5</span>/5<span class="o">)</span><span class="w">  </span><span class="m">2</span><span class="w"> </span>min<span class="w"> </span>ago
+<span class="w"> </span>NAME<span class="w">              </span>ID<span class="w">        </span>BASE<span class="w">                           </span>CONSTRAINTS<span class="w">      </span>BENCHMARK<span class="w">                                </span>STATUS<span class="w">          </span>SUBMITTED
+<span class="w"> </span>dsv4-flash-b200<span class="w">   </span>c83375b4<span class="w">  </span>deepseek-ai/DeepSeek-V4-Flash<span class="w">  </span><span class="nv">io</span><span class="o">=</span>10K/1.5K<span class="w"> </span><span class="nv">c</span><span class="o">=</span><span class="m">1</span><span class="w">  </span>tps/user<span class="o">=</span><span class="m">309</span><span class="w"> </span><span class="nv">ttft</span><span class="o">=</span>213ms<span class="w"> </span><span class="nv">ctx</span><span class="o">=</span>1M<span class="w">  </span>▂▁██▇<span class="w">  </span>trialing<span class="w"> </span><span class="o">(</span><span class="m">5</span>/5<span class="o">)</span><span class="w">  </span><span class="m">2</span><span class="w"> </span>min<span class="w"> </span>ago
 </code></pre></div>
 
 </div>
@@ -5481,16 +5488,16 @@ Submit<span class="w"> </span>the<span class="w"> </span>run<span class="w"> </s
 <div class="termy">
 
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>dstack<span class="w"> </span>preset<span class="w"> </span>list<span class="w"> </span>-a
-<span class="w"> </span>ID<span class="w">        </span>BASE<span class="w">                            </span>GPU<span class="w">              </span>CONSTRAINTS<span class="w">           </span>BENCHMARK<span class="w">                                     </span>STATUS<span class="w">          </span>SUBMITTED
-<span class="w"> </span>c83375b4<span class="w">  </span>deepseek-ai/DeepSeek-V4-Flash<span class="w">   </span>B200:180GB:2<span class="w">     </span><span class="nv">io</span><span class="o">=</span><span class="m">10000</span>/1500<span class="w"> </span><span class="nv">conc</span><span class="o">=</span><span class="m">1</span><span class="w">  </span>tok/s/user<span class="o">=</span><span class="m">309</span><span class="w"> </span><span class="nv">ttft</span><span class="o">=</span>213ms<span class="w"> </span><span class="nv">ctx</span><span class="o">=</span>1M<span class="w">   </span>▂▁██▇<span class="w">     </span>trialing<span class="w"> </span><span class="o">(</span><span class="m">5</span>/5<span class="o">)</span><span class="w">  </span><span class="m">2</span><span class="w"> </span>min<span class="w"> </span>ago
-<span class="w"> </span>092c792b<span class="w">  </span>Qwen/Qwen3.5-397B-A17B<span class="w">          </span>RTXPRO6000:4<span class="w">     </span><span class="nv">io</span><span class="o">=</span>8K/1K<span class="w"> </span><span class="nv">conc</span><span class="o">=</span><span class="m">64</span><span class="w">      </span>tok/s/user<span class="o">=</span><span class="m">19</span>.6<span class="w"> </span><span class="nv">ttft</span><span class="o">=</span><span class="m">3</span>.43s<span class="w"> </span><span class="nv">ctx</span><span class="o">=</span>32K<span class="w"> </span>▁▂▅▇█··<span class="w">   </span>verified<span class="w"> </span><span class="o">(</span><span class="m">7</span><span class="o">)</span><span class="w">    </span><span class="m">3</span><span class="w"> </span>days<span class="w"> </span>ago
-<span class="w"> </span>9ab0fa65<span class="w">  </span>Qwen/Qwen3.6-27B<span class="w">                </span>RTXPRO4500:1<span class="w">     </span><span class="nv">io</span><span class="o">=</span>1K/1K<span class="w"> </span><span class="nv">conc</span><span class="o">=</span><span class="m">8</span><span class="w">       </span>tok/s/user<span class="o">=</span><span class="m">57</span>.1<span class="w"> </span><span class="nv">ttft</span><span class="o">=</span>499ms<span class="w"> </span><span class="nv">ctx</span><span class="o">=</span>128K<span class="w"> </span>▁▄██▆·█<span class="w">  </span>verified<span class="w"> </span><span class="o">(</span><span class="m">7</span><span class="o">)</span><span class="w">    </span><span class="m">4</span><span class="w"> </span>days<span class="w"> </span>ago
-<span class="w"> </span>f91d6b60<span class="w">  </span>Qwen/Qwen3-32B<span class="w">                  </span>RTX5090:32GB:1<span class="w">   </span><span class="nv">io</span><span class="o">=</span>1K/512<span class="w"> </span><span class="nv">conc</span><span class="o">=</span><span class="m">8</span><span class="w">      </span>tok/s/user<span class="o">=</span><span class="m">85</span>.8<span class="w"> </span><span class="nv">ttft</span><span class="o">=</span>368ms<span class="w"> </span><span class="nv">ctx</span><span class="o">=</span>32K<span class="w"> </span>▁▁▅▅▄▅▇▄▇█<span class="w"> </span>verified<span class="w"> </span><span class="o">(</span><span class="m">10</span><span class="o">)</span><span class="w">  </span><span class="m">2</span><span class="w"> </span>weeks<span class="w"> </span>ago
+<span class="w"> </span>NAME<span class="w">               </span>ID<span class="w">        </span>BASE<span class="w">                            </span>CONSTRAINTS<span class="w">      </span>BENCHMARK<span class="w">                                     </span>STATUS<span class="w">          </span>SUBMITTED
+<span class="w"> </span>dsv4-flash-b200<span class="w">    </span>c83375b4<span class="w">  </span>deepseek-ai/DeepSeek-V4-Flash<span class="w">   </span><span class="nv">io</span><span class="o">=</span>10K/1.5K<span class="w"> </span><span class="nv">c</span><span class="o">=</span><span class="m">1</span><span class="w">  </span>tps/user<span class="o">=</span><span class="m">309</span><span class="w"> </span><span class="nv">ttft</span><span class="o">=</span>213ms<span class="w"> </span><span class="nv">ctx</span><span class="o">=</span>1M<span class="w">   </span>▂▁██▇<span class="w">     </span>trialing<span class="w"> </span><span class="o">(</span><span class="m">5</span>/5<span class="o">)</span><span class="w">  </span><span class="m">2</span><span class="w"> </span>min<span class="w"> </span>ago
+<span class="w"> </span>qwen35-pro6000<span class="w">     </span>092c792b<span class="w">  </span>Qwen/Qwen3.5-397B-A17B<span class="w">          </span><span class="nv">io</span><span class="o">=</span>8K/1K<span class="w"> </span><span class="nv">c</span><span class="o">=</span><span class="m">64</span><span class="w">    </span>tps/user<span class="o">=</span><span class="m">19</span>.6<span class="w"> </span><span class="nv">ttft</span><span class="o">=</span><span class="m">3</span>.43s<span class="w"> </span><span class="nv">ctx</span><span class="o">=</span>32K<span class="w"> </span>▁▂▅▇█··<span class="w">   </span>verified<span class="w"> </span><span class="o">(</span><span class="m">7</span><span class="o">)</span><span class="w">    </span><span class="m">3</span><span class="w"> </span>days<span class="w"> </span>ago
+<span class="w"> </span>qwen36-pro4500<span class="w">     </span>9ab0fa65<span class="w">  </span>Qwen/Qwen3.6-27B<span class="w">                </span><span class="nv">io</span><span class="o">=</span>1K/1K<span class="w"> </span><span class="nv">c</span><span class="o">=</span><span class="m">8</span><span class="w">     </span>tps/user<span class="o">=</span><span class="m">57</span>.1<span class="w"> </span><span class="nv">ttft</span><span class="o">=</span>499ms<span class="w"> </span><span class="nv">ctx</span><span class="o">=</span>128K<span class="w"> </span>▁▄██▆·█<span class="w">  </span>verified<span class="w"> </span><span class="o">(</span><span class="m">7</span><span class="o">)</span><span class="w">    </span><span class="m">4</span><span class="w"> </span>days<span class="w"> </span>ago
+<span class="w"> </span>qwen3-32b-5090<span class="w">     </span>f91d6b60<span class="w">  </span>Qwen/Qwen3-32B<span class="w">                  </span><span class="nv">io</span><span class="o">=</span>1K/512<span class="w"> </span><span class="nv">c</span><span class="o">=</span><span class="m">8</span><span class="w">    </span>tps/user<span class="o">=</span><span class="m">85</span>.8<span class="w"> </span><span class="nv">ttft</span><span class="o">=</span>368ms<span class="w"> </span><span class="nv">ctx</span><span class="o">=</span>32K<span class="w"> </span>▁▁▅▅▄▅▇▄▇█<span class="w"> </span>verified<span class="w"> </span><span class="o">(</span><span class="m">10</span><span class="o">)</span><span class="w">  </span><span class="m">2</span><span class="w"> </span>weeks<span class="w"> </span>ago
 </code></pre></div>
 
 </div>
 
-<p>The <code>CONSTRAINTS</code> column is what the creation was asked for, and <code>BENCHMARK</code> is the best trial so far. <code>tok/s/user</code> is the steady decode rate, measured as one second divided by the median time per output token, so it excludes the time to the first token.</p>
+<p>The <code>CONSTRAINTS</code> column is what the creation was asked for, and <code>BENCHMARK</code> is the best trial so far. <code>tps/user</code> is the steady decode rate, measured as one second divided by the mean time per output token, so it excludes the time to the first token.</p>
 <p>The glyphs after the benchmark are one per trial: height is throughput, a yellow bar is a trial whose benchmark broke a constraint, and a red <code>·</code> is one that produced no benchmark at all. The shape shows whether a run converged or wandered.</p>
 <p>Pass <code>-w</code> to watch in realtime, <code>-v</code> for more detail, or <code>--json</code> for complete preset objects. Filter with <code>--base</code> or <code>--repo</code>.</p>
 <h3 id="delete-presets">Delete presets<a class="headerlink" href="#delete-presets" title="Permanent link">&para;</a></h3>
@@ -5507,10 +5514,10 @@ Submit<span class="w"> </span>the<span class="w"> </span>run<span class="w"> </s
 <p>For command options and agent settings, see the <a href="../../reference/cli/dstack/preset/"><code>dstack preset</code> CLI reference</a>.</p>
 </div>
 <h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h2>
-<p>To trace the agent's activity, pass <code>--debug</code> to <code>dstack preset create</code>:</p>
+<p>To trace the agent's activity, pass <code>--debug</code> to <code>dstack apply</code>:</p>
 <div class="termy">
 
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>dstack<span class="w"> </span>preset<span class="w"> </span>create<span class="w"> </span>-f<span class="w"> </span>preset.dstack.yml<span class="w"> </span>--debug
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>dstack<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>preset.dstack.yml<span class="w"> </span>--debug
 </code></pre></div>
 
 </div>

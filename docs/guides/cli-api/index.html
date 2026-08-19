@@ -5373,7 +5373,7 @@ configuration. The example below submits a task.</p>
 <p><code>dstack apply</code> shows the plan and asks for confirmation before submitting
 the run. To only see the plan, answer <code>n</code> at the prompt:</p>
 <div class="termy">
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;n&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>dstack<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>.dstack.yml
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"n"</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>dstack<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>.dstack.yml
 </code></pre></div>
 </div>
 <p>Use <code>-y</code> to skip confirmation.</p>
@@ -5482,11 +5482,11 @@ Out of scope for this guide:
 configurations, and instances (if any):</p>
 <div class="termy">
 
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>curl<span class="w"> </span><span class="s2">&quot;&amp;lt;server URL&amp;gt;/api/project/&amp;lt;project name&amp;gt;/fleets/list&quot;</span><span class="w"> </span><span class="se">\</span>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>curl<span class="w"> </span><span class="s2">"&amp;lt;server URL&amp;gt;/api/project/&amp;lt;project name&amp;gt;/fleets/list"</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-X<span class="w"> </span>POST<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-H<span class="w"> </span><span class="s2">&quot;Authorization: Bearer &amp;lt;user token&amp;gt;&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-H<span class="w"> </span><span class="s1">&#39;Content-Type: application/json&#39;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-d<span class="w"> </span><span class="s1">&#39;{&quot;include_imported&quot;: true}&#39;</span>
+<span class="w">    </span>-H<span class="w"> </span><span class="s2">"Authorization: Bearer &amp;lt;user token&amp;gt;"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-H<span class="w"> </span><span class="s1">'Content-Type: application/json'</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-d<span class="w"> </span><span class="s1">'{"include_imported": true}'</span>
 </code></pre></div>
 
 </div>
@@ -5497,24 +5497,24 @@ configurations, and instances (if any):</p>
 <a href="../../reference/http/runs/"><code>/runs/get_plan</code></a> with the same lightweight
 task specification used by <code>dstack offer</code>:</p>
 <div class="termy">
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>curl<span class="w"> </span><span class="s2">&quot;&amp;lt;server URL&amp;gt;/api/project/&amp;lt;project name&amp;gt;/runs/get_plan&quot;</span><span class="w"> </span><span class="se">\</span>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>curl<span class="w"> </span><span class="s2">"&amp;lt;server URL&amp;gt;/api/project/&amp;lt;project name&amp;gt;/runs/get_plan"</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-X<span class="w"> </span>POST<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-H<span class="w"> </span><span class="s2">&quot;Authorization: Bearer &amp;lt;user token&amp;gt;&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-H<span class="w"> </span><span class="s1">&#39;Content-Type: application/json&#39;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-d<span class="w"> </span><span class="s1">&#39;{</span>
-<span class="s1">      &quot;run_spec&quot;: {</span>
-<span class="s1">        &quot;configuration&quot;: {</span>
-<span class="s1">          &quot;type&quot;: &quot;task&quot;,</span>
-<span class="s1">          &quot;commands&quot;: [&quot;:&quot;],</span>
-<span class="s1">          &quot;image&quot;: &quot;scratch&quot;,</span>
-<span class="s1">          &quot;user&quot;: &quot;root&quot;,</span>
-<span class="s1">          &quot;resources&quot;: {</span>
-<span class="s1">            &quot;gpu&quot;: 0</span>
+<span class="w">    </span>-H<span class="w"> </span><span class="s2">"Authorization: Bearer &amp;lt;user token&amp;gt;"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-H<span class="w"> </span><span class="s1">'Content-Type: application/json'</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-d<span class="w"> </span><span class="s1">'{</span>
+<span class="s1">      "run_spec": {</span>
+<span class="s1">        "configuration": {</span>
+<span class="s1">          "type": "task",</span>
+<span class="s1">          "commands": [":"],</span>
+<span class="s1">          "image": "scratch",</span>
+<span class="s1">          "user": "root",</span>
+<span class="s1">          "resources": {</span>
+<span class="s1">            "gpu": 0</span>
 <span class="s1">          }</span>
 <span class="s1">        }</span>
 <span class="s1">      },</span>
-<span class="s1">      &quot;max_offers&quot;: 5</span>
-<span class="s1">    }&#39;</span>
+<span class="s1">      "max_offers": 5</span>
+<span class="s1">    }'</span>
 </code></pre></div>
 </div>
 <p>If <code>fleets</code> is not set in the run configuration, offers are returned from
@@ -5526,24 +5526,24 @@ a fleet.</p>
 <p>Creating fleets uses <code>/fleets/get_plan</code> followed by <code>/fleets/apply</code>:</p>
 <div class="termy">
 
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>curl<span class="w"> </span><span class="s2">&quot;&amp;lt;server URL&amp;gt;/api/project/&amp;lt;project name&amp;gt;/fleets/get_plan&quot;</span><span class="w"> </span><span class="se">\</span>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>curl<span class="w"> </span><span class="s2">"&amp;lt;server URL&amp;gt;/api/project/&amp;lt;project name&amp;gt;/fleets/get_plan"</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-X<span class="w"> </span>POST<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-H<span class="w"> </span><span class="s2">&quot;Authorization: Bearer &amp;lt;user token&amp;gt;&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-H<span class="w"> </span><span class="s1">&#39;Content-Type: application/json&#39;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-d<span class="w"> </span><span class="s1">&#39;{</span>
-<span class="s1">      &quot;spec&quot;: {</span>
-<span class="s1">        &quot;configuration&quot;: {</span>
-<span class="s1">          &quot;type&quot;: &quot;fleet&quot;,</span>
-<span class="s1">          &quot;name&quot;: &quot;cpu-fleet&quot;,</span>
-<span class="s1">          &quot;nodes&quot;: &quot;0..1&quot;,</span>
-<span class="s1">          &quot;idle_duration&quot;: &quot;1h&quot;,</span>
-<span class="s1">          &quot;resources&quot;: {</span>
-<span class="s1">            &quot;gpu&quot;: 0</span>
+<span class="w">    </span>-H<span class="w"> </span><span class="s2">"Authorization: Bearer &amp;lt;user token&amp;gt;"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-H<span class="w"> </span><span class="s1">'Content-Type: application/json'</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-d<span class="w"> </span><span class="s1">'{</span>
+<span class="s1">      "spec": {</span>
+<span class="s1">        "configuration": {</span>
+<span class="s1">          "type": "fleet",</span>
+<span class="s1">          "name": "cpu-fleet",</span>
+<span class="s1">          "nodes": "0..1",</span>
+<span class="s1">          "idle_duration": "1h",</span>
+<span class="s1">          "resources": {</span>
+<span class="s1">            "gpu": 0</span>
 <span class="s1">          }</span>
 <span class="s1">        },</span>
-<span class="s1">        &quot;profile&quot;: {}</span>
+<span class="s1">        "profile": {}</span>
 <span class="s1">      }</span>
-<span class="s1">    }&#39;</span>
+<span class="s1">    }'</span>
 </code></pre></div>
 
 </div>
@@ -5551,27 +5551,27 @@ a fleet.</p>
 <p>Then apply the fleet plan:</p>
 <div class="termy">
 
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>curl<span class="w"> </span><span class="s2">&quot;&amp;lt;server URL&amp;gt;/api/project/&amp;lt;project name&amp;gt;/fleets/apply&quot;</span><span class="w"> </span><span class="se">\</span>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>curl<span class="w"> </span><span class="s2">"&amp;lt;server URL&amp;gt;/api/project/&amp;lt;project name&amp;gt;/fleets/apply"</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-X<span class="w"> </span>POST<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-H<span class="w"> </span><span class="s2">&quot;Authorization: Bearer &amp;lt;user token&amp;gt;&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-H<span class="w"> </span><span class="s1">&#39;Content-Type: application/json&#39;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-d<span class="w"> </span><span class="s1">&#39;{</span>
-<span class="s1">      &quot;plan&quot;: {</span>
-<span class="s1">        &quot;spec&quot;: {</span>
-<span class="s1">          &quot;configuration&quot;: {</span>
-<span class="s1">            &quot;type&quot;: &quot;fleet&quot;,</span>
-<span class="s1">            &quot;name&quot;: &quot;cpu-fleet&quot;,</span>
-<span class="s1">            &quot;nodes&quot;: &quot;0..1&quot;,</span>
-<span class="s1">            &quot;idle_duration&quot;: &quot;1h&quot;,</span>
-<span class="s1">            &quot;resources&quot;: {</span>
-<span class="s1">              &quot;gpu&quot;: 0</span>
+<span class="w">    </span>-H<span class="w"> </span><span class="s2">"Authorization: Bearer &amp;lt;user token&amp;gt;"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-H<span class="w"> </span><span class="s1">'Content-Type: application/json'</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-d<span class="w"> </span><span class="s1">'{</span>
+<span class="s1">      "plan": {</span>
+<span class="s1">        "spec": {</span>
+<span class="s1">          "configuration": {</span>
+<span class="s1">            "type": "fleet",</span>
+<span class="s1">            "name": "cpu-fleet",</span>
+<span class="s1">            "nodes": "0..1",</span>
+<span class="s1">            "idle_duration": "1h",</span>
+<span class="s1">            "resources": {</span>
+<span class="s1">              "gpu": 0</span>
 <span class="s1">            }</span>
 <span class="s1">          },</span>
-<span class="s1">          &quot;profile&quot;: {}</span>
+<span class="s1">          "profile": {}</span>
 <span class="s1">        }</span>
 <span class="s1">      },</span>
-<span class="s1">      &quot;force&quot;: false</span>
-<span class="s1">    }&#39;</span>
+<span class="s1">      "force": false</span>
+<span class="s1">    }'</span>
 </code></pre></div>
 
 </div>
@@ -5582,22 +5582,22 @@ a fleet.</p>
 and <a href="../../concepts/services/">services</a>. The example below submits a task:</p>
 <div class="termy">
 
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>curl<span class="w"> </span><span class="s2">&quot;&amp;lt;server URL&amp;gt;/api/project/&amp;lt;project name&amp;gt;/runs/apply&quot;</span><span class="w"> </span><span class="se">\</span>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>curl<span class="w"> </span><span class="s2">"&amp;lt;server URL&amp;gt;/api/project/&amp;lt;project name&amp;gt;/runs/apply"</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-X<span class="w"> </span>POST<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-H<span class="w"> </span><span class="s2">&quot;Authorization: Bearer &amp;lt;user token&amp;gt;&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-H<span class="w"> </span><span class="s1">&#39;Content-Type: application/json&#39;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-d<span class="w"> </span><span class="s1">&#39;{</span>
-<span class="s1">      &quot;plan&quot;: {</span>
-<span class="s1">        &quot;run_spec&quot;: {</span>
-<span class="s1">          &quot;run_name&quot;: &quot;hello-api&quot;,</span>
-<span class="s1">          &quot;configuration&quot;: {</span>
-<span class="s1">            &quot;type&quot;: &quot;task&quot;,</span>
-<span class="s1">            &quot;commands&quot;: [&quot;echo hello world&quot;]</span>
+<span class="w">    </span>-H<span class="w"> </span><span class="s2">"Authorization: Bearer &amp;lt;user token&amp;gt;"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-H<span class="w"> </span><span class="s1">'Content-Type: application/json'</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-d<span class="w"> </span><span class="s1">'{</span>
+<span class="s1">      "plan": {</span>
+<span class="s1">        "run_spec": {</span>
+<span class="s1">          "run_name": "hello-api",</span>
+<span class="s1">          "configuration": {</span>
+<span class="s1">            "type": "task",</span>
+<span class="s1">            "commands": ["echo hello world"]</span>
 <span class="s1">          }</span>
 <span class="s1">        }</span>
 <span class="s1">      },</span>
-<span class="s1">      &quot;force&quot;: false</span>
-<span class="s1">    }&#39;</span>
+<span class="s1">      "force": false</span>
+<span class="s1">    }'</span>
 </code></pre></div>
 
 </div>
@@ -5607,11 +5607,11 @@ generate a run name.</p>
 <p>Poll <code>/runs/get</code> to check the run status:</p>
 <div class="termy">
 
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>curl<span class="w"> </span><span class="s2">&quot;&amp;lt;server URL&amp;gt;/api/project/&amp;lt;project name&amp;gt;/runs/get&quot;</span><span class="w"> </span><span class="se">\</span>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>curl<span class="w"> </span><span class="s2">"&amp;lt;server URL&amp;gt;/api/project/&amp;lt;project name&amp;gt;/runs/get"</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-X<span class="w"> </span>POST<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-H<span class="w"> </span><span class="s2">&quot;Authorization: Bearer &amp;lt;user token&amp;gt;&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-H<span class="w"> </span><span class="s1">&#39;Content-Type: application/json&#39;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-d<span class="w"> </span><span class="s1">&#39;{&quot;run_name&quot;: &quot;hello-api&quot;}&#39;</span>
+<span class="w">    </span>-H<span class="w"> </span><span class="s2">"Authorization: Bearer &amp;lt;user token&amp;gt;"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-H<span class="w"> </span><span class="s1">'Content-Type: application/json'</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-d<span class="w"> </span><span class="s1">'{"run_name": "hello-api"}'</span>
 </code></pre></div>
 
 </div>
@@ -5621,15 +5621,15 @@ generate a run name.</p>
 <code>job_submission_id</code> from <code>/runs/get</code>, e.g. from <code>latest_job_submission.id</code>.</p>
 <div class="termy">
 
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>curl<span class="w"> </span><span class="s2">&quot;&amp;lt;server URL&amp;gt;/api/project/&amp;lt;project name&amp;gt;/logs/poll&quot;</span><span class="w"> </span><span class="se">\</span>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>curl<span class="w"> </span><span class="s2">"&amp;lt;server URL&amp;gt;/api/project/&amp;lt;project name&amp;gt;/logs/poll"</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-X<span class="w"> </span>POST<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-H<span class="w"> </span><span class="s2">&quot;Authorization: Bearer &amp;lt;user token&amp;gt;&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-H<span class="w"> </span><span class="s1">&#39;Content-Type: application/json&#39;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-d<span class="w"> </span><span class="s1">&#39;{</span>
-<span class="s1">      &quot;run_name&quot;: &quot;hello-api&quot;,</span>
-<span class="s1">      &quot;job_submission_id&quot;: &quot;&amp;lt;job submission id&amp;gt;&quot;,</span>
-<span class="s1">      &quot;limit&quot;: 100</span>
-<span class="s1">    }&#39;</span>
+<span class="w">    </span>-H<span class="w"> </span><span class="s2">"Authorization: Bearer &amp;lt;user token&amp;gt;"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-H<span class="w"> </span><span class="s1">'Content-Type: application/json'</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-d<span class="w"> </span><span class="s1">'{</span>
+<span class="s1">      "run_name": "hello-api",</span>
+<span class="s1">      "job_submission_id": "&amp;lt;job submission id&amp;gt;",</span>
+<span class="s1">      "limit": 100</span>
+<span class="s1">    }'</span>
 </code></pre></div>
 
 </div>

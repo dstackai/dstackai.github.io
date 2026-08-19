@@ -5079,7 +5079,7 @@ make<span class="w"> </span><span class="nv">MPI</span><span class="o">=</span><
 <span class="w">  </span>--hostfile<span class="w"> </span>hostfile<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>-N<span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>-n<span class="w"> </span><span class="m">16</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--mca<span class="w"> </span>plm_rsh_args<span class="w"> </span><span class="s2">&quot;-p 22 -l hotaisle&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--mca<span class="w"> </span>plm_rsh_args<span class="w"> </span><span class="s2">"-p 22 -l hotaisle"</span><span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--mca<span class="w"> </span>btl_tcp_if_include<span class="w"> </span>bond0<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>-x<span class="w"> </span><span class="nv">NCCL_IB_GID_INDEX</span><span class="o">=</span><span class="m">3</span><span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>-x<span class="w"> </span><span class="nv">NCCL_IB_DISABLE</span><span class="o">=</span><span class="m">0</span><span class="w"> </span><span class="se">\</span>
@@ -5298,12 +5298,12 @@ http {
 <li>From the host machine download sharegpt dataset and run vLLM benchmarks</li>
 </ol>
 <div class="highlight"><pre><span></span><code>wget<span class="w"> </span><span class="se">\</span>
-<span class="s2">&quot;https://huggingface.co/datasets/anon8231489123/ShareGPT_Vicuna_unfiltered/resolve/main/ShareGPT_V3_unfiltered_cleaned_split.json&quot;</span>
+<span class="s2">"https://huggingface.co/datasets/anon8231489123/ShareGPT_Vicuna_unfiltered/resolve/main/ShareGPT_V3_unfiltered_cleaned_split.json"</span>
 
 python3<span class="w"> </span>benchmark_serving.py<span class="w"> </span><span class="se">\</span>
 <span class="w">   </span>--backend<span class="w"> </span>vllm<span class="w"> </span><span class="se">\</span>
 --model<span class="w"> </span>meta-llama/Llama-3.1-8B-Instruct<span class="w"> </span><span class="se">\</span>
---dataset-name<span class="w"> </span>sharegpt<span class="w"> </span>--dataset-path<span class="o">=</span><span class="s2">&quot;ShareGPT_V3_unfiltered_cleaned_split.json&quot;</span><span class="w"> </span><span class="se">\</span>
+--dataset-name<span class="w"> </span>sharegpt<span class="w"> </span>--dataset-path<span class="o">=</span><span class="s2">"ShareGPT_V3_unfiltered_cleaned_split.json"</span><span class="w"> </span><span class="se">\</span>
 --request-rate<span class="o">=</span><span class="nv">$QPS</span>
 </code></pre></div>
 <p>The <code>QPS</code> values are <code>2</code>, <code>4</code>, .., <code>32</code>.</p>

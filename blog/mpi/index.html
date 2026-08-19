@@ -4815,15 +4815,15 @@ cluster usage—we’ve added support for it.</p>
 <span class="w">      </span><span class="no"># Generate hostfile for mpirun</span>
 <span class="w">      </span><span class="no">: &gt; hostfile</span>
 <span class="w">      </span><span class="no">for ip in ${DSTACK_NODES_IPS}; do</span>
-<span class="w">        </span><span class="no">echo &quot;${ip} slots=${DSTACK_GPUS_PER_NODE}&quot; &gt;&gt; hostfile</span>
+<span class="w">        </span><span class="no">echo "${ip} slots=${DSTACK_GPUS_PER_NODE}" &gt;&gt; hostfile</span>
 <span class="w">      </span><span class="no">done</span>
-<span class="w">      </span><span class="no">MPIRUN=&#39;mpirun --allow-run-as-root --hostfile hostfile&#39;</span>
+<span class="w">      </span><span class="no">MPIRUN='mpirun --allow-run-as-root --hostfile hostfile'</span>
 <span class="w">      </span><span class="no"># Wait for other nodes</span>
 <span class="w">      </span><span class="no">while true; do</span>
 <span class="w">        </span><span class="no">if ${MPIRUN} -n ${DSTACK_NODES_NUM} -N 1 true &gt;/dev/null 2&gt;&amp;1; then</span>
 <span class="w">          </span><span class="no">break</span>
 <span class="w">        </span><span class="no">fi</span>
-<span class="w">        </span><span class="no">echo &#39;Waiting for nodes...&#39;</span>
+<span class="w">        </span><span class="no">echo 'Waiting for nodes...'</span>
 <span class="w">        </span><span class="no">sleep 5</span>
 <span class="w">      </span><span class="no">done</span>
 <span class="w">      </span><span class="no"># Run NCCL tests</span>
@@ -4835,7 +4835,7 @@ cluster usage—we’ve added support for it.</p>
 <span class="w">        </span><span class="no">--bind-to none \</span>
 <span class="w">        </span><span class="no">./all_reduce_perf -b 8 -e 8G -f 2 -g 1</span>
 <span class="w">      </span><span class="no"># Notify nodes the job is done</span>
-<span class="w">      </span><span class="no">${MPIRUN} -n ${DSTACK_NODES_NUM} -N 1 sh -c &quot;echo done &gt; ${FIFO}&quot;</span>
+<span class="w">      </span><span class="no">${MPIRUN} -n ${DSTACK_NODES_NUM} -N 1 sh -c "echo done &gt; ${FIFO}"</span>
 <span class="w">    </span><span class="no">else</span>
 <span class="w">      </span><span class="no">mkfifo ${FIFO}</span>
 <span class="w">      </span><span class="no"># Wait for a message from the first node</span>

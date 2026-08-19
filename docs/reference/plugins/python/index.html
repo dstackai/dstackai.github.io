@@ -5140,8 +5140,8 @@
 <li>
 <p>Specify a <code>"dstack.plugins"</code> entry point in <code>pyproject.toml</code>:</p>
 <p><div editor-title="pyproject.toml"> </p>
-<div class="highlight"><pre><span></span><code><span class="k">[project.entry-points.</span><span class="s2">&quot;dstack.plugins&quot;</span><span class="k">]</span>
-<span class="n">example_plugin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;example_plugin:ExamplePlugin&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="k">[project.entry-points.</span><span class="s2">"dstack.plugins"</span><span class="k">]</span>
+<span class="n">example_plugin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"example_plugin:ExamplePlugin"</span>
 </code></pre></div>
 </div>
 </li>
@@ -5163,12 +5163,12 @@ Subclass <code>dstack.plugins.ApplyPolicy</code> to implement them.</p>
     <span class="k">def</span><span class="w"> </span><span class="nf">on_run_apply</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">user</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">project</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">spec</span><span class="p">:</span> <span class="n">RunSpec</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">RunSpec</span><span class="p">:</span>
         <span class="c1"># Forcing some limits</span>
         <span class="n">spec</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">max_price</span> <span class="o">=</span> <span class="mf">2.0</span>
-        <span class="n">spec</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">max_duration</span> <span class="o">=</span> <span class="s2">&quot;1d&quot;</span>
+        <span class="n">spec</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">max_duration</span> <span class="o">=</span> <span class="s2">"1d"</span>
         <span class="c1"># Setting some extra tags</span>
         <span class="k">if</span> <span class="n">spec</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">tags</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">spec</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">tags</span> <span class="o">=</span> <span class="p">{}</span>
         <span class="n">spec</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">tags</span> <span class="o">|=</span> <span class="p">{</span>
-            <span class="s2">&quot;team&quot;</span><span class="p">:</span> <span class="s2">&quot;my_team&quot;</span><span class="p">,</span>
+            <span class="s2">"team"</span><span class="p">:</span> <span class="s2">"my_team"</span><span class="p">,</span>
         <span class="p">}</span>
         <span class="c1"># Forbid something</span>
         <span class="k">if</span> <span class="p">(</span>
@@ -5180,8 +5180,8 @@ Subclass <code>dstack.plugins.ApplyPolicy</code> to implement them.</p>
                 <span class="ow">and</span> <span class="nb">any</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">privileged</span> <span class="ow">or</span> <span class="n">r</span><span class="o">.</span><span class="n">docker</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">spec</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">replicas</span><span class="p">)</span>
             <span class="p">)</span>
         <span class="p">):</span>
-            <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;User </span><span class="si">%s</span><span class="s2"> tries to run privileged containers&quot;</span><span class="p">,</span> <span class="n">user</span><span class="p">)</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Running privileged containers is forbidden&quot;</span><span class="p">)</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">"User </span><span class="si">%s</span><span class="s2"> tries to run privileged containers"</span><span class="p">,</span> <span class="n">user</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"Running privileged containers is forbidden"</span><span class="p">)</span>
         <span class="c1"># Set some service-specific properties</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">spec</span><span class="o">.</span><span class="n">configuration</span><span class="p">,</span> <span class="n">Service</span><span class="p">):</span>  
             <span class="n">spec</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">https</span> <span class="o">=</span> <span class="kc">True</span>

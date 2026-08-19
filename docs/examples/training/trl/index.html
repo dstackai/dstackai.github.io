@@ -5161,7 +5161,7 @@
 <span class="w">      </span><span class="no">trl/scripts/sft.py \</span>
 <span class="w">      </span><span class="no">--model_name meta-llama/Meta-Llama-3.1-8B \</span>
 <span class="w">      </span><span class="no">--dataset_name OpenAssistant/oasst_top1_2023-08-25 \</span>
-<span class="w">      </span><span class="no">--dataset_text_field=&quot;text&quot; \</span>
+<span class="w">      </span><span class="no">--dataset_text_field="text" \</span>
 <span class="w">      </span><span class="no">--per_device_train_batch_size 1 \</span>
 <span class="w">      </span><span class="no">--per_device_eval_batch_size 1 \</span>
 <span class="w">      </span><span class="no">--gradient_accumulation_steps 4 \</span>
@@ -5174,7 +5174,7 @@
 <span class="w">      </span><span class="no">--lora_target_modules q_proj k_proj v_proj o_proj \</span>
 <span class="w">      </span><span class="no">--load_in_4bit \</span>
 <span class="w">      </span><span class="no">--use_peft \</span>
-<span class="w">      </span><span class="no">--attn_implementation &quot;flash_attention_2&quot; \</span>
+<span class="w">      </span><span class="no">--attn_implementation "flash_attention_2" \</span>
 <span class="w">      </span><span class="no">--logging_steps=10 \</span>
 <span class="w">      </span><span class="no">--output_dir models/llama31 \</span>
 <span class="w">      </span><span class="no">--hub_model_id peterschmidt85/FineLlama-3.1-8B</span>
@@ -5262,7 +5262,7 @@ Provisioning...
 <span class="w">      </span><span class="no">trl/scripts/sft.py \</span>
 <span class="w">      </span><span class="no">--model_name $MODEL_ID \</span>
 <span class="w">      </span><span class="no">--dataset_name OpenAssistant/oasst_top1_2023-08-25 \</span>
-<span class="w">      </span><span class="no">--dataset_text_field=&quot;text&quot; \</span>
+<span class="w">      </span><span class="no">--dataset_text_field="text" \</span>
 <span class="w">      </span><span class="no">--per_device_train_batch_size 1 \</span>
 <span class="w">      </span><span class="no">--per_device_eval_batch_size 1 \</span>
 <span class="w">      </span><span class="no">--gradient_accumulation_steps 4 \</span>
@@ -5317,7 +5317,7 @@ Provisioning...
 <span class="w">      </span><span class="no">trl/scripts/sft.py \</span>
 <span class="w">      </span><span class="no">--model_name $MODEL_ID \</span>
 <span class="w">      </span><span class="no">--dataset_name OpenAssistant/oasst_top1_2023-08-25 \</span>
-<span class="w">      </span><span class="no">--dataset_text_field=&quot;text&quot; \</span>
+<span class="w">      </span><span class="no">--dataset_text_field="text" \</span>
 <span class="w">      </span><span class="no">--per_device_train_batch_size 1 \</span>
 <span class="w">      </span><span class="no">--per_device_eval_batch_size 1 \</span>
 <span class="w">      </span><span class="no">--gradient_accumulation_steps 4 \</span>

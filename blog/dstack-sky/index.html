@@ -4902,7 +4902,7 @@ for you.</p>
 <div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service</span>
 <span class="c1"># Deploys Mixtral 8x7B with Ollama</span>
 
-<span class="c1"># Serve model using Ollama&#39;s Docker image</span>
+<span class="c1"># Serve model using Ollama's Docker image</span>
 <span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ollama/ollama</span>
 <span class="nt">commands</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ollama serve &amp;</span>
@@ -4925,14 +4925,14 @@ for you.</p>
 
 
 <span class="n">client</span> <span class="o">=</span> <span class="n">OpenAI</span><span class="p">(</span>
-  <span class="n">base_url</span><span class="o">=</span><span class="s2">&quot;https://&lt;run name&gt;.&lt;project name&gt;.sky.dstack.ai/v1&quot;</span><span class="p">,</span>
-  <span class="n">api_key</span><span class="o">=</span><span class="s2">&quot;&lt;dstack token&gt;&quot;</span>
+  <span class="n">base_url</span><span class="o">=</span><span class="s2">"https://&lt;run name&gt;.&lt;project name&gt;.sky.dstack.ai/v1"</span><span class="p">,</span>
+  <span class="n">api_key</span><span class="o">=</span><span class="s2">"&lt;dstack token&gt;"</span>
 <span class="p">)</span>
 
 <span class="n">completion</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">chat</span><span class="o">.</span><span class="n">completions</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
-  <span class="n">model</span><span class="o">=</span><span class="s2">&quot;mixtral&quot;</span><span class="p">,</span>
+  <span class="n">model</span><span class="o">=</span><span class="s2">"mixtral"</span><span class="p">,</span>
   <span class="n">messages</span><span class="o">=</span><span class="p">[</span>
-    <span class="p">{</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;user&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="s2">&quot;Compose a poem that explains the concept of recursion in programming.&quot;</span><span class="p">}</span>
+    <span class="p">{</span><span class="s2">"role"</span><span class="p">:</span> <span class="s2">"user"</span><span class="p">,</span> <span class="s2">"content"</span><span class="p">:</span> <span class="s2">"Compose a poem that explains the concept of recursion in programming."</span><span class="p">}</span>
   <span class="p">]</span>
 <span class="p">)</span>
 

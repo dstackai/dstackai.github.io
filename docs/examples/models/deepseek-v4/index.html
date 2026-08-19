@@ -5055,7 +5055,7 @@
 <span class="w">      </span><span class="no">--mem-fraction-static 0.82 \</span>
 <span class="w">      </span><span class="no">--cuda-graph-max-bs 64 \</span>
 <span class="w">      </span><span class="no">--max-running-requests 256 \</span>
-<span class="w">      </span><span class="no">--deepep-config &#39;{&quot;normal_dispatch&quot;:{&quot;num_sms&quot;:96},&quot;normal_combine&quot;:{&quot;num_sms&quot;:96}}&#39; \</span>
+<span class="w">      </span><span class="no">--deepep-config '{"normal_dispatch":{"num_sms":96},"normal_combine":{"num_sms":96}}' \</span>
 <span class="w">      </span><span class="no">--tool-call-parser deepseekv4 \</span>
 <span class="w">      </span><span class="no">--reasoning-parser deepseek-v4 \</span>
 <span class="w">      </span><span class="no">--host 0.0.0.0 \</span>
@@ -5095,19 +5095,19 @@ $<span class="w"> </span>dstack<span class="w"> </span>apply<span class="w"> </s
 
 <div class="highlight"><pre><span></span><code>curl<span class="w"> </span>http://127.0.0.1:3000/proxy/services/main/deepseek-v4/v1/chat/completions<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-X<span class="w"> </span>POST<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-H<span class="w"> </span><span class="s1">&#39;Authorization: Bearer &amp;lt;user token&amp;gt;&#39;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-H<span class="w"> </span><span class="s1">&#39;Content-Type: application/json&#39;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-d<span class="w"> </span><span class="s1">&#39;{</span>
-<span class="s1">      &quot;model&quot;: &quot;deepseek-ai/DeepSeek-V4-Pro&quot;,</span>
-<span class="s1">      &quot;messages&quot;: [</span>
+<span class="w">    </span>-H<span class="w"> </span><span class="s1">'Authorization: Bearer &amp;lt;user token&amp;gt;'</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-H<span class="w"> </span><span class="s1">'Content-Type: application/json'</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-d<span class="w"> </span><span class="s1">'{</span>
+<span class="s1">      "model": "deepseek-ai/DeepSeek-V4-Pro",</span>
+<span class="s1">      "messages": [</span>
 <span class="s1">        {</span>
-<span class="s1">          &quot;role&quot;: &quot;user&quot;,</span>
-<span class="s1">          &quot;content&quot;: &quot;What is 15% of 240? Reply with just the number.&quot;</span>
+<span class="s1">          "role": "user",</span>
+<span class="s1">          "content": "What is 15% of 240? Reply with just the number."</span>
 <span class="s1">        }</span>
 <span class="s1">      ],</span>
-<span class="s1">      &quot;temperature&quot;: 0,</span>
-<span class="s1">      &quot;max_tokens&quot;: 32</span>
-<span class="s1">    }&#39;</span>
+<span class="s1">      "temperature": 0,</span>
+<span class="s1">      "max_tokens": 32</span>
+<span class="s1">    }'</span>
 </code></pre></div>
 
 </div>
@@ -5122,23 +5122,23 @@ top-level JSON fields.</p>
 
 <div class="highlight"><pre><span></span><code>curl<span class="w"> </span>http://127.0.0.1:3000/proxy/services/main/deepseek-v4/v1/chat/completions<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-X<span class="w"> </span>POST<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-H<span class="w"> </span><span class="s1">&#39;Authorization: Bearer &amp;lt;user token&amp;gt;&#39;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-H<span class="w"> </span><span class="s1">&#39;Content-Type: application/json&#39;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-d<span class="w"> </span><span class="s1">&#39;{</span>
-<span class="s1">      &quot;model&quot;: &quot;deepseek-ai/DeepSeek-V4-Pro&quot;,</span>
-<span class="s1">      &quot;messages&quot;: [</span>
+<span class="w">    </span>-H<span class="w"> </span><span class="s1">'Authorization: Bearer &amp;lt;user token&amp;gt;'</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-H<span class="w"> </span><span class="s1">'Content-Type: application/json'</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-d<span class="w"> </span><span class="s1">'{</span>
+<span class="s1">      "model": "deepseek-ai/DeepSeek-V4-Pro",</span>
+<span class="s1">      "messages": [</span>
 <span class="s1">        {</span>
-<span class="s1">          &quot;role&quot;: &quot;user&quot;,</span>
-<span class="s1">          &quot;content&quot;: &quot;Solve step by step: If 3x + 5 = 20, what is x?&quot;</span>
+<span class="s1">          "role": "user",</span>
+<span class="s1">          "content": "Solve step by step: If 3x + 5 = 20, what is x?"</span>
 <span class="s1">        }</span>
 <span class="s1">      ],</span>
-<span class="s1">      &quot;temperature&quot;: 0,</span>
-<span class="s1">      &quot;max_tokens&quot;: 256,</span>
-<span class="s1">      &quot;chat_template_kwargs&quot;: {</span>
-<span class="s1">        &quot;thinking&quot;: true</span>
+<span class="s1">      "temperature": 0,</span>
+<span class="s1">      "max_tokens": 256,</span>
+<span class="s1">      "chat_template_kwargs": {</span>
+<span class="s1">        "thinking": true</span>
 <span class="s1">      },</span>
-<span class="s1">      &quot;separate_reasoning&quot;: true</span>
-<span class="s1">    }&#39;</span>
+<span class="s1">      "separate_reasoning": true</span>
+<span class="s1">    }'</span>
 </code></pre></div>
 
 </div>

@@ -5135,19 +5135,19 @@ standard <code>qwen3</code> reasoning parser without extra ROCm-specific tuning 
 
 <div class="highlight"><pre><span></span><code>curl<span class="w"> </span>http://127.0.0.1:3000/proxy/services/main/qwen36/v1/chat/completions<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-X<span class="w"> </span>POST<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-H<span class="w"> </span><span class="s1">&#39;Authorization: Bearer &amp;lt;user token&amp;gt;&#39;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-H<span class="w"> </span><span class="s1">&#39;Content-Type: application/json&#39;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-d<span class="w"> </span><span class="s1">&#39;{</span>
-<span class="s1">      &quot;model&quot;: &quot;Qwen/Qwen3.6-27B&quot;,</span>
-<span class="s1">      &quot;messages&quot;: [</span>
+<span class="w">    </span>-H<span class="w"> </span><span class="s1">'Authorization: Bearer &amp;lt;user token&amp;gt;'</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-H<span class="w"> </span><span class="s1">'Content-Type: application/json'</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-d<span class="w"> </span><span class="s1">'{</span>
+<span class="s1">      "model": "Qwen/Qwen3.6-27B",</span>
+<span class="s1">      "messages": [</span>
 <span class="s1">        {</span>
-<span class="s1">          &quot;role&quot;: &quot;user&quot;,</span>
-<span class="s1">          &quot;content&quot;: &quot;A bat and a ball cost $1.10 total. The bat costs $1.00 more than the ball. How much does the ball cost? Answer with just the dollar amount.&quot;</span>
+<span class="s1">          "role": "user",</span>
+<span class="s1">          "content": "A bat and a ball cost $1.10 total. The bat costs $1.00 more than the ball. How much does the ball cost? Answer with just the dollar amount."</span>
 <span class="s1">        }</span>
 <span class="s1">      ],</span>
-<span class="s1">      &quot;separate_reasoning&quot;: true,</span>
-<span class="s1">      &quot;max_tokens&quot;: 1024</span>
-<span class="s1">    }&#39;</span>
+<span class="s1">      "separate_reasoning": true,</span>
+<span class="s1">      "max_tokens": 1024</span>
+<span class="s1">    }'</span>
 </code></pre></div>
 </div>
 
@@ -5243,7 +5243,7 @@ enable tool calling, add <code>--tool-call-parser qwen3_coder</code> to the serv
 <span class="nt">replicas</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">count</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
 <span class="w">    </span><span class="c1"># For now replica group with router must have count: 1</span>
-<span class="w">    </span><span class="nt">python</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;3.12&quot;</span>
+<span class="w">    </span><span class="nt">python</span><span class="p">:</span><span class="w"> </span><span class="s">"3.12"</span>
 <span class="w">    </span><span class="nt">commands</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip install smg</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>

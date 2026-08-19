@@ -4,7 +4,8 @@ The `task` configuration type allows running [tasks](../../concepts/tasks.md).
 
 ## Root reference
 
-###### `nodes` - (Optional) `int` Number of nodes. Defaults to `1`. { #nodes data-toc-label='nodes' class='reference-item' }
+###### `nodes` - (Optional) `int` The number of nodes for homogeneous multi-node tasks. { #nodes data-toc-label='nodes' class='reference-item' }
+###### [`groups`](#groups) - (Optional) `list[object]` A list of node groups for heterogeneous multi-node tasks. Mutually exclusive with `nodes`. When `groups` is set, top-level `commands`, `ports`, and `entrypoint` are not allowed; specify `commands` and `ports` in each node group instead. Top-level `resources` is not rejected (same as replica groups; see server defaults), but each group's `resources` is used for provisioning — omit means default empty resources, not inheritance from the top level.. { #_groups data-toc-label='groups' class='reference-item' }
 ###### [`ports`](#ports) - (Optional) `list[object]` Port numbers/mapping to expose. { #_ports data-toc-label='ports' class='reference-item' }
 ###### `commands` - (Optional) `list[str]` The shell commands to run. { #commands data-toc-label='commands' class='reference-item' }
 ###### `name` - (Optional) `str` The run name. If not specified, a random name is generated. { #name data-toc-label='name' class='reference-item' }

@@ -5067,13 +5067,13 @@ a provider of AMD GPU bare-metal and VM infrastructure.</p>
 </ol>
 <div class="highlight"><pre><span></span><code><span class="nv">isl</span><span class="o">=</span><span class="m">1024</span>
 <span class="nv">osl</span><span class="o">=</span><span class="m">1024</span>
-<span class="nv">MaxConcurrency</span><span class="o">=</span><span class="s2">&quot;4 8 16 32 64 128 256&quot;</span>
-<span class="nv">RESULT_DIR</span><span class="o">=</span><span class="s2">&quot;./results_concurrency_sweep&quot;</span>
+<span class="nv">MaxConcurrency</span><span class="o">=</span><span class="s2">"4 8 16 32 64 128 256"</span>
+<span class="nv">RESULT_DIR</span><span class="o">=</span><span class="s2">"./results_concurrency_sweep"</span>
 mkdir<span class="w"> </span>-p<span class="w"> </span><span class="nv">$RESULT_DIR</span>
 
 <span class="k">for</span><span class="w"> </span>concurrency<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="nv">$MaxConcurrency</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
 <span class="w">    </span><span class="nv">TIMESTAMP</span><span class="o">=</span><span class="k">$(</span>date<span class="w"> </span>+%Y%m%d-%H%M%S<span class="k">)</span>
-<span class="w">    </span><span class="nv">FILENAME</span><span class="o">=</span><span class="s2">&quot;llama3.3-70B-random-</span><span class="si">${</span><span class="nv">concurrency</span><span class="si">}</span><span class="s2">concurrency-</span><span class="si">${</span><span class="nv">TIMESTAMP</span><span class="si">}</span><span class="s2">.json&quot;</span>
+<span class="w">    </span><span class="nv">FILENAME</span><span class="o">=</span><span class="s2">"llama3.3-70B-random-</span><span class="si">${</span><span class="nv">concurrency</span><span class="si">}</span><span class="s2">concurrency-</span><span class="si">${</span><span class="nv">TIMESTAMP</span><span class="si">}</span><span class="s2">.json"</span>
 
 <span class="w">    </span>python3<span class="w"> </span>/app/vllm/benchmarks/benchmark_serving.py<span class="w"> </span><span class="se">\</span>
 <span class="w">        </span>--model<span class="w"> </span>meta-llama/Llama-3.3-70B-Instruct<span class="w"> </span><span class="se">\</span>
@@ -5085,8 +5085,8 @@ mkdir<span class="w"> </span>-p<span class="w"> </span><span class="nv">$RESULT_
 <span class="w">        </span>--ignore-eos<span class="w"> </span><span class="se">\</span>
 <span class="w">        </span>--percentile-metrics<span class="w"> </span>ttft,tpot,e2el<span class="w"> </span><span class="se">\</span>
 <span class="w">        </span>--save-result<span class="w"> </span><span class="se">\</span>
-<span class="w">        </span>--result-dir<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$RESULT_DIR</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">        </span>--result-filename<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$FILENAME</span><span class="s2">&quot;</span>
+<span class="w">        </span>--result-dir<span class="w"> </span><span class="s2">"</span><span class="nv">$RESULT_DIR</span><span class="s2">"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">        </span>--result-filename<span class="w"> </span><span class="s2">"</span><span class="nv">$FILENAME</span><span class="s2">"</span>
 <span class="k">done</span>
 </code></pre></div>
 <h4 id="training">Training<a class="headerlink" href="#training" title="Permanent link">&para;</a></h4>
@@ -5125,7 +5125,7 @@ pip<span class="w"> </span>install<span class="w"> </span>.
 <span class="w">    </span>--per_device_train_batch_size<span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--gradient_accumulation_steps<span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--gradient_checkpointing<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--eos_token<span class="w"> </span><span class="s1">&#39;&lt;|im_end|&gt;&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--eos_token<span class="w"> </span><span class="s1">'&lt;|im_end|&gt;'</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--eval_strategy<span class="w"> </span>steps<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--eval_steps<span class="w"> </span><span class="m">100</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--use_peft<span class="w"> </span><span class="se">\</span>

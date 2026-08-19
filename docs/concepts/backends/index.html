@@ -5492,77 +5492,77 @@ configure the backend.</p>
 <summary>Required permissions</summary>
 <p>The following AWS policy permissions are sufficient for <code>dstack</code> to work:</p>
 <div class="highlight"><pre><span></span><code>{
-    &quot;Version&quot;: &quot;2012-10-17&quot;,
-    &quot;Statement&quot;: [
+    "Version": "2012-10-17",
+    "Statement": [
         {
-            &quot;Effect&quot;: &quot;Allow&quot;,
-            &quot;Action&quot;: [
-                &quot;ec2:AttachVolume&quot;,
-                &quot;ec2:AuthorizeSecurityGroupEgress&quot;,
-                &quot;ec2:AuthorizeSecurityGroupIngress&quot;,
-                &quot;ec2:CreatePlacementGroup&quot;,
-                &quot;ec2:CancelSpotInstanceRequests&quot;,
-                &quot;ec2:CreateSecurityGroup&quot;,
-                &quot;ec2:CreateTags&quot;,
-                &quot;ec2:CreateVolume&quot;,
-                &quot;ec2:DeletePlacementGroup&quot;,
-                &quot;ec2:DeleteVolume&quot;,
-                &quot;ec2:DescribeAvailabilityZones&quot;,
-                &quot;ec2:DescribeCapacityReservations&quot;
-                &quot;ec2:DescribeImages&quot;,
-                &quot;ec2:DescribeInstances&quot;,
-                &quot;ec2:DescribeInstanceAttribute&quot;,
-                &quot;ec2:DescribeInstanceTypes&quot;,
-                &quot;ec2:DescribeRouteTables&quot;,
-                &quot;ec2:DescribeSecurityGroups&quot;,
-                &quot;ec2:DescribeSubnets&quot;,
-                &quot;ec2:DescribeVpcs&quot;,
-                &quot;ec2:DescribeVolumes&quot;,
-                &quot;ec2:DetachVolume&quot;,
-                &quot;ec2:RunInstances&quot;,
-                &quot;ec2:TerminateInstances&quot;
+            "Effect": "Allow",
+            "Action": [
+                "ec2:AttachVolume",
+                "ec2:AuthorizeSecurityGroupEgress",
+                "ec2:AuthorizeSecurityGroupIngress",
+                "ec2:CreatePlacementGroup",
+                "ec2:CancelSpotInstanceRequests",
+                "ec2:CreateSecurityGroup",
+                "ec2:CreateTags",
+                "ec2:CreateVolume",
+                "ec2:DeletePlacementGroup",
+                "ec2:DeleteVolume",
+                "ec2:DescribeAvailabilityZones",
+                "ec2:DescribeCapacityReservations"
+                "ec2:DescribeImages",
+                "ec2:DescribeInstances",
+                "ec2:DescribeInstanceAttribute",
+                "ec2:DescribeInstanceTypes",
+                "ec2:DescribeRouteTables",
+                "ec2:DescribeSecurityGroups",
+                "ec2:DescribeSubnets",
+                "ec2:DescribeVpcs",
+                "ec2:DescribeVolumes",
+                "ec2:DetachVolume",
+                "ec2:RunInstances",
+                "ec2:TerminateInstances"
             ],
-            &quot;Resource&quot;: &quot;*&quot;
+            "Resource": "*"
         },
         {
-            &quot;Effect&quot;: &quot;Allow&quot;,
-            &quot;Action&quot;: [
-                &quot;servicequotas:ListServiceQuotas&quot;,
-                &quot;servicequotas:GetServiceQuota&quot;
+            "Effect": "Allow",
+            "Action": [
+                "servicequotas:ListServiceQuotas",
+                "servicequotas:GetServiceQuota"
             ],
-            &quot;Resource&quot;: &quot;*&quot;
+            "Resource": "*"
         },
         {
-            &quot;Effect&quot;: &quot;Allow&quot;,
-            &quot;Action&quot;: [
-                &quot;elasticloadbalancing:CreateLoadBalancer&quot;,
-                &quot;elasticloadbalancing:CreateTargetGroup&quot;,
-                &quot;elasticloadbalancing:CreateListener&quot;,
-                &quot;elasticloadbalancing:RegisterTargets&quot;,
-                &quot;elasticloadbalancing:AddTags&quot;,
-                &quot;elasticloadbalancing:DeleteLoadBalancer&quot;,
-                &quot;elasticloadbalancing:DeleteTargetGroup&quot;,
-                &quot;elasticloadbalancing:DeleteListener&quot;,
-                &quot;elasticloadbalancing:DeregisterTargets&quot;
+            "Effect": "Allow",
+            "Action": [
+                "elasticloadbalancing:CreateLoadBalancer",
+                "elasticloadbalancing:CreateTargetGroup",
+                "elasticloadbalancing:CreateListener",
+                "elasticloadbalancing:RegisterTargets",
+                "elasticloadbalancing:AddTags",
+                "elasticloadbalancing:DeleteLoadBalancer",
+                "elasticloadbalancing:DeleteTargetGroup",
+                "elasticloadbalancing:DeleteListener",
+                "elasticloadbalancing:DeregisterTargets"
             ],
-            &quot;Resource&quot;: &quot;*&quot;
+            "Resource": "*"
         },
         {
-            &quot;Effect&quot;: &quot;Allow&quot;,
-            &quot;Action&quot;: [
-                &quot;acm:DescribeCertificate&quot;,
-                &quot;acm:ListCertificates&quot;
+            "Effect": "Allow",
+            "Action": [
+                "acm:DescribeCertificate",
+                "acm:ListCertificates"
             ],
-            &quot;Resource&quot;: &quot;*&quot;
+            "Resource": "*"
         },
         {
-            &quot;Effect&quot;: &quot;Allow&quot;,
-            &quot;Action&quot;: [
-                &quot;iam:GetInstanceProfile&quot;,
-                &quot;iam:GetRole&quot;,
-                &quot;iam:PassRole&quot;
+            "Effect": "Allow",
+            "Action": [
+                "iam:GetInstanceProfile",
+                "iam:GetRole",
+                "iam:PassRole"
             ],
-            &quot;Resource&quot;: &quot;*&quot;
+            "Resource": "*"
         }
     ]
 }
@@ -5571,30 +5571,30 @@ configure the backend.</p>
 <p>The <code>iam:*</code> permissions are only needed if you specify <code>iam_instance_profile</code> to assign to EC2 instances.</p>
 <p>The following additional permissions are required when running <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#network-cards">multi-EFA instance types</a> with <code>public_ips: true</code>:</p>
 <div class="highlight"><pre><span></span><code>{
-    &quot;Effect&quot;: &quot;Allow&quot;,
-    &quot;Action&quot;: [
-        &quot;ec2:AllocateAddress&quot;,
-        &quot;ec2:AssociateAddress&quot;,
-        &quot;ec2:DescribeAddresses&quot;,
-        &quot;ec2:DisassociateAddress&quot;,
-        &quot;ec2:ReleaseAddress&quot;
+    "Effect": "Allow",
+    "Action": [
+        "ec2:AllocateAddress",
+        "ec2:AssociateAddress",
+        "ec2:DescribeAddresses",
+        "ec2:DisassociateAddress",
+        "ec2:ReleaseAddress"
     ],
-    &quot;Resource&quot;: &quot;*&quot;
+    "Resource": "*"
 }
 </code></pre></div>
 <p>You can also limit permissions to specific resources in your account:</p>
 <div class="highlight"><pre><span></span><code>{
-    &quot;Version&quot;: &quot;2012-10-17&quot;,
-    &quot;Statement&quot;: [
+    "Version": "2012-10-17",
+    "Statement": [
         ...
         {
-            &quot;Effect&quot;: &quot;Allow&quot;,
-            &quot;Action&quot;: [
-                &quot;iam:GetInstanceProfile&quot;,
-                &quot;iam:GetRole&quot;,
-                &quot;iam:PassRole&quot;
+            "Effect": "Allow",
+            "Action": [
+                "iam:GetInstanceProfile",
+                "iam:GetRole",
+                "iam:PassRole"
             ],
-            &quot;Resource&quot;: &quot;arn:aws:iam::account-id:role/EC2-roles-for-XYZ-*&quot;
+            "Resource": "arn:aws:iam::account-id:role/EC2-roles-for-XYZ-*"
         }
     ]
 }
@@ -5669,7 +5669,7 @@ To use your own or other third-party images, set the <code>os_images</code> prop
 <span class="w">            </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">self</span>
 <span class="w">            </span><span class="nt">user</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dstack</span>
 <span class="w">          </span><span class="nt">nvidia</span><span class="p">:</span>
-<span class="w">            </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Some</span><span class="nv"> </span><span class="s">ThirdParty</span><span class="nv"> </span><span class="s">CUDA</span><span class="nv"> </span><span class="s">image&#39;</span>
+<span class="w">            </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">'Some</span><span class="nv"> </span><span class="s">ThirdParty</span><span class="nv"> </span><span class="s">CUDA</span><span class="nv"> </span><span class="s">image'</span>
 <span class="w">            </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">123456789012</span>
 <span class="w">            </span><span class="nt">user</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu</span>
 </code></pre></div>
@@ -5706,7 +5706,7 @@ The <code>user</code> specifies an OS user for instance provisioning.</p>
 </code></pre></div>
 </div>
 <p>If you don't know your <code>subscription_id</code> and <code>tenant_id</code>, use <a href="https://learn.microsoft.com/en-us/cli/azure/install-azure-cli">Azure CLI</a>:</p>
-<div class="highlight"><pre><span></span><code>az<span class="w"> </span>account<span class="w"> </span>show<span class="w"> </span>--query<span class="w"> </span><span class="s2">&quot;{subscription_id: id, tenant_id: tenantId}&quot;</span>
+<div class="highlight"><pre><span></span><code>az<span class="w"> </span>account<span class="w"> </span>show<span class="w"> </span>--query<span class="w"> </span><span class="s2">"{subscription_id: id, tenant_id: tenantId}"</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -5716,7 +5716,7 @@ az<span class="w"> </span>ad<span class="w"> </span>sp<span class="w"> </span>cr
 <span class="w">    </span>--name<span class="w"> </span>dstack-app<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--role<span class="w"> </span><span class="nv">$DSTACK_ROLE</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--scopes<span class="w"> </span>/subscriptions/<span class="nv">$SUBSCRIPTION_ID</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--query<span class="w"> </span><span class="s2">&quot;{ tenant_id: tenant, client_id: appId, client_secret: password }&quot;</span>
+<span class="w">    </span>--query<span class="w"> </span><span class="s2">"{ tenant_id: tenant, client_id: appId, client_secret: password }"</span>
 </code></pre></div>
 <p>Once you have <code>tenant_id</code>, <code>client_id</code>, and <code>client_secret</code>, go ahead and configure the backend.</p>
 <div editor-title="~/.dstack/server/config.yml">
@@ -5733,7 +5733,7 @@ az<span class="w"> </span>ad<span class="w"> </span>sp<span class="w"> </span>cr
 </code></pre></div>
 </div>
 <p>If you don't know your <code>subscription_id</code>, use <a href="https://learn.microsoft.com/en-us/cli/azure/install-azure-cli">Azure CLI</a>:</p>
-<div class="highlight"><pre><span></span><code>az<span class="w"> </span>account<span class="w"> </span>show<span class="w"> </span>--query<span class="w"> </span><span class="s2">&quot;{subscription_id: id}&quot;</span>
+<div class="highlight"><pre><span></span><code>az<span class="w"> </span>account<span class="w"> </span>show<span class="w"> </span>--query<span class="w"> </span><span class="s2">"{subscription_id: id}"</span>
 </code></pre></div>
 </div>
 </div>
@@ -5742,38 +5742,38 @@ az<span class="w"> </span>ad<span class="w"> </span>sp<span class="w"> </span>cr
 <summary>Required permissions</summary>
 <p>The following Azure permissions are sufficient for <code>dstack</code> to work:</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;properties&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;roleName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;dstack-role&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Minimal required permissions for using Azure with dstack&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;assignableScopes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">            </span><span class="s2">&quot;/subscriptions/${YOUR_SUBSCRIPTION_ID}&quot;</span>
+<span class="w">    </span><span class="nt">"properties"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"roleName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dstack-role"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Minimal required permissions for using Azure with dstack"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"assignableScopes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="s2">"/subscriptions/${YOUR_SUBSCRIPTION_ID}"</span>
 <span class="w">        </span><span class="p">],</span>
-<span class="w">        </span><span class="nt">&quot;permissions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="nt">"permissions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">            </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;actions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                </span><span class="s2">&quot;Microsoft.Authorization/*/read&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="s2">&quot;Microsoft.Compute/availabilitySets/*&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="s2">&quot;Microsoft.Compute/locations/*&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="s2">&quot;Microsoft.Compute/virtualMachines/*&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="s2">&quot;Microsoft.Compute/virtualMachineScaleSets/*&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="s2">&quot;Microsoft.Compute/cloudServices/*&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="s2">&quot;Microsoft.Compute/disks/write&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="s2">&quot;Microsoft.Compute/disks/read&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="s2">&quot;Microsoft.Compute/disks/delete&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="s2">&quot;Microsoft.ManagedIdentity/userAssignedIdentities/assign/action&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="s2">&quot;Microsoft.ManagedIdentity/userAssignedIdentities/read&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="s2">&quot;Microsoft.Network/networkSecurityGroups/*&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="s2">&quot;Microsoft.Network/locations/*&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="s2">&quot;Microsoft.Network/virtualNetworks/*&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="s2">&quot;Microsoft.Network/networkInterfaces/*&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="s2">&quot;Microsoft.Network/publicIPAddresses/*&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="s2">&quot;Microsoft.Resources/subscriptions/resourceGroups/read&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="s2">&quot;Microsoft.Resources/subscriptions/resourceGroups/write&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="s2">&quot;Microsoft.Resources/subscriptions/read&quot;</span>
+<span class="w">            </span><span class="nt">"actions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="s2">"Microsoft.Authorization/*/read"</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">"Microsoft.Compute/availabilitySets/*"</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">"Microsoft.Compute/locations/*"</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">"Microsoft.Compute/virtualMachines/*"</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">"Microsoft.Compute/virtualMachineScaleSets/*"</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">"Microsoft.Compute/cloudServices/*"</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">"Microsoft.Compute/disks/write"</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">"Microsoft.Compute/disks/read"</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">"Microsoft.Compute/disks/delete"</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">"Microsoft.ManagedIdentity/userAssignedIdentities/assign/action"</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">"Microsoft.ManagedIdentity/userAssignedIdentities/read"</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">"Microsoft.Network/networkSecurityGroups/*"</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">"Microsoft.Network/locations/*"</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">"Microsoft.Network/virtualNetworks/*"</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">"Microsoft.Network/networkInterfaces/*"</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">"Microsoft.Network/publicIPAddresses/*"</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">"Microsoft.Resources/subscriptions/resourceGroups/read"</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">"Microsoft.Resources/subscriptions/resourceGroups/write"</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">"Microsoft.Resources/subscriptions/read"</span>
 <span class="w">            </span><span class="p">],</span>
-<span class="w">            </span><span class="nt">&quot;notActions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
-<span class="w">            </span><span class="nt">&quot;dataActions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
-<span class="w">            </span><span class="nt">&quot;notDataActions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span>
+<span class="w">            </span><span class="nt">"notActions"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
+<span class="w">            </span><span class="nt">"dataActions"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
+<span class="w">            </span><span class="nt">"notDataActions"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span>
 <span class="w">            </span><span class="p">}</span>
 <span class="w">        </span><span class="p">]</span>
 <span class="w">    </span><span class="p">}</span>
@@ -5872,17 +5872,17 @@ specify the contents of the JSON file in <code>data</code>:</p>
 <span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service_account</span>
 <span class="w">  </span><span class="nt">data</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
 <span class="w">    </span><span class="no">{</span>
-<span class="w">      </span><span class="no">&quot;type&quot;: &quot;service_account&quot;,</span>
-<span class="w">      </span><span class="no">&quot;project_id&quot;: &quot;my-gcp-project&quot;,</span>
-<span class="w">      </span><span class="no">&quot;private_key_id&quot;: &quot;abcd1234efgh5678ijkl9012mnop3456qrst7890&quot;,</span>
-<span class="w">      </span><span class="no">&quot;private_key&quot;: &quot;-----BEGIN PRIVATE KEY-----\nMIIEv...rest_of_key...IDAQAB\n-----END PRIVATE KEY-----\n&quot;,</span>
-<span class="w">      </span><span class="no">&quot;client_email&quot;: &quot;my-service-account@my-gcp-project.iam.gserviceaccount.com&quot;,</span>
-<span class="w">      </span><span class="no">&quot;client_id&quot;: &quot;123456789012345678901&quot;,</span>
-<span class="w">      </span><span class="no">&quot;auth_uri&quot;: &quot;https://accounts.google.com/o/oauth2/auth&quot;,</span>
-<span class="w">      </span><span class="no">&quot;token_uri&quot;: &quot;https://oauth2.googleapis.com/token&quot;,</span>
-<span class="w">      </span><span class="no">&quot;auth_provider_x509_cert_url&quot;: &quot;https://www.googleapis.com/oauth2/v1/certs&quot;,</span>
-<span class="w">      </span><span class="no">&quot;client_x509_cert_url&quot;: &quot;https://www.googleapis.com/robot/v1/metadata/x509/my-service-account%40my-gcp-project.iam.gserviceaccount.com&quot;,</span>
-<span class="w">      </span><span class="no">&quot;universe_domain&quot;: &quot;googleapis.com&quot;</span>
+<span class="w">      </span><span class="no">"type": "service_account",</span>
+<span class="w">      </span><span class="no">"project_id": "my-gcp-project",</span>
+<span class="w">      </span><span class="no">"private_key_id": "abcd1234efgh5678ijkl9012mnop3456qrst7890",</span>
+<span class="w">      </span><span class="no">"private_key": "-----BEGIN PRIVATE KEY-----\nMIIEv...rest_of_key...IDAQAB\n-----END PRIVATE KEY-----\n",</span>
+<span class="w">      </span><span class="no">"client_email": "my-service-account@my-gcp-project.iam.gserviceaccount.com",</span>
+<span class="w">      </span><span class="no">"client_id": "123456789012345678901",</span>
+<span class="w">      </span><span class="no">"auth_uri": "https://accounts.google.com/o/oauth2/auth",</span>
+<span class="w">      </span><span class="no">"token_uri": "https://oauth2.googleapis.com/token",</span>
+<span class="w">      </span><span class="no">"auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",</span>
+<span class="w">      </span><span class="no">"client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/my-service-account%40my-gcp-project.iam.gserviceaccount.com",</span>
+<span class="w">      </span><span class="no">"universe_domain": "googleapis.com"</span>
 <span class="w">    </span><span class="no">}</span>
 </code></pre></div>
 </div>
@@ -5891,7 +5891,7 @@ specify the contents of the JSON file in <code>data</code>:</p>
 </div>
 </div>
 <p>If you don't know your GCP project ID, use <a href="https://cloud.google.com/sdk/docs/install-sdk">Google Cloud CLI</a>:</p>
-<div class="highlight"><pre><span></span><code>gcloud<span class="w"> </span>projects<span class="w"> </span>list<span class="w"> </span>--format<span class="o">=</span><span class="s2">&quot;json(projectId)&quot;</span>
+<div class="highlight"><pre><span></span><code>gcloud<span class="w"> </span>projects<span class="w"> </span>list<span class="w"> </span>--format<span class="o">=</span><span class="s2">"json(projectId)"</span>
 </code></pre></div>
 <details class="info">
 <summary>Required permissions</summary>
@@ -6239,7 +6239,7 @@ Create a new team and generate an API key for the member in the team.</p>
 <p><code>dstack</code> shows the hourly price for Hot Aisle instances. Some instances also require an upfront payment for a minimum reservation period, which is usually a few hours. You will be charged for the full minimum period even if you stop the instance early.</p>
 <p>See the Hot Aisle API for the minimum reservation period for each instance type:</p>
 <div class="termy">
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>curl<span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;Authorization: Token </span><span class="nv">$API_KEY</span><span class="s2">&quot;</span><span class="w"> </span>https://admin.hotaisle.app/api/teams/<span class="nv">$TEAM_HANDLE</span>/virtual_machines/available/<span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span><span class="s2">&quot;.[] | {gpus: .Specs.gpus, MinimumReservationMinutes}&quot;</span>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>curl<span class="w"> </span>-H<span class="w"> </span><span class="s2">"Authorization: Token </span><span class="nv">$API_KEY</span><span class="s2">"</span><span class="w"> </span>https://admin.hotaisle.app/api/teams/<span class="nv">$TEAM_HANDLE</span>/virtual_machines/available/<span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span><span class="s2">".[] | {gpus: .Specs.gpus, MinimumReservationMinutes}"</span>
 </code></pre></div>
 </div>
 </details>
@@ -6333,7 +6333,7 @@ select <code>API keys</code>, and click <code>Add API key</code>.</p>
 <details class="info">
 <summary>Required permissions</summary>
 <p>This is an example of a restrictive policy for a group of <code>dstack</code> users:</p>
-<div class="highlight"><pre><span></span><code>Allow group &lt;dstack-users&gt; to read compartments in tenancy where target.compartment.name = &#39;&lt;dstack-compartment&gt;&#39;
+<div class="highlight"><pre><span></span><code>Allow group &lt;dstack-users&gt; to read compartments in tenancy where target.compartment.name = '&lt;dstack-compartment&gt;'
 Allow group &lt;dstack-users&gt; to read marketplace-community-listings in compartment &lt;dstack-compartment&gt;
 Allow group &lt;dstack-users&gt; to manage app-catalog-listing in compartment &lt;dstack-compartment&gt;
 Allow group &lt;dstack-users&gt; to manage instances in compartment &lt;dstack-compartment&gt;
@@ -6512,17 +6512,17 @@ specify the contents of the <code>kubeconfig</code> file in <code>data</code>:</
 <span class="nt">metadata</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dstack-backend</span>
 <span class="nt">rules</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">apiGroups</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;&quot;</span><span class="p p-Indicator">]</span>
-<span class="w">    </span><span class="nt">resources</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;namespaces&quot;</span><span class="p p-Indicator">]</span>
-<span class="w">    </span><span class="c1"># &quot;create&quot; is only needed if dstack should create the namespace.</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">apiGroups</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">""</span><span class="p p-Indicator">]</span>
+<span class="w">    </span><span class="nt">resources</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"namespaces"</span><span class="p p-Indicator">]</span>
+<span class="w">    </span><span class="c1"># "create" is only needed if dstack should create the namespace.</span>
 <span class="w">    </span><span class="c1"># Could be dropped if the namespace already exists.</span>
-<span class="w">    </span><span class="nt">verbs</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;get&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;create&quot;</span><span class="p p-Indicator">]</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">apiGroups</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;&quot;</span><span class="p p-Indicator">]</span>
-<span class="w">    </span><span class="nt">resources</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;nodes&quot;</span><span class="p p-Indicator">]</span>
-<span class="w">    </span><span class="nt">verbs</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;get&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;list&quot;</span><span class="p p-Indicator">]</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">apiGroups</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;&quot;</span><span class="p p-Indicator">]</span>
-<span class="w">    </span><span class="nt">resources</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;pods&quot;</span><span class="p p-Indicator">]</span>
-<span class="w">    </span><span class="nt">verbs</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;list&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">    </span><span class="nt">verbs</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"get"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"create"</span><span class="p p-Indicator">]</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">apiGroups</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">""</span><span class="p p-Indicator">]</span>
+<span class="w">    </span><span class="nt">resources</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"nodes"</span><span class="p p-Indicator">]</span>
+<span class="w">    </span><span class="nt">verbs</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"get"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"list"</span><span class="p p-Indicator">]</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">apiGroups</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">""</span><span class="p p-Indicator">]</span>
+<span class="w">    </span><span class="nt">resources</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"pods"</span><span class="p p-Indicator">]</span>
+<span class="w">    </span><span class="nt">verbs</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"list"</span><span class="p p-Indicator">]</span>
 </code></pre></div></li>
 <li>Namespaced resources (replace the <code>${NAMESPACE}</code> placeholder with an actual value):
   <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rbac.authorization.k8s.io/v1</span>
@@ -6531,18 +6531,18 @@ specify the contents of the <code>kubeconfig</code> file in <code>data</code>:</
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dstack-backend</span>
 <span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${NAMESPACE}</span>
 <span class="nt">rules</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">apiGroups</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;&quot;</span><span class="p p-Indicator">]</span>
-<span class="w">    </span><span class="nt">resources</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;pods&quot;</span><span class="p p-Indicator">]</span>
-<span class="w">    </span><span class="nt">verbs</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;get&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;watch&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;create&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;delete&quot;</span><span class="p p-Indicator">]</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">apiGroups</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;&quot;</span><span class="p p-Indicator">]</span>
-<span class="w">    </span><span class="nt">resources</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;services&quot;</span><span class="p p-Indicator">]</span>
-<span class="w">    </span><span class="nt">verbs</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;get&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;create&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;delete&quot;</span><span class="p p-Indicator">]</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">apiGroups</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;&quot;</span><span class="p p-Indicator">]</span>
-<span class="w">    </span><span class="nt">resources</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;secrets&quot;</span><span class="p p-Indicator">]</span>
-<span class="w">    </span><span class="nt">verbs</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;create&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;delete&quot;</span><span class="p p-Indicator">]</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">apiGroups</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;&quot;</span><span class="p p-Indicator">]</span>
-<span class="w">    </span><span class="nt">resources</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;persistentvolumeclaims&quot;</span><span class="p p-Indicator">]</span>
-<span class="w">    </span><span class="nt">verbs</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;get&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;create&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;delete&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">apiGroups</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">""</span><span class="p p-Indicator">]</span>
+<span class="w">    </span><span class="nt">resources</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"pods"</span><span class="p p-Indicator">]</span>
+<span class="w">    </span><span class="nt">verbs</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"get"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"watch"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"create"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"delete"</span><span class="p p-Indicator">]</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">apiGroups</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">""</span><span class="p p-Indicator">]</span>
+<span class="w">    </span><span class="nt">resources</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"services"</span><span class="p p-Indicator">]</span>
+<span class="w">    </span><span class="nt">verbs</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"get"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"create"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"delete"</span><span class="p p-Indicator">]</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">apiGroups</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">""</span><span class="p p-Indicator">]</span>
+<span class="w">    </span><span class="nt">resources</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"secrets"</span><span class="p p-Indicator">]</span>
+<span class="w">    </span><span class="nt">verbs</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"create"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"delete"</span><span class="p p-Indicator">]</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">apiGroups</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">""</span><span class="p p-Indicator">]</span>
+<span class="w">    </span><span class="nt">resources</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"persistentvolumeclaims"</span><span class="p p-Indicator">]</span>
+<span class="w">    </span><span class="nt">verbs</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"get"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"create"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"delete"</span><span class="p p-Indicator">]</span>
 </code></pre></div></li>
 </ul>
 <p>Ensure you've created a ClusterRoleBinding and RoleBinding to grant the roles to the user or the service account you're using.</p>

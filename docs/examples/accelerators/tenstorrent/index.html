@@ -5180,18 +5180,18 @@ at <code>&lt;dstack server URL&gt;/proxy/services/&lt;project name&gt;/&lt;run n
 
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>curl<span class="w"> </span>http://127.0.0.1:3000/proxy/services/main/gpt-oss-120b/v1/chat/completions<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-X<span class="w"> </span>POST<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-H<span class="w"> </span><span class="s1">&#39;Authorization: Bearer &amp;lt;user token&amp;gt;&#39;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-H<span class="w"> </span><span class="s1">&#39;Content-Type: application/json&#39;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-d<span class="w"> </span><span class="s1">&#39;{</span>
-<span class="s1">      &quot;model&quot;: &quot;openai/gpt-oss-120b&quot;,</span>
-<span class="s1">      &quot;messages&quot;: [</span>
+<span class="w">    </span>-H<span class="w"> </span><span class="s1">'Authorization: Bearer &amp;lt;user token&amp;gt;'</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-H<span class="w"> </span><span class="s1">'Content-Type: application/json'</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-d<span class="w"> </span><span class="s1">'{</span>
+<span class="s1">      "model": "openai/gpt-oss-120b",</span>
+<span class="s1">      "messages": [</span>
 <span class="s1">        {</span>
-<span class="s1">          &quot;role&quot;: &quot;user&quot;,</span>
-<span class="s1">          &quot;content&quot;: &quot;What is 17 + 25? Answer with just the number.&quot;</span>
+<span class="s1">          "role": "user",</span>
+<span class="s1">          "content": "What is 17 + 25? Answer with just the number."</span>
 <span class="s1">        }</span>
 <span class="s1">      ],</span>
-<span class="s1">      &quot;max_tokens&quot;: 128</span>
-<span class="s1">    }&#39;</span>
+<span class="s1">      "max_tokens": 128</span>
+<span class="s1">    }'</span>
 </code></pre></div>
 
 </div>
@@ -5214,25 +5214,25 @@ smoke test.</p>
 
 <span class="nt">commands</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
-<span class="w">    </span><span class="no">python - &lt;&lt;&#39;PY&#39;</span>
+<span class="w">    </span><span class="no">python - &lt;&lt;'PY'</span>
 <span class="w">    </span><span class="no">import jax</span>
 <span class="w">    </span><span class="no">import jax.numpy as jnp</span>
 
-<span class="w">    </span><span class="no">devices = jax.devices(&quot;tt&quot;)</span>
-<span class="w">    </span><span class="no">print(&quot;TT devices:&quot;, devices)</span>
+<span class="w">    </span><span class="no">devices = jax.devices("tt")</span>
+<span class="w">    </span><span class="no">print("TT devices:", devices)</span>
 <span class="w">    </span><span class="no">if not devices:</span>
-<span class="w">        </span><span class="no">raise SystemExit(&quot;No Tenstorrent devices found by JAX&quot;)</span>
+<span class="w">        </span><span class="no">raise SystemExit("No Tenstorrent devices found by JAX")</span>
 
 <span class="w">    </span><span class="no">with jax.default_device(devices[0]):</span>
 <span class="w">        </span><span class="no">params = {</span>
-<span class="w">            </span><span class="no">&quot;w&quot;: jnp.ones((32, 32), dtype=jnp.bfloat16),</span>
-<span class="w">            </span><span class="no">&quot;b&quot;: jnp.zeros((32,), dtype=jnp.bfloat16),</span>
+<span class="w">            </span><span class="no">"w": jnp.ones((32, 32), dtype=jnp.bfloat16),</span>
+<span class="w">            </span><span class="no">"b": jnp.zeros((32,), dtype=jnp.bfloat16),</span>
 <span class="w">        </span><span class="no">}</span>
 <span class="w">        </span><span class="no">x = jnp.ones((32, 32), dtype=jnp.bfloat16)</span>
 <span class="w">        </span><span class="no">y = jnp.zeros((32, 32), dtype=jnp.bfloat16)</span>
 
 <span class="w">    </span><span class="no">def loss_fn(params, x, y):</span>
-<span class="w">        </span><span class="no">pred = x @ params[&quot;w&quot;] + params[&quot;b&quot;]</span>
+<span class="w">        </span><span class="no">pred = x @ params["w"] + params["b"]</span>
 <span class="w">        </span><span class="no">err = (pred - y).astype(jnp.float32)</span>
 <span class="w">        </span><span class="no">return jnp.mean(err * err)</span>
 
@@ -5249,9 +5249,9 @@ smoke test.</p>
 <span class="w">    </span><span class="no">for step in range(3):</span>
 <span class="w">        </span><span class="no">params, loss = train_step(params, x, y)</span>
 <span class="w">        </span><span class="no">loss.block_until_ready()</span>
-<span class="w">        </span><span class="no">print(f&quot;step={step} loss={float(jax.device_get(loss)):.6f}&quot;)</span>
+<span class="w">        </span><span class="no">print(f"step={step} loss={float(jax.device_get(loss)):.6f}")</span>
 
-<span class="w">    </span><span class="no">print(&quot;tiny training smoke test passed&quot;)</span>
+<span class="w">    </span><span class="no">print("tiny training smoke test passed")</span>
 <span class="w">    </span><span class="no">PY</span>
 
 <span class="nt">resources</span><span class="p">:</span>

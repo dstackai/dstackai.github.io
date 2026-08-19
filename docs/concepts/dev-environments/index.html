@@ -5385,7 +5385,7 @@ The filename must end with <code>.dstack.yml</code> (e.g. <code>.dstack.yml</cod
 <span class="c1"># The name is optional, if not specified, generated randomly</span>
 <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vscode</span>
 
-<span class="nt">python</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;3.11&quot;</span>
+<span class="nt">python</span><span class="p">:</span><span class="w"> </span><span class="s">"3.11"</span>
 <span class="c1"># Uncomment to use a custom Docker image</span>
 <span class="c1">#image: huggingface/trl-latest-gpu</span>
 
@@ -5434,7 +5434,7 @@ is still accessible via SSH:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dev-environment</span>
 <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my-env</span>
 
-<span class="nt">python</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;3.11&quot;</span>
+<span class="nt">python</span><span class="p">:</span><span class="w"> </span><span class="s">"3.11"</span>
 
 <span class="nt">resources</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">24GB</span>
@@ -5466,7 +5466,7 @@ property with a list of commands to run at startup:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dev-environment</span>
 <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vscode</span>
 
-<span class="nt">python</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;3.11&quot;</span>
+<span class="nt">python</span><span class="p">:</span><span class="w"> </span><span class="s">"3.11"</span>
 <span class="nt">ide</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vscode</span>
 
 <span class="nt">init</span><span class="p">:</span>
@@ -5503,7 +5503,8 @@ range (e.g. <code>24GB..</code>, or <code>24GB..80GB</code>, or <code>..80GB</co
 </div>
 
 <p>The <code>cpu</code> property lets you set the architecture (<code>x86</code> or <code>arm</code>) and core count — e.g., <code>x86:16</code> (16 x86 cores), <code>arm:8..</code> (at least 8 ARM cores). 
-If not set, <code>dstack</code> infers it from the GPU or defaults to <code>x86</code>.</p>
+If the architecture is not set, <code>dstack</code> allows any architecture supported by the <code>image</code>, or <code>x86</code> if no <code>image</code> is set.
+Since the default <code>dstack</code> image only supports <code>x86</code>, requesting <code>arm</code> requires setting <code>image</code> and is not compatible with <code>docker: true</code>.</p>
 <p>The <code>gpu</code> property lets you specify vendor, model, memory, and count — e.g., <code>nvidia</code> (one NVIDIA GPU), <code>A100</code> (one A100), <code>A10G,A100</code> (either), <code>A100:80GB</code> (one 80GB A100), <code>A100:2</code> (two A100), <code>24GB..40GB:2</code> (two GPUs with 24–40GB), <code>A100:40GB:2</code> (two 40GB A100s). </p>
 <p>If vendor is omitted, <code>dstack</code> infers it from the model or defaults to <code>nvidia</code>.</p>
 <!-- ??? info "Google Cloud TPU"
@@ -5862,7 +5863,7 @@ Just change the value in the configuration and run <code>dstack apply</code> aga
 <div class="termy">
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>dstack<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>.dstack.yml
 
-Detected<span class="w"> </span>configuration<span class="w"> </span>changes<span class="w"> </span>that<span class="w"> </span>can<span class="w"> </span>be<span class="w"> </span>updated<span class="w"> </span><span class="k">in</span>-place:<span class="w"> </span><span class="o">[</span><span class="s1">&#39;inactivity_duration&#39;</span><span class="o">]</span>
+Detected<span class="w"> </span>configuration<span class="w"> </span>changes<span class="w"> </span>that<span class="w"> </span>can<span class="w"> </span>be<span class="w"> </span>updated<span class="w"> </span>in-place:<span class="w"> </span><span class="o">[</span><span class="s1">'inactivity_duration'</span><span class="o">]</span>
 Update<span class="w"> </span>the<span class="w"> </span>run?<span class="w"> </span><span class="o">[</span>y/n<span class="o">]</span>:
 </code></pre></div>
 </div>
@@ -5901,7 +5902,7 @@ The latter determines how soon the underlying cloud instance will be terminated
 <div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dev-environment</span>
 <span class="nt">ide</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vscode</span>
 <span class="nt">schedule</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">cron</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0</span><span class="nv"> </span><span class="s">8</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">mon-fri&quot;</span><span class="w"> </span><span class="c1"># at 8:00 UTC from Monday through Friday</span>
+<span class="w">  </span><span class="nt">cron</span><span class="p">:</span><span class="w"> </span><span class="s">"0</span><span class="nv"> </span><span class="s">8</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">mon-fri"</span><span class="w"> </span><span class="c1"># at 8:00 UTC from Monday through Friday</span>
 </code></pre></div>
 
 </div>

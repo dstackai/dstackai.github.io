@@ -5410,13 +5410,13 @@ in our latest release, we've added this option.</p>
 <span class="nt">commands</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">start-dockerd</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
-<span class="w">    </span><span class="no">cat &gt; compose.yaml &lt;&lt;&#39;EOF&#39;</span>
+<span class="w">    </span><span class="no">cat &gt; compose.yaml &lt;&lt;'EOF'</span>
 <span class="w">    </span><span class="no">services:</span>
 <span class="w">      </span><span class="no">web:</span>
 <span class="w">        </span><span class="no">image: python:3.11-slim</span>
 <span class="w">        </span><span class="no">command: python -m http.server 9000</span>
 <span class="w">        </span><span class="no">ports:</span>
-<span class="w">          </span><span class="no">- &quot;9000:9000&quot;</span>
+<span class="w">          </span><span class="no">- "9000:9000"</span>
 <span class="w">    </span><span class="no">EOF</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker compose up</span>
 <span class="nt">ports</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">9000</span><span class="p p-Indicator">]</span>

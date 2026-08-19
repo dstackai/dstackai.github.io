@@ -5066,22 +5066,22 @@ $<span class="w"> </span>dstack<span class="w"> </span>apply<span class="w"> </s
 
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>curl<span class="w"> </span>http://127.0.0.1:3000/proxy/services/main/nemotron120/v1/chat/completions<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-X<span class="w"> </span>POST<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-H<span class="w"> </span><span class="s1">&#39;Authorization: Bearer &amp;lt;user token&amp;gt;&#39;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-H<span class="w"> </span><span class="s1">&#39;Content-Type: application/json&#39;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-d<span class="w"> </span><span class="s1">&#39;{</span>
-<span class="s1">      &quot;model&quot;: &quot;nvidia/nemotron-3-super-120b-a12b&quot;,</span>
-<span class="s1">      &quot;messages&quot;: [</span>
+<span class="w">    </span>-H<span class="w"> </span><span class="s1">'Authorization: Bearer &amp;lt;user token&amp;gt;'</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-H<span class="w"> </span><span class="s1">'Content-Type: application/json'</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-d<span class="w"> </span><span class="s1">'{</span>
+<span class="s1">      "model": "nvidia/nemotron-3-super-120b-a12b",</span>
+<span class="s1">      "messages": [</span>
 <span class="s1">        {</span>
-<span class="s1">          &quot;role&quot;: &quot;system&quot;,</span>
-<span class="s1">          &quot;content&quot;: &quot;You are a helpful assistant.&quot;</span>
+<span class="s1">          "role": "system",</span>
+<span class="s1">          "content": "You are a helpful assistant."</span>
 <span class="s1">        },</span>
 <span class="s1">        {</span>
-<span class="s1">          &quot;role&quot;: &quot;user&quot;,</span>
-<span class="s1">          &quot;content&quot;: &quot;What is Deep Learning?&quot;</span>
+<span class="s1">          "role": "user",</span>
+<span class="s1">          "content": "What is Deep Learning?"</span>
 <span class="s1">        }</span>
 <span class="s1">      ],</span>
-<span class="s1">      &quot;max_tokens&quot;: 128</span>
-<span class="s1">    }&#39;</span>
+<span class="s1">      "max_tokens": 128</span>
+<span class="s1">    }'</span>
 </code></pre></div>
 
 </div>
