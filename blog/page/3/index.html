@@ -178,7 +178,7 @@
           <div class="md-banner__inner md-grid md-typeset">
             
             
-<a href="/docs/concepts/presets/">Presets: agent-driven inference optimization<span class="icon"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15"/><path d="m12.5 5.5 6.5 6.5-6.5 6.5"/></svg></span></a>
+<a href="/blog/presets/">Presets: a toolkit for agent-based inference optimization<span class="icon"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15"/><path d="m12.5 5.5 6.5 6.5-6.5 6.5"/></svg></span></a>
 
           </div>
           
@@ -4580,6 +4580,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#benchmarking-amd-gpus-bare-metal-containers-partitions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Benchmarking AMD GPUs: bare-metal, containers, partitions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#rolling-deployment-secrets-files-tenstorrent-and-more" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -4672,17 +4683,6 @@
     <span class="md-ellipsis">
       
         DeepSeek R1 inference performance: MI300X vs. H200
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#using-ssh-fleets-with-tensorwaves-private-amd-cloud" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Using SSH fleets with TensorWave's private AMD cloud
       
     </span>
   </a>
@@ -4890,6 +4890,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#benchmarking-amd-gpus-bare-metal-containers-partitions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Benchmarking AMD GPUs: bare-metal, containers, partitions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#rolling-deployment-secrets-files-tenstorrent-and-more" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -4988,17 +4999,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#using-ssh-fleets-with-tensorwaves-private-amd-cloud" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Using SSH fleets with TensorWave's private AMD cloud
-      
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -5019,6 +5019,49 @@
       <header class="md-typeset">
         <h1 id="blog">Blog<a class="headerlink" href="#blog" title="Permanent link">&para;</a></h1>
       </header>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2025-07-15 00:00:00+00:00">July 15, 2025</time></li>
+        
+          <li class="md-meta__item">
+            in
+            
+              <a href="../../benchmarks/" class="md-meta__link">Benchmarks</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              9 min read
+            
+          </li>
+        
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="benchmarking-amd-gpus-bare-metal-containers-partitions"><a class="toclink" href="../../benchmark-amd-containers-and-partitions/">Benchmarking AMD GPUs: bare-metal, containers, partitions</a></h2>
+<p>Our new benchmark explores two important areas for optimizing AI workloads on AMD GPUs: First, do containers introduce a performance penalty for network-intensive tasks compared to a bare-metal setup? Second, how does partitioning a powerful GPU like the MI300X affect its real-world performance for different types of AI workloads?</p>
+<p><img src="https://dstack.ai/static-assets/static-assets/images/benchmark-amd-containers-and-partitions.png" width="630"/></p>
+
+    
+      <nav class="md-post__action">
+        <a href="../../benchmark-amd-containers-and-partitions/">
+            <span>Continue reading</span>
+            <span class="icon"><svg viewBox="0 0 13 10" xmlns="http://www.w3.org/2000/svg"><path d="M12.823 4.164L8.954.182a.592.592 0 0 0-.854 0 .635.635 0 0 0 0 .88l2.836 2.92H.604A.614.614 0 0 0 0 4.604c0 .344.27.622.604.622h10.332L8.1 8.146a.635.635 0 0 0 0 .88.594.594 0 0 0 .854 0l3.869-3.982a.635.635 0 0 0 0-.88z" fill-rule="nonzero" fill="currentColor" class="fill-main"></path></svg></span>
+        </a>
+      </nav>
+    
+    
+  </div>
+</article>
       
         <article class="md-post md-post--excerpt">
   <header class="md-post__header">
@@ -5462,48 +5505,6 @@ who provided access to the necessary hardware.</p>
     
       <nav class="md-post__action">
         <a href="../../h200-mi300x-deepskeek-benchmark/">
-            <span>Continue reading</span>
-            <span class="icon"><svg viewBox="0 0 13 10" xmlns="http://www.w3.org/2000/svg"><path d="M12.823 4.164L8.954.182a.592.592 0 0 0-.854 0 .635.635 0 0 0 0 .88l2.836 2.92H.604A.614.614 0 0 0 0 4.604c0 .344.27.622.604.622h10.332L8.1 8.146a.635.635 0 0 0 0 .88.594.594 0 0 0 .854 0l3.869-3.982a.635.635 0 0 0 0-.88z" fill-rule="nonzero" fill="currentColor" class="fill-main"></path></svg></span>
-        </a>
-      </nav>
-    
-    
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2025-03-11 00:00:00+00:00">March 11, 2025</time></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              3 min read
-            
-          </li>
-        
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="using-ssh-fleets-with-tensorwaves-private-amd-cloud"><a class="toclink" href="../../amd-on-tensorwave/">Using SSH fleets with TensorWave's private AMD cloud</a></h2>
-<p>Since last month, when we introduced support for private clouds and data centers, it has become easier to use <code>dstack</code>
-to orchestrate AI containers with any AI cloud vendor, whether they provide on-demand compute or reserved clusters.</p>
-<p>In this tutorial, we’ll walk you through how <code>dstack</code> can be used with
-<a href="https://tensorwave.com/">TensorWave</a> using
-<a href="../../../docs/concepts/fleets/#ssh-fleets">SSH fleets</a>.</p>
-<p><img src="https://dstack.ai/static-assets/static-assets/images/dstack-tensorwave-v2.png" width="630"/></p>
-
-    
-      <nav class="md-post__action">
-        <a href="../../amd-on-tensorwave/">
             <span>Continue reading</span>
             <span class="icon"><svg viewBox="0 0 13 10" xmlns="http://www.w3.org/2000/svg"><path d="M12.823 4.164L8.954.182a.592.592 0 0 0-.854 0 .635.635 0 0 0 0 .88l2.836 2.92H.604A.614.614 0 0 0 0 4.604c0 .344.27.622.604.622h10.332L8.1 8.146a.635.635 0 0 0 0 .88.594.594 0 0 0 .854 0l3.869-3.982a.635.635 0 0 0 0-.88z" fill-rule="nonzero" fill="currentColor" class="fill-main"></path></svg></span>
         </a>

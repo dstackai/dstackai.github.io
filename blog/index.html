@@ -178,7 +178,7 @@
           <div class="md-banner__inner md-grid md-typeset">
             
             
-<a href="/docs/concepts/presets/">Presets: agent-driven inference optimization<span class="icon"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15"/><path d="m12.5 5.5 6.5 6.5-6.5 6.5"/></svg></span></a>
+<a href="/blog/presets/">Presets: a toolkit for agent-based inference optimization<span class="icon"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15"/><path d="m12.5 5.5 6.5 6.5-6.5 6.5"/></svg></span></a>
 
           </div>
           
@@ -4582,6 +4582,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#presets-a-toolkit-for-agent-based-inference-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Presets: a toolkit for agent-based inference optimization
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#deploying-nvidia-dynamo-pd-disaggregation-with-dstack" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -4674,17 +4685,6 @@
     <span class="md-ellipsis">
       
         SGLang router integration and disaggregated inference roadmap
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#orchestrating-workloads-on-nvidia-dgx-spark" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Orchestrating workloads on NVIDIA DGX Spark
       
     </span>
   </a>
@@ -4892,6 +4892,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#presets-a-toolkit-for-agent-based-inference-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Presets: a toolkit for agent-based inference optimization
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#deploying-nvidia-dynamo-pd-disaggregation-with-dstack" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -4990,17 +5001,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#orchestrating-workloads-on-nvidia-dgx-spark" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Orchestrating workloads on NVIDIA DGX Spark
-      
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -5027,6 +5027,50 @@
 
 <h1 id="blog">Blog<a class="headerlink" href="#blog" title="Permanent link">&para;</a></h1>
       </header>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2026-08-20 00:00:00+00:00">August 20, 2026</time></li>
+        
+          <li class="md-meta__item">
+            in
+            
+              <a href="changelog/" class="md-meta__link">Changelog</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              7 min read
+            
+          </li>
+        
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="presets-a-toolkit-for-agent-based-inference-optimization"><a class="toclink" href="presets/">Presets: a toolkit for agent-based inference optimization</a></h2>
+<p>Optimizing model inference is agent work now. Every inference provider does it inside its own process, on its own serving stack, with its own harness around the optimization agent. Despite the progress in open-source serving frameworks, what gets published is a benchmark, often without the workload, the concurrency, and the hardware behind it. The optimized deployment itself stays tied to the stack that produced it.</p>
+<p>Today we're introducing a preview of presets: an open-source toolkit that streamlines inference optimization with agents, and a portable preset format that can be deployed to any cloud, Kubernetes cluster, or bare-metal fleet.</p>
+<p><img src="https://dstack.ai/static-assets/static-assets/images/dstack-presets.png" width="650" /></p>
+
+    
+      <nav class="md-post__action">
+        <a href="presets/">
+            <span>Continue reading</span>
+            <span class="icon"><svg viewBox="0 0 13 10" xmlns="http://www.w3.org/2000/svg"><path d="M12.823 4.164L8.954.182a.592.592 0 0 0-.854 0 .635.635 0 0 0 0 .88l2.836 2.92H.604A.614.614 0 0 0 0 4.604c0 .344.27.622.604.622h10.332L8.1 8.146a.635.635 0 0 0 0 .88.594.594 0 0 0 .854 0l3.869-3.982a.635.635 0 0 0 0-.88z" fill-rule="nonzero" fill="currentColor" class="fill-main"></path></svg></span>
+        </a>
+      </nav>
+    
+    
+  </div>
+</article>
       
         <article class="md-post md-post--excerpt">
   <header class="md-post__header">
@@ -5412,44 +5456,6 @@
     
       <nav class="md-post__action">
         <a href="sglang-router/">
-            <span>Continue reading</span>
-            <span class="icon"><svg viewBox="0 0 13 10" xmlns="http://www.w3.org/2000/svg"><path d="M12.823 4.164L8.954.182a.592.592 0 0 0-.854 0 .635.635 0 0 0 0 .88l2.836 2.92H.604A.614.614 0 0 0 0 4.604c0 .344.27.622.604.622h10.332L8.1 8.146a.635.635 0 0 0 0 .88.594.594 0 0 0 .854 0l3.869-3.982a.635.635 0 0 0 0-.88z" fill-rule="nonzero" fill="currentColor" class="fill-main"></path></svg></span>
-        </a>
-      </nav>
-    
-    
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2025-11-14 00:00:00+00:00">November 14, 2025</time></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              3 min read
-            
-          </li>
-        
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="orchestrating-workloads-on-nvidia-dgx-spark"><a class="toclink" href="nvidia-dgx-spark/">Orchestrating workloads on NVIDIA DGX Spark</a></h2>
-<p>With support from <a href="https://x.com/GraphsignalAI/status/1986565583593197885">Graphsignal</a>, our team gained access to the new <a href="https://www.nvidia.com/en-us/products/workstations/dgx-spark/">NVIDIA DGX Spark</a> and used it to validate how <code>dstack</code> operates on this hardware. This post walks through how to set it up with <code>dstack</code> and use it alongside existing on-prem clusters or GPU cloud environments to run workloads.</p>
-<p><img src="https://dstack.ai/static-assets/static-assets/images/nvidia-dgx-spark.png" width="630"/></p>
-
-    
-      <nav class="md-post__action">
-        <a href="nvidia-dgx-spark/">
             <span>Continue reading</span>
             <span class="icon"><svg viewBox="0 0 13 10" xmlns="http://www.w3.org/2000/svg"><path d="M12.823 4.164L8.954.182a.592.592 0 0 0-.854 0 .635.635 0 0 0 0 .88l2.836 2.92H.604A.614.614 0 0 0 0 4.604c0 .344.27.622.604.622h10.332L8.1 8.146a.635.635 0 0 0 0 .88.594.594 0 0 0 .854 0l3.869-3.982a.635.635 0 0 0 0-.88z" fill-rule="nonzero" fill="currentColor" class="fill-main"></path></svg></span>
         </a>

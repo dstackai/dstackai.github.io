@@ -178,7 +178,7 @@
           <div class="md-banner__inner md-grid md-typeset">
             
             
-<a href="/docs/concepts/presets/">Presets: agent-driven inference optimization<span class="icon"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15"/><path d="m12.5 5.5 6.5 6.5-6.5 6.5"/></svg></span></a>
+<a href="/blog/presets/">Presets: a toolkit for agent-based inference optimization<span class="icon"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15"/><path d="m12.5 5.5 6.5 6.5-6.5 6.5"/></svg></span></a>
 
           </div>
           
@@ -4580,6 +4580,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#benchmarking-llama-31-405b-on-8x-amd-mi300x-gpus" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Benchmarking Llama 3.1 405B on 8x AMD MI300X GPUs
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#using-tpus-for-fine-tuning-and-deploying-llms" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -4835,6 +4846,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#benchmarking-llama-31-405b-on-8x-amd-mi300x-gpus" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Benchmarking Llama 3.1 405B on 8x AMD MI300X GPUs
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#using-tpus-for-fine-tuning-and-deploying-llms" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -4909,6 +4931,52 @@
       <header class="md-typeset">
         <h1 id="blog">Blog<a class="headerlink" href="#blog" title="Permanent link">&para;</a></h1>
       </header>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2024-10-09 00:00:00+00:00">October 9, 2024</time></li>
+        
+          <li class="md-meta__item">
+            in
+            
+              <a href="../../benchmarks/" class="md-meta__link">Benchmarks</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              6 min read
+            
+          </li>
+        
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="benchmarking-llama-31-405b-on-8x-amd-mi300x-gpus"><a class="toclink" href="../../amd-mi300x-inference-benchmark/">Benchmarking Llama 3.1 405B on 8x AMD MI300X GPUs</a></h2>
+<p>At <code>dstack</code>, we've been adding support for AMD GPUs with <a href="../../../docs/concepts/fleets/#ssh-fleets">SSH fleets</a>, 
+so we saw this as a great chance to test our integration by benchmarking AMD GPUs. Our friends at 
+<a href="https://hotaisle.xyz/">Hot Aisle</a>, who build top-tier 
+bare metal compute for AMD GPUs, kindly provided the hardware for the benchmark.</p>
+<p><img src="https://dstack.ai/static-assets/static-assets/images/dstack-hotaisle-amd-mi300x-prompt-v5.png" width="750" /></p>
+
+    
+      <nav class="md-post__action">
+        <a href="../../amd-mi300x-inference-benchmark/">
+            <span>Continue reading</span>
+            <span class="icon"><svg viewBox="0 0 13 10" xmlns="http://www.w3.org/2000/svg"><path d="M12.823 4.164L8.954.182a.592.592 0 0 0-.854 0 .635.635 0 0 0 0 .88l2.836 2.92H.604A.614.614 0 0 0 0 4.604c0 .344.27.622.604.622h10.332L8.1 8.146a.635.635 0 0 0 0 .88.594.594 0 0 0 .854 0l3.869-3.982a.635.635 0 0 0 0-.88z" fill-rule="nonzero" fill="currentColor" class="fill-main"></path></svg></span>
+        </a>
+      </nav>
+    
+    
+  </div>
+</article>
       
         <article class="md-post md-post--excerpt">
   <header class="md-post__header">

@@ -182,7 +182,7 @@
           <div class="md-banner__inner md-grid md-typeset">
             
             
-<a href="/docs/concepts/presets/">Presets: agent-driven inference optimization<span class="icon"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15"/><path d="m12.5 5.5 6.5 6.5-6.5 6.5"/></svg></span></a>
+<a href="/blog/presets/">Presets: a toolkit for agent-based inference optimization<span class="icon"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15"/><path d="m12.5 5.5 6.5 6.5-6.5 6.5"/></svg></span></a>
 
           </div>
           
@@ -4675,6 +4675,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#presets-a-toolkit-for-agent-based-inference-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Presets: a toolkit for agent-based inference optimization
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#deploying-nvidia-dynamo-pd-disaggregation-with-dstack" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -4767,17 +4778,6 @@
     <span class="md-ellipsis">
       
         Nebius in dstack Sky GPU marketplace, with production-ready GPU clusters
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#orchestrating-gpus-on-digitalocean-and-amd-developer-cloud" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Orchestrating GPUs on DigitalOcean and AMD Developer Cloud
       
     </span>
   </a>
@@ -4898,6 +4898,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#presets-a-toolkit-for-agent-based-inference-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Presets: a toolkit for agent-based inference optimization
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#deploying-nvidia-dynamo-pd-disaggregation-with-dstack" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -4996,17 +5007,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#orchestrating-gpus-on-digitalocean-and-amd-developer-cloud" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Orchestrating GPUs on DigitalOcean and AMD Developer Cloud
-      
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -5027,6 +5027,50 @@
       <header class="md-typeset">
         <h1 id="changelog">Changelog<a class="headerlink" href="#changelog" title="Permanent link">&para;</a></h1>
       </header>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2026-08-20 00:00:00+00:00">August 20, 2026</time></li>
+        
+          <li class="md-meta__item">
+            in
+            
+              <a href="./" class="md-meta__link">Changelog</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              7 min read
+            
+          </li>
+        
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="presets-a-toolkit-for-agent-based-inference-optimization"><a class="toclink" href="../presets/">Presets: a toolkit for agent-based inference optimization</a></h2>
+<p>Optimizing model inference is agent work now. Every inference provider does it inside its own process, on its own serving stack, with its own harness around the optimization agent. Despite the progress in open-source serving frameworks, what gets published is a benchmark, often without the workload, the concurrency, and the hardware behind it. The optimized deployment itself stays tied to the stack that produced it.</p>
+<p>Today we're introducing a preview of presets: an open-source toolkit that streamlines inference optimization with agents, and a portable preset format that can be deployed to any cloud, Kubernetes cluster, or bare-metal fleet.</p>
+<p><img src="https://dstack.ai/static-assets/static-assets/images/dstack-presets.png" width="650" /></p>
+
+    
+      <nav class="md-post__action">
+        <a href="../presets/">
+            <span>Continue reading</span>
+            <span class="icon"><svg viewBox="0 0 13 10" xmlns="http://www.w3.org/2000/svg"><path d="M12.823 4.164L8.954.182a.592.592 0 0 0-.854 0 .635.635 0 0 0 0 .88l2.836 2.92H.604A.614.614 0 0 0 0 4.604c0 .344.27.622.604.622h10.332L8.1 8.146a.635.635 0 0 0 0 .88.594.594 0 0 0 .854 0l3.869-3.982a.635.635 0 0 0 0-.88z" fill-rule="nonzero" fill="currentColor" class="fill-main"></path></svg></span>
+        </a>
+      </nav>
+    
+    
+  </div>
+</article>
       
         <article class="md-post md-post--excerpt">
   <header class="md-post__header">
@@ -5416,51 +5460,6 @@ to offer on-demand and spot GPUs, including clusters.</p>
     
       <nav class="md-post__action">
         <a href="../nebius-in-dstack-sky/">
-            <span>Continue reading</span>
-            <span class="icon"><svg viewBox="0 0 13 10" xmlns="http://www.w3.org/2000/svg"><path d="M12.823 4.164L8.954.182a.592.592 0 0 0-.854 0 .635.635 0 0 0 0 .88l2.836 2.92H.604A.614.614 0 0 0 0 4.604c0 .344.27.622.604.622h10.332L8.1 8.146a.635.635 0 0 0 0 .88.594.594 0 0 0 .854 0l3.869-3.982a.635.635 0 0 0 0-.88z" fill-rule="nonzero" fill="currentColor" class="fill-main"></path></svg></span>
-        </a>
-      </nav>
-    
-    
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2025-09-04 00:00:00+00:00">September 4, 2025</time></li>
-        
-          <li class="md-meta__item">
-            in
-            
-              <a href="./" class="md-meta__link">Changelog</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              3 min read
-            
-          </li>
-        
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="orchestrating-gpus-on-digitalocean-and-amd-developer-cloud"><a class="toclink" href="../digitalocean-and-amd-dev-cloud/">Orchestrating GPUs on DigitalOcean and AMD Developer Cloud</a></h2>
-<p>Orchestration automates provisioning, running jobs, and tearing them down. While Kubernetes and Slurm are powerful in their domains, they lack the lightweight, GPU-native focus modern teams need to move faster.</p>
-<p><code>dstack</code> is built entirely around GPUs. Our latest update introduces native integration with <a href="https://www.digitalocean.com/products/gradient/gpu-droplets">DigitalOcean</a> and 
-<a href="https://www.amd.com/en/developer/resources/cloud-access/amd-developer-cloud.html">AMD Developer Cloud</a>, enabling teams to provision cloud GPUs and run workloads more cost-efficiently.</p>
-<p><img src="https://dstack.ai/static-assets/static-assets/images/digitalocean-and-amd-dev-cloud.png" width="630"/></p>
-
-    
-      <nav class="md-post__action">
-        <a href="../digitalocean-and-amd-dev-cloud/">
             <span>Continue reading</span>
             <span class="icon"><svg viewBox="0 0 13 10" xmlns="http://www.w3.org/2000/svg"><path d="M12.823 4.164L8.954.182a.592.592 0 0 0-.854 0 .635.635 0 0 0 0 .88l2.836 2.92H.604A.614.614 0 0 0 0 4.604c0 .344.27.622.604.622h10.332L8.1 8.146a.635.635 0 0 0 0 .88.594.594 0 0 0 .854 0l3.869-3.982a.635.635 0 0 0 0-.88z" fill-rule="nonzero" fill="currentColor" class="fill-main"></path></svg></span>
         </a>
