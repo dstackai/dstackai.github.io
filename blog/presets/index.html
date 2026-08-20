@@ -5052,11 +5052,11 @@ Create<span class="w"> </span>the<span class="w"> </span>preset<span class="w"> 
 <p>The first session settled on SGLang and reached 184.81 tok/s. Its best p50 time to first token was 1834ms, above the 1500ms constraint, so no trial met the constraints.</p>
 <p>It also produced a finding the later sessions reused: the vendor's own FP8 checkpoint was slower than bf16 on this card.</p>
 <h3 id="compound-learning">Compound learning<a class="headerlink" href="#compound-learning" title="Permanent link">&para;</a></h3>
-<p>The second session started with no records from the first and chose vLLM instead. It capped at 125.27 tok/s, and across the first two sessions 13 trials produced nothing that met the constraints.</p>
-<p>From the third session on, each one was seeded with the earlier sessions' records through <code>previous</code>. The third turned on the model's own speculation head, brought time to first token under the constraint, and reached 310.98 tok/s, the first result that met all of them.</p>
-<p>The fourth found where the FP8 gain actually was: quantizing the bf16 checkpoint at load time, and an FP8 KV cache, which halves what every decode step reads. That reached 433.31 tok/s.</p>
-<p>The fifth ran out of configuration, went into the attention backend's source, and reached 440.91 tok/s with a single patched file.</p>
-<p>The sixth was told the previous agent had contradicted itself, and asked to attack the bottleneck harder through source patches:</p>
+<p>Learning compounds when sessions are linked. Through <code>previous</code>, each session inherits the previous best, the findings behind it, and the patches, so nothing is re-derived.</p>
+<blockquote>
+<p>310.98 tok/s, then 433.31, then 440.91, each session starting where the last stopped. The first two, with no records to start from, produced nothing.</p>
+</blockquote>
+<p>The toolkit automates the routine and leaves the steering to the engineer, through the prompt. The fifth session was told to attack the bottleneck only through patching source code, which is where the first patch came from. The sixth was told the previous agent had contradicted itself and that the bottleneck was still there:</p>
 <details class="info">
 <summary>Custom prompt</summary>
 <div editor-title="preset.dstack.yml">
@@ -5093,7 +5093,9 @@ Create<span class="w"> </span>the<span class="w"> </span>preset<span class="w"> 
 </code></pre></div>
 </div>
 </details>
-<p>Two more patches took the best trial to 495.03 tok/s, 1.6x the first result that met the constraints, on the same single MI300X.</p>
+<blockquote>
+<p>495.03 tok/s, 1.6x the first result that met the constraints, on the same single MI300X.</p>
+</blockquote>
 <h2 id="exporting-a-portable-preset">Exporting a portable preset<a class="headerlink" href="#exporting-a-portable-preset" title="Permanent link">&para;</a></h2>
 <p>To export a preset as a <a href="../../docs/concepts/services/">service</a> configuration, pass its ID to <code>dstack preset export</code>:</p>
 <div class="termy">
