@@ -6513,7 +6513,8 @@ the user's credentials. Ignored for other repo types.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>replica_num or None to attach to any running replica.</p>
+                <p>replica_num or None to attach to any running replica, falling back to
+the lowest-numbered replica if no replica is running.</p>
               </div>
             </td>
             <td>
@@ -6624,6 +6625,39 @@ the user's credentials. Ignored for other repo types.</p>
             </td>
             <td>
                   <code>False</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>replica_num</code>
+            </td>
+            <td>
+                  <code><span title="typing.Optional">Optional</span>[<span title="int">int</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The replica number or <code>None</code> to use any running replica,
+falling back to the lowest-numbered replica if no replica is running.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>job_num</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The job number inside the replica.</p>
+              </div>
+            </td>
+            <td>
+                  <code>0</code>
             </td>
           </tr>
       </tbody>

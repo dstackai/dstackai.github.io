@@ -5621,10 +5621,10 @@ the index of the node within that group.</p>
 </blockquote>
 <p>Currently, only <code>resources</code>, <code>commands</code>, and <code>ports</code> can be configured per node group. <a href="../../reference/dstack.yml/task/#groups"><code>groups</code></a> and top-level <code>nodes</code> are mutually exclusive.Support for other properties is coming soon.</p>
 <details class="info">
-<summary>Prefill/decode example</summary>
-<p>Node groups can mix CPU and GPU roles. This SGLang prefill/decode split uses a CPU
+<summary>PD disaggregation</summary>
+<p>While PD disaggregaton is mostly used with <a href="../services/#pd-disaggregation">services</a>, it also possible to run it as tasks. The example below runs  a CPU
 router (<code>groups[0]</code>, the master) and GPU workers. <code>startup_order: workers-first</code>
-starts prefill and decode before the router.</p>
+instructs <code>dstack</code> to start prefill and decode workers before the router.</p>
 <div editor-title=".dstack.yml">
 <div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">task</span>
 <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prefill-decode</span>
@@ -5636,8 +5636,7 @@ starts prefill and decode before the router.</p>
 <span class="nt">startup_order</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">workers-first</span>
 <span class="nt">groups</span><span class="p">:</span>
 <span class="w">  </span><span class="c1"># Router (CPU) — master node; wires prefill + decode by IP</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">router</span>
-<span class="w">    </span><span class="nt">nodes</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">nodes</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
 <span class="w">    </span><span class="nt">commands</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip install smg</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
@@ -5654,8 +5653,7 @@ starts prefill and decode before the router.</p>
 <span class="w">    </span><span class="nt">resources</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4</span>
 
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prefill</span>
-<span class="w">    </span><span class="nt">nodes</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">nodes</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
 <span class="w">    </span><span class="nt">commands</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
 <span class="w">        </span><span class="no">python -m sglang.launch_server \</span>
@@ -5667,8 +5665,7 @@ starts prefill and decode before the router.</p>
 <span class="w">    </span><span class="nt">resources</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">H200</span>
 
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">decode</span>
-<span class="w">    </span><span class="nt">nodes</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">nodes</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
 <span class="w">    </span><span class="nt">commands</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
 <span class="w">        </span><span class="no">python -m sglang.launch_server \</span>
@@ -5681,11 +5678,10 @@ starts prefill and decode before the router.</p>
 </code></pre></div>
 </div>
 </details>
-<div class="admonition info">
-<p class="admonition-title">Examples</p>
+<blockquote>
 <p>See the <a href="../../examples/training/ray-ragen/">Ray+RAGEN</a> example for running a Ray cluster,
 and the <a href="../../examples/clusters/nccl-rccl-tests/">NCCL/RCCL tests</a> example for running <code>mpirun</code> with node groups.</p>
-</div>
+</blockquote>
 <h3 id="resources">Resources<a class="headerlink" href="#resources" title="Permanent link">&para;</a></h3>
 <p>When you specify a resource value like <code>cpu</code> or <code>memory</code>,
 you can either use an exact value (e.g. <code>24GB</code>) or a 
@@ -6410,7 +6406,8 @@ no-capacity error (use <code>retry</code> to wait for a targeted instance to fre
 the shorter of the fleet's and run's <code>idle_duration</code> is used.
 If the run reuses an existing fleet instance, only the fleet's
 <a href="../../reference/dstack.yml/fleet/#idle_duration"><code>idle_duration</code></a> applies.</p>
-<p>If an instance remains <code>idle</code>, it is automatically terminated after <code>idle_duration</code>.</p>
+<p>If an instance remains <code>idle</code>, it is automatically terminated after <code>idle_duration</code>,
+unless the fleet is already at <code>nodes.min</code>.</p>
 <blockquote>
 <p>Not applied for container-based backends (Kubernetes, Vast.ai, Runpod).</p>
 </blockquote>

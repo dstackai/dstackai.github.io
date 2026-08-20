@@ -6009,7 +6009,8 @@ no-capacity error (use <code>retry</code> to wait for a targeted instance to fre
 the shorter of the fleet's and run's <code>idle_duration</code> is used.
 If the run reuses an existing fleet instance, only the fleet's
 <a href="../../reference/dstack.yml/fleet/#idle_duration"><code>idle_duration</code></a> applies.</p>
-<p>If an instance remains <code>idle</code>, it is automatically terminated after <code>idle_duration</code>.</p>
+<p>If an instance remains <code>idle</code>, it is automatically terminated after <code>idle_duration</code>,
+unless the fleet is already at <code>nodes.min</code>.</p>
 <blockquote>
 <p>Not applied for container-based backends (Kubernetes, Vast.ai, Runpod).</p>
 </blockquote>

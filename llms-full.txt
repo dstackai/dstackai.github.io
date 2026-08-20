@@ -2382,12 +2382,12 @@ Backend fleets allow you to set `backends` to specify which backends are allowed
 
 ### Idle duration
 
-By default, instances of a backend fleet stay `idle` for 3 days and can be reused within that time.
-If an instance is not reused within this period, it is automatically terminated.
+Instances of a backend fleet that aren't running any jobs are `idle` and can be reused by new runs.
+`dstack` terminates idle instances above [`nodes.min`](#nodes) after
+[`idle_duration`](../reference/dstack.yml/fleet.md#idle_duration), which defaults to 3 days.
 
-To change the default idle duration, set
-[`idle_duration`](../reference/dstack.yml/fleet.md#idle_duration) in the fleet configuration (e.g., `0s`, `1m`, or `off` for
-unlimited).
+For `idle_duration` to have an effect, `nodes` must be a range. Set `min` to `0` and `target` to
+the number of instances to pre-provision:
 
 <div editor-title="fleet.dstack.yml">
     
@@ -2395,7 +2395,9 @@ unlimited).
 type: fleet
 name: my-fleet
 
-nodes: 2
+nodes:
+  min: 0
+  target: 2
 
 # Terminate instances idle for more than 1 hour
 idle_duration: 1h
@@ -2405,6 +2407,16 @@ resources:
 ```
 
 </div>
+
+`dstack apply` provisions `target` instances, and every instance that stays idle for
+`idle_duration` is terminated until the fleet is down to `min`. Set `idle_duration` to `0s` to
+terminate instances as soon as they become idle, or to `off` to never terminate them.
+
+!!! info "Fixed number of nodes"
+    Instances are never terminated on idle duration if the fleet is already at `nodes.min`, since
+    `dstack` would immediately provision new ones to maintain `min`. A fleet with a fixed size,
+    e.g. `nodes: 2`, has `min` equal to `2`, so it keeps its instances regardless of
+    `idle_duration`.
 
 ### Blocks
 
@@ -3504,10 +3516,10 @@ the index of the node within that group.
 
 Currently, only `resources`, `commands`, and `ports` can be configured per node group. [`groups`](../reference/dstack.yml/task.md#groups) and top-level `nodes` are mutually exclusive.Support for other properties is coming soon.
 
-??? info "Prefill/decode example"
-    Node groups can mix CPU and GPU roles. This SGLang prefill/decode split uses a CPU
+??? info "PD disaggregation"
+    While PD disaggregaton is mostly used with [services](services.md#pd-disaggregation), it also possible to run it as tasks. The example below runs  a CPU
     router (`groups[0]`, the master) and GPU workers. `startup_order: workers-first`
-    starts prefill and decode before the router.
+    instructs `dstack` to start prefill and decode workers before the router.
 
     <div editor-title=".dstack.yml">
 
@@ -3522,8 +3534,7 @@ Currently, only `resources`, `commands`, and `ports` can be configured per node 
     startup_order: workers-first
     groups:
       # Router (CPU) — master node; wires prefill + decode by IP
-      - name: router
-        nodes: 1
+      - nodes: 1
         commands:
           - pip install smg
           - |
@@ -3540,8 +3551,7 @@ Currently, only `resources`, `commands`, and `ports` can be configured per node 
         resources:
           cpu: 4
 
-      - name: prefill
-        nodes: 1
+      - nodes: 1
         commands:
           - |
             python -m sglang.launch_server \
@@ -3553,8 +3563,7 @@ Currently, only `resources`, `commands`, and `ports` can be configured per node 
         resources:
           gpu: H200
 
-      - name: decode
-        nodes: 1
+      - nodes: 1
         commands:
           - |
             python -m sglang.launch_server \
@@ -3568,9 +3577,8 @@ Currently, only `resources`, `commands`, and `ports` can be configured per node 
 
     </div>
 
-!!! info "Examples"
-    See the [Ray+RAGEN](../examples/training/ray-ragen.md) example for running a Ray cluster,
-    and the [NCCL/RCCL tests](../examples/clusters/nccl-rccl-tests.md) example for running `mpirun` with node groups.
+> See the [Ray+RAGEN](../examples/training/ray-ragen.md) example for running a Ray cluster,
+and the [NCCL/RCCL tests](../examples/clusters/nccl-rccl-tests.md) example for running `mpirun` with node groups.
 
 ### Resources
 
@@ -9033,7 +9041,8 @@ If the run is submitted to a fleet with `nodes` set to a range and a new instanc
 If the run reuses an existing fleet instance, only the fleet's
 [`idle_duration`](../reference/dstack.yml/fleet.md#idle_duration) applies.
 
-If an instance remains `idle`, it is automatically terminated after `idle_duration`.
+If an instance remains `idle`, it is automatically terminated after `idle_duration`,
+unless the fleet is already at `nodes.min`.
 
 > Not applied for container-based backends (Kubernetes, Vast.ai, Runpod).
 
@@ -11942,8 +11951,7 @@ env:
   - WANDB_API_KEY
 
 groups:
-  - name: head # The name property is optional
-    nodes: 1
+  - nodes: 1
     commands:
       - wget -O miniconda.sh https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
       - bash miniconda.sh -b -p /workflow/miniconda
@@ -11964,8 +11972,7 @@ groups:
       gpu: 80GB:8
       shm_size: 128GB
 
-  - name: workers
-    nodes: 1
+  - nodes: 1
     commands:
       - wget -O miniconda.sh https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
       - bash miniconda.sh -b -p /workflow/miniconda
@@ -13970,8 +13977,7 @@ Here's an example of a task that runs AllReduce test on 2 nodes, each with 4 GPU
       - NCCL_DEBUG=INFO
 
     groups:
-      - name: master # The name property is optional
-        nodes: 1
+      - nodes: 1
         commands:
           - |
             mpirun \
@@ -13985,8 +13991,7 @@ Here's an example of a task that runs AllReduce test on 2 nodes, each with 4 GPU
           gpu: nvidia:1..8
           shm_size: 16GB
 
-      - name: workers
-        nodes: 1
+      - nodes: 1
         commands:
           - sleep infinity
         resources:
@@ -14024,8 +14029,7 @@ Here's an example of a task that runs AllReduce test on 2 nodes, each with 4 GPU
       - OPEN_MPI_HOME=/usr/lib/x86_64-linux-gnu/openmpi
 
     groups:
-      - name: master # The name property is optional
-        nodes: 1
+      - nodes: 1
         commands:
           # Setup MPI and build RCCL tests
           - apt-get install -y git libopenmpi-dev openmpi-bin
@@ -14051,8 +14055,7 @@ Here's an example of a task that runs AllReduce test on 2 nodes, each with 4 GPU
         resources:
           gpu: MI300X:8
 
-      - name: workers
-        nodes: 1
+      - nodes: 1
         commands:
           # Setup MPI and build RCCL tests
           - apt-get install -y git libopenmpi-dev openmpi-bin

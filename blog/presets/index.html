@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="A preview of presets: a toolkit that streamlines agent-based inference optimization, and a portable format that deploys the result to any cloud or datacenter.">
+        <meta name="description" content="A preview of presets: an open-source toolkit that streamlines inference optimization with agents, and a portable preset format.">
       
       
         <meta name="author" content="dstack GmbH">
@@ -140,7 +140,7 @@
   
 <meta property="og:type" content="website" />
 <meta property="og:title" content="Presets: a toolkit for agent-based inference optimization - dstack" />
-<meta property="og:description" content="A preview of presets: a toolkit that streamlines agent-based inference optimization, and a portable format that deploys the result to any cloud or datacenter." />
+<meta property="og:description" content="A preview of presets: an open-source toolkit that streamlines inference optimization with agents, and a portable preset format." />
 <meta property="og:image" content="
   https://dstack.ai/static-assets/static-assets/images/dstack-presets.png" />
 <meta property="og:image:type" content="image/png" />
@@ -149,7 +149,7 @@
 <meta property="og:url" content="https://dstack.ai/blog/presets/" />
 <meta property="twitter:card" content="summary_large_image" />
 <meta property="twitter.title" content="Presets: a toolkit for agent-based inference optimization - dstack" />
-<meta property="twitter:description" content="A preview of presets: a toolkit that streamlines agent-based inference optimization, and a portable format that deploys the result to any cloud or datacenter." />
+<meta property="twitter:description" content="A preview of presets: an open-source toolkit that streamlines inference optimization with agents, and a portable preset format." />
 <meta property="twitter:image" content="
   https://dstack.ai/static-assets/static-assets/images/dstack-presets.png" />
 </head>
@@ -4917,12 +4917,11 @@
 
 <h1 id="presets-a-toolkit-for-agent-based-inference-optimization">Presets: a toolkit for agent-based inference optimization<a class="headerlink" href="#presets-a-toolkit-for-agent-based-inference-optimization" title="Permanent link">&para;</a></h1>
 <p>Optimizing model inference is agent work now. Every inference provider does it inside its own process, on its own serving stack, with its own harness around the optimization agent. Despite the progress in open-source serving frameworks, what gets published is a benchmark, often without the workload, the concurrency, and the hardware behind it. The optimized deployment itself stays tied to the stack that produced it.</p>
-<p>Today we're introducing a preview of presets: an open-source toolkit that streamlines inference optimization with agents, and a portable preset format that can be deployed to any cloud, Kubernetes cluster, or bare-metal fleet.</p>
+<p>Today we're introducing a preview of presets: an open-source toolkit that streamlines inference optimization with agents, and a portable preset format.</p>
 <p><img src="https://dstack.ai/static-assets/static-assets/images/dstack-presets.png" width="650" /></p>
 <!-- more -->
 
-<p>Despite the progress in open-source serving frameworks, there is still no way to get optimization and deployment that delivers portable performance. That work happens inside each inference provider's own proprietary stack, with its own harness around the agent. This has to change.</p>
-<p>Deploying Kimi K3 should be as simple as deploying a Docker image, on any silicon and in any datacenter. Taking a model someone has already optimized and running it on your own hardware should not mean rebuilding the stack or repeating the optimization, whichever silicon you have.</p>
+<p>Deploying Kimi K3 to any cloud, Kubernetes cluster, or bare-metal fleet should be as simple as deploying a Docker image. Taking a model someone has already optimized and running it on your own hardware should not mean rebuilding the stack or repeating the optimization, whichever silicon you have.</p>
 <h2 id="toolkit-and-portable-format">Toolkit and portable format<a class="headerlink" href="#toolkit-and-portable-format" title="Permanent link">&para;</a></h2>
 <p>Think of Docker images. Docker gives you a toolkit for building an image, and a format that deploys to any datacenter or cloud reproducibly.</p>
 <p><code>dstack</code> introduces a similar concept applied to building optimized inference and its deployment. Presets offer two things: a toolkit that streamlines the optimization itself using agents, and a portable format that deploys the final preset to any cloud, Kubernetes cluster, or bare-metal fleet.</p>

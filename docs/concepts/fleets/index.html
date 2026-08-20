@@ -5599,17 +5599,19 @@ See the <a href="../../examples/clusters/lambda/#kubernetes">Lambda</a> or <a hr
 <h3 id="backends_1">Backends<a class="headerlink" href="#backends_1" title="Permanent link">&para;</a></h3>
 <p>Backend fleets allow you to set <code>backends</code> to specify which backends are allowed to be used.</p>
 <h3 id="idle-duration">Idle duration<a class="headerlink" href="#idle-duration" title="Permanent link">&para;</a></h3>
-<p>By default, instances of a backend fleet stay <code>idle</code> for 3 days and can be reused within that time.
-If an instance is not reused within this period, it is automatically terminated.</p>
-<p>To change the default idle duration, set
-<a href="../../reference/dstack.yml/fleet/#idle_duration"><code>idle_duration</code></a> in the fleet configuration (e.g., <code>0s</code>, <code>1m</code>, or <code>off</code> for
-unlimited).</p>
+<p>Instances of a backend fleet that aren't running any jobs are <code>idle</code> and can be reused by new runs.
+<code>dstack</code> terminates idle instances above <a href="#nodes"><code>nodes.min</code></a> after
+<a href="../../reference/dstack.yml/fleet/#idle_duration"><code>idle_duration</code></a>, which defaults to 3 days.</p>
+<p>For <code>idle_duration</code> to have an effect, <code>nodes</code> must be a range. Set <code>min</code> to <code>0</code> and <code>target</code> to
+the number of instances to pre-provision:</p>
 <div editor-title="fleet.dstack.yml">
 
 <div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">fleet</span>
 <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my-fleet</span>
 
-<span class="nt">nodes</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
+<span class="nt">nodes</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">min</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span>
+<span class="w">  </span><span class="nt">target</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
 
 <span class="c1"># Terminate instances idle for more than 1 hour</span>
 <span class="nt">idle_duration</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1h</span>
@@ -5620,6 +5622,16 @@ unlimited).</p>
 
 </div>
 
+<p><code>dstack apply</code> provisions <code>target</code> instances, and every instance that stays idle for
+<code>idle_duration</code> is terminated until the fleet is down to <code>min</code>. Set <code>idle_duration</code> to <code>0s</code> to
+terminate instances as soon as they become idle, or to <code>off</code> to never terminate them.</p>
+<div class="admonition info">
+<p class="admonition-title">Fixed number of nodes</p>
+<p>Instances are never terminated on idle duration if the fleet is already at <code>nodes.min</code>, since
+<code>dstack</code> would immediately provision new ones to maintain <code>min</code>. A fleet with a fixed size,
+e.g. <code>nodes: 2</code>, has <code>min</code> equal to <code>2</code>, so it keeps its instances regardless of
+<code>idle_duration</code>.</p>
+</div>
 <h3 id="blocks">Blocks<a class="headerlink" href="#blocks" title="Permanent link">&para;</a></h3>
 <p>By default, a job uses the entire instance—e.g., all 8 GPUs. To allow multiple jobs on the same instance, set the <code>blocks</code> property to divide the instance. Each job can then use one or more blocks, up to the full instance.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="backend-fleets_2" name="__tabbed_5" type="radio" /><input id="ssh-fleets_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="backend-fleets_2">Backend fleets</label><label for="ssh-fleets_2">SSH fleets</label></div>
