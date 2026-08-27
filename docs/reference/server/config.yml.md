@@ -330,6 +330,19 @@ to configure [backends](../../concepts/backends.md) and other [server-level sett
 ###### `api_key` - (Required) `str` The API key. { #api_key data-toc-label='api_key' class='reference-item' }
 
 
+##### `projects[n].backends[type=seeweb]` { #seeweb data-toc-label="seeweb" }
+
+###### `type` - (Required) `"seeweb"` The type of backend. Must be `seeweb`. { #type data-toc-label='type' class='reference-item' }
+###### `regions` - (Optional) `list[str]` The list of Seeweb regions (e.g. it-mi2, it-fr2, ch-lug1, hr-zag1). Omit to use all regions. { #regions data-toc-label='regions' class='reference-item' }
+###### [`creds`](#seeweb-creds) - (Required) `object` The credentials. { #_creds data-toc-label='creds' class='reference-item' }
+
+
+###### `projects[n].backends[type=seeweb].creds` { #seeweb-creds data-toc-label="creds" }
+
+###### `type` - (Required) `"api_token"` The type of credentials. Must be `api_token`. { #type data-toc-label='type' class='reference-item' }
+###### `api_token` - (Required) `str` The Seeweb ECS API token. { #api_token data-toc-label='api_token' class='reference-item' }
+
+
 ##### `projects[n].backends[type=amddevcloud]` { #amddevcloud data-toc-label="amddevcloud" }
 
 ###### `type` - (Required) `"amddevcloud" | "digitalocean"` The type of backend. { #type data-toc-label='type' class='reference-item' }

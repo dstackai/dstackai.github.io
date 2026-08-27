@@ -3630,6 +3630,32 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#dstack-preset-push" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          dstack preset push
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dstack-preset-pull" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          dstack preset pull
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#dstack-preset-delete" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -5005,6 +5031,32 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#dstack-preset-push" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          dstack preset push
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dstack-preset-pull" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          dstack preset pull
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#dstack-preset-delete" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -5123,7 +5175,11 @@
 
 <h1 id="dstack-preset">dstack preset<a class="headerlink" href="#dstack-preset" title="Permanent link">&para;</a></h1>
 <p>The <code>dstack preset</code> commands create, list, export, and delete local
-<a href="../../../../concepts/presets/">presets</a>.</p>
+<a href="../../../../concepts/presets/">presets</a>, and push them to and pull them from a
+registry.</p>
+<p>The commands that take a preset — <code>get</code>, <code>export</code>, and <code>delete</code> — accept its ID
+or name. A pulled preset's name includes the project it came from, e.g.
+<code>main/qwen38-27b-mi300x</code>.</p>
 <h2 id="dstack-preset-list">dstack preset list<a class="headerlink" href="#dstack-preset-list" title="Permanent link">&para;</a></h2>
 <p>The <code>dstack preset list</code> command lists locally stored presets.</p>
 <h5 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h5>
@@ -5165,8 +5221,7 @@ Usage:<span class="w"> </span>dstack<span class="w"> </span>preset<span class="w
 <span class="w">                            </span><span class="o">[</span>-R<span class="w"> </span><span class="p">|</span><span class="w"> </span>--dont-destroy<span class="w"> </span><span class="p">|</span><span class="w"> </span>--idle-duration<span class="w"> </span>DURATION<span class="o">]</span>
 <span class="w">                            </span><span class="o">[</span>--spot<span class="w"> </span><span class="p">|</span><span class="w"> </span>--on-demand<span class="w"> </span><span class="p">|</span><span class="w"> </span>--spot-auto<span class="w"> </span><span class="p">|</span><span class="w"> </span>--spot-policy<span class="w"> </span>POLICY<span class="o">]</span>
 <span class="w">                            </span><span class="o">[</span>--retry<span class="w"> </span><span class="p">|</span><span class="w"> </span>--no-retry<span class="w"> </span><span class="p">|</span><span class="w"> </span>--retry-duration<span class="w"> </span>DURATION<span class="o">]</span>
-<span class="w">                            </span><span class="o">[</span>--keep-service<span class="o">]</span><span class="w"> </span><span class="o">[</span>--trials<span class="w"> </span>N<span class="o">]</span><span class="w"> </span><span class="o">[</span>--debug<span class="o">]</span>
-<span class="w">                            </span><span class="o">[</span>--previous<span class="w"> </span>ID<span class="o">]</span><span class="w"> </span><span class="o">[</span>-y<span class="o">]</span>
+<span class="w">                            </span><span class="o">[</span>--keep-service<span class="o">]</span><span class="w"> </span><span class="o">[</span>--trials<span class="w"> </span>N<span class="o">]</span><span class="w"> </span><span class="o">[</span>--previous<span class="w"> </span>ID<span class="o">]</span><span class="w"> </span><span class="o">[</span>-y<span class="o">]</span>
 
 Options:
 <span class="w">  </span>-h,<span class="w"> </span>--help<span class="w">            </span>show<span class="w"> </span>this<span class="w"> </span><span class="nb">help</span><span class="w"> </span>message<span class="w"> </span>and<span class="w"> </span><span class="nb">exit</span>
@@ -5175,7 +5230,6 @@ Options:
 <span class="w">  </span>--keep-service<span class="w">        </span>Leave<span class="w"> </span>the<span class="w"> </span>verified<span class="w"> </span>service<span class="w"> </span>running
 <span class="w">  </span>--trials<span class="w"> </span>N<span class="w">            </span>The<span class="w"> </span>number<span class="w"> </span>of<span class="w"> </span>benchmarked<span class="w"> </span>trials<span class="w"> </span>before<span class="w"> </span>the<span class="w"> </span>best<span class="w"> </span>one
 <span class="w">                        </span>is<span class="w"> </span>promoted
-<span class="w">  </span>--debug<span class="w">               </span>Save<span class="w"> </span>the<span class="w"> </span>agent<span class="w"> </span>prompt<span class="w"> </span>and<span class="w"> </span>raw<span class="w"> </span>trace
 <span class="w">  </span>--previous<span class="w"> </span>ID<span class="w">         </span>Give<span class="w"> </span>the<span class="w"> </span>agent<span class="w"> </span>a<span class="w"> </span>previous<span class="w"> </span>session<span class="s1">'s results to analyze</span>
 <span class="s1">                        and improve on. Repeat for several</span>
 <span class="s1">  -y, --yes             Do not ask for confirmation</span>
@@ -5247,9 +5301,9 @@ Retry<span class="w"> </span>Policy:
 </tbody>
 </table>
 <p>Agent progress is written to <code>agent.log</code> under <code>~/.dstack/presets/&lt;preset-id&gt;/</code>,
-alongside the effective configuration (<code>preset.dstack.yml</code>) and the recorded
-trials (<code>trials.jsonl</code>). Pass <code>--debug</code> to also save the agent prompt
-(<code>prompt.md</code>) and raw trace (<code>trace.jsonl</code>).</p>
+alongside the effective configuration (<code>preset.dstack.yml</code>), the recorded
+trials, the agent prompt (<code>prompt.md</code>), and the real-time trace
+(<code>trace.jsonl</code>).</p>
 <h2 id="dstack-preset-logs">dstack preset logs<a class="headerlink" href="#dstack-preset-logs" title="Permanent link">&para;</a></h2>
 <p>The <code>dstack preset logs</code> command shows a preset creation's log. Pass <code>-f</code> to
 re-follow a detached or running creation to completion.</p>
@@ -5345,10 +5399,48 @@ Options:
 
 </div>
 
+<h2 id="dstack-preset-push">dstack preset push<a class="headerlink" href="#dstack-preset-push" title="Permanent link">&para;</a></h2>
+<p>The <code>dstack preset push</code> command pushes a local preset to the registry as
+<code>&lt;project&gt;/&lt;name&gt;</code>.</p>
+<h5 id="usage_7">Usage<a class="headerlink" href="#usage_7" title="Permanent link">&para;</a></h5>
+<div class="termy">
+
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>dstack<span class="w"> </span>preset<span class="w"> </span>push<span class="w"> </span>--help
+Usage:<span class="w"> </span>dstack<span class="w"> </span>preset<span class="w"> </span>push<span class="w"> </span><span class="o">[</span>-h<span class="o">]</span><span class="w"> </span>ID<span class="w"> </span>PROJECT/NAME
+
+Positional<span class="w"> </span>Arguments:
+<span class="w">  </span>ID<span class="w">            </span>The<span class="w"> </span><span class="nb">local</span><span class="w"> </span>preset<span class="w"> </span>ID<span class="w"> </span>or<span class="w"> </span>name
+<span class="w">  </span>PROJECT/NAME<span class="w">  </span>The<span class="w"> </span>name<span class="w"> </span>to<span class="w"> </span>push<span class="w"> </span>it<span class="w"> </span>under<span class="w"> </span><span class="k">in</span><span class="w"> </span>the<span class="w"> </span>registry,<span class="w"> </span>prefixed<span class="w"> </span>by<span class="w"> </span>the
+<span class="w">                </span>project
+
+Options:
+<span class="w">  </span>-h,<span class="w"> </span>--help<span class="w">    </span>show<span class="w"> </span>this<span class="w"> </span><span class="nb">help</span><span class="w"> </span>message<span class="w"> </span>and<span class="w"> </span><span class="nb">exit</span>
+</code></pre></div>
+
+</div>
+
+<h2 id="dstack-preset-pull">dstack preset pull<a class="headerlink" href="#dstack-preset-pull" title="Permanent link">&para;</a></h2>
+<p>The <code>dstack preset pull</code> command pulls <code>&lt;project&gt;/&lt;name&gt;</code> or <code>&lt;project&gt;/&lt;id&gt;</code>
+from the registry and stores it locally.</p>
+<h5 id="usage_8">Usage<a class="headerlink" href="#usage_8" title="Permanent link">&para;</a></h5>
+<div class="termy">
+
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>dstack<span class="w"> </span>preset<span class="w"> </span>pull<span class="w"> </span>--help
+Usage:<span class="w"> </span>dstack<span class="w"> </span>preset<span class="w"> </span>pull<span class="w"> </span><span class="o">[</span>-h<span class="o">]</span><span class="w"> </span>PROJECT/NAME
+
+Positional<span class="w"> </span>Arguments:
+<span class="w">  </span>PROJECT/NAME<span class="w">  </span>The<span class="w"> </span>preset<span class="w"> </span>name<span class="w"> </span>or<span class="w"> </span>ID<span class="w"> </span><span class="k">in</span><span class="w"> </span>the<span class="w"> </span>registry,<span class="w"> </span>prefixed<span class="w"> </span>by<span class="w"> </span>the<span class="w"> </span>project
+
+Options:
+<span class="w">  </span>-h,<span class="w"> </span>--help<span class="w">    </span>show<span class="w"> </span>this<span class="w"> </span><span class="nb">help</span><span class="w"> </span>message<span class="w"> </span>and<span class="w"> </span><span class="nb">exit</span>
+</code></pre></div>
+
+</div>
+
 <h2 id="dstack-preset-delete">dstack preset delete<a class="headerlink" href="#dstack-preset-delete" title="Permanent link">&para;</a></h2>
 <p>The <code>dstack preset delete</code> command deletes one local preset by ID or name, or
 all presets for a base model.</p>
-<h5 id="usage_7">Usage<a class="headerlink" href="#usage_7" title="Permanent link">&para;</a></h5>
+<h5 id="usage_9">Usage<a class="headerlink" href="#usage_9" title="Permanent link">&para;</a></h5>
 <div class="termy">
 
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>dstack<span class="w"> </span>preset<span class="w"> </span>delete<span class="w"> </span>--help

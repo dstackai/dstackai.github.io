@@ -6,11 +6,12 @@ The `gateway` configuration type allows creating and updating [gateways](../../c
 
 ###### `name` - (Optional) `str` The gateway name. { #name data-toc-label='name' class='reference-item' }
 ###### `default` - (Optional) `bool` Whether the gateway is the project's default. Can be updated in-place. If unset when creating a new gateway, the gateway will become the default unless there is already a default gateway. If unset when updating the gateway in-place, the gateway's default status will not change. { #default data-toc-label='default' class='reference-item' }
-###### `backend` - (Required) `"amddevcloud" | "aws" | "azure" | "cloudrift" | "crusoe" | "cudo" | "datacrunch" | "digitalocean" | "dstack" | "gcp" | "hotaisle" | "jarvislabs" | "kubernetes" | "lambda" | "remote" | "nebius" | "oci" | "runpod" | "tensordock" | "vastai" | "verda" | "vultr" | "slurm"` The gateway backend. { #backend data-toc-label='backend' class='reference-item' }
+###### `backend` - (Required) `"amddevcloud" | "aws" | "azure" | "cloudrift" | "crusoe" | "cudo" | "datacrunch" | "digitalocean" | "dstack" | "gcp" | "hotaisle" | "jarvislabs" | "kubernetes" | "lambda" | "remote" | "nebius" | "oci" | "runpod" | "seeweb" | "tensordock" | "vastai" | "verda" | "vultr" | "slurm"` The gateway backend. { #backend data-toc-label='backend' class='reference-item' }
 ###### `region` - (Required) `str` The gateway region. { #region data-toc-label='region' class='reference-item' }
 ###### `instance_type` - (Optional) `str` Backend-specific instance type to use for the gateway instance. Omit to use the backend's default, which is typically a small non-GPU instance. { #instance_type data-toc-label='instance_type' class='reference-item' }
 ###### `domain` - (Optional) `str` The gateway wildcard domain name, e.g. `example.com`. Service domain names are constructed as `<run name>.<gateway domain`. The domain name can use the `${{ run.project_name }}` variable to include the service’s project name. Can be updated in-place. Updates do not affect existing services. { #domain data-toc-label='domain' class='reference-item' }
 ###### `public_ip` - (Optional) `bool` Allocate public IP for the gateway. Defaults to `true`. { #public_ip data-toc-label='public_ip' class='reference-item' }
+###### [`load_balancer`](#load_balancer) - (Optional) `object` The load balancer configuration. Set to `type: alb` to front the gateway with an AWS Application Load Balancer. { #_load_balancer data-toc-label='load_balancer' class='reference-item' }
 ###### [`certificate`](#certificate) - (Optional) `object` The SSL certificate configuration. Set to `null` to disable. Defaults to `type: lets-encrypt`. { #_certificate data-toc-label='certificate' class='reference-item' }
 ###### `replicas` - (Optional) `int` The number of gateway replicas. Defaults to `1`. { #replicas data-toc-label='replicas' class='reference-item' }
 ###### `tags` - (Optional) `dict` The custom tags to associate with the gateway. The tags are also propagated to the underlying backend resources. If there is a conflict with backend-level tags, does not override them. { #tags data-toc-label='tags' class='reference-item' }
@@ -27,6 +28,13 @@ Set to `null` to disable certificates (e.g. for [private gateways](../../concept
 
 === "ACM" 
 
-    ###### `type` - (Required) `"acm"` Certificates by AWS Certificate Manager (ACM). Must be `acm`. { #type data-toc-label='type' class='reference-item' }
+    ###### `type` - (Required) `"acm"` Certificates by AWS Certificate Manager (ACM). Implies `load_balancer: { type: alb }`. Must be `acm`. { #type data-toc-label='type' class='reference-item' }
     ###### `arn` - (Required) `str` The ARN of the wildcard ACM certificate for the domain. { #arn data-toc-label='arn' class='reference-item' }
+
+
+### `load_balancer`
+
+=== "ALB"
+
+    ###### `type` - (Required) `"alb"` AWS Application Load Balancer. Must be `alb`. { #type data-toc-label='type' class='reference-item' }
 

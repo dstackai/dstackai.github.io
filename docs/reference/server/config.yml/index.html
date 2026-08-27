@@ -5239,6 +5239,13 @@ to configure <a href="../../../concepts/backends/">backends</a> and other <a hre
 <h6 id="vultr-creds"><code>projects[n].backends[type=vultr].creds</code><a class="headerlink" href="#vultr-creds" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="type"><code>type</code> - (Required) <code>"api_key"</code> The type of credentials. Must be <code>api_key</code>.<a class="headerlink" href="#type" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="api_key"><code>api_key</code> - (Required) <code>str</code> The API key.<a class="headerlink" href="#api_key" title="Permanent link">&para;</a></h6>
+<h5 id="seeweb"><code>projects[n].backends[type=seeweb]</code><a class="headerlink" href="#seeweb" title="Permanent link">&para;</a></h5>
+<h6 class="reference-item" id="type"><code>type</code> - (Required) <code>"seeweb"</code> The type of backend. Must be <code>seeweb</code>.<a class="headerlink" href="#type" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="regions"><code>regions</code> - (Optional) <code>list[str]</code> The list of Seeweb regions (e.g. it-mi2, it-fr2, ch-lug1, hr-zag1). Omit to use all regions.<a class="headerlink" href="#regions" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="_creds"><a href="#seeweb-creds"><code>creds</code></a> - (Required) <code>object</code> The credentials.<a class="headerlink" href="#_creds" title="Permanent link">&para;</a></h6>
+<h6 id="seeweb-creds"><code>projects[n].backends[type=seeweb].creds</code><a class="headerlink" href="#seeweb-creds" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="type"><code>type</code> - (Required) <code>"api_token"</code> The type of credentials. Must be <code>api_token</code>.<a class="headerlink" href="#type" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="api_token"><code>api_token</code> - (Required) <code>str</code> The Seeweb ECS API token.<a class="headerlink" href="#api_token" title="Permanent link">&para;</a></h6>
 <h5 id="amddevcloud"><code>projects[n].backends[type=amddevcloud]</code><a class="headerlink" href="#amddevcloud" title="Permanent link">&para;</a></h5>
 <h6 class="reference-item" id="type"><code>type</code> - (Required) <code>"amddevcloud" | "digitalocean"</code> The type of backend.<a class="headerlink" href="#type" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="project_name"><code>project_name</code> - (Optional) <code>str</code> The name of the project.<a class="headerlink" href="#project_name" title="Permanent link">&para;</a></h6>

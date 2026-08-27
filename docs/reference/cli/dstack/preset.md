@@ -1,7 +1,12 @@
 # dstack preset
 
 The `dstack preset` commands create, list, export, and delete local
-[presets](../../../concepts/presets.md).
+[presets](../../../concepts/presets.md), and push them to and pull them from a
+registry.
+
+The commands that take a preset — `get`, `export`, and `delete` — accept its ID
+or name. A pulled preset's name includes the project it came from, e.g.
+`main/qwen38-27b-mi300x`.
 
 ## dstack preset list
 
@@ -49,9 +54,9 @@ Preset creation uses the existing `claude` login unless
 | `DSTACK_AGENT_CLAUDE_EFFORT` | Claude effort level: `low`, `medium`, `high`, `xhigh`, or `max`. If unset, the `claude` CLI default is used. |
 
 Agent progress is written to `agent.log` under `~/.dstack/presets/<preset-id>/`,
-alongside the effective configuration (`preset.dstack.yml`) and the recorded
-trials (`trials.jsonl`). Pass `--debug` to also save the agent prompt
-(`prompt.md`) and raw trace (`trace.jsonl`).
+alongside the effective configuration (`preset.dstack.yml`), the recorded
+trials, the agent prompt (`prompt.md`), and the real-time trace
+(`trace.jsonl`).
 
 ## dstack preset logs
 
@@ -125,6 +130,38 @@ configuration that `dstack apply` deploys.
 
 ```shell
 $ dstack preset export --help
+#GENERATE#
+```
+
+</div>
+
+## dstack preset push
+
+The `dstack preset push` command pushes a local preset to the registry as
+`<project>/<name>`.
+
+##### Usage
+
+<div class="termy">
+
+```shell
+$ dstack preset push --help
+#GENERATE#
+```
+
+</div>
+
+## dstack preset pull
+
+The `dstack preset pull` command pulls `<project>/<name>` or `<project>/<id>`
+from the registry and stores it locally.
+
+##### Usage
+
+<div class="termy">
+
+```shell
+$ dstack preset pull --help
 #GENERATE#
 ```
 

@@ -1239,6 +1239,19 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#load-balancer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Load balancer
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#certificate" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -5031,6 +5044,19 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#load-balancer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Load balancer
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#certificate" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -5292,7 +5318,7 @@ Provisioning...
 <h2 id="configuration-options">Configuration options<a class="headerlink" href="#configuration-options" title="Permanent link">&para;</a></h2>
 <h3 id="domain">Domain<a class="headerlink" href="#domain" title="Permanent link">&para;</a></h3>
 <p>A gateway requires a <code>domain</code> to be specified in the configuration before creation. The domain is used to generate service endpoints (e.g. <code>&lt;run name&gt;.&lt;gateway domain&gt;</code>).</p>
-<p>Once the gateway is created and assigned a hostname, configure your DNS by adding a wildcard record for <code>*.&lt;gateway domain&gt;</code> (e.g. <code>*.example.com</code>). The record should point to the gateway's hostname and should be of type <code>A</code> if the hostname is an IP address (most cases), or of type <code>CNAME</code> if the hostname is another domain (some private gateways and Kubernetes).</p>
+<p>Once the gateway is created and assigned a hostname, configure your DNS by adding a wildcard record for <code>*.&lt;gateway domain&gt;</code> (e.g. <code>*.example.com</code>). The record should point to the gateway's hostname and should be of type <code>A</code> if the hostname is an IP address (most cases), or of type <code>CNAME</code> if the hostname is another domain (load balancers, Kubernetes).</p>
 <details class="info">
 <summary>Project name interpolation</summary>
 <p>You can use the <code>${{ run.project_name }}</code> variable to include the service’s project name in the domain name. This is especially useful when <a href="../exports/">exporting</a> the gateway to multiple projects, as it ensures each importer receives a unique domain name.</p>
@@ -5310,6 +5336,47 @@ Provisioning...
 <p>Gateways in <code>kubernetes</code> backend require an external load balancer. Managed Kubernetes solutions usually include a load balancer.
 For self-hosted Kubernetes, you must provide a load balancer by yourself.</p>
 </details>
+<h3 id="load-balancer">Load balancer<a class="headerlink" href="#load-balancer" title="Permanent link">&para;</a></h3>
+<p>The optional <code>load_balancer</code> property allows you to provision a load balancer in front of the gateway, which is useful for balancing requests between multiple gateway <a href="#replicas">replicas</a>, or for using certain <a href="#certificate">certificate</a> types, such as AWS ACM.</p>
+<p>Currently, only AWS Application Load Balancer (ALB) is supported:</p>
+<div editor-title="gateway.dstack.yml">
+
+<div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gateway</span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">example-gateway</span>
+<span class="nt">backend</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">aws</span>
+<span class="nt">region</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">eu-west-1</span>
+<span class="nt">domain</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">example.com</span>
+<span class="nt">replicas</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
+<span class="nt">load_balancer</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">alb</span>
+<span class="nt">certificate</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">acm</span>
+<span class="w">  </span><span class="nt">arn</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">arn:aws:acm:eu-west-1:164099421079:certificate/3670388f-f43b-4872-aaf8-907b107a170d</span>
+</code></pre></div>
+
+</div>
+
+<details class="info">
+<summary>Requirements</summary>
+<p>An ALB gateway requires:</p>
+<ul>
+<li>The <code>aws</code> backend.</li>
+<li>Either <code>certificate: { type: acm, ... }</code> or <code>certificate: null</code>.</li>
+<li>A VPC with at least two subnets in different availability zones. If <code>public_ip: False</code>, subnets must be private and have a route to a NAT gateway.</li>
+</ul>
+</details>
+<p>The provisioned load balancer provides a hostname you can add to your DNS records. Replica hostnames do not need to be added to DNS.</p>
+<div class="termy">
+
+<div class="highlight"><pre><span></span><code>$ dstack gateway list
+ NAME             BACKEND          HOSTNAME                                                  DOMAIN       DEFAULT  STATUS
+ example-gateway                   dstack-6t7i1b03-lb-338524206.eu-west-1.elb.amazonaws.com  example.com  ✓        running
+    replica=0     aws (eu-west-1)  34.246.162.72                                                                   running
+    replica=1     aws (eu-west-1)  52.18.222.190                                                                   running
+</code></pre></div>
+
+</div>
+
 <h3 id="certificate">Certificate<a class="headerlink" href="#certificate" title="Permanent link">&para;</a></h3>
 <p>By default, when you run a service with a gateway, <code>dstack</code> provisions an SSL certificate via Let's Encrypt for the configured domain. This automatically enables HTTPS for the service endpoint.</p>
 <p>If you disable <a href="#public-ip">public IP</a> (e.g. to make the gateway private) or if you simply don't need HTTPS, you can set <code>certificate</code> to <code>null</code>. </p>
@@ -5322,7 +5389,7 @@ For self-hosted Kubernetes, you must provide a load balancer by yourself.</p>
 <ul>
 <li><code>lets-encrypt</code> (default) — Automatic certificates via <a href="https://letsencrypt.org/">Let's Encrypt</a>. Requires a <a href="#public-ip">public IP</a>.</li>
 <li><code>acm</code> — Certificates managed by <a href="https://aws.amazon.com/certificate-manager/">AWS Certificate Manager</a>. AWS-only. TLS is terminated at the load balancer, not at the gateway, and HTTP requests are redirected to HTTPS by the ALB.
-  Requires a VPC with at least two subnets in different availability zones to provision a load balancer. If <code>public_ip: False</code>, subnets must be private and have a route to NAT gateway.</li>
+  Implies <code>load_balancer: { type: alb }</code>.</li>
 <li><code>null</code> — No certificate. Services will use HTTP.</li>
 </ul>
 </details>
@@ -5379,7 +5446,7 @@ For self-hosted Kubernetes, you must provide a load balancer by yourself.</p>
 
 </div>
 
-<p>To balance requests between gateway replicas, add DNS records for each replica or set up a load balancer outside of <code>dstack</code>. Replica hostnames are displayed in <code>dstack</code> CLI and UI.</p>
+<p>To balance requests between gateway replicas, add DNS records for each replica, use a natively-supported <a href="#load-balancer">load balancer</a>, or set up a load balancer outside of <code>dstack</code>. Replica hostnames are displayed in <code>dstack</code> CLI and UI.</p>
 <div class="termy">
 
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>dstack<span class="w"> </span>gateway<span class="w"> </span>list

@@ -5,7 +5,7 @@ The `service` configuration type allows running [services](../../concepts/servic
 ## Root reference
 
 ###### [`port`](#port) - (Required) `int | str | object` The port the application listens on. { #_port data-toc-label='port' class='reference-item' }
-###### [`gateway`](#gateway) - (Optional) `bool | str | object` The name of the gateway. Specify boolean `false` to run without a gateway. Specify boolean `true` to run with the default gateway. Omit to run with the default gateway if there is one, or without a gateway otherwise. { #_gateway data-toc-label='gateway' class='reference-item' }
+###### [`gateway`](#gateway) - (Optional) `bool | str | object` The name of the gateway. Specify boolean `false` to run without a gateway. Specify boolean `true` to run with the default gateway. Omit to run with the default gateway if there is one, or without a gateway otherwise. Can be updated in-place to migrate existing services between gateways. { #_gateway data-toc-label='gateway' class='reference-item' }
 ###### `strip_prefix` - (Optional) `bool` Strip the `/proxy/services/<project name>/<run name>/` path prefix when forwarding requests to the service. Only takes effect when running the service without a gateway. Defaults to `true`. { #strip_prefix data-toc-label='strip_prefix' class='reference-item' }
 ###### [`model`](#model) - (Optional) `str | object` Mapping of the model for the OpenAI-compatible endpoint provided by `dstack`. Can be a full model format definition or just a model name. If it's a name, the service is expected to expose an OpenAI-compatible API at the `/v1` path. { #_model data-toc-label='model' class='reference-item' }
 ###### `https` - (Optional) `bool | "auto"` Enable HTTPS if running with a gateway. Set to `auto` to determine automatically based on gateway configuration. Defaults to `true`. { #https data-toc-label='https' class='reference-item' }
@@ -13,7 +13,8 @@ The `service` configuration type allows running [services](../../concepts/servic
 ###### [`scaling`](#scaling) - (Optional) `object` The auto-scaling rules. Required if `replicas` is set to a range. { #_scaling data-toc-label='scaling' class='reference-item' }
 ###### [`rate_limits`](#rate_limits) - (Optional) `list[object]` Rate limiting rules. { #_rate_limits data-toc-label='rate_limits' class='reference-item' }
 ###### [`probes`](#probes) - (Optional) `list[object]` The list of probes to determine service health. If `model` is set, defaults to a `/v1/chat/completions` probe. Set explicitly to override. { #_probes data-toc-label='probes' class='reference-item' }
-###### [`replicas`](#replicas) - (Optional) `int | str | list[object]` The number of replicas or a list of replica groups. Can be an integer (e.g., `2`), a range (e.g., `0..4`), or a list of replica groups. Each replica group defines replicas with shared configuration (commands, resources, scaling). When `replicas` is a list of replica groups, top-level `scaling`, `commands`, and `resources` are not allowed and must be specified in each replica group instead. . { #_replicas data-toc-label='replicas' class='reference-item' }
+###### `replicas` - (Optional) `int | str` The number of replicas for a homogeneous service. Can be an integer (e.g. `2`) or a range (e.g. `0..4`). Mutually exclusive with `groups`.. { #replicas data-toc-label='replicas' class='reference-item' }
+###### [`groups`](#groups) - (Optional) `list[object]` A list of replica groups for heterogeneous services. Mutually exclusive with `replicas`. When `groups` is set, top-level `scaling` and `commands` are not allowed.. { #_groups data-toc-label='groups' class='reference-item' }
 ###### `commands` - (Optional) `list[str]` The shell commands to run. { #commands data-toc-label='commands' class='reference-item' }
 ###### `name` - (Optional) `str` The run name. If not specified, a random name is generated. { #name data-toc-label='name' class='reference-item' }
 ###### `image` - (Optional) `str` The name of the Docker image to run. If no `image` is specified, `dstack` uses an Ubuntu 24.04-based Docker image that comes pre-configured with `uv`, `python`, `pip`, the CUDA 13.0 runtime, InfiniBand, NCCL, and NCCL tests. It may also include provider-specific components such as EFA support on AWS. For non-Nvidia accelerators or NVidia GPUs unsupported by CUDA 13.0 (e.g. V100, P100), specify a custom Docker image.. { #image data-toc-label='image' class='reference-item' }
@@ -34,7 +35,7 @@ The `service` configuration type allows running [services](../../concepts/servic
 ###### [`repos`](#repos) - (Optional) `list[str | object]` The list of Git repos. { #_repos data-toc-label='repos' class='reference-item' }
 ###### [`files`](#files) - (Optional) `list[str | object]` The local to container file path mappings. { #_files data-toc-label='files' class='reference-item' }
 ###### `dstack` - (Optional) `bool` Make the dstack server accessible inside the run. No authentication credentials are provided. Defaults to `false`. { #dstack data-toc-label='dstack' class='reference-item' }
-###### `backends` - (Optional) `list["amddevcloud" | "aws" | "azure" | "cloudrift" | "crusoe" | "cudo" | "datacrunch" | "digitalocean" | "dstack" | "gcp" | "hotaisle" | "jarvislabs" | "kubernetes" | "lambda" | "remote" | "nebius" | "oci" | "runpod" | "tensordock" | "vastai" | "verda" | "vultr" | "slurm"]` The backends to consider for provisioning (e.g., `[aws, gcp]`). { #backends data-toc-label='backends' class='reference-item' }
+###### `backends` - (Optional) `list["amddevcloud" | "aws" | "azure" | "cloudrift" | "crusoe" | "cudo" | "datacrunch" | "digitalocean" | "dstack" | "gcp" | "hotaisle" | "jarvislabs" | "kubernetes" | "lambda" | "remote" | "nebius" | "oci" | "runpod" | "seeweb" | "tensordock" | "vastai" | "verda" | "vultr" | "slurm"]` The backends to consider for provisioning (e.g., `[aws, gcp]`). { #backends data-toc-label='backends' class='reference-item' }
 ###### `regions` - (Optional) `list[str]` The regions to consider for provisioning (e.g., `[eu-west-1, us-west4, westeurope]`). { #regions data-toc-label='regions' class='reference-item' }
 ###### `availability_zones` - (Optional) `list[str]` The availability zones to consider for provisioning (e.g., `[eu-west-1a, us-west4-a]`). { #availability_zones data-toc-label='availability_zones' class='reference-item' }
 ###### `instance_types` - (Optional) `list[str]` The cloud-specific instance types to consider for provisioning (e.g., `[g6e.24xlarge, n1-standard-4]`). { #instance_types data-toc-label='instance_types' class='reference-item' }
@@ -127,13 +128,13 @@ The `service` configuration type allows running [services](../../concepts/servic
 
 
 
-### `replicas`
+### `groups`
 
-#### `replicas[n]`
+#### `groups[n]`
 
 ###### `name` - (Optional) `str` The name of the replica group. If not provided, defaults to '0', '1', etc. based on position.. { #name data-toc-label='name' class='reference-item' }
-###### `count` - (Required) `int | str` The number of replicas. Can be a number (e.g. `2`) or a range (`0..4` or `1..8`). If it's a range, the `scaling` property is required. { #count data-toc-label='count' class='reference-item' }
-###### [`scaling`](#scaling) - (Optional) `object` The auto-scaling rules. Required if `count` is set to a range. { #_scaling data-toc-label='scaling' class='reference-item' }
+###### `replicas` - (Required) `int | str` The number of replicas. Can be a number (e.g. `2`) or a range (`0..4` or `1..8`). If it's a range, the `scaling` property is required. { #replicas data-toc-label='replicas' class='reference-item' }
+###### [`scaling`](#scaling) - (Optional) `object` The auto-scaling rules. Required if `replicas` is set to a range. { #_scaling data-toc-label='scaling' class='reference-item' }
 ###### [`resources`](#resources) - (Optional) `object` The resources requirements for replicas in this group. { #_resources data-toc-label='resources' class='reference-item' }
 ###### `spot_policy` - (Optional) `"auto" | "on-demand" | "spot"` The policy for provisioning spot or on-demand instances for replicas in this group: `spot`, `on-demand`, `auto`. { #spot_policy data-toc-label='spot_policy' class='reference-item' }
 ###### `reservation` - (Optional) `str` The existing reservation to use for replicas in this group. Supports AWS Capacity Reservations, AWS Capacity Blocks, and GCP reservations. { #reservation data-toc-label='reservation' class='reference-item' }

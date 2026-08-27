@@ -5250,7 +5250,7 @@ configured <code>ports</code> to <code>localhost</code>.</li>
 
 
 <h4 id="dstack.api.RunCollection.apply_configuration" class="doc doc-heading">
-<code class="doc-symbol doc-symbol-heading doc-symbol-method"></code>            <code class="highlight language-python"><span class="n">apply_configuration</span><span class="p">(</span><span class="n">configuration</span><span class="p">,</span> <span class="n">repo</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">profile</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">configuration_path</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">reserve_ports</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ssh_identity_file</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+<code class="doc-symbol doc-symbol-heading doc-symbol-method"></code>            <code class="highlight language-python"><span class="n">apply_configuration</span><span class="p">(</span><span class="n">configuration</span><span class="p">,</span> <span class="n">repo</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">profile</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">configuration_path</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">reserve_ports</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ssh_identity_file</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">ssh_key_pub</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
 
 <a href="#dstack.api.RunCollection.apply_configuration" class="headerlink" title="Permanent link">&para;</a></h4>
 
@@ -5361,10 +5361,30 @@ Use this method to apply configurations without getting a run plan first.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Path to the private SSH key file. The corresponding public key
-(<code>.pub</code> file) is read and included in the run plan, allowing SSH access to the instances.
-If the <code>.pub</code> file does not exist, it is generated automatically.
-If ssh_identity_file is not specified, the user key is used.</p>
+                <p>Path to a private or public SSH key file. The public key is
+included in the run plan, allowing SSH access to the instances. If a private key
+is given, its public key is read from the corresponding <code>.pub</code> file or, if there
+is no such file, generated from the private key.
+Mutually exclusive with ssh_key_pub.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>ssh_key_pub</code>
+            </td>
+            <td>
+                  <code><span title="typing.Optional">Optional</span>[<span title="str">str</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The public SSH key to include in the run plan, allowing SSH access to
+the instances. Use it instead of ssh_identity_file if the key is not stored
+on disk. Mutually exclusive with ssh_identity_file.
+If neither ssh_key_pub nor ssh_identity_file is specified, the user key is used.</p>
               </div>
             </td>
             <td>
@@ -5583,7 +5603,7 @@ Use this method to apply run plans returned by <code>get_run_plan</code>.</p>
 
 
 <h4 id="dstack.api.RunCollection.get_run_plan" class="doc doc-heading">
-<code class="doc-symbol doc-symbol-heading doc-symbol-method"></code>            <code class="highlight language-python"><span class="n">get_run_plan</span><span class="p">(</span><span class="n">configuration</span><span class="p">,</span> <span class="n">repo</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">profile</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">configuration_path</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">repo_dir</span><span class="o">=</span><span class="n">Deprecated</span><span class="o">.</span><span class="n">PLACEHOLDER</span><span class="p">,</span> <span class="n">ssh_identity_file</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">max_offers</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">full_offers</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">unallocated_resources</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">for_offers_only</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code>
+<code class="doc-symbol doc-symbol-heading doc-symbol-method"></code>            <code class="highlight language-python"><span class="n">get_run_plan</span><span class="p">(</span><span class="n">configuration</span><span class="p">,</span> <span class="n">repo</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">profile</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">configuration_path</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">repo_dir</span><span class="o">=</span><span class="n">Deprecated</span><span class="o">.</span><span class="n">PLACEHOLDER</span><span class="p">,</span> <span class="n">ssh_identity_file</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">ssh_key_pub</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">max_offers</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">full_offers</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">unallocated_resources</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">for_offers_only</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code>
 
 <a href="#dstack.api.RunCollection.get_run_plan" class="headerlink" title="Permanent link">&para;</a></h4>
 
@@ -5679,10 +5699,30 @@ is not loaded from a file.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Path to the private SSH key file. The corresponding public key
-(<code>.pub</code> file) is read and included in the run plan, allowing SSH access to the instances.
-If the <code>.pub</code> file does not exist, it is generated automatically.
-If ssh_identity_file is not specified, the user key is used.</p>
+                <p>Path to a private or public SSH key file. The public key is
+included in the run plan, allowing SSH access to the instances. If a private key
+is given, its public key is read from the corresponding <code>.pub</code> file or, if there
+is no such file, generated from the private key.
+Mutually exclusive with ssh_key_pub.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>ssh_key_pub</code>
+            </td>
+            <td>
+                  <code><span title="typing.Optional">Optional</span>[<span title="str">str</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The public SSH key to include in the run plan, allowing SSH access to
+the instances. Use it instead of ssh_identity_file if the key is not stored
+on disk. Mutually exclusive with ssh_identity_file.
+If neither ssh_key_pub nor ssh_identity_file is specified, the user key is used.</p>
               </div>
             </td>
             <td>
@@ -6244,7 +6284,7 @@ the user's credentials. Ignored for other repo types.</p>
 <h6 class="reference-item" id="_repos"><a href="#repos"><code>repos</code></a> - (Optional) <code>list[str | object]</code> The list of Git repos.<a class="headerlink" href="#_repos" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="_files"><a href="#files"><code>files</code></a> - (Optional) <code>list[str | object]</code> The local to container file path mappings.<a class="headerlink" href="#_files" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="dstack"><code>dstack</code> - (Optional) <code>bool</code> Make the dstack server accessible inside the run. No authentication credentials are provided. Defaults to <code>false</code>.<a class="headerlink" href="#dstack" title="Permanent link">&para;</a></h6>
-<h6 class="reference-item" id="backends"><code>backends</code> - (Optional) <code>list["amddevcloud" | "aws" | "azure" | "cloudrift" | "crusoe" | "cudo" | "datacrunch" | "digitalocean" | "dstack" | "gcp" | "hotaisle" | "jarvislabs" | "kubernetes" | "lambda" | "remote" | "nebius" | "oci" | "runpod" | "tensordock" | "vastai" | "verda" | "vultr" | "slurm"]</code> The backends to consider for provisioning (e.g., <code>[aws, gcp]</code>).<a class="headerlink" href="#backends" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="backends"><code>backends</code> - (Optional) <code>list["amddevcloud" | "aws" | "azure" | "cloudrift" | "crusoe" | "cudo" | "datacrunch" | "digitalocean" | "dstack" | "gcp" | "hotaisle" | "jarvislabs" | "kubernetes" | "lambda" | "remote" | "nebius" | "oci" | "runpod" | "seeweb" | "tensordock" | "vastai" | "verda" | "vultr" | "slurm"]</code> The backends to consider for provisioning (e.g., <code>[aws, gcp]</code>).<a class="headerlink" href="#backends" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="regions"><code>regions</code> - (Optional) <code>list[str]</code> The regions to consider for provisioning (e.g., <code>[eu-west-1, us-west4, westeurope]</code>).<a class="headerlink" href="#regions" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="availability_zones"><code>availability_zones</code> - (Optional) <code>list[str]</code> The availability zones to consider for provisioning (e.g., <code>[eu-west-1a, us-west4-a]</code>).<a class="headerlink" href="#availability_zones" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="instance_types"><code>instance_types</code> - (Optional) <code>list[str]</code> The cloud-specific instance types to consider for provisioning (e.g., <code>[g6e.24xlarge, n1-standard-4]</code>).<a class="headerlink" href="#instance_types" title="Permanent link">&para;</a></h6>
@@ -6266,7 +6306,7 @@ the user's credentials. Ignored for other repo types.</p>
 <h6 class="reference-item" id="_backend_options"><a href="#backend_options"><code>backend_options</code></a> - (Optional) <code>list[object]</code> Backend-specific options, applied only to offers from that backend.<a class="headerlink" href="#_backend_options" title="Permanent link">&para;</a></h6>
 <h3 id="dstack.api.Service"><code>dstack.api.Service</code><a class="headerlink" href="#dstack.api.Service" title="Permanent link">&para;</a></h3>
 <h6 class="reference-item" id="_port"><a href="#port"><code>port</code></a> - (Required) <code>int | str | object</code> The port the application listens on.<a class="headerlink" href="#_port" title="Permanent link">&para;</a></h6>
-<h6 class="reference-item" id="_gateway"><a href="#gateway"><code>gateway</code></a> - (Optional) <code>bool | str | object</code> The name of the gateway. Specify boolean <code>false</code> to run without a gateway. Specify boolean <code>true</code> to run with the default gateway. Omit to run with the default gateway if there is one, or without a gateway otherwise.<a class="headerlink" href="#_gateway" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="_gateway"><a href="#gateway"><code>gateway</code></a> - (Optional) <code>bool | str | object</code> The name of the gateway. Specify boolean <code>false</code> to run without a gateway. Specify boolean <code>true</code> to run with the default gateway. Omit to run with the default gateway if there is one, or without a gateway otherwise. Can be updated in-place to migrate existing services between gateways.<a class="headerlink" href="#_gateway" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="strip_prefix"><code>strip_prefix</code> - (Optional) <code>bool</code> Strip the <code>/proxy/services/&lt;project name&gt;/&lt;run name&gt;/</code> path prefix when forwarding requests to the service. Only takes effect when running the service without a gateway. Defaults to <code>true</code>.<a class="headerlink" href="#strip_prefix" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="_model"><a href="#model"><code>model</code></a> - (Optional) <code>str | object</code> Mapping of the model for the OpenAI-compatible endpoint provided by <code>dstack</code>. Can be a full model format definition or just a model name. If it's a name, the service is expected to expose an OpenAI-compatible API at the <code>/v1</code> path.<a class="headerlink" href="#_model" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="https"><code>https</code> - (Optional) <code>bool | "auto"</code> Enable HTTPS if running with a gateway. Set to <code>auto</code> to determine automatically based on gateway configuration. Defaults to <code>true</code>.<a class="headerlink" href="#https" title="Permanent link">&para;</a></h6>
@@ -6274,7 +6314,8 @@ the user's credentials. Ignored for other repo types.</p>
 <h6 class="reference-item" id="_scaling"><a href="#dstack.api.Scaling"><code>scaling</code></a> - (Optional) <code>object</code> The auto-scaling rules. Required if <code>replicas</code> is set to a range.<a class="headerlink" href="#_scaling" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="_rate_limits"><a href="#rate_limits"><code>rate_limits</code></a> - (Optional) <code>list[object]</code> Rate limiting rules.<a class="headerlink" href="#_rate_limits" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="_probes"><a href="#probes"><code>probes</code></a> - (Optional) <code>list[object]</code> The list of probes to determine service health. If <code>model</code> is set, defaults to a <code>/v1/chat/completions</code> probe. Set explicitly to override.<a class="headerlink" href="#_probes" title="Permanent link">&para;</a></h6>
-<h6 class="reference-item" id="_replicas"><a href="#replicas"><code>replicas</code></a> - (Optional) <code>int | str | list[object]</code> The number of replicas or a list of replica groups. Can be an integer (e.g., <code>2</code>), a range (e.g., <code>0..4</code>), or a list of replica groups. Each replica group defines replicas with shared configuration (commands, resources, scaling). When <code>replicas</code> is a list of replica groups, top-level <code>scaling</code>, <code>commands</code>, and <code>resources</code> are not allowed and must be specified in each replica group instead. .<a class="headerlink" href="#_replicas" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="replicas"><code>replicas</code> - (Optional) <code>int | str</code> The number of replicas for a homogeneous service. Can be an integer (e.g. <code>2</code>) or a range (e.g. <code>0..4</code>). Mutually exclusive with <code>groups</code>..<a class="headerlink" href="#replicas" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="_groups"><a href="#groups"><code>groups</code></a> - (Optional) <code>list[object]</code> A list of replica groups for heterogeneous services. Mutually exclusive with <code>replicas</code>. When <code>groups</code> is set, top-level <code>scaling</code> and <code>commands</code> are not allowed..<a class="headerlink" href="#_groups" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="commands"><code>commands</code> - (Optional) <code>list[str]</code> The shell commands to run.<a class="headerlink" href="#commands" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="name"><code>name</code> - (Optional) <code>str</code> The run name. If not specified, a random name is generated.<a class="headerlink" href="#name" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="image"><code>image</code> - (Optional) <code>str</code> The name of the Docker image to run. If no <code>image</code> is specified, <code>dstack</code> uses an Ubuntu 24.04-based Docker image that comes pre-configured with <code>uv</code>, <code>python</code>, <code>pip</code>, the CUDA 13.0 runtime, InfiniBand, NCCL, and NCCL tests. It may also include provider-specific components such as EFA support on AWS. For non-Nvidia accelerators or NVidia GPUs unsupported by CUDA 13.0 (e.g. V100, P100), specify a custom Docker image..<a class="headerlink" href="#image" title="Permanent link">&para;</a></h6>
@@ -6295,7 +6336,7 @@ the user's credentials. Ignored for other repo types.</p>
 <h6 class="reference-item" id="_repos"><a href="#repos"><code>repos</code></a> - (Optional) <code>list[str | object]</code> The list of Git repos.<a class="headerlink" href="#_repos" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="_files"><a href="#files"><code>files</code></a> - (Optional) <code>list[str | object]</code> The local to container file path mappings.<a class="headerlink" href="#_files" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="dstack"><code>dstack</code> - (Optional) <code>bool</code> Make the dstack server accessible inside the run. No authentication credentials are provided. Defaults to <code>false</code>.<a class="headerlink" href="#dstack" title="Permanent link">&para;</a></h6>
-<h6 class="reference-item" id="backends"><code>backends</code> - (Optional) <code>list["amddevcloud" | "aws" | "azure" | "cloudrift" | "crusoe" | "cudo" | "datacrunch" | "digitalocean" | "dstack" | "gcp" | "hotaisle" | "jarvislabs" | "kubernetes" | "lambda" | "remote" | "nebius" | "oci" | "runpod" | "tensordock" | "vastai" | "verda" | "vultr" | "slurm"]</code> The backends to consider for provisioning (e.g., <code>[aws, gcp]</code>).<a class="headerlink" href="#backends" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="backends"><code>backends</code> - (Optional) <code>list["amddevcloud" | "aws" | "azure" | "cloudrift" | "crusoe" | "cudo" | "datacrunch" | "digitalocean" | "dstack" | "gcp" | "hotaisle" | "jarvislabs" | "kubernetes" | "lambda" | "remote" | "nebius" | "oci" | "runpod" | "seeweb" | "tensordock" | "vastai" | "verda" | "vultr" | "slurm"]</code> The backends to consider for provisioning (e.g., <code>[aws, gcp]</code>).<a class="headerlink" href="#backends" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="regions"><code>regions</code> - (Optional) <code>list[str]</code> The regions to consider for provisioning (e.g., <code>[eu-west-1, us-west4, westeurope]</code>).<a class="headerlink" href="#regions" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="availability_zones"><code>availability_zones</code> - (Optional) <code>list[str]</code> The availability zones to consider for provisioning (e.g., <code>[eu-west-1a, us-west4-a]</code>).<a class="headerlink" href="#availability_zones" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="instance_types"><code>instance_types</code> - (Optional) <code>list[str]</code> The cloud-specific instance types to consider for provisioning (e.g., <code>[g6e.24xlarge, n1-standard-4]</code>).<a class="headerlink" href="#instance_types" title="Permanent link">&para;</a></h6>
@@ -6340,7 +6381,7 @@ the user's credentials. Ignored for other repo types.</p>
 <h6 class="reference-item" id="_repos"><a href="#repos"><code>repos</code></a> - (Optional) <code>list[str | object]</code> The list of Git repos.<a class="headerlink" href="#_repos" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="_files"><a href="#files"><code>files</code></a> - (Optional) <code>list[str | object]</code> The local to container file path mappings.<a class="headerlink" href="#_files" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="dstack"><code>dstack</code> - (Optional) <code>bool</code> Make the dstack server accessible inside the run. No authentication credentials are provided. Defaults to <code>false</code>.<a class="headerlink" href="#dstack" title="Permanent link">&para;</a></h6>
-<h6 class="reference-item" id="backends"><code>backends</code> - (Optional) <code>list["amddevcloud" | "aws" | "azure" | "cloudrift" | "crusoe" | "cudo" | "datacrunch" | "digitalocean" | "dstack" | "gcp" | "hotaisle" | "jarvislabs" | "kubernetes" | "lambda" | "remote" | "nebius" | "oci" | "runpod" | "tensordock" | "vastai" | "verda" | "vultr" | "slurm"]</code> The backends to consider for provisioning (e.g., <code>[aws, gcp]</code>).<a class="headerlink" href="#backends" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="backends"><code>backends</code> - (Optional) <code>list["amddevcloud" | "aws" | "azure" | "cloudrift" | "crusoe" | "cudo" | "datacrunch" | "digitalocean" | "dstack" | "gcp" | "hotaisle" | "jarvislabs" | "kubernetes" | "lambda" | "remote" | "nebius" | "oci" | "runpod" | "seeweb" | "tensordock" | "vastai" | "verda" | "vultr" | "slurm"]</code> The backends to consider for provisioning (e.g., <code>[aws, gcp]</code>).<a class="headerlink" href="#backends" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="regions"><code>regions</code> - (Optional) <code>list[str]</code> The regions to consider for provisioning (e.g., <code>[eu-west-1, us-west4, westeurope]</code>).<a class="headerlink" href="#regions" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="availability_zones"><code>availability_zones</code> - (Optional) <code>list[str]</code> The availability zones to consider for provisioning (e.g., <code>[eu-west-1a, us-west4-a]</code>).<a class="headerlink" href="#availability_zones" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="instance_types"><code>instance_types</code> - (Optional) <code>list[str]</code> The cloud-specific instance types to consider for provisioning (e.g., <code>[g6e.24xlarge, n1-standard-4]</code>).<a class="headerlink" href="#instance_types" title="Permanent link">&para;</a></h6>
@@ -7432,6 +7473,17 @@ You can override these credentials via the <code>git_identity_file</code> or <co
             <td>
               <div class="doc-md-description">
                 <p>Runpod Cloud</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><span title="dstack.api.BackendType.SEEWEB">SEEWEB</span></code></td>
+            <td>
+                  <code><span title="dstack._internal.core.models.backends.base.BackendType">BackendType</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Seeweb Cloud Server GPU</p>
               </div>
             </td>
           </tr>

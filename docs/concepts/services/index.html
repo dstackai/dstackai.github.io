@@ -1096,6 +1096,19 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#replica-groups" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Replica groups
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#pd-disaggregation" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -5187,6 +5200,19 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#replica-groups" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Replica groups
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#pd-disaggregation" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -5809,10 +5835,12 @@ case <code>dstack</code> adjusts the number of replicas (scales up or down) auto
 <p>The <code>scaling</code> property requires creating a <a href="../gateways/">gateway</a>.</p>
 </blockquote>
 <p><span id="replica-groups"></span></p>
-<details class="info">
-<summary>Replica groups</summary>
-<p>A service can include multiple replica groups. Each group can define its own <code>commands</code>, <code>resources</code> requirements, and <code>scaling</code> rules.</p>
+<h3 id="replica-groups">Replica groups<a class="headerlink" href="#replica-groups" title="Permanent link">&para;</a></h3>
+<p>A service can define multiple replica groups. Each group has its own <code>replicas</code> count (or range),
+<code>resources</code>, <code>commands</code>, and <code>scaling</code> rules. For a common use case, see
+<a href="#pd-disaggregation">PD disaggregation</a>.</p>
 <div editor-title="service.dstack.yml">
+
 <div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service</span>
 <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">llama-8b-service</span>
 
@@ -5820,8 +5848,8 @@ case <code>dstack</code> adjusts the number of replicas (scales up or down) auto
 <span class="nt">env</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MODEL_ID=deepseek-ai/DeepSeek-R1-Distill-Llama-8B</span>
 
-<span class="nt">replicas</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">count</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1..2</span>
+<span class="nt">groups</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">replicas</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1..2</span>
 <span class="w">    </span><span class="nt">scaling</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">metric</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rps</span>
 <span class="w">      </span><span class="nt">target</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span>
@@ -5834,7 +5862,7 @@ case <code>dstack</code> adjusts the number of replicas (scales up or down) auto
 <span class="w">    </span><span class="nt">resources</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">48GB</span>
 
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">count</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1..4</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">replicas</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1..4</span>
 <span class="w">    </span><span class="nt">scaling</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">metric</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rps</span>
 <span class="w">      </span><span class="nt">target</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span>
@@ -5850,15 +5878,31 @@ case <code>dstack</code> adjusts the number of replicas (scales up or down) auto
 <span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8000</span>
 <span class="nt">model</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">deepseek-ai/DeepSeek-R1-Distill-Llama-8B</span>
 </code></pre></div>
+
 </div>
+
+<p><a href="../../reference/dstack.yml/service/#groups"><code>groups</code></a> and top-level <a href="../../reference/dstack.yml/service/#replicas"><code>replicas</code></a> are mutually exclusive.</p>
 <blockquote>
-<p>Properties such as <code>regions</code>, <code>port</code>, <code>image</code>, <code>env</code> and some other cannot be configured per replica group. This support is coming soon.</p>
+<p>Properties such as <code>regions</code>, <code>port</code>, <code>env</code> and some other cannot be configured per replica group. This support is coming soon.</p>
+</blockquote>
+<details class="info">
+<summary>Accessing replica IPs</summary>
+<p>Commands in any group can reference the internal IP address of any replica in the run via
+<code>${{ groups[i].replicas[j].IP_ADDRESS }}</code>, where <code>i</code> is the index of the group in <code>groups</code> and <code>j</code> is
+the index of the replica within that group.</p>
+<blockquote>
+<p>Only replicas guaranteed at start can be referenced:</p>
+<ul>
+<li><code>replicas: 2</code> → replica indexes <code>0</code> and <code>1</code> can be referenced</li>
+<li><code>replicas: 1..4</code> → replica index <code>0</code> can be referenced</li>
+<li><code>replicas: 0..4</code> → no replica indexes can be referenced</li>
+</ul>
 </blockquote>
 </details>
 <h3 id="pd-disaggregation">PD disaggregation<a class="headerlink" href="#pd-disaggregation" title="Permanent link">&para;</a></h3>
 <!-- NOTE: this section is referenced from pre-0.21.0 CLIs. Prefer to keep the URL unchanged -->
 
-<p>Since 0.20.17, <code>dstack</code> supports serving a model using Prefill-Decode disaggregation. To use it, configure three replica groups: one for the router, one for prefill workers, and one for decode workers.</p>
+<p>Since 0.20.17, <code>dstack</code> supports serving a model using Prefill-Decode disaggregation. To use it, configure three <a href="#replica-groups">replica groups</a>: one for the router, one for prefill workers, and one for decode workers.</p>
 <p><code>dstack</code> integrates with two routers for PD disaggregation: <a href="https://docs.sglang.io/advanced_features/sgl_model_gateway.html">Shepherd Model Gateway (SMG)</a> and <a href="https://github.com/ai-dynamo/dynamo">NVIDIA Dynamo</a>.</p>
 <h4 id="nvidia">NVIDIA<a class="headerlink" href="#nvidia" title="Permanent link">&para;</a></h4>
 <p>Below is an example for running <code>zai-org/GLM-4.5-Air-FP8</code> on <code>H200</code>:</p>
@@ -5874,9 +5918,9 @@ case <code>dstack</code> adjusts the number of replicas (scales up or down) auto
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HF_TOKEN</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MODEL_ID=zai-org/GLM-4.5-Air-FP8</span>
 
-<span class="nt">replicas</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">count</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
-<span class="w">    </span><span class="c1"># For now replica group with router must have count: 1</span>
+<span class="nt">groups</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">replicas</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">    </span><span class="c1"># For now the router group must have replicas: 1</span>
 <span class="w">    </span><span class="nt">commands</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip install smg</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
@@ -5890,7 +5934,7 @@ case <code>dstack</code> adjusts the number of replicas (scales up or down) auto
 <span class="w">    </span><span class="nt">router</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sglang</span>
 
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">count</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1..4</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">replicas</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1..4</span>
 <span class="w">    </span><span class="nt">scaling</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">metric</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rps</span>
 <span class="w">      </span><span class="nt">target</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
@@ -5905,7 +5949,7 @@ case <code>dstack</code> adjusts the number of replicas (scales up or down) auto
 <span class="w">    </span><span class="nt">resources</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">H200</span>
 
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">count</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1..8</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">replicas</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1..8</span>
 <span class="w">    </span><span class="nt">scaling</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">metric</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rps</span>
 <span class="w">      </span><span class="nt">target</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
@@ -5946,8 +5990,8 @@ case <code>dstack</code> adjusts the number of replicas (scales up or down) auto
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HF_TOKEN</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MODEL_ID=zai-org/GLM-4.5-Air-FP8</span>
 
-<span class="nt">replicas</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">count</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="nt">groups</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">replicas</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
 <span class="w">    </span><span class="nt">docker</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">    </span><span class="nt">commands</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apt-get update</span>
@@ -5969,7 +6013,7 @@ case <code>dstack</code> adjusts the number of replicas (scales up or down) auto
 <span class="w">    </span><span class="nt">router</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dynamo</span>
 
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">count</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1..4</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">replicas</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1..4</span>
 <span class="w">    </span><span class="nt">scaling</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">metric</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rps</span>
 <span class="w">      </span><span class="nt">target</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
@@ -5998,7 +6042,7 @@ case <code>dstack</code> adjusts the number of replicas (scales up or down) auto
 <span class="w">    </span><span class="nt">resources</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">H200</span>
 
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">count</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1..8</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">replicas</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1..8</span>
 <span class="w">    </span><span class="nt">scaling</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">metric</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rps</span>
 <span class="w">      </span><span class="nt">target</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
@@ -6059,8 +6103,8 @@ case <code>dstack</code> adjusts the number of replicas (scales up or down) auto
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">RDMA_DEVICES=bnxt_re0,bnxt_re1,bnxt_re2,bnxt_re3,bnxt_re4,bnxt_re5,bnxt_re6,bnxt_re7</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NCCL_IB_DISABLE=1</span>
 
-<span class="nt">replicas</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">count</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="nt">groups</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">replicas</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
 <span class="w">    </span><span class="nt">commands</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip install smg</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
@@ -6073,7 +6117,7 @@ case <code>dstack</code> adjusts the number of replicas (scales up or down) auto
 <span class="w">    </span><span class="nt">router</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sglang</span>
 
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">count</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1..2</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">replicas</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1..2</span>
 <span class="w">    </span><span class="nt">scaling</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">metric</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rps</span>
 <span class="w">      </span><span class="nt">target</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">300</span>
@@ -6099,7 +6143,7 @@ case <code>dstack</code> adjusts the number of replicas (scales up or down) auto
 <span class="w">      </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">96..</span>
 <span class="w">      </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">512GB..</span>
 
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">count</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1..4</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">replicas</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1..4</span>
 <span class="w">    </span><span class="nt">scaling</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">metric</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rps</span>
 <span class="w">      </span><span class="nt">target</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">300</span>
@@ -6998,7 +7042,7 @@ Older replicas have lower <code>deployment</code> numbers; newer ones have highe
 <summary>Supported properties</summary>
 <!-- NOTE: should be in sync with constants in server/services/runs.py -->
 <p>Rolling deployment supports changes to the following properties: <code>port</code>, <code>probes</code>, <code>resources</code>, <code>volumes</code>, <code>docker</code>, <code>files</code>, <code>image</code>, <code>user</code>, <code>privileged</code>, <code>entrypoint</code>, <code>working_dir</code>, <code>python</code>, <code>nvcc</code>, <code>single_branch</code>, <code>env</code>, <code>shell</code>, <code>commands</code>, as well as changes to <a href="#repos">repo</a> or <a href="#files">file</a> contents.</p>
-<p>Changes to <code>replicas</code> and <code>scaling</code> can be applied without redeploying replicas.</p>
+<p>Changes to <code>priority</code>, <code>replicas</code>, <code>scaling</code>, and <code>gateway</code> can be applied without redeploying replicas.</p>
 <p>Changes to other properties require a full service restart.</p>
 <p>To trigger a rolling deployment when no properties have changed (e.g., after updating <a href="../secrets/">secrets</a> or to restart all replicas),
 make a minor config change, such as adding a dummy <a href="#environment-variables">environment variable</a>.</p>
