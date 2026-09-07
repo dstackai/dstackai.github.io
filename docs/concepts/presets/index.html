@@ -5478,10 +5478,11 @@ correspondingly, via <code>fleets</code> inside the preset configuration or via 
 <p>By default, preset creation uses the existing <code>claude</code> login. To use an Anthropic API key instead, set:</p>
 <div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">DSTACK_AGENT_ANTHROPIC_API_KEY</span><span class="o">=</span>...
 </code></pre></div>
-<p>By default, the agent uses <code>claude-opus-4-8</code>. It doesn't set an effort level, so the <code>claude</code> CLI default applies. To override them, set:</p>
-<div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">DSTACK_AGENT_ANTHROPIC_MODEL</span><span class="o">=</span>claude-opus-5
+<p>By default, the agent sets neither a model nor an effort level, so the <code>claude</code> CLI's built-in defaults apply. To override them, set:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">DSTACK_AGENT_ANTHROPIC_MODEL</span><span class="o">=</span>claude-fable-5-1
 <span class="nb">export</span><span class="w"> </span><span class="nv">DSTACK_AGENT_CLAUDE_EFFORT</span><span class="o">=</span>max
 </code></pre></div>
+<p>See the <a href="https://platform.claude.com/docs/en/models/overview">Models overview</a> for the available models and their IDs.</p>
 <p>Supported effort levels are <code>low</code>, <code>medium</code>, <code>high</code>, <code>xhigh</code>, and <code>max</code>.</p>
 </details>
 <details class="info">
