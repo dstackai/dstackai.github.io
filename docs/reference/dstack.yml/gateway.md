@@ -11,7 +11,7 @@ The `gateway` configuration type allows creating and updating [gateways](../../c
 ###### `instance_type` - (Optional) `str` Backend-specific instance type to use for the gateway instance. Omit to use the backend's default, which is typically a small non-GPU instance. { #instance_type data-toc-label='instance_type' class='reference-item' }
 ###### `domain` - (Optional) `str` The gateway wildcard domain name, e.g. `example.com`. Service domain names are constructed as `<run name>.<gateway domain`. The domain name can use the `${{ run.project_name }}` variable to include the service’s project name. Can be updated in-place. Updates do not affect existing services. { #domain data-toc-label='domain' class='reference-item' }
 ###### `public_ip` - (Optional) `bool` Allocate public IP for the gateway. Defaults to `true`. { #public_ip data-toc-label='public_ip' class='reference-item' }
-###### [`load_balancer`](#load_balancer) - (Optional) `object` The load balancer configuration. Set to `type: alb` to front the gateway with an AWS Application Load Balancer. { #_load_balancer data-toc-label='load_balancer' class='reference-item' }
+###### [`load_balancer`](#load_balancer) - (Optional) `object` The load balancer configuration. Set to `type: alb` to front the gateway with an Application Load Balancer (supported for the `aws` and `gcp` backends). { #_load_balancer data-toc-label='load_balancer' class='reference-item' }
 ###### [`certificate`](#certificate) - (Optional) `object` The SSL certificate configuration. Set to `null` to disable. Defaults to `type: lets-encrypt`. { #_certificate data-toc-label='certificate' class='reference-item' }
 ###### `replicas` - (Optional) `int` The number of gateway replicas. Defaults to `1`. { #replicas data-toc-label='replicas' class='reference-item' }
 ###### `tags` - (Optional) `dict` The custom tags to associate with the gateway. The tags are also propagated to the underlying backend resources. If there is a conflict with backend-level tags, does not override them. { #tags data-toc-label='tags' class='reference-item' }
@@ -36,5 +36,5 @@ Set to `null` to disable certificates (e.g. for [private gateways](../../concept
 
 === "ALB"
 
-    ###### `type` - (Required) `"alb"` AWS Application Load Balancer. Must be `alb`. { #type data-toc-label='type' class='reference-item' }
+    ###### `type` - (Required) `"alb"` Application Load Balancer. Must be `alb`. { #type data-toc-label='type' class='reference-item' }
 

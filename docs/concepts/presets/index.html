@@ -1145,6 +1145,19 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Agent
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#model" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -5116,6 +5129,19 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Agent
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#model" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -5410,7 +5436,7 @@
 <details class="info">
 <summary>Prerequisites</summary>
 <p>Before using presets, make sure you’ve <a href="../../installation/">installed</a> the server and CLI, and created a <a href="../fleets/">fleet</a>.</p>
-<p>Creating a preset requires the <code>claude</code> CLI to be installed on the machine where you create a preset.</p>
+<p>Creating a preset requires the <code>claude</code> or <code>codex</code> CLI to be installed on the machine where you create a preset.</p>
 </details>
 <h2 id="apply-a-configuration">Apply a configuration<a class="headerlink" href="#apply-a-configuration" title="Permanent link">&para;</a></h2>
 <p>First, define a preset configuration as a YAML file in your project folder.
@@ -5462,7 +5488,7 @@ Create<span class="w"> </span>the<span class="w"> </span>preset<span class="w"> 
 optimization is done against that hardware. Point <code>dstack apply</code> to a fleet configured
 correspondingly, via <code>fleets</code> inside the preset configuration or via <code>--fleet</code> in the CLI.</p>
 </blockquote>
-<p>The command executes entirely locally and uses the locally installed <code>claude</code> CLI along with <code>dstack</code>'s bundled skills. The agent uses a <code>dstack</code> task to find the best serving configuration for the available fleet offers, then submits it as a <code>dstack</code> service for a final benchmark.</p>
+<p>The command executes entirely locally and uses the locally installed <code>claude</code> or <code>codex</code> CLI along with <code>dstack</code>'s bundled skills (see <a href="#agent">Agent</a>). The agent uses a <code>dstack</code> task to find the best serving configuration for the available fleet offers, then submits it as a <code>dstack</code> service for a final benchmark.</p>
 <p>You can stop watching with <code>Ctrl</code>+<code>C</code> at any time. The agent keeps running, and <code>dstack preset logs -f</code> follows it again. Resume an interrupted creation with <code>dstack preset resume</code>:</p>
 <div class="termy">
 
@@ -5473,18 +5499,6 @@ correspondingly, via <code>fleets</code> inside the preset configuration or via 
 
 <p>When resuming, the configuration and constraints are read from the original session. To change any of them, create a new preset.</p>
 <p>To stop a creation and its runs, use <code>dstack preset stop</code>.</p>
-<details class="info">
-<summary>Claude configuration</summary>
-<p>By default, preset creation uses the existing <code>claude</code> login. To use an Anthropic API key instead, set:</p>
-<div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">DSTACK_AGENT_ANTHROPIC_API_KEY</span><span class="o">=</span>...
-</code></pre></div>
-<p>By default, the agent sets neither a model nor an effort level, so the <code>claude</code> CLI's built-in defaults apply. To override them, set:</p>
-<div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">DSTACK_AGENT_ANTHROPIC_MODEL</span><span class="o">=</span>claude-fable-5-1
-<span class="nb">export</span><span class="w"> </span><span class="nv">DSTACK_AGENT_CLAUDE_EFFORT</span><span class="o">=</span>max
-</code></pre></div>
-<p>See the <a href="https://platform.claude.com/docs/en/models/overview">Models overview</a> for the available models and their IDs.</p>
-<p>Supported effort levels are <code>low</code>, <code>medium</code>, <code>high</code>, <code>xhigh</code>, and <code>max</code>.</p>
-</details>
 <details class="info">
 <summary>Presets directory</summary>
 <p>The verified presets are saved locally under <code>~/.dstack/presets</code>, and <code>dstack preset</code> reads them from there. Presets aren't stored on the server.</p>
@@ -5497,8 +5511,44 @@ correspondingly, via <code>fleets</code> inside the preset configuration or via 
 <p>Profile settings such as <code>spot_policy</code>, <code>max_price</code>, and <code>backends</code> are ignored during preset
 creation. Configure them on the fleet instead.</p>
 </blockquote>
+<h3 id="agent">Agent<a class="headerlink" href="#agent" title="Permanent link">&para;</a></h3>
+<p>Set <code>agent</code> to choose which agent CLI creates the preset. Optionally, pin the model and the reasoning effort; otherwise the CLI's defaults apply.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="claude" name="__tabbed_1" type="radio" /><input id="codex" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="claude">Claude</label><label for="codex">Codex</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="nt">agent</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">provider</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">claude</span>
+<span class="w">  </span><span class="nt">model</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">claude-fable-5-1</span>
+<span class="w">  </span><span class="nt">effort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">max</span>
+</code></pre></div>
+<p>Model IDs are listed in the <a href="https://platform.claude.com/docs/en/models/overview">Models overview</a>. Supported effort levels are <code>low</code>, <code>medium</code>, <code>high</code>, <code>xhigh</code>, and <code>max</code>.</p>
+<p>To set the defaults for all presets, use <code>DSTACK_AGENT_PROVIDER=claude</code>, <code>DSTACK_AGENT_ANTHROPIC_MODEL</code>, and <code>DSTACK_AGENT_CLAUDE_EFFORT</code>.</p>
+<details class="info">
+<summary>Authentication</summary>
+<p>By default, the agent uses your existing <code>claude</code> login. To use an Anthropic API key instead, set:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">DSTACK_AGENT_ANTHROPIC_API_KEY</span><span class="o">=</span>...
+</code></pre></div>
+</details>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="nt">agent</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">provider</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">codex</span>
+<span class="w">  </span><span class="nt">model</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gpt-6-astra</span>
+<span class="w">  </span><span class="nt">effort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">xhigh</span>
+</code></pre></div>
+<p>Run <code>codex debug models</code> to list model IDs. Supported effort levels are <code>low</code>, <code>medium</code>, <code>high</code>, and <code>xhigh</code>.</p>
+<p>To set the defaults for all presets, use <code>DSTACK_AGENT_PROVIDER=codex</code>, <code>DSTACK_AGENT_OPENAI_MODEL</code>, and <code>DSTACK_AGENT_CODEX_EFFORT</code>.</p>
+<details class="info">
+<summary>Authentication</summary>
+<p>By default, the agent uses your existing <code>codex</code> login and configuration, without its MCP servers. To use an OpenAI API key instead, set:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">DSTACK_AGENT_OPENAI_API_KEY</span><span class="o">=</span>...
+</code></pre></div>
+</details>
+</div>
+</div>
+</div>
 <h3 id="model">Model<a class="headerlink" href="#model" title="Permanent link">&para;</a></h3>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="base" name="__tabbed_1" type="radio" /><input id="repo" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="base">Base</label><label for="repo">Repo</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="base" name="__tabbed_2" type="radio" /><input id="repo" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="base">Base</label><label for="repo">Repo</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>Set <code>base</code> to let the agent select any compatible variant of the base model, including a different precision, quantization, or trusted fork.</p>
@@ -5537,7 +5587,7 @@ creation. Configure them on the fleet instead.</p>
 
 <h3 id="dataset">Dataset<a class="headerlink" href="#dataset" title="Permanent link">&para;</a></h3>
 <p>The requests every benchmark measures.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="random" name="__tabbed_2" type="radio" /><input id="custom" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="random">Random</label><label for="custom">Custom</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="random" name="__tabbed_3" type="radio" /><input id="custom" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="random">Random</label><label for="custom">Custom</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>By default, benchmarks use synthetic prompts shaped by <code>input_tokens</code> and <code>output_tokens</code>. Set <code>shared_prefix_tokens</code> to make part of every request identical, such as a system prompt or conversation history, so the serving framework can serve it from its prefix cache. It must be less than <code>input_tokens</code>.</p>
@@ -5686,7 +5736,7 @@ Submit<span class="w"> </span>the<span class="w"> </span>run<span class="w"> </s
 <p>For command options and agent settings, see the <a href="../../reference/cli/dstack/preset/"><code>dstack preset</code> CLI reference</a>.</p>
 </div>
 <h2 id="protips">Protips<a class="headerlink" href="#protips" title="Permanent link">&para;</a></h2>
-<p>Under the hood, presets run an agent as a subprocess, using the local <code>claude</code> CLI. This process writes a real-time trace to <code>~/.dstack/presets/&lt;id&gt;/trace.jsonl</code>. The subprocess is launched with a built-in harness: how to run trials, submit runs, benchmark, verify presets, and use <code>dstack</code>.</p>
+<p>Under the hood, presets run an agent as a subprocess, using the local <code>claude</code> or <code>codex</code> CLI. This process writes a real-time trace to <code>~/.dstack/presets/&lt;id&gt;/trace.jsonl</code>. The subprocess is launched with a built-in harness: how to run trials, submit runs, benchmark, verify presets, and use <code>dstack</code>.</p>
 <p>At the same time, it's recommended to create presets using your own agent — either via a CLI such as Claude Code, or inside your IDE. Your agent helps you design the preset configuration, formulate hypotheses, and — most importantly — analyze the session's traces as well as the trial results (stored under <code>~/.dstack/presets/&lt;id&gt;/trials/&lt;n&gt;/trial.json</code>), to decide what the next session can be and what instructions to give it via <code>prompt</code>.</p>
 <blockquote>
 <p>To help your agent use <code>dstack</code> and presets, install the <a href="https://skills.sh/dstackai/dstack/dstack"><code>dstack</code></a>

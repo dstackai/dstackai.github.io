@@ -5306,8 +5306,10 @@ Retry<span class="w"> </span>Policy:
 </div>
 
 <h5 id="agent-settings">Agent settings<a class="headerlink" href="#agent-settings" title="Permanent link">&para;</a></h5>
-<p>Preset creation uses the existing <code>claude</code> login unless
-<code>DSTACK_AGENT_ANTHROPIC_API_KEY</code> is set.</p>
+<p>Presets are created with the <code>claude</code> CLI by default, or with <code>codex</code> when the
+configuration's <code>agent</code> or <code>DSTACK_AGENT_PROVIDER</code> selects it. The configuration
+takes precedence over the variables below. Each CLI uses its existing login unless
+its API key variable is set.</p>
 <table>
 <thead>
 <tr>
@@ -5317,8 +5319,12 @@ Retry<span class="w"> </span>Policy:
 </thead>
 <tbody>
 <tr>
+<td><code>DSTACK_AGENT_PROVIDER</code></td>
+<td>The agent CLI: <code>claude</code> (default) or <code>codex</code>.</td>
+</tr>
+<tr>
 <td><code>DSTACK_AGENT_ANTHROPIC_API_KEY</code></td>
-<td>Anthropic API key used by the agent.</td>
+<td>Anthropic API key used by the <code>claude</code> agent.</td>
 </tr>
 <tr>
 <td><code>DSTACK_AGENT_CLAUDE_PATH</code></td>
@@ -5331,6 +5337,22 @@ Retry<span class="w"> </span>Policy:
 <tr>
 <td><code>DSTACK_AGENT_CLAUDE_EFFORT</code></td>
 <td>Claude effort level: <code>low</code>, <code>medium</code>, <code>high</code>, <code>xhigh</code>, or <code>max</code>. If unset, the <code>claude</code> CLI default is used.</td>
+</tr>
+<tr>
+<td><code>DSTACK_AGENT_OPENAI_API_KEY</code></td>
+<td>OpenAI API key used by the <code>codex</code> agent.</td>
+</tr>
+<tr>
+<td><code>DSTACK_AGENT_CODEX_PATH</code></td>
+<td><code>codex</code> executable name or path. Defaults to <code>codex</code> from <code>PATH</code>.</td>
+</tr>
+<tr>
+<td><code>DSTACK_AGENT_OPENAI_MODEL</code></td>
+<td>Model used by the <code>codex</code> agent. If unset, the <code>codex</code> CLI's built-in default is used.</td>
+</tr>
+<tr>
+<td><code>DSTACK_AGENT_CODEX_EFFORT</code></td>
+<td>Codex reasoning effort: <code>low</code>, <code>medium</code>, <code>high</code>, or <code>xhigh</code>. If unset, the <code>codex</code> CLI default is used.</td>
 </tr>
 </tbody>
 </table>

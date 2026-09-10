@@ -5145,16 +5145,16 @@
 <h1 id="exports">Exports<a class="headerlink" href="#exports" title="Permanent link">&para;</a></h1>
 <p>Exports allow making resources from one project available to other projects. When a project exports a resource,
 the specified importer projects can see and use it as if it were their own.</p>
-<div class="admonition warning">
-<p class="admonition-title">Experimental</p>
-<p>Exports are an experimental feature.
-Currently, <a href="../fleets/#ssh-fleets">SSH fleets</a> and <a href="../gateways/">gateways</a> can be exported.</p>
+<div class="admonition info">
+<p class="admonition-title">Export support</p>
+<p>Exports are only supported in <code>dstack</code> Sky and <code>dstack</code> Factory.</p>
 </div>
 <p>An export is created in the exporter project and specifies the resources to export and the
 importer projects that will gain access to them.</p>
 <p>Once an export is created, the importer projects can see the exported resources in their resource lists and use them
 for running tasks, dev environments, and services. Imported resources appear with a project prefix
 (e.g., <code>team-a/my-fleet</code>) to distinguish them from the project's own resources.</p>
+<p>Currently, <a href="../fleets/#ssh-fleets">SSH fleets</a> and <a href="../gateways/">gateways</a> can be exported.</p>
 <div class="admonition info">
 <p class="admonition-title">Required project role</p>
 <p>The user creating or updating an export must have the project admin role on both the exporter project and

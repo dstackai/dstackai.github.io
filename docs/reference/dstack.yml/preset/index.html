@@ -2995,7 +2995,18 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#model" class="md-nav__link">
+  <a href="#agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        agent
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#model_1" class="md-nav__link">
     <span class="md-ellipsis">
       
         model
@@ -4954,7 +4965,18 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#model" class="md-nav__link">
+  <a href="#agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        agent
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#model_1" class="md-nav__link">
     <span class="md-ellipsis">
       
         model
@@ -5188,8 +5210,13 @@ used to create or apply a <a href="../../../concepts/presets/">preset</a>.</p>
 <h6 class="reference-item" id="dataset"><code>dataset</code> - (Optional) <code>str</code> The benchmark dataset used during preset creation: a benchmark tool's dataset name (e.g. <code>sharegpt</code>, <code>spec_bench</code>) or a Hugging Face dataset ID. Omit for synthetic prompts shaped by <code>input_tokens</code> and <code>output_tokens</code>.<a class="headerlink" href="#dataset" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="baseline"><code>baseline</code> - (Optional) <code>bool</code> Whether the first trial must be a baseline that serves the model with the serving framework's recommended defaults instead of an optimization attempt. Defaults to <code>true</code>.<a class="headerlink" href="#baseline" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="_gateway"><a href="#gateway"><code>gateway</code></a> - (Optional) <code>bool | str | object</code> The name of the gateway. Specify boolean <code>false</code> to run without a gateway. Specify boolean <code>true</code> to run with the default gateway. Omit to run with the default gateway if there is one, or without a gateway otherwise.<a class="headerlink" href="#_gateway" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="_agent"><a href="#agent"><code>agent</code></a> - (Optional) <code>object</code> The agent that creates the preset. Overrides the <code>DSTACK_AGENT_*</code> environment variables. Defaults to <code>claude</code>.<a class="headerlink" href="#_agent" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="_env"><a href="#env"><code>env</code></a> - (Optional) <code>list[str] | dict</code> The mapping or the list of environment variables.<a class="headerlink" href="#_env" title="Permanent link">&para;</a></h6>
-<h3 id="model"><code>model</code><a class="headerlink" href="#model" title="Permanent link">&para;</a></h3>
+<h3 id="agent"><code>agent</code><a class="headerlink" href="#agent" title="Permanent link">&para;</a></h3>
+<h6 class="reference-item" id="provider"><code>provider</code> - (Required) <code>"claude" | "codex"</code> The agent CLI that creates the preset: <code>claude</code> or <code>codex</code>.<a class="headerlink" href="#provider" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="model"><code>model</code> - (Optional) <code>str</code> The model the agent runs with, e.g. <code>claude-opus-5</code> or <code>gpt-6-astra</code>. Defaults to the agent CLI's own default.<a class="headerlink" href="#model" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="effort"><code>effort</code> - (Optional) <code>"high" | "low" | "max" | "medium" | "xhigh"</code> The reasoning effort. <code>max</code> is supported by <code>claude</code> only. Defaults to the agent CLI's own default.<a class="headerlink" href="#effort" title="Permanent link">&para;</a></h6>
+<h3 id="model_1"><code>model</code><a class="headerlink" href="#model_1" title="Permanent link">&para;</a></h3>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="base-model" name="__tabbed_1" type="radio" /><input id="exact-model" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="base-model">Base model</label><label for="exact-model">Exact model</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">

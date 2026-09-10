@@ -5372,9 +5372,11 @@ For self-hosted Kubernetes, you must provide a load balancer by yourself.</p>
 </details>
 <h3 id="load-balancer">Load balancer<a class="headerlink" href="#load-balancer" title="Permanent link">&para;</a></h3>
 <p>The optional <code>load_balancer</code> property allows you to provision a load balancer in front of the gateway, which is useful for balancing requests between multiple gateway <a href="#replicas">replicas</a>, or for using certain <a href="#certificate">certificate</a> types, such as AWS ACM.</p>
-<p>Currently, only AWS Application Load Balancer (ALB) is supported:</p>
+<p>Setting <code>load_balancer: { type: alb }</code> provisions an Application Load Balancer (ALB). It's supported for the <code>aws</code> and <code>gcp</code> backends.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="aws" name="__tabbed_1" type="radio" /><input id="gcp" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="aws">AWS</label><label for="gcp">GCP</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
 <div editor-title="gateway.dstack.yml">
-
 <div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gateway</span>
 <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">example-gateway</span>
 <span class="nt">backend</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">aws</span>
@@ -5387,19 +5389,43 @@ For self-hosted Kubernetes, you must provide a load balancer by yourself.</p>
 <span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">acm</span>
 <span class="w">  </span><span class="nt">arn</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">arn:aws:acm:eu-west-1:164099421079:certificate/3670388f-f43b-4872-aaf8-907b107a170d</span>
 </code></pre></div>
-
 </div>
-
 <details class="info">
 <summary>Requirements</summary>
-<p>An ALB gateway requires:</p>
+<p>An ALB gateway on <code>aws</code> requires:</p>
 <ul>
 <li>The <code>aws</code> backend.</li>
 <li>Either <code>certificate: { type: acm, ... }</code> or <code>certificate: null</code>.</li>
 <li>A VPC with at least two subnets in different availability zones. If <code>public_ip: False</code>, subnets must be private and have a route to a NAT gateway.</li>
 </ul>
 </details>
-<p>The provisioned load balancer provides a hostname you can add to your DNS records. Replica hostnames do not need to be added to DNS.</p>
+</div>
+<div class="tabbed-block">
+<div editor-title="gateway.dstack.yml">
+<div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gateway</span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">example-gateway</span>
+<span class="nt">backend</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gcp</span>
+<span class="nt">region</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">europe-west4</span>
+<span class="nt">domain</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">example.com</span>
+<span class="nt">replicas</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
+<span class="nt">load_balancer</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">alb</span>
+<span class="nt">certificate</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">null</span>
+</code></pre></div>
+</div>
+<details class="info">
+<summary>Requirements</summary>
+<p>An ALB gateway on <code>gcp</code> requires:</p>
+<ul>
+<li>The <code>gcp</code> backend.</li>
+<li><code>certificate: null</code>.</li>
+<li>A VPC with a proxy-only subnet (<code>purpose: REGIONAL_MANAGED_PROXY</code>) in the target region — required by GCP for all Envoy-based regional load balancers. See <a href="https://cloud.google.com/load-balancing/docs/proxy-only-subnets">Proxy-only subnets</a> for how to create one.</li>
+</ul>
+</details>
+</div>
+</div>
+</div>
+<p>The provisioned load balancer provides a hostname (or IP address) you can add to your DNS records. Replica hostnames do not need to be added to DNS.</p>
 <div class="termy">
 
 <div class="highlight"><pre><span></span><code>$ dstack gateway list

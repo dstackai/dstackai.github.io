@@ -5047,7 +5047,7 @@
 <h6 class="reference-item" id="instance_type"><code>instance_type</code> - (Optional) <code>str</code> Backend-specific instance type to use for the gateway instance. Omit to use the backend's default, which is typically a small non-GPU instance.<a class="headerlink" href="#instance_type" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="domain"><code>domain</code> - (Optional) <code>str</code> The gateway wildcard domain name, e.g. <code>example.com</code>. Service domain names are constructed as <code>&lt;run name&gt;.&lt;gateway domain</code>. The domain name can use the <code>${{ run.project_name }}</code> variable to include the service’s project name. Can be updated in-place. Updates do not affect existing services.<a class="headerlink" href="#domain" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="public_ip"><code>public_ip</code> - (Optional) <code>bool</code> Allocate public IP for the gateway. Defaults to <code>true</code>.<a class="headerlink" href="#public_ip" title="Permanent link">&para;</a></h6>
-<h6 class="reference-item" id="_load_balancer"><a href="#load_balancer"><code>load_balancer</code></a> - (Optional) <code>object</code> The load balancer configuration. Set to <code>type: alb</code> to front the gateway with an AWS Application Load Balancer.<a class="headerlink" href="#_load_balancer" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="_load_balancer"><a href="#load_balancer"><code>load_balancer</code></a> - (Optional) <code>object</code> The load balancer configuration. Set to <code>type: alb</code> to front the gateway with an Application Load Balancer (supported for the <code>aws</code> and <code>gcp</code> backends).<a class="headerlink" href="#_load_balancer" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="_certificate"><a href="#certificate"><code>certificate</code></a> - (Optional) <code>object</code> The SSL certificate configuration. Set to <code>null</code> to disable. Defaults to <code>type: lets-encrypt</code>.<a class="headerlink" href="#_certificate" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="replicas"><code>replicas</code> - (Optional) <code>int</code> The number of gateway replicas. Defaults to <code>1</code>.<a class="headerlink" href="#replicas" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="tags"><code>tags</code> - (Optional) <code>dict</code> The custom tags to associate with the gateway. The tags are also propagated to the underlying backend resources. If there is a conflict with backend-level tags, does not override them.<a class="headerlink" href="#tags" title="Permanent link">&para;</a></h6>
@@ -5068,7 +5068,7 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="2:1"><input checked="checked" id="alb" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="alb">ALB</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<h6 class="reference-item" id="type"><code>type</code> - (Required) <code>"alb"</code> AWS Application Load Balancer. Must be <code>alb</code>.<a class="headerlink" href="#type" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="type"><code>type</code> - (Required) <code>"alb"</code> Application Load Balancer. Must be <code>alb</code>.<a class="headerlink" href="#type" title="Permanent link">&para;</a></h6>
 </div>
 </div>
 </div>

@@ -5987,6 +5987,30 @@ compute.subnetworks.use
 compute.subnetworks.useExternalIp
 compute.zoneOperations.get
 </code></pre></div>
+<p>If you plan to use gateways with <code>load_balancer: { type: alb }</code>, additional permissions are required:</p>
+<div class="highlight"><pre><span></span><code>compute.forwardingRules.create
+compute.forwardingRules.delete
+compute.forwardingRules.get
+compute.forwardingRules.use
+compute.instanceGroups.create
+compute.instanceGroups.delete
+compute.instanceGroups.update
+compute.instanceGroups.use
+compute.instances.use
+compute.regionBackendServices.create
+compute.regionBackendServices.delete
+compute.regionBackendServices.use
+compute.regionHealthChecks.create
+compute.regionHealthChecks.delete
+compute.regionHealthChecks.useReadOnly
+compute.regionOperations.get
+compute.regionTargetHttpProxies.create
+compute.regionTargetHttpProxies.delete
+compute.regionTargetHttpProxies.use
+compute.regionUrlMaps.create
+compute.regionUrlMaps.delete
+compute.regionUrlMaps.use
+</code></pre></div>
 <p>If you plan to use TPUs, additional permissions are required:</p>
 <div class="highlight"><pre><span></span><code>tpu.nodes.create
 tpu.nodes.get

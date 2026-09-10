@@ -42,7 +42,15 @@ used to create or apply a [preset](../../concepts/presets.md).
 ###### `dataset` - (Optional) `str` The benchmark dataset used during preset creation: a benchmark tool's dataset name (e.g. `sharegpt`, `spec_bench`) or a Hugging Face dataset ID. Omit for synthetic prompts shaped by `input_tokens` and `output_tokens`. { #dataset data-toc-label='dataset' class='reference-item' }
 ###### `baseline` - (Optional) `bool` Whether the first trial must be a baseline that serves the model with the serving framework's recommended defaults instead of an optimization attempt. Defaults to `true`. { #baseline data-toc-label='baseline' class='reference-item' }
 ###### [`gateway`](#gateway) - (Optional) `bool | str | object` The name of the gateway. Specify boolean `false` to run without a gateway. Specify boolean `true` to run with the default gateway. Omit to run with the default gateway if there is one, or without a gateway otherwise. { #_gateway data-toc-label='gateway' class='reference-item' }
+###### [`agent`](#agent) - (Optional) `object` The agent that creates the preset. Overrides the `DSTACK_AGENT_*` environment variables. Defaults to `claude`. { #_agent data-toc-label='agent' class='reference-item' }
 ###### [`env`](#env) - (Optional) `list[str] | dict` The mapping or the list of environment variables. { #_env data-toc-label='env' class='reference-item' }
+
+
+### `agent`
+
+###### `provider` - (Required) `"claude" | "codex"` The agent CLI that creates the preset: `claude` or `codex`. { #provider data-toc-label='provider' class='reference-item' }
+###### `model` - (Optional) `str` The model the agent runs with, e.g. `claude-opus-5` or `gpt-6-astra`. Defaults to the agent CLI's own default. { #model data-toc-label='model' class='reference-item' }
+###### `effort` - (Optional) `"high" | "low" | "max" | "medium" | "xhigh"` The reasoning effort. `max` is supported by `claude` only. Defaults to the agent CLI's own default. { #effort data-toc-label='effort' class='reference-item' }
 
 
 ### `model`
