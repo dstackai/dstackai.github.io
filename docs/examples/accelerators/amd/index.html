@@ -5174,7 +5174,7 @@ provisioned and that you have access to, create an
 <a href="../../../concepts/fleets/#cluster-placement">set</a> <code>placement</code> to <code>cluster</code>.
 For Kubernetes and SSH fleets, the network must be properly configured.</p>
 <p>To test whether the cluster is properly configured, run the
-<a href="../../clusters/nccl-rccl-tests/">RCCL tests via a distributed task</a>.</p>
+<a href="../../clusters/nccl-rccl-tests/">RCCL tests via a multi-node task</a>.</p>
 </div>
 <p>Once a fleet is created, you can run dev environments, tasks, and services.</p>
 <h2 id="inference">Inference<a class="headerlink" href="#inference" title="Permanent link">&para;</a></h2>
@@ -5310,9 +5310,9 @@ on AMD GPUs.</p>
 </div>
 
 <div class="admonition info">
-<p class="admonition-title">Distributed tasks</p>
+<p class="admonition-title">Multi-node tasks</p>
 <p>To run training across multiple nodes, use
-<a href="../../../concepts/tasks/#distributed-tasks">distributed tasks</a>. Distributed
+<a href="../../../concepts/tasks/#nodes">multi-node tasks</a>. Multi-node
 tasks may run on a cluster; in that case, the fleet must use
 <a href="../../../concepts/fleets/#cluster-placement">cluster placement</a>.</p>
 </div>

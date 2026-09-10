@@ -6029,6 +6029,24 @@ gcloud<span class="w"> </span>services<span class="w"> </span><span class="nb">e
 <p>If you specify a non-default VPC, ensure it has a firewall rule
 allowing all traffic within the VPC. This is needed for multi-node tasks to work.
 The default VPC already permits traffic within the VPC.</p>
+<p>If the VPC has multiple subnets in a region, <code>dstack</code> uses any usable subnet.
+Specify <code>subnetworks</code> to target a specific subnet in a region:</p>
+<div editor-title="~/.dstack/server/config.yml">
+<div class="highlight"><pre><span></span><code><span class="nt">projects</span><span class="p">:</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">main</span>
+<span class="w">  </span><span class="nt">backends</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gcp</span>
+<span class="w">      </span><span class="nt">project_id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gcp-project-id</span>
+<span class="w">      </span><span class="nt">creds</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">default</span>
+
+<span class="w">      </span><span class="nt">regions</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">europe-west4</span><span class="p p-Indicator">]</span>
+<span class="w">      </span><span class="nt">vpc_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my-custom-vpc</span>
+<span class="w">      </span><span class="nt">subnetworks</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">europe-west4</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my-custom-subnet</span>
+</code></pre></div>
+</div>
+<p>Regions not mapped in <code>subnetworks</code> keep using any usable subnet of the VPC.</p>
 </div>
 <div class="tabbed-block">
 <div editor-title="~/.dstack/server/config.yml">
@@ -6069,6 +6087,8 @@ If you want <code>dstack</code> to use private subnets and provision instances w
 <span class="w">        </span><span class="nt">public_ips</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
 </code></pre></div>
 <p>Using private subnets assumes that both the <code>dstack</code> server and users can access the configured VPC's private subnets.
+If the VPC has multiple subnets in a region and only some of them are reachable from the <code>dstack</code> server and users,
+specify <code>subnetworks</code> to make <code>dstack</code> provision instances in a reachable subnet.
 Additionally, <a href="https://cloud.google.com/nat/docs/overview">Cloud NAT</a> must be configured to provide access to external resources for provisioned instances.</p>
 </details>
 <h3 id="lambda">Lambda<a class="headerlink" href="#lambda" title="Permanent link">&para;</a></h3>

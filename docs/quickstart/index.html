@@ -5124,7 +5124,7 @@ To<span class="w"> </span>open<span class="w"> </span><span class="k">in</span><
 <p>Open the link to access the dev environment using your desktop IDE. Alternatively, you can access it via <code>ssh &lt;run name&gt;</code>.</p>
 </div>
 <div class="tabbed-block">
-<p>A <a href="../concepts/tasks/">task</a> allows you to schedule a job or run a web app. Tasks can be distributed and can forward ports.</p>
+<p>A <a href="../concepts/tasks/">task</a> allows you to schedule a job or run a web app. Tasks can run on multiple nodes and forward ports.</p>
 <p>Create the following run configuration:</p>
 <p><div editor-title="task.dstack.yml"> </p>
 <div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">task</span>
@@ -5147,8 +5147,8 @@ To<span class="w"> </span>open<span class="w"> </span><span class="k">in</span><
 <span class="c1">#  gpu: 24GB</span>
 </code></pre></div>
 </div>
-<p>By default, tasks run on a single instance. To run a distributed task, specify 
-<a href="../concepts/tasks/#distributed-tasks"><code>nodes</code></a>, and <code>dstack</code> will run it on a cluster.</p>
+<p>By default, tasks run on a single instance. To run a multi-node task, specify
+<a href="../concepts/tasks/#nodes"><code>nodes</code></a> or define multiple <a href="../concepts/tasks/#node-groups">node groups</a>, and <code>dstack</code> will run it on a cluster.</p>
 <p>Run the configuration via <code>dstack apply</code>:</p>
 <div class="termy">
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>dstack<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>task.dstack.yml
@@ -5197,6 +5197,8 @@ Provisioning<span class="w"> </span><span class="sb">`</span>streamlit<span clas
 <span class="w">  </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">H100</span>
 </code></pre></div>
 </div>
+<p>By default, a service runs a single replica. To run multiple replicas, specify
+<a href="../concepts/services/#replicas"><code>replicas</code></a> or define multiple <a href="../concepts/services/#replica-groups">replica groups</a>, and <code>dstack</code> will run them behind a single endpoint.</p>
 <p>Run the configuration via <code>dstack apply</code>:</p>
 <div class="termy">
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>dstack<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>service.dstack.yml

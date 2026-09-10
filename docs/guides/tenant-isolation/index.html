@@ -1676,11 +1676,11 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#no-distributed-tasks" class="md-nav__link">
+  <a href="#no-multi-node-tasks" class="md-nav__link">
     <span class="md-ellipsis">
       
         <span class="md-typeset">
-          No distributed tasks
+          No multi-node tasks
         </span>
       
     </span>
@@ -1689,11 +1689,11 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#allow-distributed-tasks-in-selected-projects" class="md-nav__link">
+  <a href="#allow-multi-node-tasks-in-selected-projects" class="md-nav__link">
     <span class="md-ellipsis">
       
         <span class="md-typeset">
-          Allow distributed tasks in selected projects
+          Allow multi-node tasks in selected projects
         </span>
       
     </span>
@@ -4981,11 +4981,11 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#no-distributed-tasks" class="md-nav__link">
+  <a href="#no-multi-node-tasks" class="md-nav__link">
     <span class="md-ellipsis">
       
         <span class="md-typeset">
-          No distributed tasks
+          No multi-node tasks
         </span>
       
     </span>
@@ -4994,11 +4994,11 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#allow-distributed-tasks-in-selected-projects" class="md-nav__link">
+  <a href="#allow-multi-node-tasks-in-selected-projects" class="md-nav__link">
     <span class="md-ellipsis">
       
         <span class="md-typeset">
-          Allow distributed tasks in selected projects
+          Allow multi-node tasks in selected projects
         </span>
       
     </span>
@@ -5164,7 +5164,7 @@
 <p><a href="../../concepts/volumes/#instance-volumes">Instance volumes</a> mount a path from the host filesystem directly into the container. A user with access to this feature can mount arbitrary host paths — including sensitive directories such as <code>/etc</code>, <code>/proc</code>, or <code>/var</code>.</p>
 <p>You can disallow instance volumes or restrict access to certain paths by writing a <a href="../../reference/plugins/rest/">REST plugin</a> or a <a href="../../reference/plugins/python/">Python plugin</a>.</p>
 <h2 id="host-network-access">Host network access<a class="headerlink" href="#host-network-access" title="Permanent link">&para;</a></h2>
-<p>By default, most <code>dstack</code> jobs run in host networking mode. This allows them to listen on any host network interface and communicate with other jobs over the internal network, which facilitates workloads such as <a href="../../concepts/tasks/#distributed-tasks">distributed tasks</a> or <a href="../../concepts/services/#pd-disaggregation">services with routers</a>.</p>
+<p>By default, most <code>dstack</code> jobs run in host networking mode. This allows them to listen on any host network interface and communicate with other jobs over the internal network, which facilitates workloads such as <a href="../../concepts/tasks/#nodes">multi-node tasks</a> or <a href="../../concepts/services/#router">services with routers</a>.</p>
 <p>However, exposing the host network to the job also exposes internal <code>dstack</code> APIs used to manage containers and SSH authorized keys on the host. If this is not acceptable, bridge networking should be used, which isolates the job from the host network. Bridge networking, however, breaks workloads that do need inter-job communication.</p>
 <p>The <code>DSTACK_SERVER_JOB_NETWORK_MODE</code> environment variable controls which jobs get host vs. bridge networking:</p>
 <table>
@@ -5179,7 +5179,7 @@
 <tr>
 <td><code>1</code></td>
 <td><code>HOST_FOR_MULTINODE_ONLY</code></td>
-<td>Host for distributed tasks, bridge otherwise</td>
+<td>Host for multi-node tasks, bridge otherwise</td>
 </tr>
 <tr>
 <td><code>2</code></td>
@@ -5189,17 +5189,17 @@
 <tr>
 <td><code>3</code></td>
 <td><code>FORCED_BRIDGE</code></td>
-<td>Always bridge, including distributed tasks</td>
+<td>Always bridge, including multi-node tasks</td>
 </tr>
 </tbody>
 </table>
-<h3 id="no-distributed-tasks">No distributed tasks<a class="headerlink" href="#no-distributed-tasks" title="Permanent link">&para;</a></h3>
-<p>If you don't need distributed tasks or other runs with inter-job communication, you can set <code>DSTACK_SERVER_JOB_NETWORK_MODE=3</code> when starting the server:</p>
+<h3 id="no-multi-node-tasks">No multi-node tasks<a class="headerlink" href="#no-multi-node-tasks" title="Permanent link">&para;</a></h3>
+<p>If you don't need multi-node tasks or other runs with inter-job communication, you can set <code>DSTACK_SERVER_JOB_NETWORK_MODE=3</code> when starting the server:</p>
 <div class="highlight"><pre><span></span><code><span class="nv">DSTACK_SERVER_JOB_NETWORK_MODE</span><span class="o">=</span><span class="m">3</span>
 </code></pre></div>
 <p>This forces bridge networking for all jobs on the server without exception, preventing access to internal <code>dstack</code> APIs, as well as communication between jobs.</p>
-<h3 id="allow-distributed-tasks-in-selected-projects">Allow distributed tasks in selected projects<a class="headerlink" href="#allow-distributed-tasks-in-selected-projects" title="Permanent link">&para;</a></h3>
-<p>If you want distributed tasks or other runs with inter-job communication to be available in some projects but not others, use <code>DSTACK_SERVER_JOB_NETWORK_MODE=1</code> instead. With this mode, single-node jobs get bridge networking, while distributed tasks still run with host networking. Distributed tasks can then be selectively blocked per project or user by writing a <a href="../../reference/plugins/rest/">REST plugin</a> or a <a href="../../reference/plugins/python/">Python plugin</a>.</p>
+<h3 id="allow-multi-node-tasks-in-selected-projects">Allow multi-node tasks in selected projects<a class="headerlink" href="#allow-multi-node-tasks-in-selected-projects" title="Permanent link">&para;</a></h3>
+<p>If you want multi-node tasks or other runs with inter-job communication to be available in some projects but not others, use <code>DSTACK_SERVER_JOB_NETWORK_MODE=1</code> instead. With this mode, single-node jobs get bridge networking, while multi-node tasks still run with host networking. Multi-node tasks can then be selectively blocked per project or user by writing a <a href="../../reference/plugins/rest/">REST plugin</a> or a <a href="../../reference/plugins/python/">Python plugin</a>.</p>
 
 
 

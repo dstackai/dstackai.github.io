@@ -5329,7 +5329,7 @@
 </blockquote>
 <p>If you call the <code>dstack</code> HTTP API directly, note that UTC datetimes are now serialized with a <code>Z</code> suffix instead of <code>+00:00</code>.</p>
 <h3 id="gateway-routers">Gateway routers<a class="headerlink" href="#gateway-routers" title="Permanent link">&para;</a></h3>
-<p>The top-level <code>router</code> property of gateway and run configurations, deprecated in <code>0.20.17</code> in favor of <a href="../../concepts/services/#pd-disaggregation">replica-based routers</a>, has been removed. Configurations that use it are no longer accepted, and the behavior of gateways and services created with it before the upgrade is undefined.</p>
+<p>The top-level <code>router</code> property of gateway and run configurations, deprecated in <code>0.20.17</code> in favor of <a href="../../concepts/services/#router">replica-based routers</a>, has been removed. Configurations that use it are no longer accepted, and the behavior of gateways and services created with it before the upgrade is undefined.</p>
 <blockquote>
 <p>Terminate services and gateways that use the top-level <code>router</code> property before upgrading, then recreate them using replica-based routers.</p>
 </blockquote>

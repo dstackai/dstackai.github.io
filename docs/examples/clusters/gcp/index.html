@@ -5408,10 +5408,10 @@ Provisioning...
 </div>
 </div>
 </div>
-<p>Once the fleet is created, you can run distributed tasks, in addition to dev environments, services, and regular tasks.</p>
+<p>Once the fleet is created, you can run multi-node tasks, in addition to dev environments, services, and regular tasks.</p>
 <h2 id="run-tasks">Run tasks<a class="headerlink" href="#run-tasks" title="Permanent link">&para;</a></h2>
 <h3 id="nccl-tests">NCCL tests<a class="headerlink" href="#nccl-tests" title="Permanent link">&para;</a></h3>
-<p>Use a distributed task that runs NCCL tests to validate cluster network bandwidth.</p>
+<p>Use a multi-node task that runs NCCL tests to validate cluster network bandwidth.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="3:3"><input checked="checked" id="a4_2" name="__tabbed_3" type="radio" /><input id="a3-mega_2" name="__tabbed_3" type="radio" /><input id="a3-highedge_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="a4_2">A4</label><label for="a3-mega_2">A3 Mega</label><label for="a3-highedge_2">A3 High/Edge</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -5595,10 +5595,10 @@ Avg<span class="w"> </span>bus<span class="w"> </span>bandwidth<span class="w"> 
 <div class="tabbed-set tabbed-alternate" data-tabs="4:3"><input checked="checked" id="a4_3" name="__tabbed_4" type="radio" /><input id="a3-mega_3" name="__tabbed_4" type="radio" /><input id="a3-highedge_3" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="a4_3">A4</label><label for="a3-mega_3">A3 Mega</label><label for="a3-highedge_3">A3 High/Edge</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p>You can use the standard <a href="../../../concepts/tasks/#distributed-tasks">distributed task</a> example to run distributed training on A4 instances.</p>
+<p>You can use the standard <a href="../../../concepts/tasks/#nodes">multi-node task</a> example to run distributed training on A4 instances.</p>
 </div>
 <div class="tabbed-block">
-<p>You can use the standard <a href="../../../concepts/tasks/#distributed-tasks">distributed task</a> example to run distributed training on A3 Mega instances. To enable GPUDirect-TCPX, make sure the required <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/gpu-bandwidth-gpudirect-tcpx-autopilot#environment-variables-nccl">NCCL environment variables</a> are properly set, for example by adding the following commands at the beginning:</p>
+<p>You can use the standard <a href="../../../concepts/tasks/#nodes">multi-node task</a> example to run distributed training on A3 Mega instances. To enable GPUDirect-TCPX, make sure the required <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/gpu-bandwidth-gpudirect-tcpx-autopilot#environment-variables-nccl">NCCL environment variables</a> are properly set, for example by adding the following commands at the beginning:</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ...</span>
 
 commands:<span class="w"> </span>
@@ -5615,7 +5615,7 @@ commands:<span class="w"> </span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<p>You can use the standard <a href="../../../concepts/tasks/#distributed-tasks">distributed task</a> example to run distributed training on A3 High/Edge instances. To enable GPUDirect-TCPX0, make sure the required <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/gpu-bandwidth-gpudirect-tcpx-autopilot#environment-variables-nccl">NCCL environment variables</a> are properly set, for example by adding the following commands at the beginning:</p>
+<p>You can use the standard <a href="../../../concepts/tasks/#nodes">multi-node task</a> example to run distributed training on A3 High/Edge instances. To enable GPUDirect-TCPX0, make sure the required <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/gpu-bandwidth-gpudirect-tcpx-autopilot#environment-variables-nccl">NCCL environment variables</a> are properly set, for example by adding the following commands at the beginning:</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ...</span>
 
 commands:<span class="w"> </span>

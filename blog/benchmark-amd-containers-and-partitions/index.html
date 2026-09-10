@@ -5144,7 +5144,7 @@ make<span class="w"> </span><span class="p">&amp;</span><span class="w"> </span>
 <div class="highlight"><pre><span></span><code>taskset<span class="w"> </span>-c<span class="w"> </span><span class="m">0</span>-31<span class="w"> </span>./ib_write_bw<span class="w"> </span>-d<span class="w"> </span>rocep28s0<span class="w"> </span>-F<span class="w"> </span>-a<span class="w"> </span>--report_gbits<span class="w"> </span>-q<span class="w"> </span><span class="nv">$SERVER_IP_ADDRESS</span>
 </code></pre></div>
 <h4 id="containers">Containers<a class="headerlink" href="#containers" title="Permanent link">&para;</a></h4>
-<p>For the container experiments we used a <code>dstack</code>’s <a href="../../docs/concepts/tasks/#distributed-tasks">distributed task</a>.</p>
+<p>For the container experiments we used a <code>dstack</code>’s <a href="../../docs/concepts/tasks/#nodes">multi-node task</a>.</p>
 <p><strong>RCCL tests</strong></p>
 <ol>
 <li>Define a task configuration</li>

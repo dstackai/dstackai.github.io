@@ -5230,11 +5230,11 @@ Provisioning...
 <h2 id="distributed-training">Distributed training<a class="headerlink" href="#distributed-training" title="Permanent link">&para;</a></h2>
 <div class="admonition info">
 <p class="admonition-title">Prerequisites</p>
-<p>Before running a distributed task, make sure to create a fleet with <code>placement</code> set to <code>cluster</code> (can be a <a href="../../../concepts/fleets/#cluster-placement">managed fleet</a> or an <a href="../../../concepts/fleets/#ssh-placement">SSH fleet</a>).</p>
+<p>Before running a multi-node task, make sure to create a fleet with <code>placement</code> set to <code>cluster</code> (can be a <a href="../../../concepts/fleets/#cluster-placement">managed fleet</a> or an <a href="../../../concepts/fleets/#ssh-placement">SSH fleet</a>).</p>
 </div>
 <p>This section walks through running distributed fine-tuning of <code>Llama-3.1-70B</code> with QLoRA and FSDP across multiple nodes.</p>
 <h3 id="define-a-configuration_1">Define a configuration<a class="headerlink" href="#define-a-configuration_1" title="Permanent link">&para;</a></h3>
-<p>Once the fleet is created, define a distributed task configuration. Here's an example of a distributed <code>QLoRA</code> task using <code>FSDP</code>.</p>
+<p>Once the fleet is created, define a multi-node task configuration. Here's an example of a multi-node <code>QLoRA</code> task using <code>FSDP</code>.</p>
 <div editor-title="train-distrib.dstack.yml">
 
 <div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">task</span>

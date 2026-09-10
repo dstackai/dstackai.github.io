@@ -4901,7 +4901,7 @@
 <p>Prefill-Decode disaggregation separates the two phases of LLM inference: prompt processing (prefill) and token generation (decode). Prefill is compute-bound and parallelizable. Decode is memory-bound and sequential. Running them as separate pools allows each phase to be sized and scaled independently.</p>
 </div>
 <h2 id="pd-disaggregation-with-dstack">PD disaggregation with dstack<a class="headerlink" href="#pd-disaggregation-with-dstack" title="Permanent link">&para;</a></h2>
-<p>To deploy NVIDIA Dynamo with PD disaggregation, define a <a href="../../docs/concepts/services/">service</a> with three <a href="../../docs/concepts/services/#replicas-and-scaling">replica groups</a>:</p>
+<p>To deploy NVIDIA Dynamo with PD disaggregation, define a <a href="../../docs/concepts/services/">service</a> with three <a href="../../docs/concepts/services/#replica-groups">replica groups</a>:</p>
 <ul>
 <li>a Dynamo router</li>
 <li>prefill workers</li>
@@ -4961,10 +4961,10 @@
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">export NATS_SERVER="nats://$DSTACK_ROUTER_INTERNAL_IP:4222"</span>
 <span class="w">      </span><span class="c1"># Set to enable /health endpoint required by dstack probes.</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">export DYN_SYSTEM_PORT="8000"</span>
-<span class="w">      </span><span class="c1"># Wait until the router's etcd and NATS ports are actually accepting connections.</span>
+<span class="w">      </span><span class="c1"># Wait until the router's etcd and NATS are healthy.</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
-<span class="w">        </span><span class="no">until (echo &gt; /dev/tcp/$DSTACK_ROUTER_INTERNAL_IP/2379) 2&gt;/dev/null \</span>
-<span class="w">           </span><span class="no">&amp;&amp; (echo &gt; /dev/tcp/$DSTACK_ROUTER_INTERNAL_IP/4222) 2&gt;/dev/null; do</span>
+<span class="w">        </span><span class="no">until curl -fsS "http://$DSTACK_ROUTER_INTERNAL_IP:2379/health" \</span>
+<span class="w">           </span><span class="no">&amp;&amp; curl -fsS "http://$DSTACK_ROUTER_INTERNAL_IP:8222/healthz"; do</span>
 <span class="w">          </span><span class="no">echo "waiting for etcd/NATS on $DSTACK_ROUTER_INTERNAL_IP..."; sleep 3</span>
 <span class="w">        </span><span class="no">done</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip install "ai-dynamo[sglang]==1.1.1"</span>
@@ -4988,8 +4988,8 @@
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">export NATS_SERVER="nats://$DSTACK_ROUTER_INTERNAL_IP:4222"</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">export DYN_SYSTEM_PORT="8000"</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
-<span class="w">        </span><span class="no">until (echo &gt; /dev/tcp/$DSTACK_ROUTER_INTERNAL_IP/2379) 2&gt;/dev/null \</span>
-<span class="w">           </span><span class="no">&amp;&amp; (echo &gt; /dev/tcp/$DSTACK_ROUTER_INTERNAL_IP/4222) 2&gt;/dev/null; do</span>
+<span class="w">        </span><span class="no">until curl -fsS "http://$DSTACK_ROUTER_INTERNAL_IP:2379/health" \</span>
+<span class="w">           </span><span class="no">&amp;&amp; curl -fsS "http://$DSTACK_ROUTER_INTERNAL_IP:8222/healthz"; do</span>
 <span class="w">          </span><span class="no">echo "waiting for etcd/NATS on $DSTACK_ROUTER_INTERNAL_IP..."; sleep 3</span>
 <span class="w">        </span><span class="no">done</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip install "ai-dynamo[sglang]==1.1.1"</span>

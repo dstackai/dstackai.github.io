@@ -5090,10 +5090,10 @@ To<span class="w"> </span>open<span class="w"> </span><span class="k">in</span><
 
 <p>Dev environments support many <a href="../../docs/concepts/dev-environments/">different options</a>, including a custom Docker image, mounted repositories, idle timeout, min GPU utilization, and more.</p>
 <h2 id="running-distributed-training">Running distributed training<a class="headerlink" href="#running-distributed-training" title="Permanent link">&para;</a></h2>
-<p>Distributed training can be performed in <code>dstack</code> using <a href="../../docs/concepts/tasks/#distributed-tasks">distributed tasks</a>. 
+<p>Distributed training can be performed in <code>dstack</code> using <a href="../../docs/concepts/tasks/#nodes">multi-node tasks</a>. 
 The configuration is similar to a dev environment, except it runs across multiple nodes.</p>
 <h3 id="creating-a-cluster-fleet">Creating a cluster fleet<a class="headerlink" href="#creating-a-cluster-fleet" title="Permanent link">&para;</a></h3>
-<p>Before running a distributed task, create a fleet with <code>placement</code> set to <code>cluster</code>:</p>
+<p>Before running a multi-node task, create a fleet with <code>placement</code> set to <code>cluster</code>:</p>
 <div editor-title="examples/misc/fleets/.dstack.yml">
 
     <div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">fleet</span>
@@ -5128,9 +5128,9 @@ Provisioning...
 
 </div>
 
-<p>Once the fleet is created, you can run distributed tasks on it.</p>
+<p>Once the fleet is created, you can run multi-node tasks on it.</p>
 <h3 id="nccl-tests-example">NCCL tests example<a class="headerlink" href="#nccl-tests-example" title="Permanent link">&para;</a></h3>
-<p>Below is an example of using distributed tasks to run NCCL tests.
+<p>Below is an example of using multi-node tasks to run NCCL tests.
 It also demonstrates how to use mpirun with <code>dstack</code>:</p>
 <div editor-title="examples/clusters/nccl-tests/.dstack.yml">
 

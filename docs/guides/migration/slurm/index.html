@@ -6625,7 +6625,7 @@ Launching<span class="w"> </span><span class="sb">`</span>train-model<span class
 <tr>
 <td><strong>Node exclusivity</strong></td>
 <td><code>--exclusive</code> (entire node)</td>
-<td>Automatic if <code>blocks</code> is not used or job uses all blocks; required for distributed tasks (<code>nodes</code> &gt; 1)</td>
+<td>Automatic if <code>blocks</code> is not used or job uses all blocks; required for multi-node tasks (<code>nodes</code> &gt; 1)</td>
 </tr>
 </tbody>
 </table>
@@ -6936,7 +6936,7 @@ rm<span class="w"> </span>-f<span class="w"> </span><span class="nv">$HOSTFILE</
 </table>
 <div class="admonition info">
 <p class="admonition-title">Fleets</p>
-<p>Distributed tasks may run only on a fleet with <code>placement: cluster</code> configured. Refer to <a href="#partitions-and-fleets">Partitions and fleets</a> for configuration details.</p>
+<p>Multi-node tasks may run only on a fleet with <code>placement: cluster</code> configured. Refer to <a href="#partitions-and-fleets">Partitions and fleets</a> for configuration details.</p>
 </div>
 <h2 id="queueing-and-scheduling">Queueing and scheduling<a class="headerlink" href="#queueing-and-scheduling" title="Permanent link">&para;</a></h2>
 <p>Both systems support core scheduling features and efficient resource utilization.</p>
@@ -7213,7 +7213,7 @@ $<span class="w"> </span>sacctmgr<span class="w"> </span>modify<span class="w"> 
 <span class="nt">resources</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">A100:80GB:8</span>
 
-<span class="c1"># Optional: Enables inter-node connectivity; required for distributed tasks</span>
+<span class="c1"># Optional: Enables inter-node connectivity; required for multi-node tasks</span>
 <span class="nt">placement</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cluster</span>
 
 <span class="c1"># Optional: Split GPUs into blocks for multi-tenant sharing</span>
@@ -7232,7 +7232,7 @@ $<span class="w"> </span>sacctmgr<span class="w"> </span>modify<span class="w"> 
 <div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">fleet</span>
 <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">on-prem-gpu-fleet</span>
 
-<span class="c1"># Optional: Enables inter-node connectivity; required for distributed tasks</span>
+<span class="c1"># Optional: Enables inter-node connectivity; required for multi-node tasks</span>
 <span class="nt">placement</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cluster</span>
 
 <span class="c1"># Optional: Allows to share the instance across up to 8 workloads</span>
@@ -7408,7 +7408,7 @@ srun<span class="w"> </span>python<span class="w"> </span>train.py<span class="w
 <h3 id="dstack_5">dstack<a class="headerlink" href="#dstack_5" title="Permanent link">&para;</a></h3>
 <p><code>dstack</code> supports both accessing filesystems (including shared filesystems) and uploading/downloading code/data from the client.</p>
 <h4 id="instance-volumes">Instance volumes<a class="headerlink" href="#instance-volumes" title="Permanent link">&para;</a></h4>
-<p>Instance volumes mount host directories into containers. With distributed tasks, the host can use a shared filesystem (NFS, Lustre, GPFS) to share data across jobs within the same task:</p>
+<p>Instance volumes mount host directories into containers. With multi-node tasks, the host can use a shared filesystem (NFS, Lustre, GPFS) to share data across jobs within the same task:</p>
 <div editor-title=".dstack.yml">
 
 <div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">task</span>
@@ -7470,8 +7470,8 @@ srun<span class="w"> </span>python<span class="w"> </span>train.py<span class="w
 
 </div>
 
-<p>Network volumes cannot be used with distributed tasks (no multi-attach support), except where multi-attach is supported (Runpod) or via volume interpolation. </p>
-<p>For distributed tasks, use interpolation to attach different volumes to each node.</p>
+<p>Network volumes cannot be used with multi-node tasks (no multi-attach support), except where multi-attach is supported (Runpod) or via volume interpolation. </p>
+<p>For multi-node tasks, use interpolation to attach different volumes to each node.</p>
 <div editor-title=".dstack.yml">
 
 <div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">task</span>
@@ -8178,7 +8178,7 @@ dcgmi<span class="w"> </span>diag<span class="w"> </span>-r<span class="w"> </sp
 
 </div>
 
-<p>For distributed tasks, if any job fails and retry is enabled, all jobs are stopped and the run is resubmitted (all-or-nothing).</p>
+<p>For multi-node tasks, if any job fails and retry is enabled, all jobs are stopped and the run is resubmitted (all-or-nothing).</p>
 <p>Unlike Slurm, <code>dstack</code> does not support graceful shutdown signals. Applications must implement proactive checkpointing (periodic saves) and check for existing checkpoints on startup to resume after retries.</p>
 <h2 id="gpu-health-monitoring">GPU health monitoring<a class="headerlink" href="#gpu-health-monitoring" title="Permanent link">&para;</a></h2>
 <p>Both systems monitor GPU health to prevent degraded hardware from affecting workloads:</p>

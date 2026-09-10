@@ -4918,7 +4918,7 @@
 <p>A healthy instance is ready for workloads. A warning means you should monitor it closely. A failure removes it from scheduling entirely.</p>
 <h2 id="passive-vs-active-checks">Passive vs active checks<a class="headerlink" href="#passive-vs-active-checks" title="Permanent link">&para;</a></h2>
 <p>This release focuses on passive checks using DCGM background health checks. These run continuously and do not interrupt workloads.</p>
-<p>For active checks today, you can run <a href="../../docs/examples/clusters/nccl-rccl-tests/">NCCL/RCCL tests</a> as a <a href="../../docs/concepts/tasks/#distributed-tasks">distributed task</a> to verify GPU-to-GPU communication and bandwidth across a fleet. Active tests like these can reveal network or interconnect issues that passive monitoring might miss. More built-in support for active diagnostics is planned.</p>
+<p>For active checks today, you can run <a href="../../docs/examples/clusters/nccl-rccl-tests/">NCCL/RCCL tests</a> as a <a href="../../docs/concepts/tasks/#nodes">multi-node task</a> to verify GPU-to-GPU communication and bandwidth across a fleet. Active tests like these can reveal network or interconnect issues that passive monitoring might miss. More built-in support for active diagnostics is planned.</p>
 <h2 id="supported-backends">Supported backends<a class="headerlink" href="#supported-backends" title="Permanent link">&para;</a></h2>
 <p>Passive GPU health checks work on AWS (except with custom <code>os_images</code>), Azure (except A10 GPUs), GCP, OCI, and <a href="../../docs/concepts/fleets/#ssh-fleets">SSH fleets</a> where DCGM is installed and configured for background checks. </p>
 <blockquote>

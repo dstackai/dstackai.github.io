@@ -5476,7 +5476,7 @@ This must include the drivers and HugePages.</p>
 <p>Backend fleets support <a href="../../reference/dstack.yml/fleet/">many options</a>; see some major configuration examples below.</p>
 <h3 id="cluster-placement">Cluster placement<a class="headerlink" href="#cluster-placement" title="Permanent link">&para;</a></h3>
 <p>Both <a href="#backend-fleet">backend fleets</a> and <a href="#ssh-fleet">SSH fleets</a> allow the <code>placement</code> property to be set to <code>cluster</code>. </p>
-<p>This property ensures that instances are interconnected. This is required for running <a href="../tasks/#distributed-tasks">distributed tasks</a>.</p>
+<p>This property ensures that instances are interconnected. This is required for running <a href="../tasks/#nodes">multi-node tasks</a>.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="backend-fleets_1" name="__tabbed_3" type="radio" /><input id="ssh-fleets_1" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="backend-fleets_1">Backend fleets</label><label for="ssh-fleets_1">SSH fleets</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -5711,8 +5711,8 @@ e.g. <code>nodes: 2</code>, has <code>min</code> equal to <code>2</code>, so it 
 <p>For example, with 8 GPUs, 128 CPUs, and 2TB RAM, setting <code>blocks</code> to <code>8</code> gives each block 1 GPU, 16 CPUs, and 256 GB RAM.</p>
 <p>Set <code>blocks</code> to <code>auto</code> to match the number of blocks to the number of GPUs.</p>
 <div class="admonition info">
-<p class="admonition-title">Distributed tasks</p>
-<p>Distributed tasks require exclusive access to all host resources and therefore must use all blocks on each node.</p>
+<p class="admonition-title">Multi-node tasks</p>
+<p>Multi-node tasks require exclusive access to all host resources and therefore must use all blocks on each node.</p>
 </div>
 <h3 id="ssh-config">SSH config<a class="headerlink" href="#ssh-config" title="Permanent link">&para;</a></h3>
 <!-- TODO: add more detail -->

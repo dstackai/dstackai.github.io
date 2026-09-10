@@ -5084,10 +5084,10 @@ Dynamo with PD disaggregation.</p>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">export NATS_SERVER="nats://$DSTACK_ROUTER_INTERNAL_IP:4222"</span>
 <span class="w">      </span><span class="c1"># Set to enable /health endpoint required by dstack probes.</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">export DYN_SYSTEM_PORT="8000"</span>
-<span class="w">      </span><span class="c1"># Wait until the router's etcd and NATS ports are actually accepting connections.</span>
+<span class="w">      </span><span class="c1"># Wait until the router's etcd and NATS are healthy.</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
-<span class="w">        </span><span class="no">until (echo &gt; /dev/tcp/$DSTACK_ROUTER_INTERNAL_IP/2379) 2&gt;/dev/null \</span>
-<span class="w">           </span><span class="no">&amp;&amp; (echo &gt; /dev/tcp/$DSTACK_ROUTER_INTERNAL_IP/4222) 2&gt;/dev/null; do</span>
+<span class="w">        </span><span class="no">until curl -fsS "http://$DSTACK_ROUTER_INTERNAL_IP:2379/health" \</span>
+<span class="w">           </span><span class="no">&amp;&amp; curl -fsS "http://$DSTACK_ROUTER_INTERNAL_IP:8222/healthz"; do</span>
 <span class="w">          </span><span class="no">echo "waiting for etcd/NATS on $DSTACK_ROUTER_INTERNAL_IP..."; sleep 3</span>
 <span class="w">        </span><span class="no">done</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip install "ai-dynamo[sglang]==1.1.1"</span>
@@ -5111,8 +5111,8 @@ Dynamo with PD disaggregation.</p>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">export NATS_SERVER="nats://$DSTACK_ROUTER_INTERNAL_IP:4222"</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">export DYN_SYSTEM_PORT="8000"</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
-<span class="w">        </span><span class="no">until (echo &gt; /dev/tcp/$DSTACK_ROUTER_INTERNAL_IP/2379) 2&gt;/dev/null \</span>
-<span class="w">           </span><span class="no">&amp;&amp; (echo &gt; /dev/tcp/$DSTACK_ROUTER_INTERNAL_IP/4222) 2&gt;/dev/null; do</span>
+<span class="w">        </span><span class="no">until curl -fsS "http://$DSTACK_ROUTER_INTERNAL_IP:2379/health" \</span>
+<span class="w">           </span><span class="no">&amp;&amp; curl -fsS "http://$DSTACK_ROUTER_INTERNAL_IP:8222/healthz"; do</span>
 <span class="w">          </span><span class="no">echo "waiting for etcd/NATS on $DSTACK_ROUTER_INTERNAL_IP..."; sleep 3</span>
 <span class="w">        </span><span class="no">done</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip install "ai-dynamo[sglang]==1.1.1"</span>

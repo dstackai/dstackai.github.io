@@ -5013,7 +5013,7 @@ to fine-tune an agent on multiple nodes.</p>
 <p>Under the hood <code>RAGEN</code> uses <a href="https://github.com/volcengine/verl">verl</a> for Reinforcement Learning and <a href="https://docs.ray.io/en/latest/">Ray</a> for distributed training.</p>
 <div class="admonition info">
 <p class="admonition-title">Prerequisites</p>
-<p>Before running a distributed task, make sure to create a fleet with <code>placement</code> set to <code>cluster</code> (can be a <a href="../../../concepts/fleets/#cluster-placement">managed fleet</a> or an <a href="../../../concepts/fleets/#ssh-placement">SSH fleet</a>).</p>
+<p>Before running a multi-node task, make sure to create a fleet with <code>placement</code> set to <code>cluster</code> (can be a <a href="../../../concepts/fleets/#cluster-placement">managed fleet</a> or an <a href="../../../concepts/fleets/#ssh-placement">SSH fleet</a>).</p>
 </div>
 <h2 id="run-a-ray-cluster">Run a Ray cluster<a class="headerlink" href="#run-a-ray-cluster" title="Permanent link">&para;</a></h2>
 <p>If you want to use Ray with <code>dstack</code>, you have to first run a Ray cluster.</p>
@@ -5134,7 +5134,7 @@ $<span class="w"> </span>ray<span class="w"> </span>job<span class="w"> </span>s
 <div class="admonition info">
 <p class="admonition-title">What's next</p>
 <ol>
-<li>Read about <a href="../../../concepts/tasks/#distributed-tasks">distributed tasks</a>, <a href="../../../concepts/fleets/">fleets</a>, and <a href="../../../concepts/fleets/#cluster-placement">cluster placement</a></li>
+<li>Read about <a href="../../../concepts/tasks/#nodes">multi-node tasks</a>, <a href="../../../concepts/fleets/">fleets</a>, and <a href="../../../concepts/fleets/#cluster-placement">cluster placement</a></li>
 <li>Browse Ray's <a href="https://docs.ray.io/en/latest/train/examples.html">docs</a> for other examples.</li>
 </ol>
 </div>

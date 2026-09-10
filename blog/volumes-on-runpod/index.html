@@ -4921,7 +4921,7 @@ volume name to the <code>/data</code> path.</p>
 <p>In this case, <code>dstack</code> attaches the specified volume to each new replica. This ensures the model is downloaded only
 once, reducing cold start time in proportion to the model size.</p>
 <p>A notable feature of Runpod is that volumes can be attached to multiple containers simultaneously. This capability is
-particularly useful for auto-scalable services or distributed tasks.</p>
+particularly useful for auto-scalable services or multi-node tasks.</p>
 <p>Using <a href="../../docs/concepts/volumes/">volumes</a> not only optimizes inference cold start times but also enhances the
 efficiency of data and model checkpoint loading during training and fine-tuning.
 Whether you're running <a href="../../docs/concepts/tasks/">tasks</a> or <a href="../../docs/concepts/dev-environments/">dev environments</a>, leveraging
