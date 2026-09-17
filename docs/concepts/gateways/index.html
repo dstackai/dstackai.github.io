@@ -5378,7 +5378,9 @@ For self-hosted Kubernetes, you must provide a load balancer by yourself.</p>
 <span class="nt">replicas</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
 <span class="nt">load_balancer</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">alb</span>
-<span class="nt">certificate</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">null</span>
+<span class="nt">certificate</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gcp-cm</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">projects/my-project/locations/europe-west4/certificates/my-certificate</span>
 </code></pre></div>
 </div>
 <details class="info">
@@ -5386,7 +5388,7 @@ For self-hosted Kubernetes, you must provide a load balancer by yourself.</p>
 <p>An ALB gateway on <code>gcp</code> requires:</p>
 <ul>
 <li>The <code>gcp</code> backend.</li>
-<li><code>certificate: null</code>.</li>
+<li>Either <code>certificate: { type: gcp-cm, ... }</code> or <code>certificate: null</code>.</li>
 <li>A VPC with a proxy-only subnet (<code>purpose: REGIONAL_MANAGED_PROXY</code>) in the target region — required by GCP for all Envoy-based regional load balancers. See <a href="https://cloud.google.com/load-balancing/docs/proxy-only-subnets">Proxy-only subnets</a> for how to create one.</li>
 </ul>
 </details>
@@ -5418,6 +5420,8 @@ For self-hosted Kubernetes, you must provide a load balancer by yourself.</p>
 <li><code>lets-encrypt</code> (default) — Automatic certificates via <a href="https://letsencrypt.org/">Let's Encrypt</a>. Requires a <a href="#public-ip">public IP</a>.</li>
 <li><code>acm</code> — Certificates managed by <a href="https://aws.amazon.com/certificate-manager/">AWS Certificate Manager</a>. AWS-only. TLS is terminated at the load balancer, not at the gateway, and HTTP requests are redirected to HTTPS by the ALB.
   Implies <code>load_balancer: { type: alb }</code>.</li>
+<li><code>gcp-cm</code> — Certificates managed by <a href="https://cloud.google.com/certificate-manager/docs/overview">Google Cloud Certificate Manager</a>. GCP-only. TLS is terminated at the load balancer, not at the gateway, and the load balancer only serves HTTPS on port 443.
+  Requires <code>load_balancer: { type: alb }</code>. The certificate must be a regional certificate created in the same region as the gateway, referenced by its full resource name.</li>
 <li><code>null</code> — No certificate. Services will use HTTP.</li>
 </ul>
 </details>
@@ -5486,15 +5490,7 @@ For self-hosted Kubernetes, you must provide a load balancer by yourself.</p>
 
 </div>
 
-<div class="admonition warning">
-<p class="admonition-title">Experimental</p>
-<p>Replicated gateways are an experimental feature and currently have limitations:</p>
-<ul>
-<li>HTTPS is only supported for AWS gateways with the <code>acm</code> <a href="#certificate">certificate type</a>. For other gateways, use an external load balancer for TLS termination.</li>
-<li>All replicas are bound to the same backend and region.</li>
-<li>At most 3 replicas are allowed per gateway.</li>
-</ul>
-</div>
+<p>Replicated gateways do not support automatic certificate issuance via Let's Encrypt (<code>certificate: { type: lets-encrypt }</code>). For TLS termination, use an external load balancer or one of the other <a href="#certificate">certificate types</a>.</p>
 <div class="admonition info">
 <p class="admonition-title">Reference</p>
 <p>For all gateway configuration options, refer to the <a href="../../reference/dstack.yml/gateway/">reference</a>.</p>

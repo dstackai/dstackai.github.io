@@ -32,6 +32,12 @@ Set to `null` to disable certificates (e.g. for [private gateways](../../concept
     ###### `arn` - (Required) `str` The ARN of the wildcard ACM certificate for the domain. { #arn data-toc-label='arn' class='reference-item' }
 
 
+=== "GCP Certificate Manager"
+
+    ###### `type` - (Required) `"gcp-cm"` Certificates by Google Cloud Certificate Manager. Requires `load_balancer: { type: alb }`. Must be `gcp-cm`. { #type data-toc-label='type' class='reference-item' }
+    ###### `name` - (Required) `str` The full resource name of the Certificate Manager certificate for the domain, e.g. `projects/my-project/locations/europe-west9/certificates/my-certificate`. { #name data-toc-label='name' class='reference-item' }
+
+
 ### `load_balancer`
 
 === "ALB"

@@ -5979,6 +5979,12 @@ compute.regionUrlMaps.create
 compute.regionUrlMaps.delete
 compute.regionUrlMaps.use
 </code></pre></div>
+<p>If you also plan to use gateways with <code>certificate: { type: gcp-cm }</code>, additional permissions are required:</p>
+<div class="highlight"><pre><span></span><code>certificatemanager.certs.use
+compute.regionTargetHttpsProxies.create
+compute.regionTargetHttpsProxies.delete
+compute.regionTargetHttpsProxies.use
+</code></pre></div>
 <p>If you plan to use TPUs, additional permissions are required:</p>
 <div class="highlight"><pre><span></span><code>tpu.nodes.create
 tpu.nodes.get

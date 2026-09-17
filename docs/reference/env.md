@@ -141,12 +141,14 @@ For more details on the options below, refer to the [server deployment](../guide
 - `DSTACK_SERVER_GCS_BUCKET`{ #DSTACK_SERVER_GCS_BUCKET } - The bucket that repo diffs will be uploaded to if set. If unset, diffs are uploaded to the database.
 - `DSTACK_DB_POOL_SIZE`{ #DSTACK_DB_POOL_SIZE } - The client DB connections pool size. Defaults to `20`,
 - `DSTACK_DB_MAX_OVERFLOW`{ #DSTACK_DB_MAX_OVERFLOW } - The client DB connections pool allowed overflow. Defaults to `20`.
+- `DSTACK_DB_COMMAND_TIMEOUT`{ #DSTACK_DB_COMMAND_TIMEOUT } - The timeout for a single DB operation in seconds, Postgres only. Set to `0` to disable. Defaults to `300`.
 - `DSTACK_SERVER_BACKGROUND_PROCESSING_DISABLED`{ #DSTACK_SERVER_BACKGROUND_PROCESSING_DISABLED } - Disables background processing if set to any value. Useful to run only web frontend and API server.
 - `DSTACK_SERVER_MAX_PROBES_PER_JOB`{ #DSTACK_SERVER_MAX_PROBES_PER_JOB } - Maximum number of probes allowed in a run configuration. Validated at apply time.
 - `DSTACK_SERVER_MAX_PROBE_TIMEOUT`{ #DSTACK_SERVER_MAX_PROBE_TIMEOUT } - Maximum allowed timeout for a probe. Validated at apply time.
 - `DSTACK_SERVER_METRICS_RUNNING_TTL_SECONDS`{ #DSTACK_SERVER_METRICS_RUNNING_TTL_SECONDS } – Maximum age of metrics samples for running jobs.
 - `DSTACK_SERVER_METRICS_FINISHED_TTL_SECONDS`{ #DSTACK_SERVER_METRICS_FINISHED_TTL_SECONDS } – Maximum age of metrics samples for finished jobs.
 - `DSTACK_SERVER_INSTANCE_HEALTH_TTL_SECONDS`{ #DSTACK_SERVER_INSTANCE_HEALTH_TTL_SECONDS } – Maximum age of instance health checks.
+- `DSTACK_SERVER_GATEWAY_MAX_REPLICAS`{ #DSTACK_SERVER_GATEWAY_MAX_REPLICAS } - Maximum number of replicas allowed for a gateway. Defaults to `9`.
 - `DSTACK_SERVER_INSTANCE_HEALTH_MIN_COLLECT_INTERVAL_SECONDS`{ #DSTACK_SERVER_INSTANCE_HEALTH_MIN_COLLECT_INTERVAL_SECONDS } – Minimum time interval between consecutive health checks of the same instance.
 - `DSTACK_SERVER_EVENTS_TTL_SECONDS`{ #DSTACK_SERVER_EVENTS_TTL_SECONDS } - Maximum age of event records. Set to `0` to disable event storage. Defaults to 30 days.
 - `DSTACK_SERVER_DEFAULT_DOCKER_REGISTRY`{ #DSTACK_SERVER_DEFAULT_DOCKER_REGISTRY } – A default Docker registry to use for job images that do not specify an explicit registry. E.g., if set to `registry.example`, then `image: ubuntu` becomes equivalent to `image: registry.example/ubuntu`. **Note**: This setting should only be used for configuring registries that act as a pull-through cache for Docker Hub. The default `dstack` images are also pulled from the configured registry.
@@ -159,6 +161,8 @@ For more details on the options below, refer to the [server deployment](../guide
 - `DSTACK_SERVER_SSH_CONNECT_TIMEOUT`{ #DSTACK_SERVER_SSH_CONNECT_TIMEOUT } – The SSH `ConnectTimeout` for server-instance connections, in seconds. Defaults to `3`. Increase if there are high-latency links between the server and instances.
 - `DSTACK_SERVER_SSH_POOL_DISABLED`{ #DSTACK_SERVER_SSH_POOL_DISABLED } – Disables the reuse of server SSH connections to instances. If set, significantly decreases server RAM usage, but
 slows down processing and may cause CPU spikes due to frequent SSH-connection establishment.
+- `DSTACK_RUNNER_ALLOW_DOWNGRADE`{ #DSTACK_RUNNER_ALLOW_DOWNGRADE } – When set to any value, allows the server to install an older `dstack-runner` version over a newer one. By default, the server skips installation if a newer version is already installed, so that replicas running different server versions don't reinstall the runner over each other during a rolling deployment. Set this variable only while downgrading the server, and unset it afterwards — leaving it set brings the reinstall loop back.
+- `DSTACK_SHIM_ALLOW_DOWNGRADE`{ #DSTACK_SHIM_ALLOW_DOWNGRADE } – Same as `DSTACK_RUNNER_ALLOW_DOWNGRADE` but for `dstack-shim`.
 
 ??? info "Internal environment variables"
      The following environment variables are intended for development purposes:
@@ -167,10 +171,15 @@ slows down processing and may cause CPU spikes due to frequent SSH-connection es
      * `DSTACK_SERVER_UVICORN_LOG_LEVEL` – Sets uvicorn logger log level. Defaults to `ERROR`.
      * `DSTACK_SERVER_MAX_OFFERS_TRIED` - Sets how many instance offers to try when starting a job.
        Setting a high value can degrade server performance.
-     * `DSTACK_RUNNER_VERSION` – Sets exact runner version for debug. Defaults to `latest`. Ignored if `DSTACK_RUNNER_DOWNLOAD_URL` is set.
+     * `DSTACK_RUNNER_VERSION` – Overrides the `dstack-runner` version the server installs on instances. Release builds of the server
+      default to their own version; dev builds have no default version. Must be a valid [PyPA version](https://packaging.python.org/en/latest/specifications/version-specifiers/), for example, `0.20.1`.
+     * `DSTACK_RUNNER_VERSION_URL` – URL to fetch the `dstack-runner` version from. The response body must be the version string,
+      see `DSTACK_RUNNER_VERSION` for the format. Used only if `DSTACK_RUNNER_VERSION` is not set.
      * `DSTACK_RUNNER_DOWNLOAD_URL` – Overrides `dstack-runner` binary download URL. The URL can contain `{version}` and/or `{arch}` placeholders,
-      where `{version}` is `dstack` version in the `X.Y.Z` format or `latest`, and `{arch}` is either `amd64` or `arm64`, for example,
-      `https://dstack.example.com/{arch}/{version}/dstack-runner`.
+      where `{version}` is the `dstack-runner` version (see `DSTACK_RUNNER_VERSION`), or `latest` if the version cannot be determined,
+      and `{arch}` is either `amd64` or `arm64`, for example, `https://dstack.example.com/{arch}/{version}/dstack-runner`.
+     * `DSTACK_SHIM_VERSION` – Same as `DSTACK_RUNNER_VERSION` but for `dstack-shim`.
+     * `DSTACK_SHIM_VERSION_URL` – Same as `DSTACK_RUNNER_VERSION_URL` but for `dstack-shim`.
      * `DSTACK_SHIM_DOWNLOAD_URL` – Overrides `dstack-shim` binary download URL. The URL can contain `{version}` and/or `{arch}` placeholders,
       see `DSTACK_RUNNER_DOWNLOAD_URL` for the details.
      * `DSTACK_GATEWAY_PACKAGE_URL` – Overrides the URL the `dstack` package is installed from on gateway instances (used as `dstack[gateway] @ <URL>`).

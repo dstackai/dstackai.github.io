@@ -5113,12 +5113,14 @@ via <code>dstack server</code> or deployed using Docker.</p>
 <li><code id="DSTACK_SERVER_GCS_BUCKET">DSTACK_SERVER_GCS_BUCKET</code> - The bucket that repo diffs will be uploaded to if set. If unset, diffs are uploaded to the database.</li>
 <li><code id="DSTACK_DB_POOL_SIZE">DSTACK_DB_POOL_SIZE</code> - The client DB connections pool size. Defaults to <code>20</code>,</li>
 <li><code id="DSTACK_DB_MAX_OVERFLOW">DSTACK_DB_MAX_OVERFLOW</code> - The client DB connections pool allowed overflow. Defaults to <code>20</code>.</li>
+<li><code id="DSTACK_DB_COMMAND_TIMEOUT">DSTACK_DB_COMMAND_TIMEOUT</code> - The timeout for a single DB operation in seconds, Postgres only. Set to <code>0</code> to disable. Defaults to <code>300</code>.</li>
 <li><code id="DSTACK_SERVER_BACKGROUND_PROCESSING_DISABLED">DSTACK_SERVER_BACKGROUND_PROCESSING_DISABLED</code> - Disables background processing if set to any value. Useful to run only web frontend and API server.</li>
 <li><code id="DSTACK_SERVER_MAX_PROBES_PER_JOB">DSTACK_SERVER_MAX_PROBES_PER_JOB</code> - Maximum number of probes allowed in a run configuration. Validated at apply time.</li>
 <li><code id="DSTACK_SERVER_MAX_PROBE_TIMEOUT">DSTACK_SERVER_MAX_PROBE_TIMEOUT</code> - Maximum allowed timeout for a probe. Validated at apply time.</li>
 <li><code id="DSTACK_SERVER_METRICS_RUNNING_TTL_SECONDS">DSTACK_SERVER_METRICS_RUNNING_TTL_SECONDS</code> – Maximum age of metrics samples for running jobs.</li>
 <li><code id="DSTACK_SERVER_METRICS_FINISHED_TTL_SECONDS">DSTACK_SERVER_METRICS_FINISHED_TTL_SECONDS</code> – Maximum age of metrics samples for finished jobs.</li>
 <li><code id="DSTACK_SERVER_INSTANCE_HEALTH_TTL_SECONDS">DSTACK_SERVER_INSTANCE_HEALTH_TTL_SECONDS</code> – Maximum age of instance health checks.</li>
+<li><code id="DSTACK_SERVER_GATEWAY_MAX_REPLICAS">DSTACK_SERVER_GATEWAY_MAX_REPLICAS</code> - Maximum number of replicas allowed for a gateway. Defaults to <code>9</code>.</li>
 <li><code id="DSTACK_SERVER_INSTANCE_HEALTH_MIN_COLLECT_INTERVAL_SECONDS">DSTACK_SERVER_INSTANCE_HEALTH_MIN_COLLECT_INTERVAL_SECONDS</code> – Minimum time interval between consecutive health checks of the same instance.</li>
 <li><code id="DSTACK_SERVER_EVENTS_TTL_SECONDS">DSTACK_SERVER_EVENTS_TTL_SECONDS</code> - Maximum age of event records. Set to <code>0</code> to disable event storage. Defaults to 30 days.</li>
 <li><code id="DSTACK_SERVER_DEFAULT_DOCKER_REGISTRY">DSTACK_SERVER_DEFAULT_DOCKER_REGISTRY</code> – A default Docker registry to use for job images that do not specify an explicit registry. E.g., if set to <code>registry.example</code>, then <code>image: ubuntu</code> becomes equivalent to <code>image: registry.example/ubuntu</code>. <strong>Note</strong>: This setting should only be used for configuring registries that act as a pull-through cache for Docker Hub. The default <code>dstack</code> images are also pulled from the configured registry.</li>
@@ -5131,6 +5133,8 @@ via <code>dstack server</code> or deployed using Docker.</p>
 <li><code id="DSTACK_SERVER_SSH_CONNECT_TIMEOUT">DSTACK_SERVER_SSH_CONNECT_TIMEOUT</code> – The SSH <code>ConnectTimeout</code> for server-instance connections, in seconds. Defaults to <code>3</code>. Increase if there are high-latency links between the server and instances.</li>
 <li><code id="DSTACK_SERVER_SSH_POOL_DISABLED">DSTACK_SERVER_SSH_POOL_DISABLED</code> – Disables the reuse of server SSH connections to instances. If set, significantly decreases server RAM usage, but
 slows down processing and may cause CPU spikes due to frequent SSH-connection establishment.</li>
+<li><code id="DSTACK_RUNNER_ALLOW_DOWNGRADE">DSTACK_RUNNER_ALLOW_DOWNGRADE</code> – When set to any value, allows the server to install an older <code>dstack-runner</code> version over a newer one. By default, the server skips installation if a newer version is already installed, so that replicas running different server versions don't reinstall the runner over each other during a rolling deployment. Set this variable only while downgrading the server, and unset it afterwards — leaving it set brings the reinstall loop back.</li>
+<li><code id="DSTACK_SHIM_ALLOW_DOWNGRADE">DSTACK_SHIM_ALLOW_DOWNGRADE</code> – Same as <code>DSTACK_RUNNER_ALLOW_DOWNGRADE</code> but for <code>dstack-shim</code>.</li>
 </ul>
 <details class="info">
 <summary>Internal environment variables</summary>
@@ -5140,10 +5144,15 @@ slows down processing and may cause CPU spikes due to frequent SSH-connection es
 <li><code>DSTACK_SERVER_UVICORN_LOG_LEVEL</code> – Sets uvicorn logger log level. Defaults to <code>ERROR</code>.</li>
 <li><code>DSTACK_SERVER_MAX_OFFERS_TRIED</code> - Sets how many instance offers to try when starting a job.
    Setting a high value can degrade server performance.</li>
-<li><code>DSTACK_RUNNER_VERSION</code> – Sets exact runner version for debug. Defaults to <code>latest</code>. Ignored if <code>DSTACK_RUNNER_DOWNLOAD_URL</code> is set.</li>
+<li><code>DSTACK_RUNNER_VERSION</code> – Overrides the <code>dstack-runner</code> version the server installs on instances. Release builds of the server
+  default to their own version; dev builds have no default version. Must be a valid <a href="https://packaging.python.org/en/latest/specifications/version-specifiers/">PyPA version</a>, for example, <code>0.20.1</code>.</li>
+<li><code>DSTACK_RUNNER_VERSION_URL</code> – URL to fetch the <code>dstack-runner</code> version from. The response body must be the version string,
+  see <code>DSTACK_RUNNER_VERSION</code> for the format. Used only if <code>DSTACK_RUNNER_VERSION</code> is not set.</li>
 <li><code>DSTACK_RUNNER_DOWNLOAD_URL</code> – Overrides <code>dstack-runner</code> binary download URL. The URL can contain <code>{version}</code> and/or <code>{arch}</code> placeholders,
-  where <code>{version}</code> is <code>dstack</code> version in the <code>X.Y.Z</code> format or <code>latest</code>, and <code>{arch}</code> is either <code>amd64</code> or <code>arm64</code>, for example,
-  <code>https://dstack.example.com/{arch}/{version}/dstack-runner</code>.</li>
+  where <code>{version}</code> is the <code>dstack-runner</code> version (see <code>DSTACK_RUNNER_VERSION</code>), or <code>latest</code> if the version cannot be determined,
+  and <code>{arch}</code> is either <code>amd64</code> or <code>arm64</code>, for example, <code>https://dstack.example.com/{arch}/{version}/dstack-runner</code>.</li>
+<li><code>DSTACK_SHIM_VERSION</code> – Same as <code>DSTACK_RUNNER_VERSION</code> but for <code>dstack-shim</code>.</li>
+<li><code>DSTACK_SHIM_VERSION_URL</code> – Same as <code>DSTACK_RUNNER_VERSION_URL</code> but for <code>dstack-shim</code>.</li>
 <li><code>DSTACK_SHIM_DOWNLOAD_URL</code> – Overrides <code>dstack-shim</code> binary download URL. The URL can contain <code>{version}</code> and/or <code>{arch}</code> placeholders,
   see <code>DSTACK_RUNNER_DOWNLOAD_URL</code> for the details.</li>
 <li><code>DSTACK_GATEWAY_PACKAGE_URL</code> – Overrides the URL the <code>dstack</code> package is installed from on gateway instances (used as <code>dstack[gateway] @ &lt;URL&gt;</code>).</li>
