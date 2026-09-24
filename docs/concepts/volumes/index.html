@@ -328,7 +328,7 @@
             </span>
             <span class="gs-opt__body">
               <span class="gs-opt__name">dstack</span>
-              <span class="gs-opt__desc">The open-source control plane for AI-native orchestration.</span>
+              <span class="gs-opt__desc">A unified orchestration interface across GPU clouds, Kubernetes, VMs, and bare-metal.</span>
             </span>
           </a>
           <a class="gs-opt gs-opt--row external-skip" role="menuitem" href="/products/factory" target="_blank" rel="noreferrer">
@@ -337,7 +337,7 @@
             </span>
             <span class="gs-opt__body">
               <span class="gs-opt__name">dstack Factory</span>
-              <span class="gs-opt__desc">A heterogeneous orchestration stack for AI token factories.</span>
+              <span class="gs-opt__desc">A multi-tenant orchestration stack for AI labs, data centers, and AI token factories.</span>
             </span>
           </a>
           <div class="gs-rail__group">Hosted by us</div>
@@ -347,7 +347,7 @@
             </span>
             <span class="gs-opt__body">
               <span class="gs-opt__name">dstack Sky</span>
-              <span class="gs-opt__desc">One account across GPU clouds. Better prices and unified billing.</span>
+              <span class="gs-opt__desc">Unified access to GPU clouds. Better prices and one billing.</span>
             </span>
           </a>
         </div>
@@ -5225,10 +5225,13 @@ The filename must end with <code>.dstack.yml</code> (e.g. <code>.dstack.yml</cod
 <p>If you use this configuration, <code>dstack</code> will create a new volume based on the specified options.</p>
 <details class="info">
 <summary>Kubernetes</summary>
-<p>With the <code>kubernetes</code> backend, you don't have to specify <code>region</code>, but you can optionally specify  <code>storage_class_name</code> and/or <code>access_modes</code>:</p>
+<p>Set <code>region</code> to a kubeconfig context name enabled in the <a href="../backends/#kubernetes">backend configuration</a>.
+Omit it only for legacy configurations without <code>contexts</code>.</p>
+<p>You can optionally specify <code>storage_class_name</code> and/or <code>access_modes</code>:</p>
 <p><div editor-title="volume.dstack.yml"> </p>
 <div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">volume</span>
 <span class="nt">backend</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kubernetes</span>
+<span class="nt">region</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gpu-cluster-a</span>
 <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my-volume</span>
 
 <span class="nt">size</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">100GB</span>
@@ -5276,10 +5279,11 @@ specify its ID via <a href="../../reference/dstack.yml/volume/#volume_id"><code>
 <p>If you register an existing volume, you must ensure the volume already has a filesystem.</p>
 <details class="info">
 <summary>Kubernetes</summary>
-<p>With the <code>kubernetes</code> backend, to reuse an existing <code>PersistentVolumeClaim</code>, specify its name in <code>claim_name</code>:</p>
+<p>To reuse an existing <code>PersistentVolumeClaim</code>, specify <code>claim_name</code> and <code>region</code>.</p>
 <p><div editor-title="volume.dstack.yml"> </p>
 <div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">volume</span>
 <span class="nt">backend</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kubernetes</span>
+<span class="nt">region</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gpu-cluster-a</span>
 <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my-volume</span>
 
 <span class="nt">claim_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">existing-pvc</span>
