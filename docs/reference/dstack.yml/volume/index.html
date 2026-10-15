@@ -192,7 +192,7 @@
           <div class="md-banner__inner md-grid md-typeset">
             
             
-<a href="/blog/presets/">Presets: a toolkit for agent-based inference optimization<span class="icon"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15"/><path d="m12.5 5.5 6.5 6.5-6.5 6.5"/></svg></span></a>
+<a href="/blog/qwen38-flash-next-coding-agents/">Serve Fastest Qwen3.8-Flash-Next Coding Agents on 4xH200<span class="icon"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15"/><path d="m12.5 5.5 6.5 6.5-6.5 6.5"/></svg></span></a>
 
           </div>
           
@@ -413,6 +413,25 @@
   
 
     
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../blog/benchmarks/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Benchmarks
+
+      </a>
+    </li>
   
 
       
@@ -4502,6 +4521,37 @@
   
   
     <li class="md-nav__item">
+      <a href="../../../../blog/benchmarks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    <span class="md-typeset">
+      Benchmarks
+    </span>
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
       <a href="../../../../blog/case-studies/" class="md-nav__link">
         
   
@@ -4544,10 +4594,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
         
           
-          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
             
   
   
@@ -4565,8 +4615,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -4628,10 +4678,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" >
         
           
-          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
             
   
   
@@ -4649,8 +4699,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4_2">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -4902,14 +4952,14 @@
 
 <h1 id="volume"><code>volume</code><a class="headerlink" href="#volume" title="Permanent link">&para;</a></h1>
 <p>The <code>volume</code> configuration type allows creating, registering, and updating <a href="../../../concepts/volumes/">volumes</a>.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:4"><input checked="checked" id="aws" name="__tabbed_1" type="radio" /><input id="gcp" name="__tabbed_1" type="radio" /><input id="runpod" name="__tabbed_1" type="radio" /><input id="kubernetes" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="aws">AWS</label><label for="gcp">GCP</label><label for="runpod">Runpod</label><label for="kubernetes">Kubernetes</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:5"><input checked="checked" id="aws" name="__tabbed_1" type="radio" /><input id="gcp" name="__tabbed_1" type="radio" /><input id="runpod" name="__tabbed_1" type="radio" /><input id="daytona" name="__tabbed_1" type="radio" /><input id="kubernetes" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="aws">AWS</label><label for="gcp">GCP</label><label for="runpod">Runpod</label><label for="daytona">Daytona</label><label for="kubernetes">Kubernetes</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <h6 class="reference-item" id="backend"><code>backend</code> - (Required) <code>"aws"</code> The volume backend. Must be <code>aws</code>.<a class="headerlink" href="#backend" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="name"><code>name</code> - (Optional) <code>str</code> The volume name.<a class="headerlink" href="#name" title="Permanent link">&para;</a></h6>
-<h6 class="reference-item" id="size"><code>size</code> - (Optional) <code>int | float | str</code> The volume size. Must be specified when creating new volumes.<a class="headerlink" href="#size" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="auto_cleanup_duration"><code>auto_cleanup_duration</code> - (Optional) <code>bool | int | str | "off"</code> Time to wait after volume is no longer used by any job before deleting it. Defaults to keep the volume indefinitely. Use the value <code>off</code> or <code>-1</code> to disable auto-cleanup.<a class="headerlink" href="#auto_cleanup_duration" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="tags"><code>tags</code> - (Optional) <code>dict</code> The custom tags to associate with the volume. The tags are also propagated to the underlying backend resources. If there is a conflict with backend-level tags, does not override them.<a class="headerlink" href="#tags" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="size"><code>size</code> - (Optional) <code>int | float | str</code> The volume size. Must be specified when creating new volumes.<a class="headerlink" href="#size" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="volume_id"><code>volume_id</code> - (Optional) <code>str</code> The volume ID. Must be specified when registering external volumes.<a class="headerlink" href="#volume_id" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="region"><code>region</code> - (Required) <code>str</code> The volume region.<a class="headerlink" href="#region" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="availability_zone"><code>availability_zone</code> - (Optional) <code>str</code> The volume availability zone.<a class="headerlink" href="#availability_zone" title="Permanent link">&para;</a></h6>
@@ -4917,9 +4967,9 @@
 <div class="tabbed-block">
 <h6 class="reference-item" id="backend"><code>backend</code> - (Required) <code>"gcp"</code> The volume backend. Must be <code>gcp</code>.<a class="headerlink" href="#backend" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="name"><code>name</code> - (Optional) <code>str</code> The volume name.<a class="headerlink" href="#name" title="Permanent link">&para;</a></h6>
-<h6 class="reference-item" id="size"><code>size</code> - (Optional) <code>int | float | str</code> The volume size. Must be specified when creating new volumes.<a class="headerlink" href="#size" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="auto_cleanup_duration"><code>auto_cleanup_duration</code> - (Optional) <code>bool | int | str | "off"</code> Time to wait after volume is no longer used by any job before deleting it. Defaults to keep the volume indefinitely. Use the value <code>off</code> or <code>-1</code> to disable auto-cleanup.<a class="headerlink" href="#auto_cleanup_duration" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="tags"><code>tags</code> - (Optional) <code>dict</code> The custom tags to associate with the volume. The tags are also propagated to the underlying backend resources. If there is a conflict with backend-level tags, does not override them.<a class="headerlink" href="#tags" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="size"><code>size</code> - (Optional) <code>int | float | str</code> The volume size. Must be specified when creating new volumes.<a class="headerlink" href="#size" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="volume_id"><code>volume_id</code> - (Optional) <code>str</code> The volume ID. Must be specified when registering external volumes.<a class="headerlink" href="#volume_id" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="region"><code>region</code> - (Required) <code>str</code> The volume region.<a class="headerlink" href="#region" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="availability_zone"><code>availability_zone</code> - (Optional) <code>str</code> The volume availability zone.<a class="headerlink" href="#availability_zone" title="Permanent link">&para;</a></h6>
@@ -4927,11 +4977,18 @@
 <div class="tabbed-block">
 <h6 class="reference-item" id="backend"><code>backend</code> - (Required) <code>"runpod"</code> The volume backend. Must be <code>runpod</code>.<a class="headerlink" href="#backend" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="name"><code>name</code> - (Optional) <code>str</code> The volume name.<a class="headerlink" href="#name" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="auto_cleanup_duration"><code>auto_cleanup_duration</code> - (Optional) <code>bool | int | str | "off"</code> Time to wait after volume is no longer used by any job before deleting it. Defaults to keep the volume indefinitely. Use the value <code>off</code> or <code>-1</code> to disable auto-cleanup.<a class="headerlink" href="#auto_cleanup_duration" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="tags"><code>tags</code> - (Optional) <code>dict</code> The custom tags to associate with the volume. The tags are also propagated to the underlying backend resources. If there is a conflict with backend-level tags, does not override them.<a class="headerlink" href="#tags" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="size"><code>size</code> - (Optional) <code>int | float | str</code> The volume size. Must be specified when creating new volumes.<a class="headerlink" href="#size" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="volume_id"><code>volume_id</code> - (Optional) <code>str</code> The volume ID. Must be specified when registering external volumes.<a class="headerlink" href="#volume_id" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="region"><code>region</code> - (Required) <code>str</code> The volume region.<a class="headerlink" href="#region" title="Permanent link">&para;</a></h6>
+</div>
+<div class="tabbed-block">
+<h6 class="reference-item" id="backend"><code>backend</code> - (Required) <code>"daytona"</code> The volume backend. Must be <code>daytona</code>.<a class="headerlink" href="#backend" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="name"><code>name</code> - (Optional) <code>str</code> The volume name.<a class="headerlink" href="#name" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="auto_cleanup_duration"><code>auto_cleanup_duration</code> - (Optional) <code>bool | int | str | "off"</code> Time to wait after volume is no longer used by any job before deleting it. Defaults to keep the volume indefinitely. Use the value <code>off</code> or <code>-1</code> to disable auto-cleanup.<a class="headerlink" href="#auto_cleanup_duration" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="tags"><code>tags</code> - (Optional) <code>dict</code> The custom tags to associate with the volume. The tags are also propagated to the underlying backend resources. If there is a conflict with backend-level tags, does not override them.<a class="headerlink" href="#tags" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="volume_id"><code>volume_id</code> - (Optional) <code>str</code> The volume ID. Must be specified when registering external volumes.<a class="headerlink" href="#volume_id" title="Permanent link">&para;</a></h6>
-<h6 class="reference-item" id="region"><code>region</code> - (Required) <code>str</code> The volume region.<a class="headerlink" href="#region" title="Permanent link">&para;</a></h6>
 </div>
 <div class="tabbed-block">
 <p>Kubernetes backend volumes are mapped to <a href="https://kubernetes.io/docs/concepts/storage/persistent-volumes/#persistentvolumeclaims"><code>PersistentVolumeClaim</code></a> objects.</p>
@@ -4959,9 +5016,9 @@
 </code></pre></div>
 <h6 class="reference-item" id="backend"><code>backend</code> - (Required) <code>"kubernetes"</code> The volume backend. Must be <code>kubernetes</code>.<a class="headerlink" href="#backend" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="name"><code>name</code> - (Optional) <code>str</code> The volume name.<a class="headerlink" href="#name" title="Permanent link">&para;</a></h6>
-<h6 class="reference-item" id="size"><code>size</code> - (Optional) <code>int | float | str</code> The requested volume size. Must be specified when creating new PVCs. Ignored if <code>claim_name</code> is set.<a class="headerlink" href="#size" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="auto_cleanup_duration"><code>auto_cleanup_duration</code> - (Optional) <code>bool | int | str | "off"</code> Time to wait after volume is no longer used by any job before deleting it. Defaults to keep the volume indefinitely. Use the value <code>off</code> or <code>-1</code> to disable auto-cleanup.<a class="headerlink" href="#auto_cleanup_duration" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="tags"><code>tags</code> - (Optional) <code>dict</code> The custom tags to associate with the volume. The tags are also propagated to the underlying backend resources. If there is a conflict with backend-level tags, does not override them.<a class="headerlink" href="#tags" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="size"><code>size</code> - (Optional) <code>int | float | str</code> The requested volume size. Must be specified when creating new PVCs. Ignored if <code>claim_name</code> is set.<a class="headerlink" href="#size" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="region"><code>region</code> - (Required) <code>str</code> The volume region (cluster).<a class="headerlink" href="#region" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="claim_name"><code>claim_name</code> - (Optional) <code>str</code> The <code>PersistentVolumeClaim</code> name. Must be specified when registering the existing PVC instead of creating a new one.<a class="headerlink" href="#claim_name" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="storage_class_name"><code>storage_class_name</code> - (Optional) <code>str</code> The <code>StorageClass</code> name. Ignored if <code>claim_name</code> is set.<a class="headerlink" href="#storage_class_name" title="Permanent link">&para;</a></h6>

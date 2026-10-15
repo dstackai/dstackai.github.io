@@ -187,7 +187,7 @@
           <div class="md-banner__inner md-grid md-typeset">
             
             
-<a href="/blog/presets/">Presets: a toolkit for agent-based inference optimization<span class="icon"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15"/><path d="m12.5 5.5 6.5 6.5-6.5 6.5"/></svg></span></a>
+<a href="/blog/qwen38-flash-next-coding-agents/">Serve Fastest Qwen3.8-Flash-Next Coding Agents on 4xH200<span class="icon"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15"/><path d="m12.5 5.5 6.5 6.5-6.5 6.5"/></svg></span></a>
 
           </div>
           
@@ -408,6 +408,25 @@
   
 
     
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../blog/benchmarks/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Benchmarks
+
+      </a>
+    </li>
   
 
       
@@ -4584,6 +4603,37 @@
   
   
     <li class="md-nav__item">
+      <a href="../../../../blog/benchmarks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    <span class="md-typeset">
+      Benchmarks
+    </span>
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
       <a href="../../../../blog/case-studies/" class="md-nav__link">
         
   
@@ -4626,10 +4676,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
         
           
-          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
             
   
   
@@ -4647,8 +4697,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -4710,10 +4760,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" >
         
           
-          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
             
   
   
@@ -4731,8 +4781,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4_2">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -5098,6 +5148,13 @@ to configure <a href="../../../concepts/backends/">backends</a> and other <a hre
 </div>
 </div>
 </div>
+<h5 id="daytona"><code>projects[n].backends[type=daytona]</code><a class="headerlink" href="#daytona" title="Permanent link">&para;</a></h5>
+<h6 class="reference-item" id="type"><code>type</code> - (Required) <code>"daytona"</code> The type of backend. Must be <code>daytona</code>.<a class="headerlink" href="#type" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="regions"><code>regions</code> - (Optional) <code>list[str]</code> The list of Daytona regions. GPU sandboxes use <code>earth</code>; CPU sandboxes use shared regions such as <code>us</code> and <code>eu</code>. Omit to use all regions.<a class="headerlink" href="#regions" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="_creds"><a href="#daytona-creds"><code>creds</code></a> - (Required) <code>object</code> The credentials.<a class="headerlink" href="#_creds" title="Permanent link">&para;</a></h6>
+<h6 id="daytona-creds"><code>projects[n].backends[type=daytona].creds</code><a class="headerlink" href="#daytona-creds" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="type"><code>type</code> - (Required) <code>"api_key"</code> The type of credentials. Must be <code>api_key</code>.<a class="headerlink" href="#type" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="api_key"><code>api_key</code> - (Required) <code>str</code> The Daytona API key.<a class="headerlink" href="#api_key" title="Permanent link">&para;</a></h6>
 <h5 id="gcp"><code>projects[n].backends[type=gcp]</code><a class="headerlink" href="#gcp" title="Permanent link">&para;</a></h5>
 <h6 class="reference-item" id="type"><code>type</code> - (Required) <code>"gcp"</code> The type of backend. Must be <code>gcp</code>.<a class="headerlink" href="#type" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="project_id"><code>project_id</code> - (Required) <code>str</code> The project ID.<a class="headerlink" href="#project_id" title="Permanent link">&para;</a></h6>
@@ -5204,6 +5261,7 @@ to configure <a href="../../../concepts/backends/">backends</a> and other <a hre
 <h6 class="reference-item" id="type"><code>type</code> - (Required) <code>"oci"</code> The type of backend. Must be <code>oci</code>.<a class="headerlink" href="#type" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="regions"><code>regions</code> - (Optional) <code>list[str]</code> The list of OCI regions. Omit to use all regions.<a class="headerlink" href="#regions" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="compartment_id"><code>compartment_id</code> - (Optional) <code>str</code> Compartment where <code>dstack</code> will create all resources. Omit to instruct <code>dstack</code> to create a new compartment.<a class="headerlink" href="#compartment_id" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="experimental_instance_types"><code>experimental_instance_types</code> - (Optional) <code>list[str]</code> The list of shape names to allow provisioning in addition to the standard supported shape families. Only works for shapes included in <code>dstack</code>'s pricing catalog (<code>gpuhunt</code>).<a class="headerlink" href="#experimental_instance_types" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="_creds"><a href="#oci-creds"><code>creds</code></a> - (Required) <code>object</code> The credentials.<a class="headerlink" href="#_creds" title="Permanent link">&para;</a></h6>
 <h6 id="oci-creds"><code>projects[n].backends[type=oci].creds</code><a class="headerlink" href="#oci-creds" title="Permanent link">&para;</a></h6>
 <div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="client_1" name="__tabbed_4" type="radio" /><input id="default_3" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="client_1">Client</label><label for="default_3">Default</label></div>
@@ -5300,6 +5358,7 @@ to configure <a href="../../../concepts/backends/">backends</a> and other <a hre
 <h6 class="reference-item" id="type"><code>type</code> - (Required) <code>"hotaisle"</code> The type of backend. Must be <code>hotaisle</code>.<a class="headerlink" href="#type" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="team_handle"><code>team_handle</code> - (Required) <code>str</code> The Hot Aisle team handle.<a class="headerlink" href="#team_handle" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="regions"><code>regions</code> - (Optional) <code>list[str]</code> The list of Hot Aisle regions. Omit to use all regions.<a class="headerlink" href="#regions" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="bare_metal"><code>bare_metal</code> - (Optional) <code>bool</code> Whether bare metal offers can be suggested in addition to VMs (experimental). Defaults to <code>false</code>.<a class="headerlink" href="#bare_metal" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="_creds"><a href="#hotaisle-creds"><code>creds</code></a> - (Required) <code>object</code> The credentials.<a class="headerlink" href="#_creds" title="Permanent link">&para;</a></h6>
 <h6 id="hotaisle-creds"><code>projects[n].backends[type=hotaisle].creds</code><a class="headerlink" href="#hotaisle-creds" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="type"><code>type</code> - (Required) <code>"api_key"</code> The type of credentials. Must be <code>api_key</code>.<a class="headerlink" href="#type" title="Permanent link">&para;</a></h6>

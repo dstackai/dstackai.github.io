@@ -178,7 +178,7 @@
           <div class="md-banner__inner md-grid md-typeset">
             
             
-<a href="/blog/presets/">Presets: a toolkit for agent-based inference optimization<span class="icon"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15"/><path d="m12.5 5.5 6.5 6.5-6.5 6.5"/></svg></span></a>
+<a href="/blog/qwen38-flash-next-coding-agents/">Serve Fastest Qwen3.8-Flash-Next Coding Agents on 4xH200<span class="icon"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15"/><path d="m12.5 5.5 6.5 6.5-6.5 6.5"/></svg></span></a>
 
           </div>
           
@@ -395,6 +395,25 @@
   
 
     
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../benchmarks/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Benchmarks
+
+      </a>
+    </li>
   
 
       
@@ -4452,6 +4471,37 @@
   
   
     <li class="md-nav__item">
+      <a href="../../benchmarks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    <span class="md-typeset">
+      Benchmarks
+    </span>
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
       <a href="../../case-studies/" class="md-nav__link">
         
   
@@ -4499,10 +4549,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
         
           
-          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
             
   
   
@@ -4520,8 +4570,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_4">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -4602,6 +4652,17 @@
       Table of contents
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#monitoring-essential-gpu-metrics-via-cli" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Monitoring essential GPU metrics via CLI
+      
+    </span>
+  </a>
+  
+</li>
       
         <li class="md-nav__item">
   <a href="#benchmarking-llama-31-405b-on-8x-amd-mi300x-gpus" class="md-nav__link">
@@ -4701,10 +4762,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" >
         
           
-          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="">
+          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="">
             
   
   
@@ -4722,8 +4783,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4_2">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -4870,6 +4931,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#monitoring-essential-gpu-metrics-via-cli" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Monitoring essential GPU metrics via CLI
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#benchmarking-llama-31-405b-on-8x-amd-mi300x-gpus" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -4955,6 +5027,67 @@
       <header class="md-typeset">
         <h1 id="blog">Blog<a class="headerlink" href="#blog" title="Permanent link">&para;</a></h1>
       </header>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2024-10-22 00:00:00+00:00">October 22, 2024</time></li>
+        
+          <li class="md-meta__item">
+            in
+            
+              <a href="../../changelog/" class="md-meta__link">Changelog</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              2 min read
+            
+          </li>
+        
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="monitoring-essential-gpu-metrics-via-cli"><a class="toclink" href="../../dstack-metrics/">Monitoring essential GPU metrics via CLI</a></h2>
+<h3 id="how-it-works" style="display:none"><a class="toclink" href="../../dstack-metrics/#how-it-works">How it works</a></h3>
+<p>While it's possible to use third-party monitoring tools with <code>dstack</code>, it is often more convenient to debug your run and
+track metrics out of the box. That's why, with the latest release, <code>dstack</code> introduced <a href="../../../docs/reference/cli/dstack/metrics/"><code>dstack stats</code></a>, a new CLI (and API)
+for monitoring container metrics, including GPU usage for <code>NVIDIA</code>, <code>AMD</code>, and other accelerators.</p>
+<div class="termy">
+
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>dstack<span class="w"> </span>metrics<span class="w"> </span>llama-70b-sft
+
+<span class="w">               </span>UTILIZATION<span class="w">                     </span>MEMORY
+<span class="w"> </span><span class="nv">job</span><span class="o">=</span><span class="m">0</span><span class="w">  </span>cpu<span class="w">    </span>▁▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▁▂▂▂▂▂▂▂▂▂<span class="w"> </span><span class="m">33</span>%<span class="w">  </span>▃▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄<span class="w"> </span>296GB/480GB
+<span class="w">        </span><span class="nv">gpu</span><span class="o">=</span><span class="m">0</span><span class="w">  </span>▁▄▆▆▆▆▆▆▆▆▆▆▆▆▆▆▁▆▆▆▆▆▆▆▆▆<span class="w"> </span><span class="m">93</span>%<span class="w">  </span>▃▅▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆<span class="w"> </span>67GB/80GB
+<span class="w">        </span><span class="nv">gpu</span><span class="o">=</span><span class="m">1</span><span class="w">  </span>▂▅▆▆▆▆▆▆▆▆▆▆▆▆▆▆▁▆▆▆▆▆▆▆▆▆<span class="w"> </span><span class="m">93</span>%<span class="w">  </span>▃▅▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆<span class="w"> </span>67GB/80GB
+<span class="w">        </span><span class="nv">gpu</span><span class="o">=</span><span class="m">2</span><span class="w">  </span>▃▆▆▆▆▆▆▆▆▆▆▆▆▆▆▁▆▆▆▆▆▆▆▆▆▆<span class="w"> </span><span class="m">93</span>%<span class="w">  </span>▃▅▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆<span class="w"> </span>67GB/80GB
+<span class="w">        </span><span class="nv">gpu</span><span class="o">=</span><span class="m">3</span><span class="w">  </span>▅▆▆▆▆▆▆▆▆▆▆▆▆▆▆▁▆▆▆▆▆▆▆▆▆▆<span class="w"> </span><span class="m">93</span>%<span class="w">  </span>▃▅▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆<span class="w"> </span>67GB/80GB
+
+<span class="w">               </span><span class="m">6</span><span class="w"> </span>Aug<span class="w"> </span><span class="m">13</span>:14<span class="w"> </span>┄┄┄┄┄┄┄┄┄┄<span class="w"> </span>now<span class="w">      </span><span class="m">6</span><span class="w"> </span>Aug<span class="w"> </span><span class="m">13</span>:14<span class="w"> </span>┄┄┄┄┄┄┄┄┄┄<span class="w"> </span>now
+</code></pre></div>
+
+</div>
+
+
+    
+      <nav class="md-post__action">
+        <a href="../../dstack-metrics/">
+            <span>Continue reading</span>
+            <span class="icon"><svg viewBox="0 0 13 10" xmlns="http://www.w3.org/2000/svg"><path d="M12.823 4.164L8.954.182a.592.592 0 0 0-.854 0 .635.635 0 0 0 0 .88l2.836 2.92H.604A.614.614 0 0 0 0 4.604c0 .344.27.622.604.622h10.332L8.1 8.146a.635.635 0 0 0 0 .88.594.594 0 0 0 .854 0l3.869-3.982a.635.635 0 0 0 0-.88z" fill-rule="nonzero" fill="currentColor" class="fill-main"></path></svg></span>
+        </a>
+      </nav>
+    
+    
+  </div>
+</article>
       
         <article class="md-post md-post--excerpt">
   <header class="md-post__header">

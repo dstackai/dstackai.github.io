@@ -1554,23 +1554,28 @@ projects:
 </div>
 
 ??? info "Required permissions"
-    The API key must have the following roles assigned:
+    The API key requires the `owner` role for your user and the `operator` and `user` roles for the team specified in `team_handle`.
 
-    * **Owner role for the user** - Required for creating and managing SSH keys
-    * **Operator role for the team** - Required for managing virtual machines within the team
+??? info "Bare metal"
+    Bare metal servers (`bm-mi300x-8`) are experimental and disabled by default. To enable them, set `bare_metal: true` in the backend settings:
 
-??? info "Pricing"
-    `dstack` shows the hourly price for Hot Aisle instances. Some instances also require an upfront payment for a minimum reservation period, which is usually a few hours. You will be charged for the full minimum period even if you stop the instance early.
+    <div editor-title="~/.dstack/server/config.yml">
 
-    See the Hot Aisle API for the minimum reservation period for each instance type:
-
-    <div class="termy">
-
-    ```shell
-    $ curl -H "Authorization: Token $API_KEY" https://admin.hotaisle.app/api/teams/$TEAM_HANDLE/virtual_machines/available/ | jq ".[] | {gpus: .Specs.gpus, MinimumReservationMinutes}"
+    ```yaml
+    projects:
+    - name: main
+      backends:
+        - type: hotaisle
+          team_handle: hotaisle-team-handle
+          creds:
+            type: api_key
+            api_key: 9c27a4bb7a8e472fae12ab34.3f2e3c1db75b9a0187fd2196c6b3e56d2b912e1c439ba08d89e7b6fcd4ef1d3f
+          bare_metal: true
     ```
 
     </div>
+
+    Bare metal servers are prepaid for 8 hours. To use the full period, use a fleet with a fixed number of [`nodes`](../concepts/fleets.md#nodes), or at least set [`idle_duration`](../reference/dstack.yml/fleet.md#idle_duration) to cover it. Within the period, `dstack` doesn't terminate them but stops tracking them — terminate them manually in Hot Aisle. After the period, `dstack` terminates them automatically.
 
 ### JarvisLabs
 
@@ -2050,6 +2055,34 @@ projects:
     - **One `dstack` job per node.** A `dstack` job can share a node with non-`dstack` Slurm jobs, but two `dstack` jobs cannot run on the same node — the second one fails to start and its run eventually fails by provisioning timeout. `dstack` does not control node placement, so this can happen whenever the Slurm scheduler places a second `dstack` job on a node that already runs one. This limitation is expected to be lifted in a future release.
     - **Runs always execute as `root`.** `enroot` is a single-user container runtime: it can only map the invoking host user inside the container to either the same UID/GID or to `root` (`0:0`). `dstack` uses the latter, so runs always execute as `root`, and both the image's default user and the run configuration's `user` property are ignored. The single-user model is a fundamental `enroot` limitation, not specific to the `dstack` integration.
     - **Private registries via `registry_auth` are not supported.** The `registry_auth` run configuration property is rejected. You can still pull images from a private registry by preconfiguring `enroot` credentials on the cluster's compute nodes — see the [enroot import documentation](https://github.com/NVIDIA/enroot/blob/main/doc/cmd/import.md#description).
+
+### Daytona
+
+Create an API key in the [Daytona dashboard](https://app.daytona.io/) for the organization
+that will own the sandboxes. Then configure the backend:
+
+<div editor-title="~/.dstack/server/config.yml">
+
+```yaml
+projects:
+  - name: main
+    backends:
+      - type: daytona
+        creds:
+          type: api_key
+          api_key: YOUR_DAYTONA_API_KEY
+```
+
+</div>
+
+??? info "Required permissions"
+    The API key requires `write:sandboxes`, `delete:sandboxes`, and `read:limits`.
+
+    Additional permissions depend on the features used:
+
+    * Private images: `write:registries` and `delete:registries`
+    * Creating volumes: `read:volumes`, `write:volumes`, and `delete:volumes`
+    * Registering existing volumes: `read:volumes`
 
 ### Runpod
 
@@ -6411,7 +6444,7 @@ Useful as a cache for cloud fleets or for persistent storage with SSH fleets.
 
 ## Network volumes
 
-> Network volumes are currently supported for the `aws`, `gcp`, `runpod`, and `kubernetes` backends.
+> Network volumes are currently supported for the `aws`, `gcp`, `runpod`, `kubernetes`, and `daytona` backends.
 
 ### Apply a configuration
 
@@ -6436,6 +6469,16 @@ size: 100GB
 </div>
 
 If you use this configuration, `dstack` will create a new volume based on the specified options.
+
+??? info "Daytona"
+    Daytona volumes use [S3-backed FUSE storage](https://www.daytona.io/docs/en/volumes/).
+    Storage grows with usage, and the same volume can be mounted in any Daytona region.
+
+    ```yaml
+    type: volume
+    backend: daytona
+    name: my-volume
+    ```
 
 ??? info "Kubernetes"
     Set `region` to a kubeconfig context name enabled in the [backend configuration](backends.md#kubernetes).
@@ -6481,7 +6524,7 @@ Volume my-volume does not exist yet. Create the volume? [y/n]: y
 
 Once created, the volume can be attached to dev environments, tasks, and services.
 
-> When creating a new network volume, `dstack` automatically creates an `ext4` filesystem on it.
+> When creating a new network volume in AWS or GCP, `dstack` automatically creates an `ext4` filesystem on it.
 
 #### Register existing volumes
 
@@ -6505,7 +6548,7 @@ volume_id: vol1235
 
 </div>
 
-If you register an existing volume, you must ensure the volume already has a filesystem.
+If you register an existing volume in AWS or GCP, you must ensure the volume already has a filesystem.
 
 ??? info "Kubernetes"
 
@@ -6649,7 +6692,7 @@ If you've registered an existing volume, it will be de-registered with `dstack` 
 
 ??? info "Can I use network volumes across backends?"
 
-    Since volumes are backed up by cloud network disks, you can only use them within the same cloud. If you need to access
+    Volumes can only be used with their backend. If you need to access
     data across different backends, you should either use object storage or replicate the data across multiple volumes.
 
 ??? info "Can I use network volumes across regions?"
@@ -6657,19 +6700,22 @@ If you've registered an existing volume, it will be de-registered with `dstack` 
     Typically, network volumes are associated with specific regions, so you can't use them in other regions. Often,
     volumes are also linked to availability zones, but some providers support volumes that can be used across different
     availability zones within the same region.
-    
+
     If you don't want to limit a run to one particular region, you can create different volumes for different regions
     and specify them for the same mount point as [documented above](#attach-network-volume).
 
+    Daytona volumes can be mounted in any Daytona region.
+
 ??? info "Can I attach network volumes to multiple runs or instances?"
-    You can mount a volume in multiple runs. This feature is currently supported only by the `runpod` backend.
+    The `runpod` and `daytona` backends support mounting the same volume in multiple runs at the same time.
+    For `kubernetes`, the storage class and access modes must support sharing, such as `ReadWriteMany`.
 
 ## Instance volumes
 
 Instance volumes allow mapping any directory on the instance where the run is executed to any path inside the container.
 This means that the data in instance volumes is persisted only if the run is executed on the same instance.
 
-> Instance volumes are currently supported for all backends except `runpod` and `vastai`, and can also be used with [SSH fleets](fleets.md#ssh-fleets).
+> Instance volumes are currently supported for all backends except `daytona`, `runpod`, and `vastai`, and can also be used with [SSH fleets](fleets.md#ssh-fleets).
 
 ### Attach a volume
 
@@ -15132,7 +15178,7 @@ groups:
   - replicas: 1
     python: "3.12"
     commands:
-      - pip install smg
+      - pip install smg==1.11.0
       - |
         smg launch \
           --pd-disaggregation \
@@ -15150,36 +15196,46 @@ groups:
     scaling:
       metric: rps
       target: 3
-    image: ghcr.io/lightseekorg/smg:1.4.1-vllm-v0.18.0
+    image: ghcr.io/smg-project/smg:1.11.0-vllm-v0.27.1
     commands:
+      - export VLLM_NIXL_SIDE_CHANNEL_HOST=$DSTACK_MASTER_NODE_IP
       - |
         python3 -m vllm.entrypoints.grpc_server \
           --model "$MODEL_ID" \
           --host 0.0.0.0 \
           --port 8000 \
+          --max-model-len 65536 \
           --kv-transfer-config '{"kv_connector":"NixlConnector","kv_role":"kv_producer"}'
     resources:
       gpu: H200
+      disk: 200GB..
 
   - replicas: 1..8
     scaling:
       metric: rps
       target: 2
-    image: ghcr.io/lightseekorg/smg:1.4.1-vllm-v0.18.0
+    image: ghcr.io/smg-project/smg:1.11.0-vllm-v0.27.1
     commands:
+      - export VLLM_NIXL_SIDE_CHANNEL_HOST=$DSTACK_MASTER_NODE_IP
       - |
         python3 -m vllm.entrypoints.grpc_server \
           --model "$MODEL_ID" \
           --host 0.0.0.0 \
           --port 8000 \
+          --max-model-len 65536 \
           --kv-transfer-config '{"kv_connector":"NixlConnector","kv_role":"kv_consumer"}'
     resources:
       gpu: H200
+      disk: 200GB..
 
 port: 8000
 ```
 
 </div>
+
+Use the same SMG version for the router and the worker images: the worker image bundles the SMG gRPC servicer, which must return the KV transfer parameters that the router relays from prefill to decode.
+
+`VLLM_NIXL_SIDE_CHANNEL_HOST` sets the address of the NIXL handshake listener, which the prefill worker also passes to the decode worker. It defaults to `localhost`, in which case the decode worker connects to itself instead of the prefill worker. `DSTACK_MASTER_NODE_IP` is the internal IP of the replica's instance.
 
 > To use the [Mooncake Transfer](https://github.com/kvcache-ai/Mooncake) backend, set `"kv_connector": "MooncakeConnector"` in `--kv-transfer-config`.
 
@@ -15189,6 +15245,23 @@ Currently, auto-scaling only supports `rps` as the metric. TTFT and ITL metrics 
     PD disaggregation requires the service to run in a fleet with `placement` set to `cluster`, because the replicas require an interconnect between instances.
 
     While the prefill and decode replicas run on GPUs, the router replica requires a CPU instance in the same cluster.
+
+    For production, use instances with RDMA (InfiniBand or RoCE). Without RDMA, NIXL transfers the KV cache over TCP, which works but may be slower than recomputing the prompt on the decode worker.
+
+??? info "Instances without RDMA"
+    If an instance has both a private and a public network interface and no RDMA, UCX (the default NIXL transport) may advertise the public address, which may be unreachable from other instances. In this case, restrict UCX to the interface that has the instance's internal IP by adding the following command before starting the worker:
+
+    ```yaml
+    - |
+      export UCX_NET_DEVICES=$(python3 -c '
+      import os, psutil
+      ip = os.environ["DSTACK_MASTER_NODE_IP"]
+      ifaces = psutil.net_if_addrs().items()
+      print(next(name for name, addrs in ifaces if any(a.address == ip for a in addrs)))
+      ')
+    ```
+
+    Don't use this on instances with RDMA, as it prevents UCX from using RDMA devices.
 
 ## What's next?
 

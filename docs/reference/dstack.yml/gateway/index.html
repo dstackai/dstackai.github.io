@@ -192,7 +192,7 @@
           <div class="md-banner__inner md-grid md-typeset">
             
             
-<a href="/blog/presets/">Presets: a toolkit for agent-based inference optimization<span class="icon"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15"/><path d="m12.5 5.5 6.5 6.5-6.5 6.5"/></svg></span></a>
+<a href="/blog/qwen38-flash-next-coding-agents/">Serve Fastest Qwen3.8-Flash-Next Coding Agents on 4xH200<span class="icon"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15"/><path d="m12.5 5.5 6.5 6.5-6.5 6.5"/></svg></span></a>
 
           </div>
           
@@ -413,6 +413,25 @@
   
 
     
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../blog/benchmarks/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Benchmarks
+
+      </a>
+    </li>
   
 
       
@@ -4580,6 +4599,37 @@
   
   
     <li class="md-nav__item">
+      <a href="../../../../blog/benchmarks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    <span class="md-typeset">
+      Benchmarks
+    </span>
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
       <a href="../../../../blog/case-studies/" class="md-nav__link">
         
   
@@ -4622,10 +4672,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
         
           
-          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
             
   
   
@@ -4643,8 +4693,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -4706,10 +4756,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" >
         
           
-          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
             
   
   
@@ -4727,8 +4777,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4_2">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -5032,7 +5082,7 @@
 <h2 id="root-reference">Root reference<a class="headerlink" href="#root-reference" title="Permanent link">&para;</a></h2>
 <h6 class="reference-item" id="name"><code>name</code> - (Optional) <code>str</code> The gateway name.<a class="headerlink" href="#name" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="default"><code>default</code> - (Optional) <code>bool</code> Whether the gateway is the project's default. Can be updated in-place. If unset when creating a new gateway, the gateway will become the default unless there is already a default gateway. If unset when updating the gateway in-place, the gateway's default status will not change.<a class="headerlink" href="#default" title="Permanent link">&para;</a></h6>
-<h6 class="reference-item" id="backend"><code>backend</code> - (Required) <code>"amddevcloud" | "aws" | "azure" | "cloudrift" | "crusoe" | "cudo" | "datacrunch" | "digitalocean" | "dstack" | "gcp" | "hotaisle" | "jarvislabs" | "kubernetes" | "lambda" | "remote" | "nebius" | "oci" | "runpod" | "seeweb" | "tensordock" | "vastai" | "verda" | "vultr" | "slurm"</code> The gateway backend.<a class="headerlink" href="#backend" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="backend"><code>backend</code> - (Required) <code>"amddevcloud" | "aws" | "azure" | "cloudrift" | "crusoe" | "cudo" | "datacrunch" | "daytona" | "digitalocean" | "dstack" | "gcp" | "hotaisle" | "jarvislabs" | "kubernetes" | "lambda" | "remote" | "nebius" | "oci" | "runpod" | "seeweb" | "tensordock" | "vastai" | "verda" | "vultr" | "slurm"</code> The gateway backend.<a class="headerlink" href="#backend" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="region"><code>region</code> - (Required) <code>str</code> The gateway region.<a class="headerlink" href="#region" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="instance_type"><code>instance_type</code> - (Optional) <code>str</code> Backend-specific instance type to use for the gateway instance. Omit to use the backend's default, which is typically a small non-GPU instance.<a class="headerlink" href="#instance_type" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="domain"><code>domain</code> - (Optional) <code>str</code> The gateway wildcard domain name, e.g. <code>example.com</code>. Service domain names are constructed as <code>&lt;run name&gt;.&lt;gateway domain</code>. The domain name can use the <code>${{ run.project_name }}</code> variable to include the service’s project name. Can be updated in-place. Updates do not affect existing services.<a class="headerlink" href="#domain" title="Permanent link">&para;</a></h6>

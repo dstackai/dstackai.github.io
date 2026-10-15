@@ -192,7 +192,7 @@
           <div class="md-banner__inner md-grid md-typeset">
             
             
-<a href="/blog/presets/">Presets: a toolkit for agent-based inference optimization<span class="icon"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15"/><path d="m12.5 5.5 6.5 6.5-6.5 6.5"/></svg></span></a>
+<a href="/blog/qwen38-flash-next-coding-agents/">Serve Fastest Qwen3.8-Flash-Next Coding Agents on 4xH200<span class="icon"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15"/><path d="m12.5 5.5 6.5 6.5-6.5 6.5"/></svg></span></a>
 
           </div>
           
@@ -413,6 +413,25 @@
   
 
     
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../blog/benchmarks/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Benchmarks
+
+      </a>
+    </li>
   
 
       
@@ -4597,6 +4616,37 @@
   
   
     <li class="md-nav__item">
+      <a href="../../../../blog/benchmarks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    <span class="md-typeset">
+      Benchmarks
+    </span>
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
       <a href="../../../../blog/case-studies/" class="md-nav__link">
         
   
@@ -4639,10 +4689,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
         
           
-          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
             
   
   
@@ -4660,8 +4710,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -4723,10 +4773,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" >
         
           
-          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
             
   
   
@@ -4744,8 +4794,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4_2">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -5186,7 +5236,7 @@ calling, add <code>--enable-auto-tool-choice --tool-call-parser qwen3_coder</cod
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">replicas</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
 <span class="w">    </span><span class="nt">python</span><span class="p">:</span><span class="w"> </span><span class="s">"3.12"</span>
 <span class="w">    </span><span class="nt">commands</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip install smg</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip install smg==1.11.0</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
 <span class="w">        </span><span class="no">smg launch \</span>
 <span class="w">          </span><span class="no">--pd-disaggregation \</span>
@@ -5204,37 +5254,45 @@ calling, add <code>--enable-auto-tool-choice --tool-call-parser qwen3_coder</cod
 <span class="w">    </span><span class="nt">scaling</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">metric</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rps</span>
 <span class="w">      </span><span class="nt">target</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
-<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ghcr.io/lightseekorg/smg:1.4.1-vllm-v0.18.0</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ghcr.io/smg-project/smg:1.11.0-vllm-v0.27.1</span>
 <span class="w">    </span><span class="nt">commands</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">export VLLM_NIXL_SIDE_CHANNEL_HOST=$DSTACK_MASTER_NODE_IP</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
 <span class="w">        </span><span class="no">python3 -m vllm.entrypoints.grpc_server \</span>
 <span class="w">          </span><span class="no">--model "$MODEL_ID" \</span>
 <span class="w">          </span><span class="no">--host 0.0.0.0 \</span>
 <span class="w">          </span><span class="no">--port 8000 \</span>
+<span class="w">          </span><span class="no">--max-model-len 65536 \</span>
 <span class="w">          </span><span class="no">--kv-transfer-config '{"kv_connector":"NixlConnector","kv_role":"kv_producer"}'</span>
 <span class="w">    </span><span class="nt">resources</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">H200</span>
+<span class="w">      </span><span class="nt">disk</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">200GB..</span>
 
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">replicas</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1..8</span>
 <span class="w">    </span><span class="nt">scaling</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">metric</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rps</span>
 <span class="w">      </span><span class="nt">target</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
-<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ghcr.io/lightseekorg/smg:1.4.1-vllm-v0.18.0</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ghcr.io/smg-project/smg:1.11.0-vllm-v0.27.1</span>
 <span class="w">    </span><span class="nt">commands</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">export VLLM_NIXL_SIDE_CHANNEL_HOST=$DSTACK_MASTER_NODE_IP</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
 <span class="w">        </span><span class="no">python3 -m vllm.entrypoints.grpc_server \</span>
 <span class="w">          </span><span class="no">--model "$MODEL_ID" \</span>
 <span class="w">          </span><span class="no">--host 0.0.0.0 \</span>
 <span class="w">          </span><span class="no">--port 8000 \</span>
+<span class="w">          </span><span class="no">--max-model-len 65536 \</span>
 <span class="w">          </span><span class="no">--kv-transfer-config '{"kv_connector":"NixlConnector","kv_role":"kv_consumer"}'</span>
 <span class="w">    </span><span class="nt">resources</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">H200</span>
+<span class="w">      </span><span class="nt">disk</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">200GB..</span>
 
 <span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8000</span>
 </code></pre></div>
 
 </div>
 
+<p>Use the same SMG version for the router and the worker images: the worker image bundles the SMG gRPC servicer, which must return the KV transfer parameters that the router relays from prefill to decode.</p>
+<p><code>VLLM_NIXL_SIDE_CHANNEL_HOST</code> sets the address of the NIXL handshake listener, which the prefill worker also passes to the decode worker. It defaults to <code>localhost</code>, in which case the decode worker connects to itself instead of the prefill worker. <code>DSTACK_MASTER_NODE_IP</code> is the internal IP of the replica's instance.</p>
 <blockquote>
 <p>To use the <a href="https://github.com/kvcache-ai/Mooncake">Mooncake Transfer</a> backend, set <code>"kv_connector": "MooncakeConnector"</code> in <code>--kv-transfer-config</code>.</p>
 </blockquote>
@@ -5243,7 +5301,21 @@ calling, add <code>--enable-auto-tool-choice --tool-call-parser qwen3_coder</cod
 <p class="admonition-title">Cluster</p>
 <p>PD disaggregation requires the service to run in a fleet with <code>placement</code> set to <code>cluster</code>, because the replicas require an interconnect between instances.</p>
 <p>While the prefill and decode replicas run on GPUs, the router replica requires a CPU instance in the same cluster.</p>
+<p>For production, use instances with RDMA (InfiniBand or RoCE). Without RDMA, NIXL transfers the KV cache over TCP, which works but may be slower than recomputing the prompt on the decode worker.</p>
 </div>
+<details class="info">
+<summary>Instances without RDMA</summary>
+<p>If an instance has both a private and a public network interface and no RDMA, UCX (the default NIXL transport) may advertise the public address, which may be unreachable from other instances. In this case, restrict UCX to the interface that has the instance's internal IP by adding the following command before starting the worker:</p>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">  </span><span class="no">export UCX_NET_DEVICES=$(python3 -c '</span>
+<span class="w">  </span><span class="no">import os, psutil</span>
+<span class="w">  </span><span class="no">ip = os.environ["DSTACK_MASTER_NODE_IP"]</span>
+<span class="w">  </span><span class="no">ifaces = psutil.net_if_addrs().items()</span>
+<span class="w">  </span><span class="no">print(next(name for name, addrs in ifaces if any(a.address == ip for a in addrs)))</span>
+<span class="w">  </span><span class="no">')</span>
+</code></pre></div>
+<p>Don't use this on instances with RDMA, as it prevents UCX from using RDMA devices.</p>
+</details>
 <h2 id="whats-next">What's next?<a class="headerlink" href="#whats-next" title="Permanent link">&para;</a></h2>
 <ol>
 <li>Read about <a href="../../../concepts/services/">services</a> and <a href="../../../concepts/gateways/">gateways</a></li>

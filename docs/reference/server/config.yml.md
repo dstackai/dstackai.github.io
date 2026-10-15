@@ -93,6 +93,19 @@ to configure [backends](../../concepts/backends.md) and other [server-level sett
     ###### `type` - (Required) `"default"` The type of credentials. Must be `default`. { #type data-toc-label='type' class='reference-item' }
 
 
+##### `projects[n].backends[type=daytona]` { #daytona data-toc-label="daytona" }
+
+###### `type` - (Required) `"daytona"` The type of backend. Must be `daytona`. { #type data-toc-label='type' class='reference-item' }
+###### `regions` - (Optional) `list[str]` The list of Daytona regions. GPU sandboxes use `earth`; CPU sandboxes use shared regions such as `us` and `eu`. Omit to use all regions. { #regions data-toc-label='regions' class='reference-item' }
+###### [`creds`](#daytona-creds) - (Required) `object` The credentials. { #_creds data-toc-label='creds' class='reference-item' }
+
+
+###### `projects[n].backends[type=daytona].creds` { #daytona-creds data-toc-label="creds" }
+
+###### `type` - (Required) `"api_key"` The type of credentials. Must be `api_key`. { #type data-toc-label='type' class='reference-item' }
+###### `api_key` - (Required) `str` The Daytona API key. { #api_key data-toc-label='api_key' class='reference-item' }
+
+
 ##### `projects[n].backends[type=gcp]` { #gcp data-toc-label="gcp" }
 
 ###### `type` - (Required) `"gcp"` The type of backend. Must be `gcp`. { #type data-toc-label='type' class='reference-item' }
@@ -242,6 +255,7 @@ to configure [backends](../../concepts/backends.md) and other [server-level sett
 ###### `type` - (Required) `"oci"` The type of backend. Must be `oci`. { #type data-toc-label='type' class='reference-item' }
 ###### `regions` - (Optional) `list[str]` The list of OCI regions. Omit to use all regions. { #regions data-toc-label='regions' class='reference-item' }
 ###### `compartment_id` - (Optional) `str` Compartment where `dstack` will create all resources. Omit to instruct `dstack` to create a new compartment. { #compartment_id data-toc-label='compartment_id' class='reference-item' }
+###### `experimental_instance_types` - (Optional) `list[str]` The list of shape names to allow provisioning in addition to the standard supported shape families. Only works for shapes included in `dstack`'s pricing catalog (`gpuhunt`). { #experimental_instance_types data-toc-label='experimental_instance_types' class='reference-item' }
 ###### [`creds`](#oci-creds) - (Required) `object` The credentials. { #_creds data-toc-label='creds' class='reference-item' }
 
 
@@ -392,6 +406,7 @@ to configure [backends](../../concepts/backends.md) and other [server-level sett
 ###### `type` - (Required) `"hotaisle"` The type of backend. Must be `hotaisle`. { #type data-toc-label='type' class='reference-item' }
 ###### `team_handle` - (Required) `str` The Hot Aisle team handle. { #team_handle data-toc-label='team_handle' class='reference-item' }
 ###### `regions` - (Optional) `list[str]` The list of Hot Aisle regions. Omit to use all regions. { #regions data-toc-label='regions' class='reference-item' }
+###### `bare_metal` - (Optional) `bool` Whether bare metal offers can be suggested in addition to VMs (experimental). Defaults to `false`. { #bare_metal data-toc-label='bare_metal' class='reference-item' }
 ###### [`creds`](#hotaisle-creds) - (Required) `object` The credentials. { #_creds data-toc-label='creds' class='reference-item' }
 
 
