@@ -1205,6 +1205,30 @@ gcloud projects list --format="json(projectId)"
     gcloud services enable compute.googleapis.com
     ```
 
+??? info "TPUs"
+    TPU support is experimental and disabled by default. To enable it, set `tpu: true` in the backend settings:
+
+    <div editor-title="~/.dstack/server/config.yml">
+
+    ```yaml
+    projects:
+    - name: main
+      backends:
+        - type: gcp
+          project_id: gcp-project-id
+          creds:
+            type: default
+          tpu: true
+    ```
+
+    </div>
+
+    Enable the Cloud TPU API in your GCP project:
+
+    ```shell
+    gcloud services enable tpu.googleapis.com --project=gcp-project-id
+    ```
+
 ??? info "VPC"
 
     === "VPC"
@@ -2083,6 +2107,25 @@ projects:
     * Private images: `write:registries` and `delete:registries`
     * Creating volumes: `read:volumes`, `write:volumes`, and `delete:volumes`
     * Registering existing volumes: `read:volumes`
+
+### Lium
+
+Create an API key under **Access → API Keys** in the
+[Lium dashboard](https://lium.io/ssh-keys), then configure the backend:
+
+<div editor-title="~/.dstack/server/config.yml">
+
+```yaml
+projects:
+  - name: main
+    backends:
+      - type: lium
+        creds:
+          type: api_key
+          api_key: YOUR_LIUM_API_KEY
+```
+
+</div>
 
 ### Runpod
 
@@ -3627,7 +3670,7 @@ and the [NCCL/RCCL tests](../examples/clusters/nccl-rccl-tests.md) example for r
     master node.
 
     > In a service, worker registration happens automatically when the router group sets
-    > [`router`](services.md#router) to `type: sglang`.
+    > [`router`](services.md#router) to `type: smg`.
 
     <div editor-title=".dstack.yml">
 
@@ -4639,7 +4682,7 @@ Below is an example for running `Qwen/Qwen3.8-Flash-Next` on `H200`:
         resources:
           cpu: 4
         router:
-          type: sglang
+          type: smg
 
       - replicas: 2
         commands:
@@ -4805,7 +4848,7 @@ Below is an example for running `zai-org/GLM-4.5-Air-FP8` on `H200`:
         resources:
           cpu: 4
         router:
-          type: sglang
+          type: smg
 
       - replicas: 4
         commands:
@@ -4979,7 +5022,7 @@ groups:
     resources:
       cpu: 4..
     router:
-      type: sglang
+      type: smg
 
   - replicas: 2
     commands:
@@ -6444,7 +6487,7 @@ Useful as a cache for cloud fleets or for persistent storage with SSH fleets.
 
 ## Network volumes
 
-> Network volumes are currently supported for the `aws`, `gcp`, `runpod`, `kubernetes`, and `daytona` backends.
+> Network volumes are currently supported for the `aws`, `gcp`, `runpod`, `kubernetes`, `daytona`, and `lium` backends.
 
 ### Apply a configuration
 
@@ -6479,6 +6522,18 @@ If you use this configuration, `dstack` will create a new volume based on the sp
     backend: daytona
     name: my-volume
     ```
+
+??? info "Lium"
+    Lium volumes use S3-backed storage, grow with usage, and can be mounted in any Lium region.
+    Omit `size` and `region`. Each run can mount one volume.
+
+    ```yaml
+    type: volume
+    backend: lium
+    name: my-volume
+    ```
+
+    > Files on Lium volumes are owned by root and accessible to all users in the container.
 
 ??? info "Kubernetes"
     Set `region` to a kubeconfig context name enabled in the [backend configuration](backends.md#kubernetes).
@@ -6571,7 +6626,7 @@ For all volume configuration options, refer to the [reference](../reference/dsta
 
 ### Attach a volume { #attach-network-volume }
 
-Dev environments, tasks, and services let you attach any number of network volumes.
+Dev environments, tasks, and services let you attach network volumes.
 To attach a network volume, simply specify its name using the `volumes` property
 and specify where to mount its contents:
 
@@ -6704,7 +6759,7 @@ If you've registered an existing volume, it will be de-registered with `dstack` 
     If you don't want to limit a run to one particular region, you can create different volumes for different regions
     and specify them for the same mount point as [documented above](#attach-network-volume).
 
-    Daytona volumes can be mounted in any Daytona region.
+    Daytona and Lium volumes can be mounted in any region of their respective backend.
 
 ??? info "Can I attach network volumes to multiple runs or instances?"
     The `runpod` and `daytona` backends support mounting the same volume in multiple runs at the same time.
@@ -6715,7 +6770,7 @@ If you've registered an existing volume, it will be de-registered with `dstack` 
 Instance volumes allow mapping any directory on the instance where the run is executed to any path inside the container.
 This means that the data in instance volumes is persisted only if the run is executed on the same instance.
 
-> Instance volumes are currently supported for all backends except `daytona`, `runpod`, and `vastai`, and can also be used with [SSH fleets](fleets.md#ssh-fleets).
+> Instance volumes are currently supported for all backends except `daytona`, `lium`, `runpod`, and `vastai`, and can also be used with [SSH fleets](fleets.md#ssh-fleets).
 
 ### Attach a volume
 
@@ -14620,7 +14675,7 @@ To run SGLang with [PD disaggregation](https://docs.sglang.io/advanced_features/
         resources:
           cpu: 4
         router:
-          type: sglang
+          type: smg
 
       - replicas: 1..4
         scaling:
@@ -14694,7 +14749,7 @@ To run SGLang with [PD disaggregation](https://docs.sglang.io/advanced_features/
                   --port 8000 \
                   --prefill-policy cache_aware
             router:
-              type: sglang
+              type: smg
             resources:
               cpu: 4
 
@@ -14775,7 +14830,7 @@ To run SGLang with [PD disaggregation](https://docs.sglang.io/advanced_features/
         resources:
           cpu: 4..
         router:
-          type: sglang
+          type: smg
 
       - replicas: 1..2
         scaling:
@@ -15188,7 +15243,7 @@ groups:
           --port 8000 \
           --prefill-policy cache_aware
     router:
-      type: sglang
+      type: smg
     resources:
       cpu: 4
 
@@ -16400,6 +16455,9 @@ description: Deploying and fine-tuning models on Google Cloud TPUs using Optimum
 If you've configured the `gcp` backend in `dstack`, you can run dev environments, tasks, and services on [TPUs](https://cloud.google.com/tpu/docs/intro-to-tpu).
 Choose a TPU instance by specifying the TPU version and the number of cores (e.g. `v5litepod-8`) in the `gpu` property under `resources`,
 or request TPUs by specifying `tpu` as `vendor` ([see examples](../../guides/protips.md#gpu)).
+
+TPU support is experimental and disabled by default. Before using these examples, set `tpu: true`
+in your [GCP backend settings](../../concepts/backends.md#gcp).
 
 Below are a few examples on using TPUs for deployment and fine-tuning.
 

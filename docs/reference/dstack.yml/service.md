@@ -23,7 +23,7 @@ The `service` configuration type allows running [services](../../concepts/servic
 ###### `entrypoint` - (Optional) `str` The Docker entrypoint. { #entrypoint data-toc-label='entrypoint' class='reference-item' }
 ###### `working_dir` - (Optional) `str` The absolute path to the working directory inside the container. Defaults to the `image`'s default working directory. { #working_dir data-toc-label='working_dir' class='reference-item' }
 ###### [`registry_auth`](#registry_auth) - (Optional) `object` Credentials for pulling a private Docker image. { #_registry_auth data-toc-label='registry_auth' class='reference-item' }
-###### `python` - (Optional) `"3.10" | "3.11" | "3.12" | "3.13" | "3.14" | "3.9"` The major version of Python. Mutually exclusive with `image` and `docker`. { #python data-toc-label='python' class='reference-item' }
+###### `python` - (Optional) `"3.10" | "3.11" | "3.12" | "3.13" | "3.14" | "3.15" | "3.9"` The major version of Python. Mutually exclusive with `image` and `docker`. { #python data-toc-label='python' class='reference-item' }
 ###### `nvcc` - (Optional) `bool` Use image with NVIDIA CUDA Compiler (NVCC) included. Mutually exclusive with `image` and `docker`. { #nvcc data-toc-label='nvcc' class='reference-item' }
 ###### `single_branch` - (Optional) `bool` Whether to clone and track only the current branch or all remote branches. Relevant only when using remote Git repos. Defaults to `false` for dev environments and to `true` for tasks and services. { #single_branch data-toc-label='single_branch' class='reference-item' }
 ###### [`env`](#env) - (Optional) `list[str] | dict` The mapping or the list of environment variables. { #_env data-toc-label='env' class='reference-item' }
@@ -35,7 +35,7 @@ The `service` configuration type allows running [services](../../concepts/servic
 ###### [`repos`](#repos) - (Optional) `list[str | object]` The list of Git repos. { #_repos data-toc-label='repos' class='reference-item' }
 ###### [`files`](#files) - (Optional) `list[str | object]` The local to container file path mappings. { #_files data-toc-label='files' class='reference-item' }
 ###### `dstack` - (Optional) `bool` Make the dstack server accessible inside the run. No authentication credentials are provided. Defaults to `false`. { #dstack data-toc-label='dstack' class='reference-item' }
-###### `backends` - (Optional) `list["amddevcloud" | "aws" | "azure" | "cloudrift" | "crusoe" | "cudo" | "datacrunch" | "daytona" | "digitalocean" | "dstack" | "gcp" | "hotaisle" | "jarvislabs" | "kubernetes" | "lambda" | "remote" | "nebius" | "oci" | "runpod" | "seeweb" | "tensordock" | "vastai" | "verda" | "vultr" | "slurm"]` The backends to consider for provisioning (e.g., `[aws, gcp]`). { #backends data-toc-label='backends' class='reference-item' }
+###### `backends` - (Optional) `list["amddevcloud" | "aws" | "azure" | "cloudrift" | "crusoe" | "cudo" | "datacrunch" | "daytona" | "digitalocean" | "dstack" | "gcp" | "hotaisle" | "jarvislabs" | "kubernetes" | "lambda" | "lium" | "remote" | "nebius" | "oci" | "runpod" | "seeweb" | "tensordock" | "vastai" | "verda" | "vultr" | "slurm"]` The backends to consider for provisioning (e.g., `[aws, gcp]`). { #backends data-toc-label='backends' class='reference-item' }
 ###### `regions` - (Optional) `list[str]` The regions to consider for provisioning (e.g., `[eu-west-1, us-west4, westeurope]`). { #regions data-toc-label='regions' class='reference-item' }
 ###### `availability_zones` - (Optional) `list[str]` The availability zones to consider for provisioning (e.g., `[eu-west-1a, us-west4-a]`). { #availability_zones data-toc-label='availability_zones' class='reference-item' }
 ###### `instance_types` - (Optional) `list[str]` The cloud-specific instance types to consider for provisioning (e.g., `[g6e.24xlarge, n1-standard-4]`). { #instance_types data-toc-label='instance_types' class='reference-item' }
@@ -140,11 +140,16 @@ The `service` configuration type allows running [services](../../concepts/servic
 ###### `reservation` - (Optional) `str` The existing reservation to use for replicas in this group. Supports AWS Capacity Reservations, AWS Capacity Blocks, and GCP reservations. { #reservation data-toc-label='reservation' class='reference-item' }
 ###### `commands` - (Optional) `list[str]` The shell commands to run for replicas in this group. { #commands data-toc-label='commands' class='reference-item' }
 ###### `image` - (Optional) `str` The name of the Docker image to run for replicas in this group. Mutually exclusive with group-level `docker` and `python`.. { #image data-toc-label='image' class='reference-item' }
-###### `python` - (Optional) `"3.10" | "3.11" | "3.12" | "3.13" | "3.14" | "3.9"` The major version of Python for replicas in this group. Mutually exclusive with group-level `image` and `docker`.. { #python data-toc-label='python' class='reference-item' }
+###### `python` - (Optional) `"3.10" | "3.11" | "3.12" | "3.13" | "3.14" | "3.15" | "3.9"` The major version of Python for replicas in this group. Mutually exclusive with group-level `image` and `docker`.. { #python data-toc-label='python' class='reference-item' }
 ###### `nvcc` - (Optional) `bool` Use the image with NVIDIA CUDA Compiler (NVCC) included for replicas in this group. Mutually exclusive with group-level `docker`.. { #nvcc data-toc-label='nvcc' class='reference-item' }
 ###### `docker` - (Optional) `bool` Use the docker-in-docker image for this group (injects `start-dockerd` and runs privileged). Mutually exclusive with group-level `image`, `python`, and `nvcc`.. { #docker data-toc-label='docker' class='reference-item' }
 ###### `privileged` - (Optional) `bool` Run replicas in this group in privileged mode.. { #privileged data-toc-label='privileged' class='reference-item' }
-###### [`router`](#router) - (Optional) `object` When set, replicas in this group run the in-service HTTP router (e.g. SGLang).. { #_router data-toc-label='router' class='reference-item' }
+###### [`router`](#router) - (Optional) `object` When set, replicas in this group run the in-service HTTP router (e.g. SMG). { #_router data-toc-label='router' class='reference-item' }
+
+
+##### `groups[n].router` { #router data-toc-label="router" }
+
+###### `type` - (Optional) `"smg" | "dynamo"` The router implementation for this replica group. `smg` runs the Shepherd Model Gateway (SMG) and dstack syncs worker URLs to it. `dynamo` runs the NVIDIA Dynamo frontend, which discovers workers itself via etcd/NATS. Defaults to `smg`. { #type data-toc-label='type' class='reference-item' }
 
 
 ### `retry`

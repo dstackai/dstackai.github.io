@@ -1241,6 +1241,19 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#lium" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Lium
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#runpod" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -5442,6 +5455,19 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#lium" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Lium
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#runpod" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -6103,6 +6129,24 @@ permission is required in the project that owns the reservations.</p>
 gcloud<span class="w"> </span>config<span class="w"> </span><span class="nb">set</span><span class="w"> </span>project<span class="w"> </span><span class="nv">$PROJECT_ID</span>
 gcloud<span class="w"> </span>services<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>cloudapis.googleapis.com
 gcloud<span class="w"> </span>services<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>compute.googleapis.com
+</code></pre></div>
+</details>
+<details class="info">
+<summary>TPUs</summary>
+<p>TPU support is experimental and disabled by default. To enable it, set <code>tpu: true</code> in the backend settings:</p>
+<div editor-title="~/.dstack/server/config.yml">
+<div class="highlight"><pre><span></span><code><span class="nt">projects</span><span class="p">:</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">main</span>
+<span class="w">  </span><span class="nt">backends</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gcp</span>
+<span class="w">      </span><span class="nt">project_id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gcp-project-id</span>
+<span class="w">      </span><span class="nt">creds</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">default</span>
+<span class="w">      </span><span class="nt">tpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</code></pre></div>
+</div>
+<p>Enable the Cloud TPU API in your GCP project:</p>
+<div class="highlight"><pre><span></span><code>gcloud<span class="w"> </span>services<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>tpu.googleapis.com<span class="w"> </span>--project<span class="o">=</span>gcp-project-id
 </code></pre></div>
 </details>
 <details class="info">
@@ -6930,6 +6974,22 @@ that will own the sandboxes. Then configure the backend:</p>
 <li>Registering existing volumes: <code>read:volumes</code></li>
 </ul>
 </details>
+<h3 id="lium">Lium<a class="headerlink" href="#lium" title="Permanent link">&para;</a></h3>
+<p>Create an API key under <strong>Access → API Keys</strong> in the
+<a href="https://lium.io/ssh-keys">Lium dashboard</a>, then configure the backend:</p>
+<div editor-title="~/.dstack/server/config.yml">
+
+<div class="highlight"><pre><span></span><code><span class="nt">projects</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">main</span>
+<span class="w">    </span><span class="nt">backends</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">lium</span>
+<span class="w">        </span><span class="nt">creds</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">api_key</span>
+<span class="w">          </span><span class="nt">api_key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">YOUR_LIUM_API_KEY</span>
+</code></pre></div>
+
+</div>
+
 <h3 id="runpod">Runpod<a class="headerlink" href="#runpod" title="Permanent link">&para;</a></h3>
 <p>Log into your <a href="https://www.runpod.io/console/">Runpod</a> console, click Settings in the sidebar, expand the <code>API Keys</code> section, and click
 the button to create a Read &amp; Write key.</p>

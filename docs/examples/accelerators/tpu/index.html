@@ -5231,6 +5231,8 @@
 <p>If you've configured the <code>gcp</code> backend in <code>dstack</code>, you can run dev environments, tasks, and services on <a href="https://cloud.google.com/tpu/docs/intro-to-tpu">TPUs</a>.
 Choose a TPU instance by specifying the TPU version and the number of cores (e.g. <code>v5litepod-8</code>) in the <code>gpu</code> property under <code>resources</code>,
 or request TPUs by specifying <code>tpu</code> as <code>vendor</code> (<a href="../../../guides/protips/#gpu">see examples</a>).</p>
+<p>TPU support is experimental and disabled by default. Before using these examples, set <code>tpu: true</code>
+in your <a href="../../../concepts/backends/#gcp">GCP backend settings</a>.</p>
 <p>Below are a few examples on using TPUs for deployment and fine-tuning.</p>
 <div class="admonition info">
 <p class="admonition-title">Multi-host TPUs</p>

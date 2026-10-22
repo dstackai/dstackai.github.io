@@ -5283,7 +5283,7 @@ Useful as a cache for cloud fleets or for persistent storage with SSH fleets.</l
 </ul>
 <h2 id="network-volumes">Network volumes<a class="headerlink" href="#network-volumes" title="Permanent link">&para;</a></h2>
 <blockquote>
-<p>Network volumes are currently supported for the <code>aws</code>, <code>gcp</code>, <code>runpod</code>, <code>kubernetes</code>, and <code>daytona</code> backends.</p>
+<p>Network volumes are currently supported for the <code>aws</code>, <code>gcp</code>, <code>runpod</code>, <code>kubernetes</code>, <code>daytona</code>, and <code>lium</code> backends.</p>
 </blockquote>
 <h3 id="apply-a-configuration">Apply a configuration<a class="headerlink" href="#apply-a-configuration" title="Permanent link">&para;</a></h3>
 <p>First, define a volume configuration as a YAML file in your project folder.
@@ -5313,6 +5313,18 @@ Storage grows with usage, and the same volume can be mounted in any Daytona regi
 <span class="nt">backend</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">daytona</span>
 <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my-volume</span>
 </code></pre></div>
+</details>
+<details class="info">
+<summary>Lium</summary>
+<p>Lium volumes use S3-backed storage, grow with usage, and can be mounted in any Lium region.
+Omit <code>size</code> and <code>region</code>. Each run can mount one volume.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">volume</span>
+<span class="nt">backend</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">lium</span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my-volume</span>
+</code></pre></div>
+<blockquote>
+<p>Files on Lium volumes are owned by root and accessible to all users in the container.</p>
+</blockquote>
 </details>
 <details class="info">
 <summary>Kubernetes</summary>
@@ -5383,7 +5395,7 @@ specify its ID via <a href="../../reference/dstack.yml/volume/#volume_id"><code>
 </details>
 <p>For all volume configuration options, refer to the <a href="../../reference/dstack.yml/volume/">reference</a>.</p>
 <h3 id="attach-network-volume">Attach a volume<a class="headerlink" href="#attach-network-volume" title="Permanent link">&para;</a></h3>
-<p>Dev environments, tasks, and services let you attach any number of network volumes.
+<p>Dev environments, tasks, and services let you attach network volumes.
 To attach a network volume, simply specify its name using the <code>volumes</code> property
 and specify where to mount its contents:</p>
 <div editor-title=".dstack.yml"> 
@@ -5488,7 +5500,7 @@ volumes are also linked to availability zones, but some providers support volume
 availability zones within the same region.</p>
 <p>If you don't want to limit a run to one particular region, you can create different volumes for different regions
 and specify them for the same mount point as <a href="#attach-network-volume">documented above</a>.</p>
-<p>Daytona volumes can be mounted in any Daytona region.</p>
+<p>Daytona and Lium volumes can be mounted in any region of their respective backend.</p>
 </details>
 <details class="info">
 <summary>Can I attach network volumes to multiple runs or instances?</summary>
@@ -5499,7 +5511,7 @@ For <code>kubernetes</code>, the storage class and access modes must support sha
 <p>Instance volumes allow mapping any directory on the instance where the run is executed to any path inside the container.
 This means that the data in instance volumes is persisted only if the run is executed on the same instance.</p>
 <blockquote>
-<p>Instance volumes are currently supported for all backends except <code>daytona</code>, <code>runpod</code>, and <code>vastai</code>, and can also be used with <a href="../fleets/#ssh-fleets">SSH fleets</a>.</p>
+<p>Instance volumes are currently supported for all backends except <code>daytona</code>, <code>lium</code>, <code>runpod</code>, and <code>vastai</code>, and can also be used with <a href="../fleets/#ssh-fleets">SSH fleets</a>.</p>
 </blockquote>
 <h3 id="attach-a-volume">Attach a volume<a class="headerlink" href="#attach-a-volume" title="Permanent link">&para;</a></h3>
 <p>A run can configure any number of instance volumes. To attach an instance volume,

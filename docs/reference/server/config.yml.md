@@ -111,6 +111,7 @@ to configure [backends](../../concepts/backends.md) and other [server-level sett
 ###### `type` - (Required) `"gcp"` The type of backend. Must be `gcp`. { #type data-toc-label='type' class='reference-item' }
 ###### `project_id` - (Required) `str` The project ID. { #project_id data-toc-label='project_id' class='reference-item' }
 ###### `regions` - (Optional) `list[str]` The list of GCP regions. Omit to use all regions. { #regions data-toc-label='regions' class='reference-item' }
+###### `tpu` - (Optional) `bool` Whether TPU offers can be suggested in addition to CPU and GPU VMs (experimental). Defaults to `false`. { #tpu data-toc-label='tpu' class='reference-item' }
 ###### `vpc_name` - (Optional) `str` The name of a custom VPC. If not specified, the default VPC is used. { #vpc_name data-toc-label='vpc_name' class='reference-item' }
 ###### `subnetworks` - (Optional) `dict` The mapping from regions to names of subnetworks in the VPC specified by `vpc_name`. `dstack` provisions instances in the specified subnetwork in mapped regions and in any usable subnetwork of the VPC in other regions. Requires `vpc_name` to be set. { #subnetworks data-toc-label='subnetworks' class='reference-item' }
 ###### `extra_vpcs` - (Optional) `list[str]` The names of additional VPCs used for multi-NIC instances, such as those that support GPUDirect. Specify eight VPCs to maximize bandwidth in clusters with eight-GPU instances. Each VPC must have a subnet and a firewall rule allowing internal traffic across all subnets. { #extra_vpcs data-toc-label='extra_vpcs' class='reference-item' }
@@ -155,6 +156,19 @@ to configure [backends](../../concepts/backends.md) and other [server-level sett
 
 ###### `type` - (Required) `"api_key"` The type of credentials. Must be `api_key`. { #type data-toc-label='type' class='reference-item' }
 ###### `api_key` - (Required) `str` The API key. { #api_key data-toc-label='api_key' class='reference-item' }
+
+
+##### `projects[n].backends[type=lium]` { #lium data-toc-label="lium" }
+
+###### `type` - (Required) `"lium"` The type of backend. Must be `lium`. { #type data-toc-label='type' class='reference-item' }
+###### `regions` - (Optional) `list[str]` The list of Lium regions, such as `us-ca` or `de-he`. Omit to use all regions. { #regions data-toc-label='regions' class='reference-item' }
+###### [`creds`](#lium-creds) - (Required) `object` The credentials. { #_creds data-toc-label='creds' class='reference-item' }
+
+
+###### `projects[n].backends[type=lium].creds` { #lium-creds data-toc-label="creds" }
+
+###### `type` - (Required) `"api_key"` The type of credentials. Must be `api_key`. { #type data-toc-label='type' class='reference-item' }
+###### `api_key` - (Required) `str` The Lium API key. { #api_key data-toc-label='api_key' class='reference-item' }
 
 
 ##### `projects[n].backends[type=nebius]` { #nebius data-toc-label="nebius" }

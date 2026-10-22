@@ -46,6 +46,15 @@ The `volume` configuration type allows creating, registering, and updating [volu
     ###### `volume_id` - (Optional) `str` The volume ID. Must be specified when registering external volumes. { #volume_id data-toc-label='volume_id' class='reference-item' }
 
 
+=== "Lium"
+
+    ###### `backend` - (Required) `"lium"` The volume backend. Must be `lium`. { #backend data-toc-label='backend' class='reference-item' }
+    ###### `name` - (Optional) `str` The volume name. { #name data-toc-label='name' class='reference-item' }
+    ###### `auto_cleanup_duration` - (Optional) `bool | int | str | "off"` Time to wait after volume is no longer used by any job before deleting it. Defaults to keep the volume indefinitely. Use the value `off` or `-1` to disable auto-cleanup. { #auto_cleanup_duration data-toc-label='auto_cleanup_duration' class='reference-item' }
+    ###### `tags` - (Optional) `dict` The custom tags to associate with the volume. The tags are also propagated to the underlying backend resources. If there is a conflict with backend-level tags, does not override them. { #tags data-toc-label='tags' class='reference-item' }
+    ###### `volume_id` - (Optional) `str` The volume ID. Must be specified when registering external volumes. { #volume_id data-toc-label='volume_id' class='reference-item' }
+
+
 === "Kubernetes"
 
     Kubernetes backend volumes are mapped to [`PersistentVolumeClaim`](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#persistentvolumeclaims) objects.
