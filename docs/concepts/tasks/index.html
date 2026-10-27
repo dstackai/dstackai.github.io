@@ -5986,6 +5986,10 @@ If you need <code>nvcc</code>, set the <a href="../../reference/dstack.yml/dev-e
 <p class="admonition-title">No commands</p>
 <p>If <code>commands</code> are not specified, <code>dstack</code> runs <code>image</code>’s entrypoint (or fails if none is set).</p>
 </div>
+<details class="info">
+<summary>Registry rate limits</summary>
+<p>The <code>dstack</code> server queries the Docker registry for details about your custom image, such as its default user and entrypoint. If you are submitting many jobs and hitting the registry’s rate limit, try setting <a href="../../reference/dstack.yml/task/#registry_auth"><code>registry_auth</code></a>, as many registries offer higher rate limits for authenticated users.</p>
+</details>
 <h4 id="docker-in-docker">Docker in Docker<a class="headerlink" href="#docker-in-docker" title="Permanent link">&para;</a></h4>
 <p>Set <code>docker</code> to <code>true</code> to enable the <code>docker</code> CLI in your task, e.g., to run or build Docker images, or use Docker Compose.</p>
 <div editor-title=".dstack.yml"> 

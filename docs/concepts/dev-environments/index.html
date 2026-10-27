@@ -5693,6 +5693,10 @@ If you need <code>nvcc</code>, set the <a href="../../reference/dstack.yml/dev-e
 
 </div>
 
+<details class="info">
+<summary>Registry rate limits</summary>
+<p>The <code>dstack</code> server queries the Docker registry for details about your custom image, such as its default user and entrypoint. If you are submitting many jobs and hitting the registry’s rate limit, try setting <a href="../../reference/dstack.yml/dev-environment/#registry_auth"><code>registry_auth</code></a>, as many registries offer higher rate limits for authenticated users.</p>
+</details>
 <h3 id="environment-variables">Environment variables<a class="headerlink" href="#environment-variables" title="Permanent link">&para;</a></h3>
 <div editor-title=".dstack.yml"> 
 

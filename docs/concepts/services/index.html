@@ -6618,6 +6618,10 @@ If you need <code>nvcc</code>, set the <a href="../../reference/dstack.yml/dev-e
 <span class="nt">resources</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">H100:1</span>
 </code></pre></div>
+<details class="info">
+<summary>Registry rate limits</summary>
+<p>The <code>dstack</code> server queries the Docker registry for details about your custom image, such as its default user and entrypoint. If you are submitting many jobs and hitting the registry’s rate limit, try setting <a href="../../reference/dstack.yml/service/#registry_auth"><code>registry_auth</code></a>, as many registries offer higher rate limits for authenticated users.</p>
+</details>
 <h3 id="working-directory">Working directory<a class="headerlink" href="#working-directory" title="Permanent link">&para;</a></h3>
 <p>If <code>working_dir</code> is not specified, it defaults to the working directory set in the Docker image. For example, the <a href="#default-image">default image</a> uses <code>/dstack/run</code> as its working directory.</p>
 <p>If the Docker image does not have a working directory set, <code>dstack</code> uses <code>/</code> as the <code>working_dir</code>.</p>
