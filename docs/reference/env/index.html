@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../../assets/images/dstack-fav-32.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
     
     
       
@@ -33,10 +33,10 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.57a0d79d.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.fb2fffe2.min.css">
       
       
 
@@ -5195,6 +5195,8 @@ via <code>dstack server</code> or deployed using Docker.</p>
 <li><code id="DSTACK_SERVER_GATEWAY_MAX_REPLICAS">DSTACK_SERVER_GATEWAY_MAX_REPLICAS</code> - Maximum number of replicas allowed for a gateway. Defaults to <code>9</code>.</li>
 <li><code id="DSTACK_SERVER_INSTANCE_HEALTH_MIN_COLLECT_INTERVAL_SECONDS">DSTACK_SERVER_INSTANCE_HEALTH_MIN_COLLECT_INTERVAL_SECONDS</code> – Minimum time interval between consecutive health checks of the same instance.</li>
 <li><code id="DSTACK_SERVER_EVENTS_TTL_SECONDS">DSTACK_SERVER_EVENTS_TTL_SECONDS</code> - Maximum age of event records. Set to <code>0</code> to disable event storage. Defaults to 30 days.</li>
+<li><code id="DSTACK_SERVER_ORPHAN_CLEANUP_MODE">DSTACK_SERVER_ORPHAN_CLEANUP_MODE</code> – Controls the cleanup of cloud resources that <code>dstack</code> created but no longer tracks, e.g. after the server crashed during provisioning or failed to terminate an instance. <code>report</code> emits events about such resources, <code>delete</code> also deletes them, and <code>off</code> disables the cleanup. Resources are recognized by the tags (or names) <code>dstack</code> sets on them, so a resource created by copying the tags of a <code>dstack</code> instance is treated as an orphan and deleted in <code>delete</code> mode. Defaults to <code>report</code>. Currently supported for the <code>aws</code>, <code>azure</code>, <code>gcp</code>, <code>nebius</code>, and <code>runpod</code> backends.</li>
+<li><code id="DSTACK_SERVER_ORPHAN_CLEANUP_INTERVAL_SECONDS">DSTACK_SERVER_ORPHAN_CLEANUP_INTERVAL_SECONDS</code> – Minimum interval between orphan cleanups of the same backend. A backend is cleaned up only after instances were provisioned or terminated in its project. Defaults to <code>3600</code>.</li>
 <li><code id="DSTACK_SERVER_DEFAULT_DOCKER_REGISTRY">DSTACK_SERVER_DEFAULT_DOCKER_REGISTRY</code> – A default Docker registry to use for job images that do not specify an explicit registry. E.g., if set to <code>registry.example</code>, then <code>image: ubuntu</code> becomes equivalent to <code>image: registry.example/ubuntu</code>. <strong>Note</strong>: This setting should only be used for configuring registries that act as a pull-through cache for Docker Hub. The default <code>dstack</code> images are also pulled from the configured registry.</li>
 <li><code id="DSTACK_SERVER_DEFAULT_DOCKER_REGISTRY_USERNAME">DSTACK_SERVER_DEFAULT_DOCKER_REGISTRY_USERNAME</code> – Username for authenticating with the default Docker registry. See <code>DSTACK_SERVER_DEFAULT_DOCKER_REGISTRY_PASSWORD</code>.</li>
 <li><code id="DSTACK_SERVER_DEFAULT_DOCKER_REGISTRY_PASSWORD">DSTACK_SERVER_DEFAULT_DOCKER_REGISTRY_PASSWORD</code> – Password for authenticating with the default Docker registry. Applied only when the image has no explicit registry and the run configuration does not specify <code>registry_auth</code>. <strong>Note</strong>: The value may be visible to anyone who can SSH into instances managed by <code>dstack</code>, which usually includes all users of that <code>dstack</code> server.</li>
@@ -5244,7 +5246,7 @@ slows down processing and may cause CPU spikes due to frequent SSH-connection es
 dstack<span class="w"> </span>ps
 </code></pre></div>
 <ul>
-<li><code id="DSTACK_CLI_LOG_LEVEL">DSTACK_CLI_LOG_LEVEL</code> – Sets the logging level for CLI output to stdout. Defaults to <code>INFO</code>.</li>
+<li><code id="DSTACK_CLI_LOG_LEVEL">DSTACK_CLI_LOG_LEVEL</code> – Sets the logging level for CLI output to stderr. Defaults to <code>INFO</code>.</li>
 </ul>
 <p>Example:</p>
 <div class="termy">
@@ -5472,13 +5474,13 @@ dstack<span class="w"> </span>ps
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["content.tooltips", "navigation.path", "content.code.copy", "content.action.edit", "navigation.tabs", "navigation.sections", "navigation.top", "navigation.tracking", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["content.tooltips", "navigation.path", "content.code.copy", "content.action.edit", "navigation.tabs", "navigation.sections", "navigation.top", "navigation.tracking", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
 <script src="/assets/javascripts/termynal.js"></script>
 <script async src="https://tally.so/widgets/embed.js"></script>
 
-      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.c21346df.min.js"></script>
       
         <script src="https://unpkg.com/swagger-ui-dist@5.32.0/swagger-ui-bundle.js"></script>
       

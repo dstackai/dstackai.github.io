@@ -149,7 +149,7 @@ The `service` configuration type allows running [services](../../concepts/servic
 
 ##### `groups[n].router` { #router data-toc-label="router" }
 
-###### `type` - (Optional) `"smg" | "dynamo"` The router implementation for this replica group. `smg` runs the Shepherd Model Gateway (SMG) and dstack syncs worker URLs to it. `dynamo` runs the NVIDIA Dynamo frontend, which discovers workers itself via etcd/NATS. Defaults to `smg`. { #type data-toc-label='type' class='reference-item' }
+###### `type` - (Optional) `"smg" | "dynamo"` The router implementation for this replica group. `smg` runs the Shepherd Model Gateway (SMG) and dstack syncs worker URLs to it. `dynamo` runs the NVIDIA Dynamo frontend, which discovers workers itself via etcd. Defaults to `smg`. { #type data-toc-label='type' class='reference-item' }
 
 
 ### `retry`
