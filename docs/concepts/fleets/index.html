@@ -1191,6 +1191,19 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#update-fleets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Update fleets
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#delete-fleets" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2670,7 +2683,7 @@
   <span class="md-ellipsis">
     
   
-    Models
+    Accelerators
   
 
     
@@ -2683,122 +2696,6 @@
         
         <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_4_4_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2_4_4">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Models
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../examples/models/deepseek-v4/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    DeepSeek V4
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../examples/models/qwen36/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Qwen 3.6
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-    
-    
-      
-      
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4_5" >
-        
-          
-          <label class="md-nav__link" for="__nav_2_4_5" id="__nav_2_4_5_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Accelerators
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_4_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2_4_5">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -5286,6 +5183,19 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#update-fleets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          Update fleets
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#delete-fleets" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -5407,7 +5317,7 @@
 <h1 id="fleets">Fleets<a class="headerlink" href="#fleets" title="Permanent link">&para;</a></h1>
 <p>Before submitting runs, you must create a fleet. Fleets act as both pools of instances and templates for how those instances are provisioned.</p>
 <blockquote>
-<p><code>dstack</code> supports two fleet types: <a href="#backend-fleet">backend fleets</a> (which are provisioned dynamically in the cloud or on Kubernetes), and <a href="#ssh-fleet">SSH fleets</a> (which use existing on-prem servers).</p>
+<p><code>dstack</code> supports two fleet types: <a href="#backend-fleets">backend fleets</a> (which are provisioned dynamically in the cloud or on Kubernetes), and <a href="#ssh-fleets">SSH fleets</a> (which use existing on-prem servers).</p>
 </blockquote>
 <h2 id="apply-a-configuration">Apply a configuration<a class="headerlink" href="#apply-a-configuration" title="Permanent link">&para;</a></h2>
 <p>To create a fleet, define its configuration in a YAML file. The filename must end with <code>.dstack.yml</code> (e.g. <code>.dstack.yml</code> or <code>fleet.dstack.yml</code>), regardless of fleet type.</p>
@@ -5483,11 +5393,11 @@ Provisioning...
 <p><code>dstack apply</code> automatically connects to on-prem servers, installs the required dependencies, and adds them to the created fleet.</p>
 <details class="info">
 <summary>Host requirements</summary>
-<p>1.&nbsp;Hosts must be Linux-based and have Docker pre-installed.</p>
+<p>1.&nbsp;Hosts must be Linux-based with systemd, have a 64-bit x86 or ARM CPU, and have Docker pre-installed.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="2:3"><input checked="checked" id="nvidia" name="__tabbed_2" type="radio" /><input id="amd" name="__tabbed_2" type="radio" /><input id="tenstorrent" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="nvidia">NVIDIA</label><label for="amd">AMD</label><label for="tenstorrent">Tenstorrent</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p>2.&nbsp;Hosts with NVIDIA GPUs must also be pre-installed with CUDA 12.1 and
+<p>2.&nbsp;Hosts with NVIDIA GPUs must also be pre-installed with NVIDIA drivers that support CUDA 13.0 and
 <a href="https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html">NVIDIA Container Toolkit</a>.</p>
 </div>
 <div class="tabbed-block">
@@ -5502,7 +5412,7 @@ This must include the drivers and HugePages.</p>
 </div>
 </div>
 <p>3.&nbsp;The user specified must have passwordless <code>sudo</code> access.</p>
-<p>4.&nbsp;The SSH server must be running and configured with <code>AllowTcpForwarding yes</code> in <code>/etc/ssh/sshd_config</code>.</p>
+<p>4.&nbsp;The SSH server must be running and configured with <code>AllowTcpForwarding yes</code> in <code>/etc/ssh/sshd_config</code>. The SSH key must be RSA, ECDSA, or Ed25519.</p>
 <p>5.&nbsp;The firewall must allow SSH and should forbid any other connections from external networks.</p>
 <p>6.&nbsp;If <code>placement</code> is set to <code>cluster</code>, hosts must be able to communicate with each other.</p>
 </details>
@@ -5515,7 +5425,7 @@ This must include the drivers and HugePages.</p>
 <h2 id="configuration-options">Configuration options<a class="headerlink" href="#configuration-options" title="Permanent link">&para;</a></h2>
 <p>Backend fleets support <a href="../../reference/dstack.yml/fleet/">many options</a>; see some major configuration examples below.</p>
 <h3 id="cluster-placement">Cluster placement<a class="headerlink" href="#cluster-placement" title="Permanent link">&para;</a></h3>
-<p>Both <a href="#backend-fleet">backend fleets</a> and <a href="#ssh-fleet">SSH fleets</a> allow the <code>placement</code> property to be set to <code>cluster</code>. </p>
+<p>Both <a href="#backend-fleets">backend fleets</a> and <a href="#ssh-fleets">SSH fleets</a> allow the <code>placement</code> property to be set to <code>cluster</code>. </p>
 <p>This property ensures that instances are interconnected. This is required for running <a href="../tasks/#nodes">multi-node tasks</a>.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="backend-fleets_1" name="__tabbed_3" type="radio" /><input id="ssh-fleets_1" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="backend-fleets_1">Backend fleets</label><label for="ssh-fleets_1">SSH fleets</label></div>
 <div class="tabbed-content">
@@ -5675,7 +5585,10 @@ See the <a href="../../examples/clusters/lambda/#kubernetes">Lambda</a> or <a hr
 <h3 id="idle-duration">Idle duration<a class="headerlink" href="#idle-duration" title="Permanent link">&para;</a></h3>
 <p>Instances of a backend fleet that aren't running any jobs are <code>idle</code> and can be reused by new runs.
 <code>dstack</code> terminates idle instances above <a href="#nodes"><code>nodes.min</code></a> after
-<a href="../../reference/dstack.yml/fleet/#idle_duration"><code>idle_duration</code></a>, which defaults to 3 days.</p>
+<a href="../../reference/dstack.yml/fleet/#idle_duration"><code>idle_duration</code></a>. If <code>idle_duration</code> is not set,
+it defaults to 3 days for pre-provisioned instances and to 5 minutes for instances provisioned
+when you submit runs. Instances of <a href="../backends/#container-based">container-based</a> backends are
+terminated as soon as they become idle.</p>
 <p>For <code>idle_duration</code> to have an effect, <code>nodes</code> must be a range. Set <code>min</code> to <code>0</code> and <code>target</code> to
 the number of instances to pre-provision:</p>
 <div editor-title="fleet.dstack.yml">
@@ -5778,16 +5691,17 @@ e.g. <code>nodes: 2</code>, has <code>min</code> equal to <code>2</code>, so it 
 
 </div>
 
-<p>To be able to attach to runs, both explicitly with <code>dstack attach</code> and implicitly with <code>dstack apply</code>, you must either add a front node key (<code>~/.ssh/head_node_key</code>) to an SSH agent or configure a key path in <code>~/.ssh/config</code>:</p>
+<div class="admonition info">
+<p class="admonition-title">SSH proxy</p>
+<p>If the server does not use the <a href="../../guides/server-deployment/#ssh-proxy">SSH proxy</a>, attaching to runs with <code>dstack apply</code> or <code>dstack attach</code> requires the head-node key to be loaded into an SSH agent or configured for the head node in <code>~/.ssh/config</code>:</p>
 <div editor-title="~/.ssh/config">
-
-    <div class="highlight"><pre><span></span><code>Host 3.255.177.50
+<div class="highlight"><pre><span></span><code>Host 3.255.177.50
     IdentityFile ~/.ssh/head_node_key
 </code></pre></div>
-
 </div>
-
-<p>where <code>Host</code> must match <code>ssh_config.proxy_jump.hostname</code> or <code>ssh_config.hosts[n].proxy_jump.hostname</code> if you configure head nodes on a per-worker basis.</p>
+<p><code>Host</code> must match <code>ssh_config.proxy_jump.hostname</code> or <code>ssh_config.hosts[n].proxy_jump.hostname</code> for per-host overrides.</p>
+<p>With the SSH proxy (recommended), users do not need the head-node key to attach to runs.</p>
+</div>
 <h3 id="environment-variables">Environment variables<a class="headerlink" href="#environment-variables" title="Permanent link">&para;</a></h3>
 <p>If needed, you can specify environment variables that will be automatically passed to any jobs running on this fleet.</p>
 <p>For example, these variables can be used to configure a proxy:</p>
@@ -5827,6 +5741,29 @@ for running dev environments, tasks, and services. See <a href="../exports/">Exp
 
 </div>
 
+<h3 id="update-fleets">Update fleets<a class="headerlink" href="#update-fleets" title="Permanent link">&para;</a></h3>
+<p>To update a fleet, change its configuration and pass it to <code>dstack apply</code>. <code>dstack</code> will automatically detect changes and suggest an in-place update.</p>
+<div class="termy">
+
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>dstack<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>fleet.dstack.yml
+
+Found<span class="w"> </span>fleet<span class="w"> </span>my-fleet.<span class="w"> </span>Detected<span class="w"> </span>changes<span class="w"> </span>that<span class="w"> </span>can<span class="w"> </span>be<span class="w"> </span>updated<span class="w"> </span>in-place:
+-<span class="w"> </span>Configuration<span class="w"> </span>properties:
+<span class="w">  </span>-<span class="w"> </span>nodes
+<span class="w">  </span>-<span class="w"> </span>max_price
+
+Update<span class="w"> </span>the<span class="w"> </span>fleet<span class="w"> </span>in-place?<span class="w"> </span><span class="o">[</span>y/n<span class="o">]</span>:
+</code></pre></div>
+
+</div>
+
+<p>If approved, <code>dstack</code> updates the fleet without re-creating it. For example, if <code>nodes.min</code> is increased, <code>dstack</code> provisions the missing instances, and if <code>nodes.max</code> is decreased, <code>dstack</code> terminates idle instances above it.</p>
+<details class="info">
+<summary>Supported properties</summary>
+<p>Backend fleets support in-place changes to <code>nodes</code>, <code>resources</code>, <code>backends</code>, <code>regions</code>, <code>availability_zones</code>, <code>instance_types</code>, <code>spot_policy</code>, <code>max_price</code>, <code>reservation</code>, and <code>tags</code>. Except for <code>nodes</code>, these changes only apply to instances provisioned after the update.</p>
+<p>SSH fleets support adding and removing <code>hosts</code>. Added hosts are provisioned, and removed hosts are terminated.</p>
+<p>Changes to other properties require re-creating the fleet. In this case, <code>dstack apply</code> offers to delete the fleet and create it again.</p>
+</details>
 <h3 id="delete-fleets">Delete fleets<a class="headerlink" href="#delete-fleets" title="Permanent link">&para;</a></h3>
 <p>When a fleet isn't used by a run, you can delete it by passing the fleet configuration to <code>dstack delete</code>:</p>
 <div class="termy">
@@ -5994,7 +5931,6 @@ To terminate and delete specific instances from a fleet, pass <code>-i INSTANCE_
           <a href="/docs/examples/training/trl/" class="tx-footer__section-link">Training</a>
           <a href="/docs/examples/clusters/aws/" class="tx-footer__section-link">Clusters</a>
           <a href="/docs/examples/inference/sglang/" class="tx-footer__section-link">Inference</a>
-          <a href="/docs/examples/models/deepseek-v4/" class="tx-footer__section-link">Models</a>
           <a href="/docs/examples/accelerators/amd/" class="tx-footer__section-link">Accelerators</a>
         </div>
 

@@ -2515,7 +2515,7 @@
   <span class="md-ellipsis">
     
   
-    Models
+    Accelerators
   
 
     
@@ -2528,122 +2528,6 @@
         
         <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_4_4_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2_4_4">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Models
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../models/deepseek-v4/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    DeepSeek V4
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../models/qwen36/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Qwen 3.6
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-    
-    
-      
-      
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4_5" >
-        
-          
-          <label class="md-nav__link" for="__nav_2_4_5" id="__nav_2_4_5_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Accelerators
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_4_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2_4_5">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -5114,10 +4998,6 @@
 <h1 id="sglang">SGLang<a class="headerlink" href="#sglang" title="Permanent link">&para;</a></h1>
 <p>This example shows how to deploy <code>Qwen/Qwen3.6-27B</code> using
 <a href="https://github.com/sgl-project/sglang">SGLang</a> and <code>dstack</code>.</p>
-<blockquote>
-<p>For a <code>DeepSeek-V4-Pro</code> deployment on <code>B200:8</code>, see the
-<a href="../../models/deepseek-v4/">DeepSeek V4</a> model page.</p>
-</blockquote>
 <h2 id="apply-a-configuration">Apply a configuration<a class="headerlink" href="#apply-a-configuration" title="Permanent link">&para;</a></h2>
 <p>Here's an example of a service that deploys
 <code>Qwen/Qwen3.6-27B</code> using SGLang.</p>
@@ -5295,12 +5175,6 @@ enable tool calling, add <code>--tool-call-parser qwen3_coder</code> to the serv
 
 <span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8000</span>
 <span class="nt">model</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">zai-org/GLM-4.5-Air-FP8</span>
-
-<span class="c1"># Custom probe is required for PD disaggregation.</span>
-<span class="nt">probes</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http</span>
-<span class="w">    </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/health</span>
-<span class="w">    </span><span class="nt">interval</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">15s</span>
 </code></pre></div>
 </div>
 <details class="info">
@@ -5462,12 +5336,6 @@ enable tool calling, add <code>--tool-call-parser qwen3_coder</code> to the serv
 <span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30000</span>
 <span class="nt">model</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Qwen/Qwen2.5-72B-Instruct</span>
 
-<span class="c1"># Custom probe is required for PD disaggregation.</span>
-<span class="nt">probes</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http</span>
-<span class="w">    </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/health</span>
-<span class="w">    </span><span class="nt">interval</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">15s</span>
-
 <span class="nt">volumes</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/usr/lib64/libibverbs/libbnxt_re-rdmav34.so:/usr/lib/x86_64-linux-gnu/libibverbs/libbnxt_re-rdmav34.so</span>
 </code></pre></div>
@@ -5480,6 +5348,9 @@ enable tool calling, add <code>--tool-call-parser qwen3_coder</code> to the serv
 </div>
 </div>
 <p>Currently, auto-scaling only supports <code>rps</code> as the metric. TTFT and ITL metrics are coming soon.</p>
+<blockquote>
+<p>The <code>scaling</code> property requires creating a <a href="../../../concepts/gateways/">gateway</a>.</p>
+</blockquote>
 <div class="admonition info">
 <p class="admonition-title">Cluster</p>
 <p>PD disaggregation requires the service to run in a fleet with <code>placement</code> set to <code>cluster</code>, because the replicas require an interconnect between instances.</p>
@@ -5623,7 +5494,6 @@ enable tool calling, add <code>--tool-call-parser qwen3_coder</code> to the serv
           <a href="/docs/examples/training/trl/" class="tx-footer__section-link">Training</a>
           <a href="/docs/examples/clusters/aws/" class="tx-footer__section-link">Clusters</a>
           <a href="/docs/examples/inference/sglang/" class="tx-footer__section-link">Inference</a>
-          <a href="/docs/examples/models/deepseek-v4/" class="tx-footer__section-link">Models</a>
           <a href="/docs/examples/accelerators/amd/" class="tx-footer__section-link">Accelerators</a>
         </div>
 

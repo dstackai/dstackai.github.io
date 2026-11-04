@@ -2599,7 +2599,7 @@
   <span class="md-ellipsis">
     
   
-    Models
+    Accelerators
   
 
     
@@ -2612,122 +2612,6 @@
         
         <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_4_4_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2_4_4">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Models
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../examples/models/deepseek-v4/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    DeepSeek V4
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../examples/models/qwen36/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Qwen 3.6
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-    
-    
-      
-      
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4_5" >
-        
-          
-          <label class="md-nav__link" for="__nav_2_4_5" id="__nav_2_4_5_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Accelerators
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_4_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2_4_5">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -5511,7 +5395,7 @@ For <code>kubernetes</code>, the storage class and access modes must support sha
 <p>Instance volumes allow mapping any directory on the instance where the run is executed to any path inside the container.
 This means that the data in instance volumes is persisted only if the run is executed on the same instance.</p>
 <blockquote>
-<p>Instance volumes are currently supported for all backends except <code>daytona</code>, <code>lium</code>, <code>runpod</code>, and <code>vastai</code>, and can also be used with <a href="../fleets/#ssh-fleets">SSH fleets</a>.</p>
+<p>Instance volumes are currently supported with both <a href="../fleets/#ssh-fleets">SSH fleets</a> and all backends except <code>daytona</code>, <code>lium</code>, <code>runpod</code>, <code>slurm</code>, and <code>vastai</code>.</p>
 </blockquote>
 <h3 id="attach-a-volume">Attach a volume<a class="headerlink" href="#attach-a-volume" title="Permanent link">&para;</a></h3>
 <p>A run can configure any number of instance volumes. To attach an instance volume,
@@ -5714,7 +5598,6 @@ you can map this directory via instance volumes and be sure the data is persiste
           <a href="/docs/examples/training/trl/" class="tx-footer__section-link">Training</a>
           <a href="/docs/examples/clusters/aws/" class="tx-footer__section-link">Clusters</a>
           <a href="/docs/examples/inference/sglang/" class="tx-footer__section-link">Inference</a>
-          <a href="/docs/examples/models/deepseek-v4/" class="tx-footer__section-link">Models</a>
           <a href="/docs/examples/accelerators/amd/" class="tx-footer__section-link">Accelerators</a>
         </div>
 

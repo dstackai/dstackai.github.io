@@ -2522,7 +2522,7 @@
   <span class="md-ellipsis">
     
   
-    Models
+    Accelerators
   
 
     
@@ -2535,122 +2535,6 @@
         
         <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_4_4_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2_4_4">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Models
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../models/deepseek-v4/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    DeepSeek V4
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../models/qwen36/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Qwen 3.6
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-    
-    
-      
-      
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4_5" >
-        
-          
-          <label class="md-nav__link" for="__nav_2_4_5" id="__nav_2_4_5_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Accelerators
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_4_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2_4_5">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -5173,8 +5057,8 @@ Provisioning...
 ---&gt;<span class="w"> </span><span class="m">100</span>%
 
 <span class="w"> </span>FLEET<span class="w">      </span>INSTANCE<span class="w">  </span>BACKEND<span class="w">          </span>INSTANCE<span class="w"> </span>TYPE<span class="w">  </span>GPU<span class="w">          </span>PRICE<span class="w">   </span>STATUS<span class="w">  </span>CREATED<span class="w"> </span>
-<span class="w"> </span>efa-fleet<span class="w">  </span><span class="m">0</span><span class="w">         </span>aws<span class="w"> </span><span class="o">(</span>us-west-2<span class="o">)</span><span class="w">  </span>p4d.24xlarge<span class="w">   </span>H100:8:80GB<span class="w">  </span><span class="nv">$98</span>.32<span class="w">  </span>idle<span class="w">    </span><span class="m">3</span><span class="w"> </span>mins<span class="w"> </span>ago<span class="w">      </span>
-<span class="w">            </span><span class="m">1</span><span class="w">         </span>aws<span class="w"> </span><span class="o">(</span>us-west-2<span class="o">)</span><span class="w">  </span>p4d.24xlarge<span class="w">   </span>H100:8:80GB<span class="w">  </span><span class="nv">$98</span>.32<span class="w">  </span>idle<span class="w">    </span><span class="m">3</span><span class="w"> </span>mins<span class="w"> </span>ago<span class="w">    </span>
+<span class="w"> </span>efa-fleet<span class="w">  </span><span class="m">0</span><span class="w">         </span>aws<span class="w"> </span><span class="o">(</span>us-west-2<span class="o">)</span><span class="w">  </span>p5.48xlarge<span class="w">    </span>H100:8:80GB<span class="w">  </span><span class="nv">$98</span>.32<span class="w">  </span>idle<span class="w">    </span><span class="m">3</span><span class="w"> </span>mins<span class="w"> </span>ago<span class="w">      </span>
+<span class="w">            </span><span class="m">1</span><span class="w">         </span>aws<span class="w"> </span><span class="o">(</span>us-west-2<span class="o">)</span><span class="w">  </span>p5.48xlarge<span class="w">    </span>H100:8:80GB<span class="w">  </span><span class="nv">$98</span>.32<span class="w">  </span>idle<span class="w">    </span><span class="m">3</span><span class="w"> </span>mins<span class="w"> </span>ago<span class="w">    </span>
 </code></pre></div>
 
 </div>
@@ -5195,6 +5079,24 @@ To enforce EFA, you can specify <code>instance_types</code> explicitly:</p>
 
 <span class="nt">instance_types</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"g6.8xlarge"</span><span class="p p-Indicator">]</span><span class="w"> </span><span class="c1"># If not specified, g6.xlarge is used (won't have EFA)</span>
 </code></pre></div>
+</details>
+<details class="info">
+<summary>Reservations</summary>
+<p>To use an existing <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-capacity-reservations.html">Capacity Reservation</a>
+or <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-capacity-blocks.html">Capacity Block</a>,
+specify its ID via <a href="../../../reference/dstack.yml/fleet/#reservation"><code>reservation</code></a>:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">fleet</span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">efa-fleet</span>
+
+<span class="nt">nodes</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
+<span class="nt">placement</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cluster</span>
+
+<span class="nt">resources</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">H100:8</span>
+
+<span class="nt">reservation</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cr-0123456789abcdef0</span>
+</code></pre></div>
+<p><code>dstack</code> then provisions on-demand instances of the reservation's instance type in its availability zone.</p>
 </details>
 <h2 id="run-nccl-tests">Run NCCL tests<a class="headerlink" href="#run-nccl-tests" title="Permanent link">&para;</a></h2>
 <p>To confirm that EFA is working, run NCCL tests:</p>
@@ -5431,7 +5333,6 @@ Provisioning...
           <a href="/docs/examples/training/trl/" class="tx-footer__section-link">Training</a>
           <a href="/docs/examples/clusters/aws/" class="tx-footer__section-link">Clusters</a>
           <a href="/docs/examples/inference/sglang/" class="tx-footer__section-link">Inference</a>
-          <a href="/docs/examples/models/deepseek-v4/" class="tx-footer__section-link">Models</a>
           <a href="/docs/examples/accelerators/amd/" class="tx-footer__section-link">Accelerators</a>
         </div>
 

@@ -36,7 +36,7 @@ It streamlines development, training, and inference, and is compatible with any 
 * [Dev environments](concepts/dev-environments.md) &mdash; Launch dev environments to be accessed by agents or from your IDE
 * [Tasks](concepts/tasks.md) &mdash; Run training, batch or other jobs across a single node or clusters
 * [Services](concepts/services.md) &mdash; Deploy model inference as secure and scalable endpoints
-* [Presets](concepts/presets.md) &mdash; Agent-driven inference optimization (experimental)
+* [Presets](concepts/presets.md) &mdash; Agent-driven inference optimization
 * [Volumes](concepts/volumes.md) &mdash; Managing instance and network volumes for persisting data
 
 Configuration can be defined as YAML files within your repo.
@@ -132,6 +132,8 @@ For more details on server deployment options, see the [Server deployment](guide
 !!! info "Configure backends"
 
     To orchestrate compute across GPU clouds or Kubernetes clusters, you need to configure [backends](concepts/backends.md).
+
+<span id="set-up-the-cli"></span>
 
 ## Install the CLI { #cli }
 
@@ -300,10 +302,10 @@ description: Quick guide to creating fleets and submitting runs
 
 ## Create a fleet
 
-> Before submitting runs, you must create a [fleet](concepts/fleets.md).
+Before you submit runs, you have to create [fleets](concepts/fleets.md).
 
 === "Backend fleet"
-    If you're using cloud providers or Kubernetes clusters and have configured the corresponding [backends](concepts/backends.md), create a fleet as follows:
+    If you're using cloud providers or Kubernetes clusters, create a fleet as follows:
 
     <div editor-title="fleet.dstack.yml"> 
 
@@ -323,6 +325,8 @@ description: Quick guide to creating fleets and submitting runs
     ```
 
     </div>
+
+    > To use backend fleets, ensure you have configured [backends](concepts/backends.md).
 
     Pass the fleet configuration to `dstack apply`:
 
@@ -386,7 +390,7 @@ description: Quick guide to creating fleets and submitting runs
 
     > Hosts must have Docker and GPU drivers installed and meet the other [requirements](concepts/fleets.md#ssh-fleets).
 
-    If the fleet needs to be a cluster, the [placement](concepts/fleets.md#ssh-placement) property must be set to `cluster`.
+    If the fleet needs to be a cluster, the [placement](concepts/fleets.md#cluster-placement) property must be set to `cluster`.
 
 ## Submit your first run
 
@@ -555,7 +559,7 @@ description: Quick guide to creating fleets and submitting runs
     Service is published at: 
       http://localhost:3000/proxy/services/main/qwen36-service/
     Model Qwen/Qwen3.6-27B is published at:
-      http://localhost:3000/proxy/models/main/
+      http://localhost:3000/proxy/services/main/qwen36-service/v1
     ```
     
     </div>
@@ -569,7 +573,7 @@ description: Quick guide to creating fleets and submitting runs
 Something not working? See the [troubleshooting](guides/troubleshooting.md) guide.
 
 !!! info "What's next?"
-    1. Read about [backends](concepts/backends.md),  [dev environments](concepts/dev-environments.md), [tasks](concepts/tasks.md), [services](concepts/services.md), and [fleets](concepts/services.md)
+    1. Read about [backends](concepts/backends.md),  [dev environments](concepts/dev-environments.md), [tasks](concepts/tasks.md), [services](concepts/services.md), and [fleets](concepts/fleets.md)
     2. Browse [examples](examples.md)
     3. Join [Discord](https://discord.gg/u8SmfwPpMd)
 
@@ -668,7 +672,7 @@ There are two ways to configure AWS: using an access key or using the default cr
                     "ec2:DeletePlacementGroup",
                     "ec2:DeleteVolume",
                     "ec2:DescribeAvailabilityZones",
-                    "ec2:DescribeCapacityReservations"
+                    "ec2:DescribeCapacityReservations",
                     "ec2:DescribeImages",
                     "ec2:DescribeInstances",
                     "ec2:DescribeInstanceAttribute",
@@ -892,7 +896,8 @@ There are two ways to configure Azure: using a client secret or using the defaul
 
     ```shell
     SUBSCRIPTION_ID=...
-    az ad sp create-for-rbac
+    DSTACK_ROLE=...
+    az ad sp create-for-rbac \
         --name dstack-app \
         --role $DSTACK_ROLE \
         --scopes /subscriptions/$SUBSCRIPTION_ID \
@@ -979,6 +984,8 @@ There are two ways to configure Azure: using a client secret or using the defaul
       - name: main
         backends:
           - type: azure
+            subscription_id: 06c82ce3-28ff-4285-a146-c5e981a9d808
+            tenant_id: f84a7584-88e4-4fd2-8e97-623f0a715ee1
             creds:
               type: default
             regions: [westeurope]
@@ -993,6 +1000,8 @@ There are two ways to configure Azure: using a client secret or using the defaul
       - name: main
         backends:
           - type: azure
+            subscription_id: 06c82ce3-28ff-4285-a146-c5e981a9d808
+            tenant_id: f84a7584-88e4-4fd2-8e97-623f0a715ee1
             creds:
               type: default
             regions: [westeurope]
@@ -1011,6 +1020,8 @@ There are two ways to configure Azure: using a client secret or using the defaul
       - name: main
         backends:
           - type: azure
+            subscription_id: 06c82ce3-28ff-4285-a146-c5e981a9d808
+            tenant_id: f84a7584-88e4-4fd2-8e97-623f0a715ee1
             creds:
               type: default
             regions: [westeurope]
@@ -1317,6 +1328,7 @@ gcloud projects list --format="json(projectId)"
       - name: main
         backends:
           - type: gcp
+            project_id: gcp-project-id
             creds:
               type: default
 
@@ -1469,7 +1481,7 @@ projects:
 
 <span id="datacrunch"></span>
 
-### Verda (formerly DataCrunch) { #verda }
+### Verda { #verda }
 
 Log into your [Verda](https://console.verda.com/signin) account, click Keys in the sidebar, find `REST API Credentials` area and then click the `Generate Credentials` button.
 
@@ -1827,6 +1839,49 @@ projects:
 
     The jump host can be a GPU node or a CPU-only node — it makes no difference. The only requirement is that both the `dstack` server and CLI can reach `hostname:port`.
 
+    The jump pod is managed by a ReplicaSet, so Kubernetes recreates it if it's evicted or its node is removed. To make eviction less likely, the jump pod's CPU and memory requests equal its limits, which gives it the [`Guaranteed`](https://kubernetes.io/docs/concepts/workloads/pods/pod-qos/#guaranteed) QoS class. Set `proxy_jump.cpu` and `proxy_jump.memory` to change the defaults, `500m` and `1Gi`:
+
+    ```yaml
+    contexts:
+    - name: gpu-cluster-a
+      proxy_jump:
+        cpu: 1
+        memory: 2Gi
+    ```
+
+    Each SSH session through the jump pod takes about 2 MiB of memory. Each `dstack` server replica keeps at least one session open per running job, and each `dstack attach` adds one more. If the jump pod exceeds its memory limit, Kubernetes restarts it.
+
+    When the jump pod restarts or is recreated, its SSH sessions drop. The `dstack` server reconnects automatically, but `dstack attach` may fail for runs submitted before that. If reliable SSH access to runs is important, deploy [`dstack-sshproxy`](../guides/server-deployment.md#ssh-proxy).
+
+    To run the jump pod only on specific nodes, e.g., nodes with an `ExternalIP` or CPU-only nodes, label them and set `proxy_jump.node_selector`. If these nodes are [tainted](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/), also set `proxy_jump.tolerations`:
+
+    ```yaml
+    contexts:
+    - name: gpu-cluster-a
+      proxy_jump:
+        node_selector:
+        - example.com/jump-host
+        tolerations:
+        - example.com/dedicated=jump-host:NoSchedule
+    ```
+
+    Each `node_selector` item is `key=value`, `key=` (an empty value), or `key` (any value), and a node must match all of them. Since a `nodeSelector` can't match any value, `dstack` applies `node_selector` as a required [node affinity](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#node-affinity) term. If none of the selected nodes can run the jump pod, it stays pending and runs can't be provisioned, so label several nodes.
+
+    Each `tolerations` item is `key[=value][:effect]`, the `kubectl taint` format, so a taint added with `kubectl taint` can be copied as is. Without `=value`, any value is tolerated; without `:effect`, any effect. If `tolerations` isn't set, `dstack` tolerates the GPU node taints when every node is tainted, but not if `node_selector` is set.
+
+    !!! warning "Changing `cpu`, `memory`, `node_selector`, and `tolerations`"
+        New values don't apply to an existing jump pod. To apply them, update the jump pod's ReplicaSet in the context's namespace and delete the pod so that Kubernetes recreates it:
+
+        ```shell
+        # cpu and memory
+        kubectl -n <namespace> set resources replicaset dstack-<project>-ssh-jump-pod \
+          --requests=cpu=1,memory=2Gi --limits=cpu=1,memory=2Gi
+        # node_selector and tolerations: edit spec.template.spec.affinity and .tolerations
+        kubectl -n <namespace> edit replicaset dstack-<project>-ssh-jump-pod
+        # Recreate the pod
+        kubectl -n <namespace> delete pod -l app.kubernetes.io/instance=dstack-<project>-ssh-jump-pod
+        ```
+
 !!! info "Region and namespace"
     Each enabled context becomes its own `dstack` region, named after the context. When creating a `dstack` [volume](volumes.md) or [gateway](gateways.md), the `region` field selects which cluster the resource is provisioned in.
 
@@ -1941,6 +1996,8 @@ projects:
 
     Ensure you've created a ClusterRoleBinding and RoleBinding to grant the roles to the user or the service account you're using.
 
+    The `list` verb on `secrets` is only needed for [orphan cleanup](../reference/env.md#DSTACK_SERVER_ORPHAN_CLEANUP_MODE) to find registry auth secrets left without their pods, and `dstack` works without it. Kubernetes can't limit it to `dstack`'s secrets, so it lets `dstack` read the contents of all secrets in the namespace. Grant it only if the namespace is dedicated to `dstack`.
+
 ??? info "Resources and offers"
     If you use ranges with [`resources`](../concepts/tasks.md#resources) (e.g. `gpu: 1..8` or `memory: 64GB..`) in fleet or run configurations, other backends collect and try all offers that satisfy the range.
 
@@ -1977,7 +2034,7 @@ projects:
 
     This applies to offers shown in `dstack apply` (run plans), during provisioning, and in `dstack offer`. Unlike other backends, offers for the `kubernetes` backend always reflect the lower limit of the range.
 
-> To learn more, see the [Lambda](../examples/clusters/lambda/#kubernetes) and [Crusoe](../examples/clusters/crusoe/#kubernetes) examples.
+> To learn more, see the [Lambda](../examples/clusters/lambda.md#kubernetes) and [Crusoe](../examples/clusters/crusoe.md#kubernetes) examples.
 
 ### Slurm
 
@@ -2227,8 +2284,6 @@ projects:
 
     </div>
 
-Also, the `vastai` backend supports on-demand instances only. Spot instance support coming soon.
-
 
 # docs/concepts/fleets.md
 
@@ -2241,7 +2296,7 @@ description: Managing pools of compute instances
 
 Before submitting runs, you must create a fleet. Fleets act as both pools of instances and templates for how those instances are provisioned.
 
-> `dstack` supports two fleet types: [backend fleets](#backend-fleet) (which are provisioned dynamically in the cloud or on Kubernetes), and [SSH fleets](#ssh-fleet) (which use existing on-prem servers).
+> `dstack` supports two fleet types: [backend fleets](#backend-fleets) (which are provisioned dynamically in the cloud or on Kubernetes), and [SSH fleets](#ssh-fleets) (which use existing on-prem servers).
 
 ## Apply a configuration
 
@@ -2337,10 +2392,10 @@ To create a fleet, define its configuration in a YAML file. The filename must en
     `dstack apply` automatically connects to on-prem servers, installs the required dependencies, and adds them to the created fleet.
 
     ??? info "Host requirements"
-        1.&nbsp;Hosts must be Linux-based and have Docker pre-installed.
+        1.&nbsp;Hosts must be Linux-based with systemd, have a 64-bit x86 or ARM CPU, and have Docker pre-installed.
 
         === "NVIDIA"
-            2.&nbsp;Hosts with NVIDIA GPUs must also be pre-installed with CUDA 12.1 and
+            2.&nbsp;Hosts with NVIDIA GPUs must also be pre-installed with NVIDIA drivers that support CUDA 13.0 and
             [NVIDIA Container Toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html).
 
         === "AMD"
@@ -2354,7 +2409,7 @@ To create a fleet, define its configuration in a YAML file. The filename must en
 
         3.&nbsp;The user specified must have passwordless `sudo` access.
 
-        4.&nbsp;The SSH server must be running and configured with `AllowTcpForwarding yes` in `/etc/ssh/sshd_config`.
+        4.&nbsp;The SSH server must be running and configured with `AllowTcpForwarding yes` in `/etc/ssh/sshd_config`. The SSH key must be RSA, ECDSA, or Ed25519.
 
         5.&nbsp;The firewall must allow SSH and should forbid any other connections from external networks.
 
@@ -2368,7 +2423,7 @@ Backend fleets support [many options](../reference/dstack.yml/fleet.md); see som
 
 ### Cluster placement
 
-Both [backend fleets](#backend-fleet) and [SSH fleets](#ssh-fleet) allow the `placement` property to be set to `cluster`. 
+Both [backend fleets](#backend-fleets) and [SSH fleets](#ssh-fleets) allow the `placement` property to be set to `cluster`. 
 
 This property ensures that instances are interconnected. This is required for running [multi-node tasks](tasks.md#nodes).
 
@@ -2554,7 +2609,10 @@ Backend fleets allow you to set `backends` to specify which backends are allowed
 
 Instances of a backend fleet that aren't running any jobs are `idle` and can be reused by new runs.
 `dstack` terminates idle instances above [`nodes.min`](#nodes) after
-[`idle_duration`](../reference/dstack.yml/fleet.md#idle_duration), which defaults to 3 days.
+[`idle_duration`](../reference/dstack.yml/fleet.md#idle_duration). If `idle_duration` is not set,
+it defaults to 3 days for pre-provisioned instances and to 5 minutes for instances provisioned
+when you submit runs. Instances of [container-based](backends.md#container-based) backends are
+terminated as soon as they become idle.
 
 For `idle_duration` to have an effect, `nodes` must be a range. Set `min` to `0` and `target` to
 the number of instances to pre-provision:
@@ -2670,18 +2728,21 @@ If hosts are behind a head node (aka "login node"), configure [`proxy_jump`](../
 
 </div>
 
-To be able to attach to runs, both explicitly with `dstack attach` and implicitly with `dstack apply`, you must either add a front node key (`~/.ssh/head_node_key`) to an SSH agent or configure a key path in `~/.ssh/config`:
+!!! info "SSH proxy"
+    If the server does not use the [SSH proxy](../guides/server-deployment.md#ssh-proxy), attaching to runs with `dstack apply` or `dstack attach` requires the head-node key to be loaded into an SSH agent or configured for the head node in `~/.ssh/config`:
 
-<div editor-title="~/.ssh/config">
+    <div editor-title="~/.ssh/config">
 
     ```
     Host 3.255.177.50
         IdentityFile ~/.ssh/head_node_key
     ```
 
-</div>
+    </div>
 
-where `Host` must match `ssh_config.proxy_jump.hostname` or `ssh_config.hosts[n].proxy_jump.hostname` if you configure head nodes on a per-worker basis.
+    `Host` must match `ssh_config.proxy_jump.hostname` or `ssh_config.hosts[n].proxy_jump.hostname` for per-host overrides.
+
+    With the SSH proxy (recommended), users do not need the head-node key to attach to runs.
 
 ### Environment variables
 
@@ -2731,6 +2792,34 @@ $ dstack fleet
 ```
 
 </div>
+
+### Update fleets
+
+To update a fleet, change its configuration and pass it to `dstack apply`. `dstack` will automatically detect changes and suggest an in-place update.
+
+<div class="termy">
+
+```shell
+$ dstack apply -f fleet.dstack.yml
+
+Found fleet my-fleet. Detected changes that can be updated in-place:
+- Configuration properties:
+  - nodes
+  - max_price
+
+Update the fleet in-place? [y/n]:
+```
+
+</div>
+
+If approved, `dstack` updates the fleet without re-creating it. For example, if `nodes.min` is increased, `dstack` provisions the missing instances, and if `nodes.max` is decreased, `dstack` terminates idle instances above it.
+
+??? info "Supported properties"
+    Backend fleets support in-place changes to `nodes`, `resources`, `backends`, `regions`, `availability_zones`, `instance_types`, `spot_policy`, `max_price`, `reservation`, and `tags`. Except for `nodes`, these changes only apply to instances provisioned after the update.
+
+    SSH fleets support adding and removing `hosts`. Added hosts are provisioned, and removed hosts are terminated.
+
+    Changes to other properties require re-creating the fleet. In this case, `dstack apply` offers to delete the fleet and create it again.
 
 ### Delete fleets
 
@@ -3043,13 +3132,13 @@ init:
 
 </div>
 
-Cannot be used with `python` or `image`. Not supported on `runpod`, `vastai`, or `kubernetes`.
+Cannot be used with `python` or `image`. Not supported on `daytona`, `lium`, `runpod`, `slurm`, or `vastai`.
 
 #### Privileged mode
 
 To enable privileged mode, set [`privileged`](../reference/dstack.yml/dev-environment.md#privileged) to `true`.
 
-Not supported with `runpod`, `vastai`, and `kubernetes`.
+Not supported with `daytona`, `lium`, `runpod`, `slurm`, and `vastai`.
 
 #### Private registry
     
@@ -3659,7 +3748,7 @@ the index of the node within that group.
 
 > `groups[0].nodes[0]` is the run's master node — it is what `DSTACK_MASTER_NODE_IP` resolves to.
 
-Currently, only `resources`, `commands`, and `ports` can be configured per node group. [`groups`](../reference/dstack.yml/task.md#_groups) and top-level `nodes` are mutually exclusive. Support for other properties is coming soon.
+Currently, only `resources`, `commands`, and `ports` can be configured per node group. [`groups`](../reference/dstack.yml/task.md#_groups) and top-level `nodes` are mutually exclusive. Support for other properties is coming soon. If `groups` is set, top-level `resources` is ignored. Set `resources` in each group.
 
 > See the [Ray+RAGEN](../examples/training/ray-ragen.md) example for running a Ray cluster,
 and the [NCCL/RCCL tests](../examples/clusters/nccl-rccl-tests.md) example for running `mpirun` with node groups.
@@ -3746,13 +3835,20 @@ If you'd like `dstack` to automatically retry, configure the
 
 ```yaml
 type: task
-name: train    
+name: trl-sft
 
 python: 3.12
 
+env:
+  - MODEL=Qwen/Qwen2.5-0.5B
+  - DATASET=stanfordnlp/imdb
+
 commands:
-  - uv pip install -r fine-tuning/qlora/requirements.txt
-  - python fine-tuning/qlora/train.py
+  - uv pip install trl
+  - |
+    trl sft \
+      --model_name_or_path $MODEL --dataset_name $DATASET \
+      --num_processes $DSTACK_GPUS_PER_NODE
 
 retry:
   on_events: [no-capacity, error, interruption]
@@ -3780,13 +3876,20 @@ This can be done by specifying the [`priority`](../reference/dstack.yml/task.md)
 
 ```yaml
 type: task
-name: train
+name: trl-sft
 
 python: 3.12
 
+env:
+  - MODEL=Qwen/Qwen2.5-0.5B
+  - DATASET=stanfordnlp/imdb
+
 commands:
-  - uv pip install -r fine-tuning/qlora/requirements.txt
-  - python fine-tuning/qlora/train.py
+  - uv pip install trl
+  - |
+    trl sft \
+      --model_name_or_path $MODEL --dataset_name $DATASET \
+      --num_processes $DSTACK_GPUS_PER_NODE
 
 priority: 50
 ```
@@ -4000,13 +4103,13 @@ resources:
 
 </div>
 
-Cannot be used with `python` or `image`. Not supported on `runpod`, `vastai`, or `kubernetes`.
+Cannot be used with `python` or `image`. Not supported on `daytona`, `lium`, `runpod`, `slurm`, or `vastai`.
 
 #### Privileged mode
 
 To enable privileged mode, set [`privileged`](../reference/dstack.yml/dev-environment.md#privileged) to `true`.
 
-Not supported with `runpod`, `vastai`, and `kubernetes`.
+Not supported with `daytona`, `lium`, `runpod`, `slurm`, and `vastai`.
 
 #### Private registry
     
@@ -4346,8 +4449,8 @@ If vendor is omitted, `dstack` infers it from the model or defaults to `nvidia`.
     python: 3.12
     
     commands:
-      - pip install -r fine-tuning/qlora/requirements.txt
-      - python fine-tuning/qlora/train.py
+      - pip install -r requirements.txt
+      - python train.py
     
     resources:
       gpu: v2-8
@@ -4402,12 +4505,20 @@ Below is an example of a task that auto-terminate if any GPU stays below 10% uti
 
 ```yaml
 type: task
-name: train
+name: trl-sft
 
 python: 3.12
+
+env:
+  - MODEL=Qwen/Qwen2.5-0.5B
+  - DATASET=stanfordnlp/imdb
+
 commands:
-  - uv pip install -r fine-tuning/qlora/requirements.txt
-  - python fine-tuning/qlora/train.py
+  - uv pip install trl
+  - |
+    trl sft \
+      --model_name_or_path $MODEL --dataset_name $DATASET \
+      --num_processes $DSTACK_GPUS_PER_NODE
 
 resources:
   gpu: H100:8
@@ -4427,12 +4538,20 @@ Specify `schedule` to start a task periodically at specific UTC times using the 
 
 ```yaml
 type: task
-name: train
+name: trl-sft
 
 python: 3.12
+
+env:
+  - MODEL=Qwen/Qwen2.5-0.5B
+  - DATASET=stanfordnlp/imdb
+
 commands:
-  - uv pip install -r fine-tuning/qlora/requirements.txt
-  - python fine-tuning/qlora/train.py
+  - uv pip install trl
+  - |
+    trl sft \
+      --model_name_or_path $MODEL --dataset_name $DATASET \
+      --num_processes $DSTACK_GPUS_PER_NODE
 
 resources:
   gpu: H100:8
@@ -4498,10 +4617,12 @@ description: Deploying models and web apps as endpoints
 
 # Services
 
-Services allow you to deploy models or web apps as secure and scalable endpoints.
+Services allow you to deploy models as secure and scalable inference endpoints, with support for replica groups, routers, and PD disaggregation.
 
 ??? info "Prerequisites"
     Before running a service, make sure you’ve [installed](../installation.md) the server and CLI, and created a [fleet](fleets.md).
+
+> To optimize model inference with an agent, it's recommended to use [presets](presets.md).
 
 ## Apply a configuration
 
@@ -4613,7 +4734,7 @@ Provisioning...
 Service is published at:
   http://localhost:3000/proxy/services/main/qwen36/
 Model Qwen/Qwen3.6-27B is published at:
-  http://localhost:3000/proxy/models/main/
+  http://localhost:3000/proxy/services/main/qwen36/v1
 ```
 
 </div>
@@ -4789,7 +4910,7 @@ Below are examples for running `Qwen/Qwen3.8-Flash-Next` with SMG and `zai-org/G
 
     </div>
 
-[`groups`](../reference/dstack.yml/service.md#groups) and top-level [`replicas`](../reference/dstack.yml/service.md#replicas) are mutually exclusive.
+[`groups`](../reference/dstack.yml/service.md#groups) and top-level [`replicas`](../reference/dstack.yml/service.md#replicas) are mutually exclusive. If `groups` is set, top-level `resources` is ignored. Set `resources` in each group.
 
 > Properties such as `regions`, `port`, `env` and some other cannot be configured per replica group. This support is coming soon.
 
@@ -4852,6 +4973,7 @@ Below is an example for running `zai-org/GLM-4.5-Air-FP8` on `H200`:
               --model-path $MODEL_ID \
               --disaggregation-mode prefill \
               --disaggregation-transfer-backend nixl \
+              --host 0.0.0.0 \
               --port 8000 \
               --disaggregation-bootstrap-port 8998
         resources:
@@ -4864,18 +4986,13 @@ Below is an example for running `zai-org/GLM-4.5-Air-FP8` on `H200`:
               --model-path $MODEL_ID \
               --disaggregation-mode decode \
               --disaggregation-transfer-backend nixl \
+              --host 0.0.0.0 \
               --port 8000
         resources:
           gpu: H200
 
     port: 8000
     model: zai-org/GLM-4.5-Air-FP8
-
-    # Custom probe is required for PD disaggregation.
-    probes:
-      - type: http
-        url: /health
-        interval: 15s
     ```
 
     </div>
@@ -5061,12 +5178,6 @@ groups:
 port: 30000
 model: Qwen/Qwen2.5-72B-Instruct
 
-# Custom probe is required for PD disaggregation.
-probes:
-  - type: http
-    url: /health
-    interval: 15s
-
 volumes:
   - /usr/lib64/libibverbs/libbnxt_re-rdmav34.so:/usr/lib/x86_64-linux-gnu/libibverbs/libbnxt_re-rdmav34.so
 ```
@@ -5128,16 +5239,18 @@ $ curl https://llama31.example.com/v1/chat/completions \
 
 ```yaml
 type: service
-name: llama-2-7b-service
+name: qwen3-service
 
 python: 3.12
 
 env:
   - HF_TOKEN
-  - MODEL=NousResearch/Llama-2-7b-chat-hf
+  - MODEL=Qwen/Qwen3-4B
 commands:
   - uv pip install vllm
-  - python -m vllm.entrypoints.openai.api_server --model $MODEL --port 8000
+  - |
+    vllm serve $MODEL \
+      --port 8000
 port: 8000
 
 resources:
@@ -5205,7 +5318,7 @@ $ dstack ps --verbose
 
     If multiple probes are configured for the service, their statuses are displayed in the order in which the probes appear in the configuration.
 
-Probes are executed for each service replica while the replica is `running`. A probe execution is considered successful if the replica responds with a `2xx` status code. Probe statuses do not affect how `dstack` handles replicas, except during [rolling deployments](#rolling-deployment).
+Probes are executed for each service replica while the replica is `running`. A probe execution is considered successful if the replica responds with a `2xx` status code. A replica starts receiving requests only after each of its probes succeeds [`ready_after`](../reference/dstack.yml/service.md#ready_after) times in a row. After that, probe statuses do not affect how `dstack` handles the replica, except during [rolling deployments](#rolling-deployment).
 
 ??? info "HTTP request configuration"
     You can configure the HTTP request method, headers, and other properties. To include secret values in probe requests, use environment variable interpolation, which is enabled for the `url`, `headers[i].value`, and `body` properties.
@@ -5248,6 +5361,8 @@ In this case, `dstack` will use the service's `/v1/chat/completions` service.
 
 When `model` is set, `dstack` automatically configures [`probes`](#probes) to verify model health.
 To customize or disable this, set `probes` explicitly.
+
+> The `model` property is optional. Services can run any kind of web application.
 
 ### Scaling
 
@@ -5454,13 +5569,13 @@ port: 9000
 
 </div>
 
-Cannot be used with `python` or `image`. Not supported on `runpod`, `vastai`, or `kubernetes`.
+Cannot be used with `python` or `image`. Not supported on `daytona`, `lium`, `runpod`, `slurm`, or `vastai`.
 
 #### Privileged mode
 
 To enable privileged mode, set [`privileged`](../reference/dstack.yml/dev-environment.md#privileged) to `true`.
 
-Not supported with `runpod`, `vastai`, and `kubernetes`.
+Not supported with `daytona`, `lium`, `runpod`, `slurm`, and `vastai`.
 
 #### Private registry
 
@@ -5509,7 +5624,7 @@ Sometimes, when you run a service, you may want to mount local files. This is po
 
 ```yaml
 type: service
-name: llama-2-7b-service
+name: qwen3-service
 
 files:
   - .:examples  # Maps the directory with `.dstack.yml` to `<working dir>/examples`
@@ -5519,10 +5634,12 @@ python: 3.12
 
 env:
   - HF_TOKEN
-  - MODEL=NousResearch/Llama-2-7b-chat-hf
+  - MODEL=Qwen/Qwen3-4B
 commands:
   - uv pip install vllm
-  - python -m vllm.entrypoints.openai.api_server --model $MODEL --port 8000
+  - |
+    vllm serve $MODEL \
+      --port 8000
 port: 8000
 
 resources:
@@ -5542,7 +5659,7 @@ The container path is optional. If not specified, it will be automatically calcu
 
 ```yaml
 type: service
-name: llama-2-7b-service
+name: qwen3-service
 
 files:
   - ../examples  # Maps the parent directory of `.dstack.yml` to `<working dir>/../examples`
@@ -5552,10 +5669,12 @@ python: 3.12
 
 env:
   - HF_TOKEN
-  - MODEL=NousResearch/Llama-2-7b-chat-hf
+  - MODEL=Qwen/Qwen3-4B
 commands:
   - uv pip install vllm
-  - python -m vllm.entrypoints.openai.api_server --model $MODEL --port 8000
+  - |
+    vllm serve $MODEL \
+      --port 8000
 port: 8000
 
 resources:
@@ -5581,7 +5700,7 @@ Imagine you have a Git repo (clonned locally) containing an `examples` subdirect
 
 ```yaml
 type: service
-name: llama-2-7b-service
+name: qwen3-service
 
 repos:
   # Clones the repo from the parent directory (`examples/..`) to `<working dir>`
@@ -5591,10 +5710,12 @@ python: 3.12
 
 env:
   - HF_TOKEN
-  - MODEL=NousResearch/Llama-2-7b-chat-hf
+  - MODEL=Qwen/Qwen3-4B
 commands:
   - uv pip install vllm
-  - python -m vllm.entrypoints.openai.api_server --model $MODEL --port 8000
+  - |
+    vllm serve $MODEL \
+      --port 8000
 port: 8000
 
 resources:
@@ -5618,7 +5739,7 @@ The local path can be either relative to the configuration file or absolute.
 
     ```yaml
     type: service
-    name: llama-2-7b-service
+    name: qwen3-service
 
     repos:
       # Clones the repo in the parent directory (`examples/..`) to `/my-repo`
@@ -5628,10 +5749,12 @@ The local path can be either relative to the configuration file or absolute.
 
     env:
       - HF_TOKEN
-      - MODEL=NousResearch/Llama-2-7b-chat-hf
+      - MODEL=Qwen/Qwen3-4B
     commands:
       - uv pip install vllm
-      - python -m vllm.entrypoints.openai.api_server --model $MODEL --port 8000
+      - |
+        vllm serve $MODEL \
+          --port 8000
     port: 8000
 
     resources:
@@ -5647,7 +5770,7 @@ The local path can be either relative to the configuration file or absolute.
 
     ```yaml
     type: service
-    name: llama-2-7b-service
+    name: qwen3-service
 
     repos:
       - local_path: ..
@@ -5658,10 +5781,12 @@ The local path can be either relative to the configuration file or absolute.
 
     env:
       - HF_TOKEN
-      - MODEL=NousResearch/Llama-2-7b-chat-hf
+      - MODEL=Qwen/Qwen3-4B
     commands:
       - uv pip install vllm
-      - python -m vllm.entrypoints.openai.api_server --model $MODEL --port 8000
+      - |
+        vllm serve $MODEL \
+          --port 8000
     port: 8000
 
     resources:
@@ -5682,7 +5807,7 @@ The local path can be either relative to the configuration file or absolute.
 
     ```yaml
     type: service
-    name: llama-2-7b-service
+    name: qwen3-service
 
     repos:
       # Clone the repo to `<working dir>`
@@ -5692,10 +5817,12 @@ The local path can be either relative to the configuration file or absolute.
 
     env:
       - HF_TOKEN
-      - MODEL=NousResearch/Llama-2-7b-chat-hf
+      - MODEL=Qwen/Qwen3-4B
     commands:
       - uv pip install vllm
-      - python -m vllm.entrypoints.openai.api_server --model $MODEL --port 8000
+      - |
+        vllm serve $MODEL \
+          --port 8000
     port: 8000
 
     resources:
@@ -5731,8 +5858,8 @@ env:
 commands:
   - uv pip install vllm
   - |
-    vllm serve $MODEL_ID
-      --max-model-len $MAX_MODEL_LEN
+    vllm serve $MODEL_ID \
+      --max-model-len $MAX_MODEL_LEN \
       --tensor-parallel-size $DSTACK_GPUS_NUM
 port: 8000
 
@@ -5835,6 +5962,9 @@ auth: false
 # Do not strip the path prefix
 strip_prefix: false
 
+repos:
+  - .
+
 env:
   # Configure Dash to work with a path prefix
   # Replace `main` with your dstack project name
@@ -5900,15 +6030,17 @@ Below is an example of a service that auto-terminate if any GPU stays below 10% 
 
 ```yaml
 type: service
-name: llama-2-7b-service
+name: qwen3-service
 
 python: 3.12
 env:
   - HF_TOKEN
-  - MODEL=NousResearch/Llama-2-7b-chat-hf
+  - MODEL=Qwen/Qwen3-4B
 commands:
   - uv pip install vllm
-  - python -m vllm.entrypoints.openai.api_server --model $MODEL --port 8000
+  - |
+    vllm serve $MODEL \
+      --port 8000
 port: 8000
 
 resources:
@@ -5929,15 +6061,17 @@ Specify `schedule` to start a service periodically at specific UTC times using t
 
 ```yaml
 type: service
-name: llama-2-7b-service
+name: qwen3-service
 
 python: 3.12
 env:
   - HF_TOKEN
-  - MODEL=NousResearch/Llama-2-7b-chat-hf
+  - MODEL=Qwen/Qwen3-4B
 commands:
   - uv pip install vllm
-  - python -m vllm.entrypoints.openai.api_server --model $MODEL --port 8000
+  - |
+    vllm serve $MODEL \
+      --port 8000
 port: 8000
 
 resources:
@@ -6011,7 +6145,7 @@ Update the run? [y/n]:
 
 If approved, `dstack` gradually updates the service replicas. To update a replica, `dstack` starts a new replica, waits for it to become `running` and for all of its [probes](#probes) to pass, then terminates the old replica. This process is repeated for each replica, one at a time.
 
-You can track the progress of rolling deployment in both `dstack apply` or `dstack ps`.
+You can track the progress of rolling deployment in both `dstack apply` and `dstack ps`.
 Older replicas have lower `deployment` numbers; newer ones have higher.
 
 <!--
@@ -6047,8 +6181,8 @@ The rolling deployment stops when all replicas are updated or when a new deploym
 
 !!! info "What's next?"
     1. Read about [dev environments](dev-environments.md) and [tasks](tasks.md)
-    2. Learn how to manage [fleets](fleets.md)
-    3. See how to set up [gateways](gateways.md)
+    2. Learn how to use [presets](presets.md) to optimize inference
+    3. See how to manage [fleets](fleets.md) and set up [gateways](gateways.md)
     4. Check the [vLLM](../examples/inference/vllm.md) and
        [NIM](../examples/inference/nim.md) examples
 
@@ -6063,8 +6197,6 @@ description: Creating and reusing optimized model inference configurations
 # Presets
 
 Presets offer a toolkit that streamlines agent-based model inference optimization and a portable format to deploy the optimized inference endpoint to any cloud, Kubernetes cluster, or on-prem fleet.
-
-> The presets feature is experimental and may change.
 
 ??? info "Prerequisites"
     Before using presets, make sure you’ve [installed](../installation.md) the server and CLI, and created a [fleet](fleets.md).
@@ -6127,7 +6259,7 @@ Create the preset dsv4-flash? [y/n]: y
 
 The command executes entirely locally and uses the locally installed `claude` or `codex` CLI along with `dstack`'s bundled skills (see [Agent](#agent)). The agent uses a `dstack` task to find the best serving configuration for the available fleet offers, then submits it as a `dstack` service for a final benchmark.
 
-You can stop watching with `Ctrl`+`C` at any time. The agent keeps running, and `dstack preset logs -f` follows it again. Resume an interrupted creation with `dstack preset resume`:
+Pressing `Ctrl`+`C` asks whether to stop the creation. If you don't stop it, the agent keeps running, and `dstack preset logs -f` follows it again. Resume an interrupted creation with `dstack preset resume`:
 
 <div class="termy">
 
@@ -6761,7 +6893,7 @@ If you've registered an existing volume, it will be de-registered with `dstack` 
 Instance volumes allow mapping any directory on the instance where the run is executed to any path inside the container.
 This means that the data in instance volumes is persisted only if the run is executed on the same instance.
 
-> Instance volumes are currently supported for all backends except `daytona`, `lium`, `runpod`, and `vastai`, and can also be used with [SSH fleets](fleets.md#ssh-fleets).
+> Instance volumes are currently supported with both [SSH fleets](fleets.md#ssh-fleets) and all backends except `daytona`, `lium`, `runpod`, `slurm`, and `vastai`.
 
 ### Attach a volume
 
@@ -7577,6 +7709,8 @@ In the UI, the `Events` tab is included on the run, job, fleet, and instance pag
 
 ![](https://dstack.ai/static-assets/static-assets/images/dstack-ui-events-run.png){ width=800 }
 
+> The global `Events` page with advanced filtering is only available in [dstack Sky](https://dstack.ai/products/sky/) and [dstack Factory](https://dstack.ai/products/factory/).
+
 ## CLI
 
 To query events via the CLI, use the `dstack event` command.
@@ -7634,8 +7768,7 @@ description: Exporting resources across projects
 Exports allow making resources from one project available to other projects. When a project exports a resource,
 the specified importer projects can see and use it as if it were their own.
 
-!!! info "Export support"
-    Exports are only supported in `dstack` Sky and `dstack` Factory.
+> Exports are only supported in [dstack Sky](https://dstack.ai/products/sky/) and [dstack Factory](https://dstack.ai/products/factory/).
 
 An export is created in the exporter project and specifies the resources to export and the
 importer projects that will gain access to them.
@@ -7646,7 +7779,7 @@ for running tasks, dev environments, and services. Imported resources appear wit
 
 Currently, [SSH fleets](fleets.md#ssh-fleets) and [gateways](gateways.md) can be exported.
 
-!!! info "Required project role"
+??? info "Required role"
     The user creating or updating an export must have the project admin role on both the exporter project and
     any importer project they add. Alternatively, a global admin can add any project as an importer.
 
@@ -7754,9 +7887,9 @@ $ dstack export create global-export --gateway shared-gateway --global
 
 ```
 
-Only promoting an export to global requires the global admin role. Regular project admins can add or remove resources, remove global status, or delete the export.
-
 </div>
+
+Only promoting an export to global requires the global admin role. Regular project admins can add or remove resources, remove global status, or delete the export.
 
 ## Access imported resources
 
@@ -8889,7 +9022,7 @@ When upgrading the `dstack` server, follow these guidelines to ensure a smooth t
 
 ### Before upgrading
 
-1. **Check the changelog**: Review the [release notes](https://github.com/dstackai/dstack/releases) for breaking changes, new features, and migration notes.
+1. **Check the changelog**: Review the [upgrade guide](upgrade.md) and the [release notes](https://github.com/dstackai/dstack/releases) for breaking changes, new features, and migration notes.
 2. **Review backward compatibility**: Understand the [backward compatibility](#backward-compatibility) policy.
 3. **Back up your data**: Ensure you always create a backup before upgrading.
 
@@ -9030,14 +9163,14 @@ properties in your configuration.
 
 #### Cause 5: GPU requirements
 
-By default, `dstack` only selects instances with no GPUs or a single NVIDIA GPU.
-If you want to use non-NVIDIA GPUs or multi-GPU instances, set the `gpu` property
-in your configuration.
+By default, `dstack` only selects instances with no GPUs or with NVIDIA GPUs.
+If you want to use other accelerators, such as AMD or Tenstorrent, set the `gpu` and `image`
+properties in your configuration.
 
-Examples: `gpu: amd` (one AMD GPU), `gpu: A10:4..8` (4 to 8 A10 GPUs),
+Examples: `gpu: amd` (one or more AMD GPUs), `gpu: A10:4..8` (4 to 8 A10 GPUs),
 `gpu: tt:32` (32 Tenstorrent devices).
 
-> If you don't specify the number of GPUs, `dstack` will only select single-GPU instances.
+> If you don't specify the number of GPUs, it defaults to `1..`.
 
 #### Cause 6: Network volumes
 
@@ -9050,14 +9183,15 @@ For AWS, the availability zone of the volume and the instance should also match.
 Some `dstack` features are not supported by all backends. If your configuration uses
 one of these features, `dstack` will only select offers from the backends that support it.
 
-- [Backend fleets](../concepts/fleets.md#backend-fleets) configurations,
-  [Instance volumes](../concepts/volumes.md#instance-volumes),
+- [Pre-provisioning](../concepts/fleets.md#pre-provisioning) in backend fleets
+  is only supported by [VM-based](../concepts/backends.md#vm-based) backends.
+- [Instance volumes](../concepts/volumes.md#instance-volumes)
   and [Privileged containers](../reference/dstack.yml/dev-environment.md#privileged)
-  are supported by all backends except `runpod`, `vastai`, and `kubernetes`.
+  are supported by all backends except `daytona`, `lium`, `runpod`, `slurm`, and `vastai`.
 - [Clusters](../concepts/fleets.md#cluster-placement)
   and [multi-node tasks](../concepts/tasks.md#nodes)
-  are only supported by the `aws`, `azure`, `gcp`, `nebius`, `oci`, and `vultr` backends,
-  as well as SSH fleets.
+  are only supported by the `aws`, `azure`, `crusoe`, `gcp`, `jarvislabs`, `kubernetes`, `nebius`,
+  `oci`, `runpod`, `seeweb`, `slurm`, and `vultr` backends, as well as SSH fleets.
 - [Reservations](../reference/dstack.yml/fleet.md#reservation)
   are only supported by the `aws` and `gcp` backends.
 
@@ -9088,10 +9222,10 @@ fleet, how many of its offers were tried, and what each attempt returned. Repeat
 reported once; every attempt is logged by the server, so check the [server logs](#server-logs)
 for the full list.
 
-#### Cause 1: Insufficient service quotas
+#### Cause 1: Insufficient cloud quotas
 
-If some runs fail to provision, it may be due to an insufficient service quota. For cloud providers like AWS, GCP,
-Azure, and OCI, you often need to request an increased [service quota](protips.md#service-quotas) before you can use
+If some runs fail to provision, it may be due to an insufficient cloud quota. For cloud providers like AWS, GCP,
+Azure, and OCI, you often need to request an increased [quota](protips.md#cloud-quotas) before you can use
 specific instances.
 
 ### Run starts but fails
@@ -9121,14 +9255,14 @@ was using spot instances and was interrupted. To address this, you can either se
 #### Cause 1: Gateway misconfiguration
 
 If all services fail to start with a specific gateway, make sure a
-[correct DNS record](../concepts/gateways.md#update-dns-records)
+[correct DNS record](../concepts/gateways.md#domain)
 pointing to the gateway's hostname is configured.
 
 ### Service endpoint doesn't work 
 
 #### Cause 1: Bad Authorization
 
-If the service endpoint returns a 403 error, it is likely because the [`Authorization`](../concepts/services.md#access-the-endpoint) 
+If the service endpoint returns a 403 error, it is likely because the [`Authorization`](../concepts/services.md#authorization) 
 header with the correct `dstack` token was not provided.
 
 [//]: # (#### Other)
@@ -9168,273 +9302,106 @@ description: Tips and tricks for using dstack efficiently
 
 Below are tips and tricks to use `dstack` more efficiently.
 
-## Dev environments
+## Agents
 
-Before running a task or service, it's recommended that you first start with a dev environment. Dev environments
-allow you to run commands interactively.
-
-Once the commands work, go ahead and run them as a task or a service.
-
-??? info "Notebooks"
-    **VS Code**
-    
-    When you access a dev environment using your desktop VS Code, it allows you to work with Jupyter notebooks via its
-    pre-configured and easy-to-use extension.
-
-    **JupyterLab**
-
-    If you prefer to use JupyterLab, you can run it as a task:
-
-    ```yaml
-    type: task
-    
-    commands:
-        - pip install jupyterlab
-        - jupyter lab --allow-root
-    
-    ports:
-        - 8888
-    
-    ```
-
-## Tasks
-
-Tasks can be used not only for batch jobs but also for web applications.
-
-<div editor-title="app.dstack.yml">
-
-```yaml
-type: task
-name: streamlit-task
-
-python: 3.12
-
-commands:
-  - uv pip install streamlit
-  - streamlit hello
-ports: 
-  - 8501
-
-```
-
-</div>
-
-While you run a task, `dstack apply` forwards the remote ports to `localhost`.
+It's highly recommended to use `dstack` with AI agents like Claude, Codex, and Cursor.
+To help them use the CLI and edit configuration files, install [`dstack` skills](../installation.md#skills):
 
 <div class="termy">
 
 ```shell
-$ dstack apply -f app.dstack.yml
-
-  Welcome to Streamlit. Check out our demo in your browser.
-
-  Local URL: http://localhost:8501
+$ npx skills add dstackai/dstack
 ```
 
 </div>
 
-This allows you to access the remote `8501` port on `localhost:8501` while the CLI is attached.
+## Fleets
 
-??? info "Port mapping"
-    If you want to override the local port, use the `--port` option:
-        
-    <div class="termy">
-    
-    ```shell
-    $ dstack apply -f app.dstack.yml --port 3000:8501
-    ```
-    
-    </div>
-    
-    This will forward the remote `8501` port to `localhost:3000`.
+By default, `dstack` picks a suitable fleet for the run. To use a specific fleet, pass `--fleet` to `dstack apply`,
+or set [`fleets`](../reference/dstack.yml/dev-environment.md#_fleets) in the run configuration.
 
-!!! info "Tasks vs. services"
-    [Services](../concepts/services.md) provide external access, `https`, replicas with autoscaling, OpenAI-compatible endpoint
-    and other service features. If you don't need them, you can use [tasks](../concepts/tasks.md) for running apps.
+<div class="termy">
 
-## Utilization policy
-
-If you want your run to automatically terminate if any of GPUs are underutilized, you can specify `utilization_policy`.
-
-Below is an example of a dev environment that auto-terminate if any GPU stays below 10% utilization for 1 hour.
-
-<div editor-title=".dstack.yml">
-
-```yaml
-type: dev-environment
-name: my-dev
-
-python: 3.12
-ide: cursor
-
-resources:
-  gpu: H100:8
-
-utilization_policy:
-  min_gpu_utilization: 10
-  time_window: 1h
+```shell
+$ dstack apply -f .dstack.yml --fleet my-fleet
 ```
 
 </div>
 
-## Docker in Docker
+> To see the offers available through a fleet, use `dstack offer --fleet my-fleet`.
 
-Set `docker` to `true` to enable the `docker` CLI in your dev environment, e.g., to run or build Docker images, or use Docker Compose.
+!!! info "Clusters"
+    To run multi-node tasks, use a fleet with [`placement`](../concepts/fleets.md#cluster-placement) set to `cluster`.
+    To check the interconnect, run [NCCL/RCCL tests](../examples/clusters/nccl-rccl-tests.md). For cluster setup on specific clouds,
+    see the [AWS](../examples/clusters/aws.md), [GCP](../examples/clusters/gcp.md), [Lambda](../examples/clusters/lambda.md),
+    [Crusoe](../examples/clusters/crusoe.md), and [Nebius](../examples/clusters/nebius.md) guides.
 
-=== "Dev environment"
+??? info "Instances"
+    Use `instances` to restrict a run to particular existing fleet instances. You can specify
+    instance names, hostnames or IP addresses, or a fleet name with an instance number.
+    For the `fleet` form, use `<project>/<fleet>` when the fleet belongs to another project:
+
     <div editor-title=".dstack.yml">
 
     ```yaml
     type: dev-environment
     name: vscode
-
-    docker: true
-
     ide: vscode
-    init:
-      - docker run --gpus all nvidia/cuda:12.3.0-base-ubuntu22.04 nvidia-smi
-    ```
 
-    </div>
-
-=== "Task"
-    <div editor-title=".dstack.yml">
-
-    ```yaml
-    type: task
-    name: docker-nvidia-smi
-
-    docker: true
-
-    commands:
-      - docker run --gpus all nvidia/cuda:12.3.0-base-ubuntu22.04 nvidia-smi
-
-    resources:
-      gpu: 1
-    ```
-
-    </div>
-
-??? info "Volumes"
-
-    To persist Docker data between runs (e.g. images, containers, volumes, etc), create a `dstack` [volume](../concepts/volumes.md)
-    and add attach it in your run configuration.
-
-    === "Network volums"
-    
-        ```yaml
-            type: dev-environment
-            name: vscode
-        
-            docker: true
-            ide: vscode
-        
-            volumes:
-              - name: docker-volume
-                path: /var/lib/docker
-        ```
-
-    === "Instance volumes"
-
-        ```yaml
-            type: dev-environment
-            name: vscode
-        
-            docker: true
-            ide: vscode
-        
-            volumes:
-              - name: /docker-volume
-                path: /var/lib/docker
-                optional: true
-        ```
-
-## dstack in dstack
-
-Set `dstack` to `true` when a run needs to use the dstack CLI. dstack configures the server and current project automatically. To run authenticated commands, pass `DSTACK_TOKEN` explicitly.
-
-<div editor-title=".dstack.yml">
-
-```yaml
-type: task
-image: dstackai/dstack
-dstack: true
-env:
-  - DSTACK_TOKEN
-commands:
-  - dstack ps
-```
-
-</div>
-
-> Besides inspecting runs, you can submit new runs with `dstack apply` and attach to them with `dstack attach`.
-
-## Fleets
-
-### Creation policy
-
-By default, when you run `dstack apply` with a dev environment, task, or service,
-if no `idle` instances from the available fleets meet the requirements, `dstack` provisions a new instance using configured backends.
-
-To ensure `dstack apply` doesn't provision a new instance but reuses an existing one,
-pass `-R` (or `--reuse`) to `dstack apply`.
-
-<div class="termy">
-
-```shell
-$ dstack apply -R -f examples/.dstack.yml
-```
-
-</div>
-
-Or, set [`creation_policy`](../reference/dstack.yml/dev-environment.md#creation_policy) to `reuse` in the run configuration.
-
-### Instances
-
-Use `instances` to restrict a run to particular existing fleet instances. You can specify
-instance names, hostnames or IP addresses, or a fleet name with an instance number.
-For the `fleet` form, use `<project>/<fleet>` when the fleet belongs to another project:
-
-<div editor-title=".dstack.yml">
-
-```yaml
-type: dev-environment
-name: vscode
-ide: vscode
-
-instances:
-  - name: my-fleet-3
-  - hostname: 203.0.113.10
-  - fleet: my-fleet
-    instance: 3
-```
-
-</div>
-
-??? info "Short syntax"
-
-    To match by instance name, you can use the string shorthand:
-
-    ```yaml
     instances:
-      - my-fleet-3
+      - name: my-fleet-3
+      - hostname: 203.0.113.10
+      - fleet: my-fleet
+        instance: 3
     ```
 
-When `instances` is set, the run is only placed on a matching existing instance and
-`dstack` never provisions new instances. If no matching instance is available, the run
-fails with a no-capacity error (use [`retry`](../reference/dstack.yml/dev-environment.md#retry)
-to wait for a targeted instance to free up).
+    </div>
 
-### Idle duration
+    ??? info "Short syntax"
 
-If the run is submitted to a fleet with `nodes` set to a range and a new instance is provisioned, the shorter of the fleet's and run's `idle_duration` is used.
-If the run reuses an existing fleet instance, only the fleet's
-[`idle_duration`](../reference/dstack.yml/fleet.md#idle_duration) applies.
+        To match by instance name, you can use the string shorthand:
 
-If an instance remains `idle`, it is automatically terminated after `idle_duration`,
-unless the fleet is already at `nodes.min`.
+        ```yaml
+        instances:
+          - my-fleet-3
+        ```
 
-> Not applied for container-based backends (Kubernetes, Vast.ai, Runpod).
+    When `instances` is set, the run is only placed on a matching existing instance and
+    `dstack` never provisions new instances. If no matching instance is available, the run
+    fails with a no-capacity error (use [`retry`](../reference/dstack.yml/dev-environment.md#retry)
+    to wait for a targeted instance to free up).
+
+!!! info "Idle duration"
+    If the run is submitted to a fleet with `nodes` set to a range and a new instance is provisioned, the shorter of the fleet's and run's `idle_duration` is used.
+    If the run reuses an existing fleet instance, only the fleet's
+    [`idle_duration`](../reference/dstack.yml/fleet.md#idle_duration) applies.
+
+    If an instance remains `idle`, it is automatically terminated after `idle_duration`,
+    unless the fleet is already at `nodes.min`.
+
+    > Not applied for [container-based](../concepts/backends.md#container-based) backends.
+
+## Working directory
+
+By default, runs use the working directory set in the Docker image. With the [default image](../concepts/dev-environments.md#default-image),
+it's `/dstack/run`. With a custom image that doesn't set one, it's `/`.
+
+This is also where `dstack` clones [`repos`](../concepts/dev-environments.md#repos) by default and mounts
+[`files`](../concepts/dev-environments.md#files) with relative paths. In commands, you can reference it via `DSTACK_WORKING_DIR`.
+
+If you'd like to use a different directory, set [`working_dir`](../concepts/dev-environments.md#working-directory)
+to an absolute path (`~` is supported).
+
+## Files and repos
+
+To mount local files or directories into the run's container, use [`files`](../concepts/dev-environments.md#files).
+
+To clone a Git repo into the run's [working directory](../concepts/dev-environments.md#working-directory), use
+[`repos`](../concepts/dev-environments.md#repos). It accepts the path to a local repo, in which case `dstack` also
+applies your local changes, or the URL of a remote repo.
+
+> Each `files` entry and the local changes of a repo are limited to 2MB. To exclude files, use `.gitignore` or `.dstackignore`.
+> To increase the limit, set [`DSTACK_SERVER_CODE_UPLOAD_LIMIT`](../reference/env.md#DSTACK_SERVER_CODE_UPLOAD_LIMIT).
 
 ## Volumes
 
@@ -9525,13 +9492,20 @@ If you'd like `dstack` to automatically retry, configure the
 
 ```yaml
 type: task
-name: train    
+name: trl-sft
 
 python: 3.12
 
+env:
+  - MODEL=Qwen/Qwen2.5-0.5B
+  - DATASET=stanfordnlp/imdb
+
 commands:
-  - uv pip install -r fine-tuning/qlora/requirements.txt
-  - python fine-tuning/qlora/train.py
+  - uv pip install trl
+  - |
+    trl sft \
+      --model_name_or_path $MODEL --dataset_name $DATASET \
+      --num_processes $DSTACK_GPUS_PER_NODE
 
 retry:
   on_events: [no-capacity]
@@ -9540,6 +9514,207 @@ retry:
 ```
 
 </div>
+
+## Utilization policy
+
+If you want your run to automatically terminate if any of GPUs are underutilized, you can specify `utilization_policy`.
+
+Below is an example of a dev environment that auto-terminate if any GPU stays below 10% utilization for 1 hour.
+
+<div editor-title=".dstack.yml">
+
+```yaml
+type: dev-environment
+name: my-dev
+
+python: 3.12
+ide: cursor
+
+resources:
+  gpu: H100:8
+
+utilization_policy:
+  min_gpu_utilization: 10
+  time_window: 1h
+```
+
+</div>
+
+## Tasks
+
+Tasks can be used not only for batch jobs but also for web applications.
+
+<div editor-title="app.dstack.yml">
+
+```yaml
+type: task
+name: streamlit-task
+
+python: 3.12
+
+commands:
+  - uv pip install streamlit
+  - streamlit hello
+ports: 
+  - 8501
+
+```
+
+</div>
+
+While you run a task, `dstack apply` forwards the remote ports to `localhost`.
+
+<div class="termy">
+
+```shell
+$ dstack apply -f app.dstack.yml
+
+  Welcome to Streamlit. Check out our demo in your browser.
+
+  Local URL: http://localhost:8501
+```
+
+</div>
+
+This allows you to access the remote `8501` port on `localhost:8501` while the CLI is attached.
+
+??? info "Port mapping"
+    If you want to override the local port, use the `--port` option:
+        
+    <div class="termy">
+    
+    ```shell
+    $ dstack apply -f app.dstack.yml --port 3000:8501
+    ```
+    
+    </div>
+    
+    This will forward the remote `8501` port to `localhost:3000`.
+
+!!! info "Tasks vs. services"
+    [Services](../concepts/services.md) provide external access, `https`, replicas with autoscaling, OpenAI-compatible endpoint
+    and other service features. If you don't need them, you can use [tasks](../concepts/tasks.md) for running apps.
+
+## Dev environments
+
+Before running a task or service, it's recommended that you first start with a dev environment. Dev environments
+allow you to run commands interactively.
+
+Once the commands work, go ahead and run them as a task or a service.
+
+??? info "Notebooks"
+    **VS Code**
+    
+    When you access a dev environment using your desktop VS Code, it allows you to work with Jupyter notebooks via its
+    pre-configured and easy-to-use extension.
+
+    **JupyterLab**
+
+    If you prefer to use JupyterLab, you can run it as a task:
+
+    ```yaml
+    type: task
+    
+    commands:
+        - pip install jupyterlab
+        - jupyter lab --allow-root
+    
+    ports:
+        - 8888
+    
+    ```
+
+## Docker in Docker
+
+Set `docker` to `true` to enable the `docker` CLI in your dev environment, e.g., to run or build Docker images, or use Docker Compose.
+
+=== "Dev environment"
+    <div editor-title=".dstack.yml">
+
+    ```yaml
+    type: dev-environment
+    name: vscode
+
+    docker: true
+
+    ide: vscode
+    init:
+      - docker run --gpus all nvidia/cuda:12.3.0-base-ubuntu22.04 nvidia-smi
+    ```
+
+    </div>
+
+=== "Task"
+    <div editor-title=".dstack.yml">
+
+    ```yaml
+    type: task
+    name: docker-nvidia-smi
+
+    docker: true
+
+    commands:
+      - docker run --gpus all nvidia/cuda:12.3.0-base-ubuntu22.04 nvidia-smi
+
+    resources:
+      gpu: 1
+    ```
+
+    </div>
+
+??? info "Volumes"
+
+    To persist Docker data between runs (e.g. images, containers, volumes, etc), create a `dstack` [volume](../concepts/volumes.md)
+    and add attach it in your run configuration.
+
+    === "Network volums"
+    
+        ```yaml
+            type: dev-environment
+            name: vscode
+        
+            docker: true
+            ide: vscode
+        
+            volumes:
+              - name: docker-volume
+                path: /var/lib/docker
+        ```
+
+    === "Instance volumes"
+
+        ```yaml
+            type: dev-environment
+            name: vscode
+        
+            docker: true
+            ide: vscode
+        
+            volumes:
+              - instance_path: /docker-volume
+                path: /var/lib/docker
+                optional: true
+        ```
+
+## dstack in dstack
+
+Set `dstack` to `true` when a run needs to use the dstack CLI. dstack configures the server and current project automatically. To run authenticated commands, pass `DSTACK_TOKEN` explicitly.
+
+<div editor-title=".dstack.yml">
+
+```yaml
+type: task
+image: dstackai/dstack
+dstack: true
+env:
+  - DSTACK_TOKEN
+commands:
+  - dstack ps
+```
+
+</div>
+
+> Besides inspecting runs, you can submit new runs with `dstack apply` and attach to them with `dstack attach`.
 
 ## Profiles
 
@@ -9712,36 +9887,11 @@ To inspect offers available through a specific fleet, pass `--fleet NAME`.
 
 The `offer` command allows you to filter and group offers with various [advanced options](../reference/cli/dstack/offer.md#usage).
 
-
 ## Metrics
 
 `dstack` tracks essential metrics accessible via the CLI and UI. To access advanced metrics like DCGM, configure the server to export metrics to Prometheus. See [Metrics](../concepts/metrics.md) for details.
 
-## Pull progress
-
-When using a VM-based backend or an SSH instance, you can see the Docker image pull progress in the CLI while the job is in the `pulling` state.
-
-<div class="termy">
-
-```shell
-$ dstack apply -y
-
-Launching orange-yak-1...
- NAME          BACKEND          STATUS                    SUBMITTED  
- orange-yak-1  aws (eu-west-3)  pulling 1.19/3.44/4.76GB  3 mins ago
-```
-
-</div>
-
-The three slash-separated indicators represent:
-
-- Image data already extracted.
-- Image data already downloaded.
-- Total target image size.
-
-The exact total size is not always known initially, in which case a lower estimate is displayed with the `≥` sign. All values exclude any image layers already cached on the host prior to the pull.
-
-## Service quotas
+## Cloud quotas
 
 If you're using your own AWS, GCP, Azure, or OCI accounts, before you can use GPUs or spot instances, you have to request the
 corresponding service quotas for each type of instance in each region.
@@ -9750,29 +9900,28 @@ corresponding service quotas for each type of instance in each region.
     Check this [guide ](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-resource-limits.html) on EC2 service quotas.
     The relevant service quotas include:
 
-    - `Running On-Demand P instances` (on-demand V100, A100 80GB x8)
-    - `All P4, P3 and P2 Spot Instance Requests` (spot V100, A100 80GB x8)
+    - `Running On-Demand P instances` (on-demand V100, A100 80GB x8, H100)
+    - `All P Spot Instance Requests` (spot V100, A100 80GB x8, H100)
     - `Running On-Demand G and VT instances` (on-demand T4, A10G, L4)
     - `All G and VT Spot Instance Requests` (spot T4, A10G, L4)
-    - `Running Dedicated p5 Hosts` (on-demand H100)
-    - `All P5 Spot Instance Requests` (spot H100)
 
 ??? info "GCP"
     Check this [guide ](https://cloud.google.com/compute/resource-usage) on Compute Engine service quotas.
     The relevant service quotas include:
 
     - `NVIDIA V100 GPUs` (on-demand V100)
-    - `Preemtible V100 GPUs` (spot V100)
+    - `Preemptible V100 GPUs` (spot V100)
     - `NVIDIA T4 GPUs` (on-demand T4)
-    - `Preemtible T4 GPUs` (spot T4)
+    - `Preemptible T4 GPUs` (spot T4)
     - `NVIDIA L4 GPUs` (on-demand L4)
-    - `Preemtible L4 GPUs` (spot L4)
+    - `Preemptible L4 GPUs` (spot L4)
     - `NVIDIA A100 GPUs` (on-demand A100)
-    - `Preemtible A100 GPUs` (spot A100)
+    - `Preemptible A100 GPUs` (spot A100)
     - `NVIDIA A100 80GB GPUs` (on-demand A100 80GB)
-    - `Preemtible A100 80GB GPUs` (spot A100 80GB)
+    - `Preemptible A100 80GB GPUs` (spot A100 80GB)
     - `NVIDIA H100 GPUs` (on-demand H100)
-    - `Preemtible H100 GPUs` (spot H100)
+    - `Preemptible H100 GPUs` (spot H100)
+    - `GPUs (all regions)` (global quota for all GPU types)
 
 ??? info "Azure"
     Check this [guide ](https://learn.microsoft.com/en-us/azure/quotas/quickstart-increase-quota-portal) on Azure service quotas.
@@ -9795,9 +9944,20 @@ corresponding service quotas for each type of instance in each region.
     - `GPUs for GPU2 based VM and BM instances` (on-demand P100)
     - `GPUs for GPU3 based VM and BM instances` (on-demand V100)
 
-Note, for AWS, GCP, and Azure, service quota values are measured with the number of CPUs rather than GPUs.
+Note, for AWS and Azure, service quota values are measured with the number of CPUs rather than GPUs.
 
 [//]: # (TODO: Mention spot policy)
+
+## Reservations
+
+To use existing reservations on AWS or GCP, set
+[`reservation`](../reference/dstack.yml/fleet.md#reservation) in the fleet configuration.
+See the [AWS](../examples/clusters/aws.md) and [GCP](../examples/clusters/gcp.md) cluster guides.
+
+On Nebius and Crusoe, reservations are applied automatically, with no configuration needed.
+
+If you already have a reserved cluster provisioned in a cloud or data center, you can use it with `dstack` via
+[SSH fleets](../concepts/fleets.md#ssh-fleets).
 
 
 # docs/guides/tenant-isolation.md
@@ -9890,16 +10050,36 @@ description: Upgrading to newer versions of dstack
 
 # Upgrade guide
 
-<!-- TODO: Add general sections on how to migrate to newer releases and how major and minor versions compatibility  and deprecation policy is handled -->
+<!-- TODO: Describe the deprecation policy -->
+
+!!! info "Backward compatibility"
+    `dstack` follows the `{major}.{minor}.{patch}` versioning scheme. The sections below cover each minor version and list the changes that may require action when upgrading.
+
+    - The server is backward-compatible with CLIs of the same minor version or older.
+    - CLIs of a newer minor version are rejected by older servers (e.g., a `0.22.*` CLI with a `0.21.*` server).
+
+!!! info "Rolling upgrades"
+    - The server applies database migrations automatically on startup.
+    - Rolling upgrades are supported from older versions, including when skipping releases (e.g., `0.21.0` to `0.22.6`).
+
+Exceptions are noted in the sections below.
+
+## 0.22.* { #0_22 }
+
+!!! info "Rolling upgrades"
+    Rolling upgrades to `0.22.*` are supported from `0.21.*`. If upgrading from `0.20.*`, scale server replicas down to `1` before upgrading.
+
+### Exports and Events
+
+Support for [exports](../concepts/exports.md) and the global `Events` page has moved from the open-source version to [dstack Sky](https://dstack.ai/products/sky/) and [dstack Factory](https://dstack.ai/products/factory/). The `dstack event` CLI command and the `Events` tabs on resource pages remain available in the open-source version.
+
+### Deprecations
+
+The `DSTACK_ROUTER_INTERNAL_IP` environment variable is deprecated in favor of [`${{ groups[i].replicas[j].IP_ADDRESS }}`](../concepts/services.md#replica-groups).
 
 ## 0.21.* { #0_21 }
 
-### CLI compatibility
-
-- CLI versions `0.20.*` and later remain backward compatible with the `0.21.*` `dstack` server.
-- CLI versions `0.21.*` are not compatible with server versions prior to `0.21.*`.
-
-> Upgrade the server before upgrading the CLI, or upgrade both at the same time. CLI versions prior to `0.20.0` must be upgraded along with the server.
+> CLI versions prior to `0.20.0` must be upgraded along with the server.
 
 ### Pydantic v2
 
@@ -9935,7 +10115,7 @@ Use the corresponding replacements:
 
 ### Deprecations
 
-The following API response fields are no longer populated by the server and will be removed in **0.22**:
+The following API response fields are no longer populated by the server and will be removed in a future release:
 
 - `Resources.description`
 - `Gateway.backend`
@@ -9946,13 +10126,6 @@ The following API response fields are no longer populated by the server and will
 > For more details on the changes, see the [release notes](https://github.com/dstackai/dstack/releases).
 
 ## 0.20.* { #0_20 }
-
-### CLI compatibility
-
-- CLI versions `0.19.*` and earlier remain backward compatible with the `0.20.*` `dstack` server.
-- CLI versions `0.20.` are not compatible with server versions prior to `0.20.*`.
-
-> Do not upgrade the CLI to `0.20.*` until the server has been upgraded.
 
 ### Fleets
 
@@ -10344,9 +10517,9 @@ Slurm explicitly controls both `nodes` and processes/tasks.
         --epochs=10
 
     resources:
-    gpu: A100:80GB:8
-    memory: 200GB..
-    shm_size: 24GB
+      gpu: A100:80GB:8
+      memory: 200GB..
+      shm_size: 24GB
 
     max_duration: 24h
     ```
@@ -10381,11 +10554,11 @@ Slurm explicitly controls both `nodes` and processes/tasks.
         fi
 
     resources:
-    gpu: nvidia:1..8
-    shm_size: 16GB
+      gpu: nvidia:1..8
+      shm_size: 16GB
     ```
 
-    If `startup_order` and `stop_criteria` are not configured (as in the PyTorch DDP example above), the master worker starts first and waits until all workers terminate. For MPI workloads, we need to change this.
+    If `startup_order` and `stop_criteria` are not configured (as in the PyTorch DDP example above), the master and worker nodes start in any order, and the run finishes when all nodes are done. For MPI workloads, we need to change this.
 
 #### Nodes and processes comparison
 
@@ -10597,7 +10770,7 @@ schedule:
 #### Monitoring commands
 
 === "Queue status"
-    The `dstack ps` command displays runs and jobs sorted by priority, reflecting the order in which they will be scheduled.
+    The `dstack ps` command displays runs and their jobs, with the most recently submitted runs first.
 
     <div class="termy">
 
@@ -11516,7 +11689,7 @@ Both systems support fault tolerance for long-running training jobs that may be 
 | | Slurm | dstack |
 |---|-------|--------|
 | **Retry** | `--requeue` flag requeues jobs on node failure (hardware crash) or preemption, not application failures (software crashes); all nodes requeued together (all-or-nothing) | `retry` property with `on_events` (`error`, `interruption`) and `duration`; all jobs stopped and run resubmitted if any job fails (all-or-nothing) |
-| **Graceful stop** | Grace period with `SIGTERM` before `SIGKILL`; `--signal` sends signal before time limit (e.g., `--signal=B:USR1@300`) | Not supported |
+| **Graceful stop** | Grace period with `SIGTERM` before `SIGKILL`; `--signal` sends signal before time limit (e.g., `--signal=B:USR1@300`) | `dstack stop` sends `SIGINT`, then `SIGHUP` after 5 seconds and `SIGKILL` after 10 seconds |
 | **Checkpointing** | Application-based; save to shared filesystem | Application-based; save to persistent volumes |
 | **Instance health** | `HealthCheckProgram` in `slurm.conf` runs custom scripts (DCGM/RVS); non-zero exit drains node (excludes from new scheduling, running jobs continue) | Automatic GPU health monitoring via DCGM; unhealthy instances excluded from scheduling |
 
@@ -11841,7 +12014,7 @@ fi
 
 ### dstack
 
-`dstack` does not support heterogeneous jobs natively. Use separate runs with [workflow orchestration tools (Prefect, Airflow)](#dstack-workflow-orchestration) or submit multiple runs programmatically to coordinate components with different resource requirements.
+`dstack` supports heterogeneous jobs via task [node groups](../../concepts/tasks.md#node-groups). Each group has its own `nodes` count, `resources`, `commands`, and `ports`.
 
 ## What's next?
 
@@ -11964,7 +12137,7 @@ Provisioning...
 ## Distributed training
 
 !!! info "Prerequisites"
-    Before running a multi-node task, make sure to create a fleet with `placement` set to `cluster` (can be a [managed fleet](../../concepts/fleets.md#cluster-placement) or an [SSH fleet](../../concepts/fleets.md#ssh-placement)).
+    Before running a multi-node task, make sure to create a fleet with `placement` set to `cluster` (can be a [managed fleet](../../concepts/fleets.md#cluster-placement) or an [SSH fleet](../../concepts/fleets.md#cluster-placement)).
 
 ### Define a configuration
 
@@ -12210,7 +12383,7 @@ Provisioning...
 ## Distributed training
 
 !!! info "Prerequisites"
-    Before running a multi-node task, make sure to create a fleet with `placement` set to `cluster` (can be a [managed fleet](../../concepts/fleets.md#cluster-placement) or an [SSH fleet](../../concepts/fleets.md#ssh-placement)).
+    Before running a multi-node task, make sure to create a fleet with `placement` set to `cluster` (can be a [managed fleet](../../concepts/fleets.md#cluster-placement) or an [SSH fleet](../../concepts/fleets.md#cluster-placement)).
 
 This section walks through running distributed fine-tuning of `Llama-3.1-70B` with QLoRA and FSDP across multiple nodes.
 
@@ -12251,16 +12424,16 @@ commands:
   - |
     accelerate launch \
       --config_file=fsdp1.yaml \
-      -m axolotl.cli.train qlora-fsdp-70b.yaml \
-      --hub-model-id $HUB_MODEL_ID \
-      --output-dir /checkpoints/qlora-llama3-70b \
-      --wandb-project $WANDB_PROJECT \
-      --wandb-name $DSTACK_RUN_NAME \
       --main_process_ip=$DSTACK_MASTER_NODE_IP \
       --main_process_port=8008 \
       --machine_rank=$DSTACK_NODE_RANK \
       --num_processes=$DSTACK_GPUS_NUM \
-      --num_machines=$DSTACK_NODES_NUM
+      --num_machines=$DSTACK_NODES_NUM \
+      -m axolotl.cli.train qlora-fsdp-70b.yaml \
+      --hub-model-id $HUB_MODEL_ID \
+      --output-dir /checkpoints/qlora-llama3-70b \
+      --wandb-project $WANDB_PROJECT \
+      --wandb-name $DSTACK_RUN_NAME
 
 resources:
   gpu: 80GB:8
@@ -12322,7 +12495,7 @@ to fine-tune an agent on multiple nodes.
 Under the hood `RAGEN` uses [verl](https://github.com/volcengine/verl) for Reinforcement Learning and [Ray](https://docs.ray.io/en/latest/) for distributed training.
 
 !!! info "Prerequisites"
-    Before running a multi-node task, make sure to create a fleet with `placement` set to `cluster` (can be a [managed fleet](../../concepts/fleets.md#cluster-placement) or an [SSH fleet](../../concepts/fleets.md#ssh-placement)).
+    Before running a multi-node task, make sure to create a fleet with `placement` set to `cluster` (can be a [managed fleet](../../concepts/fleets.md#cluster-placement) or an [SSH fleet](../../concepts/fleets.md#cluster-placement)).
 
 ## Run a Ray cluster
 
@@ -12847,8 +13020,8 @@ Provisioning...
 ---> 100%
 
  FLEET      INSTANCE  BACKEND          INSTANCE TYPE  GPU          PRICE   STATUS  CREATED 
- efa-fleet  0         aws (us-west-2)  p4d.24xlarge   H100:8:80GB  $98.32  idle    3 mins ago      
-            1         aws (us-west-2)  p4d.24xlarge   H100:8:80GB  $98.32  idle    3 mins ago    
+ efa-fleet  0         aws (us-west-2)  p5.48xlarge    H100:8:80GB  $98.32  idle    3 mins ago      
+            1         aws (us-west-2)  p5.48xlarge    H100:8:80GB  $98.32  idle    3 mins ago    
 ```
 
 </div>
@@ -12870,6 +13043,26 @@ Provisioning...
 
     instance_types: ["g6.8xlarge"] # If not specified, g6.xlarge is used (won't have EFA)
     ```
+
+??? info "Reservations"
+    To use an existing [Capacity Reservation](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-capacity-reservations.html)
+    or [Capacity Block](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-capacity-blocks.html),
+    specify its ID via [`reservation`](../../reference/dstack.yml/fleet.md#reservation):
+
+    ```yaml
+    type: fleet
+    name: efa-fleet
+
+    nodes: 2
+    placement: cluster
+
+    resources:
+      gpu: H100:8
+
+    reservation: cr-0123456789abcdef0
+    ```
+
+    `dstack` then provisions on-demand instances of the reservation's instance type in its availability zone.
       
 ## Run NCCL tests
 
@@ -13038,7 +13231,7 @@ Despite hiding most of the complexity, `dstack` still requires instance-specific
     Ensure VPCs allow internal traffic between nodes for MPI/NCCL to function.
 
 === "A3 Mega"
-    A3 Edge/High require at least 4 `extra_vpcs` for data NICs.
+    A3 Mega requires at least 8 `extra_vpcs` for data NICs.
 
     <div editor-title="~/.dstack/server/config.yml">
 
@@ -13294,6 +13487,28 @@ Once you've configured the `gcp` backend, create the fleet configuration:
     ```
 
     </div>
+
+??? info "Reservations"
+    To use an existing [reservation](https://cloud.google.com/compute/docs/instances/reservations-overview),
+    specify its name via [`reservation`](../../reference/dstack.yml/fleet.md#reservation):
+
+    ```yaml
+    type: fleet
+    name: a3mega-fleet
+
+    placement: cluster
+    nodes: 2
+
+    instance_types:
+      - a3-megagpu-8g
+
+    reservation: my-reservation
+    ```
+
+    For a [shared reservation](https://cloud.google.com/compute/docs/instances/reservations-shared) owned by another project,
+    specify `projects/<project id>/reservations/<reservation name>`.
+
+    `dstack` then provisions on-demand instances of the reservation's machine type in its zone.
 
 Once the fleet is created, you can run multi-node tasks, in addition to dev environments, services, and regular tasks.
 
@@ -13579,7 +13794,7 @@ description: Setting up Lambda clusters using Kubernetes or 1-Click Clusters wit
 `dstack` allows using Lambda clusters with fast interconnect via two ways:
 
 * [Kubernetes](#kubernetes) – If you create a Kubernetes cluster on Lambda and configure a `kubernetes` backend and create a backend fleet in `dstack`, `dstack` lets you fully use this cluster through `dstack`.
-* [VMs](#vms) – If you create a 1CC cluster on Lambda and create an SSH fleet in `dstack`, `dstack` lets you fully use this cluster through `dstack`.
+* [VMs](#1-click-clusters) – If you create a 1CC cluster on Lambda and create an SSH fleet in `dstack`, `dstack` lets you fully use this cluster through `dstack`.
 
 ## Kubernetes
 
@@ -14069,7 +14284,7 @@ $ dstack apply -f crusoe-nccl-tests.dstack.yml
 ## What's next
 
 1. Learn about [dev environments](../../concepts/dev-environments.md), [tasks](../../concepts/tasks.md), [services](../../concepts/services.md)
-2. Check out [backends](../../concepts/backends.md#crusoe-cloud) and [fleets](../../concepts/fleets.md#cloud-fleets)
+2. Check out [backends](../../concepts/backends.md#crusoe) and [fleets](../../concepts/fleets.md#backend-fleets)
 3. Check the docs on [Crusoe's networking](https://docs.crusoecloud.com/networking/infiniband/) and ["Crusoe Managed" Kubernetes](https://docs.crusoecloud.com/orchestration/cmk/index.html)
 
 
@@ -14346,7 +14561,7 @@ description: Running NCCL and RCCL tests to validate cluster network bandwidth
 This example shows how to run [NCCL](https://github.com/NVIDIA/nccl-tests) or [RCCL](https://github.com/ROCm/rccl-tests) tests on a cluster using [multi-node tasks](../../concepts/tasks.md#nodes).
 
 !!! info "Prerequisites"
-    Before running a multi-node task, make sure to create a fleet with `placement` set to `cluster` (can be a [managed fleet](../../concepts/fleets.md#cluster-placement) or an [SSH fleet](../../concepts/fleets.md#ssh-placement)).
+    Before running a multi-node task, make sure to create a fleet with `placement` set to `cluster` (can be a [managed fleet](../../concepts/fleets.md#cluster-placement) or an [SSH fleet](../../concepts/fleets.md#cluster-placement)).
 
 ## Running as a task
 
@@ -14507,9 +14722,6 @@ description: Deploying Qwen3.6-27B using SGLang on NVIDIA and AMD GPUs
 
 This example shows how to deploy `Qwen/Qwen3.6-27B` using
 [SGLang](https://github.com/sgl-project/sglang) and `dstack`.
-
-> For a `DeepSeek-V4-Pro` deployment on `B200:8`, see the
-[DeepSeek V4](../models/deepseek-v4.md) model page.
 
 ## Apply a configuration
 
@@ -14701,12 +14913,6 @@ To run SGLang with [PD disaggregation](https://docs.sglang.io/advanced_features/
 
     port: 8000
     model: zai-org/GLM-4.5-Air-FP8
-
-    # Custom probe is required for PD disaggregation.
-    probes:
-      - type: http
-        url: /health
-        interval: 15s
     ```
 
     </div>
@@ -14878,12 +15084,6 @@ To run SGLang with [PD disaggregation](https://docs.sglang.io/advanced_features/
     port: 30000
     model: Qwen/Qwen2.5-72B-Instruct
 
-    # Custom probe is required for PD disaggregation.
-    probes:
-      - type: http
-        url: /health
-        interval: 15s
-
     volumes:
       - /usr/lib64/libibverbs/libbnxt_re-rdmav34.so:/usr/lib/x86_64-linux-gnu/libibverbs/libbnxt_re-rdmav34.so
     ```
@@ -14894,6 +15094,8 @@ To run SGLang with [PD disaggregation](https://docs.sglang.io/advanced_features/
         Mooncake uses the RDMA/RoCE interconnect for KV Cache transer. To use the RDMA/RoCE interconnect on Broadcom `bnxt_re` devices, Mooncake requires the Broadcom-specific userspace provider library `libbnxt_re-rdmav34.so` to be available inside the container at `/usr/lib/x86_64-linux-gnu/libibverbs/libbnxt_re-rdmav34.so`. We make this library available by mounting the host provider library from `/usr/lib64/libibverbs/libbnxt_re-rdmav34.so`.
 
 Currently, auto-scaling only supports `rps` as the metric. TTFT and ITL metrics are coming soon.
+
+> The `scaling` property requires creating a [gateway](../../concepts/gateways.md).
 
 !!! info "Cluster"
     PD disaggregation requires the service to run in a fleet with `placement` set to `cluster`, because the replicas require an interconnect between instances.
@@ -15065,6 +15267,8 @@ curl http://127.0.0.1:3000/proxy/services/main/dynamo-pd/v1/chat/completions \
 ## Configuration options
 
 Currently, auto-scaling only supports `rps` as the metric. TTFT and ITL metrics are coming soon.
+
+> The `scaling` property requires creating a [gateway](../../concepts/gateways.md).
 
 !!! info "Cluster"
     PD disaggregation requires the service to run in a fleet with `placement` set to `cluster`, because the replicas require an interconnect between instances.
@@ -15289,6 +15493,8 @@ Use the same SMG version for the router and the worker images: the worker image 
 > To use the [Mooncake Transfer](https://github.com/kvcache-ai/Mooncake) backend, set `"kv_connector": "MooncakeConnector"` in `--kv-transfer-config`.
 
 Currently, auto-scaling only supports `rps` as the metric. TTFT and ITL metrics are coming soon.
+
+> The `scaling` property requires creating a [gateway](../../concepts/gateways.md).
 
 !!! info "Cluster"
     PD disaggregation requires the service to run in a fleet with `placement` set to `cluster`, because the replicas require an interconnect between instances.
@@ -15522,336 +15728,6 @@ When a [gateway](../../concepts/gateways.md) is configured, the service endpoint
 1. Read about [services](../../concepts/services.md) and [gateways](../../concepts/gateways.md)
 2. Browse the [TensorRT-LLM deployment guides](https://nvidia.github.io/TensorRT-LLM/deployment-guide/index.html) and the [Qwen3 deployment guide](https://nvidia.github.io/TensorRT-LLM/deployment-guide/deployment-guide-for-qwen3-on-trtllm.html)
 3. See the [`trtllm-serve` reference](https://nvidia.github.io/TensorRT-LLM/commands/trtllm-serve/trtllm-serve.html)
-
-
-# docs/examples/models/deepseek-v4.md
-
----
-title: DeepSeek V4
-description: Deploying DeepSeek-V4-Pro using SGLang on NVIDIA B200:8
----
-
-# DeepSeek V4
-
-This example shows how to deploy `deepseek-ai/DeepSeek-V4-Pro` as a
-[service](../../concepts/services.md) using
-[SGLang](https://github.com/sgl-project/sglang) and `dstack`.
-
-## Apply a configuration
-
-Save the following configuration as `deepseek-v4.dstack.yml`.
-
-<div editor-title="deepseek-v4.dstack.yml">
-
-```yaml
-type: service
-name: deepseek-v4
-
-image: lmsysorg/sglang:deepseek-v4-blackwell
-
-env:
-  - HF_TOKEN
-  - SGLANG_DEEPEP_NUM_MAX_DISPATCH_TOKENS_PER_RANK=256
-  - SGLANG_JIT_DEEPGEMM_PRECOMPILE=0
-
-commands:
-  - |
-    sglang serve \
-      --trust-remote-code \
-      --model-path deepseek-ai/DeepSeek-V4-Pro \
-      --tp 8 \
-      --dp 8 \
-      --enable-dp-attention \
-      --moe-a2a-backend deepep \
-      --mem-fraction-static 0.82 \
-      --cuda-graph-max-bs 64 \
-      --max-running-requests 256 \
-      --deepep-config '{"normal_dispatch":{"num_sms":96},"normal_combine":{"num_sms":96}}' \
-      --tool-call-parser deepseekv4 \
-      --reasoning-parser deepseek-v4 \
-      --host 0.0.0.0 \
-      --port 30000
-
-port: 30000
-model: deepseek-ai/DeepSeek-V4-Pro
-
-volumes:
-  - instance_path: /root/.cache
-    path: /root/.cache
-    optional: true
-
-resources:
-  gpu: B200:8
-  shm_size: 32GB
-  disk: 2TB..
-```
-
-</div>
-
-This configuration uses the single-node Blackwell `DeepSeek-V4-Pro` recipe
-shape for `8 x NVIDIA B200`.
-
-Export your Hugging Face token and apply the configuration with
-[`dstack apply`](../../reference/cli/dstack/apply.md).
-
-<div class="termy">
-
-```shell
-$ export HF_TOKEN=<your-hf-token>
-$ dstack apply -f deepseek-v4.dstack.yml
-```
-
-</div>
-
-If no gateway is created, the service endpoint will be available at
-`<dstack server URL>/proxy/services/<project name>/<run name>/`.
-
-<div class="termy">
-
-```shell
-curl http://127.0.0.1:3000/proxy/services/main/deepseek-v4/v1/chat/completions \
-    -X POST \
-    -H 'Authorization: Bearer &lt;user token&gt;' \
-    -H 'Content-Type: application/json' \
-    -d '{
-      "model": "deepseek-ai/DeepSeek-V4-Pro",
-      "messages": [
-        {
-          "role": "user",
-          "content": "What is 15% of 240? Reply with just the number."
-        }
-      ],
-      "temperature": 0,
-      "max_tokens": 32
-    }'
-```
-
-</div>
-
-## Reasoning mode
-
-To separate the model's reasoning into `reasoning_content`, keep
-`--reasoning-parser deepseek-v4` in the server command and send
-`chat_template_kwargs` in the request body.
-
-For raw HTTP requests, `chat_template_kwargs` and `separate_reasoning` must be
-top-level JSON fields.
-
-<div class="termy">
-
-```shell
-curl http://127.0.0.1:3000/proxy/services/main/deepseek-v4/v1/chat/completions \
-    -X POST \
-    -H 'Authorization: Bearer &lt;user token&gt;' \
-    -H 'Content-Type: application/json' \
-    -d '{
-      "model": "deepseek-ai/DeepSeek-V4-Pro",
-      "messages": [
-        {
-          "role": "user",
-          "content": "Solve step by step: If 3x + 5 = 20, what is x?"
-        }
-      ],
-      "temperature": 0,
-      "max_tokens": 256,
-      "chat_template_kwargs": {
-        "thinking": true
-      },
-      "separate_reasoning": true
-    }'
-```
-
-</div>
-
-This returns both:
-
-- `reasoning_content`: a separate reasoning trace
-- `content`: the final user-visible answer
-
-## Deployment notes
-
-- The first startup can take several minutes while the model loads and SGLang
-  finishes initialization.
-- The optional `/root/.cache` instance volume helps reuse the model cache on
-  backends that support instance volumes.
-
-## What's next?
-
-1. Read the [DeepSeek-V4-Pro model card](https://huggingface.co/deepseek-ai/DeepSeek-V4-Pro)
-2. Read the [DeepSeek-V4 SGLang cookbook](https://docs.sglang.io/cookbook/autoregressive/DeepSeek/DeepSeek-V4)
-3. Browse the dedicated [SGLang](../inference/sglang.md) and [vLLM](../inference/vllm.md) examples
-
-
-# docs/examples/models/qwen36.md
-
----
-title: Qwen 3.6
-description: Deploying Qwen3.6-27B using SGLang on NVIDIA and AMD GPUs
----
-
-# Qwen 3.6
-
-This example shows how to deploy `Qwen/Qwen3.6-27B` as a
-[service](../../concepts/services.md) using
-[SGLang](https://github.com/sgl-project/sglang) and `dstack`.
-
-## Apply a configuration
-
-Save one of the following configurations as `qwen36.dstack.yml`.
-
-=== "NVIDIA"
-
-    <div editor-title="qwen36.dstack.yml">
-
-    ```yaml
-    type: service
-    name: qwen36
-
-    image: lmsysorg/sglang:v0.5.10.post1
-
-    commands:
-      - |
-        sglang serve \
-          --model-path Qwen/Qwen3.6-27B \
-          --host 0.0.0.0 \
-          --port 30000 \
-          --tp $DSTACK_GPUS_NUM \
-          --reasoning-parser qwen3 \
-          --mem-fraction-static 0.8 \
-          --context-length 262144
-
-    port: 30000
-    model: Qwen/Qwen3.6-27B
-
-    volumes:
-      - instance_path: /root/.cache
-        path: /root/.cache
-        optional: true
-
-    resources:
-      shm_size: 16GB
-      gpu: H100:4
-    ```
-
-    </div>
-
-=== "AMD"
-
-    <div editor-title="qwen36.dstack.yml">
-
-    ```yaml
-    type: service
-    name: qwen36
-
-    image: lmsysorg/sglang:v0.5.10-rocm720-mi30x
-
-    commands:
-      - |
-        sglang serve \
-          --model-path Qwen/Qwen3.6-27B \
-          --host 0.0.0.0 \
-          --port 30000 \
-          --tp $DSTACK_GPUS_NUM \
-          --reasoning-parser qwen3 \
-          --mem-fraction-static 0.8 \
-          --context-length 262144
-
-    port: 30000
-    model: Qwen/Qwen3.6-27B
-
-    volumes:
-      - instance_path: /root/.cache
-        path: /root/.cache
-        optional: true
-
-    resources:
-      cpu: 52..
-      memory: 896GB..
-      shm_size: 16GB
-      disk: 450GB..
-      gpu: MI300X:4
-    ```
-
-    </div>
-
-The NVIDIA and AMD configurations above use pinned SGLang images and the same
-straightforward 4-GPU layout used across the Qwen 3.6 docs and examples.
-
-Apply the configuration with
-[`dstack apply`](../../reference/cli/dstack/apply.md).
-
-<div class="termy">
-
-```shell
-$ dstack apply -f qwen36.dstack.yml
-```
-
-</div>
-
-If no gateway is created, the service endpoint will be available at
-`<dstack server URL>/proxy/services/<project name>/<run name>/`.
-
-<div class="termy">
-
-```shell
-curl http://127.0.0.1:3000/proxy/services/main/qwen36/v1/chat/completions \
-    -X POST \
-    -H 'Authorization: Bearer &lt;user token&gt;' \
-    -H 'Content-Type: application/json' \
-    -d '{
-      "model": "Qwen/Qwen3.6-27B",
-      "messages": [
-        {
-          "role": "user",
-          "content": "A bat and a ball cost $1.10 total. The bat costs $1.00 more than the ball. How much does the ball cost? Answer with just the dollar amount."
-        }
-      ],
-      "max_tokens": 1024
-    }'
-```
-
-</div>
-
-## Thinking mode
-
-Qwen3.6 uses thinking mode by default. With SGLang, the reasoning stream is
-returned separately as `reasoning_content`.
-
-To disable thinking, pass `chat_template_kwargs` in the request body.
-
-<div class="termy">
-
-```shell
-curl http://127.0.0.1:3000/proxy/services/main/qwen36/v1/chat/completions \
-    -X POST \
-    -H 'Authorization: Bearer &lt;user token&gt;' \
-    -H 'Content-Type: application/json' \
-    -d '{
-      "model": "Qwen/Qwen3.6-27B",
-      "messages": [
-        {
-          "role": "user",
-          "content": "Summarize the benefits of container images in one sentence."
-        }
-      ],
-      "max_tokens": 256,
-      "chat_template_kwargs": {
-        "enable_thinking": false
-      }
-    }'
-```
-
-</div>
-
-## What's next?
-
-1. Read the [Qwen/Qwen3.6-27B model card](https://huggingface.co/Qwen/Qwen3.6-27B)
-2. Read the [Qwen 3.6 SGLang cookbook](https://docs.sglang.io/cookbook/autoregressive/Qwen/Qwen3.6)
-3. Read the [Qwen 3.5 & 3.6 vLLM recipe](https://docs.vllm.ai/projects/recipes/en/latest/Qwen/Qwen3.5.html)
-4. Browse the dedicated [SGLang](../inference/sglang.md)
-   and [vLLM](../inference/vllm.md) examples
-5. Check the [AMD](../accelerators/amd.md) example for
-   more AMD deployment and training configurations
 
 
 # docs/examples/accelerators/amd.md
@@ -16102,8 +15978,7 @@ $ dstack metrics &lt;run name&gt;
 ## What's next?
 
 1. Browse the dedicated [SGLang](../inference/sglang.md)
-   and [vLLM](../inference/vllm.md) examples, plus the
-   [Qwen 3.6](../models/qwen36.md) model page.
+   and [vLLM](../inference/vllm.md) examples.
 2. For multi-node inference, see
    [SGLang PD disaggregation](../inference/sglang.md#pd-disaggregation).
 3. For cluster validation, run
@@ -16448,7 +16323,7 @@ description: Deploying and fine-tuning models on Google Cloud TPUs using Optimum
 
 If you've configured the `gcp` backend in `dstack`, you can run dev environments, tasks, and services on [TPUs](https://cloud.google.com/tpu/docs/intro-to-tpu).
 Choose a TPU instance by specifying the TPU version and the number of cores (e.g. `v5litepod-8`) in the `gpu` property under `resources`,
-or request TPUs by specifying `tpu` as `vendor` ([see examples](../../guides/protips.md#gpu)).
+or request TPUs by specifying `tpu` as `vendor` ([see examples](../../guides/protips.md#gpu-specification)).
 
 TPU support is experimental and disabled by default. Before using these examples, set `tpu: true`
 in your [GCP backend settings](../../concepts/backends.md#gcp).

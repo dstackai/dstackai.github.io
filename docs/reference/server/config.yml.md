@@ -338,12 +338,20 @@ to configure [backends](../../concepts/backends.md) and other [server-level sett
 
 ###### `hostname` - (Optional) `str` The external IP address or hostname of any node. { #hostname data-toc-label='hostname' class='reference-item' }
 ###### `port` - (Optional) `int` Any port accessible outside of the cluster. { #port data-toc-label='port' class='reference-item' }
+###### `cpu` - (Optional) `str` The jump pod's CPU request and limit, as a Kubernetes quantity, e.g., `1`, `500m`. Defaults to `500m`. { #cpu data-toc-label='cpu' class='reference-item' }
+###### `memory` - (Optional) `str` The jump pod's memory request and limit, as a Kubernetes quantity, e.g., `2Gi`, `512Mi`. Defaults to `1Gi`. { #memory data-toc-label='memory' class='reference-item' }
+###### `node_selector` - (Optional) `list[str]` The labels that the jump pod's node must have. Each item is `key=value`, `key=` (an empty value), or `key` (any value). { #node_selector data-toc-label='node_selector' class='reference-item' }
+###### `tolerations` - (Optional) `list[str]` The node taints that the jump pod tolerates. Each item is `key[=value][:effect]`, as in `kubectl taint`. Without `=value`, any value is tolerated; without `:effect`, any effect. If not set, defaults to the GPU node taints when every node is tainted, or to none if `node_selector` is set. { #tolerations data-toc-label='tolerations' class='reference-item' }
 
 
 ###### `projects[n].backends[type=kubernetes].proxy_jump` { #kubernetes-proxy_jump data-toc-label="proxy_jump" }
 
 ###### `hostname` - (Optional) `str` The external IP address or hostname of any node. { #hostname data-toc-label='hostname' class='reference-item' }
 ###### `port` - (Optional) `int` Any port accessible outside of the cluster. { #port data-toc-label='port' class='reference-item' }
+###### `cpu` - (Optional) `str` The jump pod's CPU request and limit, as a Kubernetes quantity, e.g., `1`, `500m`. Defaults to `500m`. { #cpu data-toc-label='cpu' class='reference-item' }
+###### `memory` - (Optional) `str` The jump pod's memory request and limit, as a Kubernetes quantity, e.g., `2Gi`, `512Mi`. Defaults to `1Gi`. { #memory data-toc-label='memory' class='reference-item' }
+###### `node_selector` - (Optional) `list[str]` The labels that the jump pod's node must have. Each item is `key=value`, `key=` (an empty value), or `key` (any value). { #node_selector data-toc-label='node_selector' class='reference-item' }
+###### `tolerations` - (Optional) `list[str]` The node taints that the jump pod tolerates. Each item is `key[=value][:effect]`, as in `kubectl taint`. Without `=value`, any value is tolerated; without `:effect`, any effect. If not set, defaults to the GPU node taints when every node is tainted, or to none if `node_selector` is set. { #tolerations data-toc-label='tolerations' class='reference-item' }
 
 
 ##### `projects[n].backends[type=vultr]` { #vultr data-toc-label="vultr" }

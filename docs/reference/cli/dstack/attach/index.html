@@ -2406,7 +2406,7 @@
   <span class="md-ellipsis">
     
   
-    Models
+    Accelerators
   
 
     
@@ -2419,122 +2419,6 @@
         
         <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_4_4_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2_4_4">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Models
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../../examples/models/deepseek-v4/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    DeepSeek V4
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../../examples/models/qwen36/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Qwen 3.6
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-    
-    
-      
-      
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4_5" >
-        
-          
-          <label class="md-nav__link" for="__nav_2_4_5" id="__nav_2_4_5_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Accelerators
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_4_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2_4_5">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -5071,8 +4955,13 @@ Options:
 </div>
 
 <h2 id="user-ssh-key">User SSH key<a class="headerlink" href="#user-ssh-key" title="Permanent link">&para;</a></h2>
-<p>By default, <code>dstack</code> uses its own SSH key to attach to runs (<code>~/.dstack/ssh/id_rsa</code>).
-It is possible to override this key via the <code>--ssh-identity</code> argument.</p>
+<p>By default, <code>dstack</code> attaches to runs using the user's SSH key automatically created and managed by <code>dstack</code>. The CLI downloads it from the server and stores it under <code>~/.dstack/ssh/</code>.
+To attach with a different key, pass the path to its private key via <code>--ssh-identity</code>.
+If the run was submitted with <code>dstack apply --ssh-identity</code>, pass the same key.</p>
+<div class="admonition info">
+<p class="admonition-title">SSH proxy</p>
+<p>If the <a href="../../../../guides/server-deployment/#ssh-proxy">SSH proxy</a> is configured, you can also use any key uploaded under <strong>SSH keys</strong> in the user settings.</p>
+</div>
 
 
 
@@ -5203,7 +5092,6 @@ It is possible to override this key via the <code>--ssh-identity</code> argument
           <a href="/docs/examples/training/trl/" class="tx-footer__section-link">Training</a>
           <a href="/docs/examples/clusters/aws/" class="tx-footer__section-link">Clusters</a>
           <a href="/docs/examples/inference/sglang/" class="tx-footer__section-link">Inference</a>
-          <a href="/docs/examples/models/deepseek-v4/" class="tx-footer__section-link">Models</a>
           <a href="/docs/examples/accelerators/amd/" class="tx-footer__section-link">Accelerators</a>
         </div>
 

@@ -2401,7 +2401,7 @@
   <span class="md-ellipsis">
     
   
-    Models
+    Accelerators
   
 
     
@@ -2414,122 +2414,6 @@
         
         <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_4_4_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2_4_4">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Models
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../examples/models/deepseek-v4/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    DeepSeek V4
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../examples/models/qwen36/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Qwen 3.6
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-    
-    
-      
-      
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4_5" >
-        
-          
-          <label class="md-nav__link" for="__nav_2_4_5" id="__nav_2_4_5_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Accelerators
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_4_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2_4_5">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -5096,7 +4980,7 @@ tasks, and services:</p>
 <li><code id="DSTACK_GPUS_PER_NODE">DSTACK_GPUS_PER_NODE</code> – The number of GPUs per node</li>
 <li><code id="DSTACK_NODE_RANK">DSTACK_NODE_RANK</code> – The rank of the node</li>
 <li>
-<p><code id="DSTACK_NODE_RANK">DSTACK_MASTER_NODE_IP</code> – The internal IP address of the master node.</p>
+<p><code id="DSTACK_MASTER_NODE_IP">DSTACK_MASTER_NODE_IP</code> – The internal IP address of the master node.</p>
 <p>Below is an example of using <code>DSTACK_NODES_NUM</code>, <code>DSTACK_GPUS_PER_NODE</code>, <code>DSTACK_NODE_RANK</code>, and <code>DSTACK_MASTER_NODE_IP</code>
  for distributed training:</p>
 <div class="highlight"><pre><span></span><code><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">task</span>
@@ -5165,6 +5049,7 @@ via <code>dstack server</code> or deployed using Docker.</p>
 <li><code id="DSTACK_SERVER_ELASTICSEARCH_INDEX">DSTACK_SERVER_ELASTICSEARCH_INDEX</code> – The Elasticsearch/OpenSearch index pattern. Defaults to <code>dstack-logs</code>.</li>
 <li><code id="DSTACK_SERVER_ELASTICSEARCH_API_KEY">DSTACK_SERVER_ELASTICSEARCH_API_KEY</code> – The Elasticsearch/OpenSearch API key for authentication.</li>
 <li><code id="DSTACK_ENABLE_PROMETHEUS_METRICS">DSTACK_ENABLE_PROMETHEUS_METRICS</code> — Enables Prometheus metrics collection and export.</li>
+<li><code id="DSTACK_PROMETHEUS_AUTH_TOKEN">DSTACK_PROMETHEUS_AUTH_TOKEN</code> – If set, requests to <code>/metrics</code> must pass this token in the <code>Authorization: Bearer &lt;token&gt;</code> header. If not set, <code>/metrics</code> requires no authentication.</li>
 <li><code id="DSTACK_SENTRY_DSN">DSTACK_SENTRY_DSN</code> – The Sentry DSN. If set, enables error reporting and tracing via the Sentry SDK. See <a href="../../guides/server-deployment/#observability">observability</a>.</li>
 <li><code id="DSTACK_SENTRY_TRACES_SAMPLE_RATE">DSTACK_SENTRY_TRACES_SAMPLE_RATE</code> – The Sentry sample rate for API request traces. Defaults to <code>0.1</code>.</li>
 <li><code id="DSTACK_SENTRY_TRACES_BACKGROUND_SAMPLE_RATE">DSTACK_SENTRY_TRACES_BACKGROUND_SAMPLE_RATE</code> – The Sentry sample rate for background task traces. Defaults to <code>0.01</code>.</li>
@@ -5180,6 +5065,7 @@ via <code>dstack server</code> or deployed using Docker.</p>
 <li><code id="DSTACK_FORBID_SERVICES_WITHOUT_GATEWAY">DSTACK_FORBID_SERVICES_WITHOUT_GATEWAY</code> – Forbids registering new services without a gateway if set to any value.</li>
 <li><code id="DSTACK_FORBID_DSTACK_IN_RUNS">DSTACK_FORBID_DSTACK_IN_RUNS</code> – Forbids submitting runs with <code>dstack: true</code> (dstack server access inside runs) if set to any value.</li>
 <li><code id="DSTACK_SERVER_CODE_UPLOAD_LIMIT">DSTACK_SERVER_CODE_UPLOAD_LIMIT</code> - The repo size limit when uploading diffs or local repos, in bytes. Set to <code>0</code> to disable size limits. Defaults to <code>2MiB</code>.</li>
+<li><code id="DSTACK_SERVER_LOG_QUOTA_PER_JOB_HOUR">DSTACK_SERVER_LOG_QUOTA_PER_JOB_HOUR</code> - The maximum size of logs a job can write per hour, in bytes. If exceeded, the job fails with the <code>log_quota_exceeded</code> termination reason. Set to <code>0</code> to disable the limit. Defaults to <code>50MiB</code>.</li>
 <li><code id="DSTACK_SERVER_S3_BUCKET">DSTACK_SERVER_S3_BUCKET</code> - The bucket that repo diffs will be uploaded to if set. If unset, diffs are uploaded to the database.</li>
 <li><code id="DSTACK_SERVER_S3_BUCKET_REGION">DSTACK_SERVER_S3_BUCKET_REGION</code> - The region of the S3 Bucket.</li>
 <li><code id="DSTACK_SERVER_GCS_BUCKET">DSTACK_SERVER_GCS_BUCKET</code> - The bucket that repo diffs will be uploaded to if set. If unset, diffs are uploaded to the database.</li>
@@ -5195,7 +5081,7 @@ via <code>dstack server</code> or deployed using Docker.</p>
 <li><code id="DSTACK_SERVER_GATEWAY_MAX_REPLICAS">DSTACK_SERVER_GATEWAY_MAX_REPLICAS</code> - Maximum number of replicas allowed for a gateway. Defaults to <code>9</code>.</li>
 <li><code id="DSTACK_SERVER_INSTANCE_HEALTH_MIN_COLLECT_INTERVAL_SECONDS">DSTACK_SERVER_INSTANCE_HEALTH_MIN_COLLECT_INTERVAL_SECONDS</code> – Minimum time interval between consecutive health checks of the same instance.</li>
 <li><code id="DSTACK_SERVER_EVENTS_TTL_SECONDS">DSTACK_SERVER_EVENTS_TTL_SECONDS</code> - Maximum age of event records. Set to <code>0</code> to disable event storage. Defaults to 30 days.</li>
-<li><code id="DSTACK_SERVER_ORPHAN_CLEANUP_MODE">DSTACK_SERVER_ORPHAN_CLEANUP_MODE</code> – Controls the cleanup of cloud resources that <code>dstack</code> created but no longer tracks, e.g. after the server crashed during provisioning or failed to terminate an instance. <code>report</code> emits events about such resources, <code>delete</code> also deletes them, and <code>off</code> disables the cleanup. Resources are recognized by the tags (or names) <code>dstack</code> sets on them, so a resource created by copying the tags of a <code>dstack</code> instance is treated as an orphan and deleted in <code>delete</code> mode. Defaults to <code>report</code>. Currently supported for the <code>aws</code>, <code>azure</code>, <code>gcp</code>, <code>nebius</code>, and <code>runpod</code> backends.</li>
+<li><code id="DSTACK_SERVER_ORPHAN_CLEANUP_MODE">DSTACK_SERVER_ORPHAN_CLEANUP_MODE</code> – Controls the cleanup of cloud resources that <code>dstack</code> created but no longer tracks, e.g. after the server crashed during provisioning or failed to terminate an instance. <code>report</code> emits events about such resources, <code>delete</code> also deletes them, and <code>off</code> disables the cleanup. Resources are recognized by the tags (or names) <code>dstack</code> sets on them, so a resource created by copying the tags of a <code>dstack</code> instance is treated as an orphan and deleted in <code>delete</code> mode. Defaults to <code>report</code>. Currently supported for the <code>aws</code>, <code>azure</code>, <code>gcp</code>, <code>kubernetes</code>, <code>nebius</code>, and <code>runpod</code> backends.</li>
 <li><code id="DSTACK_SERVER_ORPHAN_CLEANUP_INTERVAL_SECONDS">DSTACK_SERVER_ORPHAN_CLEANUP_INTERVAL_SECONDS</code> – Minimum interval between orphan cleanups of the same backend. A backend is cleaned up only after instances were provisioned or terminated in its project. Defaults to <code>3600</code>.</li>
 <li><code id="DSTACK_SERVER_DEFAULT_DOCKER_REGISTRY">DSTACK_SERVER_DEFAULT_DOCKER_REGISTRY</code> – A default Docker registry to use for job images that do not specify an explicit registry. E.g., if set to <code>registry.example</code>, then <code>image: ubuntu</code> becomes equivalent to <code>image: registry.example/ubuntu</code>. <strong>Note</strong>: This setting should only be used for configuring registries that act as a pull-through cache for Docker Hub. The default <code>dstack</code> images are also pulled from the configured registry.</li>
 <li><code id="DSTACK_SERVER_DEFAULT_DOCKER_REGISTRY_USERNAME">DSTACK_SERVER_DEFAULT_DOCKER_REGISTRY_USERNAME</code> – Username for authenticating with the default Docker registry. See <code>DSTACK_SERVER_DEFAULT_DOCKER_REGISTRY_PASSWORD</code>.</li>
@@ -5411,7 +5297,6 @@ dstack<span class="w"> </span>ps
           <a href="/docs/examples/training/trl/" class="tx-footer__section-link">Training</a>
           <a href="/docs/examples/clusters/aws/" class="tx-footer__section-link">Clusters</a>
           <a href="/docs/examples/inference/sglang/" class="tx-footer__section-link">Inference</a>
-          <a href="/docs/examples/models/deepseek-v4/" class="tx-footer__section-link">Models</a>
           <a href="/docs/examples/accelerators/amd/" class="tx-footer__section-link">Accelerators</a>
         </div>
 

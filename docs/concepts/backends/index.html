@@ -1070,7 +1070,7 @@
     <span class="md-ellipsis">
       
         <span class="md-typeset">
-          Verda (formerly DataCrunch)
+          Verda
         </span>
       
     </span>
@@ -2761,7 +2761,7 @@
   <span class="md-ellipsis">
     
   
-    Models
+    Accelerators
   
 
     
@@ -2774,122 +2774,6 @@
         
         <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_4_4_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2_4_4">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Models
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../examples/models/deepseek-v4/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    DeepSeek V4
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../examples/models/qwen36/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Qwen 3.6
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-    
-    
-      
-      
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4_5" >
-        
-          
-          <label class="md-nav__link" for="__nav_2_4_5" id="__nav_2_4_5_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Accelerators
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_4_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2_4_5">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -5284,7 +5168,7 @@
     <span class="md-ellipsis">
       
         <span class="md-typeset">
-          Verda (formerly DataCrunch)
+          Verda
         </span>
       
     </span>
@@ -5660,7 +5544,7 @@ configure the backend.</p>
                 "ec2:DeletePlacementGroup",
                 "ec2:DeleteVolume",
                 "ec2:DescribeAvailabilityZones",
-                "ec2:DescribeCapacityReservations"
+                "ec2:DescribeCapacityReservations",
                 "ec2:DescribeImages",
                 "ec2:DescribeInstances",
                 "ec2:DescribeInstanceAttribute",
@@ -5864,7 +5748,8 @@ The <code>user</code> specifies an OS user for instance provisioning.</p>
 <div class="tabbed-block">
 <p>A client secret can be created using the <a href="https://learn.microsoft.com/en-us/cli/azure/install-azure-cli">Azure CLI</a>:</p>
 <div class="highlight"><pre><span></span><code><span class="nv">SUBSCRIPTION_ID</span><span class="o">=</span>...
-az<span class="w"> </span>ad<span class="w"> </span>sp<span class="w"> </span>create-for-rbac
+<span class="nv">DSTACK_ROLE</span><span class="o">=</span>...
+az<span class="w"> </span>ad<span class="w"> </span>sp<span class="w"> </span>create-for-rbac<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--name<span class="w"> </span>dstack-app<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--role<span class="w"> </span><span class="nv">$DSTACK_ROLE</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--scopes<span class="w"> </span>/subscriptions/<span class="nv">$SUBSCRIPTION_ID</span><span class="w"> </span><span class="se">\</span>
@@ -5942,6 +5827,8 @@ It's possible to use custom networks by specifying <code>vpc_ids</code>:</p>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">main</span>
 <span class="w">    </span><span class="nt">backends</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">azure</span>
+<span class="w">        </span><span class="nt">subscription_id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">06c82ce3-28ff-4285-a146-c5e981a9d808</span>
+<span class="w">        </span><span class="nt">tenant_id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">f84a7584-88e4-4fd2-8e97-623f0a715ee1</span>
 <span class="w">        </span><span class="nt">creds</span><span class="p">:</span>
 <span class="w">          </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">default</span>
 <span class="w">        </span><span class="nt">regions</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">westeurope</span><span class="p p-Indicator">]</span>
@@ -5953,6 +5840,8 @@ It's possible to use custom networks by specifying <code>vpc_ids</code>:</p>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">main</span>
 <span class="w">    </span><span class="nt">backends</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">azure</span>
+<span class="w">        </span><span class="nt">subscription_id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">06c82ce3-28ff-4285-a146-c5e981a9d808</span>
+<span class="w">        </span><span class="nt">tenant_id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">f84a7584-88e4-4fd2-8e97-623f0a715ee1</span>
 <span class="w">        </span><span class="nt">creds</span><span class="p">:</span>
 <span class="w">          </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">default</span>
 <span class="w">        </span><span class="nt">regions</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">westeurope</span><span class="p p-Indicator">]</span>
@@ -5969,6 +5858,8 @@ specify custom networks using <code>vpc_ids</code> or <code>subnet_ids</code>, a
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">main</span>
 <span class="w">    </span><span class="nt">backends</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">azure</span>
+<span class="w">        </span><span class="nt">subscription_id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">06c82ce3-28ff-4285-a146-c5e981a9d808</span>
+<span class="w">        </span><span class="nt">tenant_id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">f84a7584-88e4-4fd2-8e97-623f0a715ee1</span>
 <span class="w">        </span><span class="nt">creds</span><span class="p">:</span>
 <span class="w">          </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">default</span>
 <span class="w">        </span><span class="nt">regions</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">westeurope</span><span class="p p-Indicator">]</span>
@@ -6223,6 +6114,7 @@ If you want <code>dstack</code> to use private subnets and provision instances w
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">main</span>
 <span class="w">    </span><span class="nt">backends</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gcp</span>
+<span class="w">        </span><span class="nt">project_id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gcp-project-id</span>
 <span class="w">        </span><span class="nt">creds</span><span class="p">:</span>
 <span class="w">          </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">default</span>
 
@@ -6347,7 +6239,7 @@ under your account settings. Note your project ID from the project settings page
 
 <p><code>regions</code> is optional. If not specified, all available Crusoe regions are used.</p>
 <p><span id="datacrunch"></span></p>
-<h3 id="verda">Verda (formerly DataCrunch)<a class="headerlink" href="#verda" title="Permanent link">&para;</a></h3>
+<h3 id="verda">Verda<a class="headerlink" href="#verda" title="Permanent link">&para;</a></h3>
 <p>Log into your <a href="https://console.verda.com/signin">Verda</a> account, click Keys in the sidebar, find <code>REST API Credentials</code> area and then click the <code>Generate Credentials</code> button.</p>
 <p>Then, go ahead and configure the backend:</p>
 <div editor-title="~/.dstack/server/config.yml">
@@ -6652,6 +6544,38 @@ In this case, <code>dstack</code> delegates provisioning to the cloud provider o
 </code></pre></div>
 <p>Both fields are independent — you can set just one.</p>
 <p>The jump host can be a GPU node or a CPU-only node — it makes no difference. The only requirement is that both the <code>dstack</code> server and CLI can reach <code>hostname:port</code>.</p>
+<p>The jump pod is managed by a ReplicaSet, so Kubernetes recreates it if it's evicted or its node is removed. To make eviction less likely, the jump pod's CPU and memory requests equal its limits, which gives it the <a href="https://kubernetes.io/docs/concepts/workloads/pods/pod-qos/#guaranteed"><code>Guaranteed</code></a> QoS class. Set <code>proxy_jump.cpu</code> and <code>proxy_jump.memory</code> to change the defaults, <code>500m</code> and <code>1Gi</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">contexts</span><span class="p">:</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gpu-cluster-a</span>
+<span class="w">  </span><span class="nt">proxy_jump</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">    </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2Gi</span>
+</code></pre></div>
+<p>Each SSH session through the jump pod takes about 2 MiB of memory. Each <code>dstack</code> server replica keeps at least one session open per running job, and each <code>dstack attach</code> adds one more. If the jump pod exceeds its memory limit, Kubernetes restarts it.</p>
+<p>When the jump pod restarts or is recreated, its SSH sessions drop. The <code>dstack</code> server reconnects automatically, but <code>dstack attach</code> may fail for runs submitted before that. If reliable SSH access to runs is important, deploy <a href="../../guides/server-deployment/#ssh-proxy"><code>dstack-sshproxy</code></a>.</p>
+<p>To run the jump pod only on specific nodes, e.g., nodes with an <code>ExternalIP</code> or CPU-only nodes, label them and set <code>proxy_jump.node_selector</code>. If these nodes are <a href="https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/">tainted</a>, also set <code>proxy_jump.tolerations</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">contexts</span><span class="p">:</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gpu-cluster-a</span>
+<span class="w">  </span><span class="nt">proxy_jump</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">node_selector</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">example.com/jump-host</span>
+<span class="w">    </span><span class="nt">tolerations</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">example.com/dedicated=jump-host:NoSchedule</span>
+</code></pre></div>
+<p>Each <code>node_selector</code> item is <code>key=value</code>, <code>key=</code> (an empty value), or <code>key</code> (any value), and a node must match all of them. Since a <code>nodeSelector</code> can't match any value, <code>dstack</code> applies <code>node_selector</code> as a required <a href="https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#node-affinity">node affinity</a> term. If none of the selected nodes can run the jump pod, it stays pending and runs can't be provisioned, so label several nodes.</p>
+<p>Each <code>tolerations</code> item is <code>key[=value][:effect]</code>, the <code>kubectl taint</code> format, so a taint added with <code>kubectl taint</code> can be copied as is. Without <code>=value</code>, any value is tolerated; without <code>:effect</code>, any effect. If <code>tolerations</code> isn't set, <code>dstack</code> tolerates the GPU node taints when every node is tainted, but not if <code>node_selector</code> is set.</p>
+<div class="admonition warning">
+<p class="admonition-title">Changing <code>cpu</code>, <code>memory</code>, <code>node_selector</code>, and <code>tolerations</code></p>
+<p>New values don't apply to an existing jump pod. To apply them, update the jump pod's ReplicaSet in the context's namespace and delete the pod so that Kubernetes recreates it:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># cpu and memory</span>
+kubectl<span class="w"> </span>-n<span class="w"> </span>&lt;namespace&gt;<span class="w"> </span><span class="nb">set</span><span class="w"> </span>resources<span class="w"> </span>replicaset<span class="w"> </span>dstack-&lt;project&gt;-ssh-jump-pod<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--requests<span class="o">=</span><span class="nv">cpu</span><span class="o">=</span><span class="m">1</span>,memory<span class="o">=</span>2Gi<span class="w"> </span>--limits<span class="o">=</span><span class="nv">cpu</span><span class="o">=</span><span class="m">1</span>,memory<span class="o">=</span>2Gi
+<span class="c1"># node_selector and tolerations: edit spec.template.spec.affinity and .tolerations</span>
+kubectl<span class="w"> </span>-n<span class="w"> </span>&lt;namespace&gt;<span class="w"> </span>edit<span class="w"> </span>replicaset<span class="w"> </span>dstack-&lt;project&gt;-ssh-jump-pod
+<span class="c1"># Recreate the pod</span>
+kubectl<span class="w"> </span>-n<span class="w"> </span>&lt;namespace&gt;<span class="w"> </span>delete<span class="w"> </span>pod<span class="w"> </span>-l<span class="w"> </span>app.kubernetes.io/instance<span class="o">=</span>dstack-&lt;project&gt;-ssh-jump-pod
+</code></pre></div>
+</div>
 </div>
 <div class="admonition info">
 <p class="admonition-title">Region and namespace</p>
@@ -6782,19 +6706,23 @@ specify the contents of the <code>kubeconfig</code> file in <code>data</code>:</
 <span class="nt">rules</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">apiGroups</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">""</span><span class="p p-Indicator">]</span>
 <span class="w">    </span><span class="nt">resources</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"pods"</span><span class="p p-Indicator">]</span>
-<span class="w">    </span><span class="nt">verbs</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"get"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"watch"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"create"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"delete"</span><span class="p p-Indicator">]</span>
+<span class="w">    </span><span class="nt">verbs</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"get"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"list"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"watch"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"create"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"delete"</span><span class="p p-Indicator">]</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">apiGroups</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">""</span><span class="p p-Indicator">]</span>
 <span class="w">    </span><span class="nt">resources</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"services"</span><span class="p p-Indicator">]</span>
-<span class="w">    </span><span class="nt">verbs</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"get"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"create"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"delete"</span><span class="p p-Indicator">]</span>
+<span class="w">    </span><span class="nt">verbs</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"get"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"list"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"create"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"delete"</span><span class="p p-Indicator">]</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">apiGroups</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">""</span><span class="p p-Indicator">]</span>
 <span class="w">    </span><span class="nt">resources</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"secrets"</span><span class="p p-Indicator">]</span>
-<span class="w">    </span><span class="nt">verbs</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"create"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"delete"</span><span class="p p-Indicator">]</span>
+<span class="w">    </span><span class="nt">verbs</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"list"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"create"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"delete"</span><span class="p p-Indicator">]</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">apiGroups</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">""</span><span class="p p-Indicator">]</span>
 <span class="w">    </span><span class="nt">resources</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"persistentvolumeclaims"</span><span class="p p-Indicator">]</span>
 <span class="w">    </span><span class="nt">verbs</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"get"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"create"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"delete"</span><span class="p p-Indicator">]</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">apiGroups</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"apps"</span><span class="p p-Indicator">]</span>
+<span class="w">    </span><span class="nt">resources</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"replicasets"</span><span class="p p-Indicator">]</span>
+<span class="w">    </span><span class="nt">verbs</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"get"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"create"</span><span class="p p-Indicator">]</span>
 </code></pre></div></li>
 </ul>
 <p>Ensure you've created a ClusterRoleBinding and RoleBinding to grant the roles to the user or the service account you're using.</p>
+<p>The <code>list</code> verb on <code>secrets</code> is only needed for <a href="../../reference/env/#DSTACK_SERVER_ORPHAN_CLEANUP_MODE">orphan cleanup</a> to find registry auth secrets left without their pods, and <code>dstack</code> works without it. Kubernetes can't limit it to <code>dstack</code>'s secrets, so it lets <code>dstack</code> read the contents of all secrets in the namespace. Grant it only if the namespace is dedicated to <code>dstack</code>.</p>
 </details>
 <details class="info">
 <summary>Resources and offers</summary>
@@ -6851,7 +6779,7 @@ specify the contents of the <code>kubeconfig</code> file in <code>data</code>:</
 <p>This applies to offers shown in <code>dstack apply</code> (run plans), during provisioning, and in <code>dstack offer</code>. Unlike other backends, offers for the <code>kubernetes</code> backend always reflect the lower limit of the range.</p>
 </details>
 <blockquote>
-<p>To learn more, see the <a href="../examples/clusters/lambda/#kubernetes">Lambda</a> and <a href="../examples/clusters/crusoe/#kubernetes">Crusoe</a> examples.</p>
+<p>To learn more, see the <a href="../../examples/clusters/lambda/#kubernetes">Lambda</a> and <a href="../../examples/clusters/crusoe/#kubernetes">Crusoe</a> examples.</p>
 </blockquote>
 <h3 id="slurm">Slurm<a class="headerlink" href="#slurm" title="Permanent link">&para;</a></h3>
 <p><code>dstack</code> can orchestrate container-based runs across your <a href="https://slurm.schedmd.com/">Slurm</a> clusters. A single <code>slurm</code> backend can manage one or many clusters — <code>dstack</code> connects to each cluster's login node over SSH and submits runs as Slurm jobs. Each cluster becomes its own <code>dstack</code> region, named after the cluster.</p>
@@ -7071,7 +6999,6 @@ To restrict offers to Server Cloud only, set <code>community_cloud: false</code>
 </code></pre></div>
 </div>
 </details>
-<p>Also, the <code>vastai</code> backend supports on-demand instances only. Spot instance support coming soon.</p>
 
 
 
@@ -7205,7 +7132,6 @@ To restrict offers to Server Cloud only, set <code>community_cloud: false</code>
           <a href="/docs/examples/training/trl/" class="tx-footer__section-link">Training</a>
           <a href="/docs/examples/clusters/aws/" class="tx-footer__section-link">Clusters</a>
           <a href="/docs/examples/inference/sglang/" class="tx-footer__section-link">Inference</a>
-          <a href="/docs/examples/models/deepseek-v4/" class="tx-footer__section-link">Models</a>
           <a href="/docs/examples/accelerators/amd/" class="tx-footer__section-link">Accelerators</a>
         </div>
 

@@ -2489,7 +2489,7 @@
   <span class="md-ellipsis">
     
   
-    Models
+    Accelerators
   
 
     
@@ -2502,122 +2502,6 @@
         
         <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_4_4_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2_4_4">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Models
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../examples/models/deepseek-v4/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    DeepSeek V4
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../examples/models/qwen36/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Qwen 3.6
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-    
-    
-      
-      
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4_5" >
-        
-          
-          <label class="md-nav__link" for="__nav_2_4_5" id="__nav_2_4_5_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Accelerators
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_4_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2_4_5">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -5048,13 +4932,11 @@
 <p>Ensure the server and CLI are <a href="../installation/">installed</a>. To use <code>dstack</code> with AI agents, install <a href="../installation/#skills">skills</a>.</p>
 </div>
 <h2 id="create-a-fleet">Create a fleet<a class="headerlink" href="#create-a-fleet" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Before submitting runs, you must create a <a href="../concepts/fleets/">fleet</a>.</p>
-</blockquote>
+<p>Before you submit runs, you have to create <a href="../concepts/fleets/">fleets</a>.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="backend-fleet" name="__tabbed_1" type="radio" /><input id="ssh-fleet" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="backend-fleet">Backend fleet</label><label for="ssh-fleet">SSH fleet</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p>If you're using cloud providers or Kubernetes clusters and have configured the corresponding <a href="../concepts/backends/">backends</a>, create a fleet as follows:</p>
+<p>If you're using cloud providers or Kubernetes clusters, create a fleet as follows:</p>
 <p><div editor-title="fleet.dstack.yml"> </p>
 <div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">fleet</span>
 <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">default</span>
@@ -5070,6 +4952,9 @@
 <span class="w">  </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0..8</span>
 </code></pre></div>
 </div>
+<blockquote>
+<p>To use backend fleets, ensure you have configured <a href="../concepts/backends/">backends</a>.</p>
+</blockquote>
 <p>Pass the fleet configuration to <code>dstack apply</code>:</p>
 <div class="termy">
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>dstack<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>fleet.dstack.yml
@@ -5117,7 +5002,7 @@ Provisioning...
 <blockquote>
 <p>Hosts must have Docker and GPU drivers installed and meet the other <a href="../concepts/fleets/#ssh-fleets">requirements</a>.</p>
 </blockquote>
-<p>If the fleet needs to be a cluster, the <a href="../concepts/fleets/#ssh-placement">placement</a> property must be set to <code>cluster</code>.</p>
+<p>If the fleet needs to be a cluster, the <a href="../concepts/fleets/#cluster-placement">placement</a> property must be set to <code>cluster</code>.</p>
 </div>
 </div>
 </div>
@@ -5255,7 +5140,7 @@ Provisioning<span class="w"> </span><span class="sb">`</span>qwen36-service<span
 Service<span class="w"> </span>is<span class="w"> </span>published<span class="w"> </span>at:<span class="w"> </span>
 <span class="w">  </span>http://localhost:3000/proxy/services/main/qwen36-service/
 Model<span class="w"> </span>Qwen/Qwen3.6-27B<span class="w"> </span>is<span class="w"> </span>published<span class="w"> </span>at:
-<span class="w">  </span>http://localhost:3000/proxy/models/main/
+<span class="w">  </span>http://localhost:3000/proxy/services/main/qwen36-service/v1
 </code></pre></div>
 </div>
 <blockquote>
@@ -5270,7 +5155,7 @@ Model<span class="w"> </span>Qwen/Qwen3.6-27B<span class="w"> </span>is<span cla
 <div class="admonition info">
 <p class="admonition-title">What's next?</p>
 <ol>
-<li>Read about <a href="../concepts/backends/">backends</a>,  <a href="../concepts/dev-environments/">dev environments</a>, <a href="../concepts/tasks/">tasks</a>, <a href="../concepts/services/">services</a>, and <a href="../concepts/services/">fleets</a></li>
+<li>Read about <a href="../concepts/backends/">backends</a>,  <a href="../concepts/dev-environments/">dev environments</a>, <a href="../concepts/tasks/">tasks</a>, <a href="../concepts/services/">services</a>, and <a href="../concepts/fleets/">fleets</a></li>
 <li>Browse <a href="../examples/">examples</a></li>
 <li>Join <a href="https://discord.gg/u8SmfwPpMd">Discord</a></li>
 </ol>
@@ -5408,7 +5293,6 @@ Model<span class="w"> </span>Qwen/Qwen3.6-27B<span class="w"> </span>is<span cla
           <a href="/docs/examples/training/trl/" class="tx-footer__section-link">Training</a>
           <a href="/docs/examples/clusters/aws/" class="tx-footer__section-link">Clusters</a>
           <a href="/docs/examples/inference/sglang/" class="tx-footer__section-link">Inference</a>
-          <a href="/docs/examples/models/deepseek-v4/" class="tx-footer__section-link">Models</a>
           <a href="/docs/examples/accelerators/amd/" class="tx-footer__section-link">Accelerators</a>
         </div>
 

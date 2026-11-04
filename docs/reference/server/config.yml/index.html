@@ -2401,7 +2401,7 @@
   <span class="md-ellipsis">
     
   
-    Models
+    Accelerators
   
 
     
@@ -2414,122 +2414,6 @@
         
         <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_4_4_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2_4_4">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Models
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../examples/models/deepseek-v4/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    DeepSeek V4
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../examples/models/qwen36/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Qwen 3.6
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-    
-    
-      
-      
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4_5" >
-        
-          
-          <label class="md-nav__link" for="__nav_2_4_5" id="__nav_2_4_5_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Accelerators
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_4_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2_4_5">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -5320,9 +5204,17 @@ to configure <a href="../../../concepts/backends/">backends</a> and other <a hre
 <h6 id="kubernetes-contexts-proxy_jump"><code>projects[n].backends[type=kubernetes].contexts[n].proxy_jump</code><a class="headerlink" href="#kubernetes-contexts-proxy_jump" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="hostname"><code>hostname</code> - (Optional) <code>str</code> The external IP address or hostname of any node.<a class="headerlink" href="#hostname" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="port"><code>port</code> - (Optional) <code>int</code> Any port accessible outside of the cluster.<a class="headerlink" href="#port" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="cpu"><code>cpu</code> - (Optional) <code>str</code> The jump pod's CPU request and limit, as a Kubernetes quantity, e.g., <code>1</code>, <code>500m</code>. Defaults to <code>500m</code>.<a class="headerlink" href="#cpu" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="memory"><code>memory</code> - (Optional) <code>str</code> The jump pod's memory request and limit, as a Kubernetes quantity, e.g., <code>2Gi</code>, <code>512Mi</code>. Defaults to <code>1Gi</code>.<a class="headerlink" href="#memory" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="node_selector"><code>node_selector</code> - (Optional) <code>list[str]</code> The labels that the jump pod's node must have. Each item is <code>key=value</code>, <code>key=</code> (an empty value), or <code>key</code> (any value).<a class="headerlink" href="#node_selector" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="tolerations"><code>tolerations</code> - (Optional) <code>list[str]</code> The node taints that the jump pod tolerates. Each item is <code>key[=value][:effect]</code>, as in <code>kubectl taint</code>. Without <code>=value</code>, any value is tolerated; without <code>:effect</code>, any effect. If not set, defaults to the GPU node taints when every node is tainted, or to none if <code>node_selector</code> is set.<a class="headerlink" href="#tolerations" title="Permanent link">&para;</a></h6>
 <h6 id="kubernetes-proxy_jump"><code>projects[n].backends[type=kubernetes].proxy_jump</code><a class="headerlink" href="#kubernetes-proxy_jump" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="hostname"><code>hostname</code> - (Optional) <code>str</code> The external IP address or hostname of any node.<a class="headerlink" href="#hostname" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="port"><code>port</code> - (Optional) <code>int</code> Any port accessible outside of the cluster.<a class="headerlink" href="#port" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="cpu"><code>cpu</code> - (Optional) <code>str</code> The jump pod's CPU request and limit, as a Kubernetes quantity, e.g., <code>1</code>, <code>500m</code>. Defaults to <code>500m</code>.<a class="headerlink" href="#cpu" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="memory"><code>memory</code> - (Optional) <code>str</code> The jump pod's memory request and limit, as a Kubernetes quantity, e.g., <code>2Gi</code>, <code>512Mi</code>. Defaults to <code>1Gi</code>.<a class="headerlink" href="#memory" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="node_selector"><code>node_selector</code> - (Optional) <code>list[str]</code> The labels that the jump pod's node must have. Each item is <code>key=value</code>, <code>key=</code> (an empty value), or <code>key</code> (any value).<a class="headerlink" href="#node_selector" title="Permanent link">&para;</a></h6>
+<h6 class="reference-item" id="tolerations"><code>tolerations</code> - (Optional) <code>list[str]</code> The node taints that the jump pod tolerates. Each item is <code>key[=value][:effect]</code>, as in <code>kubectl taint</code>. Without <code>=value</code>, any value is tolerated; without <code>:effect</code>, any effect. If not set, defaults to the GPU node taints when every node is tainted, or to none if <code>node_selector</code> is set.<a class="headerlink" href="#tolerations" title="Permanent link">&para;</a></h6>
 <h5 id="vultr"><code>projects[n].backends[type=vultr]</code><a class="headerlink" href="#vultr" title="Permanent link">&para;</a></h5>
 <h6 class="reference-item" id="type"><code>type</code> - (Required) <code>"vultr"</code> The type of backend. Must be <code>vultr</code>.<a class="headerlink" href="#type" title="Permanent link">&para;</a></h6>
 <h6 class="reference-item" id="regions"><code>regions</code> - (Optional) <code>list[str]</code> The list of Vultr regions. Omit to use all regions.<a class="headerlink" href="#regions" title="Permanent link">&para;</a></h6>
@@ -5528,7 +5420,6 @@ to configure <a href="../../../concepts/backends/">backends</a> and other <a hre
           <a href="/docs/examples/training/trl/" class="tx-footer__section-link">Training</a>
           <a href="/docs/examples/clusters/aws/" class="tx-footer__section-link">Clusters</a>
           <a href="/docs/examples/inference/sglang/" class="tx-footer__section-link">Inference</a>
-          <a href="/docs/examples/models/deepseek-v4/" class="tx-footer__section-link">Models</a>
           <a href="/docs/examples/accelerators/amd/" class="tx-footer__section-link">Accelerators</a>
         </div>
 

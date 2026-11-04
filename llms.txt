@@ -70,11 +70,6 @@
 - [NIM](https://dstack.ai/docs/examples/inference/nim.md): Deploying Nemotron-3-Super-120B-A12B using NVIDIA NIM
 - [TensorRT-LLM](https://dstack.ai/docs/examples/inference/trtllm.md): Deploying Qwen3-235B-A22B-FP8 using NVIDIA TensorRT-LLM on NVIDIA GPUs
 
-### Models
-
-- [DeepSeek V4](https://dstack.ai/docs/examples/models/deepseek-v4.md): Deploying DeepSeek-V4-Pro using SGLang on NVIDIA B200:8
-- [Qwen 3.6](https://dstack.ai/docs/examples/models/qwen36.md): Deploying Qwen3.6-27B using SGLang on NVIDIA and AMD GPUs
-
 ### Accelerators
 
 - [AMD](https://dstack.ai/docs/examples/accelerators/amd.md): Running dev environments, tasks, and services on AMD GPUs

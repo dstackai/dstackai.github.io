@@ -2690,7 +2690,7 @@
   <span class="md-ellipsis">
     
   
-    Models
+    Accelerators
   
 
     
@@ -2703,122 +2703,6 @@
         
         <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_4_4_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2_4_4">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Models
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../examples/models/deepseek-v4/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    DeepSeek V4
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../examples/models/qwen36/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Qwen 3.6
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-    
-    
-      
-      
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4_5" >
-        
-          
-          <label class="md-nav__link" for="__nav_2_4_5" id="__nav_2_4_5_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Accelerators
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_4_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2_4_5">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -5669,10 +5553,10 @@ If you need <code>nvcc</code>, set the <a href="../../reference/dstack.yml/dev-e
 
 </div>
 
-<p>Cannot be used with <code>python</code> or <code>image</code>. Not supported on <code>runpod</code>, <code>vastai</code>, or <code>kubernetes</code>.</p>
+<p>Cannot be used with <code>python</code> or <code>image</code>. Not supported on <code>daytona</code>, <code>lium</code>, <code>runpod</code>, <code>slurm</code>, or <code>vastai</code>.</p>
 <h4 id="privileged-mode">Privileged mode<a class="headerlink" href="#privileged-mode" title="Permanent link">&para;</a></h4>
 <p>To enable privileged mode, set <a href="../../reference/dstack.yml/dev-environment/#privileged"><code>privileged</code></a> to <code>true</code>.</p>
-<p>Not supported with <code>runpod</code>, <code>vastai</code>, and <code>kubernetes</code>.</p>
+<p>Not supported with <code>daytona</code>, <code>lium</code>, <code>runpod</code>, <code>slurm</code>, and <code>vastai</code>.</p>
 <h4 id="private-registry">Private registry<a class="headerlink" href="#private-registry" title="Permanent link">&para;</a></h4>
 <p>Use the <a href="../../reference/dstack.yml/dev-environment/#registry_auth"><code>registry_auth</code></a> property to provide credentials for a private Docker registry. </p>
 <div editor-title=".dstack.yml"> 
@@ -6090,7 +5974,7 @@ If the run reuses an existing fleet instance, only the fleet's
 <p>If an instance remains <code>idle</code>, it is automatically terminated after <code>idle_duration</code>,
 unless the fleet is already at <code>nodes.min</code>.</p>
 <blockquote>
-<p>Not applied for container-based backends (Kubernetes, Vast.ai, Runpod).</p>
+<p>Not applied for <a href="../backends/#container-based">container-based</a> backends.</p>
 </blockquote>
 <div class="admonition info">
 <p class="admonition-title">Reference</p>
@@ -6255,7 +6139,6 @@ Pass <code>--diagnose</code> or <code>-d</code> to view diagnostic logs, which c
           <a href="/docs/examples/training/trl/" class="tx-footer__section-link">Training</a>
           <a href="/docs/examples/clusters/aws/" class="tx-footer__section-link">Clusters</a>
           <a href="/docs/examples/inference/sglang/" class="tx-footer__section-link">Inference</a>
-          <a href="/docs/examples/models/deepseek-v4/" class="tx-footer__section-link">Models</a>
           <a href="/docs/examples/accelerators/amd/" class="tx-footer__section-link">Accelerators</a>
         </div>
 

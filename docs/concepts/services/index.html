@@ -2813,7 +2813,7 @@
   <span class="md-ellipsis">
     
   
-    Models
+    Accelerators
   
 
     
@@ -2826,122 +2826,6 @@
         
         <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_4_4_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2_4_4">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Models
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../examples/models/deepseek-v4/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    DeepSeek V4
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../examples/models/qwen36/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Qwen 3.6
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-    
-    
-      
-      
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4_5" >
-        
-          
-          <label class="md-nav__link" for="__nav_2_4_5" id="__nav_2_4_5_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Accelerators
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_4_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2_4_5">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -5691,11 +5575,14 @@
 
 
 <h1 id="services">Services<a class="headerlink" href="#services" title="Permanent link">&para;</a></h1>
-<p>Services allow you to deploy models or web apps as secure and scalable endpoints.</p>
+<p>Services allow you to deploy models as secure and scalable inference endpoints, with support for replica groups, routers, and PD disaggregation.</p>
 <details class="info">
 <summary>Prerequisites</summary>
 <p>Before running a service, make sure you’ve <a href="../../installation/">installed</a> the server and CLI, and created a <a href="../fleets/">fleet</a>.</p>
 </details>
+<blockquote>
+<p>To optimize model inference with an agent, it's recommended to use <a href="../presets/">presets</a>.</p>
+</blockquote>
 <h2 id="apply-a-configuration">Apply a configuration<a class="headerlink" href="#apply-a-configuration" title="Permanent link">&para;</a></h2>
 <p>First, define a service configuration as a YAML file in your project folder.
 The filename must end with <code>.dstack.yml</code> (e.g. <code>.dstack.yml</code> or <code>dev.dstack.yml</code> are both acceptable).</p>
@@ -5798,7 +5685,7 @@ Provisioning...
 Service<span class="w"> </span>is<span class="w"> </span>published<span class="w"> </span>at:
 <span class="w">  </span>http://localhost:3000/proxy/services/main/qwen36/
 Model<span class="w"> </span>Qwen/Qwen3.6-27B<span class="w"> </span>is<span class="w"> </span>published<span class="w"> </span>at:
-<span class="w">  </span>http://localhost:3000/proxy/models/main/
+<span class="w">  </span>http://localhost:3000/proxy/services/main/qwen36/v1
 </code></pre></div>
 
 </div>
@@ -5961,7 +5848,7 @@ which worker serves each request based on routing policy.</p>
 </div>
 </div>
 </div>
-<p><a href="../../reference/dstack.yml/service/#groups"><code>groups</code></a> and top-level <a href="../../reference/dstack.yml/service/#replicas"><code>replicas</code></a> are mutually exclusive.</p>
+<p><a href="../../reference/dstack.yml/service/#groups"><code>groups</code></a> and top-level <a href="../../reference/dstack.yml/service/#replicas"><code>replicas</code></a> are mutually exclusive. If <code>groups</code> is set, top-level <code>resources</code> is ignored. Set <code>resources</code> in each group.</p>
 <blockquote>
 <p>Properties such as <code>regions</code>, <code>port</code>, <code>env</code> and some other cannot be configured per replica group. This support is coming soon.</p>
 </blockquote>
@@ -6021,6 +5908,7 @@ the index of the replica within that group.</p>
 <span class="w">          </span><span class="no">--model-path $MODEL_ID \</span>
 <span class="w">          </span><span class="no">--disaggregation-mode prefill \</span>
 <span class="w">          </span><span class="no">--disaggregation-transfer-backend nixl \</span>
+<span class="w">          </span><span class="no">--host 0.0.0.0 \</span>
 <span class="w">          </span><span class="no">--port 8000 \</span>
 <span class="w">          </span><span class="no">--disaggregation-bootstrap-port 8998</span>
 <span class="w">    </span><span class="nt">resources</span><span class="p">:</span>
@@ -6033,18 +5921,13 @@ the index of the replica within that group.</p>
 <span class="w">          </span><span class="no">--model-path $MODEL_ID \</span>
 <span class="w">          </span><span class="no">--disaggregation-mode decode \</span>
 <span class="w">          </span><span class="no">--disaggregation-transfer-backend nixl \</span>
+<span class="w">          </span><span class="no">--host 0.0.0.0 \</span>
 <span class="w">          </span><span class="no">--port 8000</span>
 <span class="w">    </span><span class="nt">resources</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">H200</span>
 
 <span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8000</span>
 <span class="nt">model</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">zai-org/GLM-4.5-Air-FP8</span>
-
-<span class="c1"># Custom probe is required for PD disaggregation.</span>
-<span class="nt">probes</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http</span>
-<span class="w">    </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/health</span>
-<span class="w">    </span><span class="nt">interval</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">15s</span>
 </code></pre></div>
 </div>
 <blockquote>
@@ -6227,12 +6110,6 @@ the index of the replica within that group.</p>
 <span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30000</span>
 <span class="nt">model</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Qwen/Qwen2.5-72B-Instruct</span>
 
-<span class="c1"># Custom probe is required for PD disaggregation.</span>
-<span class="nt">probes</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http</span>
-<span class="w">    </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/health</span>
-<span class="w">    </span><span class="nt">interval</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">15s</span>
-
 <span class="nt">volumes</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/usr/lib64/libibverbs/libbnxt_re-rdmav34.so:/usr/lib/x86_64-linux-gnu/libibverbs/libbnxt_re-rdmav34.so</span>
 </code></pre></div>
@@ -6285,16 +6162,18 @@ a gateway is already pre-configured for you. -->
 <div editor-title=".dstack.yml">
 
 <div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service</span>
-<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">llama-2-7b-service</span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">qwen3-service</span>
 
 <span class="nt">python</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.12</span>
 
 <span class="nt">env</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HF_TOKEN</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MODEL=NousResearch/Llama-2-7b-chat-hf</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MODEL=Qwen/Qwen3-4B</span>
 <span class="nt">commands</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uv pip install vllm</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python -m vllm.entrypoints.openai.api_server --model $MODEL --port 8000</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">    </span><span class="no">vllm serve $MODEL \</span>
+<span class="w">      </span><span class="no">--port 8000</span>
 <span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8000</span>
 
 <span class="nt">resources</span><span class="p">:</span>
@@ -6382,7 +6261,7 @@ a gateway is already pre-configured for you. -->
 </ul>
 <p>If multiple probes are configured for the service, their statuses are displayed in the order in which the probes appear in the configuration.</p>
 </details>
-<p>Probes are executed for each service replica while the replica is <code>running</code>. A probe execution is considered successful if the replica responds with a <code>2xx</code> status code. Probe statuses do not affect how <code>dstack</code> handles replicas, except during <a href="#rolling-deployment">rolling deployments</a>.</p>
+<p>Probes are executed for each service replica while the replica is <code>running</code>. A probe execution is considered successful if the replica responds with a <code>2xx</code> status code. A replica starts receiving requests only after each of its probes succeeds <a href="../../reference/dstack.yml/service/#ready_after"><code>ready_after</code></a> times in a row. After that, probe statuses do not affect how <code>dstack</code> handles the replica, except during <a href="#rolling-deployment">rolling deployments</a>.</p>
 <details class="info">
 <summary>HTTP request configuration</summary>
 <p>You can configure the HTTP request method, headers, and other properties. To include secret values in probe requests, use environment variable interpolation, which is enabled for the <code>url</code>, <code>headers[i].value</code>, and <code>body</code> properties.</p>
@@ -6419,6 +6298,9 @@ To disable probes entirely when <code>model</code> is set, explicitly set <code>
 In this case, <code>dstack</code> will use the service's <code>/v1/chat/completions</code> service.</p>
 <p>When <code>model</code> is set, <code>dstack</code> automatically configures <a href="#probes"><code>probes</code></a> to verify model health.
 To customize or disable this, set <code>probes</code> explicitly.</p>
+<blockquote>
+<p>The <code>model</code> property is optional. Services can run any kind of web application.</p>
+</blockquote>
 <h3 id="scaling">Scaling<a class="headerlink" href="#scaling" title="Permanent link">&para;</a></h3>
 <p>To scale a service automatically, set <a href="#replicas"><code>replicas</code></a> to a range and configure
 <a href="../../reference/dstack.yml/service/#scaling"><code>scaling</code></a>. <code>dstack</code> then adjusts the number of
@@ -6594,10 +6476,10 @@ If you need <code>nvcc</code>, set the <a href="../../reference/dstack.yml/dev-e
 
 </div>
 
-<p>Cannot be used with <code>python</code> or <code>image</code>. Not supported on <code>runpod</code>, <code>vastai</code>, or <code>kubernetes</code>.</p>
+<p>Cannot be used with <code>python</code> or <code>image</code>. Not supported on <code>daytona</code>, <code>lium</code>, <code>runpod</code>, <code>slurm</code>, or <code>vastai</code>.</p>
 <h4 id="privileged-mode">Privileged mode<a class="headerlink" href="#privileged-mode" title="Permanent link">&para;</a></h4>
 <p>To enable privileged mode, set <a href="../../reference/dstack.yml/dev-environment/#privileged"><code>privileged</code></a> to <code>true</code>.</p>
-<p>Not supported with <code>runpod</code>, <code>vastai</code>, and <code>kubernetes</code>.</p>
+<p>Not supported with <code>daytona</code>, <code>lium</code>, <code>runpod</code>, <code>slurm</code>, and <code>vastai</code>.</p>
 <h4 id="private-registry">Private registry<a class="headerlink" href="#private-registry" title="Permanent link">&para;</a></h4>
 <p>Use the <a href="../../reference/dstack.yml/dev-environment/#registry_auth"><code>registry_auth</code></a> property to provide credentials for a private Docker registry.</p>
 <div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service</span>
@@ -6635,7 +6517,7 @@ If you need <code>nvcc</code>, set the <a href="../../reference/dstack.yml/dev-e
 <div editor-title="examples/.dstack.yml">
 
 <div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service</span>
-<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">llama-2-7b-service</span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">qwen3-service</span>
 
 <span class="nt">files</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">.:examples</span><span class="w">  </span><span class="c1"># Maps the directory with `.dstack.yml` to `&lt;working dir&gt;/examples`</span>
@@ -6645,10 +6527,12 @@ If you need <code>nvcc</code>, set the <a href="../../reference/dstack.yml/dev-e
 
 <span class="nt">env</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HF_TOKEN</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MODEL=NousResearch/Llama-2-7b-chat-hf</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MODEL=Qwen/Qwen3-4B</span>
 <span class="nt">commands</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uv pip install vllm</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python -m vllm.entrypoints.openai.api_server --model $MODEL --port 8000</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">    </span><span class="no">vllm serve $MODEL \</span>
+<span class="w">      </span><span class="no">--port 8000</span>
 <span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8000</span>
 
 <span class="nt">resources</span><span class="p">:</span>
@@ -6665,7 +6549,7 @@ If the container path is relative, it’s resolved relative to the <a href="#wor
 <div editor-title="examples/.dstack.yml">
 
 <div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service</span>
-<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">llama-2-7b-service</span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">qwen3-service</span>
 
 <span class="nt">files</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">../examples</span><span class="w">  </span><span class="c1"># Maps the parent directory of `.dstack.yml` to `&lt;working dir&gt;/../examples`</span>
@@ -6675,10 +6559,12 @@ If the container path is relative, it’s resolved relative to the <a href="#wor
 
 <span class="nt">env</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HF_TOKEN</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MODEL=NousResearch/Llama-2-7b-chat-hf</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MODEL=Qwen/Qwen3-4B</span>
 <span class="nt">commands</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uv pip install vllm</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python -m vllm.entrypoints.openai.api_server --model $MODEL --port 8000</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">    </span><span class="no">vllm serve $MODEL \</span>
+<span class="w">      </span><span class="no">--port 8000</span>
 <span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8000</span>
 
 <span class="nt">resources</span><span class="p">:</span>
@@ -6701,7 +6587,7 @@ The 2MB upload limit can be increased by setting the <code>DSTACK_SERVER_CODE_UP
 <div editor-title="examples/.dstack.yml">
 
 <div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service</span>
-<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">llama-2-7b-service</span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">qwen3-service</span>
 
 <span class="nt">repos</span><span class="p">:</span>
 <span class="w">  </span><span class="c1"># Clones the repo from the parent directory (`examples/..`) to `&lt;working dir&gt;`</span>
@@ -6711,10 +6597,12 @@ The 2MB upload limit can be increased by setting the <code>DSTACK_SERVER_CODE_UP
 
 <span class="nt">env</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HF_TOKEN</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MODEL=NousResearch/Llama-2-7b-chat-hf</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MODEL=Qwen/Qwen3-4B</span>
 <span class="nt">commands</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uv pip install vllm</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python -m vllm.entrypoints.openai.api_server --model $MODEL --port 8000</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">    </span><span class="no">vllm serve $MODEL \</span>
+<span class="w">      </span><span class="no">--port 8000</span>
 <span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8000</span>
 
 <span class="nt">resources</span><span class="p">:</span>
@@ -6732,7 +6620,7 @@ The 2MB upload limit can be increased by setting the <code>DSTACK_SERVER_CODE_UP
 <p>You can override the repo directory using either a relative or an absolute path:</p>
 <div editor-title="examples/.dstack.yml">
 <div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service</span>
-<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">llama-2-7b-service</span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">qwen3-service</span>
 
 <span class="nt">repos</span><span class="p">:</span>
 <span class="w">  </span><span class="c1"># Clones the repo in the parent directory (`examples/..`) to `/my-repo`</span>
@@ -6742,10 +6630,12 @@ The 2MB upload limit can be increased by setting the <code>DSTACK_SERVER_CODE_UP
 
 <span class="nt">env</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HF_TOKEN</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MODEL=NousResearch/Llama-2-7b-chat-hf</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MODEL=Qwen/Qwen3-4B</span>
 <span class="nt">commands</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uv pip install vllm</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python -m vllm.entrypoints.openai.api_server --model $MODEL --port 8000</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">    </span><span class="no">vllm serve $MODEL \</span>
+<span class="w">      </span><span class="no">--port 8000</span>
 <span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8000</span>
 
 <span class="nt">resources</span><span class="p">:</span>
@@ -6758,7 +6648,7 @@ The 2MB upload limit can be increased by setting the <code>DSTACK_SERVER_CODE_UP
 <p>If the repo directory is not empty, the run will fail with a runner error.
 To override this behavior, you can set <code>if_exists</code> to <code>skip</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service</span>
-<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">llama-2-7b-service</span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">qwen3-service</span>
 
 <span class="nt">repos</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">local_path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">..</span>
@@ -6769,10 +6659,12 @@ To override this behavior, you can set <code>if_exists</code> to <code>skip</cod
 
 <span class="nt">env</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HF_TOKEN</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MODEL=NousResearch/Llama-2-7b-chat-hf</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MODEL=Qwen/Qwen3-4B</span>
 <span class="nt">commands</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uv pip install vllm</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python -m vllm.entrypoints.openai.api_server --model $MODEL --port 8000</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">    </span><span class="no">vllm serve $MODEL \</span>
+<span class="w">      </span><span class="no">--port 8000</span>
 <span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8000</span>
 
 <span class="nt">resources</span><span class="p">:</span>
@@ -6791,7 +6683,7 @@ You can increase the 2MB limit by setting the <code>DSTACK_SERVER_CODE_UPLOAD_LI
 <!-- TODO: Add a more relevant example -->
 <div editor-title="examples/.dstack.yml">
 <div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service</span>
-<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">llama-2-7b-service</span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">qwen3-service</span>
 
 <span class="nt">repos</span><span class="p">:</span>
 <span class="w">  </span><span class="c1"># Clone the repo to `&lt;working dir&gt;`</span>
@@ -6801,10 +6693,12 @@ You can increase the 2MB limit by setting the <code>DSTACK_SERVER_CODE_UPLOAD_LI
 
 <span class="nt">env</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HF_TOKEN</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MODEL=NousResearch/Llama-2-7b-chat-hf</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MODEL=Qwen/Qwen3-4B</span>
 <span class="nt">commands</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uv pip install vllm</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python -m vllm.entrypoints.openai.api_server --model $MODEL --port 8000</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">    </span><span class="no">vllm serve $MODEL \</span>
+<span class="w">      </span><span class="no">--port 8000</span>
 <span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8000</span>
 
 <span class="nt">resources</span><span class="p">:</span>
@@ -6837,8 +6731,8 @@ range (e.g. <code>24GB..</code>, or <code>24GB..80GB</code>, or <code>..80GB</co
 <span class="nt">commands</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uv pip install vllm</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
-<span class="w">    </span><span class="no">vllm serve $MODEL_ID</span>
-<span class="w">      </span><span class="no">--max-model-len $MAX_MODEL_LEN</span>
+<span class="w">    </span><span class="no">vllm serve $MODEL_ID \</span>
+<span class="w">      </span><span class="no">--max-model-len $MAX_MODEL_LEN \</span>
 <span class="w">      </span><span class="no">--tensor-parallel-size $DSTACK_GPUS_NUM</span>
 <span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8000</span>
 
@@ -6931,6 +6825,9 @@ so that browser-side scripts and CSS work correctly with the path prefix.</p>
 <span class="c1"># Do not strip the path prefix</span>
 <span class="nt">strip_prefix</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
 
+<span class="nt">repos</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">.</span>
+
 <span class="nt">env</span><span class="p">:</span>
 <span class="w">  </span><span class="c1"># Configure Dash to work with a path prefix</span>
 <span class="w">  </span><span class="c1"># Replace `main` with your dstack project name</span>
@@ -6987,15 +6884,17 @@ on a dedicated domain name by setting up a <a href="../gateways/">gateway</a>.</
 <div editor-title=".dstack.yml">
 
 <div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service</span>
-<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">llama-2-7b-service</span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">qwen3-service</span>
 
 <span class="nt">python</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.12</span>
 <span class="nt">env</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HF_TOKEN</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MODEL=NousResearch/Llama-2-7b-chat-hf</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MODEL=Qwen/Qwen3-4B</span>
 <span class="nt">commands</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uv pip install vllm</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python -m vllm.entrypoints.openai.api_server --model $MODEL --port 8000</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">    </span><span class="no">vllm serve $MODEL \</span>
+<span class="w">      </span><span class="no">--port 8000</span>
 <span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8000</span>
 
 <span class="nt">resources</span><span class="p">:</span>
@@ -7013,15 +6912,17 @@ on a dedicated domain name by setting up a <a href="../gateways/">gateway</a>.</
 <div editor-title=".dstack.yml">
 
 <div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service</span>
-<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">llama-2-7b-service</span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">qwen3-service</span>
 
 <span class="nt">python</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.12</span>
 <span class="nt">env</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HF_TOKEN</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MODEL=NousResearch/Llama-2-7b-chat-hf</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MODEL=Qwen/Qwen3-4B</span>
 <span class="nt">commands</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uv pip install vllm</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python -m vllm.entrypoints.openai.api_server --model $MODEL --port 8000</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">    </span><span class="no">vllm serve $MODEL \</span>
+<span class="w">      </span><span class="no">--port 8000</span>
 <span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8000</span>
 
 <span class="nt">resources</span><span class="p">:</span>
@@ -7115,7 +7016,7 @@ If the run reuses an existing fleet instance, only the fleet's
 <p>If an instance remains <code>idle</code>, it is automatically terminated after <code>idle_duration</code>,
 unless the fleet is already at <code>nodes.min</code>.</p>
 <blockquote>
-<p>Not applied for container-based backends (Kubernetes, Vast.ai, Runpod).</p>
+<p>Not applied for <a href="../backends/#container-based">container-based</a> backends.</p>
 </blockquote>
 <div class="admonition info">
 <p class="admonition-title">Reference</p>
@@ -7144,7 +7045,7 @@ Update<span class="w"> </span>the<span class="w"> </span>run?<span class="w"> </
 </div>
 
 <p>If approved, <code>dstack</code> gradually updates the service replicas. To update a replica, <code>dstack</code> starts a new replica, waits for it to become <code>running</code> and for all of its <a href="#probes">probes</a> to pass, then terminates the old replica. This process is repeated for each replica, one at a time.</p>
-<p>You can track the progress of rolling deployment in both <code>dstack apply</code> or <code>dstack ps</code>.
+<p>You can track the progress of rolling deployment in both <code>dstack apply</code> and <code>dstack ps</code>.
 Older replicas have lower <code>deployment</code> numbers; newer ones have higher.</p>
 <!--
     Not using termy for this example, since the example shows an intermediate CLI state,
@@ -7187,8 +7088,8 @@ Pass <code>--diagnose</code> or <code>-d</code> to view diagnostic logs, which c
 <p class="admonition-title">What's next?</p>
 <ol>
 <li>Read about <a href="../dev-environments/">dev environments</a> and <a href="../tasks/">tasks</a></li>
-<li>Learn how to manage <a href="../fleets/">fleets</a></li>
-<li>See how to set up <a href="../gateways/">gateways</a></li>
+<li>Learn how to use <a href="../presets/">presets</a> to optimize inference</li>
+<li>See how to manage <a href="../fleets/">fleets</a> and set up <a href="../gateways/">gateways</a></li>
 <li>Check the <a href="../../examples/inference/vllm/">vLLM</a> and
    <a href="../../examples/inference/nim/">NIM</a> examples</li>
 </ol>
@@ -7326,7 +7227,6 @@ Pass <code>--diagnose</code> or <code>-d</code> to view diagnostic logs, which c
           <a href="/docs/examples/training/trl/" class="tx-footer__section-link">Training</a>
           <a href="/docs/examples/clusters/aws/" class="tx-footer__section-link">Clusters</a>
           <a href="/docs/examples/inference/sglang/" class="tx-footer__section-link">Inference</a>
-          <a href="/docs/examples/models/deepseek-v4/" class="tx-footer__section-link">Models</a>
           <a href="/docs/examples/accelerators/amd/" class="tx-footer__section-link">Accelerators</a>
         </div>
 

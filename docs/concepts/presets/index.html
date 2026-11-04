@@ -2702,7 +2702,7 @@
   <span class="md-ellipsis">
     
   
-    Models
+    Accelerators
   
 
     
@@ -2715,122 +2715,6 @@
         
         <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_4_4_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2_4_4">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Models
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../examples/models/deepseek-v4/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    DeepSeek V4
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../examples/models/qwen36/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Qwen 3.6
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-    
-    
-      
-      
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4_5" >
-        
-          
-          <label class="md-nav__link" for="__nav_2_4_5" id="__nav_2_4_5_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Accelerators
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_4_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2_4_5">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -5470,9 +5354,6 @@
 
 <h1 id="presets">Presets<a class="headerlink" href="#presets" title="Permanent link">&para;</a></h1>
 <p>Presets offer a toolkit that streamlines agent-based model inference optimization and a portable format to deploy the optimized inference endpoint to any cloud, Kubernetes cluster, or on-prem fleet.</p>
-<blockquote>
-<p>The presets feature is experimental and may change.</p>
-</blockquote>
 <details class="info">
 <summary>Prerequisites</summary>
 <p>Before using presets, make sure you’ve <a href="../../installation/">installed</a> the server and CLI, and created a <a href="../fleets/">fleet</a>.</p>
@@ -5529,7 +5410,7 @@ optimization is done against that hardware. Point <code>dstack apply</code> to a
 correspondingly, via <code>fleets</code> inside the preset configuration or via <code>--fleet</code> in the CLI.</p>
 </blockquote>
 <p>The command executes entirely locally and uses the locally installed <code>claude</code> or <code>codex</code> CLI along with <code>dstack</code>'s bundled skills (see <a href="#agent">Agent</a>). The agent uses a <code>dstack</code> task to find the best serving configuration for the available fleet offers, then submits it as a <code>dstack</code> service for a final benchmark.</p>
-<p>You can stop watching with <code>Ctrl</code>+<code>C</code> at any time. The agent keeps running, and <code>dstack preset logs -f</code> follows it again. Resume an interrupted creation with <code>dstack preset resume</code>:</p>
+<p>Pressing <code>Ctrl</code>+<code>C</code> asks whether to stop the creation. If you don't stop it, the agent keeps running, and <code>dstack preset logs -f</code> follows it again. Resume an interrupted creation with <code>dstack preset resume</code>:</p>
 <div class="termy">
 
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>dstack<span class="w"> </span>preset<span class="w"> </span>resume<span class="w"> </span>a1b2c3d4
@@ -5931,7 +5812,6 @@ and <a href="https://skills.sh/dstackai/dstack/dstack-presets"><code>dstack-pres
           <a href="/docs/examples/training/trl/" class="tx-footer__section-link">Training</a>
           <a href="/docs/examples/clusters/aws/" class="tx-footer__section-link">Clusters</a>
           <a href="/docs/examples/inference/sglang/" class="tx-footer__section-link">Inference</a>
-          <a href="/docs/examples/models/deepseek-v4/" class="tx-footer__section-link">Models</a>
           <a href="/docs/examples/accelerators/amd/" class="tx-footer__section-link">Accelerators</a>
         </div>
 

@@ -2541,7 +2541,7 @@
   <span class="md-ellipsis">
     
   
-    Models
+    Accelerators
   
 
     
@@ -2554,122 +2554,6 @@
         
         <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_4_4_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2_4_4">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Models
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../models/deepseek-v4/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    DeepSeek V4
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../models/qwen36/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Qwen 3.6
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-    
-    
-      
-      
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4_5" >
-        
-          
-          <label class="md-nav__link" for="__nav_2_4_5" id="__nav_2_4_5_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Accelerators
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_4_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2_4_5">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -5232,7 +5116,7 @@ VPCs and filewall rules. </p>
 <p>Ensure VPCs allow internal traffic between nodes for MPI/NCCL to function.</p>
 </div>
 <div class="tabbed-block">
-<p>A3 Edge/High require at least 4 <code>extra_vpcs</code> for data NICs.</p>
+<p>A3 Mega requires at least 8 <code>extra_vpcs</code> for data NICs.</p>
 <div editor-title="~/.dstack/server/config.yml">
 <div class="highlight"><pre><span></span><code><span class="nt">projects</span><span class="p">:</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">main</span>
@@ -5448,6 +5332,25 @@ Provisioning...
 </div>
 </div>
 </div>
+<details class="info">
+<summary>Reservations</summary>
+<p>To use an existing <a href="https://cloud.google.com/compute/docs/instances/reservations-overview">reservation</a>,
+specify its name via <a href="../../../reference/dstack.yml/fleet/#reservation"><code>reservation</code></a>:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">fleet</span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">a3mega-fleet</span>
+
+<span class="nt">placement</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cluster</span>
+<span class="nt">nodes</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
+
+<span class="nt">instance_types</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">a3-megagpu-8g</span>
+
+<span class="nt">reservation</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my-reservation</span>
+</code></pre></div>
+<p>For a <a href="https://cloud.google.com/compute/docs/instances/reservations-shared">shared reservation</a> owned by another project,
+specify <code>projects/&lt;project id&gt;/reservations/&lt;reservation name&gt;</code>.</p>
+<p><code>dstack</code> then provisions on-demand instances of the reservation's machine type in its zone.</p>
+</details>
 <p>Once the fleet is created, you can run multi-node tasks, in addition to dev environments, services, and regular tasks.</p>
 <h2 id="run-tasks">Run tasks<a class="headerlink" href="#run-tasks" title="Permanent link">&para;</a></h2>
 <h3 id="nccl-tests">NCCL tests<a class="headerlink" href="#nccl-tests" title="Permanent link">&para;</a></h3>
@@ -5828,7 +5731,6 @@ commands:<span class="w"> </span>
           <a href="/docs/examples/training/trl/" class="tx-footer__section-link">Training</a>
           <a href="/docs/examples/clusters/aws/" class="tx-footer__section-link">Clusters</a>
           <a href="/docs/examples/inference/sglang/" class="tx-footer__section-link">Inference</a>
-          <a href="/docs/examples/models/deepseek-v4/" class="tx-footer__section-link">Models</a>
           <a href="/docs/examples/accelerators/amd/" class="tx-footer__section-link">Accelerators</a>
         </div>
 

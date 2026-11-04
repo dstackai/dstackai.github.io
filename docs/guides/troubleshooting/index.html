@@ -2618,7 +2618,7 @@
   <span class="md-ellipsis">
     
   
-    Models
+    Accelerators
   
 
     
@@ -2631,122 +2631,6 @@
         
         <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_4_4_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2_4_4">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Models
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../examples/models/deepseek-v4/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    DeepSeek V4
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../examples/models/qwen36/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Qwen 3.6
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-    
-    
-      
-      
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4_5" >
-        
-          
-          <label class="md-nav__link" for="__nav_2_4_5" id="__nav_2_4_5_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Accelerators
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_4_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2_4_5">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -5381,13 +5265,13 @@ and at least 10GB of memory.</p>
 If you want to use smaller instances, override the <code>cpu</code>, <code>memory</code>, or <code>disk</code>
 properties in your configuration.</p>
 <h4 id="cause-5-gpu-requirements">Cause 5: GPU requirements<a class="headerlink" href="#cause-5-gpu-requirements" title="Permanent link">&para;</a></h4>
-<p>By default, <code>dstack</code> only selects instances with no GPUs or a single NVIDIA GPU.
-If you want to use non-NVIDIA GPUs or multi-GPU instances, set the <code>gpu</code> property
-in your configuration.</p>
-<p>Examples: <code>gpu: amd</code> (one AMD GPU), <code>gpu: A10:4..8</code> (4 to 8 A10 GPUs),
+<p>By default, <code>dstack</code> only selects instances with no GPUs or with NVIDIA GPUs.
+If you want to use other accelerators, such as AMD or Tenstorrent, set the <code>gpu</code> and <code>image</code>
+properties in your configuration.</p>
+<p>Examples: <code>gpu: amd</code> (one or more AMD GPUs), <code>gpu: A10:4..8</code> (4 to 8 A10 GPUs),
 <code>gpu: tt:32</code> (32 Tenstorrent devices).</p>
 <blockquote>
-<p>If you don't specify the number of GPUs, <code>dstack</code> will only select single-GPU instances.</p>
+<p>If you don't specify the number of GPUs, it defaults to <code>1..</code>.</p>
 </blockquote>
 <h4 id="cause-6-network-volumes">Cause 6: Network volumes<a class="headerlink" href="#cause-6-network-volumes" title="Permanent link">&para;</a></h4>
 <p>If your run configuration uses <a href="../../concepts/volumes/#network-volumes">network volumes</a>,
@@ -5397,14 +5281,15 @@ For AWS, the availability zone of the volume and the instance should also match.
 <p>Some <code>dstack</code> features are not supported by all backends. If your configuration uses
 one of these features, <code>dstack</code> will only select offers from the backends that support it.</p>
 <ul>
-<li><a href="../../concepts/fleets/#backend-fleets">Backend fleets</a> configurations,
-  <a href="../../concepts/volumes/#instance-volumes">Instance volumes</a>,
+<li><a href="../../concepts/fleets/#pre-provisioning">Pre-provisioning</a> in backend fleets
+  is only supported by <a href="../../concepts/backends/#vm-based">VM-based</a> backends.</li>
+<li><a href="../../concepts/volumes/#instance-volumes">Instance volumes</a>
   and <a href="../../reference/dstack.yml/dev-environment/#privileged">Privileged containers</a>
-  are supported by all backends except <code>runpod</code>, <code>vastai</code>, and <code>kubernetes</code>.</li>
+  are supported by all backends except <code>daytona</code>, <code>lium</code>, <code>runpod</code>, <code>slurm</code>, and <code>vastai</code>.</li>
 <li><a href="../../concepts/fleets/#cluster-placement">Clusters</a>
   and <a href="../../concepts/tasks/#nodes">multi-node tasks</a>
-  are only supported by the <code>aws</code>, <code>azure</code>, <code>gcp</code>, <code>nebius</code>, <code>oci</code>, and <code>vultr</code> backends,
-  as well as SSH fleets.</li>
+  are only supported by the <code>aws</code>, <code>azure</code>, <code>crusoe</code>, <code>gcp</code>, <code>jarvislabs</code>, <code>kubernetes</code>, <code>nebius</code>,
+  <code>oci</code>, <code>runpod</code>, <code>seeweb</code>, <code>slurm</code>, and <code>vultr</code> backends, as well as SSH fleets.</li>
 <li><a href="../../reference/dstack.yml/fleet/#reservation">Reservations</a>
   are only supported by the <code>aws</code> and <code>gcp</code> backends.</li>
 </ul>
@@ -5427,9 +5312,9 @@ Errors:<span class="w"> </span>g5.xlarge<span class="w"> </span><span class="k">
 fleet, how many of its offers were tried, and what each attempt returned. Repeated errors are
 reported once; every attempt is logged by the server, so check the <a href="#server-logs">server logs</a>
 for the full list.</p>
-<h4 id="cause-1-insufficient-service-quotas">Cause 1: Insufficient service quotas<a class="headerlink" href="#cause-1-insufficient-service-quotas" title="Permanent link">&para;</a></h4>
-<p>If some runs fail to provision, it may be due to an insufficient service quota. For cloud providers like AWS, GCP,
-Azure, and OCI, you often need to request an increased <a href="../protips/#service-quotas">service quota</a> before you can use
+<h4 id="cause-1-insufficient-cloud-quotas">Cause 1: Insufficient cloud quotas<a class="headerlink" href="#cause-1-insufficient-cloud-quotas" title="Permanent link">&para;</a></h4>
+<p>If some runs fail to provision, it may be due to an insufficient cloud quota. For cloud providers like AWS, GCP,
+Azure, and OCI, you often need to request an increased <a href="../protips/#cloud-quotas">quota</a> before you can use
 specific instances.</p>
 <h3 id="run-starts-but-fails">Run starts but fails<a class="headerlink" href="#run-starts-but-fails" title="Permanent link">&para;</a></h3>
 <p>There could be several reasons for a run failing after successful provisioning. </p>
@@ -5451,11 +5336,11 @@ was using spot instances and was interrupted. To address this, you can either se
 <h3 id="services-fail-to-start">Services fail to start<a class="headerlink" href="#services-fail-to-start" title="Permanent link">&para;</a></h3>
 <h4 id="cause-1-gateway-misconfiguration">Cause 1: Gateway misconfiguration<a class="headerlink" href="#cause-1-gateway-misconfiguration" title="Permanent link">&para;</a></h4>
 <p>If all services fail to start with a specific gateway, make sure a
-<a href="../../concepts/gateways/#update-dns-records">correct DNS record</a>
+<a href="../../concepts/gateways/#domain">correct DNS record</a>
 pointing to the gateway's hostname is configured.</p>
 <h3 id="service-endpoint-doesnt-work">Service endpoint doesn't work<a class="headerlink" href="#service-endpoint-doesnt-work" title="Permanent link">&para;</a></h3>
 <h4 id="cause-1-bad-authorization">Cause 1: Bad Authorization<a class="headerlink" href="#cause-1-bad-authorization" title="Permanent link">&para;</a></h4>
-<p>If the service endpoint returns a 403 error, it is likely because the <a href="../../concepts/services/#access-the-endpoint"><code>Authorization</code></a> 
+<p>If the service endpoint returns a 403 error, it is likely because the <a href="../../concepts/services/#authorization"><code>Authorization</code></a> 
 header with the correct <code>dstack</code> token was not provided.</p>
 <h3 id="cannot-access-dev-environment-or-task-ports">Cannot access dev environment or task ports<a class="headerlink" href="#cannot-access-dev-environment-or-task-ports" title="Permanent link">&para;</a></h3>
 <h4 id="cause-1-detached-from-run">Cause 1: Detached from run<a class="headerlink" href="#cause-1-detached-from-run" title="Permanent link">&para;</a></h4>
@@ -5603,7 +5488,6 @@ Also, review the  <code>/root/.dstack/shim.log</code> file on each host used to 
           <a href="/docs/examples/training/trl/" class="tx-footer__section-link">Training</a>
           <a href="/docs/examples/clusters/aws/" class="tx-footer__section-link">Clusters</a>
           <a href="/docs/examples/inference/sglang/" class="tx-footer__section-link">Inference</a>
-          <a href="/docs/examples/models/deepseek-v4/" class="tx-footer__section-link">Models</a>
           <a href="/docs/examples/accelerators/amd/" class="tx-footer__section-link">Accelerators</a>
         </div>
 

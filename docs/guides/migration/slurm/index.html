@@ -3178,7 +3178,7 @@
   <span class="md-ellipsis">
     
   
-    Models
+    Accelerators
   
 
     
@@ -3191,122 +3191,6 @@
         
         <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_4_4_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2_4_4">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Models
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../examples/models/deepseek-v4/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    DeepSeek V4
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../examples/models/qwen36/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Qwen 3.6
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-    
-    
-      
-      
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4_5" >
-        
-          
-          <label class="md-nav__link" for="__nav_2_4_5" id="__nav_2_4_5_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Accelerators
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_4_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2_4_5">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -6859,9 +6743,9 @@ rm<span class="w"> </span>-f<span class="w"> </span><span class="nv">$HOSTFILE</
 <span class="w">    </span><span class="no">--epochs=10</span>
 
 <span class="nt">resources</span><span class="p">:</span>
-<span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">A100:80GB:8</span>
-<span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">200GB..</span>
-<span class="nt">shm_size</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">24GB</span>
+<span class="w">  </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">A100:80GB:8</span>
+<span class="w">  </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">200GB..</span>
+<span class="w">  </span><span class="nt">shm_size</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">24GB</span>
 
 <span class="nt">max_duration</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">24h</span>
 </code></pre></div>
@@ -6893,10 +6777,10 @@ rm<span class="w"> </span>-f<span class="w"> </span><span class="nv">$HOSTFILE</
 <span class="w">    </span><span class="no">fi</span>
 
 <span class="nt">resources</span><span class="p">:</span>
-<span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nvidia:1..8</span>
-<span class="nt">shm_size</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">16GB</span>
+<span class="w">  </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nvidia:1..8</span>
+<span class="w">  </span><span class="nt">shm_size</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">16GB</span>
 </code></pre></div>
-<p>If <code>startup_order</code> and <code>stop_criteria</code> are not configured (as in the PyTorch DDP example above), the master worker starts first and waits until all workers terminate. For MPI workloads, we need to change this.</p>
+<p>If <code>startup_order</code> and <code>stop_criteria</code> are not configured (as in the PyTorch DDP example above), the master and worker nodes start in any order, and the run finishes when all nodes are done. For MPI workloads, we need to change this.</p>
 </div>
 </div>
 </div>
@@ -7160,7 +7044,7 @@ $<span class="w"> </span>sacctmgr<span class="w"> </span>modify<span class="w"> 
 <div class="tabbed-set tabbed-alternate" data-tabs="6:1"><input checked="checked" id="queue-status_1" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="queue-status_1">Queue status</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p>The <code>dstack ps</code> command displays runs and jobs sorted by priority, reflecting the order in which they will be scheduled.</p>
+<p>The <code>dstack ps</code> command displays runs and their jobs, with the most recently submitted runs first.</p>
 <div class="termy">
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>dstack<span class="w"> </span>ps
 <span class="w">  </span>NAME<span class="w">          </span>BACKEND<span class="w">  </span>RESOURCES<span class="w">       </span>PRICE<span class="w">    </span>STATUS<span class="w">       </span>SUBMITTED
@@ -8101,7 +7985,7 @@ $<span class="w"> </span>cat<span class="w"> </span>slurm-12345.out
 <tr>
 <td><strong>Graceful stop</strong></td>
 <td>Grace period with <code>SIGTERM</code> before <code>SIGKILL</code>; <code>--signal</code> sends signal before time limit (e.g., <code>--signal=B:USR1@300</code>)</td>
-<td>Not supported</td>
+<td><code>dstack stop</code> sends <code>SIGINT</code>, then <code>SIGHUP</code> after 5 seconds and <code>SIGKILL</code> after 10 seconds</td>
 </tr>
 <tr>
 <td><strong>Checkpointing</strong></td>
@@ -8440,7 +8324,7 @@ $<span class="w"> </span>sbatch<span class="w"> </span>--dependency<span class="
 <span class="k">fi</span>
 </code></pre></div>
 <h3 id="dstack_13">dstack<a class="headerlink" href="#dstack_13" title="Permanent link">&para;</a></h3>
-<p><code>dstack</code> does not support heterogeneous jobs natively. Use separate runs with <a href="#dstack-workflow-orchestration">workflow orchestration tools (Prefect, Airflow)</a> or submit multiple runs programmatically to coordinate components with different resource requirements.</p>
+<p><code>dstack</code> supports heterogeneous jobs via task <a href="../../../concepts/tasks/#node-groups">node groups</a>. Each group has its own <code>nodes</code> count, <code>resources</code>, <code>commands</code>, and <code>ports</code>.</p>
 <h2 id="whats-next">What's next?<a class="headerlink" href="#whats-next" title="Permanent link">&para;</a></h2>
 <ol>
 <li>Check out <a href="../../../quickstart/">Quickstart</a></li>
@@ -8580,7 +8464,6 @@ $<span class="w"> </span>sbatch<span class="w"> </span>--dependency<span class="
           <a href="/docs/examples/training/trl/" class="tx-footer__section-link">Training</a>
           <a href="/docs/examples/clusters/aws/" class="tx-footer__section-link">Clusters</a>
           <a href="/docs/examples/inference/sglang/" class="tx-footer__section-link">Inference</a>
-          <a href="/docs/examples/models/deepseek-v4/" class="tx-footer__section-link">Models</a>
           <a href="/docs/examples/accelerators/amd/" class="tx-footer__section-link">Accelerators</a>
         </div>
 
