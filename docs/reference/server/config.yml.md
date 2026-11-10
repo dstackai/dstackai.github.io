@@ -177,6 +177,7 @@ to configure [backends](../../concepts/backends.md) and other [server-level sett
 ###### `projects` - (Optional) `list[str]` The list of allowed Nebius project IDs. Omit to use the default project in each region. The project is considered default if it is the only project in the region or if its name starts with `default`. { #projects data-toc-label='projects' class='reference-item' }
 ###### `regions` - (Optional) `list[str]` The list of allowed Nebius regions. Omit to allow all regions. { #regions data-toc-label='regions' class='reference-item' }
 ###### `fabrics` - (Optional) `list[str]` The list of allowed fabrics for InfiniBand clusters. Omit to allow all fabrics. { #fabrics data-toc-label='fabrics' class='reference-item' }
+###### `capacity_advisor` - (Optional) `bool` Use Nebius Capacity Advisor to check quota and capacity when collecting offers. Defaults to `false`. { #capacity_advisor data-toc-label='capacity_advisor' class='reference-item' }
 ###### `tags` - (Optional) `dict` The tags (labels) that will be assigned to resources created by `dstack`. { #tags data-toc-label='tags' class='reference-item' }
 ###### [`creds`](#nebius-creds) - (Required) `object` The credentials. { #_creds data-toc-label='creds' class='reference-item' }
 

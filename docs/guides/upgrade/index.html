@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../../assets/images/dstack-fav-32.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.1">
     
     
       
@@ -1687,11 +1687,11 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#deprecations" class="md-nav__link">
+  <a href="#dstack_router_internal_ip" class="md-nav__link">
     <span class="md-ellipsis">
       
         <span class="md-typeset">
-          Deprecations
+          <code>DSTACK_ROUTER_INTERNAL_IP</code>
         </span>
       
     </span>
@@ -1771,7 +1771,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#deprecations_1" class="md-nav__link">
+  <a href="#deprecations" class="md-nav__link">
     <span class="md-ellipsis">
       
         <span class="md-typeset">
@@ -4995,11 +4995,11 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#deprecations" class="md-nav__link">
+  <a href="#dstack_router_internal_ip" class="md-nav__link">
     <span class="md-ellipsis">
       
         <span class="md-typeset">
-          Deprecations
+          <code>DSTACK_ROUTER_INTERNAL_IP</code>
         </span>
       
     </span>
@@ -5079,7 +5079,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#deprecations_1" class="md-nav__link">
+  <a href="#deprecations" class="md-nav__link">
     <span class="md-ellipsis">
       
         <span class="md-typeset">
@@ -5298,8 +5298,8 @@
 </div>
 <h3 id="exports-and-events">Exports and Events<a class="headerlink" href="#exports-and-events" title="Permanent link">&para;</a></h3>
 <p>Support for <a href="../../concepts/exports/">exports</a> and the global <code>Events</code> page has moved from the open-source version to <a href="https://dstack.ai/products/sky/">dstack Sky</a> and <a href="https://dstack.ai/products/factory/">dstack Factory</a>. The <code>dstack event</code> CLI command and the <code>Events</code> tabs on resource pages remain available in the open-source version.</p>
-<h3 id="deprecations">Deprecations<a class="headerlink" href="#deprecations" title="Permanent link">&para;</a></h3>
-<p>The <code>DSTACK_ROUTER_INTERNAL_IP</code> environment variable is deprecated in favor of <a href="../../concepts/services/#replica-groups"><code>${{ groups[i].replicas[j].IP_ADDRESS }}</code></a>.</p>
+<h3 id="dstack_router_internal_ip"><code>DSTACK_ROUTER_INTERNAL_IP</code><a class="headerlink" href="#dstack_router_internal_ip" title="Permanent link">&para;</a></h3>
+<p>Starting with <code>0.22.8</code>, <code>dstack</code> no longer sets the <code>DSTACK_ROUTER_INTERNAL_IP</code> environment variable. Use <a href="../../concepts/services/#replica-groups"><code>${{ groups[i].replicas[j].IP_ADDRESS }}</code></a> instead, e.g. to point Dynamo workers at a dedicated <code>etcd</code> replica group as shown in the <a href="../../examples/inference/dynamo/">NVIDIA Dynamo example</a>.</p>
 <h2 id="0_21">0.21.*<a class="headerlink" href="#0_21" title="Permanent link">&para;</a></h2>
 <blockquote>
 <p>CLI versions prior to <code>0.20.0</code> must be upgraded along with the server.</p>
@@ -5331,7 +5331,7 @@
 <li><code>/api/project/{project_name}/runs/apply</code></li>
 <li><code>/api/project/{project_name}/fleets/apply</code></li>
 </ul>
-<h3 id="deprecations_1">Deprecations<a class="headerlink" href="#deprecations_1" title="Permanent link">&para;</a></h3>
+<h3 id="deprecations">Deprecations<a class="headerlink" href="#deprecations" title="Permanent link">&para;</a></h3>
 <p>The following API response fields are no longer populated by the server and will be removed in a future release:</p>
 <ul>
 <li><code>Resources.description</code></li>
@@ -5584,7 +5584,7 @@
 <script src="/assets/javascripts/termynal.js"></script>
 <script async src="https://tally.so/widgets/embed.js"></script>
 
-      <script src="../../../assets/javascripts/bundle.c21346df.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.a5f9d56c.min.js"></script>
       
         <script src="https://unpkg.com/swagger-ui-dist@5.32.0/swagger-ui-bundle.js"></script>
       
