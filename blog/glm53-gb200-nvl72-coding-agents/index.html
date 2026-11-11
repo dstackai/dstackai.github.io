@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Optimized with dstack presets, 14 GB200 NVL72 nodes serve 48 GLM-5.3 coding agents as fast as the three fastest OpenRouter endpoints, with lower p50 TTFT, and self-hosting them costs under a third of buying the same tokens.">
+        <meta name="description" content="Optimized with dstack presets, 14 GB200 NVL72 nodes serve 48 GLM-5.3 coding agents as fast as the three fastest OpenRouter endpoints, with lower p50 TTFT, and self-hosting them costs less than buying the same tokens.">
       
       
         <meta name="author" content="dstack GmbH">
@@ -140,7 +140,7 @@
   
 <meta property="og:type" content="website" />
 <meta property="og:title" content="Serve GLM-5.3 Coding Agents Faster and Cheaper on GB200 NVL72 - dstack" />
-<meta property="og:description" content="Optimized with dstack presets, 14 GB200 NVL72 nodes serve 48 GLM-5.3 coding agents as fast as the three fastest OpenRouter endpoints, with lower p50 TTFT, and self-hosting them costs under a third of buying the same tokens." />
+<meta property="og:description" content="Optimized with dstack presets, 14 GB200 NVL72 nodes serve 48 GLM-5.3 coding agents as fast as the three fastest OpenRouter endpoints, with lower p50 TTFT, and self-hosting them costs less than buying the same tokens." />
 <meta property="og:image" content="
   https://dstack.ai/static-assets/static-assets/images/dstack-glm-53-gb200-nvl72-crusoe.png" />
 <meta property="og:image:type" content="image/png" />
@@ -149,7 +149,7 @@
 <meta property="og:url" content="https://dstack.ai/blog/glm53-gb200-nvl72-coding-agents/" />
 <meta property="twitter:card" content="summary_large_image" />
 <meta property="twitter.title" content="Serve GLM-5.3 Coding Agents Faster and Cheaper on GB200 NVL72 - dstack" />
-<meta property="twitter:description" content="Optimized with dstack presets, 14 GB200 NVL72 nodes serve 48 GLM-5.3 coding agents as fast as the three fastest OpenRouter endpoints, with lower p50 TTFT, and self-hosting them costs under a third of buying the same tokens." />
+<meta property="twitter:description" content="Optimized with dstack presets, 14 GB200 NVL72 nodes serve 48 GLM-5.3 coding agents as fast as the three fastest OpenRouter endpoints, with lower p50 TTFT, and self-hosting them costs less than buying the same tokens." />
 <meta property="twitter:image" content="
   https://dstack.ai/static-assets/static-assets/images/dstack-glm-53-gb200-nvl72-crusoe.png" />
 </head>
@@ -5003,7 +5003,7 @@
 
 
 <h1 id="serve-glm-53-coding-agents-faster-and-cheaper-on-gb200-nvl72">Serve GLM-5.3 Coding Agents Faster and Cheaper on GB200 NVL72<a class="headerlink" href="#serve-glm-53-coding-agents-faster-and-cheaper-on-gb200-nvl72" title="Permanent link">&para;</a></h1>
-<p>With <code>dstack</code> <a href="../../docs/concepts/presets/">presets</a>, the preset agent optimized a GB200 NVL72 fleet to serve GLM-5.3 coding agents as fast as the three fastest endpoints on OpenRouter, with lower p50 TTFT. Self-hosting them this way costs under a third of buying the same tokens from those endpoints. By a coding agent we mean one session of a tool like Claude Code: a multi-turn conversation that resends its whole context, about 135k tokens, on every request and spawns subagents along the way.</p>
+<p>With <code>dstack</code> <a href="../../docs/concepts/presets/">presets</a>, the preset agent optimized a GB200 NVL72 fleet to serve GLM-5.3 coding agents as fast as the three fastest endpoints on OpenRouter, with lower p50 TTFT. Self-hosting them this way costs less than buying the same tokens from those endpoints. By a coding agent we mean one session of a tool like Claude Code: a multi-turn conversation that resends its whole context, about 135k tokens, on every request and spawns subagents along the way.</p>
 <p><img src="https://dstack.ai/static-assets/static-assets/images/dstack-glm-53-gb200-nvl72-crusoe.png" width="630" /></p>
 <p>This work was done jointly with <a href="https://crusoe.ai">Crusoe</a>, who provided the GB200 NVL72 capacity.</p>
 <!-- more -->
@@ -5100,7 +5100,7 @@
 <p>We then raised the agent count for each winner. Aggregated, replayed at normal pace with pauses capped at 300 s instead of 5 s, rose from 2,150 tok/s at 48 agents to 3,722 at 120, then fell to 2,307 at 240 as cache reuse dropped from 97.2% to 76.6% and p99 TTFT reached 690 s. PD, at the accelerated pace, kept cache reuse around 95% and rose from 3,530 tok/s at 48 agents to 10,545 at 192, while p50 TTFT climbed from 727 ms to 3,250 ms.</p>
 <h2 id="conclusion">Conclusion<a class="headerlink" href="#conclusion" title="Permanent link">&para;</a></h2>
 <h3 id="self-hosting-is-economically-viable">Self-hosting is economically viable<a class="headerlink" href="#self-hosting-is-economically-viable" title="Permanent link">&para;</a></h3>
-<p>Optimized for 48 agents, 14 GB200 nodes match the fastest GLM-5.3 endpoints on p50 output speed and beat them on p50 TTFT and on output speed at p99. Self-hosting costs $12.77 per million output tokens, at least 70% less than the $43–66 it costs to buy the same tokens from these endpoints.</p>
+<p>Optimized for 48 agents, 14 GB200 nodes match the fastest GLM-5.3 endpoints on p50 output speed and beat them on p50 TTFT and on output speed at p99. Self-hosting them costs less than buying the same tokens from these endpoints, even on GB200 NVL72 and without patching the engine or writing kernels.</p>
 <h3 id="cache-fit-decides-aggregated-vs-pd">Cache fit decides aggregated vs PD<a class="headerlink" href="#cache-fit-decides-aggregated-vs-pd" title="Permanent link">&para;</a></h3>
 <p>Aggregated is faster while the sessions' caches fit in memory: there is no KV transfer, all seven engines generate replies, and cache-aware routing sends each session back to the engine that holds its context. PD keeps more context reusable as load grows, so it produces more tokens per chip, but each agent waits longer for its first token.</p>
 <h3 id="duplicated-kv-caps-aggregated">Duplicated KV caps aggregated<a class="headerlink" href="#duplicated-kv-caps-aggregated" title="Permanent link">&para;</a></h3>
