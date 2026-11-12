@@ -5810,7 +5810,7 @@ which worker serves each request based on routing policy.</p>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">frontend</span>
 <span class="w">    </span><span class="nt">replicas</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
 <span class="w">    </span><span class="c1"># The vLLM image provides vLLM's GLM tool call and reasoning parsers</span>
-<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nvcr.io/nvidia/ai-dynamo/vllm-runtime:1.5.1</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nvcr.io/nvidia/ai-dynamo/vllm-runtime:1.6.2</span>
 <span class="w">    </span><span class="nt">commands</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">export ETCD_ENDPOINTS=http://${{ groups[0].replicas[0].IP_ADDRESS }}:2379</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
@@ -5828,7 +5828,7 @@ which worker serves each request based on routing policy.</p>
 
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">worker</span>
 <span class="w">    </span><span class="nt">replicas</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
-<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nvcr.io/nvidia/ai-dynamo/vllm-runtime:1.5.1</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nvcr.io/nvidia/ai-dynamo/vllm-runtime:1.6.2</span>
 <span class="w">    </span><span class="nt">commands</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">export ETCD_ENDPOINTS=http://${{ groups[0].replicas[0].IP_ADDRESS }}:2379</span>
 <span class="w">      </span><span class="c1"># vLLM binds the KV events endpoint only if it's a wildcard address, otherwise it connects</span>
@@ -5843,6 +5843,10 @@ which worker serves each request based on routing policy.</p>
 
 <span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8000</span>
 <span class="nt">model</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">zai-org/GLM-4.5-Air-FP8</span>
+
+<span class="c1"># Resubmit a failed replica, such as etcd, instead of failing the whole run</span>
+<span class="nt">retry</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">on_events</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">error</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">interruption</span><span class="p p-Indicator">]</span>
 </code></pre></div>
 </div>
 </div>
@@ -5966,7 +5970,7 @@ the index of the replica within that group.</p>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">frontend</span>
 <span class="w">    </span><span class="nt">replicas</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
 <span class="w">    </span><span class="c1"># The vLLM image provides vLLM's GLM tool call and reasoning parsers</span>
-<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nvcr.io/nvidia/ai-dynamo/vllm-runtime:1.5.1</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nvcr.io/nvidia/ai-dynamo/vllm-runtime:1.6.2</span>
 <span class="w">    </span><span class="nt">commands</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">export ETCD_ENDPOINTS=http://${{ groups[0].replicas[0].IP_ADDRESS }}:2379</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
@@ -5985,7 +5989,7 @@ the index of the replica within that group.</p>
 <span class="w">  </span><span class="c1"># Only prefill workers publish KV events, as Dynamo's decode routing ignores prefix overlap</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prefill-worker</span>
 <span class="w">    </span><span class="nt">replicas</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4</span>
-<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nvcr.io/nvidia/ai-dynamo/vllm-runtime:1.5.1</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nvcr.io/nvidia/ai-dynamo/vllm-runtime:1.6.2</span>
 <span class="w">    </span><span class="nt">commands</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">export ETCD_ENDPOINTS=http://${{ groups[0].replicas[0].IP_ADDRESS }}:2379</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">export VLLM_NIXL_SIDE_CHANNEL_HOST=$DSTACK_MASTER_NODE_IP</span>
@@ -6003,7 +6007,7 @@ the index of the replica within that group.</p>
 
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">decode-worker</span>
 <span class="w">    </span><span class="nt">replicas</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8</span>
-<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nvcr.io/nvidia/ai-dynamo/vllm-runtime:1.5.1</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nvcr.io/nvidia/ai-dynamo/vllm-runtime:1.6.2</span>
 <span class="w">    </span><span class="nt">commands</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">export ETCD_ENDPOINTS=http://${{ groups[0].replicas[0].IP_ADDRESS }}:2379</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">export VLLM_NIXL_SIDE_CHANNEL_HOST=$DSTACK_MASTER_NODE_IP</span>
@@ -6019,6 +6023,10 @@ the index of the replica within that group.</p>
 
 <span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8000</span>
 <span class="nt">model</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">zai-org/GLM-4.5-Air-FP8</span>
+
+<span class="c1"># Resubmit a failed replica, such as etcd, instead of failing the whole run</span>
+<span class="nt">retry</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">on_events</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">error</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">interruption</span><span class="p p-Indicator">]</span>
 </code></pre></div>
 </div>
 <blockquote>
@@ -6851,6 +6859,7 @@ set <a href="../../reference/dstack.yml/service/#strip_prefix"><code>strip_prefi
 on a dedicated domain name by setting up a <a href="../gateways/">gateway</a>.</p>
 <h3 id="retry-policy">Retry policy<a class="headerlink" href="#retry-policy" title="Permanent link">&para;</a></h3>
 <p>By default, if <code>dstack</code> can't find capacity, or the service exits with an error, or the instance is interrupted, the run will fail.</p>
+<p>A service runs until it's stopped. If a replica exits with <code>0</code>, <code>dstack</code> restarts it regardless of the retry policy.</p>
 <p>If you'd like <code>dstack</code> to automatically retry, configure the
 <a href="../../reference/dstack.yml/service/#retry">retry</a> property accordingly:</p>
 <!-- TODO: Add a relevant example -->

@@ -5077,7 +5077,14 @@ importer projects that will gain access to them.</p>
 <p>Once an export is created, the importer projects can see the exported resources in their resource lists and use them
 for running tasks, dev environments, and services. Imported resources appear with a project prefix
 (e.g., <code>team-a/my-fleet</code>) to distinguish them from the project's own resources.</p>
-<p>Currently, <a href="../fleets/#ssh-fleets">SSH fleets</a> and <a href="../gateways/">gateways</a> can be exported.</p>
+<p>Currently, <a href="../fleets/">fleets</a> and <a href="../gateways/">gateways</a> can be exported.</p>
+<details class="info">
+<summary>Limitations</summary>
+<ul>
+<li>Importer projects can only use the existing instances of imported <a href="../fleets/#backend-fleets">backend fleets</a>. New instances are not provisioned for importers' runs.</li>
+<li>Runs that mount <a href="../volumes/#network-volumes">network volumes</a> cannot use imported backend fleets.</li>
+</ul>
+</details>
 <details class="info">
 <summary>Required role</summary>
 <p>The user creating or updating an export must have the project admin role on both the exporter project and

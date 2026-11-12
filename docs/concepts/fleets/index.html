@@ -5762,7 +5762,12 @@ Update<span class="w"> </span>the<span class="w"> </span>fleet<span class="w"> <
 <summary>Supported properties</summary>
 <p>Backend fleets support in-place changes to <code>nodes</code>, <code>resources</code>, <code>backends</code>, <code>regions</code>, <code>availability_zones</code>, <code>instance_types</code>, <code>spot_policy</code>, <code>max_price</code>, <code>reservation</code>, and <code>tags</code>. Except for <code>nodes</code>, these changes only apply to instances provisioned after the update.</p>
 <p>SSH fleets support adding and removing <code>hosts</code>. Added hosts are provisioned, and removed hosts are terminated.</p>
+<p>SSH fleets also support updating <code>identity_file</code> and <code>proxy_jump.identity_file</code>, including per-host overrides.</p>
 <p>Changes to other properties require re-creating the fleet. In this case, <code>dstack apply</code> offers to delete the fleet and create it again.</p>
+</details>
+<details class="info">
+<summary>SSH key rotation</summary>
+<p>Updating <code>identity_file</code> and <code>proxy_jump.identity_file</code> does not require stopping runs. Allow about 20 seconds for changes to propagate before removing the old public key from the host.</p>
 </details>
 <h3 id="delete-fleets">Delete fleets<a class="headerlink" href="#delete-fleets" title="Permanent link">&para;</a></h3>
 <p>When a fleet isn't used by a run, you can delete it by passing the fleet configuration to <code>dstack delete</code>:</p>

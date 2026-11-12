@@ -4991,7 +4991,7 @@ Dynamo with PD disaggregation and vLLM workers.</p>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">frontend</span>
 <span class="w">    </span><span class="nt">replicas</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
 <span class="w">    </span><span class="c1"># The vLLM image provides vLLM's GLM tool call and reasoning parsers</span>
-<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nvcr.io/nvidia/ai-dynamo/vllm-runtime:1.5.1</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nvcr.io/nvidia/ai-dynamo/vllm-runtime:1.6.2</span>
 <span class="w">    </span><span class="nt">commands</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">export ETCD_ENDPOINTS=http://${{ groups[0].replicas[0].IP_ADDRESS }}:2379</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
@@ -5013,7 +5013,7 @@ Dynamo with PD disaggregation and vLLM workers.</p>
 <span class="w">    </span><span class="nt">scaling</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">metric</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rps</span>
 <span class="w">      </span><span class="nt">target</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
-<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nvcr.io/nvidia/ai-dynamo/vllm-runtime:1.5.1</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nvcr.io/nvidia/ai-dynamo/vllm-runtime:1.6.2</span>
 <span class="w">    </span><span class="nt">commands</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">export ETCD_ENDPOINTS=http://${{ groups[0].replicas[0].IP_ADDRESS }}:2379</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">export VLLM_NIXL_SIDE_CHANNEL_HOST=$DSTACK_MASTER_NODE_IP</span>
@@ -5034,7 +5034,7 @@ Dynamo with PD disaggregation and vLLM workers.</p>
 <span class="w">    </span><span class="nt">scaling</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">metric</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rps</span>
 <span class="w">      </span><span class="nt">target</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
-<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nvcr.io/nvidia/ai-dynamo/vllm-runtime:1.5.1</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nvcr.io/nvidia/ai-dynamo/vllm-runtime:1.6.2</span>
 <span class="w">    </span><span class="nt">commands</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">export ETCD_ENDPOINTS=http://${{ groups[0].replicas[0].IP_ADDRESS }}:2379</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">export VLLM_NIXL_SIDE_CHANNEL_HOST=$DSTACK_MASTER_NODE_IP</span>
@@ -5050,6 +5050,10 @@ Dynamo with PD disaggregation and vLLM workers.</p>
 
 <span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8000</span>
 <span class="nt">model</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">zai-org/GLM-4.5-Air-FP8</span>
+
+<span class="c1"># Resubmit a failed replica, such as etcd, instead of failing the whole run</span>
+<span class="nt">retry</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">on_events</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">error</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">interruption</span><span class="p p-Indicator">]</span>
 </code></pre></div>
 
 </div>
